@@ -1,0 +1,42 @@
+
+<div *ngIf="book">
+    <h2><span jhiTranslate="eshopApp.book.detail.title">Book</span> {{book.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eshopApp.book.name">Name</span></dt>
+        <dd>
+            <span>{{book.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.book.description">Description</span></dt>
+        <dd>
+            <span>{{book.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.book.price">Price</span></dt>
+        <dd>
+            <span>{{book.price}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.book.test">Test</span></dt>
+        <dd>
+            <div *ngIf="book.test">
+                <a (click)="openFile(book.testContentType, book.test)">
+                    <img [src]="'data:' + book.testContentType + ';base64,' + book.test" style="max-width: 100%;" alt="book image"/>
+                </a>
+                {{book.testContentType}}, {{byteSize(book.test)}}
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'book/'+ book.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
