@@ -1,0 +1,76 @@
+
+<div *ngIf="customer">
+    <h2><span jhiTranslate="eshopApp.customer.detail.title">Customer</span> {{customer.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customer.dateOfBirth" for="field_dateOfBirth">Date Of Birth</label>
+            <div class="input-group">
+                <input id="field_dateOfBirth" type="text" class="form-control" name="dateOfBirth" ngbDatepicker  #dateOfBirthDp="ngbDatepicker" [(ngModel)]="customer.dateOfBirth"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="dateOfBirthDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customer.gender" for="field_gender">Gender</label>
+            <select class="form-control" name="gender" [(ngModel)]="customer.gender" id="field_gender" >
+                <option value="M" jhiTranslate="eshopApp.CustomerGender.M">M</option>
+                <option value="F" jhiTranslate="eshopApp.CustomerGender.F">F</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customer.anonymous" for="field_anonymous">Anonymous</label>
+            <input type="checkbox" class="form-control" name="anonymous" id="field_anonymous"
+                [(ngModel)]="customer.anonymous"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customer.company" for="field_company">Company</label>
+            <input type="text" class="form-control" name="company" id="field_company"
+                [(ngModel)]="customer.company"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customer.nick" for="field_nick">Nick</label>
+            <input type="text" class="form-control" name="nick" id="field_nick"
+                [(ngModel)]="customer.nick"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customer.emailAddress" for="field_emailAddress">Email Address</label>
+            <input type="text" class="form-control" name="emailAddress" id="field_emailAddress"
+                [(ngModel)]="customer.emailAddress"
+            required />
+            <div [hidden]="!(editForm.controls.emailAddress?.dirty && editForm.controls.emailAddress?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.emailAddress?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customer.password" for="field_password">Password</label>
+            <input type="text" class="form-control" name="password" id="field_password"
+                [(ngModel)]="customer.password"
+             />
+        </div>
+
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

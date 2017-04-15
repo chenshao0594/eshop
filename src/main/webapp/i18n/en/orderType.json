@@ -1,0 +1,9 @@
+{
+    "eshopApp": {
+        "OrderType" : {
+            "null": "",
+            "ORDER": "ORDER",
+            "BOOKING": "BOOKING"
+        }
+    }
+}

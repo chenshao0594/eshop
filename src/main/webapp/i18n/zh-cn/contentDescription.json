@@ -1,0 +1,29 @@
+{
+    "eshopApp": {
+        "contentDescription" : {
+            "home": {
+                "title": "Content Descriptions",
+                "createLabel": "Create a new Content Description",
+                "createOrEditLabel": "Create or edit a Content Description",
+                "search": "Search for Content Description"
+            },
+            "created": "A new Content Description is created with identifier {{ param }}",
+            "updated": "A Content Description is updated with identifier {{ param }}",
+            "deleted": "A Content Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Content Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Content Description"
+            },
+            "title": "Title",
+            "description": "Description",
+            "metatagTitle": "Metatag Title",
+            "metatagDescription": "Metatag Description",
+            "name": "Name",
+            "seUrl": "Se Url",
+            "metatagKeywords": "Metatag Keywords",
+            "content": "Content"
+        }
+    }
+}

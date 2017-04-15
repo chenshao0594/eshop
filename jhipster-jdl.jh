@@ -1,0 +1,529 @@
+entity OrderProductDownload{ 
+    maxdays Integer,
+    downloadCount Integer,
+    orderProductFilename String,
+}
+entity ProductOptionValue{ 
+    productOptionValueImage String,
+    code String required,
+    productOptionValueSortOrder Integer,
+    productOptionDisplayOnly Boolean,
+}
+entity ProductDescription{ 
+    metatagDescription String,
+    seUrl String,
+    metatagKeywords String,
+    productHighlight String,
+    title String,
+    description String,
+    metatagTitle String,
+    name String required,
+    productExternalDl String,
+}
+entity TaxClass{ 
+    title String required,
+    code String required,
+}
+entity ShoppingCartAttributeItem{ 
+    productAttributeId Long,
+}
+entity ProductPrice{ 
+    defaultPrice Boolean,
+    DEFAULT_PRICE_CODE String,
+    code String required,
+    productPriceSpecialEndDate LocalDate,
+    productPriceAmount BigDecimal,
+    productPriceSpecialAmount BigDecimal,
+    productPriceType ProductPriceType, 
+    productPriceSpecialStartDate LocalDate,
+}
+entity GeoZone{ 
+    name String,
+    code String,
+}
+entity ProductType{ 
+    code String,
+    GENERAL_TYPE String,
+    allowAddToCart Boolean,
+}
+entity ManufacturerDescription{ 
+    urlClicked Integer,
+    title String,
+    url String,
+    name String required,
+    dateLastClick LocalDate,
+    description String,
+}
+entity Product{ 
+    productHeight BigDecimal,
+    productWeight BigDecimal,
+    productShipeable Boolean,
+    productOrdered Integer,
+    productReviewAvg BigDecimal,
+    dateAvailable LocalDate,
+    sortOrder Integer,
+    productIsFree Boolean,
+    available Boolean,
+    productReviewCount Integer,
+    refSku String,
+    productVirtual Boolean,
+    productWidth BigDecimal,
+    preOrder Boolean,
+    productLength BigDecimal,
+    sku String required,
+}
+entity ShippingOrigin{ 
+    city String required,
+    postalCode String required,
+    address String required,
+    active Boolean,
+    state String,
+}
+entity OrderAccountProduct{ 
+    orderAccountProductId Long,
+    orderAccountProductLastTransactionStatus Integer,
+    orderAccountProductEndDate LocalDate,
+    orderAccountProductStartDate LocalDate,
+    orderAccountProductLastStatusDate LocalDate,
+    orderAccountProductStatus Integer,
+    orderAccountProductAccountedDate LocalDate,
+    orderAccountProductPaymentFrequencyType Integer,
+    orderAccountProductEot LocalDate,
+}
+entity CountryDescription{ 
+    title String,
+    name String required,
+    description String,
+}
+entity CustomerOptionValueDescription{ 
+    title String,
+    name String required,
+    description String,
+}
+entity OrderTotal{ 
+    value BigDecimal,
+    orderTotalCode String,
+    text String,
+orderValueType OrderValueType,
+    sortOrder Integer,
+orderTotalType OrderTotalType,
+    title String,
+    module String,
+}
+entity SystemNotification{ 
+    endDate LocalDate,
+    key String,
+    startDate LocalDate,
+    value String,
+}
+entity OrderProductAttribute{ 
+    productAttributeName String,
+    productAttributeWeight BigDecimal,
+    productOptionValueId Long,
+    productAttributePrice BigDecimal,
+    productAttributeIsFree Boolean,
+    productOptionId Long,
+    productAttributeValueName String,
+}
+entity OrderStatusHistory{ 
+    comments String,
+    customerNotified Integer,
+    dateAdded LocalDate,
+status OrderStatus 
+}
+entity ContentDescription{ 
+    title String,
+    description String,
+    metatagTitle String,
+    metatagDescription String,
+    name String required,
+    seUrl String,
+    metatagKeywords String,
+}
+entity ProductAvailability{ 
+    productQuantityOrderMax Integer,
+    productIsAlwaysFreeShipping Boolean,
+    region String,
+    productQuantity Integer,
+    productQuantityOrderMin Integer,
+    productDateAvailable LocalDate,
+    productStatus Boolean,
+    regionVariant String,
+}
+entity Optin{ 
+    description String,
+    startDate LocalDate,
+    code String,
+    endDate LocalDate,
+}
+entity ProductOptionDescription{ 
+    productOptionComment String,
+    title String,
+    name String required,
+    description String,
+}
+entity TaxRate{ 
+    piggyback Boolean,
+    stateProvince String,
+    taxPriority Integer,
+    code String required,
+    taxRate BigDecimal,
+}
+entity CustomerOption{ 
+    active Boolean,
+    customerOptionType String,
+    code String required,
+    publicOption Boolean,
+    sortOrder Integer,
+}
+entity Transaction{ 
+    details String,
+    transactionType TransactionType,
+    transactionDate LocalDate,
+    paymentType PaymentType,
+    amount BigDecimal,
+}
+entity OrderProduct{ 
+    productQuantity Integer,
+    sku String,
+    oneTimeCharge BigDecimal,
+    productName String,
+}
+entity ShoppingCartItem{ 
+    productId Long,
+    quantity Integer,
+}
+entity MerchantStore{ 
+    storeaddress String,
+    code String required,
+    storename String required,
+    storeEmailAddress String required,
+    DEFAULT_STORE String,
+    storephone String required,
+    weightunitcode String,
+    useCache Boolean,
+    storeTemplate String,
+    domainName String,
+    invoiceTemplate String,
+    storeLogo String,
+    inBusinessSince LocalDate,
+    currencyFormatNational Boolean,
+    storepostalcode String required,
+    seizeunitcode String,
+    storestateprovince String,
+    continueshoppingurl String,
+    storecity String required,
+}
+entity SystemConfiguration{ 
+    key String,
+    value String,
+}
+entity Currency{ 
+    code String,
+    supported Boolean,
+    name String,
+    currency String,
+}
+entity MerchantLog{ 
+    log String,
+    module String,
+}
+entity ShoppingCart{ 
+    customerId Long,
+    shoppingCartCode String,
+}
+entity ProductRelationship{ 
+    code String,
+    active Boolean,
+}
+entity ProductReviewDescription{ 
+    title String,
+    name String required,
+    description String,
+}
+entity OrderAccount{ 
+    orderAccountStartDate LocalDate,
+    orderAccountEndDate LocalDate,
+    orderAccountBillDay Integer,
+}
+entity DigitalProduct{ 
+    productFileName String,
+}
+entity MerchantConfiguration{ 
+merchantConfigurationType MerchantConfigurationType,
+    key String,
+    value String,
+}
+entity ZoneDescription{ 
+    title String,
+    name String required,
+    description String,
+}
+entity ProductOption{ 
+    readOnly Boolean,
+    productOptionType String,
+    code String required,
+    productOptionSortOrder Integer,
+}
+entity ProductOptionValueDescription{ 
+    title String,
+    name String required,
+    description String,
+}
+entity CustomerOptionValue{ 
+    code String required,
+    customerOptionValueImage String,
+    sortOrder Integer,
+}
+entity ProductImage{ 
+    productImage String,
+    productImageUrl String,
+    defaultImage Boolean,
+    imageType Integer,
+    imageCrop Boolean,
+}
+entity ProductPriceDescription{ 
+    title String,
+    DEFAULT_PRICE_DESCRIPTION String,
+    name String required,
+    description String,
+}
+entity CategoryDescription{ 
+    categoryHighlight String,
+    title String,
+    metatagDescription String,
+    description String,
+    seUrl String,
+    metatagKeywords String,
+    name String required,
+    metatagTitle String,
+}
+entity GeoZoneDescription{ 
+    title String,
+    name String required,
+    description String,
+}
+entity CustomerOptionSet{ 
+    sortOrder Integer,
+}
+entity Content{ 
+    sortOrder Integer,
+    productGroup String,
+contentType ContentType,
+    code String required,
+    visible Boolean,
+contentPosition ContentPosition 
+}
+entity CustomerOptionDescription{ 
+    title String,
+    customerOptionComment String,
+    name String required,
+    description String,
+}
+entity ProductImageDescription{ 
+    title String,
+    altTag String,
+    name String required,
+    description String,
+}
+
+entity OrderProductPrice{ 
+    productPrice BigDecimal,
+    productPriceCode String,
+    productPriceSpecialStartDate LocalDate,
+    productPriceSpecial BigDecimal,
+    productPriceSpecialEndDate LocalDate,
+    productPriceName String,
+    defaultPrice Boolean,
+}
+entity FileHistory{ 
+    dateAdded LocalDate,
+    dateDeleted LocalDate,
+    downloadCount Integer,
+    fileId Long,
+    accountedDate LocalDate,
+    filesize Integer,
+}
+entity Language{ 
+    code String,
+    sortOrder Integer,
+}
+entity Customer{ 
+    dateOfBirth LocalDate,
+    gender CustomerGender, 
+    anonymous Boolean,
+    company String,
+    nick String,
+    emailAddress String required,
+    password String,
+}
+entity ProductReview{ 
+    reviewRead Long,
+    reviewDate LocalDate,
+    status Integer,
+    reviewRating Double,
+}
+entity Category{ 
+    depth Integer,
+    sortOrder Integer,
+    categoryStatus Boolean,
+    lineage String,
+    visible Boolean,
+    code String required,
+    categoryImage String,
+}
+entity CustomerAttribute{ 
+    textValue String,
+}
+entity Country{ 
+    isoCode String,
+    supported Boolean,
+}
+
+entity IntegrationModule{ 
+    configDetails String,
+    customModule Boolean,
+    type String,
+    code String,
+    regions String,
+    image String,
+    module String,
+    configuration String,
+}
+entity CustomerOptin{ 
+    optinDate LocalDate,
+    email String,
+    value String,
+    firstName String,
+    lastName String,
+}
+entity Manufacturer{ 
+    order Integer,
+    image String,
+    code String required,
+}
+entity Zone{ 
+    code String,
+}
+entity ProductAttribute{ 
+    productAttributeWeight BigDecimal,
+    productAttributePrice BigDecimal,
+    attributeRequired Boolean,
+    attributeDefault Boolean,
+    attributeDisplayOnly Boolean,
+    productOptionSortOrder Integer,
+    productAttributeIsFree Boolean,
+    attributeDiscounted Boolean,
+}
+entity TaxRateDescription{ 
+    title String,
+    name String required,
+    description String,
+}
+entity SalesOrder{ 
+    customerId Long,
+    confirmedAddress Boolean,
+    orderDateFinished LocalDate,
+    total BigDecimal,
+    paymentModuleCode String,
+paymentType PaymentType,
+    locale String,
+channel OrderChannel 
+    customerEmailAddress String,
+orderType OrderType, 
+status OrderStatus, 
+    lastModified LocalDate,
+    currencyValue BigDecimal,
+    datePurchased LocalDate,
+    shippingModuleCode String,
+    ipAddress String,
+    customerAgreement Boolean
+}
+relationship OneToMany { 
+ProductOptionValue{descriptions} to ProductOptionValueDescription{productOptionValue},
+TaxClass{products} to Product{taxClass},
+TaxClass{taxRates} to TaxRate{taxClass},
+ProductPrice{descriptions} to ProductPriceDescription{productPrice},
+GeoZone{countries} to Country{geoZone},
+GeoZone{descriptions} to GeoZoneDescription{geoZone},
+Product{images} to ProductImage{product},
+Product{availabilities} to ProductAvailability{product},
+Product{attributes} to ProductAttribute{product},
+Product{descriptions} to ProductDescription{product},
+Product{relationships} to ProductRelationship{product},
+ProductAvailability{prices} to ProductPrice{productAvailability},
+TaxRate{descriptions} to TaxRateDescription{taxRate},
+TaxRate{taxRates} to TaxRate{parent},
+CustomerOption{descriptions} to CustomerOptionDescription{customerOption},
+OrderProduct{downloads} to OrderProductDownload{orderProduct},
+OrderProduct{orderAttributes} to OrderProductAttribute{orderProduct},
+OrderProduct{prices} to OrderProductPrice{orderProduct},
+ShoppingCartItem{attributes} to ShoppingCartAttributeItem{shoppingCartItem},
+ShoppingCart{lineItems} to ShoppingCartItem{shoppingCart},
+OrderAccount{orderAccountProducts} to OrderAccountProduct{orderAccount},
+ProductOption{descriptions} to ProductOptionDescription{productOption},
+CustomerOptionValue{descriptions} to CustomerOptionValueDescription{customerOptionValue},
+ProductImage{descriptions} to ProductImageDescription{productImage},
+Content{descriptions} to ContentDescription{content},
+Language{storesDefaultLanguage} to MerchantStore{defaultLanguage},
+Customer{attributes} to CustomerAttribute{customer},
+Customer{reviews} to ProductReview{customer},
+ProductReview{descriptions} to ProductReviewDescription{productReview},
+Category{categories} to Category{parent},
+Category{descriptions} to CategoryDescription{category},
+Country{descriptions} to CountryDescription{country},
+Country{zones} to Zone{country},
+Manufacturer{descriptions} to ManufacturerDescription{manufacturer},
+Zone{descriptions} to ZoneDescription{zone},
+SalesOrder{orderTotal} to OrderTotal{order},
+SalesOrder{orderHistory} to OrderStatusHistory{order},
+SalesOrder{orderProducts} to OrderProduct{order}
+}
+
+relationship ManyToMany { 
+Language{stores} to MerchantStore{languages}
+
+}
+
+enum PaymentType{
+    CREDITCARD, FREE, COD, MONEYORDER, PAYPAL, STRIPE, WEPAY    
+}
+enum TransactionType{
+    INIT, AUTHORIZE, CAPTURE, AUTHORIZECAPTURE, REFUND
+} 
+enum OrderType{
+    ORDER, BOOKING  
+} 
+enum ProductPriceType{
+    ONE_TIME, MONTHLY   
+} 
+enum OrderValueType{
+    ONE_TIME, MONTHLY   
+}
+enum MerchantConfigurationType{
+    INTEGRATION, SHOP, CONFIG   
+}
+enum CustomerGender{
+    M, F
+}
+enum OrderStatus{
+    ORDERED, PROCESSED, DELIVERED, REFUNDED, CANCELED
+}
+enum ContentType{
+    BOX, PAGE, SECTION  
+}
+enum GroupType{
+    ADMIN, CUSTOMER
+} 
+enum OrderChannel{
+    ONLINE
+} 
+enum OrderTotalType{
+    SHIPPING, HANDLING, TAX, PRODUCT, SUBTOTAL, TOTAL, CREDIT, REFUND
+}
+enum ContentPosition{
+    LEFT, RIGHT
+}
+paginate all with pagination
+service all with serviceImpl
+search * with elasticsearch 

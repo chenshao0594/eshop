@@ -1,0 +1,30 @@
+{
+    "eshopApp": {
+        "productAttribute" : {
+            "home": {
+                "title": "Product Attributes",
+                "createLabel": "Create a new Product Attribute",
+                "createOrEditLabel": "Create or edit a Product Attribute",
+                "search": "Search for Product Attribute"
+            },
+            "created": "A new Product Attribute is created with identifier {{ param }}",
+            "updated": "A Product Attribute is updated with identifier {{ param }}",
+            "deleted": "A Product Attribute is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Product Attribute {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Attribute"
+            },
+            "productAttributeWeight": "Product Attribute Weight",
+            "productAttributePrice": "Product Attribute Price",
+            "attributeRequired": "Attribute Required",
+            "attributeDefault": "Attribute Default",
+            "attributeDisplayOnly": "Attribute Display Only",
+            "productOptionSortOrder": "Product Option Sort Order",
+            "productAttributeIsFree": "Product Attribute Is Free",
+            "attributeDiscounted": "Attribute Discounted",
+            "product": "Product"
+        }
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "eshopApp": {
+        "productOptionDescription" : {
+            "home": {
+                "title": "Product Option Descriptions",
+                "createLabel": "Create a new Product Option Description",
+                "createOrEditLabel": "Create or edit a Product Option Description",
+                "search": "Search for Product Option Description"
+            },
+            "created": "A new Product Option Description is created with identifier {{ param }}",
+            "updated": "A Product Option Description is updated with identifier {{ param }}",
+            "deleted": "A Product Option Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Product Option Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Option Description"
+            },
+            "productOptionComment": "Product Option Comment",
+            "title": "Title",
+            "name": "Name",
+            "description": "Description",
+            "productOption": "Product Option"
+        }
+    }
+}

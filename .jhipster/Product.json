@@ -1,0 +1,116 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "images",
+            "otherEntityName": "productImage",
+            "otherEntityRelationshipName": "product"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "availabilities",
+            "otherEntityName": "productAvailability",
+            "otherEntityRelationshipName": "product"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "attributes",
+            "otherEntityName": "productAttribute",
+            "otherEntityRelationshipName": "product"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "descriptions",
+            "otherEntityName": "productDescription",
+            "otherEntityRelationshipName": "product"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "relationships",
+            "otherEntityName": "productRelationship",
+            "otherEntityRelationshipName": "product"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "taxClass",
+            "otherEntityName": "taxClass",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productHeight",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "productWeight",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "productShipeable",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "productOrdered",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "productReviewAvg",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "dateAvailable",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "sortOrder",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "productIsFree",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "available",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "productReviewCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "refSku",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "productVirtual",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "productWidth",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "preOrder",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "productLength",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "sku",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170415183909",
+    "entityTableName": "product",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

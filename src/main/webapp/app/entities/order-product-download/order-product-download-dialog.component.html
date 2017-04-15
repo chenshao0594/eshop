@@ -1,0 +1,50 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myOrderProductDownloadLabel" jhiTranslate="eshopApp.orderProductDownload.home.createOrEditLabel">Create or edit a Order Product Download</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!orderProductDownload.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="orderProductDownload.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductDownload.maxdays" for="field_maxdays">Maxdays</label>
+            <input type="number" class="form-control" name="maxdays" id="field_maxdays"
+                [(ngModel)]="orderProductDownload.maxdays"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductDownload.downloadCount" for="field_downloadCount">Download Count</label>
+            <input type="number" class="form-control" name="downloadCount" id="field_downloadCount"
+                [(ngModel)]="orderProductDownload.downloadCount"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductDownload.orderProductFilename" for="field_orderProductFilename">Order Product Filename</label>
+            <input type="text" class="form-control" name="orderProductFilename" id="field_orderProductFilename"
+                [(ngModel)]="orderProductDownload.orderProductFilename"
+             />
+        </div>
+
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.orderProductDownload.orderProduct" for="field_orderProduct">Order Product</label>
+            <select class="form-control" id="field_orderProduct" name="orderProduct" [(ngModel)]="orderProductDownload.orderProduct" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="orderProductOption.id === orderProductDownload.orderProduct?.id ? orderProductDownload.orderProduct : orderProductOption" *ngFor="let orderProductOption of orderproducts; trackBy: trackOrderProductById">{{orderProductOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

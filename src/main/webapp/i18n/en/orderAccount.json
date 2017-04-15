@@ -1,0 +1,25 @@
+{
+    "eshopApp": {
+        "orderAccount" : {
+            "home": {
+                "title": "Order Accounts",
+                "createLabel": "Create a new Order Account",
+                "createOrEditLabel": "Create or edit a Order Account",
+                "search": "Search for Order Account"
+            },
+            "created": "A new Order Account is created with identifier {{ param }}",
+            "updated": "A Order Account is updated with identifier {{ param }}",
+            "deleted": "A Order Account is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Order Account {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Account"
+            },
+            "orderAccountStartDate": "Order Account Start Date",
+            "orderAccountEndDate": "Order Account End Date",
+            "orderAccountBillDay": "Order Account Bill Day",
+            "orderAccountProducts": "Order Account Products"
+        }
+    }
+}

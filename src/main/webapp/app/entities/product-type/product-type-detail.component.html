@@ -1,0 +1,41 @@
+
+<div *ngIf="productType">
+    <h2><span jhiTranslate="eshopApp.productType.detail.title">Product Type</span> {{productType.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productType.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="productType.code"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productType.gENERALTYPE" for="field_gENERALTYPE">G ENERALTYPE</label>
+            <input type="text" class="form-control" name="gENERALTYPE" id="field_gENERALTYPE"
+                [(ngModel)]="productType.gENERALTYPE"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productType.allowAddToCart" for="field_allowAddToCart">Allow Add To Cart</label>
+            <input type="checkbox" class="form-control" name="allowAddToCart" id="field_allowAddToCart"
+                [(ngModel)]="productType.allowAddToCart"
+             />
+        </div>
+
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

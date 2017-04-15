@@ -1,0 +1,14 @@
+{
+    "eshopApp": {
+        "PaymentType" : {
+            "null": "",
+            "CREDITCARD": "CREDITCARD",
+            "FREE": "FREE",
+            "COD": "COD",
+            "MONEYORDER": "MONEYORDER",
+            "PAYPAL": "PAYPAL",
+            "STRIPE": "STRIPE",
+            "WEPAY": "WEPAY"
+        }
+    }
+}

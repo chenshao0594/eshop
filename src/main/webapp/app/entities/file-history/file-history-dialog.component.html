@@ -1,0 +1,73 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myFileHistoryLabel" jhiTranslate="eshopApp.fileHistory.home.createOrEditLabel">Create or edit a File History</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!fileHistory.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="fileHistory.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.fileHistory.dateAdded" for="field_dateAdded">Date Added</label>
+            <div class="input-group">
+                <input id="field_dateAdded" type="text" class="form-control" name="dateAdded" ngbDatepicker  #dateAddedDp="ngbDatepicker" [(ngModel)]="fileHistory.dateAdded"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="dateAddedDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.fileHistory.dateDeleted" for="field_dateDeleted">Date Deleted</label>
+            <div class="input-group">
+                <input id="field_dateDeleted" type="text" class="form-control" name="dateDeleted" ngbDatepicker  #dateDeletedDp="ngbDatepicker" [(ngModel)]="fileHistory.dateDeleted"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="dateDeletedDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.fileHistory.downloadCount" for="field_downloadCount">Download Count</label>
+            <input type="number" class="form-control" name="downloadCount" id="field_downloadCount"
+                [(ngModel)]="fileHistory.downloadCount"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.fileHistory.fileId" for="field_fileId">File Id</label>
+            <input type="number" class="form-control" name="fileId" id="field_fileId"
+                [(ngModel)]="fileHistory.fileId"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.fileHistory.accountedDate" for="field_accountedDate">Accounted Date</label>
+            <div class="input-group">
+                <input id="field_accountedDate" type="text" class="form-control" name="accountedDate" ngbDatepicker  #accountedDateDp="ngbDatepicker" [(ngModel)]="fileHistory.accountedDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="accountedDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.fileHistory.filesize" for="field_filesize">Filesize</label>
+            <input type="number" class="form-control" name="filesize" id="field_filesize"
+                [(ngModel)]="fileHistory.filesize"
+             />
+        </div>
+
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

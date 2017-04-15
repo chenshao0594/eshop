@@ -1,0 +1,25 @@
+{
+    "eshopApp": {
+        "optin" : {
+            "home": {
+                "title": "Optins",
+                "createLabel": "Create a new Optin",
+                "createOrEditLabel": "Create or edit a Optin",
+                "search": "Search for Optin"
+            },
+            "created": "A new Optin is created with identifier {{ param }}",
+            "updated": "A Optin is updated with identifier {{ param }}",
+            "deleted": "A Optin is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Optin {{ id }}?"
+            },
+            "detail": {
+                "title": "Optin"
+            },
+            "description": "Description",
+            "startDate": "Start Date",
+            "code": "Code",
+            "endDate": "End Date"
+        }
+    }
+}

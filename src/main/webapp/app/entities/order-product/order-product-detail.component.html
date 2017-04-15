@@ -1,0 +1,54 @@
+
+<div *ngIf="orderProduct">
+    <h2><span jhiTranslate="eshopApp.orderProduct.detail.title">Order Product</span> {{orderProduct.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProduct.productQuantity" for="field_productQuantity">Product Quantity</label>
+            <input type="number" class="form-control" name="productQuantity" id="field_productQuantity"
+                [(ngModel)]="orderProduct.productQuantity"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProduct.sku" for="field_sku">Sku</label>
+            <input type="text" class="form-control" name="sku" id="field_sku"
+                [(ngModel)]="orderProduct.sku"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProduct.oneTimeCharge" for="field_oneTimeCharge">One Time Charge</label>
+            <input type="number" class="form-control" name="oneTimeCharge" id="field_oneTimeCharge"
+                [(ngModel)]="orderProduct.oneTimeCharge"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProduct.productName" for="field_productName">Product Name</label>
+            <input type="text" class="form-control" name="productName" id="field_productName"
+                [(ngModel)]="orderProduct.productName"
+             />
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.orderProduct.order" for="field_order">Order</label>
+            <select class="form-control" id="field_order" name="order" [(ngModel)]="orderProduct.order" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="salesOrderOption.id === orderProduct.order?.id ? orderProduct.order : salesOrderOption" *ngFor="let salesOrderOption of salesorders; trackBy: trackSalesOrderById">{{salesOrderOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

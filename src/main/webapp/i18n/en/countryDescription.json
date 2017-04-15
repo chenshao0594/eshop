@@ -1,0 +1,25 @@
+{
+    "eshopApp": {
+        "countryDescription" : {
+            "home": {
+                "title": "Country Descriptions",
+                "createLabel": "Create a new Country Description",
+                "createOrEditLabel": "Create or edit a Country Description",
+                "search": "Search for Country Description"
+            },
+            "created": "A new Country Description is created with identifier {{ param }}",
+            "updated": "A Country Description is updated with identifier {{ param }}",
+            "deleted": "A Country Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Country Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Country Description"
+            },
+            "title": "Title",
+            "name": "Name",
+            "description": "Description",
+            "country": "Country"
+        }
+    }
+}

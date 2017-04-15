@@ -1,0 +1,41 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "descriptions",
+            "otherEntityName": "productReviewDescription",
+            "otherEntityRelationshipName": "productReview"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "reviewRead",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "reviewDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "status",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "reviewRating",
+            "fieldType": "Double"
+        }
+    ],
+    "changelogDate": "20170415184203",
+    "entityTableName": "product_review",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

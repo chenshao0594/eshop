@@ -1,0 +1,29 @@
+{
+    "eshopApp": {
+        "orderProductAttribute" : {
+            "home": {
+                "title": "Order Product Attributes",
+                "createLabel": "Create a new Order Product Attribute",
+                "createOrEditLabel": "Create or edit a Order Product Attribute",
+                "search": "Search for Order Product Attribute"
+            },
+            "created": "A new Order Product Attribute is created with identifier {{ param }}",
+            "updated": "A Order Product Attribute is updated with identifier {{ param }}",
+            "deleted": "A Order Product Attribute is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Order Product Attribute {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Product Attribute"
+            },
+            "productAttributeName": "Product Attribute Name",
+            "productAttributeWeight": "Product Attribute Weight",
+            "productOptionValueId": "Product Option Value Id",
+            "productAttributePrice": "Product Attribute Price",
+            "productAttributeIsFree": "Product Attribute Is Free",
+            "productOptionId": "Product Option Id",
+            "productAttributeValueName": "Product Attribute Value Name",
+            "orderProduct": "Order Product"
+        }
+    }
+}

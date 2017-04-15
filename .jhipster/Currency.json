@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "supported",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "currency",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184139",
+    "entityTableName": "currency",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

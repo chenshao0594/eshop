@@ -1,0 +1,51 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productAttributeWeight",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "productAttributePrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "attributeRequired",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "attributeDefault",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "attributeDisplayOnly",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "productOptionSortOrder",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "productAttributeIsFree",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "attributeDiscounted",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170415184211",
+    "entityTableName": "product_attribute",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

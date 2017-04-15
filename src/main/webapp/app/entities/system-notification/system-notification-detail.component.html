@@ -1,0 +1,55 @@
+
+<div *ngIf="systemNotification">
+    <h2><span jhiTranslate="eshopApp.systemNotification.detail.title">System Notification</span> {{systemNotification.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.systemNotification.endDate" for="field_endDate">End Date</label>
+            <div class="input-group">
+                <input id="field_endDate" type="text" class="form-control" name="endDate" ngbDatepicker  #endDateDp="ngbDatepicker" [(ngModel)]="systemNotification.endDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="endDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.systemNotification.key" for="field_key">Key</label>
+            <input type="text" class="form-control" name="key" id="field_key"
+                [(ngModel)]="systemNotification.key"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.systemNotification.startDate" for="field_startDate">Start Date</label>
+            <div class="input-group">
+                <input id="field_startDate" type="text" class="form-control" name="startDate" ngbDatepicker  #startDateDp="ngbDatepicker" [(ngModel)]="systemNotification.startDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="startDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.systemNotification.value" for="field_value">Value</label>
+            <input type="text" class="form-control" name="value" id="field_value"
+                [(ngModel)]="systemNotification.value"
+             />
+        </div>
+
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

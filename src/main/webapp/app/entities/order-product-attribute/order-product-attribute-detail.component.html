@@ -1,0 +1,72 @@
+
+<div *ngIf="orderProductAttribute">
+    <h2><span jhiTranslate="eshopApp.orderProductAttribute.detail.title">Order Product Attribute</span> {{orderProductAttribute.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductAttribute.productAttributeName" for="field_productAttributeName">Product Attribute Name</label>
+            <input type="text" class="form-control" name="productAttributeName" id="field_productAttributeName"
+                [(ngModel)]="orderProductAttribute.productAttributeName"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductAttribute.productAttributeWeight" for="field_productAttributeWeight">Product Attribute Weight</label>
+            <input type="number" class="form-control" name="productAttributeWeight" id="field_productAttributeWeight"
+                [(ngModel)]="orderProductAttribute.productAttributeWeight"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductAttribute.productOptionValueId" for="field_productOptionValueId">Product Option Value Id</label>
+            <input type="number" class="form-control" name="productOptionValueId" id="field_productOptionValueId"
+                [(ngModel)]="orderProductAttribute.productOptionValueId"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductAttribute.productAttributePrice" for="field_productAttributePrice">Product Attribute Price</label>
+            <input type="number" class="form-control" name="productAttributePrice" id="field_productAttributePrice"
+                [(ngModel)]="orderProductAttribute.productAttributePrice"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductAttribute.productAttributeIsFree" for="field_productAttributeIsFree">Product Attribute Is Free</label>
+            <input type="checkbox" class="form-control" name="productAttributeIsFree" id="field_productAttributeIsFree"
+                [(ngModel)]="orderProductAttribute.productAttributeIsFree"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductAttribute.productOptionId" for="field_productOptionId">Product Option Id</label>
+            <input type="number" class="form-control" name="productOptionId" id="field_productOptionId"
+                [(ngModel)]="orderProductAttribute.productOptionId"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductAttribute.productAttributeValueName" for="field_productAttributeValueName">Product Attribute Value Name</label>
+            <input type="text" class="form-control" name="productAttributeValueName" id="field_productAttributeValueName"
+                [(ngModel)]="orderProductAttribute.productAttributeValueName"
+             />
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.orderProductAttribute.orderProduct" for="field_orderProduct">Order Product</label>
+            <select class="form-control" id="field_orderProduct" name="orderProduct" [(ngModel)]="orderProductAttribute.orderProduct" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="orderProductOption.id === orderProductAttribute.orderProduct?.id ? orderProductAttribute.orderProduct : orderProductOption" *ngFor="let orderProductOption of orderproducts; trackBy: trackOrderProductById">{{orderProductOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

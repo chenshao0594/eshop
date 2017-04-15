@@ -1,0 +1,12 @@
+{
+    "eshopApp": {
+        "OrderStatus" : {
+            "null": "",
+            "ORDERED": "ORDERED",
+            "PROCESSED": "PROCESSED",
+            "DELIVERED": "DELIVERED",
+            "REFUNDED": "REFUNDED",
+            "CANCELED": "CANCELED"
+        }
+    }
+}

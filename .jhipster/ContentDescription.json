@@ -1,0 +1,50 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "content",
+            "otherEntityName": "content",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "metatagTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "metatagDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "seUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "metatagKeywords",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184128",
+    "entityTableName": "content_description",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

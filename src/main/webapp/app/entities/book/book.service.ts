@@ -7,7 +7,7 @@ import { Book } from './book.model';
 export class BookService {
 
     private resourceUrl = 'api/books';
-    private resourceSearchUrl = 'api/_search/books';
+    private resourceSearchUrl = 'api/books/_search';
 
     constructor(private http: Http) { }
 
@@ -46,7 +46,6 @@ export class BookService {
         return this.http.get(this.resourceSearchUrl, options)
         ;
     }
-
     private createRequestOption(req?: any): BaseRequestOptions {
         const options: BaseRequestOptions = new BaseRequestOptions();
         if (req) {

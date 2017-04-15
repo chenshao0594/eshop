@@ -1,0 +1,37 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="mySystemConfigurationLabel" jhiTranslate="eshopApp.systemConfiguration.home.createOrEditLabel">Create or edit a System Configuration</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!systemConfiguration.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="systemConfiguration.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.systemConfiguration.key" for="field_key">Key</label>
+            <input type="text" class="form-control" name="key" id="field_key"
+                [(ngModel)]="systemConfiguration.key"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.systemConfiguration.value" for="field_value">Value</label>
+            <input type="text" class="form-control" name="value" id="field_value"
+                [(ngModel)]="systemConfiguration.value"
+             />
+        </div>
+
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

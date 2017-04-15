@@ -1,0 +1,120 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "defaultLanguage",
+            "otherEntityName": "language",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-many",
+            "relationshipName": "languages",
+            "otherEntityName": "language",
+            "ownerSide": false,
+            "otherEntityRelationshipName": "stores"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "storeaddress",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "storename",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "storeEmailAddress",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "dEFAULTSTORE",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "storephone",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "weightunitcode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "useCache",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "storeTemplate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "domainName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "invoiceTemplate",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "storeLogo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "inBusinessSince",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "currencyFormatNational",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "storepostalcode",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "seizeunitcode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "storestateprovince",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "continueshoppingurl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "storecity",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "changelogDate": "20170415184137",
+    "entityTableName": "merchant_store",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

@@ -1,0 +1,24 @@
+{
+    "eshopApp": {
+        "merchantConfiguration" : {
+            "home": {
+                "title": "Merchant Configurations",
+                "createLabel": "Create a new Merchant Configuration",
+                "createOrEditLabel": "Create or edit a Merchant Configuration",
+                "search": "Search for Merchant Configuration"
+            },
+            "created": "A new Merchant Configuration is created with identifier {{ param }}",
+            "updated": "A Merchant Configuration is updated with identifier {{ param }}",
+            "deleted": "A Merchant Configuration is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Merchant Configuration {{ id }}?"
+            },
+            "detail": {
+                "title": "Merchant Configuration"
+            },
+            "merchantConfigurationType": "Merchant Configuration Type",
+            "key": "Key",
+            "value": "Value"
+        }
+    }
+}

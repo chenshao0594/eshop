@@ -1,0 +1,36 @@
+
+<div *ngIf="customerAttribute">
+    <h2><span jhiTranslate="eshopApp.customerAttribute.detail.title">Customer Attribute</span> {{customerAttribute.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customerAttribute.textValue" for="field_textValue">Text Value</label>
+            <input type="text" class="form-control" name="textValue" id="field_textValue"
+                [(ngModel)]="customerAttribute.textValue"
+             />
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.customerAttribute.customer" for="field_customer">Customer</label>
+            <select class="form-control" id="field_customer" name="customer" [(ngModel)]="customerAttribute.customer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOption.id === customerAttribute.customer?.id ? customerAttribute.customer : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+{
+    "eshopApp": {
+        "zoneDescription" : {
+            "home": {
+                "title": "Zone Descriptions",
+                "createLabel": "Create a new Zone Description",
+                "createOrEditLabel": "Create or edit a Zone Description",
+                "search": "Search for Zone Description"
+            },
+            "created": "A new Zone Description is created with identifier {{ param }}",
+            "updated": "A Zone Description is updated with identifier {{ param }}",
+            "deleted": "A Zone Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Zone Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Zone Description"
+            },
+            "title": "Title",
+            "name": "Name",
+            "description": "Description",
+            "zone": "Zone"
+        }
+    }
+}

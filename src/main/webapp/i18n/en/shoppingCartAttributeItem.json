@@ -1,0 +1,23 @@
+{
+    "eshopApp": {
+        "shoppingCartAttributeItem" : {
+            "home": {
+                "title": "Shopping Cart Attribute Items",
+                "createLabel": "Create a new Shopping Cart Attribute Item",
+                "createOrEditLabel": "Create or edit a Shopping Cart Attribute Item",
+                "search": "Search for Shopping Cart Attribute Item"
+            },
+            "created": "A new Shopping Cart Attribute Item is created with identifier {{ param }}",
+            "updated": "A Shopping Cart Attribute Item is updated with identifier {{ param }}",
+            "deleted": "A Shopping Cart Attribute Item is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Shopping Cart Attribute Item {{ id }}?"
+            },
+            "detail": {
+                "title": "Shopping Cart Attribute Item"
+            },
+            "productAttributeId": "Product Attribute Id",
+            "shoppingCartItem": "Shopping Cart Item"
+        }
+    }
+}

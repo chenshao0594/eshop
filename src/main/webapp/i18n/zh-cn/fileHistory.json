@@ -1,0 +1,27 @@
+{
+    "eshopApp": {
+        "fileHistory" : {
+            "home": {
+                "title": "File Histories",
+                "createLabel": "Create a new File History",
+                "createOrEditLabel": "Create or edit a File History",
+                "search": "Search for File History"
+            },
+            "created": "A new File History is created with identifier {{ param }}",
+            "updated": "A File History is updated with identifier {{ param }}",
+            "deleted": "A File History is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete File History {{ id }}?"
+            },
+            "detail": {
+                "title": "File History"
+            },
+            "dateAdded": "Date Added",
+            "dateDeleted": "Date Deleted",
+            "downloadCount": "Download Count",
+            "fileId": "File Id",
+            "accountedDate": "Accounted Date",
+            "filesize": "Filesize"
+        }
+    }
+}

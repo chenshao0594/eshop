@@ -1,0 +1,26 @@
+{
+    "eshopApp": {
+        "productPriceDescription" : {
+            "home": {
+                "title": "Product Price Descriptions",
+                "createLabel": "Create a new Product Price Description",
+                "createOrEditLabel": "Create or edit a Product Price Description",
+                "search": "Search for Product Price Description"
+            },
+            "created": "A new Product Price Description is created with identifier {{ param }}",
+            "updated": "A Product Price Description is updated with identifier {{ param }}",
+            "deleted": "A Product Price Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Product Price Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Price Description"
+            },
+            "title": "Title",
+            "dEFAULTPRICEDESCRIPTION": "D EFAULTPRICEDESCRIPTION",
+            "name": "Name",
+            "description": "Description",
+            "productPrice": "Product Price"
+        }
+    }
+}

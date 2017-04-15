@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "downloads",
+            "otherEntityName": "orderProductDownload",
+            "otherEntityRelationshipName": "orderProduct"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "orderAttributes",
+            "otherEntityName": "orderProductAttribute",
+            "otherEntityRelationshipName": "orderProduct"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "prices",
+            "otherEntityName": "orderProductPrice",
+            "otherEntityRelationshipName": "orderProduct"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "order",
+            "otherEntityName": "salesOrder",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productQuantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "sku",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "oneTimeCharge",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "productName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184135",
+    "entityTableName": "order_product",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

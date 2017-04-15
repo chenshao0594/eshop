@@ -1,0 +1,22 @@
+{
+    "eshopApp": {
+        "customerOptionSet" : {
+            "home": {
+                "title": "Customer Option Sets",
+                "createLabel": "Create a new Customer Option Set",
+                "createOrEditLabel": "Create or edit a Customer Option Set",
+                "search": "Search for Customer Option Set"
+            },
+            "created": "A new Customer Option Set is created with identifier {{ param }}",
+            "updated": "A Customer Option Set is updated with identifier {{ param }}",
+            "deleted": "A Customer Option Set is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Customer Option Set {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer Option Set"
+            },
+            "sortOrder": "Sort Order"
+        }
+    }
+}

@@ -1,0 +1,58 @@
+
+<div *ngIf="productReview">
+    <h2><span jhiTranslate="eshopApp.productReview.detail.title">Product Review</span> {{productReview.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productReview.reviewRead" for="field_reviewRead">Review Read</label>
+            <input type="number" class="form-control" name="reviewRead" id="field_reviewRead"
+                [(ngModel)]="productReview.reviewRead"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productReview.reviewDate" for="field_reviewDate">Review Date</label>
+            <div class="input-group">
+                <input id="field_reviewDate" type="text" class="form-control" name="reviewDate" ngbDatepicker  #reviewDateDp="ngbDatepicker" [(ngModel)]="productReview.reviewDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="reviewDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productReview.status" for="field_status">Status</label>
+            <input type="number" class="form-control" name="status" id="field_status"
+                [(ngModel)]="productReview.status"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productReview.reviewRating" for="field_reviewRating">Review Rating</label>
+            <input type="number" class="form-control" name="reviewRating" id="field_reviewRating"
+                [(ngModel)]="productReview.reviewRating"
+             />
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.productReview.customer" for="field_customer">Customer</label>
+            <select class="form-control" id="field_customer" name="customer" [(ngModel)]="productReview.customer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOption.id === productReview.customer?.id ? productReview.customer : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

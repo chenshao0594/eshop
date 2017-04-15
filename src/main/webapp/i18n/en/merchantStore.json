@@ -1,0 +1,42 @@
+{
+    "eshopApp": {
+        "merchantStore" : {
+            "home": {
+                "title": "Merchant Stores",
+                "createLabel": "Create a new Merchant Store",
+                "createOrEditLabel": "Create or edit a Merchant Store",
+                "search": "Search for Merchant Store"
+            },
+            "created": "A new Merchant Store is created with identifier {{ param }}",
+            "updated": "A Merchant Store is updated with identifier {{ param }}",
+            "deleted": "A Merchant Store is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Merchant Store {{ id }}?"
+            },
+            "detail": {
+                "title": "Merchant Store"
+            },
+            "storeaddress": "Storeaddress",
+            "code": "Code",
+            "storename": "Storename",
+            "storeEmailAddress": "Store Email Address",
+            "dEFAULTSTORE": "D EFAULTSTORE",
+            "storephone": "Storephone",
+            "weightunitcode": "Weightunitcode",
+            "useCache": "Use Cache",
+            "storeTemplate": "Store Template",
+            "domainName": "Domain Name",
+            "invoiceTemplate": "Invoice Template",
+            "storeLogo": "Store Logo",
+            "inBusinessSince": "In Business Since",
+            "currencyFormatNational": "Currency Format National",
+            "storepostalcode": "Storepostalcode",
+            "seizeunitcode": "Seizeunitcode",
+            "storestateprovince": "Storestateprovince",
+            "continueshoppingurl": "Continueshoppingurl",
+            "storecity": "Storecity",
+            "defaultLanguage": "Default Language",
+            "languages": "Languages"
+        }
+    }
+}

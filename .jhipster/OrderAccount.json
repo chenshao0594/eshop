@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "orderAccountProducts",
+            "otherEntityName": "orderAccountProduct",
+            "otherEntityRelationshipName": "orderAccount"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "orderAccountStartDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "orderAccountEndDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "orderAccountBillDay",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170415184144",
+    "entityTableName": "order_account",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

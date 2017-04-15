@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="eshopApp.productOptionValueDescription.home.title">Product Option Value Descriptions</span>
+        <button class="btn btn-primary float-right create-product-option-value-description" [routerLink]="['../product-option-value-description-new']">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="eshopApp.productOptionValueDescription.home.createLabel">
+            Create new Product Option Value Description
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12 no-padding-right">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.productOptionValueDescription.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="productOptionValueDescriptions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="title"><span jhiTranslate="eshopApp.productOptionValueDescription.title">Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="eshopApp.productOptionValueDescription.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="eshopApp.productOptionValueDescription.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productOptionValue.id"><span jhiTranslate="eshopApp.productOptionValueDescription.productOptionValue">Product Option Value</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let productOptionValueDescription of productOptionValueDescriptions ;trackBy: trackId">
+                <td><a [routerLink]="['../product-option-value-description', productOptionValueDescription.id ]">{{productOptionValueDescription.id}}</a></td>
+                <td>{{productOptionValueDescription.title}}</td>
+                <td>{{productOptionValueDescription.name}}</td>
+                <td>{{productOptionValueDescription.description}}</td>
+                <td>
+                    <div *ngIf="productOptionValueDescription.productOptionValue">
+                        <a [routerLink]="['../product-option-value', productOptionValueDescription.productOptionValue?.id ]" >{{productOptionValueDescription.productOptionValue?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../product-option-value-description', productOptionValueDescription.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'product-option-value-description/'+ productOptionValueDescription.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="productOptionValueDescriptions && productOptionValueDescriptions.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

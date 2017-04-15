@@ -1,0 +1,26 @@
+{
+    "eshopApp": {
+        "productImageDescription" : {
+            "home": {
+                "title": "Product Image Descriptions",
+                "createLabel": "Create a new Product Image Description",
+                "createOrEditLabel": "Create or edit a Product Image Description",
+                "search": "Search for Product Image Description"
+            },
+            "created": "A new Product Image Description is created with identifier {{ param }}",
+            "updated": "A Product Image Description is updated with identifier {{ param }}",
+            "deleted": "A Product Image Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Product Image Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Image Description"
+            },
+            "title": "Title",
+            "altTag": "Alt Tag",
+            "name": "Name",
+            "description": "Description",
+            "productImage": "Product Image"
+        }
+    }
+}

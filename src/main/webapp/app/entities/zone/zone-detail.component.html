@@ -1,0 +1,36 @@
+
+<div *ngIf="zone">
+    <h2><span jhiTranslate="eshopApp.zone.detail.title">Zone</span> {{zone.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.zone.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="zone.code"
+             />
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.zone.country" for="field_country">Country</label>
+            <select class="form-control" id="field_country" name="country" [(ngModel)]="zone.country" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="countryOption.id === zone.country?.id ? zone.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

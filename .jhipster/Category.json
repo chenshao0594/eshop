@@ -1,0 +1,62 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "categories",
+            "otherEntityName": "category",
+            "otherEntityRelationshipName": "parent"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "descriptions",
+            "otherEntityName": "categoryDescription",
+            "otherEntityRelationshipName": "category"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "parent",
+            "otherEntityName": "category",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "depth",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "sortOrder",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "categoryStatus",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "lineage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "visible",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "categoryImage",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184204",
+    "entityTableName": "category",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

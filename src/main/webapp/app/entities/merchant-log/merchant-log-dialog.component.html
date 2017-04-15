@@ -1,0 +1,37 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myMerchantLogLabel" jhiTranslate="eshopApp.merchantLog.home.createOrEditLabel">Create or edit a Merchant Log</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!merchantLog.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="merchantLog.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantLog.log" for="field_log">Log</label>
+            <input type="text" class="form-control" name="log" id="field_log"
+                [(ngModel)]="merchantLog.log"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantLog.module" for="field_module">Module</label>
+            <input type="text" class="form-control" name="module" id="field_module"
+                [(ngModel)]="merchantLog.module"
+             />
+        </div>
+
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

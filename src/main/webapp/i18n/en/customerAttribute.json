@@ -1,0 +1,23 @@
+{
+    "eshopApp": {
+        "customerAttribute" : {
+            "home": {
+                "title": "Customer Attributes",
+                "createLabel": "Create a new Customer Attribute",
+                "createOrEditLabel": "Create or edit a Customer Attribute",
+                "search": "Search for Customer Attribute"
+            },
+            "created": "A new Customer Attribute is created with identifier {{ param }}",
+            "updated": "A Customer Attribute is updated with identifier {{ param }}",
+            "deleted": "A Customer Attribute is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Customer Attribute {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer Attribute"
+            },
+            "textValue": "Text Value",
+            "customer": "Customer"
+        }
+    }
+}

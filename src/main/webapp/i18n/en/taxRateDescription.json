@@ -1,0 +1,25 @@
+{
+    "eshopApp": {
+        "taxRateDescription" : {
+            "home": {
+                "title": "Tax Rate Descriptions",
+                "createLabel": "Create a new Tax Rate Description",
+                "createOrEditLabel": "Create or edit a Tax Rate Description",
+                "search": "Search for Tax Rate Description"
+            },
+            "created": "A new Tax Rate Description is created with identifier {{ param }}",
+            "updated": "A Tax Rate Description is updated with identifier {{ param }}",
+            "deleted": "A Tax Rate Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Tax Rate Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Tax Rate Description"
+            },
+            "title": "Title",
+            "name": "Name",
+            "description": "Description",
+            "taxRate": "Tax Rate"
+        }
+    }
+}

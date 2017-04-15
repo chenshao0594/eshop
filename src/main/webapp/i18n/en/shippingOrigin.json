@@ -1,0 +1,26 @@
+{
+    "eshopApp": {
+        "shippingOrigin" : {
+            "home": {
+                "title": "Shipping Origins",
+                "createLabel": "Create a new Shipping Origin",
+                "createOrEditLabel": "Create or edit a Shipping Origin",
+                "search": "Search for Shipping Origin"
+            },
+            "created": "A new Shipping Origin is created with identifier {{ param }}",
+            "updated": "A Shipping Origin is updated with identifier {{ param }}",
+            "deleted": "A Shipping Origin is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Shipping Origin {{ id }}?"
+            },
+            "detail": {
+                "title": "Shipping Origin"
+            },
+            "city": "City",
+            "postalCode": "Postal Code",
+            "address": "Address",
+            "active": "Active",
+            "state": "State"
+        }
+    }
+}

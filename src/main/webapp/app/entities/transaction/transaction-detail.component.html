@@ -1,0 +1,67 @@
+
+<div *ngIf="transaction">
+    <h2><span jhiTranslate="eshopApp.transaction.detail.title">Transaction</span> {{transaction.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.transaction.details" for="field_details">Details</label>
+            <input type="text" class="form-control" name="details" id="field_details"
+                [(ngModel)]="transaction.details"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.transaction.transactionType" for="field_transactionType">Transaction Type</label>
+            <select class="form-control" name="transactionType" [(ngModel)]="transaction.transactionType" id="field_transactionType" >
+                <option value="INIT" jhiTranslate="eshopApp.TransactionType.INIT">INIT</option>
+                <option value="AUTHORIZE" jhiTranslate="eshopApp.TransactionType.AUTHORIZE">AUTHORIZE</option>
+                <option value="CAPTURE" jhiTranslate="eshopApp.TransactionType.CAPTURE">CAPTURE</option>
+                <option value="AUTHORIZECAPTURE" jhiTranslate="eshopApp.TransactionType.AUTHORIZECAPTURE">AUTHORIZECAPTURE</option>
+                <option value="REFUND" jhiTranslate="eshopApp.TransactionType.REFUND">REFUND</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.transaction.transactionDate" for="field_transactionDate">Transaction Date</label>
+            <div class="input-group">
+                <input id="field_transactionDate" type="text" class="form-control" name="transactionDate" ngbDatepicker  #transactionDateDp="ngbDatepicker" [(ngModel)]="transaction.transactionDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="transactionDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.transaction.paymentType" for="field_paymentType">Payment Type</label>
+            <select class="form-control" name="paymentType" [(ngModel)]="transaction.paymentType" id="field_paymentType" >
+                <option value="CREDITCARD" jhiTranslate="eshopApp.PaymentType.CREDITCARD">CREDITCARD</option>
+                <option value="FREE" jhiTranslate="eshopApp.PaymentType.FREE">FREE</option>
+                <option value="COD" jhiTranslate="eshopApp.PaymentType.COD">COD</option>
+                <option value="MONEYORDER" jhiTranslate="eshopApp.PaymentType.MONEYORDER">MONEYORDER</option>
+                <option value="PAYPAL" jhiTranslate="eshopApp.PaymentType.PAYPAL">PAYPAL</option>
+                <option value="STRIPE" jhiTranslate="eshopApp.PaymentType.STRIPE">STRIPE</option>
+                <option value="WEPAY" jhiTranslate="eshopApp.PaymentType.WEPAY">WEPAY</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.transaction.amount" for="field_amount">Amount</label>
+            <input type="number" class="form-control" name="amount" id="field_amount"
+                [(ngModel)]="transaction.amount"
+             />
+        </div>
+
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

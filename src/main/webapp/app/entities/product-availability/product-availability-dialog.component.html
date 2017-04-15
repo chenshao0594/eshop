@@ -1,0 +1,84 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProductAvailabilityLabel" jhiTranslate="eshopApp.productAvailability.home.createOrEditLabel">Create or edit a Product Availability</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!productAvailability.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="productAvailability.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productAvailability.productQuantityOrderMax" for="field_productQuantityOrderMax">Product Quantity Order Max</label>
+            <input type="number" class="form-control" name="productQuantityOrderMax" id="field_productQuantityOrderMax"
+                [(ngModel)]="productAvailability.productQuantityOrderMax"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productAvailability.productIsAlwaysFreeShipping" for="field_productIsAlwaysFreeShipping">Product Is Always Free Shipping</label>
+            <input type="checkbox" class="form-control" name="productIsAlwaysFreeShipping" id="field_productIsAlwaysFreeShipping"
+                [(ngModel)]="productAvailability.productIsAlwaysFreeShipping"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productAvailability.region" for="field_region">Region</label>
+            <input type="text" class="form-control" name="region" id="field_region"
+                [(ngModel)]="productAvailability.region"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productAvailability.productQuantity" for="field_productQuantity">Product Quantity</label>
+            <input type="number" class="form-control" name="productQuantity" id="field_productQuantity"
+                [(ngModel)]="productAvailability.productQuantity"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productAvailability.productQuantityOrderMin" for="field_productQuantityOrderMin">Product Quantity Order Min</label>
+            <input type="number" class="form-control" name="productQuantityOrderMin" id="field_productQuantityOrderMin"
+                [(ngModel)]="productAvailability.productQuantityOrderMin"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productAvailability.productDateAvailable" for="field_productDateAvailable">Product Date Available</label>
+            <div class="input-group">
+                <input id="field_productDateAvailable" type="text" class="form-control" name="productDateAvailable" ngbDatepicker  #productDateAvailableDp="ngbDatepicker" [(ngModel)]="productAvailability.productDateAvailable"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="productDateAvailableDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productAvailability.productStatus" for="field_productStatus">Product Status</label>
+            <input type="checkbox" class="form-control" name="productStatus" id="field_productStatus"
+                [(ngModel)]="productAvailability.productStatus"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productAvailability.regionVariant" for="field_regionVariant">Region Variant</label>
+            <input type="text" class="form-control" name="regionVariant" id="field_regionVariant"
+                [(ngModel)]="productAvailability.regionVariant"
+             />
+        </div>
+
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productAvailability.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" name="product" [(ngModel)]="productAvailability.product" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOption.id === productAvailability.product?.id ? productAvailability.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

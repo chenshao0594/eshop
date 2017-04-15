@@ -1,0 +1,24 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "code",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "gENERALTYPE",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "allowAddToCart",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170415184117",
+    "entityTableName": "product_type",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

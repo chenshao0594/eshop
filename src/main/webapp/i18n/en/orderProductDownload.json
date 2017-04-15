@@ -1,0 +1,25 @@
+{
+    "eshopApp": {
+        "orderProductDownload" : {
+            "home": {
+                "title": "Order Product Downloads",
+                "createLabel": "Create a new Order Product Download",
+                "createOrEditLabel": "Create or edit a Order Product Download",
+                "search": "Search for Order Product Download"
+            },
+            "created": "A new Order Product Download is created with identifier {{ param }}",
+            "updated": "A Order Product Download is updated with identifier {{ param }}",
+            "deleted": "A Order Product Download is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Order Product Download {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Product Download"
+            },
+            "maxdays": "Maxdays",
+            "downloadCount": "Download Count",
+            "orderProductFilename": "Order Product Filename",
+            "orderProduct": "Order Product"
+        }
+    }
+}

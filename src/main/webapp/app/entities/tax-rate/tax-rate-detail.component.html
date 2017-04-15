@@ -1,0 +1,73 @@
+
+<div *ngIf="taxRate">
+    <h2><span jhiTranslate="eshopApp.taxRate.detail.title">Tax Rate</span> {{taxRate.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.taxRate.piggyback" for="field_piggyback">Piggyback</label>
+            <input type="checkbox" class="form-control" name="piggyback" id="field_piggyback"
+                [(ngModel)]="taxRate.piggyback"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.taxRate.stateProvince" for="field_stateProvince">State Province</label>
+            <input type="text" class="form-control" name="stateProvince" id="field_stateProvince"
+                [(ngModel)]="taxRate.stateProvince"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.taxRate.taxPriority" for="field_taxPriority">Tax Priority</label>
+            <input type="number" class="form-control" name="taxPriority" id="field_taxPriority"
+                [(ngModel)]="taxRate.taxPriority"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.taxRate.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="taxRate.code"
+            required />
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.taxRate.taxRate" for="field_taxRate">Tax Rate</label>
+            <input type="number" class="form-control" name="taxRate" id="field_taxRate"
+                [(ngModel)]="taxRate.taxRate"
+             />
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.taxRate.taxClass" for="field_taxClass">Tax Class</label>
+            <select class="form-control" id="field_taxClass" name="taxClass" [(ngModel)]="taxRate.taxClass" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="taxClassOption.id === taxRate.taxClass?.id ? taxRate.taxClass : taxClassOption" *ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.taxRate.parent" for="field_parent">Parent</label>
+            <select class="form-control" id="field_parent" name="parent" [(ngModel)]="taxRate.parent" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="taxRateOption.id === taxRate.parent?.id ? taxRate.parent : taxRateOption" *ngFor="let taxRateOption of taxrates; trackBy: trackTaxRateById">{{taxRateOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

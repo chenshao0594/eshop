@@ -1,0 +1,42 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "descriptions",
+            "otherEntityName": "customerOptionDescription",
+            "otherEntityRelationshipName": "customerOption"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "active",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "customerOptionType",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "publicOption",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "sortOrder",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170415184133",
+    "entityTableName": "customer_option",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

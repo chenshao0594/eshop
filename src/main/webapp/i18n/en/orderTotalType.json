@@ -1,0 +1,15 @@
+{
+    "eshopApp": {
+        "OrderTotalType" : {
+            "null": "",
+            "SHIPPING": "SHIPPING",
+            "HANDLING": "HANDLING",
+            "TAX": "TAX",
+            "PRODUCT": "PRODUCT",
+            "SUBTOTAL": "SUBTOTAL",
+            "TOTAL": "TOTAL",
+            "CREDIT": "CREDIT",
+            "REFUND": "REFUND"
+        }
+    }
+}

@@ -1,0 +1,38 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "descriptions",
+            "otherEntityName": "productOptionValueDescription",
+            "otherEntityRelationshipName": "productOptionValue"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productOptionValueImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "productOptionValueSortOrder",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "productOptionDisplayOnly",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170415184111",
+    "entityTableName": "product_option_value",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

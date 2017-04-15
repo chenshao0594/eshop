@@ -1,0 +1,74 @@
+<div>
+    <h2>
+        <span jhiTranslate="eshopApp.merchantConfiguration.home.title">Merchant Configurations</span>
+        <button class="btn btn-primary float-right create-merchant-configuration" [routerLink]="['../merchant-configuration-new']">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="eshopApp.merchantConfiguration.home.createLabel">
+            Create new Merchant Configuration
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12 no-padding-right">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.merchantConfiguration.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="merchantConfigurations">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="merchantConfigurationType"><span jhiTranslate="eshopApp.merchantConfiguration.merchantConfigurationType">Merchant Configuration Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="key"><span jhiTranslate="eshopApp.merchantConfiguration.key">Key</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="value"><span jhiTranslate="eshopApp.merchantConfiguration.value">Value</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let merchantConfiguration of merchantConfigurations ;trackBy: trackId">
+                <td><a [routerLink]="['../merchant-configuration', merchantConfiguration.id ]">{{merchantConfiguration.id}}</a></td>
+                <td jhiTranslate="{{'eshopApp.MerchantConfigurationType.' + merchantConfiguration.merchantConfigurationType}}">{{merchantConfiguration.merchantConfigurationType}}</td>
+                <td>{{merchantConfiguration.key}}</td>
+                <td>{{merchantConfiguration.value}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../merchant-configuration', merchantConfiguration.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'merchant-configuration/'+ merchantConfiguration.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="merchantConfigurations && merchantConfigurations.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

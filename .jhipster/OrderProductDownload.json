@@ -1,0 +1,31 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "orderProduct",
+            "otherEntityName": "orderProduct",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "maxdays",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "downloadCount",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "orderProductFilename",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184110",
+    "entityTableName": "order_product_download",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

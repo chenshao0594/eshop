@@ -1,0 +1,20 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "log",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "module",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184140",
+    "entityTableName": "merchant_log",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

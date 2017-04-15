@@ -1,0 +1,27 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "lineItems",
+            "otherEntityName": "shoppingCartItem",
+            "otherEntityRelationshipName": "shoppingCart"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "customerId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "shoppingCartCode",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184141",
+    "entityTableName": "shopping_cart",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

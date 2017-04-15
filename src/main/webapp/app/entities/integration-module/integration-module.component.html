@@ -1,0 +1,84 @@
+<div>
+    <h2>
+        <span jhiTranslate="eshopApp.integrationModule.home.title">Integration Modules</span>
+        <button class="btn btn-primary float-right create-integration-module" [routerLink]="['../integration-module-new']">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="eshopApp.integrationModule.home.createLabel">
+            Create new Integration Module
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12 no-padding-right">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.integrationModule.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="integrationModules">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="configDetails"><span jhiTranslate="eshopApp.integrationModule.configDetails">Config Details</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customModule"><span jhiTranslate="eshopApp.integrationModule.customModule">Custom Module</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="type"><span jhiTranslate="eshopApp.integrationModule.type">Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="eshopApp.integrationModule.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="regions"><span jhiTranslate="eshopApp.integrationModule.regions">Regions</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="image"><span jhiTranslate="eshopApp.integrationModule.image">Image</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="module"><span jhiTranslate="eshopApp.integrationModule.module">Module</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="configuration"><span jhiTranslate="eshopApp.integrationModule.configuration">Configuration</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let integrationModule of integrationModules ;trackBy: trackId">
+                <td><a [routerLink]="['../integration-module', integrationModule.id ]">{{integrationModule.id}}</a></td>
+                <td>{{integrationModule.configDetails}}</td>
+                <td>{{integrationModule.customModule}}</td>
+                <td>{{integrationModule.type}}</td>
+                <td>{{integrationModule.code}}</td>
+                <td>{{integrationModule.regions}}</td>
+                <td>{{integrationModule.image}}</td>
+                <td>{{integrationModule.module}}</td>
+                <td>{{integrationModule.configuration}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../integration-module', integrationModule.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'integration-module/'+ integrationModule.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="integrationModules && integrationModules.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

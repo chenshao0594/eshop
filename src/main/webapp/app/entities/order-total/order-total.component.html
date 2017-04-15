@@ -1,0 +1,90 @@
+<div>
+    <h2>
+        <span jhiTranslate="eshopApp.orderTotal.home.title">Order Totals</span>
+        <button class="btn btn-primary float-right create-order-total" [routerLink]="['../order-total-new']">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="eshopApp.orderTotal.home.createLabel">
+            Create new Order Total
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12 no-padding-right">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.orderTotal.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="orderTotals">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="value"><span jhiTranslate="eshopApp.orderTotal.value">Value</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderTotalCode"><span jhiTranslate="eshopApp.orderTotal.orderTotalCode">Order Total Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="text"><span jhiTranslate="eshopApp.orderTotal.text">Text</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderValueType"><span jhiTranslate="eshopApp.orderTotal.orderValueType">Order Value Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sortOrder"><span jhiTranslate="eshopApp.orderTotal.sortOrder">Sort Order</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderTotalType"><span jhiTranslate="eshopApp.orderTotal.orderTotalType">Order Total Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="title"><span jhiTranslate="eshopApp.orderTotal.title">Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="module"><span jhiTranslate="eshopApp.orderTotal.module">Module</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="order.id"><span jhiTranslate="eshopApp.orderTotal.order">Order</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let orderTotal of orderTotals ;trackBy: trackId">
+                <td><a [routerLink]="['../order-total', orderTotal.id ]">{{orderTotal.id}}</a></td>
+                <td>{{orderTotal.value}}</td>
+                <td>{{orderTotal.orderTotalCode}}</td>
+                <td>{{orderTotal.text}}</td>
+                <td jhiTranslate="{{'eshopApp.OrderValueType.' + orderTotal.orderValueType}}">{{orderTotal.orderValueType}}</td>
+                <td>{{orderTotal.sortOrder}}</td>
+                <td jhiTranslate="{{'eshopApp.OrderTotalType.' + orderTotal.orderTotalType}}">{{orderTotal.orderTotalType}}</td>
+                <td>{{orderTotal.title}}</td>
+                <td>{{orderTotal.module}}</td>
+                <td>
+                    <div *ngIf="orderTotal.order">
+                        <a [routerLink]="['../sales-order', orderTotal.order?.id ]" >{{orderTotal.order?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../order-total', orderTotal.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'order-total/'+ orderTotal.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="orderTotals && orderTotals.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

@@ -1,0 +1,58 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "metatagDescription",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "seUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "metatagKeywords",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "productHighlight",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "description",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "metatagTitle",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "productExternalDl",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184112",
+    "entityTableName": "product_description",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

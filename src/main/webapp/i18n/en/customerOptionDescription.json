@@ -1,0 +1,26 @@
+{
+    "eshopApp": {
+        "customerOptionDescription" : {
+            "home": {
+                "title": "Customer Option Descriptions",
+                "createLabel": "Create a new Customer Option Description",
+                "createOrEditLabel": "Create or edit a Customer Option Description",
+                "search": "Search for Customer Option Description"
+            },
+            "created": "A new Customer Option Description is created with identifier {{ param }}",
+            "updated": "A Customer Option Description is updated with identifier {{ param }}",
+            "deleted": "A Customer Option Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Customer Option Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer Option Description"
+            },
+            "title": "Title",
+            "customerOptionComment": "Customer Option Comment",
+            "name": "Name",
+            "description": "Description",
+            "customerOption": "Customer Option"
+        }
+    }
+}

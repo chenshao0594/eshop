@@ -1,0 +1,31 @@
+{
+    "eshopApp": {
+        "orderAccountProduct" : {
+            "home": {
+                "title": "Order Account Products",
+                "createLabel": "Create a new Order Account Product",
+                "createOrEditLabel": "Create or edit a Order Account Product",
+                "search": "Search for Order Account Product"
+            },
+            "created": "A new Order Account Product is created with identifier {{ param }}",
+            "updated": "A Order Account Product is updated with identifier {{ param }}",
+            "deleted": "A Order Account Product is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Order Account Product {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Account Product"
+            },
+            "orderAccountProductId": "Order Account Product Id",
+            "orderAccountProductLastTransactionStatus": "Order Account Product Last Transaction Status",
+            "orderAccountProductEndDate": "Order Account Product End Date",
+            "orderAccountProductStartDate": "Order Account Product Start Date",
+            "orderAccountProductLastStatusDate": "Order Account Product Last Status Date",
+            "orderAccountProductStatus": "Order Account Product Status",
+            "orderAccountProductAccountedDate": "Order Account Product Accounted Date",
+            "orderAccountProductPaymentFrequencyType": "Order Account Product Payment Frequency Type",
+            "orderAccountProductEot": "Order Account Product Eot",
+            "orderAccount": "Order Account"
+        }
+    }
+}

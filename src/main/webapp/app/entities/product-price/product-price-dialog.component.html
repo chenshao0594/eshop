@@ -1,0 +1,95 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProductPriceLabel" jhiTranslate="eshopApp.productPrice.home.createOrEditLabel">Create or edit a Product Price</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!productPrice.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="productPrice.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productPrice.defaultPrice" for="field_defaultPrice">Default Price</label>
+            <input type="checkbox" class="form-control" name="defaultPrice" id="field_defaultPrice"
+                [(ngModel)]="productPrice.defaultPrice"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productPrice.dEFAULTPRICECODE" for="field_dEFAULTPRICECODE">D EFAULTPRICECODE</label>
+            <input type="text" class="form-control" name="dEFAULTPRICECODE" id="field_dEFAULTPRICECODE"
+                [(ngModel)]="productPrice.dEFAULTPRICECODE"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productPrice.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="productPrice.code"
+            required />
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productPrice.productPriceSpecialEndDate" for="field_productPriceSpecialEndDate">Product Price Special End Date</label>
+            <div class="input-group">
+                <input id="field_productPriceSpecialEndDate" type="text" class="form-control" name="productPriceSpecialEndDate" ngbDatepicker  #productPriceSpecialEndDateDp="ngbDatepicker" [(ngModel)]="productPrice.productPriceSpecialEndDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="productPriceSpecialEndDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productPrice.productPriceAmount" for="field_productPriceAmount">Product Price Amount</label>
+            <input type="number" class="form-control" name="productPriceAmount" id="field_productPriceAmount"
+                [(ngModel)]="productPrice.productPriceAmount"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productPrice.productPriceSpecialAmount" for="field_productPriceSpecialAmount">Product Price Special Amount</label>
+            <input type="number" class="form-control" name="productPriceSpecialAmount" id="field_productPriceSpecialAmount"
+                [(ngModel)]="productPrice.productPriceSpecialAmount"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productPrice.productPriceType" for="field_productPriceType">Product Price Type</label>
+            <select class="form-control" name="productPriceType" [(ngModel)]="productPrice.productPriceType" id="field_productPriceType" >
+                <option value="ONE_TIME" jhiTranslate="eshopApp.ProductPriceType.ONE_TIME">ONE_TIME</option>
+                <option value="MONTHLY" jhiTranslate="eshopApp.ProductPriceType.MONTHLY">MONTHLY</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productPrice.productPriceSpecialStartDate" for="field_productPriceSpecialStartDate">Product Price Special Start Date</label>
+            <div class="input-group">
+                <input id="field_productPriceSpecialStartDate" type="text" class="form-control" name="productPriceSpecialStartDate" ngbDatepicker  #productPriceSpecialStartDateDp="ngbDatepicker" [(ngModel)]="productPrice.productPriceSpecialStartDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="productPriceSpecialStartDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productPrice.productAvailability" for="field_productAvailability">Product Availability</label>
+            <select class="form-control" id="field_productAvailability" name="productAvailability" [(ngModel)]="productPrice.productAvailability" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productAvailabilityOption.id === productPrice.productAvailability?.id ? productPrice.productAvailability : productAvailabilityOption" *ngFor="let productAvailabilityOption of productavailabilities; trackBy: trackProductAvailabilityById">{{productAvailabilityOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

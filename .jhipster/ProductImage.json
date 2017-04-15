@@ -1,0 +1,45 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "descriptions",
+            "otherEntityName": "productImageDescription",
+            "otherEntityRelationshipName": "productImage"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productImage",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "productImageUrl",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defaultImage",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "imageType",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "imageCrop",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170415184151",
+    "entityTableName": "product_image",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

@@ -1,0 +1,80 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myContentDescriptionLabel" jhiTranslate="eshopApp.contentDescription.home.createOrEditLabel">Create or edit a Content Description</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!contentDescription.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="contentDescription.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.contentDescription.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="contentDescription.title"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.contentDescription.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="contentDescription.description"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.contentDescription.metatagTitle" for="field_metatagTitle">Metatag Title</label>
+            <input type="text" class="form-control" name="metatagTitle" id="field_metatagTitle"
+                [(ngModel)]="contentDescription.metatagTitle"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.contentDescription.metatagDescription" for="field_metatagDescription">Metatag Description</label>
+            <input type="text" class="form-control" name="metatagDescription" id="field_metatagDescription"
+                [(ngModel)]="contentDescription.metatagDescription"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.contentDescription.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="contentDescription.name"
+            required />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.contentDescription.seUrl" for="field_seUrl">Se Url</label>
+            <input type="text" class="form-control" name="seUrl" id="field_seUrl"
+                [(ngModel)]="contentDescription.seUrl"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.contentDescription.metatagKeywords" for="field_metatagKeywords">Metatag Keywords</label>
+            <input type="text" class="form-control" name="metatagKeywords" id="field_metatagKeywords"
+                [(ngModel)]="contentDescription.metatagKeywords"
+             />
+        </div>
+
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.contentDescription.content" for="field_content">Content</label>
+            <select class="form-control" id="field_content" name="content" [(ngModel)]="contentDescription.content" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="contentOption.id === contentDescription.content?.id ? contentDescription.content : contentOption" *ngFor="let contentOption of contents; trackBy: trackContentById">{{contentOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,10 @@
+{
+    "eshopApp": {
+        "MerchantConfigurationType" : {
+            "null": "",
+            "INTEGRATION": "INTEGRATION",
+            "SHOP": "SHOP",
+            "CONFIG": "CONFIG"
+        }
+    }
+}

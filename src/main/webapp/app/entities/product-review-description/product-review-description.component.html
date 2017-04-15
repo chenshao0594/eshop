@@ -1,0 +1,80 @@
+<div>
+    <h2>
+        <span jhiTranslate="eshopApp.productReviewDescription.home.title">Product Review Descriptions</span>
+        <button class="btn btn-primary float-right create-product-review-description" [routerLink]="['../product-review-description-new']">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="eshopApp.productReviewDescription.home.createLabel">
+            Create new Product Review Description
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12 no-padding-right">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.productReviewDescription.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="productReviewDescriptions">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="title"><span jhiTranslate="eshopApp.productReviewDescription.title">Title</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="name"><span jhiTranslate="eshopApp.productReviewDescription.name">Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="description"><span jhiTranslate="eshopApp.productReviewDescription.description">Description</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productReview.id"><span jhiTranslate="eshopApp.productReviewDescription.productReview">Product Review</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let productReviewDescription of productReviewDescriptions ;trackBy: trackId">
+                <td><a [routerLink]="['../product-review-description', productReviewDescription.id ]">{{productReviewDescription.id}}</a></td>
+                <td>{{productReviewDescription.title}}</td>
+                <td>{{productReviewDescription.name}}</td>
+                <td>{{productReviewDescription.description}}</td>
+                <td>
+                    <div *ngIf="productReviewDescription.productReview">
+                        <a [routerLink]="['../product-review', productReviewDescription.productReview?.id ]" >{{productReviewDescription.productReview?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../product-review-description', productReviewDescription.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'product-review-description/'+ productReviewDescription.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="productReviewDescriptions && productReviewDescriptions.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

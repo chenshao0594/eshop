@@ -1,0 +1,30 @@
+{
+    "eshopApp": {
+        "taxRate" : {
+            "home": {
+                "title": "Tax Rates",
+                "createLabel": "Create a new Tax Rate",
+                "createOrEditLabel": "Create or edit a Tax Rate",
+                "search": "Search for Tax Rate"
+            },
+            "created": "A new Tax Rate is created with identifier {{ param }}",
+            "updated": "A Tax Rate is updated with identifier {{ param }}",
+            "deleted": "A Tax Rate is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Tax Rate {{ id }}?"
+            },
+            "detail": {
+                "title": "Tax Rate"
+            },
+            "piggyback": "Piggyback",
+            "stateProvince": "State Province",
+            "taxPriority": "Tax Priority",
+            "code": "Code",
+            "taxRate": "Tax Rate",
+            "descriptions": "Descriptions",
+            "taxRates": "Tax Rates",
+            "taxClass": "Tax Class",
+            "parent": "Parent"
+        }
+    }
+}

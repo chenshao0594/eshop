@@ -1,0 +1,10 @@
+{
+    "eshopApp": {
+        "ContentType" : {
+            "null": "",
+            "BOX": "BOX",
+            "PAGE": "PAGE",
+            "SECTION": "SECTION"
+        }
+    }
+}

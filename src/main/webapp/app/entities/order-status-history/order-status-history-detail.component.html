@@ -1,0 +1,62 @@
+
+<div *ngIf="orderStatusHistory">
+    <h2><span jhiTranslate="eshopApp.orderStatusHistory.detail.title">Order Status History</span> {{orderStatusHistory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderStatusHistory.comments" for="field_comments">Comments</label>
+            <input type="text" class="form-control" name="comments" id="field_comments"
+                [(ngModel)]="orderStatusHistory.comments"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderStatusHistory.customerNotified" for="field_customerNotified">Customer Notified</label>
+            <input type="number" class="form-control" name="customerNotified" id="field_customerNotified"
+                [(ngModel)]="orderStatusHistory.customerNotified"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderStatusHistory.dateAdded" for="field_dateAdded">Date Added</label>
+            <div class="input-group">
+                <input id="field_dateAdded" type="text" class="form-control" name="dateAdded" ngbDatepicker  #dateAddedDp="ngbDatepicker" [(ngModel)]="orderStatusHistory.dateAdded"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="dateAddedDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderStatusHistory.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="orderStatusHistory.status" id="field_status" >
+                <option value="ORDERED" jhiTranslate="eshopApp.OrderStatus.ORDERED">ORDERED</option>
+                <option value="PROCESSED" jhiTranslate="eshopApp.OrderStatus.PROCESSED">PROCESSED</option>
+                <option value="DELIVERED" jhiTranslate="eshopApp.OrderStatus.DELIVERED">DELIVERED</option>
+                <option value="REFUNDED" jhiTranslate="eshopApp.OrderStatus.REFUNDED">REFUNDED</option>
+                <option value="CANCELED" jhiTranslate="eshopApp.OrderStatus.CANCELED">CANCELED</option>
+            </select>
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.orderStatusHistory.order" for="field_order">Order</label>
+            <select class="form-control" id="field_order" name="order" [(ngModel)]="orderStatusHistory.order" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="salesOrderOption.id === orderStatusHistory.order?.id ? orderStatusHistory.order : salesOrderOption" *ngFor="let salesOrderOption of salesorders; trackBy: trackSalesOrderById">{{salesOrderOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

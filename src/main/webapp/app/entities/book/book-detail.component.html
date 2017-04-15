@@ -3,40 +3,64 @@
     <h2><span jhiTranslate="eshopApp.book.detail.title">Book</span> {{book.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="eshopApp.book.name">Name</span></dt>
-        <dd>
-            <span>{{book.name}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.book.description">Description</span></dt>
-        <dd>
-            <span>{{book.description}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.book.price">Price</span></dt>
-        <dd>
-            <span>{{book.price}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.book.test">Test</span></dt>
-        <dd>
-            <div *ngIf="book.test">
-                <a (click)="openFile(book.testContentType, book.test)">
-                    <img [src]="'data:' + book.testContentType + ';base64,' + book.test" style="max-width: 100%;" alt="book image"/>
-                </a>
-                {{book.testContentType}}, {{byteSize(book.test)}}
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.book.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="book.name"
+            required />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
             </div>
-        </dd>
-    </dl>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.book.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="book.description"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.book.price" for="field_price">Price</label>
+            <input type="number" class="form-control" name="price" id="field_price"
+                [(ngModel)]="book.price"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.book.test" for="field_test">Test</label>
+            <div>
+                <img [src]="'data:' + book.testContentType + ';base64,' + book.test" style="max-height: 100px;" *ngIf="book.test" alt="book image"/>
+                <div *ngIf="book.test" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{book.testContentType}}, {{byteSize(book.test)}}</span>
+                    <button type="button" (click)="book.test=null;book.testContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, book, 'test', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="test" id="field_test"
+                [(ngModel)]="book.test"
+             />
+            <input type="hidden" class="form-control" name="testContentType" id="field_testContentType"
+                [(ngModel)]="book.testContentType" />
+        </div>
 
-    <button type="submit"
+    </div>
+
+    <button type="button"
             (click)="previousState()"
             class="btn btn-info">
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'book/'+ book.id + '/edit'} }]"
-            replaceUrl="true"
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
             class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
     </button>
+    </form>
 </div>

@@ -1,0 +1,53 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "order",
+            "otherEntityName": "salesOrder",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "value",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "orderTotalCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "text",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "orderValueType",
+            "fieldType": "OrderValueType",
+            "fieldValues": "ONE_TIME,MONTHLY"
+        },
+        {
+            "fieldName": "sortOrder",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "orderTotalType",
+            "fieldType": "OrderTotalType",
+            "fieldValues": "SHIPPING,HANDLING,TAX,PRODUCT,SUBTOTAL,TOTAL,CREDIT,REFUND"
+        },
+        {
+            "fieldName": "title",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "module",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184124",
+    "entityTableName": "order_total",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

@@ -1,0 +1,148 @@
+
+<div *ngIf="salesOrder">
+    <h2><span jhiTranslate="eshopApp.salesOrder.detail.title">Sales Order</span> {{salesOrder.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.customerId" for="field_customerId">Customer Id</label>
+            <input type="number" class="form-control" name="customerId" id="field_customerId"
+                [(ngModel)]="salesOrder.customerId"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.confirmedAddress" for="field_confirmedAddress">Confirmed Address</label>
+            <input type="checkbox" class="form-control" name="confirmedAddress" id="field_confirmedAddress"
+                [(ngModel)]="salesOrder.confirmedAddress"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.orderDateFinished" for="field_orderDateFinished">Order Date Finished</label>
+            <div class="input-group">
+                <input id="field_orderDateFinished" type="text" class="form-control" name="orderDateFinished" ngbDatepicker  #orderDateFinishedDp="ngbDatepicker" [(ngModel)]="salesOrder.orderDateFinished"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="orderDateFinishedDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.total" for="field_total">Total</label>
+            <input type="number" class="form-control" name="total" id="field_total"
+                [(ngModel)]="salesOrder.total"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.paymentModuleCode" for="field_paymentModuleCode">Payment Module Code</label>
+            <input type="text" class="form-control" name="paymentModuleCode" id="field_paymentModuleCode"
+                [(ngModel)]="salesOrder.paymentModuleCode"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.paymentType" for="field_paymentType">Payment Type</label>
+            <select class="form-control" name="paymentType" [(ngModel)]="salesOrder.paymentType" id="field_paymentType" >
+                <option value="CREDITCARD" jhiTranslate="eshopApp.PaymentType.CREDITCARD">CREDITCARD</option>
+                <option value="FREE" jhiTranslate="eshopApp.PaymentType.FREE">FREE</option>
+                <option value="COD" jhiTranslate="eshopApp.PaymentType.COD">COD</option>
+                <option value="MONEYORDER" jhiTranslate="eshopApp.PaymentType.MONEYORDER">MONEYORDER</option>
+                <option value="PAYPAL" jhiTranslate="eshopApp.PaymentType.PAYPAL">PAYPAL</option>
+                <option value="STRIPE" jhiTranslate="eshopApp.PaymentType.STRIPE">STRIPE</option>
+                <option value="WEPAY" jhiTranslate="eshopApp.PaymentType.WEPAY">WEPAY</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.locale" for="field_locale">Locale</label>
+            <input type="text" class="form-control" name="locale" id="field_locale"
+                [(ngModel)]="salesOrder.locale"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.channel" for="field_channel">Channel</label>
+            <select class="form-control" name="channel" [(ngModel)]="salesOrder.channel" id="field_channel" >
+                <option value="ONLINE" jhiTranslate="eshopApp.OrderChannel.ONLINE">ONLINE</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.customerEmailAddress" for="field_customerEmailAddress">Customer Email Address</label>
+            <input type="text" class="form-control" name="customerEmailAddress" id="field_customerEmailAddress"
+                [(ngModel)]="salesOrder.customerEmailAddress"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.orderType" for="field_orderType">Order Type</label>
+            <select class="form-control" name="orderType" [(ngModel)]="salesOrder.orderType" id="field_orderType" >
+                <option value="ORDER" jhiTranslate="eshopApp.OrderType.ORDER">ORDER</option>
+                <option value="BOOKING" jhiTranslate="eshopApp.OrderType.BOOKING">BOOKING</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.status" for="field_status">Status</label>
+            <select class="form-control" name="status" [(ngModel)]="salesOrder.status" id="field_status" >
+                <option value="ORDERED" jhiTranslate="eshopApp.OrderStatus.ORDERED">ORDERED</option>
+                <option value="PROCESSED" jhiTranslate="eshopApp.OrderStatus.PROCESSED">PROCESSED</option>
+                <option value="DELIVERED" jhiTranslate="eshopApp.OrderStatus.DELIVERED">DELIVERED</option>
+                <option value="REFUNDED" jhiTranslate="eshopApp.OrderStatus.REFUNDED">REFUNDED</option>
+                <option value="CANCELED" jhiTranslate="eshopApp.OrderStatus.CANCELED">CANCELED</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.lastModified" for="field_lastModified">Last Modified</label>
+            <div class="input-group">
+                <input id="field_lastModified" type="text" class="form-control" name="lastModified" ngbDatepicker  #lastModifiedDp="ngbDatepicker" [(ngModel)]="salesOrder.lastModified"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="lastModifiedDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.currencyValue" for="field_currencyValue">Currency Value</label>
+            <input type="number" class="form-control" name="currencyValue" id="field_currencyValue"
+                [(ngModel)]="salesOrder.currencyValue"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.datePurchased" for="field_datePurchased">Date Purchased</label>
+            <div class="input-group">
+                <input id="field_datePurchased" type="text" class="form-control" name="datePurchased" ngbDatepicker  #datePurchasedDp="ngbDatepicker" [(ngModel)]="salesOrder.datePurchased"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="datePurchasedDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.shippingModuleCode" for="field_shippingModuleCode">Shipping Module Code</label>
+            <input type="text" class="form-control" name="shippingModuleCode" id="field_shippingModuleCode"
+                [(ngModel)]="salesOrder.shippingModuleCode"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.ipAddress" for="field_ipAddress">Ip Address</label>
+            <input type="text" class="form-control" name="ipAddress" id="field_ipAddress"
+                [(ngModel)]="salesOrder.ipAddress"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.salesOrder.customerAgreement" for="field_customerAgreement">Customer Agreement</label>
+            <input type="checkbox" class="form-control" name="customerAgreement" id="field_customerAgreement"
+                [(ngModel)]="salesOrder.customerAgreement"
+             />
+        </div>
+
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

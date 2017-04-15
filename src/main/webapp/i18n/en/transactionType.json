@@ -1,0 +1,12 @@
+{
+    "eshopApp": {
+        "TransactionType" : {
+            "null": "",
+            "INIT": "INIT",
+            "AUTHORIZE": "AUTHORIZE",
+            "CAPTURE": "CAPTURE",
+            "AUTHORIZECAPTURE": "AUTHORIZECAPTURE",
+            "REFUND": "REFUND"
+        }
+    }
+}

@@ -1,0 +1,41 @@
+{
+    "eshopApp": {
+        "salesOrder" : {
+            "home": {
+                "title": "Sales Orders",
+                "createLabel": "Create a new Sales Order",
+                "createOrEditLabel": "Create or edit a Sales Order",
+                "search": "Search for Sales Order"
+            },
+            "created": "A new Sales Order is created with identifier {{ param }}",
+            "updated": "A Sales Order is updated with identifier {{ param }}",
+            "deleted": "A Sales Order is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Sales Order {{ id }}?"
+            },
+            "detail": {
+                "title": "Sales Order"
+            },
+            "customerId": "Customer Id",
+            "confirmedAddress": "Confirmed Address",
+            "orderDateFinished": "Order Date Finished",
+            "total": "Total",
+            "paymentModuleCode": "Payment Module Code",
+            "paymentType": "Payment Type",
+            "locale": "Locale",
+            "channel": "Channel",
+            "customerEmailAddress": "Customer Email Address",
+            "orderType": "Order Type",
+            "status": "Status",
+            "lastModified": "Last Modified",
+            "currencyValue": "Currency Value",
+            "datePurchased": "Date Purchased",
+            "shippingModuleCode": "Shipping Module Code",
+            "ipAddress": "Ip Address",
+            "customerAgreement": "Customer Agreement",
+            "orderTotal": "Order Total",
+            "orderHistory": "Order History",
+            "orderProducts": "Order Products"
+        }
+    }
+}

@@ -1,0 +1,92 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProductDescriptionLabel" jhiTranslate="eshopApp.productDescription.home.createOrEditLabel">Create or edit a Product Description</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!productDescription.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="productDescription.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productDescription.metatagDescription" for="field_metatagDescription">Metatag Description</label>
+            <input type="text" class="form-control" name="metatagDescription" id="field_metatagDescription"
+                [(ngModel)]="productDescription.metatagDescription"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productDescription.seUrl" for="field_seUrl">Se Url</label>
+            <input type="text" class="form-control" name="seUrl" id="field_seUrl"
+                [(ngModel)]="productDescription.seUrl"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productDescription.metatagKeywords" for="field_metatagKeywords">Metatag Keywords</label>
+            <input type="text" class="form-control" name="metatagKeywords" id="field_metatagKeywords"
+                [(ngModel)]="productDescription.metatagKeywords"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productDescription.productHighlight" for="field_productHighlight">Product Highlight</label>
+            <input type="text" class="form-control" name="productHighlight" id="field_productHighlight"
+                [(ngModel)]="productDescription.productHighlight"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productDescription.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="productDescription.title"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productDescription.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="productDescription.description"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productDescription.metatagTitle" for="field_metatagTitle">Metatag Title</label>
+            <input type="text" class="form-control" name="metatagTitle" id="field_metatagTitle"
+                [(ngModel)]="productDescription.metatagTitle"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productDescription.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="productDescription.name"
+            required />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productDescription.productExternalDl" for="field_productExternalDl">Product External Dl</label>
+            <input type="text" class="form-control" name="productExternalDl" id="field_productExternalDl"
+                [(ngModel)]="productDescription.productExternalDl"
+             />
+        </div>
+
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productDescription.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" name="product" [(ngModel)]="productDescription.product" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOption.id === productDescription.product?.id ? productDescription.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

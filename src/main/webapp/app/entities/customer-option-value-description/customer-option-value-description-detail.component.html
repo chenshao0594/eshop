@@ -1,0 +1,54 @@
+
+<div *ngIf="customerOptionValueDescription">
+    <h2><span jhiTranslate="eshopApp.customerOptionValueDescription.detail.title">Customer Option Value Description</span> {{customerOptionValueDescription.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customerOptionValueDescription.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="customerOptionValueDescription.title"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customerOptionValueDescription.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="customerOptionValueDescription.name"
+            required />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customerOptionValueDescription.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="customerOptionValueDescription.description"
+             />
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.customerOptionValueDescription.customerOptionValue" for="field_customerOptionValue">Customer Option Value</label>
+            <select class="form-control" id="field_customerOptionValue" name="customerOptionValue" [(ngModel)]="customerOptionValueDescription.customerOptionValue" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOptionValueOption.id === customerOptionValueDescription.customerOptionValue?.id ? customerOptionValueDescription.customerOptionValue : customerOptionValueOption" *ngFor="let customerOptionValueOption of customeroptionvalues; trackBy: trackCustomerOptionValueById">{{customerOptionValueOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

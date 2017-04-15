@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "productFileName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184145",
+    "entityTableName": "digital_product",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

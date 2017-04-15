@@ -1,0 +1,62 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myCustomerOptionDescriptionLabel" jhiTranslate="eshopApp.customerOptionDescription.home.createOrEditLabel">Create or edit a Customer Option Description</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!customerOptionDescription.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="customerOptionDescription.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customerOptionDescription.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="customerOptionDescription.title"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customerOptionDescription.customerOptionComment" for="field_customerOptionComment">Customer Option Comment</label>
+            <input type="text" class="form-control" name="customerOptionComment" id="field_customerOptionComment"
+                [(ngModel)]="customerOptionDescription.customerOptionComment"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customerOptionDescription.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                [(ngModel)]="customerOptionDescription.name"
+            required />
+            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.customerOptionDescription.description" for="field_description">Description</label>
+            <input type="text" class="form-control" name="description" id="field_description"
+                [(ngModel)]="customerOptionDescription.description"
+             />
+        </div>
+
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.customerOptionDescription.customerOption" for="field_customerOption">Customer Option</label>
+            <select class="form-control" id="field_customerOption" name="customerOption" [(ngModel)]="customerOptionDescription.customerOption" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOptionOption.id === customerOptionDescription.customerOption?.id ? customerOptionDescription.customerOption : customerOptionOption" *ngFor="let customerOptionOption of customeroptions; trackBy: trackCustomerOptionById">{{customerOptionOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

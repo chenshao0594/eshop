@@ -1,0 +1,184 @@
+
+<div *ngIf="merchantStore">
+    <h2><span jhiTranslate="eshopApp.merchantStore.detail.title">Merchant Store</span> {{merchantStore.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storeaddress" for="field_storeaddress">Storeaddress</label>
+            <input type="text" class="form-control" name="storeaddress" id="field_storeaddress"
+                [(ngModel)]="merchantStore.storeaddress"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="merchantStore.code"
+            required />
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storename" for="field_storename">Storename</label>
+            <input type="text" class="form-control" name="storename" id="field_storename"
+                [(ngModel)]="merchantStore.storename"
+            required />
+            <div [hidden]="!(editForm.controls.storename?.dirty && editForm.controls.storename?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.storename?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storeEmailAddress" for="field_storeEmailAddress">Store Email Address</label>
+            <input type="text" class="form-control" name="storeEmailAddress" id="field_storeEmailAddress"
+                [(ngModel)]="merchantStore.storeEmailAddress"
+            required />
+            <div [hidden]="!(editForm.controls.storeEmailAddress?.dirty && editForm.controls.storeEmailAddress?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.storeEmailAddress?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.dEFAULTSTORE" for="field_dEFAULTSTORE">D EFAULTSTORE</label>
+            <input type="text" class="form-control" name="dEFAULTSTORE" id="field_dEFAULTSTORE"
+                [(ngModel)]="merchantStore.dEFAULTSTORE"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storephone" for="field_storephone">Storephone</label>
+            <input type="text" class="form-control" name="storephone" id="field_storephone"
+                [(ngModel)]="merchantStore.storephone"
+            required />
+            <div [hidden]="!(editForm.controls.storephone?.dirty && editForm.controls.storephone?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.storephone?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.weightunitcode" for="field_weightunitcode">Weightunitcode</label>
+            <input type="text" class="form-control" name="weightunitcode" id="field_weightunitcode"
+                [(ngModel)]="merchantStore.weightunitcode"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.useCache" for="field_useCache">Use Cache</label>
+            <input type="checkbox" class="form-control" name="useCache" id="field_useCache"
+                [(ngModel)]="merchantStore.useCache"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storeTemplate" for="field_storeTemplate">Store Template</label>
+            <input type="text" class="form-control" name="storeTemplate" id="field_storeTemplate"
+                [(ngModel)]="merchantStore.storeTemplate"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.domainName" for="field_domainName">Domain Name</label>
+            <input type="text" class="form-control" name="domainName" id="field_domainName"
+                [(ngModel)]="merchantStore.domainName"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.invoiceTemplate" for="field_invoiceTemplate">Invoice Template</label>
+            <input type="text" class="form-control" name="invoiceTemplate" id="field_invoiceTemplate"
+                [(ngModel)]="merchantStore.invoiceTemplate"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storeLogo" for="field_storeLogo">Store Logo</label>
+            <input type="text" class="form-control" name="storeLogo" id="field_storeLogo"
+                [(ngModel)]="merchantStore.storeLogo"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.inBusinessSince" for="field_inBusinessSince">In Business Since</label>
+            <div class="input-group">
+                <input id="field_inBusinessSince" type="text" class="form-control" name="inBusinessSince" ngbDatepicker  #inBusinessSinceDp="ngbDatepicker" [(ngModel)]="merchantStore.inBusinessSince"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="inBusinessSinceDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.currencyFormatNational" for="field_currencyFormatNational">Currency Format National</label>
+            <input type="checkbox" class="form-control" name="currencyFormatNational" id="field_currencyFormatNational"
+                [(ngModel)]="merchantStore.currencyFormatNational"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storepostalcode" for="field_storepostalcode">Storepostalcode</label>
+            <input type="text" class="form-control" name="storepostalcode" id="field_storepostalcode"
+                [(ngModel)]="merchantStore.storepostalcode"
+            required />
+            <div [hidden]="!(editForm.controls.storepostalcode?.dirty && editForm.controls.storepostalcode?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.storepostalcode?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.seizeunitcode" for="field_seizeunitcode">Seizeunitcode</label>
+            <input type="text" class="form-control" name="seizeunitcode" id="field_seizeunitcode"
+                [(ngModel)]="merchantStore.seizeunitcode"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storestateprovince" for="field_storestateprovince">Storestateprovince</label>
+            <input type="text" class="form-control" name="storestateprovince" id="field_storestateprovince"
+                [(ngModel)]="merchantStore.storestateprovince"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.continueshoppingurl" for="field_continueshoppingurl">Continueshoppingurl</label>
+            <input type="text" class="form-control" name="continueshoppingurl" id="field_continueshoppingurl"
+                [(ngModel)]="merchantStore.continueshoppingurl"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storecity" for="field_storecity">Storecity</label>
+            <input type="text" class="form-control" name="storecity" id="field_storecity"
+                [(ngModel)]="merchantStore.storecity"
+            required />
+            <div [hidden]="!(editForm.controls.storecity?.dirty && editForm.controls.storecity?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.storecity?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.merchantStore.defaultLanguage" for="field_defaultLanguage">Default Language</label>
+            <select class="form-control" id="field_defaultLanguage" name="defaultLanguage" [(ngModel)]="merchantStore.defaultLanguage" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === merchantStore.defaultLanguage?.id ? merchantStore.defaultLanguage : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

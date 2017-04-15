@@ -1,0 +1,24 @@
+{
+    "eshopApp": {
+        "productRelationship" : {
+            "home": {
+                "title": "Product Relationships",
+                "createLabel": "Create a new Product Relationship",
+                "createOrEditLabel": "Create or edit a Product Relationship",
+                "search": "Search for Product Relationship"
+            },
+            "created": "A new Product Relationship is created with identifier {{ param }}",
+            "updated": "A Product Relationship is updated with identifier {{ param }}",
+            "deleted": "A Product Relationship is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Product Relationship {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Relationship"
+            },
+            "code": "Code",
+            "active": "Active",
+            "product": "Product"
+        }
+    }
+}

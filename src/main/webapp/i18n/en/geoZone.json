@@ -1,0 +1,25 @@
+{
+    "eshopApp": {
+        "geoZone" : {
+            "home": {
+                "title": "Geo Zones",
+                "createLabel": "Create a new Geo Zone",
+                "createOrEditLabel": "Create or edit a Geo Zone",
+                "search": "Search for Geo Zone"
+            },
+            "created": "A new Geo Zone is created with identifier {{ param }}",
+            "updated": "A Geo Zone is updated with identifier {{ param }}",
+            "deleted": "A Geo Zone is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Geo Zone {{ id }}?"
+            },
+            "detail": {
+                "title": "Geo Zone"
+            },
+            "name": "Name",
+            "code": "Code",
+            "countries": "Countries",
+            "descriptions": "Descriptions"
+        }
+    }
+}

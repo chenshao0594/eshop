@@ -1,0 +1,28 @@
+{
+    "eshopApp": {
+        "manufacturerDescription" : {
+            "home": {
+                "title": "Manufacturer Descriptions",
+                "createLabel": "Create a new Manufacturer Description",
+                "createOrEditLabel": "Create or edit a Manufacturer Description",
+                "search": "Search for Manufacturer Description"
+            },
+            "created": "A new Manufacturer Description is created with identifier {{ param }}",
+            "updated": "A Manufacturer Description is updated with identifier {{ param }}",
+            "deleted": "A Manufacturer Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Manufacturer Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Manufacturer Description"
+            },
+            "urlClicked": "Url Clicked",
+            "title": "Title",
+            "url": "Url",
+            "name": "Name",
+            "dateLastClick": "Date Last Click",
+            "description": "Description",
+            "manufacturer": "Manufacturer"
+        }
+    }
+}

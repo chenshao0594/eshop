@@ -1,0 +1,8 @@
+{
+    "eshopApp": {
+        "OrderChannel" : {
+            "null": "",
+            "ONLINE": "ONLINE"
+        }
+    }
+}

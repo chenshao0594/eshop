@@ -1,0 +1,71 @@
+
+<div *ngIf="integrationModule">
+    <h2><span jhiTranslate="eshopApp.integrationModule.detail.title">Integration Module</span> {{integrationModule.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.configDetails" for="field_configDetails">Config Details</label>
+            <input type="text" class="form-control" name="configDetails" id="field_configDetails"
+                [(ngModel)]="integrationModule.configDetails"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.customModule" for="field_customModule">Custom Module</label>
+            <input type="checkbox" class="form-control" name="customModule" id="field_customModule"
+                [(ngModel)]="integrationModule.customModule"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.type" for="field_type">Type</label>
+            <input type="text" class="form-control" name="type" id="field_type"
+                [(ngModel)]="integrationModule.type"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="integrationModule.code"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.regions" for="field_regions">Regions</label>
+            <input type="text" class="form-control" name="regions" id="field_regions"
+                [(ngModel)]="integrationModule.regions"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.image" for="field_image">Image</label>
+            <input type="text" class="form-control" name="image" id="field_image"
+                [(ngModel)]="integrationModule.image"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.module" for="field_module">Module</label>
+            <input type="text" class="form-control" name="module" id="field_module"
+                [(ngModel)]="integrationModule.module"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.configuration" for="field_configuration">Configuration</label>
+            <input type="text" class="form-control" name="configuration" id="field_configuration"
+                [(ngModel)]="integrationModule.configuration"
+             />
+        </div>
+
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

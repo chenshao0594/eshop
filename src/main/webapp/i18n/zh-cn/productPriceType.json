@@ -1,0 +1,9 @@
+{
+    "eshopApp": {
+        "ProductPriceType" : {
+            "null": "",
+            "ONE_TIME": "ONE_TIME",
+            "MONTHLY": "MONTHLY"
+        }
+    }
+}

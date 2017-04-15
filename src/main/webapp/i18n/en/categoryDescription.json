@@ -1,0 +1,30 @@
+{
+    "eshopApp": {
+        "categoryDescription" : {
+            "home": {
+                "title": "Category Descriptions",
+                "createLabel": "Create a new Category Description",
+                "createOrEditLabel": "Create or edit a Category Description",
+                "search": "Search for Category Description"
+            },
+            "created": "A new Category Description is created with identifier {{ param }}",
+            "updated": "A Category Description is updated with identifier {{ param }}",
+            "deleted": "A Category Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Category Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Category Description"
+            },
+            "categoryHighlight": "Category Highlight",
+            "title": "Title",
+            "metatagDescription": "Metatag Description",
+            "description": "Description",
+            "seUrl": "Se Url",
+            "metatagKeywords": "Metatag Keywords",
+            "name": "Name",
+            "metatagTitle": "Metatag Title",
+            "category": "Category"
+        }
+    }
+}

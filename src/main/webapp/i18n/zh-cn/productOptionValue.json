@@ -1,0 +1,26 @@
+{
+    "eshopApp": {
+        "productOptionValue" : {
+            "home": {
+                "title": "Product Option Values",
+                "createLabel": "Create a new Product Option Value",
+                "createOrEditLabel": "Create or edit a Product Option Value",
+                "search": "Search for Product Option Value"
+            },
+            "created": "A new Product Option Value is created with identifier {{ param }}",
+            "updated": "A Product Option Value is updated with identifier {{ param }}",
+            "deleted": "A Product Option Value is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Product Option Value {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Option Value"
+            },
+            "productOptionValueImage": "Product Option Value Image",
+            "code": "Code",
+            "productOptionValueSortOrder": "Product Option Value Sort Order",
+            "productOptionDisplayOnly": "Product Option Display Only",
+            "descriptions": "Descriptions"
+        }
+    }
+}

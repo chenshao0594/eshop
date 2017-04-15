@@ -1,0 +1,42 @@
+
+<div *ngIf="country">
+    <h2><span jhiTranslate="eshopApp.country.detail.title">Country</span> {{country.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.country.isoCode" for="field_isoCode">Iso Code</label>
+            <input type="text" class="form-control" name="isoCode" id="field_isoCode"
+                [(ngModel)]="country.isoCode"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.country.supported" for="field_supported">Supported</label>
+            <input type="checkbox" class="form-control" name="supported" id="field_supported"
+                [(ngModel)]="country.supported"
+             />
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.country.geoZone" for="field_geoZone">Geo Zone</label>
+            <select class="form-control" id="field_geoZone" name="geoZone" [(ngModel)]="country.geoZone" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="geoZoneOption.id === country.geoZone?.id ? country.geoZone : geoZoneOption" *ngFor="let geoZoneOption of geozones; trackBy: trackGeoZoneById">{{geoZoneOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

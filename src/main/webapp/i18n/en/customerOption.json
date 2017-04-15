@@ -1,0 +1,27 @@
+{
+    "eshopApp": {
+        "customerOption" : {
+            "home": {
+                "title": "Customer Options",
+                "createLabel": "Create a new Customer Option",
+                "createOrEditLabel": "Create or edit a Customer Option",
+                "search": "Search for Customer Option"
+            },
+            "created": "A new Customer Option is created with identifier {{ param }}",
+            "updated": "A Customer Option is updated with identifier {{ param }}",
+            "deleted": "A Customer Option is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Customer Option {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer Option"
+            },
+            "active": "Active",
+            "customerOptionType": "Customer Option Type",
+            "code": "Code",
+            "publicOption": "Public Option",
+            "sortOrder": "Sort Order",
+            "descriptions": "Descriptions"
+        }
+    }
+}

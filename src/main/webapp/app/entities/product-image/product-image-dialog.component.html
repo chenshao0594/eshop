@@ -1,0 +1,62 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myProductImageLabel" jhiTranslate="eshopApp.productImage.home.createOrEditLabel">Create or edit a Product Image</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!productImage.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="productImage.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productImage.productImage" for="field_productImage">Product Image</label>
+            <input type="text" class="form-control" name="productImage" id="field_productImage"
+                [(ngModel)]="productImage.productImage"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productImage.productImageUrl" for="field_productImageUrl">Product Image Url</label>
+            <input type="text" class="form-control" name="productImageUrl" id="field_productImageUrl"
+                [(ngModel)]="productImage.productImageUrl"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productImage.defaultImage" for="field_defaultImage">Default Image</label>
+            <input type="checkbox" class="form-control" name="defaultImage" id="field_defaultImage"
+                [(ngModel)]="productImage.defaultImage"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productImage.imageType" for="field_imageType">Image Type</label>
+            <input type="number" class="form-control" name="imageType" id="field_imageType"
+                [(ngModel)]="productImage.imageType"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productImage.imageCrop" for="field_imageCrop">Image Crop</label>
+            <input type="checkbox" class="form-control" name="imageCrop" id="field_imageCrop"
+                [(ngModel)]="productImage.imageCrop"
+             />
+        </div>
+
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productImage.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" name="product" [(ngModel)]="productImage.product" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOption.id === productImage.product?.id ? productImage.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+            </select>
+        </div>
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -1,0 +1,33 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "attributes",
+            "otherEntityName": "shoppingCartAttributeItem",
+            "otherEntityRelationshipName": "shoppingCartItem"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "shoppingCart",
+            "otherEntityName": "shoppingCart",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "quantity",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170415184136",
+    "entityTableName": "shopping_cart_item",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

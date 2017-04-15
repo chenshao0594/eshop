@@ -1,0 +1,16 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "sortOrder",
+            "fieldType": "Integer"
+        }
+    ],
+    "changelogDate": "20170415184155",
+    "entityTableName": "customer_option_set",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

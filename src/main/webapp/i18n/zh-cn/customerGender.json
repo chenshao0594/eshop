@@ -1,0 +1,9 @@
+{
+    "eshopApp": {
+        "CustomerGender" : {
+            "null": "",
+            "M": "M",
+            "F": "F"
+        }
+    }
+}

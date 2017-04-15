@@ -1,0 +1,23 @@
+{
+    "eshopApp": {
+        "systemConfiguration" : {
+            "home": {
+                "title": "System Configurations",
+                "createLabel": "Create a new System Configuration",
+                "createOrEditLabel": "Create or edit a System Configuration",
+                "search": "Search for System Configuration"
+            },
+            "created": "A new System Configuration is created with identifier {{ param }}",
+            "updated": "A System Configuration is updated with identifier {{ param }}",
+            "deleted": "A System Configuration is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete System Configuration {{ id }}?"
+            },
+            "detail": {
+                "title": "System Configuration"
+            },
+            "key": "Key",
+            "value": "Value"
+        }
+    }
+}

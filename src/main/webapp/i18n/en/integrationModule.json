@@ -1,0 +1,29 @@
+{
+    "eshopApp": {
+        "integrationModule" : {
+            "home": {
+                "title": "Integration Modules",
+                "createLabel": "Create a new Integration Module",
+                "createOrEditLabel": "Create or edit a Integration Module",
+                "search": "Search for Integration Module"
+            },
+            "created": "A new Integration Module is created with identifier {{ param }}",
+            "updated": "A Integration Module is updated with identifier {{ param }}",
+            "deleted": "A Integration Module is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Integration Module {{ id }}?"
+            },
+            "detail": {
+                "title": "Integration Module"
+            },
+            "configDetails": "Config Details",
+            "customModule": "Custom Module",
+            "type": "Type",
+            "code": "Code",
+            "regions": "Regions",
+            "image": "Image",
+            "module": "Module",
+            "configuration": "Configuration"
+        }
+    }
+}

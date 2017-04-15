@@ -1,0 +1,92 @@
+<div>
+    <h2>
+        <span jhiTranslate="eshopApp.orderAccountProduct.home.title">Order Account Products</span>
+        <button class="btn btn-primary float-right create-order-account-product" [routerLink]="['../order-account-product-new']">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="eshopApp.orderAccountProduct.home.createLabel">
+            Create new Order Account Product
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12 no-padding-right">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.orderAccountProduct.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="orderAccountProducts">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccountProductId"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductId">Order Account Product Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccountProductLastTransactionStatus"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductLastTransactionStatus">Order Account Product Last Transaction Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccountProductEndDate"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductEndDate">Order Account Product End Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccountProductStartDate"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductStartDate">Order Account Product Start Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccountProductLastStatusDate"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductLastStatusDate">Order Account Product Last Status Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccountProductStatus"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductStatus">Order Account Product Status</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccountProductAccountedDate"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductAccountedDate">Order Account Product Accounted Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccountProductPaymentFrequencyType"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductPaymentFrequencyType">Order Account Product Payment Frequency Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccountProductEot"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductEot">Order Account Product Eot</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccount.id"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccount">Order Account</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let orderAccountProduct of orderAccountProducts ;trackBy: trackId">
+                <td><a [routerLink]="['../order-account-product', orderAccountProduct.id ]">{{orderAccountProduct.id}}</a></td>
+                <td>{{orderAccountProduct.orderAccountProductId}}</td>
+                <td>{{orderAccountProduct.orderAccountProductLastTransactionStatus}}</td>
+                <td>{{orderAccountProduct.orderAccountProductEndDate | date:'mediumDate'}}</td>
+                <td>{{orderAccountProduct.orderAccountProductStartDate | date:'mediumDate'}}</td>
+                <td>{{orderAccountProduct.orderAccountProductLastStatusDate | date:'mediumDate'}}</td>
+                <td>{{orderAccountProduct.orderAccountProductStatus}}</td>
+                <td>{{orderAccountProduct.orderAccountProductAccountedDate | date:'mediumDate'}}</td>
+                <td>{{orderAccountProduct.orderAccountProductPaymentFrequencyType}}</td>
+                <td>{{orderAccountProduct.orderAccountProductEot | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="orderAccountProduct.orderAccount">
+                        <a [routerLink]="['../order-account', orderAccountProduct.orderAccount?.id ]" >{{orderAccountProduct.orderAccount?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../order-account-product', orderAccountProduct.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'order-account-product/'+ orderAccountProduct.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="orderAccountProducts && orderAccountProducts.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

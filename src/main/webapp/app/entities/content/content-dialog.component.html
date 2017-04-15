@@ -1,0 +1,70 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myContentLabel" jhiTranslate="eshopApp.content.home.createOrEditLabel">Create or edit a Content</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="row justify-content-center">
+        <div class="col-5 form-group" [hidden]="!content.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="content.id" readonly />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.content.sortOrder" for="field_sortOrder">Sort Order</label>
+            <input type="number" class="form-control" name="sortOrder" id="field_sortOrder"
+                [(ngModel)]="content.sortOrder"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.content.productGroup" for="field_productGroup">Product Group</label>
+            <input type="text" class="form-control" name="productGroup" id="field_productGroup"
+                [(ngModel)]="content.productGroup"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.content.contentType" for="field_contentType">Content Type</label>
+            <select class="form-control" name="contentType" [(ngModel)]="content.contentType" id="field_contentType" >
+                <option value="BOX" jhiTranslate="eshopApp.ContentType.BOX">BOX</option>
+                <option value="PAGE" jhiTranslate="eshopApp.ContentType.PAGE">PAGE</option>
+                <option value="SECTION" jhiTranslate="eshopApp.ContentType.SECTION">SECTION</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.content.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="content.code"
+            required />
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.content.visible" for="field_visible">Visible</label>
+            <input type="checkbox" class="form-control" name="visible" id="field_visible"
+                [(ngModel)]="content.visible"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.content.contentPosition" for="field_contentPosition">Content Position</label>
+            <select class="form-control" name="contentPosition" [(ngModel)]="content.contentPosition" id="field_contentPosition" >
+                <option value="LEFT" jhiTranslate="eshopApp.ContentPosition.LEFT">LEFT</option>
+                <option value="RIGHT" jhiTranslate="eshopApp.ContentPosition.RIGHT">RIGHT</option>
+            </select>
+        </div>
+
+    </div>
+    </div> 
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

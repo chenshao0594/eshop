@@ -1,0 +1,57 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "prices",
+            "otherEntityName": "productPrice",
+            "otherEntityRelationshipName": "productAvailability"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productQuantityOrderMax",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "productIsAlwaysFreeShipping",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "region",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "productQuantity",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "productQuantityOrderMin",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "productDateAvailable",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "productStatus",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "regionVariant",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184129",
+    "entityTableName": "product_availability",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

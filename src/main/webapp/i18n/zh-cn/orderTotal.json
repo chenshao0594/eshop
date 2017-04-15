@@ -1,0 +1,30 @@
+{
+    "eshopApp": {
+        "orderTotal" : {
+            "home": {
+                "title": "Order Totals",
+                "createLabel": "Create a new Order Total",
+                "createOrEditLabel": "Create or edit a Order Total",
+                "search": "Search for Order Total"
+            },
+            "created": "A new Order Total is created with identifier {{ param }}",
+            "updated": "A Order Total is updated with identifier {{ param }}",
+            "deleted": "A Order Total is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Order Total {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Total"
+            },
+            "value": "Value",
+            "orderTotalCode": "Order Total Code",
+            "text": "Text",
+            "orderValueType": "Order Value Type",
+            "sortOrder": "Sort Order",
+            "orderTotalType": "Order Total Type",
+            "title": "Title",
+            "module": "Module",
+            "order": "Order"
+        }
+    }
+}

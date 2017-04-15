@@ -19,7 +19,6 @@ export class BookDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
     constructor(
-        public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private dataUtils: DataUtils,
         private alertService: AlertService,
@@ -27,6 +26,7 @@ export class BookDialogComponent implements OnInit {
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['book']);
+        this.book = new Book();
     }
 
     ngOnInit() {
@@ -54,7 +54,7 @@ export class BookDialogComponent implements OnInit {
         }
     }
     clear() {
-        this.activeModal.dismiss('cancel');
+        window.history.back();
     }
 
     save() {
@@ -73,7 +73,7 @@ export class BookDialogComponent implements OnInit {
     private onSaveSuccess(result: Book) {
         this.eventManager.broadcast({ name: 'bookListModification', content: 'OK'});
         this.isSaving = false;
-        this.activeModal.dismiss(result);
+        this.book = result;
     }
 
     private onSaveError(error) {

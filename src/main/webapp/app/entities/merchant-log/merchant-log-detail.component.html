@@ -1,0 +1,35 @@
+
+<div *ngIf="merchantLog">
+    <h2><span jhiTranslate="eshopApp.merchantLog.detail.title">Merchant Log</span> {{merchantLog.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantLog.log" for="field_log">Log</label>
+            <input type="text" class="form-control" name="log" id="field_log"
+                [(ngModel)]="merchantLog.log"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantLog.module" for="field_module">Module</label>
+            <input type="text" class="form-control" name="module" id="field_module"
+                [(ngModel)]="merchantLog.module"
+             />
+        </div>
+
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

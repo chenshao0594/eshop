@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "orderProduct",
+            "otherEntityName": "orderProduct",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productPrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "productPriceCode",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "productPriceSpecialStartDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "productPriceSpecial",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "productPriceSpecialEndDate",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "productPriceName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "defaultPrice",
+            "fieldType": "Boolean"
+        }
+    ],
+    "changelogDate": "20170415184159",
+    "entityTableName": "order_product_price",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

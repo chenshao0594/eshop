@@ -1,0 +1,47 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "orderProduct",
+            "otherEntityName": "orderProduct",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "productAttributeName",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "productAttributeWeight",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "productOptionValueId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "productAttributePrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "productAttributeIsFree",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "productOptionId",
+            "fieldType": "Long"
+        },
+        {
+            "fieldName": "productAttributeValueName",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170415184126",
+    "entityTableName": "order_product_attribute",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

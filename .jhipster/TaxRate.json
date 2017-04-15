@@ -1,0 +1,60 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "descriptions",
+            "otherEntityName": "taxRateDescription",
+            "otherEntityRelationshipName": "taxRate"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "relationshipName": "taxRates",
+            "otherEntityName": "taxRate",
+            "otherEntityRelationshipName": "parent"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "taxClass",
+            "otherEntityName": "taxClass",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "parent",
+            "otherEntityName": "taxRate",
+            "otherEntityField": "id"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "piggyback",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "stateProvince",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "taxPriority",
+            "fieldType": "Integer"
+        },
+        {
+            "fieldName": "code",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "taxRate",
+            "fieldType": "BigDecimal"
+        }
+    ],
+    "changelogDate": "20170415184132",
+    "entityTableName": "tax_rate",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
+}

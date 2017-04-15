@@ -1,0 +1,25 @@
+{
+    "eshopApp": {
+        "productReviewDescription" : {
+            "home": {
+                "title": "Product Review Descriptions",
+                "createLabel": "Create a new Product Review Description",
+                "createOrEditLabel": "Create or edit a Product Review Description",
+                "search": "Search for Product Review Description"
+            },
+            "created": "A new Product Review Description is created with identifier {{ param }}",
+            "updated": "A Product Review Description is updated with identifier {{ param }}",
+            "deleted": "A Product Review Description is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Product Review Description {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Review Description"
+            },
+            "title": "Title",
+            "name": "Name",
+            "description": "Description",
+            "productReview": "Product Review"
+        }
+    }
+}

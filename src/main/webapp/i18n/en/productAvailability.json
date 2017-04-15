@@ -1,0 +1,31 @@
+{
+    "eshopApp": {
+        "productAvailability" : {
+            "home": {
+                "title": "Product Availabilities",
+                "createLabel": "Create a new Product Availability",
+                "createOrEditLabel": "Create or edit a Product Availability",
+                "search": "Search for Product Availability"
+            },
+            "created": "A new Product Availability is created with identifier {{ param }}",
+            "updated": "A Product Availability is updated with identifier {{ param }}",
+            "deleted": "A Product Availability is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Product Availability {{ id }}?"
+            },
+            "detail": {
+                "title": "Product Availability"
+            },
+            "productQuantityOrderMax": "Product Quantity Order Max",
+            "productIsAlwaysFreeShipping": "Product Is Always Free Shipping",
+            "region": "Region",
+            "productQuantity": "Product Quantity",
+            "productQuantityOrderMin": "Product Quantity Order Min",
+            "productDateAvailable": "Product Date Available",
+            "productStatus": "Product Status",
+            "regionVariant": "Region Variant",
+            "prices": "Prices",
+            "product": "Product"
+        }
+    }
+}

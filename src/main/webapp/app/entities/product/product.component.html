@@ -1,0 +1,106 @@
+<div>
+    <h2>
+        <span jhiTranslate="eshopApp.product.home.title">Products</span>
+        <button class="btn btn-primary float-right create-product" [routerLink]="['../product-new']">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="eshopApp.product.home.createLabel">
+            Create new Product
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12 no-padding-right">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.product.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="products">
+        <table class="table table-striped">
+            <thead>
+            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productHeight"><span jhiTranslate="eshopApp.product.productHeight">Product Height</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productWeight"><span jhiTranslate="eshopApp.product.productWeight">Product Weight</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productShipeable"><span jhiTranslate="eshopApp.product.productShipeable">Product Shipeable</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productOrdered"><span jhiTranslate="eshopApp.product.productOrdered">Product Ordered</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productReviewAvg"><span jhiTranslate="eshopApp.product.productReviewAvg">Product Review Avg</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateAvailable"><span jhiTranslate="eshopApp.product.dateAvailable">Date Available</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sortOrder"><span jhiTranslate="eshopApp.product.sortOrder">Sort Order</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productIsFree"><span jhiTranslate="eshopApp.product.productIsFree">Product Is Free</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="available"><span jhiTranslate="eshopApp.product.available">Available</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productReviewCount"><span jhiTranslate="eshopApp.product.productReviewCount">Product Review Count</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="refSku"><span jhiTranslate="eshopApp.product.refSku">Ref Sku</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productVirtual"><span jhiTranslate="eshopApp.product.productVirtual">Product Virtual</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productWidth"><span jhiTranslate="eshopApp.product.productWidth">Product Width</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="preOrder"><span jhiTranslate="eshopApp.product.preOrder">Pre Order</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productLength"><span jhiTranslate="eshopApp.product.productLength">Product Length</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="sku"><span jhiTranslate="eshopApp.product.sku">Sku</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.product.taxClass">Tax Class</span> <span class="fa fa-sort"></span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of products ;trackBy: trackId">
+                <td><a [routerLink]="['../product', product.id ]">{{product.id}}</a></td>
+                <td>{{product.productHeight}}</td>
+                <td>{{product.productWeight}}</td>
+                <td>{{product.productShipeable}}</td>
+                <td>{{product.productOrdered}}</td>
+                <td>{{product.productReviewAvg}}</td>
+                <td>{{product.dateAvailable | date:'mediumDate'}}</td>
+                <td>{{product.sortOrder}}</td>
+                <td>{{product.productIsFree}}</td>
+                <td>{{product.available}}</td>
+                <td>{{product.productReviewCount}}</td>
+                <td>{{product.refSku}}</td>
+                <td>{{product.productVirtual}}</td>
+                <td>{{product.productWidth}}</td>
+                <td>{{product.preOrder}}</td>
+                <td>{{product.productLength}}</td>
+                <td>{{product.sku}}</td>
+                <td>
+                    <div *ngIf="product.taxClass">
+                        <a [routerLink]="['../tax-class', product.taxClass?.id ]" >{{product.taxClass?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../product', product.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'product/'+ product.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+        <div *ngIf="products && products.length">
+            <div class="row justify-content-center">
+                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            </div>
+            <div class="row justify-content-center">
+                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+            </div>
+        </div>
+</div>

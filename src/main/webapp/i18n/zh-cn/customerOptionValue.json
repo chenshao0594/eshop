@@ -1,0 +1,25 @@
+{
+    "eshopApp": {
+        "customerOptionValue" : {
+            "home": {
+                "title": "Customer Option Values",
+                "createLabel": "Create a new Customer Option Value",
+                "createOrEditLabel": "Create or edit a Customer Option Value",
+                "search": "Search for Customer Option Value"
+            },
+            "created": "A new Customer Option Value is created with identifier {{ param }}",
+            "updated": "A Customer Option Value is updated with identifier {{ param }}",
+            "deleted": "A Customer Option Value is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Customer Option Value {{ id }}?"
+            },
+            "detail": {
+                "title": "Customer Option Value"
+            },
+            "code": "Code",
+            "customerOptionValueImage": "Customer Option Value Image",
+            "sortOrder": "Sort Order",
+            "descriptions": "Descriptions"
+        }
+    }
+}

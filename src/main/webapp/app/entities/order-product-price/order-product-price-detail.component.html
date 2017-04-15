@@ -1,0 +1,80 @@
+
+<div *ngIf="orderProductPrice">
+    <h2><span jhiTranslate="eshopApp.orderProductPrice.detail.title">Order Product Price</span> {{orderProductPrice.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductPrice.productPrice" for="field_productPrice">Product Price</label>
+            <input type="number" class="form-control" name="productPrice" id="field_productPrice"
+                [(ngModel)]="orderProductPrice.productPrice"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductPrice.productPriceCode" for="field_productPriceCode">Product Price Code</label>
+            <input type="text" class="form-control" name="productPriceCode" id="field_productPriceCode"
+                [(ngModel)]="orderProductPrice.productPriceCode"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductPrice.productPriceSpecialStartDate" for="field_productPriceSpecialStartDate">Product Price Special Start Date</label>
+            <div class="input-group">
+                <input id="field_productPriceSpecialStartDate" type="text" class="form-control" name="productPriceSpecialStartDate" ngbDatepicker  #productPriceSpecialStartDateDp="ngbDatepicker" [(ngModel)]="orderProductPrice.productPriceSpecialStartDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="productPriceSpecialStartDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductPrice.productPriceSpecial" for="field_productPriceSpecial">Product Price Special</label>
+            <input type="number" class="form-control" name="productPriceSpecial" id="field_productPriceSpecial"
+                [(ngModel)]="orderProductPrice.productPriceSpecial"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductPrice.productPriceSpecialEndDate" for="field_productPriceSpecialEndDate">Product Price Special End Date</label>
+            <div class="input-group">
+                <input id="field_productPriceSpecialEndDate" type="text" class="form-control" name="productPriceSpecialEndDate" ngbDatepicker  #productPriceSpecialEndDateDp="ngbDatepicker" [(ngModel)]="orderProductPrice.productPriceSpecialEndDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="productPriceSpecialEndDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductPrice.productPriceName" for="field_productPriceName">Product Price Name</label>
+            <input type="text" class="form-control" name="productPriceName" id="field_productPriceName"
+                [(ngModel)]="orderProductPrice.productPriceName"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderProductPrice.defaultPrice" for="field_defaultPrice">Default Price</label>
+            <input type="checkbox" class="form-control" name="defaultPrice" id="field_defaultPrice"
+                [(ngModel)]="orderProductPrice.defaultPrice"
+             />
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.orderProductPrice.orderProduct" for="field_orderProduct">Order Product</label>
+            <select class="form-control" id="field_orderProduct" name="orderProduct" [(ngModel)]="orderProductPrice.orderProduct" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="orderProductOption.id === orderProductPrice.orderProduct?.id ? orderProductPrice.orderProduct : orderProductOption" *ngFor="let orderProductOption of orderproducts; trackBy: trackOrderProductById">{{orderProductOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

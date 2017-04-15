@@ -6,7 +6,7 @@ import { PaginationUtil } from 'ng-jhipster';
 
 import { BookComponent } from './book.component';
 import { BookDetailComponent } from './book-detail.component';
-import { BookPopupComponent } from './book-dialog.component';
+import { BookPopupComponent, BookDialogComponent } from './book-dialog.component';
 import { BookDeletePopupComponent } from './book-delete-dialog.component';
 
 import { Principal } from '../../shared';
@@ -40,6 +40,13 @@ export const bookRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'book-new',
+    component: BookDialogComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.book.home.title'
+    },
+  }, {
     path: 'book/:id',
     component: BookDetailComponent,
     data: {
@@ -51,16 +58,6 @@ export const bookRoute: Routes = [
 ];
 
 export const bookPopupRoute: Routes = [
-  {
-    path: 'book-new',
-    component: BookPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.book.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
   {
     path: 'book/:id/edit',
     component: BookPopupComponent,

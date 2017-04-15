@@ -1,0 +1,104 @@
+
+<div *ngIf="orderAccountProduct">
+    <h2><span jhiTranslate="eshopApp.orderAccountProduct.detail.title">Order Account Product</span> {{orderAccountProduct.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductId" for="field_orderAccountProductId">Order Account Product Id</label>
+            <input type="number" class="form-control" name="orderAccountProductId" id="field_orderAccountProductId"
+                [(ngModel)]="orderAccountProduct.orderAccountProductId"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductLastTransactionStatus" for="field_orderAccountProductLastTransactionStatus">Order Account Product Last Transaction Status</label>
+            <input type="number" class="form-control" name="orderAccountProductLastTransactionStatus" id="field_orderAccountProductLastTransactionStatus"
+                [(ngModel)]="orderAccountProduct.orderAccountProductLastTransactionStatus"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductEndDate" for="field_orderAccountProductEndDate">Order Account Product End Date</label>
+            <div class="input-group">
+                <input id="field_orderAccountProductEndDate" type="text" class="form-control" name="orderAccountProductEndDate" ngbDatepicker  #orderAccountProductEndDateDp="ngbDatepicker" [(ngModel)]="orderAccountProduct.orderAccountProductEndDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="orderAccountProductEndDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductStartDate" for="field_orderAccountProductStartDate">Order Account Product Start Date</label>
+            <div class="input-group">
+                <input id="field_orderAccountProductStartDate" type="text" class="form-control" name="orderAccountProductStartDate" ngbDatepicker  #orderAccountProductStartDateDp="ngbDatepicker" [(ngModel)]="orderAccountProduct.orderAccountProductStartDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="orderAccountProductStartDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductLastStatusDate" for="field_orderAccountProductLastStatusDate">Order Account Product Last Status Date</label>
+            <div class="input-group">
+                <input id="field_orderAccountProductLastStatusDate" type="text" class="form-control" name="orderAccountProductLastStatusDate" ngbDatepicker  #orderAccountProductLastStatusDateDp="ngbDatepicker" [(ngModel)]="orderAccountProduct.orderAccountProductLastStatusDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="orderAccountProductLastStatusDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductStatus" for="field_orderAccountProductStatus">Order Account Product Status</label>
+            <input type="number" class="form-control" name="orderAccountProductStatus" id="field_orderAccountProductStatus"
+                [(ngModel)]="orderAccountProduct.orderAccountProductStatus"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductAccountedDate" for="field_orderAccountProductAccountedDate">Order Account Product Accounted Date</label>
+            <div class="input-group">
+                <input id="field_orderAccountProductAccountedDate" type="text" class="form-control" name="orderAccountProductAccountedDate" ngbDatepicker  #orderAccountProductAccountedDateDp="ngbDatepicker" [(ngModel)]="orderAccountProduct.orderAccountProductAccountedDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="orderAccountProductAccountedDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductPaymentFrequencyType" for="field_orderAccountProductPaymentFrequencyType">Order Account Product Payment Frequency Type</label>
+            <input type="number" class="form-control" name="orderAccountProductPaymentFrequencyType" id="field_orderAccountProductPaymentFrequencyType"
+                [(ngModel)]="orderAccountProduct.orderAccountProductPaymentFrequencyType"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductEot" for="field_orderAccountProductEot">Order Account Product Eot</label>
+            <div class="input-group">
+                <input id="field_orderAccountProductEot" type="text" class="form-control" name="orderAccountProductEot" ngbDatepicker  #orderAccountProductEotDp="ngbDatepicker" [(ngModel)]="orderAccountProduct.orderAccountProductEot"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="orderAccountProductEotDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.orderAccountProduct.orderAccount" for="field_orderAccount">Order Account</label>
+            <select class="form-control" id="field_orderAccount" name="orderAccount" [(ngModel)]="orderAccountProduct.orderAccount" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="orderAccountOption.id === orderAccountProduct.orderAccount?.id ? orderAccountProduct.orderAccount : orderAccountOption" *ngFor="let orderAccountOption of orderaccounts; trackBy: trackOrderAccountById">{{orderAccountOption.id}}</option>
+            </select>
+        </div>
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

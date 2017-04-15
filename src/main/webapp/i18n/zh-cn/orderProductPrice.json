@@ -1,0 +1,29 @@
+{
+    "eshopApp": {
+        "orderProductPrice" : {
+            "home": {
+                "title": "Order Product Prices",
+                "createLabel": "Create a new Order Product Price",
+                "createOrEditLabel": "Create or edit a Order Product Price",
+                "search": "Search for Order Product Price"
+            },
+            "created": "A new Order Product Price is created with identifier {{ param }}",
+            "updated": "A Order Product Price is updated with identifier {{ param }}",
+            "deleted": "A Order Product Price is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Order Product Price {{ id }}?"
+            },
+            "detail": {
+                "title": "Order Product Price"
+            },
+            "productPrice": "Product Price",
+            "productPriceCode": "Product Price Code",
+            "productPriceSpecialStartDate": "Product Price Special Start Date",
+            "productPriceSpecial": "Product Price Special",
+            "productPriceSpecialEndDate": "Product Price Special End Date",
+            "productPriceName": "Product Price Name",
+            "defaultPrice": "Default Price",
+            "orderProduct": "Order Product"
+        }
+    }
+}
