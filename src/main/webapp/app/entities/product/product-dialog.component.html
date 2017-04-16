@@ -11,18 +11,7 @@
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="product.id" readonly />
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.product.productHeight" for="field_productHeight">Product Height</label>
-            <input type="number" class="form-control" name="productHeight" id="field_productHeight"
-                [(ngModel)]="product.productHeight"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.product.productWeight" for="field_productWeight">Product Weight</label>
-            <input type="number" class="form-control" name="productWeight" id="field_productWeight"
-                [(ngModel)]="product.productWeight"
-             />
-        </div>
+        
         <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.product.productShipeable" for="field_productShipeable">Product Shipeable</label>
             <input type="checkbox" class="form-control" name="productShipeable" id="field_productShipeable"
@@ -88,15 +77,21 @@
              />
         </div>
         <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.product.productWidth" for="field_productWidth">Product Width</label>
-            <input type="number" class="form-control" name="productWidth" id="field_productWidth"
-                [(ngModel)]="product.productWidth"
+            <label class="form-control-label" jhiTranslate="eshopApp.product.productHeight" for="field_productHeight">Product Height</label>
+            <input type="number" class="form-control" name="productHeight" id="field_productHeight"
+                [(ngModel)]="product.productHeight"
              />
         </div>
         <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.product.preOrder" for="field_preOrder">Pre Order</label>
-            <input type="checkbox" class="form-control" name="preOrder" id="field_preOrder"
-                [(ngModel)]="product.preOrder"
+            <label class="form-control-label" jhiTranslate="eshopApp.product.productWeight" for="field_productWeight">Product Weight</label>
+            <input type="number" class="form-control" name="productWeight" id="field_productWeight"
+                [(ngModel)]="product.productWeight"
+             />
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.product.productWidth" for="field_productWidth">Product Width</label>
+            <input type="number" class="form-control" name="productWidth" id="field_productWidth"
+                [(ngModel)]="product.productWidth"
              />
         </div>
         <div class="col-5 form-group">
@@ -105,6 +100,13 @@
                 [(ngModel)]="product.productLength"
              />
         </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.product.preOrder" for="field_preOrder">Pre Order</label>
+            <input type="checkbox" class="form-control" name="preOrder" id="field_preOrder"
+                [(ngModel)]="product.preOrder"
+             />
+        </div>
+        
         <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.product.sku" for="field_sku">Sku</label>
             <input type="text" class="form-control" name="sku" id="field_sku"

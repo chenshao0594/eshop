@@ -1,17 +1,27 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A MerchantStore.
@@ -23,6 +33,7 @@ import java.util.Objects;
 public class MerchantStore extends BusinessDomain<Long,MerchantStore>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
+    public final static String DEFAULT_STORE = "DEFAULT";
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -32,6 +43,7 @@ public class MerchantStore extends BusinessDomain<Long,MerchantStore>  implement
     private String storeaddress;
 
     @NotNull
+    @Pattern(regexp="^[a-zA-Z0-9_]*$")
     @Column(name = "code", nullable = false)
     private String code;
 
@@ -108,6 +120,9 @@ public class MerchantStore extends BusinessDomain<Long,MerchantStore>  implement
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Language> languages = new HashSet<>();
 
+    @Transient
+	private String dateBusinessSince;
+    
     public Long getId() {
         return id;
     }
@@ -439,6 +454,20 @@ public class MerchantStore extends BusinessDomain<Long,MerchantStore>  implement
     public void setLanguages(Set<Language> languages) {
         this.languages = languages;
     }
+    
+    public MerchantStore dateBusinessSince(String dateBusinessSince) {
+		this.dateBusinessSince = dateBusinessSince;
+		return this;
+	}
+
+	public String getDateBusinessSince() {
+		return dateBusinessSince;
+	}
+
+	public void setDateBusinessSince(String dateBusinessSince) {
+		this.dateBusinessSince = dateBusinessSince;
+	}
+    
 
     
 

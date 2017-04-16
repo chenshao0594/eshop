@@ -1,204 +1,207 @@
 {
-    "global": {
-        "title": "Eshop",
-        "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
-        "menu": {
-            "home": "Home",
-            "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
-            "entities": {
-                "main": "Entities",
-                "book": "Book",
-                "orderProductDownload": "Order Product Download",
-                "taxClass": "Tax Class",
-                "shoppingCartAttributeItem": "Shopping Cart Attribute Item",
-                "geoZone": "Geo Zone",
-                "manufacturerDescription": "Manufacturer Description",
-                "shippingOrigin": "Shipping Origin",
-                "orderAccountProduct": "Order Account Product",
-                "countryDescription": "Country Description",
-                "customerOptionValueDescription": "Customer Option Value Description",
-                "orderTotal": "Order Total",
-                "systemNotification": "System Notification",
-                "orderStatusHistory": "Order Status History",
-                "contentDescription": "Content Description",
-                "optin": "Optin",
-                "taxRate": "Tax Rate",
-                "customerOption": "Customer Option",
-                "transaction": "Transaction",
-                "orderProduct": "Order Product",
-                "shoppingCartItem": "Shopping Cart Item",
-                "merchantStore": "Merchant Store",
-                "systemConfiguration": "System Configuration",
-                "currency": "Currency",
-                "merchantLog": "Merchant Log",
-                "shoppingCart": "Shopping Cart",
-                "orderAccount": "Order Account",
-                "digitalProduct": "Digital Product",
-                "merchantConfiguration": "Merchant Configuration",
-                "zoneDescription": "Zone Description",
-                "customerOptionValue": "Customer Option Value",
-                "categoryDescription": "Category Description",
-                "geoZoneDescription": "Geo Zone Description",
-                "customerOptionSet": "Customer Option Set",
-                "content": "Content",
-                "customerOptionDescription": "Customer Option Description",
-                "orderProductPrice": "Order Product Price",
-                "fileHistory": "File History",
-                "language": "Language",
-                "customer": "Customer",
-                "category": "Category",
-                "customerAttribute": "Customer Attribute",
-                "country": "Country",
-                "integrationModule": "Integration Module",
-                "customerOptin": "Customer Optin",
-                "manufacturer": "Manufacturer",
-                "zone": "Zone",
-                "taxRateDescription": "Tax Rate Description",
-                "salesOrder": "Sales Order",
-                 "orderProductAttribute": "Order Product Attribute",
-                "template": "Template",
-                "productAvailability": "Product Availability",
-                "emailTemplate": "Email Template",
-                "emailSetting": "Email Setting",
-                "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
-            },
-            "categories": {
-                "main": "Categories",
-                "book": "Book",
-                "product": "Product",
-                "productOptionValue": "Product Option Value",
-                "productOptionDescription": "Product Option Description",
-                "productDescription": "Product Description",
-                "productPrice": "Product Price",
-                "productType": "Product Type",
-                "productRelationship": "Product Relationship",
-                "productReviewDescription": "Product Review Description",
-                "productOption": "Product Option",
-                "productOptionValueDescription": "Product Option Value Description",
-                "productImage": "Product Image",
-                "productPriceDescription": "Product Price Description",
-                "productImageDescription": "Product Image Description",
-                "productReview": "Product Review",
-                "productAttribute": "Product Attribute",
-                "productAvailability": "Product Availability"
-             },
-            "account": {
-                "main": "Account",
-                "settings": "Settings",
-                "password": "Password",
-                "sessions": "Sessions",
-                "login": "Sign in",
-                "logout": "Sign out",
-                "register": "Register"
-            },
-            "admin": {
-                "main": "Administration",
-                "userManagement": "User management",
-                "tracker": "User tracker",
-                "metrics": "Metrics",
-                "health": "Health",
-                "configuration": "Configuration",
-                "logs": "Logs",
-                "audits": "Audits",
-                "apidocs": "API",
-                "database": "Database",
-                "jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
-            },
-            "language": "Language"
-        },
-        "form": {
-            "username": "Username",
-            "username.placeholder": "Your username",
-            "newpassword": "New password",
-            "newpassword.placeholder": "New password",
-            "confirmpassword": "New password confirmation",
-            "confirmpassword.placeholder": "Confirm the new password",
-            "email": "Email",
-            "email.placeholder": "Your email"
-        },
-        "messages": {
-            "info": {
-                "authenticated": {
-                    "prefix": "If you want to ",
-                    "link": "sign in",
-                    "suffix": ", you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\")."
-                },
-                "register": {
-                    "noaccount": "You don't have an account yet?",
-                    "link": "Register a new account"
-                }
-            },
-            "error": {
-                "dontmatch": "The password and its confirmation do not match!"
-            },
-            "validate": {
-                "newpassword": {
-                    "required": "Your password is required.",
-                    "minlength": "Your password is required to be at least 4 characters.",
-                    "maxlength": "Your password cannot be longer than 50 characters.",
-                    "strength": "Password strength:"
-                },
-                "confirmpassword": {
-                    "required": "Your confirmation password is required.",
-                    "minlength": "Your confirmation password is required to be at least 4 characters.",
-                    "maxlength": "Your confirmation password cannot be longer than 50 characters."
-                },
-                "email": {
-                    "required": "Your email is required.",
-                    "invalid": "Your email is invalid.",
-                    "minlength": "Your email is required to be at least 5 characters.",
-                    "maxlength": "Your email cannot be longer than 50 characters."
-                }
-            }
-        },
-        "field": {
-            "id": "ID"
-        },
-        "ribbon": {
-            "dev":"Development"
-        }
-    },
-    "entity": {
-        "action": {
-            "addblob": "Add blob",
-            "addimage": "Add image",
-            "back": "Back",
-            "cancel": "Cancel",
-            "delete": "Delete",
-            "edit": "Edit",
-            "open": "Open",
-            "save": "Save",
-            "view": "View"
-        },
-        "detail": {
-            "field": "Field",
-            "value": "Value"
-        },
-        "delete": {
-            "title": "Confirm delete operation"
-        },
-        "validation": {
-            "required": "This field is required.",
-            "minlength": "This field is required to be at least {{ min }} characters.",
-            "maxlength": "This field cannot be longer than {{ max }} characters.",
-            "min": "This field should be at least {{ min }}.",
-            "max": "This field cannot be more than {{ max }}.",
-            "minbytes": "This field should be at least {{ min }} bytes.",
-            "maxbytes": "This field cannot be more than {{ max }} bytes.",
-            "pattern": "This field should follow pattern for {{ pattern }}.",
-            "number": "This field should be a number.",
-            "datetimelocal": "This field should be a date and time."
-        }
-    },
-    "error": {
-        "internalServerError": "Internal server error",
-        "server.not.reachable": "Server not reachable",
-        "url.not.found": "Not found",
-        "NotNull": "Field {{ fieldName }} cannot be empty!",
-        "Size": "Field {{ fieldName }} does not meet min/max size requirements!",
-        "userexists": "Login name already used!",
-        "emailexists": "Email is already in use!",
-        "idexists": "A new {{ entityName }} cannot already have an ID"
-    },
-    "footer": "This is your footer"
+	"global": {
+		"title": "Eshop",
+		"browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
+		"menu": {
+			"home": "Home",
+			"jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
+			"entities": {
+				"main": "Entities",
+				"book": "Book",
+				"orderProductDownload": "Order Product Download",
+				"taxClass": "Tax Class",
+				"shoppingCartAttributeItem": "Shopping Cart Attribute Item",
+				"geoZone": "Geo Zone",
+				"manufacturerDescription": "Manufacturer Description",
+				"shippingOrigin": "Shipping Origin",
+				"orderAccountProduct": "Order Account Product",
+				"countryDescription": "Country Description",
+				"customerOptionValueDescription": "Customer Option Value Description",
+				"orderTotal": "Order Total",
+				"systemNotification": "System Notification",
+				"orderStatusHistory": "Order Status History",
+				"contentDescription": "Content Description",
+				"optin": "Optin",
+				"taxRate": "Tax Rate",
+				"customerOption": "Customer Option",
+				"transaction": "Transaction",
+				"orderProduct": "Order Product",
+				"shoppingCartItem": "Shopping Cart Item",
+				"merchantStore": "Merchant Store",
+				"systemConfiguration": "System Configuration",
+				"currency": "Currency",
+				"merchantLog": "Merchant Log",
+				"shoppingCart": "Shopping Cart",
+				"orderAccount": "Order Account",
+				"digitalProduct": "Digital Product",
+				"merchantConfiguration": "Merchant Configuration",
+				"zoneDescription": "Zone Description",
+				"customerOptionValue": "Customer Option Value",
+				"categoryDescription": "Category Description",
+				"geoZoneDescription": "Geo Zone Description",
+				"customerOptionSet": "Customer Option Set",
+				"content": "Content",
+				"customerOptionDescription": "Customer Option Description",
+				"orderProductPrice": "Order Product Price",
+				"fileHistory": "File History",
+				"language": "Language",
+				"customer": "Customer",
+				"category": "Category",
+				"customerAttribute": "Customer Attribute",
+				"country": "Country",
+				"integrationModule": "Integration Module",
+				"customerOptin": "Customer Optin",
+				"manufacturer": "Manufacturer",
+				"zone": "Zone",
+				"taxRateDescription": "Tax Rate Description",
+				"salesOrder": "Sales Order",
+				"orderProductAttribute": "Order Product Attribute",
+				"template": "Template",
+				"productAvailability": "Product Availability",
+				"emailTemplate": "Email Template",
+				"emailSetting": "Email Setting",
+				"jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
+			},
+			"categories": {
+				"main": "Categories",
+				"book": "Book",
+				"product": "Product",
+				"productOptionValue": "Product Option Value",
+				"productOptionDescription": "Product Option Description",
+				"productDescription": "Product Description",
+				"productPrice": "Product Price",
+				"productType": "Product Type",
+				"productRelationship": "Product Relationship",
+				"productReviewDescription": "Product Review Description",
+				"productOption": "Product Option",
+				"productOptionValueDescription": "Product Option Value Description",
+				"productImage": "Product Image",
+				"productPriceDescription": "Product Price Description",
+				"productImageDescription": "Product Image Description",
+				"productReview": "Product Review",
+				"productAttribute": "Product Attribute",
+				"productAvailability": "Product Availability"
+			},
+			"order": {
+				"main": "Order"
+			},
+			"account": {
+				"main": "Account",
+				"settings": "Settings",
+				"password": "Password",
+				"sessions": "Sessions",
+				"login": "Sign in",
+				"logout": "Sign out",
+				"register": "Register"
+			},
+			"admin": {
+				"main": "Administration",
+				"userManagement": "User management",
+				"tracker": "User tracker",
+				"metrics": "Metrics",
+				"health": "Health",
+				"configuration": "Configuration",
+				"logs": "Logs",
+				"audits": "Audits",
+				"apidocs": "API",
+				"database": "Database",
+				"jhipster-needle-menu-add-admin-element": "JHipster will add additional menu entries here (do not translate!)"
+			},
+			"language": "Language"
+		},
+		"form": {
+			"username": "Username",
+			"username.placeholder": "Your username",
+			"newpassword": "New password",
+			"newpassword.placeholder": "New password",
+			"confirmpassword": "New password confirmation",
+			"confirmpassword.placeholder": "Confirm the new password",
+			"email": "Email",
+			"email.placeholder": "Your email"
+		},
+		"messages": {
+			"info": {
+				"authenticated": {
+					"prefix": "If you want to ",
+					"link": "sign in",
+					"suffix": ", you can try the default accounts:<br/>- Administrator (login=\"admin\" and password=\"admin\") <br/>- User (login=\"user\" and password=\"user\")."
+				},
+				"register": {
+					"noaccount": "You don't have an account yet?",
+					"link": "Register a new account"
+				}
+			},
+			"error": {
+				"dontmatch": "The password and its confirmation do not match!"
+			},
+			"validate": {
+				"newpassword": {
+					"required": "Your password is required.",
+					"minlength": "Your password is required to be at least 4 characters.",
+					"maxlength": "Your password cannot be longer than 50 characters.",
+					"strength": "Password strength:"
+				},
+				"confirmpassword": {
+					"required": "Your confirmation password is required.",
+					"minlength": "Your confirmation password is required to be at least 4 characters.",
+					"maxlength": "Your confirmation password cannot be longer than 50 characters."
+				},
+				"email": {
+					"required": "Your email is required.",
+					"invalid": "Your email is invalid.",
+					"minlength": "Your email is required to be at least 5 characters.",
+					"maxlength": "Your email cannot be longer than 50 characters."
+				}
+			}
+		},
+		"field": {
+			"id": "ID"
+		},
+		"ribbon": {
+			"dev": "Development"
+		}
+	},
+	"entity": {
+		"action": {
+			"addblob": "Add blob",
+			"addimage": "Add image",
+			"back": "Back",
+			"cancel": "Cancel",
+			"delete": "Delete",
+			"edit": "Edit",
+			"open": "Open",
+			"save": "Save",
+			"view": "View"
+		},
+		"detail": {
+			"field": "Field",
+			"value": "Value"
+		},
+		"delete": {
+			"title": "Confirm delete operation"
+		},
+		"validation": {
+			"required": "This field is required.",
+			"minlength": "This field is required to be at least {{ min }} characters.",
+			"maxlength": "This field cannot be longer than {{ max }} characters.",
+			"min": "This field should be at least {{ min }}.",
+			"max": "This field cannot be more than {{ max }}.",
+			"minbytes": "This field should be at least {{ min }} bytes.",
+			"maxbytes": "This field cannot be more than {{ max }} bytes.",
+			"pattern": "This field should follow pattern for {{ pattern }}.",
+			"number": "This field should be a number.",
+			"datetimelocal": "This field should be a date and time."
+		}
+	},
+	"error": {
+		"internalServerError": "Internal server error",
+		"server.not.reachable": "Server not reachable",
+		"url.not.found": "Not found",
+		"NotNull": "Field {{ fieldName }} cannot be empty!",
+		"Size": "Field {{ fieldName }} does not meet min/max size requirements!",
+		"userexists": "Login name already used!",
+		"emailexists": "Email is already in use!",
+		"idexists": "A new {{ entityName }} cannot already have an ID"
+	},
+	"footer": "This is your footer"
 }

@@ -109,6 +109,26 @@
                     </ul>
                 </li>
                 
+                <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer">
+                <a class="nav-link dropdown-toggle" routerLinkActive="active" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
+                    <span>
+                        <i class="fa fa-th-list" aria-hidden="true"></i>
+                        <span jhiTranslate="global.menu.order.main">
+                            Order
+                        </span>
+                        <b class="caret"></b>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu>
+                	<li uiSrefActive="active">
+                        <a class="dropdown-item" routerLink="sales-order" (click)="collapseNavbar()">
+                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
+                            <span jhiTranslate="global.menu.entities.salesOrder">Sales Order</span>
+                        </a>
+                    </li>
+                </ul>
+                </li>
+                
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer">
                 <a class="nav-link dropdown-toggle" routerLinkActive="active" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">
@@ -140,7 +160,6 @@
                             <span jhiTranslate="global.menu.entities.shoppingCartAttributeItem">Shopping Cart Attribute Item</span>
                         </a>
                     </li>
-                    
                     <li uiSrefActive="active">
                         <a class="dropdown-item" routerLink="geo-zone" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
@@ -208,7 +227,6 @@
                             <span jhiTranslate="global.menu.entities.contentDescription">Content Description</span>
                         </a>
                     </li>
-                   
                     <li uiSrefActive="active">
                         <a class="dropdown-item" routerLink="optin" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
@@ -437,12 +455,7 @@
                             <span jhiTranslate="global.menu.entities.taxRateDescription">Tax Rate Description</span>
                         </a>
                     </li>
-                    <li uiSrefActive="active">
-                        <a class="dropdown-item" routerLink="sales-order" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.salesOrder">Sales Order</span>
-                        </a>
-                    </li>
+                    
                     <li uiSrefActive="active">
                         <a class="dropdown-item" routerLink="template" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>

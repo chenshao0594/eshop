@@ -28,9 +28,9 @@ public class Zone extends BusinessDomain<Long,Zone>  implements Serializable {
 
     @Column(name = "code")
     private String code;
-
-    @OneToMany(mappedBy = "zone")
+   
     @JsonIgnore
+    @OneToMany(mappedBy = "zone")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ZoneDescription> descriptions = new HashSet<>();
 
