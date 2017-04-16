@@ -13,13 +13,13 @@ import java.util.HashSet;
 import java.util.Set;
 import java.util.Objects;
 
-import com.smartshop.eshop.domain.enumeration.PaymentType;
+import com.smartshop.eshop.domain.enumeration.PaymentEnum;
 
-import com.smartshop.eshop.domain.enumeration.OrderChannel;
+import com.smartshop.eshop.domain.enumeration.OrderChannelEnum;
 
-import com.smartshop.eshop.domain.enumeration.OrderType;
+import com.smartshop.eshop.domain.enumeration.OrderEnum;
 
-import com.smartshop.eshop.domain.enumeration.OrderStatus;
+import com.smartshop.eshop.domain.enumeration.OrderStatusEnum;
 
 /**
  * A SalesOrder.
@@ -53,25 +53,25 @@ public class SalesOrder extends BusinessDomain<Long,SalesOrder>  implements Seri
 
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_type")
-    private PaymentType paymentType;
+    private PaymentEnum paymentType;
 
     @Column(name = "locale")
     private String locale;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "channel")
-    private OrderChannel channel;
+    private OrderChannelEnum channel;
 
     @Column(name = "customer_email_address")
     private String customerEmailAddress;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "order_type")
-    private OrderType orderType;
+    private OrderEnum orderType;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private OrderStatus status;
+    private OrderStatusEnum status;
 
     @Column(name = "last_modified")
     private LocalDate lastModified;
@@ -185,16 +185,16 @@ public class SalesOrder extends BusinessDomain<Long,SalesOrder>  implements Seri
         this.paymentModuleCode = paymentModuleCode;
     }
 
-    public PaymentType getPaymentType() {
+    public PaymentEnum getPaymentType() {
         return paymentType;
     }
 
-    public SalesOrder paymentType(PaymentType paymentType) {
+    public SalesOrder paymentType(PaymentEnum paymentType) {
         this.paymentType = paymentType;
         return this;
     }
 
-    public void setPaymentType(PaymentType paymentType) {
+    public void setPaymentType(PaymentEnum paymentType) {
         this.paymentType = paymentType;
     }
 
@@ -211,16 +211,16 @@ public class SalesOrder extends BusinessDomain<Long,SalesOrder>  implements Seri
         this.locale = locale;
     }
 
-    public OrderChannel getChannel() {
+    public OrderChannelEnum getChannel() {
         return channel;
     }
 
-    public SalesOrder channel(OrderChannel channel) {
+    public SalesOrder channel(OrderChannelEnum channel) {
         this.channel = channel;
         return this;
     }
 
-    public void setChannel(OrderChannel channel) {
+    public void setChannel(OrderChannelEnum channel) {
         this.channel = channel;
     }
 
@@ -237,29 +237,29 @@ public class SalesOrder extends BusinessDomain<Long,SalesOrder>  implements Seri
         this.customerEmailAddress = customerEmailAddress;
     }
 
-    public OrderType getOrderType() {
+    public OrderEnum getOrderType() {
         return orderType;
     }
 
-    public SalesOrder orderType(OrderType orderType) {
+    public SalesOrder orderType(OrderEnum orderType) {
         this.orderType = orderType;
         return this;
     }
 
-    public void setOrderType(OrderType orderType) {
+    public void setOrderType(OrderEnum orderType) {
         this.orderType = orderType;
     }
 
-    public OrderStatus getStatus() {
+    public OrderStatusEnum getStatus() {
         return status;
     }
 
-    public SalesOrder status(OrderStatus status) {
+    public SalesOrder status(OrderStatusEnum status) {
         this.status = status;
         return this;
     }
 
-    public void setStatus(OrderStatus status) {
+    public void setStatus(OrderStatusEnum status) {
         this.status = status;
     }
 

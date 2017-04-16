@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import com.smartshop.eshop.domain.enumeration.OrderStatus;
+import com.smartshop.eshop.domain.enumeration.OrderStatusEnum;
 
 /**
  * A OrderStatusHistory.
@@ -37,7 +37,7 @@ public class OrderStatusHistory extends BusinessDomain<Long,OrderStatusHistory> 
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private OrderStatus status;
+    private OrderStatusEnum status;
 
     @ManyToOne
     private SalesOrder order;
@@ -89,16 +89,16 @@ public class OrderStatusHistory extends BusinessDomain<Long,OrderStatusHistory> 
         this.dateAdded = dateAdded;
     }
 
-    public OrderStatus getStatus() {
+    public OrderStatusEnum getStatus() {
         return status;
     }
 
-    public OrderStatusHistory status(OrderStatus status) {
+    public OrderStatusHistory status(OrderStatusEnum status) {
         this.status = status;
         return this;
     }
 
-    public void setStatus(OrderStatus status) {
+    public void setStatus(OrderStatusEnum status) {
         this.status = status;
     }
 

@@ -1,0 +1,101 @@
+
+<div *ngIf="emailSetting">
+    <h2><span jhiTranslate="eshopApp.emailSetting.detail.title">Email Setting</span> {{emailSetting.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+        <div class="row justify-content-center">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.host" for="field_host">Host</label>
+            <input type="text" class="form-control" name="host" id="field_host"
+                [(ngModel)]="emailSetting.host"
+            required />
+            <div [hidden]="!(editForm.controls.host?.dirty && editForm.controls.host?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.host?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.port" for="field_port">Port</label>
+            <input type="number" class="form-control" name="port" id="field_port"
+                [(ngModel)]="emailSetting.port"
+            required />
+            <div [hidden]="!(editForm.controls.port?.dirty && editForm.controls.port?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.port?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+                <small class="form-text text-danger"
+                    [hidden]="!editForm.controls.port?.errors?.number" jhiTranslate="entity.validation.number">
+                    This field should be a number.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.smtpSecurity" for="field_smtpSecurity">Smtp Security</label>
+            <select class="form-control" name="smtpSecurity" [(ngModel)]="emailSetting.smtpSecurity" id="field_smtpSecurity"  required>
+                <option value="PLAIN" jhiTranslate="eshopApp.SMTPSecurityEnum.PLAIN">PLAIN</option>
+                <option value="SSL" jhiTranslate="eshopApp.SMTPSecurityEnum.SSL">SSL</option>
+                <option value="STARTTLS" jhiTranslate="eshopApp.SMTPSecurityEnum.STARTTLS">STARTTLS</option>
+            </select>
+            <div [hidden]="!(editForm.controls.smtpSecurity?.dirty && editForm.controls.smtpSecurity?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.smtpSecurity?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.fromAddress" for="field_fromAddress">From Address</label>
+            <input type="text" class="form-control" name="fromAddress" id="field_fromAddress"
+                [(ngModel)]="emailSetting.fromAddress"
+            required />
+            <div [hidden]="!(editForm.controls.fromAddress?.dirty && editForm.controls.fromAddress?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.fromAddress?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.userName" for="field_userName">User Name</label>
+            <input type="text" class="form-control" name="userName" id="field_userName"
+                [(ngModel)]="emailSetting.userName"
+            required />
+            <div [hidden]="!(editForm.controls.userName?.dirty && editForm.controls.userName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.userName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.password" for="field_password">Password</label>
+            <input type="text" class="form-control" name="password" id="field_password"
+                [(ngModel)]="emailSetting.password"
+            required />
+            <div [hidden]="!(editForm.controls.password?.dirty && editForm.controls.password?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.password?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+
+    </div>
+
+    <button type="button"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+            class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span
+                jhiTranslate="entity.action.save">Save</span>
+    </button>
+    </form>
+</div>

@@ -30,7 +30,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.smartshop.eshop.domain.enumeration.MerchantConfigurationType;
+import com.smartshop.eshop.domain.enumeration.MerchantConfigurationEnum;
 /**
  * Test class for the MerchantConfigurationResource REST controller.
  *
@@ -40,8 +40,8 @@ import com.smartshop.eshop.domain.enumeration.MerchantConfigurationType;
 @SpringBootTest(classes = EshopApp.class)
 public class MerchantConfigurationControllerIntTest {
 
-    private static final MerchantConfigurationType DEFAULT_MERCHANT_CONFIGURATION_TYPE = MerchantConfigurationType.INTEGRATION;
-    private static final MerchantConfigurationType UPDATED_MERCHANT_CONFIGURATION_TYPE = MerchantConfigurationType.SHOP;
+    private static final MerchantConfigurationEnum DEFAULT_MERCHANT_CONFIGURATION_TYPE = MerchantConfigurationEnum.INTEGRATION;
+    private static final MerchantConfigurationEnum UPDATED_MERCHANT_CONFIGURATION_TYPE = MerchantConfigurationEnum.SHOP;
 
     private static final String DEFAULT_KEY = "AAAAAAAAAA";
     private static final String UPDATED_KEY = "BBBBBBBBBB";

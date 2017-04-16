@@ -3,6 +3,6 @@ package com.smartshop.eshop.domain.enumeration;
 /**
  * The OrderValueType enumeration.
  */
-public enum OrderValueType {
+public enum OrderValueEnum {
     ONE_TIME,MONTHLY
 }

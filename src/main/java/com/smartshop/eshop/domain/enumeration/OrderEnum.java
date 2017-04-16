@@ -3,6 +3,6 @@ package com.smartshop.eshop.domain.enumeration;
 /**
  * The OrderType enumeration.
  */
-public enum OrderType {
+public enum OrderEnum {
     ORDER,BOOKING
 }

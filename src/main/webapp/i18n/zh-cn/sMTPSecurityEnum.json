@@ -1,0 +1,10 @@
+{
+    "eshopApp": {
+        "SMTPSecurityEnum" : {
+            "null": "",
+            "PLAIN": "PLAIN",
+            "SSL": "SSL",
+            "STARTTLS": "STARTTLS"
+        }
+    }
+}

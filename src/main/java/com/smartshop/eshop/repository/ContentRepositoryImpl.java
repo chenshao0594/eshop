@@ -11,7 +11,7 @@ import com.smartshop.eshop.domain.Content;
 import com.smartshop.eshop.domain.ContentDescription;
 import com.smartshop.eshop.domain.Language;
 import com.smartshop.eshop.domain.MerchantStore;
-import com.smartshop.eshop.domain.enumeration.ContentType;
+import com.smartshop.eshop.domain.enumeration.ContentTypeEnum;
 
 
 public class ContentRepositoryImpl implements ContentRepositoryCustom {
@@ -21,7 +21,7 @@ public class ContentRepositoryImpl implements ContentRepositoryCustom {
     private EntityManager em;
     
 	@Override
-	public List<ContentDescription> listNameByType(List<ContentType> contentType, MerchantStore store, Language language) {
+	public List<ContentDescription> listNameByType(List<ContentTypeEnum> contentType, MerchantStore store, Language language) {
 		
 			StringBuilder qs = new StringBuilder();
 			qs.append("select c from Content c ");

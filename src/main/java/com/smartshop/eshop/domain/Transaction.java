@@ -10,9 +10,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
 
-import com.smartshop.eshop.domain.enumeration.TransactionType;
+import com.smartshop.eshop.domain.enumeration.TransactionEnum;
 
-import com.smartshop.eshop.domain.enumeration.PaymentType;
+import com.smartshop.eshop.domain.enumeration.PaymentEnum;
 
 /**
  * A Transaction.
@@ -34,14 +34,14 @@ public class Transaction extends BusinessDomain<Long,Transaction>  implements Se
 
     @Enumerated(EnumType.STRING)
     @Column(name = "transaction_type")
-    private TransactionType transactionType;
+    private TransactionEnum transactionType;
 
     @Column(name = "transaction_date")
     private LocalDate transactionDate;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "payment_type")
-    private PaymentType paymentType;
+    private PaymentEnum paymentType;
 
     @Column(name = "amount", precision=10, scale=2)
     private BigDecimal amount;
@@ -70,16 +70,16 @@ public class Transaction extends BusinessDomain<Long,Transaction>  implements Se
         this.details = details;
     }
 
-    public TransactionType getTransactionType() {
+    public TransactionEnum getTransactionType() {
         return transactionType;
     }
 
-    public Transaction transactionType(TransactionType transactionType) {
+    public Transaction transactionType(TransactionEnum transactionType) {
         this.transactionType = transactionType;
         return this;
     }
 
-    public void setTransactionType(TransactionType transactionType) {
+    public void setTransactionType(TransactionEnum transactionType) {
         this.transactionType = transactionType;
     }
 
@@ -96,16 +96,16 @@ public class Transaction extends BusinessDomain<Long,Transaction>  implements Se
         this.transactionDate = transactionDate;
     }
 
-    public PaymentType getPaymentType() {
+    public PaymentEnum getPaymentType() {
         return paymentType;
     }
 
-    public Transaction paymentType(PaymentType paymentType) {
+    public Transaction paymentType(PaymentEnum paymentType) {
         this.paymentType = paymentType;
         return this;
     }
 
-    public void setPaymentType(PaymentType paymentType) {
+    public void setPaymentType(PaymentEnum paymentType) {
         this.paymentType = paymentType;
     }
 

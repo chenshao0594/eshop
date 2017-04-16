@@ -1,3 +1,4 @@
+import { MerchantStore } from '../merchant-store';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
@@ -13,7 +14,7 @@ import { LanguageService } from './language.service';
     selector: 'jhi-language-dialog',
     templateUrl: './language-dialog.component.html'
 })
-export class LanguageDialogComponent implements OnInit {
+export class LanguageDialogComponent implements OnInit {merchantStoreService: any;
 
     language: Language;
     authorities: any[];

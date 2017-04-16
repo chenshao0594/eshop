@@ -23,7 +23,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.smartshop.eshop.domain.enumeration.ProductPriceType;
+import com.smartshop.eshop.domain.enumeration.ProductPriceEnum;
 
 /**
  * A ProductPrice.
@@ -61,7 +61,7 @@ public class ProductPrice extends BusinessDomain<Long,ProductPrice>  implements 
 
     @Enumerated(EnumType.STRING)
     @Column(name = "product_price_type")
-    private ProductPriceType productPriceType;
+    private ProductPriceEnum productPriceType;
 
     @Column(name = "product_price_special_start_date")
     private Date productPriceSpecialStartDate;
@@ -161,16 +161,16 @@ public class ProductPrice extends BusinessDomain<Long,ProductPrice>  implements 
         this.productPriceSpecialAmount = productPriceSpecialAmount;
     }
 
-    public ProductPriceType getProductPriceType() {
+    public ProductPriceEnum getProductPriceType() {
         return productPriceType;
     }
 
-    public ProductPrice productPriceType(ProductPriceType productPriceType) {
+    public ProductPrice productPriceType(ProductPriceEnum productPriceType) {
         this.productPriceType = productPriceType;
         return this;
     }
 
-    public void setProductPriceType(ProductPriceType productPriceType) {
+    public void setProductPriceType(ProductPriceEnum productPriceType) {
         this.productPriceType = productPriceType;
     }
 

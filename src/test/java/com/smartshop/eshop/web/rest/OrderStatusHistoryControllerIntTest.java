@@ -32,7 +32,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.smartshop.eshop.domain.enumeration.OrderStatus;
+import com.smartshop.eshop.domain.enumeration.OrderStatusEnum;
 /**
  * Test class for the OrderStatusHistoryResource REST controller.
  *
@@ -51,8 +51,8 @@ public class OrderStatusHistoryControllerIntTest {
     private static final LocalDate DEFAULT_DATE_ADDED = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_DATE_ADDED = LocalDate.now(ZoneId.systemDefault());
 
-    private static final OrderStatus DEFAULT_STATUS = OrderStatus.ORDERED;
-    private static final OrderStatus UPDATED_STATUS = OrderStatus.PROCESSED;
+    private static final OrderStatusEnum DEFAULT_STATUS = OrderStatusEnum.ORDERED;
+    private static final OrderStatusEnum UPDATED_STATUS = OrderStatusEnum.PROCESSED;
 
     @Autowired
     private OrderStatusHistoryRepository orderStatusHistoryRepository;

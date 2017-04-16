@@ -3,6 +3,6 @@ package com.smartshop.eshop.domain.enumeration;
 /**
  * The MerchantConfigurationType enumeration.
  */
-public enum MerchantConfigurationType {
+public enum MerchantConfigurationEnum {
     INTEGRATION,SHOP,CONFIG
 }

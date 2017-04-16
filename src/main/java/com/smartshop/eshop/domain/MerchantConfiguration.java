@@ -8,7 +8,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Objects;
 
-import com.smartshop.eshop.domain.enumeration.MerchantConfigurationType;
+import com.smartshop.eshop.domain.enumeration.MerchantConfigurationEnum;
 
 /**
  * A MerchantConfiguration.
@@ -27,7 +27,7 @@ public class MerchantConfiguration extends BusinessDomain<Long,MerchantConfigura
 
     @Enumerated(EnumType.STRING)
     @Column(name = "merchant_configuration_type")
-    private MerchantConfigurationType merchantConfigurationType;
+    private MerchantConfigurationEnum merchantConfigurationType;
 
     @Column(name = "jhi_key")
     private String key;
@@ -46,16 +46,16 @@ public class MerchantConfiguration extends BusinessDomain<Long,MerchantConfigura
         this.id = id;
     }
 
-    public MerchantConfigurationType getMerchantConfigurationType() {
+    public MerchantConfigurationEnum getMerchantConfigurationType() {
         return merchantConfigurationType;
     }
 
-    public MerchantConfiguration merchantConfigurationType(MerchantConfigurationType merchantConfigurationType) {
+    public MerchantConfiguration merchantConfigurationType(MerchantConfigurationEnum merchantConfigurationType) {
         this.merchantConfigurationType = merchantConfigurationType;
         return this;
     }
 
-    public void setMerchantConfigurationType(MerchantConfigurationType merchantConfigurationType) {
+    public void setMerchantConfigurationType(MerchantConfigurationEnum merchantConfigurationType) {
         this.merchantConfigurationType = merchantConfigurationType;
     }
 

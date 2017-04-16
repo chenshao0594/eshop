@@ -33,8 +33,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.smartshop.eshop.domain.enumeration.TransactionType;
-import com.smartshop.eshop.domain.enumeration.PaymentType;
+import com.smartshop.eshop.domain.enumeration.TransactionEnum;
+import com.smartshop.eshop.domain.enumeration.PaymentEnum;
 /**
  * Test class for the TransactionResource REST controller.
  *
@@ -47,14 +47,14 @@ public class TransactionControllerIntTest {
     private static final String DEFAULT_DETAILS = "AAAAAAAAAA";
     private static final String UPDATED_DETAILS = "BBBBBBBBBB";
 
-    private static final TransactionType DEFAULT_TRANSACTION_TYPE = TransactionType.INIT;
-    private static final TransactionType UPDATED_TRANSACTION_TYPE = TransactionType.AUTHORIZE;
+    private static final TransactionEnum DEFAULT_TRANSACTION_TYPE = TransactionEnum.INIT;
+    private static final TransactionEnum UPDATED_TRANSACTION_TYPE = TransactionEnum.AUTHORIZE;
 
     private static final LocalDate DEFAULT_TRANSACTION_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_TRANSACTION_DATE = LocalDate.now(ZoneId.systemDefault());
 
-    private static final PaymentType DEFAULT_PAYMENT_TYPE = PaymentType.CREDITCARD;
-    private static final PaymentType UPDATED_PAYMENT_TYPE = PaymentType.FREE;
+    private static final PaymentEnum DEFAULT_PAYMENT_TYPE = PaymentEnum.CREDITCARD;
+    private static final PaymentEnum UPDATED_PAYMENT_TYPE = PaymentEnum.FREE;
 
     private static final BigDecimal DEFAULT_AMOUNT = new BigDecimal(1);
     private static final BigDecimal UPDATED_AMOUNT = new BigDecimal(2);

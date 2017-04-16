@@ -9,9 +9,9 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import com.smartshop.eshop.domain.enumeration.OrderValueType;
+import com.smartshop.eshop.domain.enumeration.OrderValueEnum;
 
-import com.smartshop.eshop.domain.enumeration.OrderTotalType;
+import com.smartshop.eshop.domain.enumeration.OrderTotalEnum;
 
 /**
  * A OrderTotal.
@@ -39,14 +39,14 @@ public class OrderTotal extends BusinessDomain<Long,OrderTotal>  implements Seri
 
     @Enumerated(EnumType.STRING)
     @Column(name = "order_value_type")
-    private OrderValueType orderValueType;
+    private OrderValueEnum orderValueType;
 
     @Column(name = "sort_order")
     private Integer sortOrder;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "order_total_type")
-    private OrderTotalType orderTotalType;
+    private OrderTotalEnum orderTotalType;
 
     @Column(name = "title")
     private String title;
@@ -104,16 +104,16 @@ public class OrderTotal extends BusinessDomain<Long,OrderTotal>  implements Seri
         this.text = text;
     }
 
-    public OrderValueType getOrderValueType() {
+    public OrderValueEnum getOrderValueType() {
         return orderValueType;
     }
 
-    public OrderTotal orderValueType(OrderValueType orderValueType) {
+    public OrderTotal orderValueType(OrderValueEnum orderValueType) {
         this.orderValueType = orderValueType;
         return this;
     }
 
-    public void setOrderValueType(OrderValueType orderValueType) {
+    public void setOrderValueType(OrderValueEnum orderValueType) {
         this.orderValueType = orderValueType;
     }
 
@@ -130,16 +130,16 @@ public class OrderTotal extends BusinessDomain<Long,OrderTotal>  implements Seri
         this.sortOrder = sortOrder;
     }
 
-    public OrderTotalType getOrderTotalType() {
+    public OrderTotalEnum getOrderTotalType() {
         return orderTotalType;
     }
 
-    public OrderTotal orderTotalType(OrderTotalType orderTotalType) {
+    public OrderTotal orderTotalType(OrderTotalEnum orderTotalType) {
         this.orderTotalType = orderTotalType;
         return this;
     }
 
-    public void setOrderTotalType(OrderTotalType orderTotalType) {
+    public void setOrderTotalType(OrderTotalEnum orderTotalType) {
         this.orderTotalType = orderTotalType;
     }
 

@@ -33,10 +33,10 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.smartshop.eshop.domain.enumeration.PaymentType;
-import com.smartshop.eshop.domain.enumeration.OrderChannel;
-import com.smartshop.eshop.domain.enumeration.OrderType;
-import com.smartshop.eshop.domain.enumeration.OrderStatus;
+import com.smartshop.eshop.domain.enumeration.PaymentEnum;
+import com.smartshop.eshop.domain.enumeration.OrderChannelEnum;
+import com.smartshop.eshop.domain.enumeration.OrderEnum;
+import com.smartshop.eshop.domain.enumeration.OrderStatusEnum;
 /**
  * Test class for the SalesOrderResource REST controller.
  *
@@ -61,23 +61,23 @@ public class SalesOrderControllerIntTest {
     private static final String DEFAULT_PAYMENT_MODULE_CODE = "AAAAAAAAAA";
     private static final String UPDATED_PAYMENT_MODULE_CODE = "BBBBBBBBBB";
 
-    private static final PaymentType DEFAULT_PAYMENT_TYPE = PaymentType.CREDITCARD;
-    private static final PaymentType UPDATED_PAYMENT_TYPE = PaymentType.FREE;
+    private static final PaymentEnum DEFAULT_PAYMENT_TYPE = PaymentEnum.CREDITCARD;
+    private static final PaymentEnum UPDATED_PAYMENT_TYPE = PaymentEnum.FREE;
 
     private static final String DEFAULT_LOCALE = "AAAAAAAAAA";
     private static final String UPDATED_LOCALE = "BBBBBBBBBB";
 
-    private static final OrderChannel DEFAULT_CHANNEL = OrderChannel.ONLINE;
-    private static final OrderChannel UPDATED_CHANNEL = OrderChannel.ONLINE;
+    private static final OrderChannelEnum DEFAULT_CHANNEL = OrderChannelEnum.ONLINE;
+    private static final OrderChannelEnum UPDATED_CHANNEL = OrderChannelEnum.ONLINE;
 
     private static final String DEFAULT_CUSTOMER_EMAIL_ADDRESS = "AAAAAAAAAA";
     private static final String UPDATED_CUSTOMER_EMAIL_ADDRESS = "BBBBBBBBBB";
 
-    private static final OrderType DEFAULT_ORDER_TYPE = OrderType.ORDER;
-    private static final OrderType UPDATED_ORDER_TYPE = OrderType.BOOKING;
+    private static final OrderEnum DEFAULT_ORDER_TYPE = OrderEnum.ORDER;
+    private static final OrderEnum UPDATED_ORDER_TYPE = OrderEnum.BOOKING;
 
-    private static final OrderStatus DEFAULT_STATUS = OrderStatus.ORDERED;
-    private static final OrderStatus UPDATED_STATUS = OrderStatus.PROCESSED;
+    private static final OrderStatusEnum DEFAULT_STATUS = OrderStatusEnum.ORDERED;
+    private static final OrderStatusEnum UPDATED_STATUS = OrderStatusEnum.PROCESSED;
 
     private static final LocalDate DEFAULT_LAST_MODIFIED = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_LAST_MODIFIED = LocalDate.now(ZoneId.systemDefault());

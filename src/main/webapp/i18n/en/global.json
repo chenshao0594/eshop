@@ -58,6 +58,8 @@
                  "orderProductAttribute": "Order Product Attribute",
                 "template": "Template",
                 "productAvailability": "Product Availability",
+                "emailTemplate": "Email Template",
+                "emailSetting": "Email Setting",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "categories": {

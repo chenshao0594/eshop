@@ -23,8 +23,8 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.smartshop.eshop.domain.enumeration.ContentPosition;
-import com.smartshop.eshop.domain.enumeration.ContentType;
+import com.smartshop.eshop.domain.enumeration.ContentPositionEnum;
+import com.smartshop.eshop.domain.enumeration.ContentTypeEnum;
 
 /**
  * A Content.
@@ -49,7 +49,7 @@ public class Content extends BusinessDomain<Long,Content>  implements Serializab
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "content_type")
-	private ContentType contentType;
+	private ContentTypeEnum contentType;
 
 	@NotNull
 	@Column(name = "code", nullable = false)
@@ -60,7 +60,7 @@ public class Content extends BusinessDomain<Long,Content>  implements Serializab
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "content_position")
-	private ContentPosition contentPosition;
+	private ContentPositionEnum contentPosition;
 
 	@OneToMany(mappedBy = "content")
 	@JsonIgnore
@@ -104,16 +104,16 @@ public class Content extends BusinessDomain<Long,Content>  implements Serializab
 		this.productGroup = productGroup;
 	}
 
-	public ContentType getContentType() {
+	public ContentTypeEnum getContentType() {
 		return contentType;
 	}
 
-	public Content contentType(ContentType contentType) {
+	public Content contentType(ContentTypeEnum contentType) {
 		this.contentType = contentType;
 		return this;
 	}
 
-	public void setContentType(ContentType contentType) {
+	public void setContentType(ContentTypeEnum contentType) {
 		this.contentType = contentType;
 	}
 
@@ -143,16 +143,16 @@ public class Content extends BusinessDomain<Long,Content>  implements Serializab
 		this.visible = visible;
 	}
 
-	public ContentPosition getContentPosition() {
+	public ContentPositionEnum getContentPosition() {
 		return contentPosition;
 	}
 
-	public Content contentPosition(ContentPosition contentPosition) {
+	public Content contentPosition(ContentPositionEnum contentPosition) {
 		this.contentPosition = contentPosition;
 		return this;
 	}
 
-	public void setContentPosition(ContentPosition contentPosition) {
+	public void setContentPosition(ContentPositionEnum contentPosition) {
 		this.contentPosition = contentPosition;
 	}
 

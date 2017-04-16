@@ -33,7 +33,7 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.smartshop.eshop.domain.enumeration.ProductPriceType;
+import com.smartshop.eshop.domain.enumeration.ProductPriceEnum;
 /**
  * Test class for the ProductPriceResource REST controller.
  *
@@ -61,8 +61,8 @@ public class ProductPriceControllerIntTest {
     private static final BigDecimal DEFAULT_PRODUCT_PRICE_SPECIAL_AMOUNT = new BigDecimal(1);
     private static final BigDecimal UPDATED_PRODUCT_PRICE_SPECIAL_AMOUNT = new BigDecimal(2);
 
-    private static final ProductPriceType DEFAULT_PRODUCT_PRICE_TYPE = ProductPriceType.ONE_TIME;
-    private static final ProductPriceType UPDATED_PRODUCT_PRICE_TYPE = ProductPriceType.MONTHLY;
+    private static final ProductPriceEnum DEFAULT_PRODUCT_PRICE_TYPE = ProductPriceEnum.ONE_TIME;
+    private static final ProductPriceEnum UPDATED_PRODUCT_PRICE_TYPE = ProductPriceEnum.MONTHLY;
 
     private static final LocalDate DEFAULT_PRODUCT_PRICE_SPECIAL_START_DATE = LocalDate.ofEpochDay(0L);
     private static final LocalDate UPDATED_PRODUCT_PRICE_SPECIAL_START_DATE = LocalDate.now(ZoneId.systemDefault());

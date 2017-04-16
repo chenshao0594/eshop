@@ -30,8 +30,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.smartshop.eshop.domain.enumeration.ContentType;
-import com.smartshop.eshop.domain.enumeration.ContentPosition;
+import com.smartshop.eshop.domain.enumeration.ContentTypeEnum;
+import com.smartshop.eshop.domain.enumeration.ContentPositionEnum;
 /**
  * Test class for the ContentResource REST controller.
  *
@@ -47,8 +47,8 @@ public class ContentControllerIntTest {
     private static final String DEFAULT_PRODUCT_GROUP = "AAAAAAAAAA";
     private static final String UPDATED_PRODUCT_GROUP = "BBBBBBBBBB";
 
-    private static final ContentType DEFAULT_CONTENT_TYPE = ContentType.BOX;
-    private static final ContentType UPDATED_CONTENT_TYPE = ContentType.PAGE;
+    private static final ContentTypeEnum DEFAULT_CONTENT_TYPE = ContentTypeEnum.BOX;
+    private static final ContentTypeEnum UPDATED_CONTENT_TYPE = ContentTypeEnum.PAGE;
 
     private static final String DEFAULT_CODE = "AAAAAAAAAA";
     private static final String UPDATED_CODE = "BBBBBBBBBB";
@@ -56,8 +56,8 @@ public class ContentControllerIntTest {
     private static final Boolean DEFAULT_VISIBLE = false;
     private static final Boolean UPDATED_VISIBLE = true;
 
-    private static final ContentPosition DEFAULT_CONTENT_POSITION = ContentPosition.LEFT;
-    private static final ContentPosition UPDATED_CONTENT_POSITION = ContentPosition.RIGHT;
+    private static final ContentPositionEnum DEFAULT_CONTENT_POSITION = ContentPositionEnum.LEFT;
+    private static final ContentPositionEnum UPDATED_CONTENT_POSITION = ContentPositionEnum.RIGHT;
 
     @Autowired
     private ContentRepository contentRepository;

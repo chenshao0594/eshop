@@ -31,8 +31,8 @@ import static org.hamcrest.Matchers.hasItem;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-import com.smartshop.eshop.domain.enumeration.OrderValueType;
-import com.smartshop.eshop.domain.enumeration.OrderTotalType;
+import com.smartshop.eshop.domain.enumeration.OrderValueEnum;
+import com.smartshop.eshop.domain.enumeration.OrderTotalEnum;
 /**
  * Test class for the OrderTotalResource REST controller.
  *
@@ -51,14 +51,14 @@ public class OrderTotalControllerIntTest {
     private static final String DEFAULT_TEXT = "AAAAAAAAAA";
     private static final String UPDATED_TEXT = "BBBBBBBBBB";
 
-    private static final OrderValueType DEFAULT_ORDER_VALUE_TYPE = OrderValueType.ONE_TIME;
-    private static final OrderValueType UPDATED_ORDER_VALUE_TYPE = OrderValueType.MONTHLY;
+    private static final OrderValueEnum DEFAULT_ORDER_VALUE_TYPE = OrderValueEnum.ONE_TIME;
+    private static final OrderValueEnum UPDATED_ORDER_VALUE_TYPE = OrderValueEnum.MONTHLY;
 
     private static final Integer DEFAULT_SORT_ORDER = 1;
     private static final Integer UPDATED_SORT_ORDER = 2;
 
-    private static final OrderTotalType DEFAULT_ORDER_TOTAL_TYPE = OrderTotalType.SHIPPING;
-    private static final OrderTotalType UPDATED_ORDER_TOTAL_TYPE = OrderTotalType.HANDLING;
+    private static final OrderTotalEnum DEFAULT_ORDER_TOTAL_TYPE = OrderTotalEnum.SHIPPING;
+    private static final OrderTotalEnum UPDATED_ORDER_TOTAL_TYPE = OrderTotalEnum.HANDLING;
 
     private static final String DEFAULT_TITLE = "AAAAAAAAAA";
     private static final String UPDATED_TITLE = "BBBBBBBBBB";
