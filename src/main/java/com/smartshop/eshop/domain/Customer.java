@@ -10,9 +10,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -32,7 +35,6 @@ import com.smartshop.eshop.domain.enumeration.CustomerGender;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "customer")
 public class Customer extends BusinessDomain<Long, Customer> implements Serializable {
-
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -71,6 +73,14 @@ public class Customer extends BusinessDomain<Long, Customer> implements Serializ
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductReview> reviews = new HashSet<>();
+
+    @ManyToOne(optional = false)
+    @NotNull
+    private MerchantStore merchantStore;
+
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Language.class)
+	@JoinColumn(name = "LANGUAGE_ID", nullable=false)
+    private Language defaultLanguage;
 
     public Long getId() {
         return id;
@@ -219,6 +229,32 @@ public class Customer extends BusinessDomain<Long, Customer> implements Serializ
 
     public void setReviews(Set<ProductReview> productReviews) {
         this.reviews = productReviews;
+    }
+
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
+
+    public Customer merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
+    }
+
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
+
+    public Language getDefaultLanguage() {
+        return defaultLanguage;
+    }
+
+    public Customer defaultLanguage(Language language) {
+        this.defaultLanguage = language;
+        return this;
+    }
+
+    public void setDefaultLanguage(Language language) {
+        this.defaultLanguage = language;
     }
 
     @Override

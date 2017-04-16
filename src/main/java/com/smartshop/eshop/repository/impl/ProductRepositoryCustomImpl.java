@@ -19,8 +19,11 @@ import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.domain.Product;
 import com.smartshop.eshop.domain.TaxClass;
 import com.smartshop.eshop.service.impl.ProductRepositoryCustom;
+import com.smartshop.eshop.temp.AttributeCriteria;
+import com.smartshop.eshop.temp.ProductCriteria;
+import com.smartshop.eshop.temp.ProductList;
 
-public class ProductRepositoryImpl implements ProductRepositoryCustom {
+public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
 	@PersistenceContext
 	private EntityManager em;

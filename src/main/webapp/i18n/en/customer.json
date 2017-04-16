@@ -24,7 +24,9 @@
             "emailAddress": "Email Address",
             "password": "Password",
             "attributes": "Attributes",
-            "reviews": "Reviews"
+            "reviews": "Reviews",
+            "merchantStore": "Merchant Store",
+            "defaultLanguage": "Default Language"
         }
     }
 }

@@ -1,13 +1,22 @@
 package com.smartshop.eshop.repository;
 
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.smartshop.eshop.domain.CustomerOption;
 
-/**
- * Spring Data JPA repository for the CustomerOption entity.
- */
-@SuppressWarnings("unused")
-public interface CustomerOptionRepository extends JpaRepository<CustomerOption,Long> {
+public interface CustomerOptionRepository extends JpaRepository<CustomerOption, Long> {
+
+	
+	@Query("select o from CustomerOption o join fetch o.merchantStore om left join fetch o.descriptions od where o.id = ?1")
+	CustomerOption findOne(Long id);
+	
+	@Query("select o from CustomerOption o join fetch o.merchantStore om left join fetch o.descriptions od where om.id = ?1 and o.code = ?2")
+	CustomerOption findByCode(Integer merchantId, String code);
+	
+	@Query("select o from CustomerOption o join fetch o.merchantStore om left join fetch o.descriptions od where om.id = ?1 and od.language.id = ?2")
+	List<CustomerOption> findByStore(Integer merchantId, Integer languageId);
 
 }

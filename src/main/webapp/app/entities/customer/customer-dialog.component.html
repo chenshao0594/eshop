@@ -65,6 +65,25 @@
              />
         </div>
 
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.customer.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="customer.merchantStore"  required>
+                <option [ngValue]="merchantStoreOption.id === customer.merchantStore?.id ? customer.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.storename}}</option>
+            </select>
+        </div>
+        <div [hidden]="!(editForm.controls.merchantStore?.dirty && editForm.controls.merchantStore?.invalid)">
+            <small class="form-text text-danger"
+                [hidden]="!editForm.controls.merchantStore?.errors?.required" jhiTranslate="entity.validation.required">
+                This field is required.
+            </small>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.customer.defaultLanguage" for="field_defaultLanguage">Default Language</label>
+            <select class="form-control" id="field_defaultLanguage" name="defaultLanguage" [(ngModel)]="customer.defaultLanguage" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === customer.defaultLanguage?.id ? customer.defaultLanguage : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

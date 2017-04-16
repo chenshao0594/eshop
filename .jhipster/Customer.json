@@ -12,6 +12,21 @@
             "relationshipName": "reviews",
             "otherEntityName": "productReview",
             "otherEntityRelationshipName": "customer"
+        },
+        {
+            "relationshipName": "merchantStore",
+            "otherEntityName": "merchantStore",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [
+                "required"
+            ],
+            "otherEntityField": "storename"
+        },
+        {
+            "relationshipName": "defaultLanguage",
+            "otherEntityName": "language",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -49,9 +64,8 @@
         }
     ],
     "changelogDate": "20170415184202",
-    "entityTableName": "customer",
     "dto": "no",
-    "pagination": "pagination",
     "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+    "entityTableName": "customer",
+    "pagination": "pagination"
 }

@@ -8,6 +8,8 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { Customer } from './customer.model';
 import { CustomerPopupService } from './customer-popup.service';
 import { CustomerService } from './customer.service';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-customer-dialog',
@@ -18,10 +20,16 @@ export class CustomerDialogComponent implements OnInit {
     customer: Customer;
     authorities: any[];
     isSaving: boolean;
+
+    merchantstores: MerchantStore[];
+
+    languages: Language[];
         constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private customerService: CustomerService,
+        private merchantStoreService: MerchantStoreService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['customer', 'customerGender']);
@@ -31,6 +39,10 @@ export class CustomerDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +79,14 @@ export class CustomerDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
+        return item.id;
     }
 }
 

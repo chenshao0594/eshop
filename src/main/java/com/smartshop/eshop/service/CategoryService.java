@@ -22,7 +22,7 @@ public interface CategoryService extends AbstractDomainService<Category, Long> {
 
 	void addCategoryDescription(Category category, CategoryDescription description) throws ServiceException;
 
-	void addChild(Category parent, Category child) throws ServiceException, com.smartshop.eshop.exception.ServiceException;
+	void addChild(Category parent, Category child) throws ServiceException, com.smartshop.eshop.exception.BusinessException;
 
 	List<Category> listByParent(Category category) throws ServiceException;
 

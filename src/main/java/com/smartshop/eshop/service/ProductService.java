@@ -11,6 +11,8 @@ import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.domain.Product;
 import com.smartshop.eshop.domain.ProductDescription;
 import com.smartshop.eshop.domain.TaxClass;
+import com.smartshop.eshop.temp.ProductCriteria;
+import com.smartshop.eshop.temp.ProductList;
 
 /**
  * Service Interface for managing Product.
@@ -26,7 +28,8 @@ void addProductDescription(Product product, ProductDescription description) thro
 
 	List<Product> getProducts(List<Long> categoryIds) throws ServiceException;
 
-	List<Product> listByStore(MerchantStore store, Language language);
+	ProductList listByStore(MerchantStore store, Language language,
+			ProductCriteria criteria);
 
 	List<Product> listByStore(MerchantStore store);
 
@@ -44,7 +47,4 @@ void addProductDescription(Product product, ProductDescription description) thro
 	 * @return
 	 */
 	Product getByCode(String productCode, Language language);
-
-	void create(Product product) throws ServiceException;
-
-     }
+	}

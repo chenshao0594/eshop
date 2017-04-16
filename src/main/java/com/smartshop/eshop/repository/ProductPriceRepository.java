@@ -1,13 +1,15 @@
 package com.smartshop.eshop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.smartshop.eshop.domain.ProductPrice;
 
-/**
- * Spring Data JPA repository for the ProductPrice entity.
- */
-@SuppressWarnings("unused")
-public interface ProductPriceRepository extends JpaRepository<ProductPrice,Long> {
+public interface ProductPriceRepository extends JpaRepository<ProductPrice, Long> {
 
+
+	@Query("select p from ProductPrice p left join fetch p.descriptions pd inner join fetch p.productAvailability pa inner join fetch pa.product pap inner join fetch pap.merchantStore papm where p.id = ?1")
+	ProductPrice findOne(Long id);
+	
+	
 }

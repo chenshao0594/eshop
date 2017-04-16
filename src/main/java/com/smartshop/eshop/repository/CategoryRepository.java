@@ -6,12 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 import com.smartshop.eshop.domain.Category;
+import com.smartshop.eshop.domain.MerchantStore;
 
-/**
- * Spring Data JPA repository for the Category entity.
- */
-@SuppressWarnings("unused")
-public interface CategoryRepository extends JpaRepository<Category,Long> {
+
+public interface CategoryRepository extends JpaRepository<Category, Long>, CategoryRepositoryCustom {
+	
 
 	@Query("select c from Category c left join fetch c.descriptions cd join fetch cd.language cdl join fetch c.merchantStore cm where cd.seUrl like ?2 and cm.id = ?1 order by c.sortOrder asc")
 	List<Category> listByFriendlyUrl(Long storeId, String friendlyUrl);
@@ -55,8 +54,8 @@ public interface CategoryRepository extends JpaRepository<Category,Long> {
 	@Query("select distinct c from Category c left join fetch c.descriptions cd join fetch cd.language cdl join fetch c.merchantStore cm where cm.id=?1 and cdl.id=?3 and c.depth >= ?2 order by c.lineage, c.sortOrder asc")
 	public List<Category> findByDepth(Long merchantId, int depth, Long languageId);
 	
-	//@Query("select distinct c from Category c left join fetch c.descriptions cd join fetch c.merchantStore cm left join fetch c.parent cp where cm.id=?1 and cp.id=?2 and cd.language.id=?3 order by c.lineage, c.sortOrder asc")
-	//public List<Category> findByParent(Long merchantId, Long parentId, Long languageId);
+	@Query("select distinct c from Category c left join fetch c.descriptions cd join fetch c.merchantStore cm left join fetch c.parent cp where cm.id=?1 and cp.id=?2 and cd.language.id=?3 order by c.lineage, c.sortOrder asc")
+	public List<Category> findByParent(Long merchantId, Long parentId, Long languageId);
 	
 	@Query("select distinct c from Category c left join fetch c.descriptions cd join fetch cd.language cdl join fetch c.merchantStore cm left join fetch c.parent cp where cp.id=?1 and cdl.id=?2 order by c.lineage, c.sortOrder asc")
 	public List<Category> findByParent(Long parentId, Long languageId);
@@ -67,4 +66,9 @@ public interface CategoryRepository extends JpaRepository<Category,Long> {
 	@Query("select distinct c from Category c left join fetch c.descriptions cd join fetch cd.language cdl join fetch c.merchantStore cm where cm.id=?1 order by c.lineage, c.sortOrder asc")
 	public List<Category> findByStore(Long merchantId);
 
+	List<Object[]> countProductsByCategories(MerchantStore store,
+			List<Long> categoryIds);
+
+	List<Category> listByStoreAndParent(MerchantStore store, Category category);
+	
 }

@@ -23,7 +23,7 @@ import com.smartshop.eshop.domain.CategoryDescription;
 import com.smartshop.eshop.domain.Language;
 import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.domain.Product;
-import com.smartshop.eshop.exception.ServiceException;
+import com.smartshop.eshop.exception.BusinessException;
 import com.smartshop.eshop.repository.CategoryRepository;
 import com.smartshop.eshop.repository.search.CategorySearchRepository;
 import com.smartshop.eshop.service.CategoryService;
@@ -109,23 +109,15 @@ public class CategoryServiceImpl extends AbstractDomainServiceImpl<Category, Lon
 
 		// save or update (persist and attach entities
 		if (category.getId() != null && category.getId() > 0) {
-
 			super.update(category);
-
 		} else {
-
 			super.save(category);
-
 		}
-
 	}
-
 	@Override
 	public List<Category> listByLineage(MerchantStore store, String lineage) {
 		return categoryRepository.findByLineage(store.getId(), lineage);
-
 	}
-
 	@Override
 	public List<Category> listByLineage(String storeCode, String lineage) {
 		return categoryRepository.findByLineage(storeCode, lineage);
@@ -253,10 +245,10 @@ public class CategoryServiceImpl extends AbstractDomainServiceImpl<Category, Lon
 	}
 
 	@Override
-	public void addChild(Category parent, Category child) throws ServiceException {
+	public void addChild(Category parent, Category child) throws BusinessException {
 
 		if (child == null || child.getMerchantStore() == null) {
-			throw new ServiceException("Child category and merchant store should not be null");
+			throw new BusinessException("Child category and merchant store should not be null");
 		}
 
 		try {
@@ -288,7 +280,7 @@ public class CategoryServiceImpl extends AbstractDomainServiceImpl<Category, Lon
 				}
 			}
 		} catch (Exception e) {
-			throw new ServiceException(e);
+			throw new BusinessException(e);
 		}
 	}
 

@@ -1,5 +1,6 @@
 package com.smartshop.eshop.domain;
 
+import java.io.InputStream;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
@@ -14,6 +15,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
@@ -59,6 +61,8 @@ public class ProductImage extends BusinessDomain<Long, ProductImage> implements 
     @Lob
     @Column(name = "image_content", nullable = false)
     private byte[] imageContent;
+    @Transient
+	private InputStream image = null;
 
     @Column(name = "image_content_content_type", nullable = false)
     private String imageContentContentType;
@@ -222,6 +226,14 @@ public class ProductImage extends BusinessDomain<Long, ProductImage> implements 
 
 	public Boolean getImageCrop() {
 		return imageCrop;
+	}
+
+	public InputStream getImage() {
+		return image;
+	}
+
+	public void setImage(InputStream image) {
+		this.image = image;
 	}
 
    

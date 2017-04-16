@@ -110,5 +110,6 @@
     <include file="classpath:config/liquibase/changelog/20170415184210_added_entity_constraints_Zone.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184211_added_entity_constraints_ProductAttribute.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184212_added_entity_constraints_TaxRateDescription.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184202_added_entity_constraints_Customer.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

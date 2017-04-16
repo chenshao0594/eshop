@@ -7,9 +7,12 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
@@ -52,6 +55,10 @@ public class ProductOptionValue extends BusinessDomain<Long,ProductOptionValue >
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductOptionValueDescription> descriptions = new HashSet<>();
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="MERCHANT_ID", nullable=false)
+	private MerchantStore merchantStore;
 
     public Long getId() {
         return id;
@@ -138,34 +145,15 @@ public class ProductOptionValue extends BusinessDomain<Long,ProductOptionValue >
         this.descriptions = productOptionValueDescriptions;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductOptionValue productOptionValue = (ProductOptionValue) o;
-        if (productOptionValue.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, productOptionValue.id);
-    }
+	public MerchantStore getMerchantStore() {
+		return merchantStore;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ProductOptionValue{" +
-            "id=" + id +
-            ", productOptionValueImage='" + productOptionValueImage + "'" +
-            ", code='" + code + "'" +
-            ", productOptionValueSortOrder='" + productOptionValueSortOrder + "'" +
-            ", productOptionDisplayOnly='" + productOptionDisplayOnly + "'" +
-            '}';
-    }
+	public void setMerchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+	}
+	
+	public Boolean getProductOptionDisplayOnly() {
+		return productOptionDisplayOnly;
+	}
 }

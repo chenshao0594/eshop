@@ -1,7 +1,9 @@
 package com.smartshop.eshop.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -14,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
@@ -33,179 +36,153 @@ import com.smartshop.eshop.domain.enumeration.ContentType;
 @Document(indexName = "content")
 public class Content extends BusinessDomain<Long, Content> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "sort_order")
-    private Integer sortOrder;
+	@Column(name = "sort_order")
+	private Integer sortOrder;
 
-    @Column(name = "product_group")
-    private String productGroup;
+	@Column(name = "product_group")
+	private String productGroup;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "content_type")
-    private ContentType contentType;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "content_type")
+	private ContentType contentType;
 
-    @NotNull
-    @Column(name = "code", nullable = false)
-    private String code;
+	@NotNull
+	@Column(name = "code", nullable = false)
+	private String code;
 
-    @Column(name = "visible")
-    private Boolean visible;
+	@Column(name = "visible")
+	private Boolean visible;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "content_position")
-    private ContentPosition contentPosition;
+	@Enumerated(EnumType.STRING)
+	@Column(name = "content_position")
+	private ContentPosition contentPosition;
 
-    @OneToMany(mappedBy = "content")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ContentDescription> descriptions = new HashSet<>();
+	@Valid
+	@JsonIgnore
+	@OneToMany(mappedBy = "content")
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	private List<ContentDescription> descriptions = new ArrayList<ContentDescription>();
 
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
+	public Integer getSortOrder() {
+		return sortOrder;
+	}
 
-    public Content sortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
-        return this;
-    }
+	public Content sortOrder(Integer sortOrder) {
+		this.sortOrder = sortOrder;
+		return this;
+	}
 
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
-    }
+	public void setSortOrder(Integer sortOrder) {
+		this.sortOrder = sortOrder;
+	}
 
-    public String getProductGroup() {
-        return productGroup;
-    }
+	public String getProductGroup() {
+		return productGroup;
+	}
 
-    public Content productGroup(String productGroup) {
-        this.productGroup = productGroup;
-        return this;
-    }
+	public Content productGroup(String productGroup) {
+		this.productGroup = productGroup;
+		return this;
+	}
 
-    public void setProductGroup(String productGroup) {
-        this.productGroup = productGroup;
-    }
+	public void setProductGroup(String productGroup) {
+		this.productGroup = productGroup;
+	}
 
-    public ContentType getContentType() {
-        return contentType;
-    }
+	public ContentType getContentType() {
+		return contentType;
+	}
 
-    public Content contentType(ContentType contentType) {
-        this.contentType = contentType;
-        return this;
-    }
+	public Content contentType(ContentType contentType) {
+		this.contentType = contentType;
+		return this;
+	}
 
-    public void setContentType(ContentType contentType) {
-        this.contentType = contentType;
-    }
+	public void setContentType(ContentType contentType) {
+		this.contentType = contentType;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public Content code(String code) {
-        this.code = code;
-        return this;
-    }
+	public Content code(String code) {
+		this.code = code;
+		return this;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public Boolean isVisible() {
-        return visible;
-    }
+	public Boolean isVisible() {
+		return visible;
+	}
 
-    public Content visible(Boolean visible) {
-        this.visible = visible;
-        return this;
-    }
+	public Content visible(Boolean visible) {
+		this.visible = visible;
+		return this;
+	}
 
-    public void setVisible(Boolean visible) {
-        this.visible = visible;
-    }
+	public void setVisible(Boolean visible) {
+		this.visible = visible;
+	}
 
-    public ContentPosition getContentPosition() {
-        return contentPosition;
-    }
+	public ContentPosition getContentPosition() {
+		return contentPosition;
+	}
 
-    public Content contentPosition(ContentPosition contentPosition) {
-        this.contentPosition = contentPosition;
-        return this;
-    }
+	public Content contentPosition(ContentPosition contentPosition) {
+		this.contentPosition = contentPosition;
+		return this;
+	}
 
-    public void setContentPosition(ContentPosition contentPosition) {
-        this.contentPosition = contentPosition;
-    }
+	public void setContentPosition(ContentPosition contentPosition) {
+		this.contentPosition = contentPosition;
+	}
 
-    public Set<ContentDescription> getDescriptions() {
-        return descriptions;
-    }
+	public List<ContentDescription> getDescriptions() {
+		return descriptions;
+	}
 
-    public Content descriptions(Set<ContentDescription> contentDescriptions) {
-        this.descriptions = contentDescriptions;
-        return this;
-    }
+	public Content descriptions(List<ContentDescription> contentDescriptions) {
+		this.descriptions = contentDescriptions;
+		return this;
+	}
+	public ContentDescription getDescription() {
+		if(this.getDescriptions()!=null && this.getDescriptions().size()>0) {
+			return this.getDescriptions().get(0);
+		}
+		return null;
+	}
 
-    public Content addDescriptions(ContentDescription contentDescription) {
-        this.descriptions.add(contentDescription);
-        contentDescription.setContent(this);
-        return this;
-    }
+	public Content addDescriptions(ContentDescription contentDescription) {
+		this.descriptions.add(contentDescription);
+		contentDescription.setContent(this);
+		return this;
+	}
 
-    public Content removeDescriptions(ContentDescription contentDescription) {
-        this.descriptions.remove(contentDescription);
-        contentDescription.setContent(null);
-        return this;
-    }
+	public Content removeDescriptions(ContentDescription contentDescription) {
+		this.descriptions.remove(contentDescription);
+		contentDescription.setContent(null);
+		return this;
+	}
 
-    public void setDescriptions(Set<ContentDescription> contentDescriptions) {
-        this.descriptions = contentDescriptions;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Content content = (Content) o;
-        if (content.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, content.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Content{" +
-            "id=" + id +
-            ", sortOrder='" + sortOrder + "'" +
-            ", productGroup='" + productGroup + "'" +
-            ", contentType='" + contentType + "'" +
-            ", code='" + code + "'" +
-            ", visible='" + visible + "'" +
-            ", contentPosition='" + contentPosition + "'" +
-            '}';
-    }
+	public void setDescriptions(List<ContentDescription> contentDescriptions) {
+		this.descriptions = contentDescriptions;
+	}
 }

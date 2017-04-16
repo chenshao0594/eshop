@@ -8,6 +8,8 @@ import com.smartshop.eshop.domain.Language;
 import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.domain.Product;
 import com.smartshop.eshop.domain.TaxClass;
+import com.smartshop.eshop.temp.ProductCriteria;
+import com.smartshop.eshop.temp.ProductList;
 
 public interface ProductRepositoryCustom {
 	
@@ -21,7 +23,6 @@ public interface ProductRepositoryCustom {
 
 	List<Product> listByTaxClass(TaxClass taxClass);
 
-	List<Product> listByStore(MerchantStore store);
 
 	Product getProductForLocale(long productId, Language language,
 			Locale locale);
@@ -32,5 +33,9 @@ public interface ProductRepositoryCustom {
 
 	List<Product> getProductsForLocale(MerchantStore store,
 			Set<Long> categoryIds, Language language, Locale locale);
+
+	ProductList listByStore(MerchantStore store, Language language, ProductCriteria criteria);
+
+	List<Product> listByStore(MerchantStore store);
 
 }
