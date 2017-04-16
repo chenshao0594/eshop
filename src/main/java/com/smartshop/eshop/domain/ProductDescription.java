@@ -1,67 +1,56 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A ProductDescription.
  */
 @Entity
-@Table(name = "product_description")
+@Table(name = "product_description",uniqueConstraints={
+		@UniqueConstraint(columnNames={
+				"PRODUCT_ID",
+				"LANGUAGE_ID"
+			})
+		})
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productdescription")
-public class ProductDescription extends BusinessDomain implements Serializable {
+public class ProductDescription extends Description implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+   
+    @ManyToOne(targetEntity = Product.class)
+	@JoinColumn(name = "PRODUCT_ID", nullable = false)
+	private Product product;
+	
+	@Column(name = "PRODUCT_HIGHLIGHT")
+	private String productHighlight;
 
-    @Column(name = "metatag_description")
-    private String metatagDescription;
+	@Column(name = "DOWNLOAD_LNK")
+	private String productExternalDl;
 
-    @Column(name = "se_url")
-    private String seUrl;
+	@Column(name = "SEF_URL")
+	private String seUrl;
 
-    @Column(name = "metatag_keywords")
-    private String metatagKeywords;
+	@Column(name = "META_TITLE")
+	private String metatagTitle;
 
-    @Column(name = "product_highlight")
-    private String productHighlight;
+	@Column(name = "META_KEYWORDS")
+	private String metatagKeywords;
 
-    @Column(name = "title")
-    private String title;
-
-    @Column(name = "description")
-    private String description;
-
-    @Column(name = "metatag_title")
-    private String metatagTitle;
-
-    @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
-
-    @Column(name = "product_external_dl")
-    private String productExternalDl;
-
-    @ManyToOne
-    private Product product;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Column(name = "META_DESCRIPTION")
+	private String metatagDescription;
 
     public String getMetatagDescription() {
         return metatagDescription;
@@ -115,117 +104,28 @@ public class ProductDescription extends BusinessDomain implements Serializable {
         this.productHighlight = productHighlight;
     }
 
-    public String getTitle() {
-        return title;
-    }
+	public Product getProduct() {
+		return product;
+	}
 
-    public ProductDescription title(String title) {
-        this.title = title;
-        return this;
-    }
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public String getProductExternalDl() {
+		return productExternalDl;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setProductExternalDl(String productExternalDl) {
+		this.productExternalDl = productExternalDl;
+	}
 
-    public ProductDescription description(String description) {
-        this.description = description;
-        return this;
-    }
+	public String getMetatagTitle() {
+		return metatagTitle;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setMetatagTitle(String metatagTitle) {
+		this.metatagTitle = metatagTitle;
+	}
 
-    public String getMetatagTitle() {
-        return metatagTitle;
-    }
-
-    public ProductDescription metatagTitle(String metatagTitle) {
-        this.metatagTitle = metatagTitle;
-        return this;
-    }
-
-    public void setMetatagTitle(String metatagTitle) {
-        this.metatagTitle = metatagTitle;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public ProductDescription name(String name) {
-        this.name = name;
-        return this;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getProductExternalDl() {
-        return productExternalDl;
-    }
-
-    public ProductDescription productExternalDl(String productExternalDl) {
-        this.productExternalDl = productExternalDl;
-        return this;
-    }
-
-    public void setProductExternalDl(String productExternalDl) {
-        this.productExternalDl = productExternalDl;
-    }
-
-    public Product getProduct() {
-        return product;
-    }
-
-    public ProductDescription product(Product product) {
-        this.product = product;
-        return this;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductDescription productDescription = (ProductDescription) o;
-        if (productDescription.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, productDescription.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ProductDescription{" +
-            "id=" + id +
-            ", metatagDescription='" + metatagDescription + "'" +
-            ", seUrl='" + seUrl + "'" +
-            ", metatagKeywords='" + metatagKeywords + "'" +
-            ", productHighlight='" + productHighlight + "'" +
-            ", title='" + title + "'" +
-            ", description='" + description + "'" +
-            ", metatagTitle='" + metatagTitle + "'" +
-            ", name='" + name + "'" +
-            ", productExternalDl='" + productExternalDl + "'" +
-            '}';
-    }
 }

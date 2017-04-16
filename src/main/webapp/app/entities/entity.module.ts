@@ -65,6 +65,7 @@ import { EshopZoneModule } from './zone/zone.module';
 import { EshopProductAttributeModule } from './product-attribute/product-attribute.module';
 import { EshopTaxRateDescriptionModule } from './tax-rate-description/tax-rate-description.module';
 import { EshopSalesOrderModule } from './sales-order/sales-order.module';
+import { EshopTemplateModule } from './template/template.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -134,6 +135,7 @@ import { EshopSalesOrderModule } from './sales-order/sales-order.module';
         EshopProductAttributeModule,
         EshopTaxRateDescriptionModule,
         EshopSalesOrderModule,
+        EshopTemplateModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

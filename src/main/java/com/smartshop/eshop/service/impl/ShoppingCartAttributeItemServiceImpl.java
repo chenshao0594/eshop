@@ -1,21 +1,14 @@
 package com.smartshop.eshop.service.impl;
 
-import com.smartshop.eshop.service.ShoppingCartAttributeItemService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
 import com.smartshop.eshop.domain.ShoppingCartAttributeItem;
 import com.smartshop.eshop.repository.ShoppingCartAttributeItemRepository;
 import com.smartshop.eshop.repository.search.ShoppingCartAttributeItemSearchRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.stereotype.Service;
-
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import com.smartshop.eshop.service.ShoppingCartAttributeItemService;
 
 /**
  * Service Implementation for managing ShoppingCartAttributeItem.

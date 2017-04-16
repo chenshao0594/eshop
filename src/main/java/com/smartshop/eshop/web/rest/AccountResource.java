@@ -1,18 +1,12 @@
 package com.smartshop.eshop.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
+import java.util.List;
+import java.util.Optional;
 
-import com.smartshop.eshop.domain.PersistentToken;
-import com.smartshop.eshop.domain.User;
-import com.smartshop.eshop.repository.PersistentTokenRepository;
-import com.smartshop.eshop.repository.UserRepository;
-import com.smartshop.eshop.security.SecurityUtils;
-import com.smartshop.eshop.service.MailService;
-import com.smartshop.eshop.service.UserService;
-import com.smartshop.eshop.service.dto.UserDTO;
-import com.smartshop.eshop.web.rest.vm.KeyAndPasswordVM;
-import com.smartshop.eshop.web.rest.vm.ManagedUserVM;
-import com.smartshop.eshop.web.rest.util.HeaderUtil;
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -21,13 +15,27 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.validation.Valid;
-import java.io.UnsupportedEncodingException;
-import java.net.URLDecoder;
-import java.util.*;
+import com.codahale.metrics.annotation.Timed;
+import com.smartshop.eshop.domain.PersistentToken;
+import com.smartshop.eshop.domain.User;
+import com.smartshop.eshop.repository.PersistentTokenRepository;
+import com.smartshop.eshop.repository.UserRepository;
+import com.smartshop.eshop.security.SecurityUtils;
+import com.smartshop.eshop.service.MailService;
+import com.smartshop.eshop.service.UserService;
+import com.smartshop.eshop.service.dto.UserDTO;
+import com.smartshop.eshop.web.rest.util.HeaderUtil;
+import com.smartshop.eshop.web.rest.vm.KeyAndPasswordVM;
+import com.smartshop.eshop.web.rest.vm.ManagedUserVM;
 
 /**
  * REST controller for managing the current user's account.

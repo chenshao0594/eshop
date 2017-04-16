@@ -1,18 +1,24 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.Objects;
-
-import com.smartshop.eshop.domain.enumeration.TransactionType;
-
 import com.smartshop.eshop.domain.enumeration.PaymentType;
+import com.smartshop.eshop.domain.enumeration.TransactionType;
 
 /**
  * A Transaction.
@@ -21,7 +27,7 @@ import com.smartshop.eshop.domain.enumeration.PaymentType;
 @Table(name = "transaction")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "transaction")
-public class Transaction extends BusinessDomain implements Serializable {
+public class Transaction extends BusinessDomain<Long, Transaction> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -117,37 +123,5 @@ public class Transaction extends BusinessDomain implements Serializable {
 
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Transaction transaction = (Transaction) o;
-        if (transaction.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, transaction.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Transaction{" +
-            "id=" + id +
-            ", details='" + details + "'" +
-            ", transactionType='" + transactionType + "'" +
-            ", transactionDate='" + transactionDate + "'" +
-            ", paymentType='" + paymentType + "'" +
-            ", amount='" + amount + "'" +
-            '}';
     }
 }

@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
+import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jhipster';
 
 import { ProductImage } from './product-image.model';
 import { ProductImagePopupService } from './product-image-popup.service';
@@ -23,6 +23,7 @@ export class ProductImageDialogComponent implements OnInit {
     products: Product[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
+        private dataUtils: DataUtils,
         private alertService: AlertService,
         private productImageService: ProductImageService,
         private productService: ProductService,
@@ -37,6 +38,26 @@ export class ProductImageDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.productService.query().subscribe(
             (res: Response) => { this.products = res.json(); }, (res: Response) => this.onError(res.json()));
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
+    }
+
+    setFileData(event, productImage, field, isImage) {
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+            if (isImage && !/^image\//.test(file.type)) {
+                return;
+            }
+            this.dataUtils.toBase64(file, (base64Data) => {
+                productImage[field] = base64Data;
+                productImage[`${field}ContentType`] = file.type;
+            });
+        }
     }
     clear() {
         window.history.back();

@@ -1,16 +1,11 @@
 package com.smartshop.eshop.service;
 
-import com.smartshop.eshop.domain.Authority;
-import com.smartshop.eshop.domain.User;
-import com.smartshop.eshop.repository.AuthorityRepository;
-import com.smartshop.eshop.repository.PersistentTokenRepository;
-import com.smartshop.eshop.config.Constants;
-import com.smartshop.eshop.repository.UserRepository;
-import com.smartshop.eshop.repository.search.UserSearchRepository;
-import com.smartshop.eshop.security.AuthoritiesConstants;
-import com.smartshop.eshop.security.SecurityUtils;
-import com.smartshop.eshop.service.util.RandomUtil;
-import com.smartshop.eshop.service.dto.UserDTO;
+import java.time.LocalDate;
+import java.time.ZonedDateTime;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -21,9 +16,17 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.LocalDate;
-import java.time.ZonedDateTime;
-import java.util.*;
+import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.domain.Authority;
+import com.smartshop.eshop.domain.User;
+import com.smartshop.eshop.repository.AuthorityRepository;
+import com.smartshop.eshop.repository.PersistentTokenRepository;
+import com.smartshop.eshop.repository.UserRepository;
+import com.smartshop.eshop.repository.search.UserSearchRepository;
+import com.smartshop.eshop.security.AuthoritiesConstants;
+import com.smartshop.eshop.security.SecurityUtils;
+import com.smartshop.eshop.service.dto.UserDTO;
+import com.smartshop.eshop.service.util.RandomUtil;
 
 /**
  * Service class for managing users.

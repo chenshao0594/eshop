@@ -1,7 +1,11 @@
 package com.smartshop.eshop.config;
 
-import com.smartshop.eshop.security.AuthoritiesConstants;
-import io.github.jhipster.config.JHipsterProperties;
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Map;
+import java.util.Optional;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -19,11 +23,9 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.server.HandshakeInterceptor;
 import org.springframework.web.socket.server.support.DefaultHandshakeHandler;
 
-import java.security.Principal;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Optional;
+import com.smartshop.eshop.security.AuthoritiesConstants;
+
+import io.github.jhipster.config.JHipsterProperties;
 
 @Configuration
 @EnableWebSocketMessageBroker

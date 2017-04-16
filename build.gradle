@@ -153,6 +153,7 @@ dependencies {
     compile ("com.zaxxer:HikariCP:${hikaricp_version}")
     compile "org.apache.commons:commons-lang3:${commons_lang_version}"
     compile "commons-io:commons-io:${commons_io_version}"
+    compile "commons-validator:commons-validator:${commons_validator_version}"
     compile "javax.transaction:javax.transaction-api"
     compile "org.ehcache:ehcache"
     compile "org.hibernate:hibernate-jcache:${hibernate_version}"

@@ -1,7 +1,8 @@
 package com.smartshop.eshop.repository.search;
 
-import com.smartshop.eshop.domain.DigitalProduct;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+
+import com.smartshop.eshop.domain.DigitalProduct;
 
 /**
  * Spring Data Elasticsearch repository for the DigitalProduct entity.

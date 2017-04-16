@@ -1,25 +1,37 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A TaxClass.
  */
 @Entity
-@Table(name = "tax_class")
+@Table(name = "tax_class",uniqueConstraints=
+			@UniqueConstraint(columnNames = {"MERCHANT_ID", "TAX_CLASS_CODE"}))
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "taxclass")
-public class TaxClass extends BusinessDomain implements Serializable {
+public class TaxClass extends BusinessDomain<Long, TaxClass> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -27,23 +39,35 @@ public class TaxClass extends BusinessDomain implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull
-    @Column(name = "title", nullable = false)
+    @NotEmpty
+    @Column(name = "TAX_CLASS_TITLE" , nullable=false , length=32 )
     private String title;
 
-    @NotNull
-    @Column(name = "code", nullable = false)
+    @NotEmpty
+    @Column(name="TAX_CLASS_CODE", nullable=false, length=10)
     private String code;
 
     @OneToMany(mappedBy = "taxClass")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Product> products = new HashSet<>();
+    private Set<Product> products = new HashSet<Product>();
 
     @OneToMany(mappedBy = "taxClass")
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<TaxRate> taxRates = new HashSet<>();
+    private Set<TaxRate> taxRates = new HashSet<TaxRate>();
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="MERCHANT_ID", nullable=true)
+	private MerchantStore merchantStore;
+    
+    public TaxClass() {
+	}
+    
+    public TaxClass(String code) {
+		this.code = code;
+		this.title = code;
+	}
 
     public Long getId() {
         return id;
@@ -129,32 +153,12 @@ public class TaxClass extends BusinessDomain implements Serializable {
         this.taxRates = taxRates;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        TaxClass taxClass = (TaxClass) o;
-        if (taxClass.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, taxClass.id);
-    }
+	public MerchantStore getMerchantStore() {
+		return merchantStore;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	public void setMerchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+	}
 
-    @Override
-    public String toString() {
-        return "TaxClass{" +
-            "id=" + id +
-            ", title='" + title + "'" +
-            ", code='" + code + "'" +
-            '}';
-    }
 }

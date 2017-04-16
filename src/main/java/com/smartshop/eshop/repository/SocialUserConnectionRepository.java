@@ -1,10 +1,11 @@
 package com.smartshop.eshop.repository;
 
-import com.smartshop.eshop.domain.SocialUserConnection;
-
-import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Set;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.smartshop.eshop.domain.SocialUserConnection;
 
 /**
  * Spring Data JPA repository for the Social User Connection entity.

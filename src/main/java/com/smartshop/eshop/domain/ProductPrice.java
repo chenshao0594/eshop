@@ -1,19 +1,29 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.smartshop.eshop.domain.enumeration.ProductPriceType;
 
 /**
@@ -23,7 +33,7 @@ import com.smartshop.eshop.domain.enumeration.ProductPriceType;
 @Table(name = "product_price")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productprice")
-public class ProductPrice extends BusinessDomain implements Serializable {
+public class ProductPrice extends BusinessDomain<Long, ProductPrice> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,7 +52,7 @@ public class ProductPrice extends BusinessDomain implements Serializable {
     private String code;
 
     @Column(name = "product_price_special_end_date")
-    private LocalDate productPriceSpecialEndDate;
+    private Date productPriceSpecialEndDate;
 
     @Column(name = "product_price_amount", precision=10, scale=2)
     private BigDecimal productPriceAmount;
@@ -55,7 +65,7 @@ public class ProductPrice extends BusinessDomain implements Serializable {
     private ProductPriceType productPriceType;
 
     @Column(name = "product_price_special_start_date")
-    private LocalDate productPriceSpecialStartDate;
+    private Date productPriceSpecialStartDate;
 
     @OneToMany(mappedBy = "productPrice")
     @JsonIgnore
@@ -112,16 +122,16 @@ public class ProductPrice extends BusinessDomain implements Serializable {
         this.code = code;
     }
 
-    public LocalDate getProductPriceSpecialEndDate() {
+    public Date getProductPriceSpecialEndDate() {
         return productPriceSpecialEndDate;
     }
 
-    public ProductPrice productPriceSpecialEndDate(LocalDate productPriceSpecialEndDate) {
+    public ProductPrice productPriceSpecialEndDate(Date productPriceSpecialEndDate) {
         this.productPriceSpecialEndDate = productPriceSpecialEndDate;
         return this;
     }
 
-    public void setProductPriceSpecialEndDate(LocalDate productPriceSpecialEndDate) {
+    public void setProductPriceSpecialEndDate(Date productPriceSpecialEndDate) {
         this.productPriceSpecialEndDate = productPriceSpecialEndDate;
     }
 
@@ -164,16 +174,16 @@ public class ProductPrice extends BusinessDomain implements Serializable {
         this.productPriceType = productPriceType;
     }
 
-    public LocalDate getProductPriceSpecialStartDate() {
+    public Date getProductPriceSpecialStartDate() {
         return productPriceSpecialStartDate;
     }
 
-    public ProductPrice productPriceSpecialStartDate(LocalDate productPriceSpecialStartDate) {
+    public ProductPrice productPriceSpecialStartDate(Date productPriceSpecialStartDate) {
         this.productPriceSpecialStartDate = productPriceSpecialStartDate;
         return this;
     }
 
-    public void setProductPriceSpecialStartDate(LocalDate productPriceSpecialStartDate) {
+    public void setProductPriceSpecialStartDate(Date productPriceSpecialStartDate) {
         this.productPriceSpecialStartDate = productPriceSpecialStartDate;
     }
 

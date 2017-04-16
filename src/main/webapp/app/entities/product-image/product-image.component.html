@@ -35,6 +35,7 @@
             <th jhiSortBy="defaultImage"><span jhiTranslate="eshopApp.productImage.defaultImage">Default Image</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="imageType"><span jhiTranslate="eshopApp.productImage.imageType">Image Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="imageCrop"><span jhiTranslate="eshopApp.productImage.imageCrop">Image Crop</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="imageContent"><span jhiTranslate="eshopApp.productImage.imageContent">Image Content</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="product.id"><span jhiTranslate="eshopApp.productImage.product">Product</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -47,6 +48,12 @@
                 <td>{{productImage.defaultImage}}</td>
                 <td>{{productImage.imageType}}</td>
                 <td>{{productImage.imageCrop}}</td>
+                <td>
+                    <a *ngIf="productImage.imageContent" (click)="openFile(productImage.imageContentContentType, productImage.imageContent)">
+                        <img [src]="'data:' + productImage.imageContentContentType + ';base64,' + productImage.imageContent" style="max-height: 30px;" alt="productImage image"/>
+                    </a>
+                    <span *ngIf="productImage.imageContent">{{productImage.imageContentContentType}}, {{byteSize(productImage.imageContent)}}</span>
+                </td>
                 <td>
                     <div *ngIf="productImage.product">
                         <a [routerLink]="['../product', productImage.product?.id ]" >{{productImage.product?.id}}</a>

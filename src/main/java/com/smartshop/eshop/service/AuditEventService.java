@@ -1,15 +1,16 @@
 package com.smartshop.eshop.service;
 
-import com.smartshop.eshop.config.audit.AuditEventConverter;
-import com.smartshop.eshop.repository.PersistenceAuditEventRepository;
 import java.time.LocalDateTime;
+import java.util.Optional;
+
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Optional;
+import com.smartshop.eshop.config.audit.AuditEventConverter;
+import com.smartshop.eshop.repository.PersistenceAuditEventRepository;
 
 /**
  * Service for managing audit events.

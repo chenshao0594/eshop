@@ -1,10 +1,9 @@
 package com.smartshop.eshop.service;
 
-import com.smartshop.eshop.domain.Authority;
-import com.smartshop.eshop.domain.User;
-import com.smartshop.eshop.repository.AuthorityRepository;
-import com.smartshop.eshop.repository.UserRepository;
-import com.smartshop.eshop.repository.search.UserSearchRepository;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Optional;
+import java.util.Set;
 
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.commons.lang3.StringUtils;
@@ -17,10 +16,11 @@ import org.springframework.social.connect.UserProfile;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.Locale;
-import java.util.Optional;
-import java.util.Set;
+import com.smartshop.eshop.domain.Authority;
+import com.smartshop.eshop.domain.User;
+import com.smartshop.eshop.repository.AuthorityRepository;
+import com.smartshop.eshop.repository.UserRepository;
+import com.smartshop.eshop.repository.search.UserSearchRepository;
 
 @Service
 public class SocialService {

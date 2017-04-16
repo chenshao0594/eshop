@@ -1,15 +1,26 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A ProductImage.
@@ -18,7 +29,7 @@ import java.util.Objects;
 @Table(name = "product_image")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productimage")
-public class ProductImage extends BusinessDomain implements Serializable {
+public class ProductImage extends BusinessDomain<Long, ProductImage> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -26,6 +37,9 @@ public class ProductImage extends BusinessDomain implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
+    private String description;
+    
     @Column(name = "product_image")
     private String productImage;
 
@@ -41,8 +55,16 @@ public class ProductImage extends BusinessDomain implements Serializable {
     @Column(name = "image_crop")
     private Boolean imageCrop;
 
-    @OneToMany(mappedBy = "productImage")
+    @NotNull
+    @Lob
+    @Column(name = "image_content", nullable = false)
+    private byte[] imageContent;
+
+    @Column(name = "image_content_content_type", nullable = false)
+    private String imageContentContentType;
+    
     @JsonIgnore
+    @OneToMany(mappedBy = "productImage",cascade = CascadeType.ALL)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductImageDescription> descriptions = new HashSet<>();
 
@@ -122,6 +144,32 @@ public class ProductImage extends BusinessDomain implements Serializable {
         this.imageCrop = imageCrop;
     }
 
+    public byte[] getImageContent() {
+        return imageContent;
+    }
+
+    public ProductImage imageContent(byte[] imageContent) {
+        this.imageContent = imageContent;
+        return this;
+    }
+
+    public void setImageContent(byte[] imageContent) {
+        this.imageContent = imageContent;
+    }
+
+    public String getImageContentContentType() {
+        return imageContentContentType;
+    }
+
+    public ProductImage imageContentContentType(String imageContentContentType) {
+        this.imageContentContentType = imageContentContentType;
+        return this;
+    }
+
+    public void setImageContentContentType(String imageContentContentType) {
+        this.imageContentContentType = imageContentContentType;
+    }
+
     public Set<ProductImageDescription> getDescriptions() {
         return descriptions;
     }
@@ -160,35 +208,21 @@ public class ProductImage extends BusinessDomain implements Serializable {
         this.product = product;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductImage productImage = (ProductImage) o;
-        if (productImage.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, productImage.id);
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    @Override
-    public String toString() {
-        return "ProductImage{" +
-            "id=" + id +
-            ", productImage='" + productImage + "'" +
-            ", productImageUrl='" + productImageUrl + "'" +
-            ", defaultImage='" + defaultImage + "'" +
-            ", imageType='" + imageType + "'" +
-            ", imageCrop='" + imageCrop + "'" +
-            '}';
-    }
+	public Boolean getDefaultImage() {
+		return defaultImage;
+	}
+
+	public Boolean getImageCrop() {
+		return imageCrop;
+	}
+
+   
 }

@@ -1,15 +1,23 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Zone.
@@ -18,7 +26,7 @@ import java.util.Objects;
 @Table(name = "zone")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "zone")
-public class Zone extends BusinessDomain implements Serializable {
+public class Zone extends BusinessDomain<Long, Zone> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -96,31 +104,4 @@ public class Zone extends BusinessDomain implements Serializable {
         this.country = country;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Zone zone = (Zone) o;
-        if (zone.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, zone.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Zone{" +
-            "id=" + id +
-            ", code='" + code + "'" +
-            '}';
-    }
 }

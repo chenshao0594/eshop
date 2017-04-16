@@ -1,17 +1,25 @@
 package com.smartshop.eshop.domain;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
-import com.smartshop.eshop.domain.enumeration.OrderValueType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import com.smartshop.eshop.domain.enumeration.OrderTotalType;
+import com.smartshop.eshop.domain.enumeration.OrderValueType;
 
 /**
  * A OrderTotal.
@@ -20,7 +28,7 @@ import com.smartshop.eshop.domain.enumeration.OrderTotalType;
 @Table(name = "order_total")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "ordertotal")
-public class OrderTotal extends BusinessDomain implements Serializable {
+public class OrderTotal extends BusinessDomain<Long, OrderTotal> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

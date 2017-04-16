@@ -35,6 +35,31 @@
                 [(ngModel)]="productImage.imageCrop"
              />
         </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productImage.imageContent" for="field_imageContent">Image Content</label>
+            <div>
+                <img [src]="'data:' + productImage.imageContentContentType + ';base64,' + productImage.imageContent" style="max-height: 100px;" *ngIf="productImage.imageContent" alt="productImage image"/>
+                <div *ngIf="productImage.imageContent" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{productImage.imageContentContentType}}, {{byteSize(productImage.imageContent)}}</span>
+                    <button type="button" (click)="productImage.imageContent=null;productImage.imageContentContentType=null;"
+                            class="btn btn-default btn-xs pull-right">
+                        <span class="fa fa-times"></span>
+                    </button>
+                </div>
+                <input type="file" (change)="setFileData($event, productImage, 'imageContent', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+            </div>
+            <input type="hidden" class="form-control" name="imageContent" id="field_imageContent"
+                [(ngModel)]="productImage.imageContent"
+            required />
+            <input type="hidden" class="form-control" name="imageContentContentType" id="field_imageContentContentType"
+                [(ngModel)]="productImage.imageContentContentType" />
+            <div [hidden]="!(editForm.controls.imageContent?.dirty && editForm.controls.imageContent?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.imageContent?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
 
         <div class="col-5 form-group ">
             <label jhiTranslate="eshopApp.productImage.product" for="field_product">Product</label>

@@ -1,13 +1,13 @@
 package com.smartshop.eshop.repository;
 
-import com.smartshop.eshop.domain.PersistentAuditEvent;
-
 import java.time.LocalDateTime;
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.smartshop.eshop.domain.PersistentAuditEvent;
 
 /**
  * Spring Data JPA repository for the PersistentAuditEvent entity.

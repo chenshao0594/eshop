@@ -1,7 +1,8 @@
 package com.smartshop.eshop.repository.search;
 
-import com.smartshop.eshop.domain.SalesOrder;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+
+import com.smartshop.eshop.domain.SalesOrder;
 
 /**
  * Spring Data Elasticsearch repository for the SalesOrder entity.

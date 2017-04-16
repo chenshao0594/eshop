@@ -70,6 +70,7 @@
     <include file="classpath:config/liquibase/changelog/20170415184211_added_entity_ProductAttribute.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184212_added_entity_TaxRateDescription.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184213_added_entity_SalesOrder.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170416032344_added_entity_Template.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
     <include file="classpath:config/liquibase/changelog/20170415183909_added_entity_constraints_Product.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184110_added_entity_constraints_OrderProductDownload.xml" relativeToChangelogFile="false"/>

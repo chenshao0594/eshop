@@ -1,9 +1,9 @@
 package com.smartshop.eshop.security;
 
-import com.smartshop.eshop.config.Constants;
-
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.stereotype.Component;
+
+import com.smartshop.eshop.config.Constants;
 
 /**
  * Implementation of AuditorAware based on Spring Security.

@@ -1,11 +1,5 @@
 package com.smartshop.eshop.config.social;
 
-import com.smartshop.eshop.repository.SocialUserConnectionRepository;
-import com.smartshop.eshop.repository.CustomSocialUsersConnectionRepository;
-import com.smartshop.eshop.security.social.CustomSignInAdapter;
-
-import io.github.jhipster.config.JHipsterProperties;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
@@ -28,6 +22,12 @@ import org.springframework.social.google.connect.GoogleConnectionFactory;
 import org.springframework.social.security.AuthenticationNameUserIdSource;
 import org.springframework.social.twitter.connect.TwitterConnectionFactory;
 // jhipster-needle-add-social-connection-factory-import-package
+
+import com.smartshop.eshop.repository.CustomSocialUsersConnectionRepository;
+import com.smartshop.eshop.repository.SocialUserConnectionRepository;
+import com.smartshop.eshop.security.social.CustomSignInAdapter;
+
+import io.github.jhipster.config.JHipsterProperties;
 
 /**
  * Basic Spring Social configuration.

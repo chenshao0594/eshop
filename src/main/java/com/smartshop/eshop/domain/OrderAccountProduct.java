@@ -1,13 +1,20 @@
 package com.smartshop.eshop.domain;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 /**
  * A OrderAccountProduct.
@@ -16,7 +23,7 @@ import java.util.Objects;
 @Table(name = "order_account_product")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "orderaccountproduct")
-public class OrderAccountProduct extends BusinessDomain implements Serializable {
+public class OrderAccountProduct extends BusinessDomain<Long,OrderAccountProduct> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

@@ -1,10 +1,8 @@
 package com.smartshop.eshop.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import com.smartshop.eshop.domain.ProductImageDescription;
-
-import org.springframework.data.jpa.repository.*;
-
-import java.util.List;
 
 /**
  * Spring Data JPA repository for the ProductImageDescription entity.

@@ -1,12 +1,19 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A ShoppingCartAttributeItem.
@@ -15,7 +22,7 @@ import java.util.Objects;
 @Table(name = "shopping_cart_attribute_item")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "shoppingcartattributeitem")
-public class ShoppingCartAttributeItem extends BusinessDomain implements Serializable {
+public class ShoppingCartAttributeItem extends BusinessDomain<Long, ShoppingCartAttributeItem> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

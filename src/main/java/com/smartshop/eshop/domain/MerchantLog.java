@@ -1,12 +1,18 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A MerchantLog.
@@ -15,7 +21,7 @@ import java.util.Objects;
 @Table(name = "merchant_log")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "merchantlog")
-public class MerchantLog extends BusinessDomain implements Serializable {
+public class MerchantLog extends BusinessDomain<Long, MerchantLog> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

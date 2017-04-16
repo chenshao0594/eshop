@@ -34,12 +34,19 @@
         {
             "fieldName": "imageCrop",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "imageContent",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "image",
+            "fieldValidateRules": [
+                "required"
+            ]
         }
     ],
     "changelogDate": "20170415184151",
-    "entityTableName": "product_image",
     "dto": "no",
-    "pagination": "pagination",
     "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+    "entityTableName": "product_image",
+    "pagination": "pagination"
 }

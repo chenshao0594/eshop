@@ -1,13 +1,19 @@
 package com.smartshop.eshop.domain;
 
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 /**
  * A Optin.
@@ -16,7 +22,7 @@ import java.util.Objects;
 @Table(name = "optin")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "optin")
-public class Optin extends BusinessDomain implements Serializable {
+public class Optin extends BusinessDomain<Long, Optin> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

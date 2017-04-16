@@ -1,7 +1,14 @@
 package com.smartshop.eshop.web.websocket;
 
-import com.smartshop.eshop.security.SecurityUtils;
-import com.smartshop.eshop.web.websocket.dto.ActivityDTO;
+import static com.smartshop.eshop.config.WebsocketConfiguration.IP_ADDRESS;
+
+import java.security.Principal;
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationListener;
@@ -13,15 +20,8 @@ import org.springframework.messaging.simp.stomp.StompHeaderAccessor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
-import java.time.ZonedDateTime;
-import java.time.format.DateTimeFormatter;
-import java.security.Principal;
-import java.util.Calendar;
-
-import static com.smartshop.eshop.config.WebsocketConfiguration.IP_ADDRESS;
+import com.smartshop.eshop.security.SecurityUtils;
+import com.smartshop.eshop.web.websocket.dto.ActivityDTO;
 
 @Controller
 public class ActivityService implements ApplicationListener<SessionDisconnectEvent> {

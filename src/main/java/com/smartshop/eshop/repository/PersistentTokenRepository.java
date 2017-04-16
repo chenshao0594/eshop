@@ -1,11 +1,12 @@
 package com.smartshop.eshop.repository;
 
-import com.smartshop.eshop.domain.PersistentToken;
-import com.smartshop.eshop.domain.User;
 import java.time.LocalDate;
+import java.util.List;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
+import com.smartshop.eshop.domain.PersistentToken;
+import com.smartshop.eshop.domain.User;
 
 /**
  * Spring Data JPA repository for the PersistentToken entity.

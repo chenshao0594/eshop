@@ -1,13 +1,19 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A ZoneDescription.
@@ -16,7 +22,7 @@ import java.util.Objects;
 @Table(name = "zone_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "zonedescription")
-public class ZoneDescription extends BusinessDomain implements Serializable {
+public class ZoneDescription extends BusinessDomain<Long, ZoneDescription> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -97,33 +103,4 @@ public class ZoneDescription extends BusinessDomain implements Serializable {
         this.zone = zone;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ZoneDescription zoneDescription = (ZoneDescription) o;
-        if (zoneDescription.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, zoneDescription.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ZoneDescription{" +
-            "id=" + id +
-            ", title='" + title + "'" +
-            ", name='" + name + "'" +
-            ", description='" + description + "'" +
-            '}';
-    }
 }

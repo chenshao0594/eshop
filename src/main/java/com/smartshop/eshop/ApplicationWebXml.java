@@ -1,8 +1,9 @@
 package com.smartshop.eshop;
 
-import com.smartshop.eshop.config.DefaultProfileUtil;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
+
+import com.smartshop.eshop.config.DefaultProfileUtil;
 
 /**
  * This is a helper Java class that provides an alternative to creating a web.xml.

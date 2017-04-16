@@ -107,12 +107,9 @@ public class CategoryDescriptionControllerIntTest {
     public static CategoryDescription createEntity(EntityManager em) {
         CategoryDescription categoryDescription = new CategoryDescription()
             .categoryHighlight(DEFAULT_CATEGORY_HIGHLIGHT)
-            .title(DEFAULT_TITLE)
             .metatagDescription(DEFAULT_METATAG_DESCRIPTION)
-            .description(DEFAULT_DESCRIPTION)
             .seUrl(DEFAULT_SE_URL)
             .metatagKeywords(DEFAULT_METATAG_KEYWORDS)
-            .name(DEFAULT_NAME)
             .metatagTitle(DEFAULT_METATAG_TITLE);
         return categoryDescription;
     }
@@ -251,12 +248,9 @@ public class CategoryDescriptionControllerIntTest {
         CategoryDescription updatedCategoryDescription = categoryDescriptionRepository.findOne(categoryDescription.getId());
         updatedCategoryDescription
             .categoryHighlight(UPDATED_CATEGORY_HIGHLIGHT)
-            .title(UPDATED_TITLE)
             .metatagDescription(UPDATED_METATAG_DESCRIPTION)
-            .description(UPDATED_DESCRIPTION)
             .seUrl(UPDATED_SE_URL)
             .metatagKeywords(UPDATED_METATAG_KEYWORDS)
-            .name(UPDATED_NAME)
             .metatagTitle(UPDATED_METATAG_TITLE);
 
         restCategoryDescriptionMockMvc.perform(put("/api/category-descriptions")

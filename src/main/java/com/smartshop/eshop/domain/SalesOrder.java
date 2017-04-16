@@ -1,25 +1,31 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Set;
 import java.util.Objects;
+import java.util.Set;
 
-import com.smartshop.eshop.domain.enumeration.PaymentType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.smartshop.eshop.domain.enumeration.OrderChannel;
-
-import com.smartshop.eshop.domain.enumeration.OrderType;
-
 import com.smartshop.eshop.domain.enumeration.OrderStatus;
+import com.smartshop.eshop.domain.enumeration.OrderType;
+import com.smartshop.eshop.domain.enumeration.PaymentType;
 
 /**
  * A SalesOrder.
@@ -28,7 +34,7 @@ import com.smartshop.eshop.domain.enumeration.OrderStatus;
 @Table(name = "sales_order")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "salesorder")
-public class SalesOrder extends BusinessDomain implements Serializable {
+public class SalesOrder extends BusinessDomain<Long, SalesOrder> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

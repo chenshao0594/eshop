@@ -11,9 +11,10 @@ import com.smartshop.eshop.domain.BusinessDomain;
 
 public interface AbstractDomainService <E extends BusinessDomain, K extends Serializable & Comparable<K>>{
 
-	E save(E entity) throws ServiceException;
-	void update(E entity) throws ServiceException;
-	void delete(K id) throws ServiceException;
+	E save(E entity);
+	void update(E entity);
+	void delete(K id);
+	void delete(E entity);
 	List<E> list();
 	Page<E> findAll(Pageable pageable);
 	Long count();

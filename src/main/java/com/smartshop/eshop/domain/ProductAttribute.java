@@ -1,22 +1,38 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+import javax.persistence.UniqueConstraint;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Objects;
 
 /**
  * A ProductAttribute.
  */
 @Entity
-@Table(name = "product_attribute")
+@Table(name = "product_attribute",uniqueConstraints={
+		@UniqueConstraint(columnNames={
+				"OPTION_ID",
+				"OPTION_VALUE_ID",
+				"PRODUCT_ID"
+			})
+	})
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productattribute")
-public class ProductAttribute extends BusinessDomain implements Serializable {
+public class ProductAttribute extends BusinessDomain<Long, ProductAttribute> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -50,6 +66,37 @@ public class ProductAttribute extends BusinessDomain implements Serializable {
 
     @ManyToOne
     private Product product;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="OPTION_ID", nullable=false)
+	private ProductOption productOption;
+	
+
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="OPTION_VALUE_ID", nullable=false)
+	private ProductOptionValue productOptionValue;
+	
+	/**
+	 * This transient object property
+	 * is a utility used only to submit from a free text
+	 */
+	@Transient
+	private String attributePrice = "0";
+	
+	/**
+	 * This transient object property
+	 * is a utility used only to submit from a free text
+	 */
+	@Transient
+	private String attributeSortOrder = "0";
+
+	/**
+	 * This transient object property
+	 * is a utility used only to submit from a free text
+	 */
+	@Transient
+	private String attributeAdditionalWeight = "0";
+	
 
     public Long getId() {
         return id;
@@ -176,38 +223,63 @@ public class ProductAttribute extends BusinessDomain implements Serializable {
         this.product = product;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductAttribute productAttribute = (ProductAttribute) o;
-        if (productAttribute.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, productAttribute.id);
-    }
+	public ProductOption getProductOption() {
+		return productOption;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	public void setProductOption(ProductOption productOption) {
+		this.productOption = productOption;
+	}
 
-    @Override
-    public String toString() {
-        return "ProductAttribute{" +
-            "id=" + id +
-            ", productAttributeWeight='" + productAttributeWeight + "'" +
-            ", productAttributePrice='" + productAttributePrice + "'" +
-            ", attributeRequired='" + attributeRequired + "'" +
-            ", attributeDefault='" + attributeDefault + "'" +
-            ", attributeDisplayOnly='" + attributeDisplayOnly + "'" +
-            ", productOptionSortOrder='" + productOptionSortOrder + "'" +
-            ", productAttributeIsFree='" + productAttributeIsFree + "'" +
-            ", attributeDiscounted='" + attributeDiscounted + "'" +
-            '}';
-    }
+	public ProductOptionValue getProductOptionValue() {
+		return productOptionValue;
+	}
+
+	public void setProductOptionValue(ProductOptionValue productOptionValue) {
+		this.productOptionValue = productOptionValue;
+	}
+
+	public String getAttributePrice() {
+		return attributePrice;
+	}
+
+	public void setAttributePrice(String attributePrice) {
+		this.attributePrice = attributePrice;
+	}
+
+	public String getAttributeSortOrder() {
+		return attributeSortOrder;
+	}
+
+	public void setAttributeSortOrder(String attributeSortOrder) {
+		this.attributeSortOrder = attributeSortOrder;
+	}
+
+	public String getAttributeAdditionalWeight() {
+		return attributeAdditionalWeight;
+	}
+
+	public void setAttributeAdditionalWeight(String attributeAdditionalWeight) {
+		this.attributeAdditionalWeight = attributeAdditionalWeight;
+	}
+
+	public Boolean getAttributeRequired() {
+		return attributeRequired;
+	}
+
+	public Boolean getAttributeDefault() {
+		return attributeDefault;
+	}
+
+	public Boolean getAttributeDisplayOnly() {
+		return attributeDisplayOnly;
+	}
+
+	public Boolean getProductAttributeIsFree() {
+		return productAttributeIsFree;
+	}
+
+	public Boolean getAttributeDiscounted() {
+		return attributeDiscounted;
+	}
 }

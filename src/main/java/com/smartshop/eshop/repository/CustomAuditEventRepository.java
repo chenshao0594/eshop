@@ -1,8 +1,10 @@
 package com.smartshop.eshop.repository;
 
-import com.smartshop.eshop.config.Constants;
-import com.smartshop.eshop.config.audit.AuditEventConverter;
-import com.smartshop.eshop.domain.PersistentAuditEvent;
+import java.time.Instant;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
+import java.util.List;
 
 import org.springframework.boot.actuate.audit.AuditEvent;
 import org.springframework.boot.actuate.audit.AuditEventRepository;
@@ -10,11 +12,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneId;
-import java.util.Date;
-import java.util.List;
+import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.config.audit.AuditEventConverter;
+import com.smartshop.eshop.domain.PersistentAuditEvent;
 
 /**
  * An implementation of Spring Boot's AuditEventRepository.

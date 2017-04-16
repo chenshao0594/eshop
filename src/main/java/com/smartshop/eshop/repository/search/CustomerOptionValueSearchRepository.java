@@ -1,7 +1,8 @@
 package com.smartshop.eshop.repository.search;
 
-import com.smartshop.eshop.domain.CustomerOptionValue;
 import org.springframework.data.elasticsearch.repository.ElasticsearchRepository;
+
+import com.smartshop.eshop.domain.CustomerOptionValue;
 
 /**
  * Spring Data Elasticsearch repository for the CustomerOptionValue entity.

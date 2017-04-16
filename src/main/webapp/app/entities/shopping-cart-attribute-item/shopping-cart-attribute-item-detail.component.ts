@@ -73,7 +73,6 @@ export class ShoppingCartAttributeItemDetailComponent implements OnInit, OnDestr
     private onError(error) {
         this.alertService.error(error.message, null, null);
     }
-    
     ngOnDestroy() {
         this.subscription.unsubscribe();
         this.eventManager.destroy(this.eventSubscriber);

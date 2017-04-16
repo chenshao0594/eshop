@@ -1,25 +1,39 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Objects;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Category.
  */
 @Entity
-@Table(name = "category")
+@Table(name = "category", 
+	   uniqueConstraints=
+	   @UniqueConstraint(columnNames = {"MERCHANT_ID", "CODE"}) 
+)
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "category")
-public class Category extends BusinessDomain implements Serializable {
+public class Category extends BusinessDomain<Long, Category> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,7 +45,7 @@ public class Category extends BusinessDomain implements Serializable {
     private Integer depth;
 
     @Column(name = "sort_order")
-    private Integer sortOrder;
+    private Integer sortOrder = 0;
 
     @Column(name = "category_status")
     private Boolean categoryStatus;
@@ -40,17 +54,17 @@ public class Category extends BusinessDomain implements Serializable {
     private String lineage;
 
     @Column(name = "visible")
-    private Boolean visible;
+    private Boolean visible=true;
 
-    @NotNull
-    @Column(name = "code", nullable = false)
+    @NotEmpty
+	@Column(name="CODE", length=100, nullable=false)
     private String code;
 
     @Column(name = "category_image")
     private String categoryImage;
 
-    @OneToMany(mappedBy = "parent")
     @JsonIgnore
+    @OneToMany(mappedBy = "parent")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<Category> categories = new HashSet<>();
 
@@ -60,7 +74,12 @@ public class Category extends BusinessDomain implements Serializable {
     private Set<CategoryDescription> descriptions = new HashSet<>();
 
     @ManyToOne
+    @JoinColumn(name = "PARENT_ID")
     private Category parent;
+    
+    @ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="MERCHANT_ID", nullable=false)
+	private MerchantStore merchantStore;
 
     public Long getId() {
         return id;
@@ -224,37 +243,20 @@ public class Category extends BusinessDomain implements Serializable {
         this.parent = category;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Category category = (Category) o;
-        if (category.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, category.id);
-    }
+	public MerchantStore getMerchantStore() {
+		return merchantStore;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	public void setMerchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+	}
 
-    @Override
-    public String toString() {
-        return "Category{" +
-            "id=" + id +
-            ", depth='" + depth + "'" +
-            ", sortOrder='" + sortOrder + "'" +
-            ", categoryStatus='" + categoryStatus + "'" +
-            ", lineage='" + lineage + "'" +
-            ", visible='" + visible + "'" +
-            ", code='" + code + "'" +
-            ", categoryImage='" + categoryImage + "'" +
-            '}';
-    }
+	public Boolean getCategoryStatus() {
+		return categoryStatus;
+	}
+
+	public Boolean getVisible() {
+		return visible;
+	}
+
 }

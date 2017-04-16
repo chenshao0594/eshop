@@ -1,10 +1,9 @@
 package com.smartshop.eshop.config;
 
-import io.github.jhipster.config.JHipsterConstants;
-import io.github.jhipster.config.liquibase.AsyncSpringLiquibase;
+import java.sql.SQLException;
 
-import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
-import liquibase.integration.spring.SpringLiquibase;
+import javax.sql.DataSource;
+
 import org.h2.tools.Server;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -14,14 +13,17 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
 import org.springframework.core.env.Environment;
-import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.core.task.TaskExecutor;
+import org.springframework.data.elasticsearch.repository.config.EnableElasticsearchRepositories;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import javax.sql.DataSource;
-import java.sql.SQLException;
+import com.fasterxml.jackson.datatype.hibernate5.Hibernate5Module;
+
+import io.github.jhipster.config.JHipsterConstants;
+import io.github.jhipster.config.liquibase.AsyncSpringLiquibase;
+import liquibase.integration.spring.SpringLiquibase;
 
 @Configuration
 @EnableJpaRepositories("com.smartshop.eshop.repository")

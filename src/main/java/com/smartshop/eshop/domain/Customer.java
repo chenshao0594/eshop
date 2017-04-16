@@ -1,18 +1,27 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Objects;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.smartshop.eshop.domain.enumeration.CustomerGender;
 
 /**
@@ -22,7 +31,7 @@ import com.smartshop.eshop.domain.enumeration.CustomerGender;
 @Table(name = "customer")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "customer")
-public class Customer extends BusinessDomain implements Serializable {
+public class Customer extends BusinessDomain<Long, Customer> implements Serializable {
 
     private static final long serialVersionUID = 1L;
 

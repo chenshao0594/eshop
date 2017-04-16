@@ -96,8 +96,7 @@ public class CurrencyControllerIntTest {
         Currency currency = new Currency()
             .code(DEFAULT_CODE)
             .supported(DEFAULT_SUPPORTED)
-            .name(DEFAULT_NAME)
-            .currency(DEFAULT_CURRENCY);
+            .name(DEFAULT_NAME);
         return currency;
     }
 
@@ -206,8 +205,7 @@ public class CurrencyControllerIntTest {
         updatedCurrency
             .code(UPDATED_CODE)
             .supported(UPDATED_SUPPORTED)
-            .name(UPDATED_NAME)
-            .currency(UPDATED_CURRENCY);
+            .name(UPDATED_NAME);
 
         restCurrencyMockMvc.perform(put("/api/currencies")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { EventManager , JhiLanguageService , AlertService } from 'ng-jhipster';
+import { EventManager , JhiLanguageService , DataUtils, AlertService } from 'ng-jhipster';
 
 import { ProductImage } from './product-image.model';
 import { ProductImageService } from './product-image.service';
@@ -20,6 +20,7 @@ export class ProductImageDetailComponent implements OnInit, OnDestroy {
     constructor(
         private eventManager: EventManager,
         private jhiLanguageService: JhiLanguageService,
+        private dataUtils: DataUtils,
         private productImageService: ProductImageService,
         private route: ActivatedRoute,
         private alertService: AlertService
@@ -38,6 +39,13 @@ export class ProductImageDetailComponent implements OnInit, OnDestroy {
         this.productImageService.find(id).subscribe((productImage) => {
             this.productImage = productImage;
         });
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
     }
     previousState() {
         window.history.back();
@@ -73,7 +81,6 @@ export class ProductImageDetailComponent implements OnInit, OnDestroy {
     private onError(error) {
         this.alertService.error(error.message, null, null);
     }
-    
     ngOnDestroy() {
         this.subscription.unsubscribe();
         this.eventManager.destroy(this.eventSubscriber);

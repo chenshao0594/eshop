@@ -21,6 +21,7 @@
             "defaultImage": "Default Image",
             "imageType": "Image Type",
             "imageCrop": "Image Crop",
+            "imageContent": "Image Content",
             "descriptions": "Descriptions",
             "product": "Product"
         }

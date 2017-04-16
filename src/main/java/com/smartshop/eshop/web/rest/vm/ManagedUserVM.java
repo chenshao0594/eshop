@@ -1,10 +1,11 @@
 package com.smartshop.eshop.web.rest.vm;
 
-import com.smartshop.eshop.service.dto.UserDTO;
-import javax.validation.constraints.Size;
-
 import java.time.ZonedDateTime;
 import java.util.Set;
+
+import javax.validation.constraints.Size;
+
+import com.smartshop.eshop.service.dto.UserDTO;
 
 /**
  * View Model extending the UserDTO, which is meant to be used in the user management UI.
