@@ -25,7 +25,7 @@ public class Zone extends BusinessDomain<Long, Zone> implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "code")
+	@Column(name = "ZONE_CODE")
 	private String code;
 
 	@JsonIgnore
@@ -33,7 +33,7 @@ public class Zone extends BusinessDomain<Long, Zone> implements Serializable {
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<ZoneDescription> descriptions = new HashSet<>();
 
-	@ManyToOne
+	@ManyToOne()
 	private Country country;
 
 	@Override
