@@ -15,16 +15,17 @@ import com.smartshop.eshop.service.TemplateService;
  */
 @Service
 @Transactional
-public class TemplateServiceImpl extends AbstractDomainServiceImpl< Template, Long> implements TemplateService{
+public class TemplateServiceImpl extends AbstractDomainServiceImpl<Template, Long> implements TemplateService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(TemplateServiceImpl.class);
-    private final TemplateRepository templateRepository;
-    private final TemplateSearchRepository templateSearchRepository;
-    
-    public TemplateServiceImpl(TemplateRepository templateRepository, TemplateSearchRepository templateSearchRepository) {
-        super(templateRepository,templateSearchRepository);
-        this.templateRepository = templateRepository;
-        this.templateSearchRepository = templateSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(TemplateServiceImpl.class);
+	private final TemplateRepository templateRepository;
+	private final TemplateSearchRepository templateSearchRepository;
+
+	public TemplateServiceImpl(TemplateRepository templateRepository,
+			TemplateSearchRepository templateSearchRepository) {
+		super(templateRepository, templateSearchRepository);
+		this.templateRepository = templateRepository;
+		this.templateSearchRepository = templateSearchRepository;
+	}
+
 }

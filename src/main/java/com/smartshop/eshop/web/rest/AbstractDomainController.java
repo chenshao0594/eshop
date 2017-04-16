@@ -42,7 +42,8 @@ public abstract class AbstractDomainController<E extends BusinessDomain, K exten
 
 	private final AbstractDomainService<E, K> service;
 
-	protected abstract  String getSectionKey();
+	protected abstract String getSectionKey();
+
 	protected abstract String getEntityName();
 
 	public AbstractDomainController(AbstractDomainService<E, K> service) {
@@ -54,12 +55,12 @@ public abstract class AbstractDomainController<E extends BusinessDomain, K exten
 	public ResponseEntity<E> create(@Valid @RequestBody E entity) throws URISyntaxException {
 		log.debug("REST request to save entity : {}", entity);
 		if (entity.getId() != null) {
-			return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(getEntityName(), "idexists", "A new entity cannot already have an ID")).body(null);
+			return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(getEntityName(), "idexists",
+					"A new entity cannot already have an ID")).body(null);
 		}
 		E result = service.save(entity);
-		return ResponseEntity.created(new URI("/api/"+getSectionKey()+"/" + result.getId()))
-				.headers(HeaderUtil.createEntityCreationAlert(getEntityName(), result.getId().toString()))
-				.body(result);
+		return ResponseEntity.created(new URI("/api/" + getSectionKey() + "/" + result.getId()))
+				.headers(HeaderUtil.createEntityCreationAlert(getEntityName(), result.getId().toString())).body(result);
 	}
 
 	@Timed
@@ -71,15 +72,14 @@ public abstract class AbstractDomainController<E extends BusinessDomain, K exten
 		}
 		E result = service.save(entity);
 		return ResponseEntity.ok()
-				.headers(HeaderUtil.createEntityUpdateAlert(getEntityName(), entity.getId().toString()))
-				.body(result);
+				.headers(HeaderUtil.createEntityUpdateAlert(getEntityName(), entity.getId().toString())).body(result);
 	}
 
 	@Timed
 	@GetMapping()
 	public ResponseEntity<List<E>> getAllentitys(@ApiParam Pageable pageable) {
 		Page<E> page = service.findAll(pageable);
-		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/"+getSectionKey());
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/" + getSectionKey());
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
 
@@ -89,18 +89,22 @@ public abstract class AbstractDomainController<E extends BusinessDomain, K exten
 		E entity = service.findOne(id);
 		return ResponseUtil.wrapOrNotFound(Optional.ofNullable(entity));
 	}
+
 	@Timed
 	@DeleteMapping("/{id}")
 	public ResponseEntity<Void> deleteEntity(@PathVariable K id) {
 		service.delete(id);
-		return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(getEntityName(), id.toString())).build();
+		return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(getEntityName(), id.toString()))
+				.build();
 	}
+
 	@Timed
 	@GetMapping("/_search")
 	public ResponseEntity<List<E>> searchEntities(@RequestParam String query, @ApiParam Pageable pageable) {
 		log.debug("REST request to search for a page of entitys for query {}", query);
 		Page<E> page = service.search(query, pageable);
-		HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page, "/api/"+getSectionKey()+"/_search");
+		HttpHeaders headers = PaginationUtil.generateSearchPaginationHttpHeaders(query, page,
+				"/api/" + getSectionKey() + "/_search");
 		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
 

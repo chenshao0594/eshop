@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.CustomerOptionSetService;
  */
 @Service
 @Transactional
-public class CustomerOptionSetServiceImpl extends AbstractDomainServiceImpl< CustomerOptionSet, Long> implements CustomerOptionSetService{
+public class CustomerOptionSetServiceImpl extends AbstractDomainServiceImpl<CustomerOptionSet, Long>
+		implements CustomerOptionSetService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(CustomerOptionSetServiceImpl.class);
-    private final CustomerOptionSetRepository customerOptionSetRepository;
-    private final CustomerOptionSetSearchRepository customerOptionSetSearchRepository;
-    
-    public CustomerOptionSetServiceImpl(CustomerOptionSetRepository customerOptionSetRepository, CustomerOptionSetSearchRepository customerOptionSetSearchRepository) {
-        super(customerOptionSetRepository,customerOptionSetSearchRepository);
-        this.customerOptionSetRepository = customerOptionSetRepository;
-        this.customerOptionSetSearchRepository = customerOptionSetSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(CustomerOptionSetServiceImpl.class);
+	private final CustomerOptionSetRepository customerOptionSetRepository;
+	private final CustomerOptionSetSearchRepository customerOptionSetSearchRepository;
+
+	public CustomerOptionSetServiceImpl(CustomerOptionSetRepository customerOptionSetRepository,
+			CustomerOptionSetSearchRepository customerOptionSetSearchRepository) {
+		super(customerOptionSetRepository, customerOptionSetSearchRepository);
+		this.customerOptionSetRepository = customerOptionSetRepository;
+		this.customerOptionSetSearchRepository = customerOptionSetSearchRepository;
+	}
+
 }

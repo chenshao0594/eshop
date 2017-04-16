@@ -7,5 +7,6 @@ import com.smartshop.eshop.domain.ProductOptionDescription;
 /**
  * Spring Data Elasticsearch repository for the ProductOptionDescription entity.
  */
-public interface ProductOptionDescriptionSearchRepository extends ElasticsearchRepository<ProductOptionDescription, Long> {
+public interface ProductOptionDescriptionSearchRepository
+		extends ElasticsearchRepository<ProductOptionDescription, Long> {
 }

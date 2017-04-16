@@ -7,9 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 
 import com.smartshop.eshop.domain.Country;
 
+public interface CountryRepository extends JpaRepository<Country, Long> {
 
-public interface CountryRepository extends JpaRepository <Country, Long> {
-	
 	@Query("select c from Country c left join fetch c.descriptions cd where c.isoCode=?1")
 	Country findByIsoCode(String code);
 

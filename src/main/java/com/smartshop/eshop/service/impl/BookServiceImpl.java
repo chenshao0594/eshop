@@ -15,16 +15,16 @@ import com.smartshop.eshop.service.BookService;
  */
 @Service
 @Transactional
-public class BookServiceImpl extends AbstractDomainServiceImpl< Book, Long> implements BookService{
+public class BookServiceImpl extends AbstractDomainServiceImpl<Book, Long> implements BookService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(BookServiceImpl.class);
-    private final BookRepository bookRepository;
-    private final BookSearchRepository bookSearchRepository;
-    
-    public BookServiceImpl(BookRepository bookRepository, BookSearchRepository bookSearchRepository) {
-        super(bookRepository,bookSearchRepository);
-        this.bookRepository = bookRepository;
-        this.bookSearchRepository = bookSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(BookServiceImpl.class);
+	private final BookRepository bookRepository;
+	private final BookSearchRepository bookSearchRepository;
+
+	public BookServiceImpl(BookRepository bookRepository, BookSearchRepository bookSearchRepository) {
+		super(bookRepository, bookSearchRepository);
+		this.bookRepository = bookRepository;
+		this.bookSearchRepository = bookSearchRepository;
+	}
+
 }

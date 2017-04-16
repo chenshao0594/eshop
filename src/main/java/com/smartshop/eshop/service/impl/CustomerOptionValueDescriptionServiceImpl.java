@@ -15,16 +15,20 @@ import com.smartshop.eshop.service.CustomerOptionValueDescriptionService;
  */
 @Service
 @Transactional
-public class CustomerOptionValueDescriptionServiceImpl extends AbstractDomainServiceImpl< CustomerOptionValueDescription, Long> implements CustomerOptionValueDescriptionService{
+public class CustomerOptionValueDescriptionServiceImpl
+		extends AbstractDomainServiceImpl<CustomerOptionValueDescription, Long>
+		implements CustomerOptionValueDescriptionService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(CustomerOptionValueDescriptionServiceImpl.class);
-    private final CustomerOptionValueDescriptionRepository customerOptionValueDescriptionRepository;
-    private final CustomerOptionValueDescriptionSearchRepository customerOptionValueDescriptionSearchRepository;
-    
-    public CustomerOptionValueDescriptionServiceImpl(CustomerOptionValueDescriptionRepository customerOptionValueDescriptionRepository, CustomerOptionValueDescriptionSearchRepository customerOptionValueDescriptionSearchRepository) {
-        super(customerOptionValueDescriptionRepository,customerOptionValueDescriptionSearchRepository);
-        this.customerOptionValueDescriptionRepository = customerOptionValueDescriptionRepository;
-        this.customerOptionValueDescriptionSearchRepository = customerOptionValueDescriptionSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(CustomerOptionValueDescriptionServiceImpl.class);
+	private final CustomerOptionValueDescriptionRepository customerOptionValueDescriptionRepository;
+	private final CustomerOptionValueDescriptionSearchRepository customerOptionValueDescriptionSearchRepository;
+
+	public CustomerOptionValueDescriptionServiceImpl(
+			CustomerOptionValueDescriptionRepository customerOptionValueDescriptionRepository,
+			CustomerOptionValueDescriptionSearchRepository customerOptionValueDescriptionSearchRepository) {
+		super(customerOptionValueDescriptionRepository, customerOptionValueDescriptionSearchRepository);
+		this.customerOptionValueDescriptionRepository = customerOptionValueDescriptionRepository;
+		this.customerOptionValueDescriptionSearchRepository = customerOptionValueDescriptionSearchRepository;
+	}
+
 }

@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.ShoppingCartAttributeItemService;
  */
 @Service
 @Transactional
-public class ShoppingCartAttributeItemServiceImpl extends AbstractDomainServiceImpl< ShoppingCartAttributeItem, Long> implements ShoppingCartAttributeItemService{
+public class ShoppingCartAttributeItemServiceImpl extends AbstractDomainServiceImpl<ShoppingCartAttributeItem, Long>
+		implements ShoppingCartAttributeItemService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ShoppingCartAttributeItemServiceImpl.class);
-    private final ShoppingCartAttributeItemRepository shoppingCartAttributeItemRepository;
-    private final ShoppingCartAttributeItemSearchRepository shoppingCartAttributeItemSearchRepository;
-    
-    public ShoppingCartAttributeItemServiceImpl(ShoppingCartAttributeItemRepository shoppingCartAttributeItemRepository, ShoppingCartAttributeItemSearchRepository shoppingCartAttributeItemSearchRepository) {
-        super(shoppingCartAttributeItemRepository,shoppingCartAttributeItemSearchRepository);
-        this.shoppingCartAttributeItemRepository = shoppingCartAttributeItemRepository;
-        this.shoppingCartAttributeItemSearchRepository = shoppingCartAttributeItemSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ShoppingCartAttributeItemServiceImpl.class);
+	private final ShoppingCartAttributeItemRepository shoppingCartAttributeItemRepository;
+	private final ShoppingCartAttributeItemSearchRepository shoppingCartAttributeItemSearchRepository;
+
+	public ShoppingCartAttributeItemServiceImpl(ShoppingCartAttributeItemRepository shoppingCartAttributeItemRepository,
+			ShoppingCartAttributeItemSearchRepository shoppingCartAttributeItemSearchRepository) {
+		super(shoppingCartAttributeItemRepository, shoppingCartAttributeItemSearchRepository);
+		this.shoppingCartAttributeItemRepository = shoppingCartAttributeItemRepository;
+		this.shoppingCartAttributeItemSearchRepository = shoppingCartAttributeItemSearchRepository;
+	}
+
 }

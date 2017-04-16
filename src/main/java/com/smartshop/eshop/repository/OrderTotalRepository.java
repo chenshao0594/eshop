@@ -6,5 +6,4 @@ import com.smartshop.eshop.domain.OrderTotal;
 
 public interface OrderTotalRepository extends JpaRepository<OrderTotal, Long> {
 
-
 }

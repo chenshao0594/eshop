@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.ShoppingCartService;
  */
 @Service
 @Transactional
-public class ShoppingCartServiceImpl extends AbstractDomainServiceImpl< ShoppingCart, Long> implements ShoppingCartService{
+public class ShoppingCartServiceImpl extends AbstractDomainServiceImpl<ShoppingCart, Long>
+		implements ShoppingCartService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ShoppingCartServiceImpl.class);
-    private final ShoppingCartRepository shoppingCartRepository;
-    private final ShoppingCartSearchRepository shoppingCartSearchRepository;
-    
-    public ShoppingCartServiceImpl(ShoppingCartRepository shoppingCartRepository, ShoppingCartSearchRepository shoppingCartSearchRepository) {
-        super(shoppingCartRepository,shoppingCartSearchRepository);
-        this.shoppingCartRepository = shoppingCartRepository;
-        this.shoppingCartSearchRepository = shoppingCartSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ShoppingCartServiceImpl.class);
+	private final ShoppingCartRepository shoppingCartRepository;
+	private final ShoppingCartSearchRepository shoppingCartSearchRepository;
+
+	public ShoppingCartServiceImpl(ShoppingCartRepository shoppingCartRepository,
+			ShoppingCartSearchRepository shoppingCartSearchRepository) {
+		super(shoppingCartRepository, shoppingCartSearchRepository);
+		this.shoppingCartRepository = shoppingCartRepository;
+		this.shoppingCartSearchRepository = shoppingCartSearchRepository;
+	}
+
 }

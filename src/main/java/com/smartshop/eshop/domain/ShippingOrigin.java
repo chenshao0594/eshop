@@ -7,7 +7,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A ShippingOrigin.
@@ -16,154 +15,153 @@ import java.util.Objects;
 @Table(name = "shipping_origin")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "shippingorigin")
-public class ShippingOrigin extends BusinessDomain<Long,ShippingOrigin>  implements Serializable {
+public class ShippingOrigin extends BusinessDomain<Long, ShippingOrigin> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @NotNull
-    @Column(name = "city", nullable = false)
-    private String city;
+	@NotNull
+	@Column(name = "city", nullable = false)
+	private String city;
 
-    @NotNull
-    @Column(name = "postal_code", nullable = false)
-    private String postalCode;
+	@NotNull
+	@Column(name = "postal_code", nullable = false)
+	private String postalCode;
 
-    @NotNull
-    @Column(name = "address", nullable = false)
-    private String address;
+	@NotNull
+	@Column(name = "address", nullable = false)
+	private String address;
 
-    @Column(name = "active")
-    private Boolean active;
+	@Column(name = "active")
+	private Boolean active;
 
-    @Column(name = "state")
-    private String state;
+	@Column(name = "state")
+	private String state;
 
-    @ManyToOne
-    private Zone zone;
+	@ManyToOne
+	private Zone zone;
 
-    @ManyToOne
-    private Country country;
+	@ManyToOne
+	private Country country;
 
-    @ManyToOne
-    private MerchantStore merchantStore;
+	@ManyToOne
+	private MerchantStore merchantStore;
 
-    public Long getId() {
-        return id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getCity() {
-        return city;
-    }
+	public String getCity() {
+		return city;
+	}
 
-    public ShippingOrigin city(String city) {
-        this.city = city;
-        return this;
-    }
+	public ShippingOrigin city(String city) {
+		this.city = city;
+		return this;
+	}
 
-    public void setCity(String city) {
-        this.city = city;
-    }
+	public void setCity(String city) {
+		this.city = city;
+	}
 
-    public String getPostalCode() {
-        return postalCode;
-    }
+	public String getPostalCode() {
+		return postalCode;
+	}
 
-    public ShippingOrigin postalCode(String postalCode) {
-        this.postalCode = postalCode;
-        return this;
-    }
+	public ShippingOrigin postalCode(String postalCode) {
+		this.postalCode = postalCode;
+		return this;
+	}
 
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
+	public void setPostalCode(String postalCode) {
+		this.postalCode = postalCode;
+	}
 
-    public String getAddress() {
-        return address;
-    }
+	public String getAddress() {
+		return address;
+	}
 
-    public ShippingOrigin address(String address) {
-        this.address = address;
-        return this;
-    }
+	public ShippingOrigin address(String address) {
+		this.address = address;
+		return this;
+	}
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
-    public Boolean isActive() {
-        return active;
-    }
+	public Boolean isActive() {
+		return active;
+	}
 
-    public ShippingOrigin active(Boolean active) {
-        this.active = active;
-        return this;
-    }
+	public ShippingOrigin active(Boolean active) {
+		this.active = active;
+		return this;
+	}
 
-    public void setActive(Boolean active) {
-        this.active = active;
-    }
+	public void setActive(Boolean active) {
+		this.active = active;
+	}
 
-    public String getState() {
-        return state;
-    }
+	public String getState() {
+		return state;
+	}
 
-    public ShippingOrigin state(String state) {
-        this.state = state;
-        return this;
-    }
+	public ShippingOrigin state(String state) {
+		this.state = state;
+		return this;
+	}
 
-    public void setState(String state) {
-        this.state = state;
-    }
+	public void setState(String state) {
+		this.state = state;
+	}
 
-    public Zone getZone() {
-        return zone;
-    }
+	public Zone getZone() {
+		return zone;
+	}
 
-    public ShippingOrigin zone(Zone zone) {
-        this.zone = zone;
-        return this;
-    }
+	public ShippingOrigin zone(Zone zone) {
+		this.zone = zone;
+		return this;
+	}
 
-    public void setZone(Zone zone) {
-        this.zone = zone;
-    }
+	public void setZone(Zone zone) {
+		this.zone = zone;
+	}
 
-    public Country getCountry() {
-        return country;
-    }
+	public Country getCountry() {
+		return country;
+	}
 
-    public ShippingOrigin country(Country country) {
-        this.country = country;
-        return this;
-    }
+	public ShippingOrigin country(Country country) {
+		this.country = country;
+		return this;
+	}
 
-    public void setCountry(Country country) {
-        this.country = country;
-    }
+	public void setCountry(Country country) {
+		this.country = country;
+	}
 
-    public MerchantStore getMerchantStore() {
-        return merchantStore;
-    }
+	public MerchantStore getMerchantStore() {
+		return merchantStore;
+	}
 
-    public ShippingOrigin merchantStore(MerchantStore merchantStore) {
-        this.merchantStore = merchantStore;
-        return this;
-    }
+	public ShippingOrigin merchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+		return this;
+	}
 
-    public void setMerchantStore(MerchantStore merchantStore) {
-        this.merchantStore = merchantStore;
-    }
+	public void setMerchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+	}
 
-    
-
-    
 }

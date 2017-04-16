@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.OrderAccountProductService;
  */
 @Service
 @Transactional
-public class OrderAccountProductServiceImpl extends AbstractDomainServiceImpl< OrderAccountProduct, Long> implements OrderAccountProductService{
+public class OrderAccountProductServiceImpl extends AbstractDomainServiceImpl<OrderAccountProduct, Long>
+		implements OrderAccountProductService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(OrderAccountProductServiceImpl.class);
-    private final OrderAccountProductRepository orderAccountProductRepository;
-    private final OrderAccountProductSearchRepository orderAccountProductSearchRepository;
-    
-    public OrderAccountProductServiceImpl(OrderAccountProductRepository orderAccountProductRepository, OrderAccountProductSearchRepository orderAccountProductSearchRepository) {
-        super(orderAccountProductRepository,orderAccountProductSearchRepository);
-        this.orderAccountProductRepository = orderAccountProductRepository;
-        this.orderAccountProductSearchRepository = orderAccountProductSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(OrderAccountProductServiceImpl.class);
+	private final OrderAccountProductRepository orderAccountProductRepository;
+	private final OrderAccountProductSearchRepository orderAccountProductSearchRepository;
+
+	public OrderAccountProductServiceImpl(OrderAccountProductRepository orderAccountProductRepository,
+			OrderAccountProductSearchRepository orderAccountProductSearchRepository) {
+		super(orderAccountProductRepository, orderAccountProductSearchRepository);
+		this.orderAccountProductRepository = orderAccountProductRepository;
+		this.orderAccountProductSearchRepository = orderAccountProductSearchRepository;
+	}
+
 }

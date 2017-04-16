@@ -16,20 +16,22 @@ import com.smartshop.eshop.domain.ProductOptionValueDescription;
 public class CatalogServiceHelper {
 	/**
 	 * Filters descriptions and set the appropriate language
+	 * 
 	 * @param p
 	 * @param language
 	 */
 	public static void setToLanguage(Product p, Long language) {
-	Set<ProductAttribute> attributes = p.getAttributes();
-		if(attributes!=null) {
-			for(ProductAttribute attribute : attributes) {
+		Set<ProductAttribute> attributes = p.getAttributes();
+		if (attributes != null) {
+			for (ProductAttribute attribute : attributes) {
 				ProductOption po = attribute.getProductOption();
 				Set<ProductOptionDescription> spod = po.getDescriptions();
-				if(spod!=null) {
+				if (spod != null) {
 					Set<ProductOptionDescription> podDescriptions = new HashSet<ProductOptionDescription>();
-					for(ProductOptionDescription pod : spod) {
-						//System.out.println("    ProductOptionDescription : " + pod.getProductOptionName());
-						if(pod.getLanguage().getId()==language) {
+					for (ProductOptionDescription pod : spod) {
+						// System.out.println(" ProductOptionDescription : " +
+						// pod.getProductOptionName());
+						if (pod.getLanguage().getId() == language) {
 							podDescriptions.add(pod);
 						}
 					}
@@ -37,10 +39,10 @@ public class CatalogServiceHelper {
 				}
 				ProductOptionValue pov = attribute.getProductOptionValue();
 				Set<ProductOptionValueDescription> spovd = pov.getDescriptions();
-				if(spovd!=null) {
+				if (spovd != null) {
 					Set<ProductOptionValueDescription> povdDescriptions = new HashSet();
-					for(ProductOptionValueDescription povd : spovd) {
-						if(povd.getLanguage().getId()==language) {
+					for (ProductOptionValueDescription povd : spovd) {
+						if (povd.getLanguage().getId() == language) {
 							povdDescriptions.add(povd);
 						}
 					}
@@ -49,42 +51,42 @@ public class CatalogServiceHelper {
 			}
 		}
 	}
-	
+
 	/**
 	 * Overwrites the availability in order to return 1 price / region
+	 * 
 	 * @param product
 	 * @param locale
 	 */
 	public static void setToAvailability(Product product, Locale locale) {
-		
-		Set<ProductAvailability> availabilities =  product.getAvailabilities();
-		
+
+		Set<ProductAvailability> availabilities = product.getAvailabilities();
+
 		ProductAvailability defaultAvailability = null;
 		ProductAvailability localeAvailability = null;
-		
-		for(ProductAvailability availability : availabilities) {
-			
-			if(availability.getRegion().equals(Constants.ALL_REGIONS)) {
+
+		for (ProductAvailability availability : availabilities) {
+
+			if (availability.getRegion().equals(Constants.ALL_REGIONS)) {
 				defaultAvailability = availability;
-			} 
-			if(availability.getRegion().equals(locale.getCountry())) {
+			}
+			if (availability.getRegion().equals(locale.getCountry())) {
 				localeAvailability = availability;
 			}
-			
+
 		}
-		
-		if(defaultAvailability!=null || localeAvailability!=null) {
+
+		if (defaultAvailability != null || localeAvailability != null) {
 			Set<ProductAvailability> productAvailabilities = new HashSet<ProductAvailability>();
-			if(defaultAvailability!=null) {
+			if (defaultAvailability != null) {
 				productAvailabilities.add(defaultAvailability);
 			}
-			if(localeAvailability!=null) {
+			if (localeAvailability != null) {
 				productAvailabilities.add(localeAvailability);
 			}
 			product.setAvailabilities(productAvailabilities);
 		}
-		
-	}
 
+	}
 
 }

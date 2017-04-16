@@ -6,22 +6,22 @@ import java.util.Locale;
 
 import org.hibernate.Hibernate;
 
-
 public abstract class BusinessDomain<K extends Serializable & Comparable<K>, E extends BusinessDomain<K, ?>>
-extends AbstractAuditingEntity implements Serializable, Comparable<E>  {
+		extends AbstractAuditingEntity implements Serializable, Comparable<E> {
 
 	public static final Collator DEFAULT_STRING_COLLATOR = Collator.getInstance(Locale.FRENCH);
 
 	static {
 		DEFAULT_STRING_COLLATOR.setStrength(Collator.PRIMARY);
 	}
+
 	public abstract K getId();
+
 	public abstract void setId(K id);
 
 	public boolean isNew() {
 		return getId() == null;
 	}
-
 
 	@SuppressWarnings("unchecked")
 	@Override
@@ -35,7 +35,13 @@ extends AbstractAuditingEntity implements Serializable, Comparable<E>  {
 		if (Hibernate.getClass(object) != Hibernate.getClass(this)) {
 			return false;
 		}
-		BusinessDomain<K, E> entity = (BusinessDomain<K, E>) object; // NOSONAR : traité au-dessus mais wrapper Hibernate 
+		BusinessDomain<K, E> entity = (BusinessDomain<K, E>) object; // NOSONAR
+																		// :
+																		// traité
+																		// au-dessus
+																		// mais
+																		// wrapper
+																		// Hibernate
 		K id = getId();
 
 		if (id == null) {
@@ -53,6 +59,7 @@ extends AbstractAuditingEntity implements Serializable, Comparable<E>  {
 		return hash;
 	}
 
+	@Override
 	public int compareTo(E o) {
 		if (this == o) {
 			return 0;

@@ -9,27 +9,23 @@ import org.slf4j.LoggerFactory;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
-
 /**
  * Service Implementation for managing EmailSetting.
  */
 @Service
 @Transactional
-public class EmailSettingServiceImpl extends AbstractDomainServiceImpl< EmailSetting, Long> implements EmailSettingService{
+public class EmailSettingServiceImpl extends AbstractDomainServiceImpl<EmailSetting, Long>
+		implements EmailSettingService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(EmailSettingServiceImpl.class);
-    private final EmailSettingRepository emailSettingRepository;
-    private final EmailSettingSearchRepository emailSettingSearchRepository;
-    
-    public EmailSettingServiceImpl(EmailSettingRepository emailSettingRepository, EmailSettingSearchRepository emailSettingSearchRepository) {
-        super(emailSettingRepository,emailSettingSearchRepository);
-        this.emailSettingRepository = emailSettingRepository;
-        this.emailSettingSearchRepository = emailSettingSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(EmailSettingServiceImpl.class);
+	private final EmailSettingRepository emailSettingRepository;
+	private final EmailSettingSearchRepository emailSettingSearchRepository;
+
+	public EmailSettingServiceImpl(EmailSettingRepository emailSettingRepository,
+			EmailSettingSearchRepository emailSettingSearchRepository) {
+		super(emailSettingRepository, emailSettingSearchRepository);
+		this.emailSettingRepository = emailSettingRepository;
+		this.emailSettingSearchRepository = emailSettingSearchRepository;
+	}
+
 }

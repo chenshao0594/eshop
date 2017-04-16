@@ -4,8 +4,6 @@ import java.io.Serializable;
 
 public class ImageContentFile extends InputContentFile implements Serializable {
 
-	
-
 	/**
 	 * 
 	 */

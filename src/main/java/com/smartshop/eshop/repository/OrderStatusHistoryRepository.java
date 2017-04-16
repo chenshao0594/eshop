@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.OrderStatusHistory;
  * Spring Data JPA repository for the OrderStatusHistory entity.
  */
 @SuppressWarnings("unused")
-public interface OrderStatusHistoryRepository extends JpaRepository<OrderStatusHistory,Long> {
+public interface OrderStatusHistoryRepository extends JpaRepository<OrderStatusHistory, Long> {
 
 }

@@ -9,13 +9,13 @@ import com.smartshop.eshop.domain.CustomerOption;
 
 public interface CustomerOptionRepository extends JpaRepository<CustomerOption, Long> {
 
-	
+	@Override
 	@Query("select o from CustomerOption o join fetch o.merchantStore om left join fetch o.descriptions od where o.id = ?1")
 	CustomerOption findOne(Long id);
-	
+
 	@Query("select o from CustomerOption o join fetch o.merchantStore om left join fetch o.descriptions od where om.id = ?1 and o.code = ?2")
 	CustomerOption findByCode(Integer merchantId, String code);
-	
+
 	@Query("select o from CustomerOption o join fetch o.merchantStore om left join fetch o.descriptions od where om.id = ?1 and od.language.id = ?2")
 	List<CustomerOption> findByStore(Integer merchantId, Integer languageId);
 

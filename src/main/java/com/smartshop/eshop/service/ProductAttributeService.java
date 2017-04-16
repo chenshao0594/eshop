@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.ProductAttribute;
 /**
  * Service Interface for managing ProductAttribute.
  */
-public interface ProductAttributeService extends AbstractDomainService< ProductAttribute, Long>{
+public interface ProductAttributeService extends AbstractDomainService<ProductAttribute, Long> {
 
-     }
+}

@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.GeoZoneDescriptionService;
  */
 @Service
 @Transactional
-public class GeoZoneDescriptionServiceImpl extends AbstractDomainServiceImpl< GeoZoneDescription, Long> implements GeoZoneDescriptionService{
+public class GeoZoneDescriptionServiceImpl extends AbstractDomainServiceImpl<GeoZoneDescription, Long>
+		implements GeoZoneDescriptionService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(GeoZoneDescriptionServiceImpl.class);
-    private final GeoZoneDescriptionRepository geoZoneDescriptionRepository;
-    private final GeoZoneDescriptionSearchRepository geoZoneDescriptionSearchRepository;
-    
-    public GeoZoneDescriptionServiceImpl(GeoZoneDescriptionRepository geoZoneDescriptionRepository, GeoZoneDescriptionSearchRepository geoZoneDescriptionSearchRepository) {
-        super(geoZoneDescriptionRepository,geoZoneDescriptionSearchRepository);
-        this.geoZoneDescriptionRepository = geoZoneDescriptionRepository;
-        this.geoZoneDescriptionSearchRepository = geoZoneDescriptionSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(GeoZoneDescriptionServiceImpl.class);
+	private final GeoZoneDescriptionRepository geoZoneDescriptionRepository;
+	private final GeoZoneDescriptionSearchRepository geoZoneDescriptionSearchRepository;
+
+	public GeoZoneDescriptionServiceImpl(GeoZoneDescriptionRepository geoZoneDescriptionRepository,
+			GeoZoneDescriptionSearchRepository geoZoneDescriptionSearchRepository) {
+		super(geoZoneDescriptionRepository, geoZoneDescriptionSearchRepository);
+		this.geoZoneDescriptionRepository = geoZoneDescriptionRepository;
+		this.geoZoneDescriptionSearchRepository = geoZoneDescriptionSearchRepository;
+	}
+
 }

@@ -110,6 +110,7 @@ public class ProductServiceImpl extends AbstractDomainServiceImpl<Product, Long>
 		return productRepository.getProductsListByCategories(ids);
 	}
 
+	@Override
 	public Product getById(Long productId) {
 		return productRepository.getById(productId);
 	}
@@ -226,8 +227,9 @@ public class ProductServiceImpl extends AbstractDomainServiceImpl<Product, Long>
 		super.delete(product);
 		productSearchRepository.delete(product);
 	}
+
 	@Override
-	public Product save(Product product){
+	public Product save(Product product) {
 		this.saveOrUpdate(product);
 		productSearchRepository.save(product);
 		return product;

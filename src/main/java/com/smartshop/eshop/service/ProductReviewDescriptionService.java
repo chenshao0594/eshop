@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.ProductReviewDescription;
 /**
  * Service Interface for managing ProductReviewDescription.
  */
-public interface ProductReviewDescriptionService extends AbstractDomainService< ProductReviewDescription, Long>{
+public interface ProductReviewDescriptionService extends AbstractDomainService<ProductReviewDescription, Long> {
 
-     }
+}

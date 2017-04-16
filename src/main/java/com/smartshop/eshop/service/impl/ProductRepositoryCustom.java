@@ -12,27 +12,22 @@ import com.smartshop.eshop.temp.ProductCriteria;
 import com.smartshop.eshop.temp.ProductList;
 
 public interface ProductRepositoryCustom {
-	
 
-	Product getByFriendlyUrl(MerchantStore store,String seUrl, Locale locale);
+	Product getByFriendlyUrl(MerchantStore store, String seUrl, Locale locale);
 
 	List<Product> getProductsListByCategories(@SuppressWarnings("rawtypes") Set categoryIds);
 
-	List<Product> getProductsListByCategories(Set<Long> categoryIds,
-			Language language);
+	List<Product> getProductsListByCategories(Set<Long> categoryIds, Language language);
 
 	List<Product> listByTaxClass(TaxClass taxClass);
 
-
-	Product getProductForLocale(long productId, Language language,
-			Locale locale);
+	Product getProductForLocale(long productId, Language language, Locale locale);
 
 	Product getById(Long productId);
 
 	Product getByCode(String productCode, Language language);
 
-	List<Product> getProductsForLocale(MerchantStore store,
-			Set<Long> categoryIds, Language language, Locale locale);
+	List<Product> getProductsForLocale(MerchantStore store, Set<Long> categoryIds, Language language, Locale locale);
 
 	ProductList listByStore(MerchantStore store, Language language, ProductCriteria criteria);
 

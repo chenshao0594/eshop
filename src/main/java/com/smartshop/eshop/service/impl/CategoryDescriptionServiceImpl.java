@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.CategoryDescriptionService;
  */
 @Service
 @Transactional
-public class CategoryDescriptionServiceImpl extends AbstractDomainServiceImpl< CategoryDescription, Long> implements CategoryDescriptionService{
+public class CategoryDescriptionServiceImpl extends AbstractDomainServiceImpl<CategoryDescription, Long>
+		implements CategoryDescriptionService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(CategoryDescriptionServiceImpl.class);
-    private final CategoryDescriptionRepository categoryDescriptionRepository;
-    private final CategoryDescriptionSearchRepository categoryDescriptionSearchRepository;
-    
-    public CategoryDescriptionServiceImpl(CategoryDescriptionRepository categoryDescriptionRepository, CategoryDescriptionSearchRepository categoryDescriptionSearchRepository) {
-        super(categoryDescriptionRepository,categoryDescriptionSearchRepository);
-        this.categoryDescriptionRepository = categoryDescriptionRepository;
-        this.categoryDescriptionSearchRepository = categoryDescriptionSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(CategoryDescriptionServiceImpl.class);
+	private final CategoryDescriptionRepository categoryDescriptionRepository;
+	private final CategoryDescriptionSearchRepository categoryDescriptionSearchRepository;
+
+	public CategoryDescriptionServiceImpl(CategoryDescriptionRepository categoryDescriptionRepository,
+			CategoryDescriptionSearchRepository categoryDescriptionSearchRepository) {
+		super(categoryDescriptionRepository, categoryDescriptionSearchRepository);
+		this.categoryDescriptionRepository = categoryDescriptionRepository;
+		this.categoryDescriptionSearchRepository = categoryDescriptionSearchRepository;
+	}
+
 }

@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.CountryDescription;
 /**
  * Service Interface for managing CountryDescription.
  */
-public interface CountryDescriptionService extends AbstractDomainService< CountryDescription, Long>{
+public interface CountryDescriptionService extends AbstractDomainService<CountryDescription, Long> {
 
-     }
+}

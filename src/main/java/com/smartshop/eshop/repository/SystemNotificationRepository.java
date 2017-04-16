@@ -6,5 +6,4 @@ import com.smartshop.eshop.domain.SystemNotification;
 
 public interface SystemNotificationRepository extends JpaRepository<SystemNotification, Long> {
 
-
 }

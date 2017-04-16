@@ -7,5 +7,6 @@ import com.smartshop.eshop.domain.ManufacturerDescription;
 /**
  * Spring Data Elasticsearch repository for the ManufacturerDescription entity.
  */
-public interface ManufacturerDescriptionSearchRepository extends ElasticsearchRepository<ManufacturerDescription, Long> {
+public interface ManufacturerDescriptionSearchRepository
+		extends ElasticsearchRepository<ManufacturerDescription, Long> {
 }

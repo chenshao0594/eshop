@@ -15,16 +15,17 @@ import com.smartshop.eshop.service.LanguageService;
  */
 @Service
 @Transactional
-public class LanguageServiceImpl extends AbstractDomainServiceImpl< Language, Long> implements LanguageService{
+public class LanguageServiceImpl extends AbstractDomainServiceImpl<Language, Long> implements LanguageService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(LanguageServiceImpl.class);
-    private final LanguageRepository languageRepository;
-    private final LanguageSearchRepository languageSearchRepository;
-    
-    public LanguageServiceImpl(LanguageRepository languageRepository, LanguageSearchRepository languageSearchRepository) {
-        super(languageRepository,languageSearchRepository);
-        this.languageRepository = languageRepository;
-        this.languageSearchRepository = languageSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(LanguageServiceImpl.class);
+	private final LanguageRepository languageRepository;
+	private final LanguageSearchRepository languageSearchRepository;
+
+	public LanguageServiceImpl(LanguageRepository languageRepository,
+			LanguageSearchRepository languageSearchRepository) {
+		super(languageRepository, languageSearchRepository);
+		this.languageRepository = languageRepository;
+		this.languageSearchRepository = languageSearchRepository;
+	}
+
 }

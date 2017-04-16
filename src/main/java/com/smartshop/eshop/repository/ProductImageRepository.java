@@ -7,9 +7,8 @@ import com.smartshop.eshop.domain.ProductImage;
 
 public interface ProductImageRepository extends JpaRepository<ProductImage, Long> {
 
-
+	@Override
 	@Query("select p from ProductImage p left join fetch p.descriptions pd inner join fetch p.product pp inner join fetch pp.merchantStore ppm where p.id = ?1")
 	ProductImage findOne(Long id);
-	
-	
+
 }

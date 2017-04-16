@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.Content;
 /**
  * Service Interface for managing Content.
  */
-public interface ContentService extends AbstractDomainService< Content, Long>{
+public interface ContentService extends AbstractDomainService<Content, Long> {
 
-     }
+}

@@ -9,7 +9,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Objects;
 
 /**
  * A Zone.
@@ -18,85 +17,84 @@ import java.util.Objects;
 @Table(name = "zone")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "zone")
-public class Zone extends BusinessDomain<Long,Zone>  implements Serializable {
+public class Zone extends BusinessDomain<Long, Zone> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "code")
-    private String code;
-   
-    @JsonIgnore
-    @OneToMany(mappedBy = "zone")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<ZoneDescription> descriptions = new HashSet<>();
+	@Column(name = "code")
+	private String code;
 
-    @ManyToOne
-    private Country country;
+	@JsonIgnore
+	@OneToMany(mappedBy = "zone")
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	private Set<ZoneDescription> descriptions = new HashSet<>();
 
-    public Long getId() {
-        return id;
-    }
+	@ManyToOne
+	private Country country;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public Zone code(String code) {
-        this.code = code;
-        return this;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public Zone code(String code) {
+		this.code = code;
+		return this;
+	}
 
-    public Set<ZoneDescription> getDescriptions() {
-        return descriptions;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public Zone descriptions(Set<ZoneDescription> zoneDescriptions) {
-        this.descriptions = zoneDescriptions;
-        return this;
-    }
+	public Set<ZoneDescription> getDescriptions() {
+		return descriptions;
+	}
 
-    public Zone addDescriptions(ZoneDescription zoneDescription) {
-        this.descriptions.add(zoneDescription);
-        zoneDescription.setZone(this);
-        return this;
-    }
+	public Zone descriptions(Set<ZoneDescription> zoneDescriptions) {
+		this.descriptions = zoneDescriptions;
+		return this;
+	}
 
-    public Zone removeDescriptions(ZoneDescription zoneDescription) {
-        this.descriptions.remove(zoneDescription);
-        zoneDescription.setZone(null);
-        return this;
-    }
+	public Zone addDescriptions(ZoneDescription zoneDescription) {
+		this.descriptions.add(zoneDescription);
+		zoneDescription.setZone(this);
+		return this;
+	}
 
-    public void setDescriptions(Set<ZoneDescription> zoneDescriptions) {
-        this.descriptions = zoneDescriptions;
-    }
+	public Zone removeDescriptions(ZoneDescription zoneDescription) {
+		this.descriptions.remove(zoneDescription);
+		zoneDescription.setZone(null);
+		return this;
+	}
 
-    public Country getCountry() {
-        return country;
-    }
+	public void setDescriptions(Set<ZoneDescription> zoneDescriptions) {
+		this.descriptions = zoneDescriptions;
+	}
 
-    public Zone country(Country country) {
-        this.country = country;
-        return this;
-    }
+	public Country getCountry() {
+		return country;
+	}
 
-    public void setCountry(Country country) {
-        this.country = country;
-    }
+	public Zone country(Country country) {
+		this.country = country;
+		return this;
+	}
 
-    
+	public void setCountry(Country country) {
+		this.country = country;
+	}
 
-    
 }

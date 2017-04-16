@@ -11,7 +11,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Objects;
 
 /**
  * A TaxRate.
@@ -20,235 +19,236 @@ import java.util.Objects;
 @Table(name = "tax_rate")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "taxrate")
-public class TaxRate extends BusinessDomain<Long,TaxRate>  implements Serializable {
+public class TaxRate extends BusinessDomain<Long, TaxRate> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "piggyback")
-    private Boolean piggyback;
+	@Column(name = "piggyback")
+	private Boolean piggyback;
 
-    @Column(name = "state_province")
-    private String stateProvince;
+	@Column(name = "state_province")
+	private String stateProvince;
 
-    @Column(name = "tax_priority")
-    private Integer taxPriority;
+	@Column(name = "tax_priority")
+	private Integer taxPriority;
 
-    @NotNull
-    @Column(name = "code", nullable = false)
-    private String code;
+	@NotNull
+	@Column(name = "code", nullable = false)
+	private String code;
 
-    @Column(name = "tax_rate", precision=10, scale=2)
-    private BigDecimal taxRate;
+	@Column(name = "tax_rate", precision = 10, scale = 2)
+	private BigDecimal taxRate;
 
-    @OneToMany(mappedBy = "taxRate")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<TaxRateDescription> descriptions = new HashSet<>();
+	@OneToMany(mappedBy = "taxRate")
+	@JsonIgnore
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	private Set<TaxRateDescription> descriptions = new HashSet<>();
 
-    @OneToMany(mappedBy = "parent")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<TaxRate> taxRates = new HashSet<>();
+	@OneToMany(mappedBy = "parent")
+	@JsonIgnore
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	private Set<TaxRate> taxRates = new HashSet<>();
 
-    @ManyToOne
-    private Country country;
+	@ManyToOne
+	private Country country;
 
+	@ManyToOne
+	private MerchantStore merchantStore;
 
-    @ManyToOne
-    private MerchantStore merchantStore;
+	@ManyToOne
+	@JoinColumn(name = "TAX_CLASS_ID", nullable = false)
+	private TaxClass taxClass;
 
-    @ManyToOne
-    @JoinColumn(name = "TAX_CLASS_ID" , nullable=false)
-    private TaxClass taxClass;
+	@ManyToOne
+	private TaxRate parent;
 
-    @ManyToOne
-    private TaxRate parent;
-    
-    @OneToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="ZONE_ID", nullable=true, updatable=true)
+	@OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "ZONE_ID", nullable = true, updatable = true)
 	private Zone zone;
 
-    @Transient
+	@Transient
 	private String rateText;
-    
-    public Long getId() {
-        return id;
-    }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public Boolean isPiggyback() {
-        return piggyback;
-    }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public TaxRate piggyback(Boolean piggyback) {
-        this.piggyback = piggyback;
-        return this;
-    }
+	public Boolean isPiggyback() {
+		return piggyback;
+	}
 
-    public void setPiggyback(Boolean piggyback) {
-        this.piggyback = piggyback;
-    }
+	public TaxRate piggyback(Boolean piggyback) {
+		this.piggyback = piggyback;
+		return this;
+	}
 
-    public String getStateProvince() {
-        return stateProvince;
-    }
+	public void setPiggyback(Boolean piggyback) {
+		this.piggyback = piggyback;
+	}
 
-    public TaxRate stateProvince(String stateProvince) {
-        this.stateProvince = stateProvince;
-        return this;
-    }
+	public String getStateProvince() {
+		return stateProvince;
+	}
 
-    public void setStateProvince(String stateProvince) {
-        this.stateProvince = stateProvince;
-    }
+	public TaxRate stateProvince(String stateProvince) {
+		this.stateProvince = stateProvince;
+		return this;
+	}
 
-    public Integer getTaxPriority() {
-        return taxPriority;
-    }
+	public void setStateProvince(String stateProvince) {
+		this.stateProvince = stateProvince;
+	}
 
-    public TaxRate taxPriority(Integer taxPriority) {
-        this.taxPriority = taxPriority;
-        return this;
-    }
+	public Integer getTaxPriority() {
+		return taxPriority;
+	}
 
-    public void setTaxPriority(Integer taxPriority) {
-        this.taxPriority = taxPriority;
-    }
+	public TaxRate taxPriority(Integer taxPriority) {
+		this.taxPriority = taxPriority;
+		return this;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public void setTaxPriority(Integer taxPriority) {
+		this.taxPriority = taxPriority;
+	}
 
-    public TaxRate code(String code) {
-        this.code = code;
-        return this;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public TaxRate code(String code) {
+		this.code = code;
+		return this;
+	}
 
-    public BigDecimal getTaxRate() {
-        return taxRate;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public TaxRate taxRate(BigDecimal taxRate) {
-        this.taxRate = taxRate;
-        return this;
-    }
+	public BigDecimal getTaxRate() {
+		return taxRate;
+	}
 
-    public void setTaxRate(BigDecimal taxRate) {
-        this.taxRate = taxRate;
-    }
+	public TaxRate taxRate(BigDecimal taxRate) {
+		this.taxRate = taxRate;
+		return this;
+	}
 
-    public Set<TaxRateDescription> getDescriptions() {
-        return descriptions;
-    }
+	public void setTaxRate(BigDecimal taxRate) {
+		this.taxRate = taxRate;
+	}
 
-    public TaxRate descriptions(Set<TaxRateDescription> taxRateDescriptions) {
-        this.descriptions = taxRateDescriptions;
-        return this;
-    }
+	public Set<TaxRateDescription> getDescriptions() {
+		return descriptions;
+	}
 
-    public TaxRate addDescriptions(TaxRateDescription taxRateDescription) {
-        this.descriptions.add(taxRateDescription);
-        taxRateDescription.setTaxRate(this);
-        return this;
-    }
+	public TaxRate descriptions(Set<TaxRateDescription> taxRateDescriptions) {
+		this.descriptions = taxRateDescriptions;
+		return this;
+	}
 
-    public TaxRate removeDescriptions(TaxRateDescription taxRateDescription) {
-        this.descriptions.remove(taxRateDescription);
-        taxRateDescription.setTaxRate(null);
-        return this;
-    }
+	public TaxRate addDescriptions(TaxRateDescription taxRateDescription) {
+		this.descriptions.add(taxRateDescription);
+		taxRateDescription.setTaxRate(this);
+		return this;
+	}
 
-    public void setDescriptions(Set<TaxRateDescription> taxRateDescriptions) {
-        this.descriptions = taxRateDescriptions;
-    }
+	public TaxRate removeDescriptions(TaxRateDescription taxRateDescription) {
+		this.descriptions.remove(taxRateDescription);
+		taxRateDescription.setTaxRate(null);
+		return this;
+	}
 
-    public Set<TaxRate> getTaxRates() {
-        return taxRates;
-    }
+	public void setDescriptions(Set<TaxRateDescription> taxRateDescriptions) {
+		this.descriptions = taxRateDescriptions;
+	}
 
-    public TaxRate taxRates(Set<TaxRate> taxRates) {
-        this.taxRates = taxRates;
-        return this;
-    }
+	public Set<TaxRate> getTaxRates() {
+		return taxRates;
+	}
 
-    public TaxRate addTaxRates(TaxRate taxRate) {
-        this.taxRates.add(taxRate);
-        taxRate.setParent(this);
-        return this;
-    }
+	public TaxRate taxRates(Set<TaxRate> taxRates) {
+		this.taxRates = taxRates;
+		return this;
+	}
 
-    public TaxRate removeTaxRates(TaxRate taxRate) {
-        this.taxRates.remove(taxRate);
-        taxRate.setParent(null);
-        return this;
-    }
+	public TaxRate addTaxRates(TaxRate taxRate) {
+		this.taxRates.add(taxRate);
+		taxRate.setParent(this);
+		return this;
+	}
 
-    public void setTaxRates(Set<TaxRate> taxRates) {
-        this.taxRates = taxRates;
-    }
+	public TaxRate removeTaxRates(TaxRate taxRate) {
+		this.taxRates.remove(taxRate);
+		taxRate.setParent(null);
+		return this;
+	}
 
-    public Country getCountry() {
-        return country;
-    }
+	public void setTaxRates(Set<TaxRate> taxRates) {
+		this.taxRates = taxRates;
+	}
 
-    public TaxRate country(Country country) {
-        this.country = country;
-        return this;
-    }
+	public Country getCountry() {
+		return country;
+	}
 
-    public void setCountry(Country country) {
-        this.country = country;
-    }
+	public TaxRate country(Country country) {
+		this.country = country;
+		return this;
+	}
 
-    public MerchantStore getMerchantStore() {
-        return merchantStore;
-    }
+	public void setCountry(Country country) {
+		this.country = country;
+	}
 
-    public TaxRate merchantStore(MerchantStore merchantStore) {
-        this.merchantStore = merchantStore;
-        return this;
-    }
+	public MerchantStore getMerchantStore() {
+		return merchantStore;
+	}
 
-    public void setMerchantStore(MerchantStore merchantStore) {
-        this.merchantStore = merchantStore;
-    }
+	public TaxRate merchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+		return this;
+	}
 
-    public TaxClass getTaxClass() {
-        return taxClass;
-    }
+	public void setMerchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+	}
 
-    public TaxRate taxClass(TaxClass taxClass) {
-        this.taxClass = taxClass;
-        return this;
-    }
+	public TaxClass getTaxClass() {
+		return taxClass;
+	}
 
-    public void setTaxClass(TaxClass taxClass) {
-        this.taxClass = taxClass;
-    }
+	public TaxRate taxClass(TaxClass taxClass) {
+		this.taxClass = taxClass;
+		return this;
+	}
 
-    public TaxRate getParent() {
-        return parent;
-    }
+	public void setTaxClass(TaxClass taxClass) {
+		this.taxClass = taxClass;
+	}
 
-    public TaxRate parent(TaxRate taxRate) {
-        this.parent = taxRate;
-        return this;
-    }
+	public TaxRate getParent() {
+		return parent;
+	}
 
-    public void setParent(TaxRate taxRate) {
-        this.parent = taxRate;
-    }
+	public TaxRate parent(TaxRate taxRate) {
+		this.parent = taxRate;
+		return this;
+	}
+
+	public void setParent(TaxRate taxRate) {
+		this.parent = taxRate;
+	}
 
 	public Zone getZone() {
 		return zone;
@@ -270,7 +270,4 @@ public class TaxRate extends BusinessDomain<Long,TaxRate>  implements Serializab
 		return piggyback;
 	}
 
-    
-
-    
 }

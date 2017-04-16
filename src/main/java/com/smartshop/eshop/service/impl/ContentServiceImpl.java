@@ -15,16 +15,16 @@ import com.smartshop.eshop.service.ContentService;
  */
 @Service
 @Transactional
-public class ContentServiceImpl extends AbstractDomainServiceImpl< Content, Long> implements ContentService{
+public class ContentServiceImpl extends AbstractDomainServiceImpl<Content, Long> implements ContentService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ContentServiceImpl.class);
-    private final ContentRepository contentRepository;
-    private final ContentSearchRepository contentSearchRepository;
-    
-    public ContentServiceImpl(ContentRepository contentRepository, ContentSearchRepository contentSearchRepository) {
-        super(contentRepository,contentSearchRepository);
-        this.contentRepository = contentRepository;
-        this.contentSearchRepository = contentSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ContentServiceImpl.class);
+	private final ContentRepository contentRepository;
+	private final ContentSearchRepository contentSearchRepository;
+
+	public ContentServiceImpl(ContentRepository contentRepository, ContentSearchRepository contentSearchRepository) {
+		super(contentRepository, contentSearchRepository);
+		this.contentRepository = contentRepository;
+		this.contentSearchRepository = contentSearchRepository;
+	}
+
 }

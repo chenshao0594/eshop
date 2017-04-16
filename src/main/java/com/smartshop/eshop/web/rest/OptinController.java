@@ -1,55 +1,39 @@
 package com.smartshop.eshop.web.rest;
 
-import com.codahale.metrics.annotation.Timed;
-import com.smartshop.eshop.domain.Optin;
-import com.smartshop.eshop.service.OptinService;
-import com.smartshop.eshop.web.rest.util.HeaderUtil;
-import com.smartshop.eshop.web.rest.util.PaginationUtil;
-import io.swagger.annotations.ApiParam;
-import io.github.jhipster.web.util.ResponseUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
-import java.net.URISyntaxException;
-import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
-import java.util.stream.StreamSupport;
-
-import static org.elasticsearch.index.query.QueryBuilders.*;
+import com.smartshop.eshop.domain.Optin;
+import com.smartshop.eshop.service.OptinService;
 
 /**
  * REST controller for managing Optin.
  */
 @RestController
-@RequestMapping("/api/"+ OptinController.SECTION_KEY)
-public class OptinController extends AbstractDomainController< Optin, Long>{
+@RequestMapping("/api/" + OptinController.SECTION_KEY)
+public class OptinController extends AbstractDomainController<Optin, Long> {
 
-    private final Logger log = LoggerFactory.getLogger(OptinController.class);
-    public static final String SECTION_KEY = "optins";
-    private static final String ENTITY_NAME = "optin";
-        
-     private final OptinService optinService;
+	private final Logger log = LoggerFactory.getLogger(OptinController.class);
+	public static final String SECTION_KEY = "optins";
+	private static final String ENTITY_NAME = "optin";
 
-    public OptinController(OptinService optinService) {
-        super(optinService);
-        this.optinService = optinService;
-    }    
-    @Override
-    protected String getSectionKey() {
-        return SECTION_KEY;
-    }
+	private final OptinService optinService;
 
-    @Override
-    protected String getEntityName() {
-        return ENTITY_NAME;
-    }
+	public OptinController(OptinService optinService) {
+		super(optinService);
+		this.optinService = optinService;
+	}
+
+	@Override
+	protected String getSectionKey() {
+		return SECTION_KEY;
+	}
+
+	@Override
+	protected String getEntityName() {
+		return ENTITY_NAME;
+	}
 
 }

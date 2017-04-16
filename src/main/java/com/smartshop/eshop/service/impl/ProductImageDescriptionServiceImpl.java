@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.ProductImageDescriptionService;
  */
 @Service
 @Transactional
-public class ProductImageDescriptionServiceImpl extends AbstractDomainServiceImpl< ProductImageDescription, Long> implements ProductImageDescriptionService{
+public class ProductImageDescriptionServiceImpl extends AbstractDomainServiceImpl<ProductImageDescription, Long>
+		implements ProductImageDescriptionService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ProductImageDescriptionServiceImpl.class);
-    private final ProductImageDescriptionRepository productImageDescriptionRepository;
-    private final ProductImageDescriptionSearchRepository productImageDescriptionSearchRepository;
-    
-    public ProductImageDescriptionServiceImpl(ProductImageDescriptionRepository productImageDescriptionRepository, ProductImageDescriptionSearchRepository productImageDescriptionSearchRepository) {
-        super(productImageDescriptionRepository,productImageDescriptionSearchRepository);
-        this.productImageDescriptionRepository = productImageDescriptionRepository;
-        this.productImageDescriptionSearchRepository = productImageDescriptionSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductImageDescriptionServiceImpl.class);
+	private final ProductImageDescriptionRepository productImageDescriptionRepository;
+	private final ProductImageDescriptionSearchRepository productImageDescriptionSearchRepository;
+
+	public ProductImageDescriptionServiceImpl(ProductImageDescriptionRepository productImageDescriptionRepository,
+			ProductImageDescriptionSearchRepository productImageDescriptionSearchRepository) {
+		super(productImageDescriptionRepository, productImageDescriptionSearchRepository);
+		this.productImageDescriptionRepository = productImageDescriptionRepository;
+		this.productImageDescriptionSearchRepository = productImageDescriptionSearchRepository;
+	}
+
 }

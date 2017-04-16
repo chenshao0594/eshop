@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.Template;
  * Spring Data JPA repository for the Template entity.
  */
 @SuppressWarnings("unused")
-public interface TemplateRepository extends JpaRepository<Template,Long> {
+public interface TemplateRepository extends JpaRepository<Template, Long> {
 
 }

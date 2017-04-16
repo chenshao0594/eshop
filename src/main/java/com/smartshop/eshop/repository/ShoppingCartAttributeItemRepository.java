@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.ShoppingCartAttributeItem;
  * Spring Data JPA repository for the ShoppingCartAttributeItem entity.
  */
 @SuppressWarnings("unused")
-public interface ShoppingCartAttributeItemRepository extends JpaRepository<ShoppingCartAttributeItem,Long> {
+public interface ShoppingCartAttributeItemRepository extends JpaRepository<ShoppingCartAttributeItem, Long> {
 
 }

@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.SystemConfiguration;
 /**
  * Service Interface for managing SystemConfiguration.
  */
-public interface SystemConfigurationService extends AbstractDomainService< SystemConfiguration, Long>{
+public interface SystemConfigurationService extends AbstractDomainService<SystemConfiguration, Long> {
 
-     }
+}

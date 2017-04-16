@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.ProductPriceService;
  */
 @Service
 @Transactional
-public class ProductPriceServiceImpl extends AbstractDomainServiceImpl< ProductPrice, Long> implements ProductPriceService{
+public class ProductPriceServiceImpl extends AbstractDomainServiceImpl<ProductPrice, Long>
+		implements ProductPriceService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ProductPriceServiceImpl.class);
-    private final ProductPriceRepository productPriceRepository;
-    private final ProductPriceSearchRepository productPriceSearchRepository;
-    
-    public ProductPriceServiceImpl(ProductPriceRepository productPriceRepository, ProductPriceSearchRepository productPriceSearchRepository) {
-        super(productPriceRepository,productPriceSearchRepository);
-        this.productPriceRepository = productPriceRepository;
-        this.productPriceSearchRepository = productPriceSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductPriceServiceImpl.class);
+	private final ProductPriceRepository productPriceRepository;
+	private final ProductPriceSearchRepository productPriceSearchRepository;
+
+	public ProductPriceServiceImpl(ProductPriceRepository productPriceRepository,
+			ProductPriceSearchRepository productPriceSearchRepository) {
+		super(productPriceRepository, productPriceSearchRepository);
+		this.productPriceRepository = productPriceRepository;
+		this.productPriceSearchRepository = productPriceSearchRepository;
+	}
+
 }

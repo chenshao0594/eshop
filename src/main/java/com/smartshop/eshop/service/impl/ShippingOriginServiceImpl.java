@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.ShippingOriginService;
  */
 @Service
 @Transactional
-public class ShippingOriginServiceImpl extends AbstractDomainServiceImpl< ShippingOrigin, Long> implements ShippingOriginService{
+public class ShippingOriginServiceImpl extends AbstractDomainServiceImpl<ShippingOrigin, Long>
+		implements ShippingOriginService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ShippingOriginServiceImpl.class);
-    private final ShippingOriginRepository shippingOriginRepository;
-    private final ShippingOriginSearchRepository shippingOriginSearchRepository;
-    
-    public ShippingOriginServiceImpl(ShippingOriginRepository shippingOriginRepository, ShippingOriginSearchRepository shippingOriginSearchRepository) {
-        super(shippingOriginRepository,shippingOriginSearchRepository);
-        this.shippingOriginRepository = shippingOriginRepository;
-        this.shippingOriginSearchRepository = shippingOriginSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ShippingOriginServiceImpl.class);
+	private final ShippingOriginRepository shippingOriginRepository;
+	private final ShippingOriginSearchRepository shippingOriginSearchRepository;
+
+	public ShippingOriginServiceImpl(ShippingOriginRepository shippingOriginRepository,
+			ShippingOriginSearchRepository shippingOriginSearchRepository) {
+		super(shippingOriginRepository, shippingOriginSearchRepository);
+		this.shippingOriginRepository = shippingOriginRepository;
+		this.shippingOriginSearchRepository = shippingOriginSearchRepository;
+	}
+
 }

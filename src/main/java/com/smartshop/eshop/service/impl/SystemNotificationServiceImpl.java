@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.SystemNotificationService;
  */
 @Service
 @Transactional
-public class SystemNotificationServiceImpl extends AbstractDomainServiceImpl< SystemNotification, Long> implements SystemNotificationService{
+public class SystemNotificationServiceImpl extends AbstractDomainServiceImpl<SystemNotification, Long>
+		implements SystemNotificationService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(SystemNotificationServiceImpl.class);
-    private final SystemNotificationRepository systemNotificationRepository;
-    private final SystemNotificationSearchRepository systemNotificationSearchRepository;
-    
-    public SystemNotificationServiceImpl(SystemNotificationRepository systemNotificationRepository, SystemNotificationSearchRepository systemNotificationSearchRepository) {
-        super(systemNotificationRepository,systemNotificationSearchRepository);
-        this.systemNotificationRepository = systemNotificationRepository;
-        this.systemNotificationSearchRepository = systemNotificationSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(SystemNotificationServiceImpl.class);
+	private final SystemNotificationRepository systemNotificationRepository;
+	private final SystemNotificationSearchRepository systemNotificationSearchRepository;
+
+	public SystemNotificationServiceImpl(SystemNotificationRepository systemNotificationRepository,
+			SystemNotificationSearchRepository systemNotificationSearchRepository) {
+		super(systemNotificationRepository, systemNotificationSearchRepository);
+		this.systemNotificationRepository = systemNotificationRepository;
+		this.systemNotificationSearchRepository = systemNotificationSearchRepository;
+	}
+
 }

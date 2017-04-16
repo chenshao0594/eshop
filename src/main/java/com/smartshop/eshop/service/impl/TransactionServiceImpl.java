@@ -15,16 +15,17 @@ import com.smartshop.eshop.service.TransactionService;
  */
 @Service
 @Transactional
-public class TransactionServiceImpl extends AbstractDomainServiceImpl< Transaction, Long> implements TransactionService{
+public class TransactionServiceImpl extends AbstractDomainServiceImpl<Transaction, Long> implements TransactionService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(TransactionServiceImpl.class);
-    private final TransactionRepository transactionRepository;
-    private final TransactionSearchRepository transactionSearchRepository;
-    
-    public TransactionServiceImpl(TransactionRepository transactionRepository, TransactionSearchRepository transactionSearchRepository) {
-        super(transactionRepository,transactionSearchRepository);
-        this.transactionRepository = transactionRepository;
-        this.transactionSearchRepository = transactionSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(TransactionServiceImpl.class);
+	private final TransactionRepository transactionRepository;
+	private final TransactionSearchRepository transactionSearchRepository;
+
+	public TransactionServiceImpl(TransactionRepository transactionRepository,
+			TransactionSearchRepository transactionSearchRepository) {
+		super(transactionRepository, transactionSearchRepository);
+		this.transactionRepository = transactionRepository;
+		this.transactionSearchRepository = transactionSearchRepository;
+	}
+
 }

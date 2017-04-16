@@ -13,8 +13,8 @@ import com.smartshop.eshop.domain.User;
  */
 public interface PersistentTokenRepository extends JpaRepository<PersistentToken, String> {
 
-    List<PersistentToken> findByUser(User user);
+	List<PersistentToken> findByUser(User user);
 
-    List<PersistentToken> findByTokenDateBefore(LocalDate localDate);
+	List<PersistentToken> findByTokenDateBefore(LocalDate localDate);
 
 }

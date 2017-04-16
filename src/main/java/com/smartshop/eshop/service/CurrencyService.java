@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.Currency;
 /**
  * Service Interface for managing Currency.
  */
-public interface CurrencyService extends AbstractDomainService< Currency, Long>{
+public interface CurrencyService extends AbstractDomainService<Currency, Long> {
 
-     }
+}

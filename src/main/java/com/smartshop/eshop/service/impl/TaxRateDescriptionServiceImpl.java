@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.TaxRateDescriptionService;
  */
 @Service
 @Transactional
-public class TaxRateDescriptionServiceImpl extends AbstractDomainServiceImpl< TaxRateDescription, Long> implements TaxRateDescriptionService{
+public class TaxRateDescriptionServiceImpl extends AbstractDomainServiceImpl<TaxRateDescription, Long>
+		implements TaxRateDescriptionService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(TaxRateDescriptionServiceImpl.class);
-    private final TaxRateDescriptionRepository taxRateDescriptionRepository;
-    private final TaxRateDescriptionSearchRepository taxRateDescriptionSearchRepository;
-    
-    public TaxRateDescriptionServiceImpl(TaxRateDescriptionRepository taxRateDescriptionRepository, TaxRateDescriptionSearchRepository taxRateDescriptionSearchRepository) {
-        super(taxRateDescriptionRepository,taxRateDescriptionSearchRepository);
-        this.taxRateDescriptionRepository = taxRateDescriptionRepository;
-        this.taxRateDescriptionSearchRepository = taxRateDescriptionSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(TaxRateDescriptionServiceImpl.class);
+	private final TaxRateDescriptionRepository taxRateDescriptionRepository;
+	private final TaxRateDescriptionSearchRepository taxRateDescriptionSearchRepository;
+
+	public TaxRateDescriptionServiceImpl(TaxRateDescriptionRepository taxRateDescriptionRepository,
+			TaxRateDescriptionSearchRepository taxRateDescriptionSearchRepository) {
+		super(taxRateDescriptionRepository, taxRateDescriptionSearchRepository);
+		this.taxRateDescriptionRepository = taxRateDescriptionRepository;
+		this.taxRateDescriptionSearchRepository = taxRateDescriptionSearchRepository;
+	}
+
 }

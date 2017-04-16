@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.ProductReviewDescription;
  * Spring Data JPA repository for the ProductReviewDescription entity.
  */
 @SuppressWarnings("unused")
-public interface ProductReviewDescriptionRepository extends JpaRepository<ProductReviewDescription,Long> {
+public interface ProductReviewDescriptionRepository extends JpaRepository<ProductReviewDescription, Long> {
 
 }

@@ -10,7 +10,6 @@ import javax.validation.constraints.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Objects;
 
 /**
  * A TaxClass.
@@ -19,133 +18,132 @@ import java.util.Objects;
 @Table(name = "tax_class")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "taxclass")
-public class TaxClass extends BusinessDomain<Long,TaxClass>  implements Serializable {
+public class TaxClass extends BusinessDomain<Long, TaxClass> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @NotNull
-    @Column(name = "title", nullable = false)
-    private String title;
+	@NotNull
+	@Column(name = "title", nullable = false)
+	private String title;
 
-    @NotNull
-    @Column(name = "code", nullable = false)
-    private String code;
+	@NotNull
+	@Column(name = "code", nullable = false)
+	private String code;
 
-    @OneToMany(mappedBy = "taxClass")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Product> products = new HashSet<>();
+	@OneToMany(mappedBy = "taxClass")
+	@JsonIgnore
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	private Set<Product> products = new HashSet<>();
 
-    @OneToMany(mappedBy = "taxClass")
-    @JsonIgnore
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<TaxRate> taxRates = new HashSet<>();
+	@OneToMany(mappedBy = "taxClass")
+	@JsonIgnore
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	private Set<TaxRate> taxRates = new HashSet<>();
 
-    @ManyToOne
-    private MerchantStore merchantStore;
+	@ManyToOne
+	private MerchantStore merchantStore;
 
-    public Long getId() {
-        return id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public TaxClass title(String title) {
-        this.title = title;
-        return this;
-    }
+	public TaxClass title(String title) {
+		this.title = title;
+		return this;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public TaxClass code(String code) {
-        this.code = code;
-        return this;
-    }
+	public TaxClass code(String code) {
+		this.code = code;
+		return this;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public Set<Product> getProducts() {
-        return products;
-    }
+	public Set<Product> getProducts() {
+		return products;
+	}
 
-    public TaxClass products(Set<Product> products) {
-        this.products = products;
-        return this;
-    }
+	public TaxClass products(Set<Product> products) {
+		this.products = products;
+		return this;
+	}
 
-    public TaxClass addProducts(Product product) {
-        this.products.add(product);
-        product.setTaxClass(this);
-        return this;
-    }
+	public TaxClass addProducts(Product product) {
+		this.products.add(product);
+		product.setTaxClass(this);
+		return this;
+	}
 
-    public TaxClass removeProducts(Product product) {
-        this.products.remove(product);
-        product.setTaxClass(null);
-        return this;
-    }
+	public TaxClass removeProducts(Product product) {
+		this.products.remove(product);
+		product.setTaxClass(null);
+		return this;
+	}
 
-    public void setProducts(Set<Product> products) {
-        this.products = products;
-    }
+	public void setProducts(Set<Product> products) {
+		this.products = products;
+	}
 
-    public Set<TaxRate> getTaxRates() {
-        return taxRates;
-    }
+	public Set<TaxRate> getTaxRates() {
+		return taxRates;
+	}
 
-    public TaxClass taxRates(Set<TaxRate> taxRates) {
-        this.taxRates = taxRates;
-        return this;
-    }
+	public TaxClass taxRates(Set<TaxRate> taxRates) {
+		this.taxRates = taxRates;
+		return this;
+	}
 
-    public TaxClass addTaxRates(TaxRate taxRate) {
-        this.taxRates.add(taxRate);
-        taxRate.setTaxClass(this);
-        return this;
-    }
+	public TaxClass addTaxRates(TaxRate taxRate) {
+		this.taxRates.add(taxRate);
+		taxRate.setTaxClass(this);
+		return this;
+	}
 
-    public TaxClass removeTaxRates(TaxRate taxRate) {
-        this.taxRates.remove(taxRate);
-        taxRate.setTaxClass(null);
-        return this;
-    }
+	public TaxClass removeTaxRates(TaxRate taxRate) {
+		this.taxRates.remove(taxRate);
+		taxRate.setTaxClass(null);
+		return this;
+	}
 
-    public void setTaxRates(Set<TaxRate> taxRates) {
-        this.taxRates = taxRates;
-    }
+	public void setTaxRates(Set<TaxRate> taxRates) {
+		this.taxRates = taxRates;
+	}
 
-    public MerchantStore getMerchantStore() {
-        return merchantStore;
-    }
+	public MerchantStore getMerchantStore() {
+		return merchantStore;
+	}
 
-    public TaxClass merchantStore(MerchantStore merchantStore) {
-        this.merchantStore = merchantStore;
-        return this;
-    }
+	public TaxClass merchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+		return this;
+	}
 
-    public void setMerchantStore(MerchantStore merchantStore) {
-        this.merchantStore = merchantStore;
-    }
+	public void setMerchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+	}
 
-    
-
-    
 }

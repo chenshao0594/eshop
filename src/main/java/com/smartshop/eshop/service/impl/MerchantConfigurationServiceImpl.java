@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.MerchantConfigurationService;
  */
 @Service
 @Transactional
-public class MerchantConfigurationServiceImpl extends AbstractDomainServiceImpl< MerchantConfiguration, Long> implements MerchantConfigurationService{
+public class MerchantConfigurationServiceImpl extends AbstractDomainServiceImpl<MerchantConfiguration, Long>
+		implements MerchantConfigurationService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(MerchantConfigurationServiceImpl.class);
-    private final MerchantConfigurationRepository merchantConfigurationRepository;
-    private final MerchantConfigurationSearchRepository merchantConfigurationSearchRepository;
-    
-    public MerchantConfigurationServiceImpl(MerchantConfigurationRepository merchantConfigurationRepository, MerchantConfigurationSearchRepository merchantConfigurationSearchRepository) {
-        super(merchantConfigurationRepository,merchantConfigurationSearchRepository);
-        this.merchantConfigurationRepository = merchantConfigurationRepository;
-        this.merchantConfigurationSearchRepository = merchantConfigurationSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(MerchantConfigurationServiceImpl.class);
+	private final MerchantConfigurationRepository merchantConfigurationRepository;
+	private final MerchantConfigurationSearchRepository merchantConfigurationSearchRepository;
+
+	public MerchantConfigurationServiceImpl(MerchantConfigurationRepository merchantConfigurationRepository,
+			MerchantConfigurationSearchRepository merchantConfigurationSearchRepository) {
+		super(merchantConfigurationRepository, merchantConfigurationSearchRepository);
+		this.merchantConfigurationRepository = merchantConfigurationRepository;
+		this.merchantConfigurationSearchRepository = merchantConfigurationSearchRepository;
+	}
+
 }

@@ -7,7 +7,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A Template.
@@ -16,91 +15,90 @@ import java.util.Objects;
 @Table(name = "template")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "template")
-public class Template extends BusinessDomain<Long,Template>  implements Serializable {
+public class Template extends BusinessDomain<Long, Template> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+	@NotNull
+	@Column(name = "name", nullable = false)
+	private String name;
 
-    @Column(name = "super_id")
-    private Long superId;
+	@Column(name = "super_id")
+	private Long superId;
 
-    @NotNull
-    @Column(name = "template_key", nullable = false)
-    private String templateKey;
+	@NotNull
+	@Column(name = "template_key", nullable = false)
+	private String templateKey;
 
-    @NotNull
-    @Lob
-    @Column(name = "content", nullable = false)
-    private String content;
+	@NotNull
+	@Lob
+	@Column(name = "content", nullable = false)
+	private String content;
 
-    public Long getId() {
-        return id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Template name(String name) {
-        this.name = name;
-        return this;
-    }
+	public Template name(String name) {
+		this.name = name;
+		return this;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public Long getSuperId() {
-        return superId;
-    }
+	public Long getSuperId() {
+		return superId;
+	}
 
-    public Template superId(Long superId) {
-        this.superId = superId;
-        return this;
-    }
+	public Template superId(Long superId) {
+		this.superId = superId;
+		return this;
+	}
 
-    public void setSuperId(Long superId) {
-        this.superId = superId;
-    }
+	public void setSuperId(Long superId) {
+		this.superId = superId;
+	}
 
-    public String getTemplateKey() {
-        return templateKey;
-    }
+	public String getTemplateKey() {
+		return templateKey;
+	}
 
-    public Template templateKey(String templateKey) {
-        this.templateKey = templateKey;
-        return this;
-    }
+	public Template templateKey(String templateKey) {
+		this.templateKey = templateKey;
+		return this;
+	}
 
-    public void setTemplateKey(String templateKey) {
-        this.templateKey = templateKey;
-    }
+	public void setTemplateKey(String templateKey) {
+		this.templateKey = templateKey;
+	}
 
-    public String getContent() {
-        return content;
-    }
+	public String getContent() {
+		return content;
+	}
 
-    public Template content(String content) {
-        this.content = content;
-        return this;
-    }
+	public Template content(String content) {
+		this.content = content;
+		return this;
+	}
 
-    public void setContent(String content) {
-        this.content = content;
-    }
+	public void setContent(String content) {
+		this.content = content;
+	}
 
-    
-
-    
 }

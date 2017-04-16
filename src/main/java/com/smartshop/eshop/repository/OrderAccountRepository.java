@@ -6,5 +6,4 @@ import com.smartshop.eshop.domain.OrderAccount;
 
 public interface OrderAccountRepository extends JpaRepository<OrderAccount, Long> {
 
-
 }

@@ -15,25 +15,23 @@ import io.github.jhipster.config.JHipsterProperties;
 
 public class CustomSignInAdapter implements SignInAdapter {
 
-    @SuppressWarnings("unused")
-    private final Logger log = LoggerFactory.getLogger(CustomSignInAdapter.class);
+	@SuppressWarnings("unused")
+	private final Logger log = LoggerFactory.getLogger(CustomSignInAdapter.class);
 
-    private final UserDetailsService userDetailsService;
+	private final UserDetailsService userDetailsService;
 
-    private final JHipsterProperties jHipsterProperties;
+	private final JHipsterProperties jHipsterProperties;
 
-    public CustomSignInAdapter(UserDetailsService userDetailsService, JHipsterProperties jHipsterProperties) {
-        this.userDetailsService = userDetailsService;
-        this.jHipsterProperties = jHipsterProperties;
-    }
-    @Override
-    public String signIn(String userId, Connection<?> connection, NativeWebRequest request) {
-        UserDetails user = userDetailsService.loadUserByUsername(userId);
-        Authentication newAuth = new UsernamePasswordAuthenticationToken(
-            user,
-            null,
-            user.getAuthorities());
-        SecurityContextHolder.getContext().setAuthentication(newAuth);
-        return jHipsterProperties.getSocial().getRedirectAfterSignIn();
-    }
+	public CustomSignInAdapter(UserDetailsService userDetailsService, JHipsterProperties jHipsterProperties) {
+		this.userDetailsService = userDetailsService;
+		this.jHipsterProperties = jHipsterProperties;
+	}
+
+	@Override
+	public String signIn(String userId, Connection<?> connection, NativeWebRequest request) {
+		UserDetails user = userDetailsService.loadUserByUsername(userId);
+		Authentication newAuth = new UsernamePasswordAuthenticationToken(user, null, user.getAuthorities());
+		SecurityContextHolder.getContext().setAuthentication(newAuth);
+		return jHipsterProperties.getSocial().getRedirectAfterSignIn();
+	}
 }

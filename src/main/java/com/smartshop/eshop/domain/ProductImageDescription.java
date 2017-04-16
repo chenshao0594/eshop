@@ -7,7 +7,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A ProductImageDescription.
@@ -16,119 +15,118 @@ import java.util.Objects;
 @Table(name = "product_image_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productimagedescription")
-public class ProductImageDescription extends BusinessDomain<Long,ProductImageDescription>  implements Serializable {
+public class ProductImageDescription extends BusinessDomain<Long, ProductImageDescription> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "title")
-    private String title;
+	@Column(name = "title")
+	private String title;
 
-    @Column(name = "alt_tag")
-    private String altTag;
+	@Column(name = "alt_tag")
+	private String altTag;
 
-    @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+	@NotNull
+	@Column(name = "name", nullable = false)
+	private String name;
 
-    @Column(name = "description")
-    private String description;
-    @ManyToOne
-    private Language language;
+	@Column(name = "description")
+	private String description;
+	@ManyToOne
+	private Language language;
 
-    @ManyToOne
-    private ProductImage productImage;
+	@ManyToOne
+	private ProductImage productImage;
 
-    public Long getId() {
-        return id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public ProductImageDescription title(String title) {
-        this.title = title;
-        return this;
-    }
+	public ProductImageDescription title(String title) {
+		this.title = title;
+		return this;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public String getAltTag() {
-        return altTag;
-    }
+	public String getAltTag() {
+		return altTag;
+	}
 
-    public ProductImageDescription altTag(String altTag) {
-        this.altTag = altTag;
-        return this;
-    }
+	public ProductImageDescription altTag(String altTag) {
+		this.altTag = altTag;
+		return this;
+	}
 
-    public void setAltTag(String altTag) {
-        this.altTag = altTag;
-    }
+	public void setAltTag(String altTag) {
+		this.altTag = altTag;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public ProductImageDescription name(String name) {
-        this.name = name;
-        return this;
-    }
+	public ProductImageDescription name(String name) {
+		this.name = name;
+		return this;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public ProductImageDescription description(String description) {
-        this.description = description;
-        return this;
-    }
+	public ProductImageDescription description(String description) {
+		this.description = description;
+		return this;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public Language getLanguage() {
-        return language;
-    }
+	public Language getLanguage() {
+		return language;
+	}
 
-    public ProductImageDescription language(Language language) {
-        this.language = language;
-        return this;
-    }
+	public ProductImageDescription language(Language language) {
+		this.language = language;
+		return this;
+	}
 
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
+	public void setLanguage(Language language) {
+		this.language = language;
+	}
 
-    public ProductImage getProductImage() {
-        return productImage;
-    }
+	public ProductImage getProductImage() {
+		return productImage;
+	}
 
-    public ProductImageDescription productImage(ProductImage productImage) {
-        this.productImage = productImage;
-        return this;
-    }
+	public ProductImageDescription productImage(ProductImage productImage) {
+		this.productImage = productImage;
+		return this;
+	}
 
-    public void setProductImage(ProductImage productImage) {
-        this.productImage = productImage;
-    }
+	public void setProductImage(ProductImage productImage) {
+		this.productImage = productImage;
+	}
 
-    
-
-    
 }

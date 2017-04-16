@@ -1,0 +1,4 @@
+ORDER_ACCOUNT_ID;"MODULE";"CODE";"ORDER_TOTAL_TYPE";"ORDER_VALUE_TYPE";SORT_ORDER;"TEXT";"TITLE";VALUE;ORDER_ID
+1;"summary";"subtotal";;"ONE_TIME";0;"Summary";"Summary";19.9900;1
+2;"tax";"tax";;"ONE_TIME";1;"Tax";"Tax";4.0000;1
+3;"total";"total";;"ONE_TIME";2;"Total";"Total";23.9900;1

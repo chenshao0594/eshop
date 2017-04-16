@@ -8,19 +8,20 @@ import java.util.List;
 import com.smartshop.eshop.domain.ProductPrice;
 
 public class FinalPrice implements Serializable {
-	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private BigDecimal discountedPrice = null;//final price if a discount is applied
-	private BigDecimal originalPrice = null;//original price
-	private BigDecimal finalPrice = null;//final price discount or not
+	private BigDecimal discountedPrice = null;// final price if a discount is
+												// applied
+	private BigDecimal originalPrice = null;// original price
+	private BigDecimal finalPrice = null;// final price discount or not
 	private boolean discounted = false;
 	private int discountPercent = 0;
-	
+
 	private Date discountEndDate = null;
-	
+
 	private boolean defaultPrice;
 	private ProductPrice productPrice;
 	List<FinalPrice> additionalPrices;
@@ -40,8 +41,6 @@ public class FinalPrice implements Serializable {
 	public void setOriginalPrice(BigDecimal originalPrice) {
 		this.originalPrice = originalPrice;
 	}
-
-
 
 	public int getDiscountPercent() {
 		return discountPercent;
@@ -74,7 +73,6 @@ public class FinalPrice implements Serializable {
 	public BigDecimal getDiscountedPrice() {
 		return discountedPrice;
 	}
-
 
 	public void setFinalPrice(BigDecimal finalPrice) {
 		this.finalPrice = finalPrice;

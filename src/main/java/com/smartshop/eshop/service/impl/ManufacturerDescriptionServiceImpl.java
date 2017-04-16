@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.ManufacturerDescriptionService;
  */
 @Service
 @Transactional
-public class ManufacturerDescriptionServiceImpl extends AbstractDomainServiceImpl< ManufacturerDescription, Long> implements ManufacturerDescriptionService{
+public class ManufacturerDescriptionServiceImpl extends AbstractDomainServiceImpl<ManufacturerDescription, Long>
+		implements ManufacturerDescriptionService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ManufacturerDescriptionServiceImpl.class);
-    private final ManufacturerDescriptionRepository manufacturerDescriptionRepository;
-    private final ManufacturerDescriptionSearchRepository manufacturerDescriptionSearchRepository;
-    
-    public ManufacturerDescriptionServiceImpl(ManufacturerDescriptionRepository manufacturerDescriptionRepository, ManufacturerDescriptionSearchRepository manufacturerDescriptionSearchRepository) {
-        super(manufacturerDescriptionRepository,manufacturerDescriptionSearchRepository);
-        this.manufacturerDescriptionRepository = manufacturerDescriptionRepository;
-        this.manufacturerDescriptionSearchRepository = manufacturerDescriptionSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ManufacturerDescriptionServiceImpl.class);
+	private final ManufacturerDescriptionRepository manufacturerDescriptionRepository;
+	private final ManufacturerDescriptionSearchRepository manufacturerDescriptionSearchRepository;
+
+	public ManufacturerDescriptionServiceImpl(ManufacturerDescriptionRepository manufacturerDescriptionRepository,
+			ManufacturerDescriptionSearchRepository manufacturerDescriptionSearchRepository) {
+		super(manufacturerDescriptionRepository, manufacturerDescriptionSearchRepository);
+		this.manufacturerDescriptionRepository = manufacturerDescriptionRepository;
+		this.manufacturerDescriptionSearchRepository = manufacturerDescriptionSearchRepository;
+	}
+
 }

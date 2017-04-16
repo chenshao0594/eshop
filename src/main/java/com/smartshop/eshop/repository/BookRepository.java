@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.Book;
  * Spring Data JPA repository for the Book entity.
  */
 @SuppressWarnings("unused")
-public interface BookRepository extends JpaRepository<Book,Long> {
+public interface BookRepository extends JpaRepository<Book, Long> {
 
 }

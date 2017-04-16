@@ -9,8 +9,7 @@ import com.smartshop.eshop.domain.IntegrationModule;
 public interface ModuleConfigurationRepository extends JpaRepository<IntegrationModule, Long> {
 
 	List<IntegrationModule> findByModule(String moduleName);
-	
+
 	IntegrationModule findByCode(String code);
-	
 
 }

@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.OrderProductDownloadService;
  */
 @Service
 @Transactional
-public class OrderProductDownloadServiceImpl extends AbstractDomainServiceImpl< OrderProductDownload, Long> implements OrderProductDownloadService{
+public class OrderProductDownloadServiceImpl extends AbstractDomainServiceImpl<OrderProductDownload, Long>
+		implements OrderProductDownloadService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(OrderProductDownloadServiceImpl.class);
-    private final OrderProductDownloadRepository orderProductDownloadRepository;
-    private final OrderProductDownloadSearchRepository orderProductDownloadSearchRepository;
-    
-    public OrderProductDownloadServiceImpl(OrderProductDownloadRepository orderProductDownloadRepository, OrderProductDownloadSearchRepository orderProductDownloadSearchRepository) {
-        super(orderProductDownloadRepository,orderProductDownloadSearchRepository);
-        this.orderProductDownloadRepository = orderProductDownloadRepository;
-        this.orderProductDownloadSearchRepository = orderProductDownloadSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(OrderProductDownloadServiceImpl.class);
+	private final OrderProductDownloadRepository orderProductDownloadRepository;
+	private final OrderProductDownloadSearchRepository orderProductDownloadSearchRepository;
+
+	public OrderProductDownloadServiceImpl(OrderProductDownloadRepository orderProductDownloadRepository,
+			OrderProductDownloadSearchRepository orderProductDownloadSearchRepository) {
+		super(orderProductDownloadRepository, orderProductDownloadSearchRepository);
+		this.orderProductDownloadRepository = orderProductDownloadRepository;
+		this.orderProductDownloadSearchRepository = orderProductDownloadSearchRepository;
+	}
+
 }

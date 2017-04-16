@@ -15,16 +15,17 @@ import com.smartshop.eshop.service.FileHistoryService;
  */
 @Service
 @Transactional
-public class FileHistoryServiceImpl extends AbstractDomainServiceImpl< FileHistory, Long> implements FileHistoryService{
+public class FileHistoryServiceImpl extends AbstractDomainServiceImpl<FileHistory, Long> implements FileHistoryService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(FileHistoryServiceImpl.class);
-    private final FileHistoryRepository fileHistoryRepository;
-    private final FileHistorySearchRepository fileHistorySearchRepository;
-    
-    public FileHistoryServiceImpl(FileHistoryRepository fileHistoryRepository, FileHistorySearchRepository fileHistorySearchRepository) {
-        super(fileHistoryRepository,fileHistorySearchRepository);
-        this.fileHistoryRepository = fileHistoryRepository;
-        this.fileHistorySearchRepository = fileHistorySearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(FileHistoryServiceImpl.class);
+	private final FileHistoryRepository fileHistoryRepository;
+	private final FileHistorySearchRepository fileHistorySearchRepository;
+
+	public FileHistoryServiceImpl(FileHistoryRepository fileHistoryRepository,
+			FileHistorySearchRepository fileHistorySearchRepository) {
+		super(fileHistoryRepository, fileHistorySearchRepository);
+		this.fileHistoryRepository = fileHistoryRepository;
+		this.fileHistorySearchRepository = fileHistorySearchRepository;
+	}
+
 }

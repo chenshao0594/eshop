@@ -114,10 +114,12 @@ public class CategoryServiceImpl extends AbstractDomainServiceImpl<Category, Lon
 			super.save(category);
 		}
 	}
+
 	@Override
 	public List<Category> listByLineage(MerchantStore store, String lineage) {
 		return categoryRepository.findByLineage(store.getId(), lineage);
 	}
+
 	@Override
 	public List<Category> listByLineage(String storeCode, String lineage) {
 		return categoryRepository.findByLineage(storeCode, lineage);
@@ -175,6 +177,7 @@ public class CategoryServiceImpl extends AbstractDomainServiceImpl<Category, Lon
 	}
 
 	// @Override
+	@Override
 	public void delete(Category category) {
 		// get category with lineage (subcategories)
 		StringBuilder lineage = new StringBuilder();

@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.OrderProductDownload;
 /**
  * Service Interface for managing OrderProductDownload.
  */
-public interface OrderProductDownloadService extends AbstractDomainService< OrderProductDownload, Long>{
+public interface OrderProductDownloadService extends AbstractDomainService<OrderProductDownload, Long> {
 
-     }
+}

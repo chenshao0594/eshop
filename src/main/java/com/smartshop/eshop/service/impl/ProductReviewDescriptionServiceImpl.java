@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.ProductReviewDescriptionService;
  */
 @Service
 @Transactional
-public class ProductReviewDescriptionServiceImpl extends AbstractDomainServiceImpl< ProductReviewDescription, Long> implements ProductReviewDescriptionService{
+public class ProductReviewDescriptionServiceImpl extends AbstractDomainServiceImpl<ProductReviewDescription, Long>
+		implements ProductReviewDescriptionService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ProductReviewDescriptionServiceImpl.class);
-    private final ProductReviewDescriptionRepository productReviewDescriptionRepository;
-    private final ProductReviewDescriptionSearchRepository productReviewDescriptionSearchRepository;
-    
-    public ProductReviewDescriptionServiceImpl(ProductReviewDescriptionRepository productReviewDescriptionRepository, ProductReviewDescriptionSearchRepository productReviewDescriptionSearchRepository) {
-        super(productReviewDescriptionRepository,productReviewDescriptionSearchRepository);
-        this.productReviewDescriptionRepository = productReviewDescriptionRepository;
-        this.productReviewDescriptionSearchRepository = productReviewDescriptionSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductReviewDescriptionServiceImpl.class);
+	private final ProductReviewDescriptionRepository productReviewDescriptionRepository;
+	private final ProductReviewDescriptionSearchRepository productReviewDescriptionSearchRepository;
+
+	public ProductReviewDescriptionServiceImpl(ProductReviewDescriptionRepository productReviewDescriptionRepository,
+			ProductReviewDescriptionSearchRepository productReviewDescriptionSearchRepository) {
+		super(productReviewDescriptionRepository, productReviewDescriptionSearchRepository);
+		this.productReviewDescriptionRepository = productReviewDescriptionRepository;
+		this.productReviewDescriptionSearchRepository = productReviewDescriptionSearchRepository;
+	}
+
 }

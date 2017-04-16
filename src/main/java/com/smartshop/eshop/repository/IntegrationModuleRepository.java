@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.IntegrationModule;
  * Spring Data JPA repository for the IntegrationModule entity.
  */
 @SuppressWarnings("unused")
-public interface IntegrationModuleRepository extends JpaRepository<IntegrationModule,Long> {
+public interface IntegrationModuleRepository extends JpaRepository<IntegrationModule, Long> {
 
 }

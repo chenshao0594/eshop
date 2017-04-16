@@ -15,16 +15,16 @@ import com.smartshop.eshop.service.OptinService;
  */
 @Service
 @Transactional
-public class OptinServiceImpl extends AbstractDomainServiceImpl< Optin, Long> implements OptinService{
+public class OptinServiceImpl extends AbstractDomainServiceImpl<Optin, Long> implements OptinService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(OptinServiceImpl.class);
-    private final OptinRepository optinRepository;
-    private final OptinSearchRepository optinSearchRepository;
-    
-    public OptinServiceImpl(OptinRepository optinRepository, OptinSearchRepository optinSearchRepository) {
-        super(optinRepository,optinSearchRepository);
-        this.optinRepository = optinRepository;
-        this.optinSearchRepository = optinSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(OptinServiceImpl.class);
+	private final OptinRepository optinRepository;
+	private final OptinSearchRepository optinSearchRepository;
+
+	public OptinServiceImpl(OptinRepository optinRepository, OptinSearchRepository optinSearchRepository) {
+		super(optinRepository, optinSearchRepository);
+		this.optinRepository = optinRepository;
+		this.optinSearchRepository = optinSearchRepository;
+	}
+
 }

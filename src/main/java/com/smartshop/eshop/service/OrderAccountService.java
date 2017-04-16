@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.OrderAccount;
 /**
  * Service Interface for managing OrderAccount.
  */
-public interface OrderAccountService extends AbstractDomainService< OrderAccount, Long>{
+public interface OrderAccountService extends AbstractDomainService<OrderAccount, Long> {
 
-     }
+}

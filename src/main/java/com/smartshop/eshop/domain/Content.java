@@ -33,7 +33,7 @@ import com.smartshop.eshop.domain.enumeration.ContentTypeEnum;
 @Table(name = "content")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "content")
-public class Content extends BusinessDomain<Long,Content>  implements Serializable {
+public class Content extends BusinessDomain<Long, Content> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -70,10 +70,12 @@ public class Content extends BusinessDomain<Long,Content>  implements Serializab
 	@ManyToOne
 	private MerchantStore merchantStore;
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -159,10 +161,11 @@ public class Content extends BusinessDomain<Long,Content>  implements Serializab
 	public Set<ContentDescription> getDescriptions() {
 		return descriptions;
 	}
+
 	public ContentDescription getDescription() {
-		if(this.getDescriptions()!=null && this.getDescriptions().size()>0) {
-			List<ContentDescription> list2 = new ArrayList<ContentDescription> ();  
-			list2.addAll(this.getDescriptions()); 
+		if (this.getDescriptions() != null && this.getDescriptions().size() > 0) {
+			List<ContentDescription> list2 = new ArrayList<ContentDescription>();
+			list2.addAll(this.getDescriptions());
 			return list2.get(0);
 		}
 		return null;
@@ -202,8 +205,5 @@ public class Content extends BusinessDomain<Long,Content>  implements Serializab
 	public void setMerchantStore(MerchantStore merchantStore) {
 		this.merchantStore = merchantStore;
 	}
-
-
-
 
 }

@@ -6,7 +6,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A SystemConfiguration.
@@ -15,55 +14,54 @@ import java.util.Objects;
 @Table(name = "system_configuration")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "systemconfiguration")
-public class SystemConfiguration extends BusinessDomain<Long,SystemConfiguration>  implements Serializable {
+public class SystemConfiguration extends BusinessDomain<Long, SystemConfiguration> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "jhi_key")
-    private String key;
+	@Column(name = "jhi_key")
+	private String key;
 
-    @Column(name = "jhi_value")
-    private String value;
+	@Column(name = "jhi_value")
+	private String value;
 
-    public Long getId() {
-        return id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getKey() {
-        return key;
-    }
+	public String getKey() {
+		return key;
+	}
 
-    public SystemConfiguration key(String key) {
-        this.key = key;
-        return this;
-    }
+	public SystemConfiguration key(String key) {
+		this.key = key;
+		return this;
+	}
 
-    public void setKey(String key) {
-        this.key = key;
-    }
+	public void setKey(String key) {
+		this.key = key;
+	}
 
-    public String getValue() {
-        return value;
-    }
+	public String getValue() {
+		return value;
+	}
 
-    public SystemConfiguration value(String value) {
-        this.value = value;
-        return this;
-    }
+	public SystemConfiguration value(String value) {
+		this.value = value;
+		return this;
+	}
 
-    public void setValue(String value) {
-        this.value = value;
-    }
+	public void setValue(String value) {
+		this.value = value;
+	}
 
-    
-
-    
 }

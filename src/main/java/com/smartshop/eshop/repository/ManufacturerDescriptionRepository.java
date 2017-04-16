@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.ManufacturerDescription;
  * Spring Data JPA repository for the ManufacturerDescription entity.
  */
 @SuppressWarnings("unused")
-public interface ManufacturerDescriptionRepository extends JpaRepository<ManufacturerDescription,Long> {
+public interface ManufacturerDescriptionRepository extends JpaRepository<ManufacturerDescription, Long> {
 
 }

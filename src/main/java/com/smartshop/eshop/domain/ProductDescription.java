@@ -7,7 +7,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A ProductDescription.
@@ -16,200 +15,199 @@ import java.util.Objects;
 @Table(name = "product_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productdescription")
-public class ProductDescription extends BusinessDomain<Long,ProductDescription>  implements Serializable {
+public class ProductDescription extends BusinessDomain<Long, ProductDescription> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "metatag_description")
-    private String metatagDescription;
+	@Column(name = "metatag_description")
+	private String metatagDescription;
 
-    @Column(name = "se_url")
-    private String seUrl;
+	@Column(name = "se_url")
+	private String seUrl;
 
-    @Column(name = "metatag_keywords")
-    private String metatagKeywords;
+	@Column(name = "metatag_keywords")
+	private String metatagKeywords;
 
-    @Column(name = "product_highlight")
-    private String productHighlight;
+	@Column(name = "product_highlight")
+	private String productHighlight;
 
-    @Column(name = "title")
-    private String title;
+	@Column(name = "title")
+	private String title;
 
-    @Column(name = "description")
-    private String description;
+	@Column(name = "description")
+	private String description;
 
-    @Column(name = "metatag_title")
-    private String metatagTitle;
+	@Column(name = "metatag_title")
+	private String metatagTitle;
 
-    @NotNull
-    @Column(name = "name", nullable = false)
-    private String name;
+	@NotNull
+	@Column(name = "name", nullable = false)
+	private String name;
 
-    @Column(name = "product_external_dl")
-    private String productExternalDl;
+	@Column(name = "product_external_dl")
+	private String productExternalDl;
 
-    @ManyToOne
-    private Language language;
+	@ManyToOne
+	private Language language;
 
-    @ManyToOne
-    private Product product;
+	@ManyToOne
+	private Product product;
 
-    public Long getId() {
-        return id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getMetatagDescription() {
-        return metatagDescription;
-    }
+	public String getMetatagDescription() {
+		return metatagDescription;
+	}
 
-    public ProductDescription metatagDescription(String metatagDescription) {
-        this.metatagDescription = metatagDescription;
-        return this;
-    }
+	public ProductDescription metatagDescription(String metatagDescription) {
+		this.metatagDescription = metatagDescription;
+		return this;
+	}
 
-    public void setMetatagDescription(String metatagDescription) {
-        this.metatagDescription = metatagDescription;
-    }
+	public void setMetatagDescription(String metatagDescription) {
+		this.metatagDescription = metatagDescription;
+	}
 
-    public String getSeUrl() {
-        return seUrl;
-    }
+	public String getSeUrl() {
+		return seUrl;
+	}
 
-    public ProductDescription seUrl(String seUrl) {
-        this.seUrl = seUrl;
-        return this;
-    }
+	public ProductDescription seUrl(String seUrl) {
+		this.seUrl = seUrl;
+		return this;
+	}
 
-    public void setSeUrl(String seUrl) {
-        this.seUrl = seUrl;
-    }
+	public void setSeUrl(String seUrl) {
+		this.seUrl = seUrl;
+	}
 
-    public String getMetatagKeywords() {
-        return metatagKeywords;
-    }
+	public String getMetatagKeywords() {
+		return metatagKeywords;
+	}
 
-    public ProductDescription metatagKeywords(String metatagKeywords) {
-        this.metatagKeywords = metatagKeywords;
-        return this;
-    }
+	public ProductDescription metatagKeywords(String metatagKeywords) {
+		this.metatagKeywords = metatagKeywords;
+		return this;
+	}
 
-    public void setMetatagKeywords(String metatagKeywords) {
-        this.metatagKeywords = metatagKeywords;
-    }
+	public void setMetatagKeywords(String metatagKeywords) {
+		this.metatagKeywords = metatagKeywords;
+	}
 
-    public String getProductHighlight() {
-        return productHighlight;
-    }
+	public String getProductHighlight() {
+		return productHighlight;
+	}
 
-    public ProductDescription productHighlight(String productHighlight) {
-        this.productHighlight = productHighlight;
-        return this;
-    }
+	public ProductDescription productHighlight(String productHighlight) {
+		this.productHighlight = productHighlight;
+		return this;
+	}
 
-    public void setProductHighlight(String productHighlight) {
-        this.productHighlight = productHighlight;
-    }
+	public void setProductHighlight(String productHighlight) {
+		this.productHighlight = productHighlight;
+	}
 
-    public String getTitle() {
-        return title;
-    }
+	public String getTitle() {
+		return title;
+	}
 
-    public ProductDescription title(String title) {
-        this.title = title;
-        return this;
-    }
+	public ProductDescription title(String title) {
+		this.title = title;
+		return this;
+	}
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public ProductDescription description(String description) {
-        this.description = description;
-        return this;
-    }
+	public ProductDescription description(String description) {
+		this.description = description;
+		return this;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public String getMetatagTitle() {
-        return metatagTitle;
-    }
+	public String getMetatagTitle() {
+		return metatagTitle;
+	}
 
-    public ProductDescription metatagTitle(String metatagTitle) {
-        this.metatagTitle = metatagTitle;
-        return this;
-    }
+	public ProductDescription metatagTitle(String metatagTitle) {
+		this.metatagTitle = metatagTitle;
+		return this;
+	}
 
-    public void setMetatagTitle(String metatagTitle) {
-        this.metatagTitle = metatagTitle;
-    }
+	public void setMetatagTitle(String metatagTitle) {
+		this.metatagTitle = metatagTitle;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public ProductDescription name(String name) {
-        this.name = name;
-        return this;
-    }
+	public ProductDescription name(String name) {
+		this.name = name;
+		return this;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public String getProductExternalDl() {
-        return productExternalDl;
-    }
+	public String getProductExternalDl() {
+		return productExternalDl;
+	}
 
-    public ProductDescription productExternalDl(String productExternalDl) {
-        this.productExternalDl = productExternalDl;
-        return this;
-    }
+	public ProductDescription productExternalDl(String productExternalDl) {
+		this.productExternalDl = productExternalDl;
+		return this;
+	}
 
-    public void setProductExternalDl(String productExternalDl) {
-        this.productExternalDl = productExternalDl;
-    }
+	public void setProductExternalDl(String productExternalDl) {
+		this.productExternalDl = productExternalDl;
+	}
 
-    public Language getLanguage() {
-        return language;
-    }
+	public Language getLanguage() {
+		return language;
+	}
 
-    public ProductDescription language(Language language) {
-        this.language = language;
-        return this;
-    }
+	public ProductDescription language(Language language) {
+		this.language = language;
+		return this;
+	}
 
-    public void setLanguage(Language language) {
-        this.language = language;
-    }
+	public void setLanguage(Language language) {
+		this.language = language;
+	}
 
-    public Product getProduct() {
-        return product;
-    }
+	public Product getProduct() {
+		return product;
+	}
 
-    public ProductDescription product(Product product) {
-        this.product = product;
-        return this;
-    }
+	public ProductDescription product(Product product) {
+		this.product = product;
+		return this;
+	}
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
+	public void setProduct(Product product) {
+		this.product = product;
+	}
 
-    
-
-    
 }

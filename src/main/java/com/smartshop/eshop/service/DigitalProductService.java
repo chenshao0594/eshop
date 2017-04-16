@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.DigitalProduct;
 /**
  * Service Interface for managing DigitalProduct.
  */
-public interface DigitalProductService extends AbstractDomainService< DigitalProduct, Long>{
+public interface DigitalProductService extends AbstractDomainService<DigitalProduct, Long> {
 
-     }
+}

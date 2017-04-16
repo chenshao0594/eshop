@@ -122,6 +122,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 
 	}
 
+	@Override
 	public Product getByFriendlyUrl(MerchantStore store, String seUrl, Locale locale) {
 
 		List regionList = new ArrayList();

@@ -15,16 +15,16 @@ import com.smartshop.eshop.service.ZoneService;
  */
 @Service
 @Transactional
-public class ZoneServiceImpl extends AbstractDomainServiceImpl< Zone, Long> implements ZoneService{
+public class ZoneServiceImpl extends AbstractDomainServiceImpl<Zone, Long> implements ZoneService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ZoneServiceImpl.class);
-    private final ZoneRepository zoneRepository;
-    private final ZoneSearchRepository zoneSearchRepository;
-    
-    public ZoneServiceImpl(ZoneRepository zoneRepository, ZoneSearchRepository zoneSearchRepository) {
-        super(zoneRepository,zoneSearchRepository);
-        this.zoneRepository = zoneRepository;
-        this.zoneSearchRepository = zoneSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ZoneServiceImpl.class);
+	private final ZoneRepository zoneRepository;
+	private final ZoneSearchRepository zoneSearchRepository;
+
+	public ZoneServiceImpl(ZoneRepository zoneRepository, ZoneSearchRepository zoneSearchRepository) {
+		super(zoneRepository, zoneSearchRepository);
+		this.zoneRepository = zoneRepository;
+		this.zoneSearchRepository = zoneSearchRepository;
+	}
+
 }

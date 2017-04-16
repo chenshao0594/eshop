@@ -48,6 +48,7 @@ public class ProductImageServiceImpl extends AbstractDomainServiceImpl<ProductIm
 	@Inject
 	private ProductFileManager productFileManager;
 
+	@Override
 	public ProductImage getById(Long id) {
 
 		return productImageRepository.findOne(id);

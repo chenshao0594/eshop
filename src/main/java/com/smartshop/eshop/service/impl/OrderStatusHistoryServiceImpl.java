@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.OrderStatusHistoryService;
  */
 @Service
 @Transactional
-public class OrderStatusHistoryServiceImpl extends AbstractDomainServiceImpl< OrderStatusHistory, Long> implements OrderStatusHistoryService{
+public class OrderStatusHistoryServiceImpl extends AbstractDomainServiceImpl<OrderStatusHistory, Long>
+		implements OrderStatusHistoryService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(OrderStatusHistoryServiceImpl.class);
-    private final OrderStatusHistoryRepository orderStatusHistoryRepository;
-    private final OrderStatusHistorySearchRepository orderStatusHistorySearchRepository;
-    
-    public OrderStatusHistoryServiceImpl(OrderStatusHistoryRepository orderStatusHistoryRepository, OrderStatusHistorySearchRepository orderStatusHistorySearchRepository) {
-        super(orderStatusHistoryRepository,orderStatusHistorySearchRepository);
-        this.orderStatusHistoryRepository = orderStatusHistoryRepository;
-        this.orderStatusHistorySearchRepository = orderStatusHistorySearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(OrderStatusHistoryServiceImpl.class);
+	private final OrderStatusHistoryRepository orderStatusHistoryRepository;
+	private final OrderStatusHistorySearchRepository orderStatusHistorySearchRepository;
+
+	public OrderStatusHistoryServiceImpl(OrderStatusHistoryRepository orderStatusHistoryRepository,
+			OrderStatusHistorySearchRepository orderStatusHistorySearchRepository) {
+		super(orderStatusHistoryRepository, orderStatusHistorySearchRepository);
+		this.orderStatusHistoryRepository = orderStatusHistoryRepository;
+		this.orderStatusHistorySearchRepository = orderStatusHistorySearchRepository;
+	}
+
 }

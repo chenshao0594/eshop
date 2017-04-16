@@ -15,16 +15,16 @@ import com.smartshop.eshop.service.CountryService;
  */
 @Service
 @Transactional
-public class CountryServiceImpl extends AbstractDomainServiceImpl< Country, Long> implements CountryService{
+public class CountryServiceImpl extends AbstractDomainServiceImpl<Country, Long> implements CountryService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(CountryServiceImpl.class);
-    private final CountryRepository countryRepository;
-    private final CountrySearchRepository countrySearchRepository;
-    
-    public CountryServiceImpl(CountryRepository countryRepository, CountrySearchRepository countrySearchRepository) {
-        super(countryRepository,countrySearchRepository);
-        this.countryRepository = countryRepository;
-        this.countrySearchRepository = countrySearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(CountryServiceImpl.class);
+	private final CountryRepository countryRepository;
+	private final CountrySearchRepository countrySearchRepository;
+
+	public CountryServiceImpl(CountryRepository countryRepository, CountrySearchRepository countrySearchRepository) {
+		super(countryRepository, countrySearchRepository);
+		this.countryRepository = countryRepository;
+		this.countrySearchRepository = countrySearchRepository;
+	}
+
 }

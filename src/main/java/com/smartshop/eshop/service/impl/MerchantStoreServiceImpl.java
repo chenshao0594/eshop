@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.MerchantStoreService;
  */
 @Service
 @Transactional
-public class MerchantStoreServiceImpl extends AbstractDomainServiceImpl< MerchantStore, Long> implements MerchantStoreService{
+public class MerchantStoreServiceImpl extends AbstractDomainServiceImpl<MerchantStore, Long>
+		implements MerchantStoreService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(MerchantStoreServiceImpl.class);
-    private final MerchantStoreRepository merchantStoreRepository;
-    private final MerchantStoreSearchRepository merchantStoreSearchRepository;
-    
-    public MerchantStoreServiceImpl(MerchantStoreRepository merchantStoreRepository, MerchantStoreSearchRepository merchantStoreSearchRepository) {
-        super(merchantStoreRepository,merchantStoreSearchRepository);
-        this.merchantStoreRepository = merchantStoreRepository;
-        this.merchantStoreSearchRepository = merchantStoreSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(MerchantStoreServiceImpl.class);
+	private final MerchantStoreRepository merchantStoreRepository;
+	private final MerchantStoreSearchRepository merchantStoreSearchRepository;
+
+	public MerchantStoreServiceImpl(MerchantStoreRepository merchantStoreRepository,
+			MerchantStoreSearchRepository merchantStoreSearchRepository) {
+		super(merchantStoreRepository, merchantStoreSearchRepository);
+		this.merchantStoreRepository = merchantStoreRepository;
+		this.merchantStoreSearchRepository = merchantStoreSearchRepository;
+	}
+
 }

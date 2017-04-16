@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.SystemConfigurationService;
  */
 @Service
 @Transactional
-public class SystemConfigurationServiceImpl extends AbstractDomainServiceImpl< SystemConfiguration, Long> implements SystemConfigurationService{
+public class SystemConfigurationServiceImpl extends AbstractDomainServiceImpl<SystemConfiguration, Long>
+		implements SystemConfigurationService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(SystemConfigurationServiceImpl.class);
-    private final SystemConfigurationRepository systemConfigurationRepository;
-    private final SystemConfigurationSearchRepository systemConfigurationSearchRepository;
-    
-    public SystemConfigurationServiceImpl(SystemConfigurationRepository systemConfigurationRepository, SystemConfigurationSearchRepository systemConfigurationSearchRepository) {
-        super(systemConfigurationRepository,systemConfigurationSearchRepository);
-        this.systemConfigurationRepository = systemConfigurationRepository;
-        this.systemConfigurationSearchRepository = systemConfigurationSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(SystemConfigurationServiceImpl.class);
+	private final SystemConfigurationRepository systemConfigurationRepository;
+	private final SystemConfigurationSearchRepository systemConfigurationSearchRepository;
+
+	public SystemConfigurationServiceImpl(SystemConfigurationRepository systemConfigurationRepository,
+			SystemConfigurationSearchRepository systemConfigurationSearchRepository) {
+		super(systemConfigurationRepository, systemConfigurationSearchRepository);
+		this.systemConfigurationRepository = systemConfigurationRepository;
+		this.systemConfigurationSearchRepository = systemConfigurationSearchRepository;
+	}
+
 }

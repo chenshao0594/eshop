@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.DigitalProductService;
  */
 @Service
 @Transactional
-public class DigitalProductServiceImpl extends AbstractDomainServiceImpl< DigitalProduct, Long> implements DigitalProductService{
+public class DigitalProductServiceImpl extends AbstractDomainServiceImpl<DigitalProduct, Long>
+		implements DigitalProductService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(DigitalProductServiceImpl.class);
-    private final DigitalProductRepository digitalProductRepository;
-    private final DigitalProductSearchRepository digitalProductSearchRepository;
-    
-    public DigitalProductServiceImpl(DigitalProductRepository digitalProductRepository, DigitalProductSearchRepository digitalProductSearchRepository) {
-        super(digitalProductRepository,digitalProductSearchRepository);
-        this.digitalProductRepository = digitalProductRepository;
-        this.digitalProductSearchRepository = digitalProductSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(DigitalProductServiceImpl.class);
+	private final DigitalProductRepository digitalProductRepository;
+	private final DigitalProductSearchRepository digitalProductSearchRepository;
+
+	public DigitalProductServiceImpl(DigitalProductRepository digitalProductRepository,
+			DigitalProductSearchRepository digitalProductSearchRepository) {
+		super(digitalProductRepository, digitalProductSearchRepository);
+		this.digitalProductRepository = digitalProductRepository;
+		this.digitalProductSearchRepository = digitalProductSearchRepository;
+	}
+
 }

@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.CountryDescriptionService;
  */
 @Service
 @Transactional
-public class CountryDescriptionServiceImpl extends AbstractDomainServiceImpl< CountryDescription, Long> implements CountryDescriptionService{
+public class CountryDescriptionServiceImpl extends AbstractDomainServiceImpl<CountryDescription, Long>
+		implements CountryDescriptionService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(CountryDescriptionServiceImpl.class);
-    private final CountryDescriptionRepository countryDescriptionRepository;
-    private final CountryDescriptionSearchRepository countryDescriptionSearchRepository;
-    
-    public CountryDescriptionServiceImpl(CountryDescriptionRepository countryDescriptionRepository, CountryDescriptionSearchRepository countryDescriptionSearchRepository) {
-        super(countryDescriptionRepository,countryDescriptionSearchRepository);
-        this.countryDescriptionRepository = countryDescriptionRepository;
-        this.countryDescriptionSearchRepository = countryDescriptionSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(CountryDescriptionServiceImpl.class);
+	private final CountryDescriptionRepository countryDescriptionRepository;
+	private final CountryDescriptionSearchRepository countryDescriptionSearchRepository;
+
+	public CountryDescriptionServiceImpl(CountryDescriptionRepository countryDescriptionRepository,
+			CountryDescriptionSearchRepository countryDescriptionSearchRepository) {
+		super(countryDescriptionRepository, countryDescriptionSearchRepository);
+		this.countryDescriptionRepository = countryDescriptionRepository;
+		this.countryDescriptionSearchRepository = countryDescriptionSearchRepository;
+	}
+
 }

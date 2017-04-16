@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.FileHistory;
  * Spring Data JPA repository for the FileHistory entity.
  */
 @SuppressWarnings("unused")
-public interface FileHistoryRepository extends JpaRepository<FileHistory,Long> {
+public interface FileHistoryRepository extends JpaRepository<FileHistory, Long> {
 
 }

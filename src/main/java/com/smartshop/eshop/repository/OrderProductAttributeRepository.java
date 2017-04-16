@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.OrderProductAttribute;
  * Spring Data JPA repository for the OrderProductAttribute entity.
  */
 @SuppressWarnings("unused")
-public interface OrderProductAttributeRepository extends JpaRepository<OrderProductAttribute,Long> {
+public interface OrderProductAttributeRepository extends JpaRepository<OrderProductAttribute, Long> {
 
 }

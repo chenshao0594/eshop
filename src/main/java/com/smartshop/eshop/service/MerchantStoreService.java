@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.MerchantStore;
 /**
  * Service Interface for managing MerchantStore.
  */
-public interface MerchantStoreService extends AbstractDomainService< MerchantStore, Long>{
+public interface MerchantStoreService extends AbstractDomainService<MerchantStore, Long> {
 
-     }
+}

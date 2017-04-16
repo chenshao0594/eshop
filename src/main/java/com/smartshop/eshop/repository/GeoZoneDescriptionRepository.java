@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.GeoZoneDescription;
  * Spring Data JPA repository for the GeoZoneDescription entity.
  */
 @SuppressWarnings("unused")
-public interface GeoZoneDescriptionRepository extends JpaRepository<GeoZoneDescription,Long> {
+public interface GeoZoneDescriptionRepository extends JpaRepository<GeoZoneDescription, Long> {
 
 }

@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.ZoneDescription;
  * Spring Data JPA repository for the ZoneDescription entity.
  */
 @SuppressWarnings("unused")
-public interface ZoneDescriptionRepository extends JpaRepository<ZoneDescription,Long> {
+public interface ZoneDescriptionRepository extends JpaRepository<ZoneDescription, Long> {
 
 }

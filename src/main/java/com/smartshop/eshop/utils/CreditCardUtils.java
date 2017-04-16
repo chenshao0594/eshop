@@ -1,14 +1,11 @@
 package com.smartshop.eshop.utils;
 
-
 public class CreditCardUtils {
-	
-	
+
 	public static final int MASTERCARD = 0, VISA = 1;
 	public static final int AMEX = 2, DISCOVER = 3, DINERS = 4;
 
-	public static String maskCardNumber(String clearcardnumber)
-			throws Exception {
+	public static String maskCardNumber(String clearcardnumber) throws Exception {
 
 		if (clearcardnumber.length() < 10) {
 			throw new Exception("Invalid number of digits");
@@ -24,9 +21,5 @@ public class CreditCardUtils {
 
 		return mask.toString();
 	}
-
-	
-
-
 
 }

@@ -1,0 +1,2 @@
+MERCHANT_CONFIG_ID;"DATE_CREATED";"DATE_MODIFIED";"UPDT_ID";"CONFIG_KEY";"TYPE";"VALUE";MERCHANT_ID
+1;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;"CONFIG";"CONFIG";"{\"allowPurchaseItems\":true,\"displayContactUs\":false,\"displayCustomerAgreement\":false,\"defaultSearchConfigPath\":{},\"displayCustomerSection\":false,\"displayAddToCartOnFeaturedItems\":true,\"testMode\":false,\"displayStoreAddress\":false,\"displaySearchBox\":true,\"debugMode\":false,\"useDefaultSearchConfig\":{}}";1

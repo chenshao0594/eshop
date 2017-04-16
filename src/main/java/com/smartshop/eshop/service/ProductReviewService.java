@@ -10,11 +10,15 @@ import com.smartshop.eshop.domain.ProductReview;
 /**
  * Service Interface for managing ProductReview.
  */
-public interface ProductReviewService extends AbstractDomainService< ProductReview, Long>{
+public interface ProductReviewService extends AbstractDomainService<ProductReview, Long> {
 	List<ProductReview> getByCustomer(Customer customer);
+
 	List<ProductReview> getByProduct(Product product);
+
 	List<ProductReview> getByProduct(Product product, Language language);
+
 	ProductReview getByProductAndCustomer(Long productId, Long customerId);
+
 	List<ProductReview> getByProductNoCustomers(Product product);
 
- }
+}

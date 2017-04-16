@@ -7,7 +7,6 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.Objects;
 
 /**
  * A Optin.
@@ -16,103 +15,102 @@ import java.util.Objects;
 @Table(name = "optin")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "optin")
-public class Optin extends BusinessDomain<Long,Optin>  implements Serializable {
+public class Optin extends BusinessDomain<Long, Optin> implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
-    @Column(name = "description")
-    private String description;
+	@Column(name = "description")
+	private String description;
 
-    @Column(name = "start_date")
-    private LocalDate startDate;
+	@Column(name = "start_date")
+	private LocalDate startDate;
 
-    @Column(name = "code")
-    private String code;
+	@Column(name = "code")
+	private String code;
 
-    @Column(name = "end_date")
-    private LocalDate endDate;
+	@Column(name = "end_date")
+	private LocalDate endDate;
 
-    @ManyToOne
-    private MerchantStore merchant;
+	@ManyToOne
+	private MerchantStore merchant;
 
-    public Long getId() {
-        return id;
-    }
+	@Override
+	public Long getId() {
+		return id;
+	}
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+	@Override
+	public void setId(Long id) {
+		this.id = id;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public Optin description(String description) {
-        this.description = description;
-        return this;
-    }
+	public Optin description(String description) {
+		this.description = description;
+		return this;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public LocalDate getStartDate() {
-        return startDate;
-    }
+	public LocalDate getStartDate() {
+		return startDate;
+	}
 
-    public Optin startDate(LocalDate startDate) {
-        this.startDate = startDate;
-        return this;
-    }
+	public Optin startDate(LocalDate startDate) {
+		this.startDate = startDate;
+		return this;
+	}
 
-    public void setStartDate(LocalDate startDate) {
-        this.startDate = startDate;
-    }
+	public void setStartDate(LocalDate startDate) {
+		this.startDate = startDate;
+	}
 
-    public String getCode() {
-        return code;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public Optin code(String code) {
-        this.code = code;
-        return this;
-    }
+	public Optin code(String code) {
+		this.code = code;
+		return this;
+	}
 
-    public void setCode(String code) {
-        this.code = code;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public LocalDate getEndDate() {
-        return endDate;
-    }
+	public LocalDate getEndDate() {
+		return endDate;
+	}
 
-    public Optin endDate(LocalDate endDate) {
-        this.endDate = endDate;
-        return this;
-    }
+	public Optin endDate(LocalDate endDate) {
+		this.endDate = endDate;
+		return this;
+	}
 
-    public void setEndDate(LocalDate endDate) {
-        this.endDate = endDate;
-    }
+	public void setEndDate(LocalDate endDate) {
+		this.endDate = endDate;
+	}
 
-    public MerchantStore getMerchant() {
-        return merchant;
-    }
+	public MerchantStore getMerchant() {
+		return merchant;
+	}
 
-    public Optin merchant(MerchantStore merchantStore) {
-        this.merchant = merchantStore;
-        return this;
-    }
+	public Optin merchant(MerchantStore merchantStore) {
+		this.merchant = merchantStore;
+		return this;
+	}
 
-    public void setMerchant(MerchantStore merchantStore) {
-        this.merchant = merchantStore;
-    }
+	public void setMerchant(MerchantStore merchantStore) {
+		this.merchant = merchantStore;
+	}
 
-    
-
-    
 }

@@ -5,6 +5,6 @@ import com.smartshop.eshop.domain.Book;
 /**
  * Service Interface for managing Book.
  */
-public interface BookService extends AbstractDomainService< Book, Long>{
+public interface BookService extends AbstractDomainService<Book, Long> {
 
-     }
+}

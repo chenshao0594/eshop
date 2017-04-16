@@ -26,116 +26,111 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 public class PersistentToken implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private static final int MAX_USER_AGENT_LEN = 255;
+	private static final int MAX_USER_AGENT_LEN = 255;
 
-    @Id
-    private String series;
+	@Id
+	private String series;
 
-    @JsonIgnore
-    @NotNull
-    @Column(name = "token_value", nullable = false)
-    private String tokenValue;
-    
-    @Column(name = "token_date")
-    private LocalDate tokenDate;
+	@JsonIgnore
+	@NotNull
+	@Column(name = "token_value", nullable = false)
+	private String tokenValue;
 
-    //an IPV6 address max length is 39 characters
-    @Size(min = 0, max = 39)
-    @Column(name = "ip_address", length = 39)
-    private String ipAddress;
+	@Column(name = "token_date")
+	private LocalDate tokenDate;
 
-    @Column(name = "user_agent")
-    private String userAgent;
+	// an IPV6 address max length is 39 characters
+	@Size(min = 0, max = 39)
+	@Column(name = "ip_address", length = 39)
+	private String ipAddress;
 
-    @JsonIgnore
-    @ManyToOne
-    private User user;
+	@Column(name = "user_agent")
+	private String userAgent;
 
-    public String getSeries() {
-        return series;
-    }
+	@JsonIgnore
+	@ManyToOne
+	private User user;
 
-    public void setSeries(String series) {
-        this.series = series;
-    }
+	public String getSeries() {
+		return series;
+	}
 
-    public String getTokenValue() {
-        return tokenValue;
-    }
+	public void setSeries(String series) {
+		this.series = series;
+	}
 
-    public void setTokenValue(String tokenValue) {
-        this.tokenValue = tokenValue;
-    }
+	public String getTokenValue() {
+		return tokenValue;
+	}
 
-    public LocalDate getTokenDate() {
-        return tokenDate;
-    }
+	public void setTokenValue(String tokenValue) {
+		this.tokenValue = tokenValue;
+	}
 
-    public void setTokenDate(LocalDate tokenDate) {
-        this.tokenDate = tokenDate;
-    }
+	public LocalDate getTokenDate() {
+		return tokenDate;
+	}
 
-    public String getIpAddress() {
-        return ipAddress;
-    }
+	public void setTokenDate(LocalDate tokenDate) {
+		this.tokenDate = tokenDate;
+	}
 
-    public void setIpAddress(String ipAddress) {
-        this.ipAddress = ipAddress;
-    }
+	public String getIpAddress() {
+		return ipAddress;
+	}
 
-    public String getUserAgent() {
-        return userAgent;
-    }
+	public void setIpAddress(String ipAddress) {
+		this.ipAddress = ipAddress;
+	}
 
-    public void setUserAgent(String userAgent) {
-        if (userAgent.length() >= MAX_USER_AGENT_LEN) {
-            this.userAgent = userAgent.substring(0, MAX_USER_AGENT_LEN - 1);
-        } else {
-            this.userAgent = userAgent;
-        }
-    }
+	public String getUserAgent() {
+		return userAgent;
+	}
 
-    public User getUser() {
-        return user;
-    }
+	public void setUserAgent(String userAgent) {
+		if (userAgent.length() >= MAX_USER_AGENT_LEN) {
+			this.userAgent = userAgent.substring(0, MAX_USER_AGENT_LEN - 1);
+		} else {
+			this.userAgent = userAgent;
+		}
+	}
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+	public User getUser() {
+		return user;
+	}
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+	public void setUser(User user) {
+		this.user = user;
+	}
 
-        PersistentToken that = (PersistentToken) o;
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) {
+			return true;
+		}
+		if (o == null || getClass() != o.getClass()) {
+			return false;
+		}
 
-        if (!series.equals(that.series)) {
-            return false;
-        }
+		PersistentToken that = (PersistentToken) o;
 
-        return true;
-    }
+		if (!series.equals(that.series)) {
+			return false;
+		}
 
-    @Override
-    public int hashCode() {
-        return series.hashCode();
-    }
+		return true;
+	}
 
-    @Override
-    public String toString() {
-        return "PersistentToken{" +
-            "series='" + series + '\'' +
-            ", tokenValue='" + tokenValue + '\'' +
-            ", tokenDate=" + tokenDate +
-            ", ipAddress='" + ipAddress + '\'' +
-            ", userAgent='" + userAgent + '\'' +
-            "}";
-    }
+	@Override
+	public int hashCode() {
+		return series.hashCode();
+	}
+
+	@Override
+	public String toString() {
+		return "PersistentToken{" + "series='" + series + '\'' + ", tokenValue='" + tokenValue + '\'' + ", tokenDate="
+				+ tokenDate + ", ipAddress='" + ipAddress + '\'' + ", userAgent='" + userAgent + '\'' + "}";
+	}
 }

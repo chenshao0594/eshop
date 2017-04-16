@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.ProductPriceDescription;
  * Spring Data JPA repository for the ProductPriceDescription entity.
  */
 @SuppressWarnings("unused")
-public interface ProductPriceDescriptionRepository extends JpaRepository<ProductPriceDescription,Long> {
+public interface ProductPriceDescriptionRepository extends JpaRepository<ProductPriceDescription, Long> {
 
 }

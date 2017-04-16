@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.ProductAvailabilityService;
  */
 @Service
 @Transactional
-public class ProductAvailabilityServiceImpl extends AbstractDomainServiceImpl< ProductAvailability, Long> implements ProductAvailabilityService{
+public class ProductAvailabilityServiceImpl extends AbstractDomainServiceImpl<ProductAvailability, Long>
+		implements ProductAvailabilityService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ProductAvailabilityServiceImpl.class);
-    private final ProductAvailabilityRepository productAvailabilityRepository;
-    private final ProductAvailabilitySearchRepository productAvailabilitySearchRepository;
-    
-    public ProductAvailabilityServiceImpl(ProductAvailabilityRepository productAvailabilityRepository, ProductAvailabilitySearchRepository productAvailabilitySearchRepository) {
-        super(productAvailabilityRepository,productAvailabilitySearchRepository);
-        this.productAvailabilityRepository = productAvailabilityRepository;
-        this.productAvailabilitySearchRepository = productAvailabilitySearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductAvailabilityServiceImpl.class);
+	private final ProductAvailabilityRepository productAvailabilityRepository;
+	private final ProductAvailabilitySearchRepository productAvailabilitySearchRepository;
+
+	public ProductAvailabilityServiceImpl(ProductAvailabilityRepository productAvailabilityRepository,
+			ProductAvailabilitySearchRepository productAvailabilitySearchRepository) {
+		super(productAvailabilityRepository, productAvailabilitySearchRepository);
+		this.productAvailabilityRepository = productAvailabilityRepository;
+		this.productAvailabilitySearchRepository = productAvailabilitySearchRepository;
+	}
+
 }

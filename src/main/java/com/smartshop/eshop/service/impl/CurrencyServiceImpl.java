@@ -15,16 +15,17 @@ import com.smartshop.eshop.service.CurrencyService;
  */
 @Service
 @Transactional
-public class CurrencyServiceImpl extends AbstractDomainServiceImpl< Currency, Long> implements CurrencyService{
+public class CurrencyServiceImpl extends AbstractDomainServiceImpl<Currency, Long> implements CurrencyService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(CurrencyServiceImpl.class);
-    private final CurrencyRepository currencyRepository;
-    private final CurrencySearchRepository currencySearchRepository;
-    
-    public CurrencyServiceImpl(CurrencyRepository currencyRepository, CurrencySearchRepository currencySearchRepository) {
-        super(currencyRepository,currencySearchRepository);
-        this.currencyRepository = currencyRepository;
-        this.currencySearchRepository = currencySearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(CurrencyServiceImpl.class);
+	private final CurrencyRepository currencyRepository;
+	private final CurrencySearchRepository currencySearchRepository;
+
+	public CurrencyServiceImpl(CurrencyRepository currencyRepository,
+			CurrencySearchRepository currencySearchRepository) {
+		super(currencyRepository, currencySearchRepository);
+		this.currencyRepository = currencyRepository;
+		this.currencySearchRepository = currencySearchRepository;
+	}
+
 }

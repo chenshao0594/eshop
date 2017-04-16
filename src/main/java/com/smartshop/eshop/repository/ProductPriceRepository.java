@@ -7,9 +7,8 @@ import com.smartshop.eshop.domain.ProductPrice;
 
 public interface ProductPriceRepository extends JpaRepository<ProductPrice, Long> {
 
-
+	@Override
 	@Query("select p from ProductPrice p left join fetch p.descriptions pd inner join fetch p.productAvailability pa inner join fetch pa.product pap inner join fetch pap.merchantStore papm where p.id = ?1")
 	ProductPrice findOne(Long id);
-	
-	
+
 }

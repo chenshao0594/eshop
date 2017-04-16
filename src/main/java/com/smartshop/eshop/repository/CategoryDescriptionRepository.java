@@ -8,6 +8,6 @@ import com.smartshop.eshop.domain.CategoryDescription;
  * Spring Data JPA repository for the CategoryDescription entity.
  */
 @SuppressWarnings("unused")
-public interface CategoryDescriptionRepository extends JpaRepository<CategoryDescription,Long> {
+public interface CategoryDescriptionRepository extends JpaRepository<CategoryDescription, Long> {
 
 }

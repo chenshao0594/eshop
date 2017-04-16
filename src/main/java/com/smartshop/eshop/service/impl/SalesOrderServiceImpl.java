@@ -15,16 +15,17 @@ import com.smartshop.eshop.service.SalesOrderService;
  */
 @Service
 @Transactional
-public class SalesOrderServiceImpl extends AbstractDomainServiceImpl< SalesOrder, Long> implements SalesOrderService{
+public class SalesOrderServiceImpl extends AbstractDomainServiceImpl<SalesOrder, Long> implements SalesOrderService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(SalesOrderServiceImpl.class);
-    private final SalesOrderRepository salesOrderRepository;
-    private final SalesOrderSearchRepository salesOrderSearchRepository;
-    
-    public SalesOrderServiceImpl(SalesOrderRepository salesOrderRepository, SalesOrderSearchRepository salesOrderSearchRepository) {
-        super(salesOrderRepository,salesOrderSearchRepository);
-        this.salesOrderRepository = salesOrderRepository;
-        this.salesOrderSearchRepository = salesOrderSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(SalesOrderServiceImpl.class);
+	private final SalesOrderRepository salesOrderRepository;
+	private final SalesOrderSearchRepository salesOrderSearchRepository;
+
+	public SalesOrderServiceImpl(SalesOrderRepository salesOrderRepository,
+			SalesOrderSearchRepository salesOrderSearchRepository) {
+		super(salesOrderRepository, salesOrderSearchRepository);
+		this.salesOrderRepository = salesOrderRepository;
+		this.salesOrderSearchRepository = salesOrderSearchRepository;
+	}
+
 }

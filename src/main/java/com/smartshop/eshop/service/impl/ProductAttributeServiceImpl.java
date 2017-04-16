@@ -15,16 +15,18 @@ import com.smartshop.eshop.service.ProductAttributeService;
  */
 @Service
 @Transactional
-public class ProductAttributeServiceImpl extends AbstractDomainServiceImpl< ProductAttribute, Long> implements ProductAttributeService{
+public class ProductAttributeServiceImpl extends AbstractDomainServiceImpl<ProductAttribute, Long>
+		implements ProductAttributeService {
 
-    private final Logger LOGGER = LoggerFactory.getLogger(ProductAttributeServiceImpl.class);
-    private final ProductAttributeRepository productAttributeRepository;
-    private final ProductAttributeSearchRepository productAttributeSearchRepository;
-    
-    public ProductAttributeServiceImpl(ProductAttributeRepository productAttributeRepository, ProductAttributeSearchRepository productAttributeSearchRepository) {
-        super(productAttributeRepository,productAttributeSearchRepository);
-        this.productAttributeRepository = productAttributeRepository;
-        this.productAttributeSearchRepository = productAttributeSearchRepository;
-    }
-    
+	private final Logger LOGGER = LoggerFactory.getLogger(ProductAttributeServiceImpl.class);
+	private final ProductAttributeRepository productAttributeRepository;
+	private final ProductAttributeSearchRepository productAttributeSearchRepository;
+
+	public ProductAttributeServiceImpl(ProductAttributeRepository productAttributeRepository,
+			ProductAttributeSearchRepository productAttributeSearchRepository) {
+		super(productAttributeRepository, productAttributeSearchRepository);
+		this.productAttributeRepository = productAttributeRepository;
+		this.productAttributeSearchRepository = productAttributeSearchRepository;
+	}
+
 }
