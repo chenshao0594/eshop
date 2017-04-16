@@ -23,6 +23,7 @@
             "productAttributeIsFree": "Product Attribute Is Free",
             "productOptionId": "Product Option Id",
             "productAttributeValueName": "Product Attribute Value Name",
+            "orderProduct": "Order Product",
             "orderProduct": "Order Product"
         }
     }

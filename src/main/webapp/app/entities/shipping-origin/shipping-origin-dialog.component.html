@@ -60,6 +60,27 @@
              />
         </div>
 
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.shippingOrigin.zone" for="field_zone">Zone</label>
+            <select class="form-control" id="field_zone" name="zone" [(ngModel)]="shippingOrigin.zone" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="zoneOption.id === shippingOrigin.zone?.id ? shippingOrigin.zone : zoneOption" *ngFor="let zoneOption of zones; trackBy: trackZoneById">{{zoneOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.shippingOrigin.country" for="field_country">Country</label>
+            <select class="form-control" id="field_country" name="country" [(ngModel)]="shippingOrigin.country" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="countryOption.id === shippingOrigin.country?.id ? shippingOrigin.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.shippingOrigin.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="shippingOrigin.merchantStore" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === shippingOrigin.merchantStore?.id ? shippingOrigin.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

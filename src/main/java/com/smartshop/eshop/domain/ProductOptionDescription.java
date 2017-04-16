@@ -1,15 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.Type;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A ProductOptionDescription.
@@ -18,34 +16,120 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "product_option_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productoptiondescription")
-public class ProductOptionDescription extends   Description {
+public class ProductOptionDescription extends BusinessDomain<Long,ProductOptionDescription>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    @ManyToOne(targetEntity = ProductOption.class)
-	@JoinColumn(name = "PRODUCT_OPTION_ID", nullable = false)
-	private ProductOption productOption;
-	
-	@Column(name="PRODUCT_OPTION_COMMENT")
-	@Type(type = "org.hibernate.type.MaterializedClobType")
-	private String productOptionComment;
+    @Column(name = "product_option_comment")
+    private String productOptionComment;
 
-	public ProductOption getProductOption() {
-		return productOption;
-	}
+    @Column(name = "title")
+    private String title;
 
-	public void setProductOption(ProductOption productOption) {
-		this.productOption = productOption;
-	}
+    @NotNull
+    @Column(name = "name", nullable = false)
+    private String name;
 
-	public String getProductOptionComment() {
-		return productOptionComment;
-	}
+    @Column(name = "description")
+    private String description;
 
-	public void setProductOptionComment(String productOptionComment) {
-		this.productOptionComment = productOptionComment;
-	}
-	
+    @ManyToOne
+    private Language language;
 
+    @ManyToOne
+    private ProductOption productOption;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getProductOptionComment() {
+        return productOptionComment;
+    }
+
+    public ProductOptionDescription productOptionComment(String productOptionComment) {
+        this.productOptionComment = productOptionComment;
+        return this;
+    }
+
+    public void setProductOptionComment(String productOptionComment) {
+        this.productOptionComment = productOptionComment;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public ProductOptionDescription title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ProductOptionDescription name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public ProductOptionDescription description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public ProductOptionDescription language(Language language) {
+        this.language = language;
+        return this;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public ProductOption getProductOption() {
+        return productOption;
+    }
+
+    public ProductOptionDescription productOption(ProductOption productOption) {
+        this.productOption = productOption;
+        return this;
+    }
+
+    public void setProductOption(ProductOption productOption) {
+        this.productOption = productOption;
+    }
+
+    
+
+    
 }

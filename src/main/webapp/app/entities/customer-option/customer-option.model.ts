@@ -1,4 +1,5 @@
 import { CustomerOptionDescription } from '../customer-option-description';
+import { MerchantStore } from '../merchant-store';
 export class CustomerOption {
     constructor(
         public id?: number,
@@ -8,6 +9,7 @@ export class CustomerOption {
         public publicOption?: boolean,
         public sortOrder?: number,
         public descriptions?: CustomerOptionDescription,
+        public merchantStore?: MerchantStore,
     ) {
         this.active = false;
         this.publicOption = false;

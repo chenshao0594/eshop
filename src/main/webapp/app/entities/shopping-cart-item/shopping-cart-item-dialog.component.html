@@ -31,6 +31,13 @@
                 <option [ngValue]="shoppingCartOption.id === shoppingCartItem.shoppingCart?.id ? shoppingCartItem.shoppingCart : shoppingCartOption" *ngFor="let shoppingCartOption of shoppingcarts; trackBy: trackShoppingCartById">{{shoppingCartOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.shoppingCartItem.shoppingCart" for="field_shoppingCart">Shopping Cart</label>
+            <select class="form-control" id="field_shoppingCart" name="shoppingCart" [(ngModel)]="shoppingCartItem.shoppingCart" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="shoppingCartOption.id === shoppingCartItem.shoppingCart?.id ? shoppingCartItem.shoppingCart : shoppingCartOption" *ngFor="let shoppingCartOption of shoppingcarts; trackBy: trackShoppingCartById">{{shoppingCartOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

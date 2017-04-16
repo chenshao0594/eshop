@@ -1,3 +1,4 @@
+import { MerchantStore } from '../merchant-store';
 export class FileHistory {
     constructor(
         public id?: number,
@@ -7,6 +8,7 @@ export class FileHistory {
         public fileId?: number,
         public accountedDate?: any,
         public filesize?: number,
+        public store?: MerchantStore,
     ) {
     }
 }

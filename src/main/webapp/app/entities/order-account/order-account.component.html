@@ -33,6 +33,7 @@
             <th jhiSortBy="orderAccountStartDate"><span jhiTranslate="eshopApp.orderAccount.orderAccountStartDate">Order Account Start Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="orderAccountEndDate"><span jhiTranslate="eshopApp.orderAccount.orderAccountEndDate">Order Account End Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="orderAccountBillDay"><span jhiTranslate="eshopApp.orderAccount.orderAccountBillDay">Order Account Bill Day</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="order.id"><span jhiTranslate="eshopApp.orderAccount.order">Order</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -42,6 +43,11 @@
                 <td>{{orderAccount.orderAccountStartDate | date:'mediumDate'}}</td>
                 <td>{{orderAccount.orderAccountEndDate | date:'mediumDate'}}</td>
                 <td>{{orderAccount.orderAccountBillDay}}</td>
+                <td>
+                    <div *ngIf="orderAccount.order">
+                        <a [routerLink]="['../sales-order', orderAccount.order?.id ]" >{{orderAccount.order?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

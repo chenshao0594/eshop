@@ -1,26 +1,17 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A TaxRate.
@@ -29,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "tax_rate")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "taxrate")
-public class TaxRate extends BusinessDomain<Long, TaxRate> implements Serializable {
+public class TaxRate extends BusinessDomain<Long,TaxRate>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -64,11 +55,26 @@ public class TaxRate extends BusinessDomain<Long, TaxRate> implements Serializab
     private Set<TaxRate> taxRates = new HashSet<>();
 
     @ManyToOne
+    private Country country;
+
+
+    @ManyToOne
+    private MerchantStore merchantStore;
+
+    @ManyToOne
+    @JoinColumn(name = "TAX_CLASS_ID" , nullable=false)
     private TaxClass taxClass;
 
     @ManyToOne
     private TaxRate parent;
+    
+    @OneToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="ZONE_ID", nullable=true, updatable=true)
+	private Zone zone;
 
+    @Transient
+	private String rateText;
+    
     public Long getId() {
         return id;
     }
@@ -192,6 +198,32 @@ public class TaxRate extends BusinessDomain<Long, TaxRate> implements Serializab
         this.taxRates = taxRates;
     }
 
+    public Country getCountry() {
+        return country;
+    }
+
+    public TaxRate country(Country country) {
+        this.country = country;
+        return this;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
+
+    public TaxRate merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
+    }
+
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
+
     public TaxClass getTaxClass() {
         return taxClass;
     }
@@ -218,35 +250,27 @@ public class TaxRate extends BusinessDomain<Long, TaxRate> implements Serializab
         this.parent = taxRate;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        TaxRate taxRate = (TaxRate) o;
-        if (taxRate.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, taxRate.id);
-    }
+	public Zone getZone() {
+		return zone;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	public void setZone(Zone zone) {
+		this.zone = zone;
+	}
 
-    @Override
-    public String toString() {
-        return "TaxRate{" +
-            "id=" + id +
-            ", piggyback='" + piggyback + "'" +
-            ", stateProvince='" + stateProvince + "'" +
-            ", taxPriority='" + taxPriority + "'" +
-            ", code='" + code + "'" +
-            ", taxRate='" + taxRate + "'" +
-            '}';
-    }
+	public String getRateText() {
+		return rateText;
+	}
+
+	public void setRateText(String rateText) {
+		this.rateText = rateText;
+	}
+
+	public Boolean getPiggyback() {
+		return piggyback;
+	}
+
+    
+
+    
 }

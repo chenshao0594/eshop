@@ -35,6 +35,7 @@
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.customerOption.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="publicOption"><span jhiTranslate="eshopApp.customerOption.publicOption">Public Option</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="sortOrder"><span jhiTranslate="eshopApp.customerOption.sortOrder">Sort Order</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.customerOption.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -46,6 +47,11 @@
                 <td>{{customerOption.code}}</td>
                 <td>{{customerOption.publicOption}}</td>
                 <td>{{customerOption.sortOrder}}</td>
+                <td>
+                    <div *ngIf="customerOption.merchantStore">
+                        <a [routerLink]="['../merchant-store', customerOption.merchantStore?.id ]" >{{customerOption.merchantStore?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

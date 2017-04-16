@@ -1,19 +1,12 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A ProductRelationship.
@@ -22,7 +15,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "product_relationship")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productrelationship")
-public class ProductRelationship extends BusinessDomain<Long, ProductRelationship> implements Serializable {
+public class ProductRelationship extends BusinessDomain<Long,ProductRelationship>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -30,24 +23,20 @@ public class ProductRelationship extends BusinessDomain<Long, ProductRelationshi
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(name = "code")
+    private String code;
 
-	@ManyToOne(targetEntity = MerchantStore.class)
-	@JoinColumn(name="MERCHANT_ID",nullable=false)  
-	private MerchantStore store;
-	
-	@ManyToOne(targetEntity = Product.class)
-	@JoinColumn(name="PRODUCT_ID",updatable=false,nullable=true) 
-	private Product product = null;
-	
-	@ManyToOne(targetEntity = Product.class)
-	@JoinColumn(name="RELATED_PRODUCT_ID",updatable=false,nullable=true) 
-	private Product relatedProduct = null;
-	
-	@Column(name="CODE")
-	private String code;
-	
-	@Column(name="ACTIVE")
-	private boolean active = true;
+    @Column(name = "active")
+    private Boolean active;
+
+    @ManyToOne
+    private Product relatedProduct;
+
+    @ManyToOne
+    private MerchantStore store;
+
+    @ManyToOne
+    private Product product;
 
     public Long getId() {
         return id;
@@ -83,6 +72,32 @@ public class ProductRelationship extends BusinessDomain<Long, ProductRelationshi
         this.active = active;
     }
 
+    public Product getRelatedProduct() {
+        return relatedProduct;
+    }
+
+    public ProductRelationship relatedProduct(Product product) {
+        this.relatedProduct = product;
+        return this;
+    }
+
+    public void setRelatedProduct(Product product) {
+        this.relatedProduct = product;
+    }
+
+    public MerchantStore getStore() {
+        return store;
+    }
+
+    public ProductRelationship store(MerchantStore merchantStore) {
+        this.store = merchantStore;
+        return this;
+    }
+
+    public void setStore(MerchantStore merchantStore) {
+        this.store = merchantStore;
+    }
+
     public Product getProduct() {
         return product;
     }
@@ -96,24 +111,7 @@ public class ProductRelationship extends BusinessDomain<Long, ProductRelationshi
         this.product = product;
     }
 
-	public MerchantStore getStore() {
-		return store;
-	}
+    
 
-	public void setStore(MerchantStore store) {
-		this.store = store;
-	}
-
-	public Product getRelatedProduct() {
-		return relatedProduct;
-	}
-
-	public void setRelatedProduct(Product relatedProduct) {
-		this.relatedProduct = relatedProduct;
-	}
-
-	public void setActive(boolean active) {
-		this.active = active;
-	}
-
+    
 }

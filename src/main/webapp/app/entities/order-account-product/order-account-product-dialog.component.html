@@ -87,6 +87,20 @@
         </div>
 
         <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.orderAccountProduct.orderProduct" for="field_orderProduct">Order Product</label>
+            <select class="form-control" id="field_orderProduct" name="orderProduct" [(ngModel)]="orderAccountProduct.orderProduct" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="orderProductOption.id === orderAccountProduct.orderProduct?.id ? orderAccountProduct.orderProduct : orderProductOption" *ngFor="let orderProductOption of orderproducts; trackBy: trackOrderProductById">{{orderProductOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.orderAccountProduct.orderAccount" for="field_orderAccount">Order Account</label>
+            <select class="form-control" id="field_orderAccount" name="orderAccount" [(ngModel)]="orderAccountProduct.orderAccount" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="orderAccountOption.id === orderAccountProduct.orderAccount?.id ? orderAccountProduct.orderAccount : orderAccountOption" *ngFor="let orderAccountOption of orderaccounts; trackBy: trackOrderAccountById">{{orderAccountOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
             <label jhiTranslate="eshopApp.orderAccountProduct.orderAccount" for="field_orderAccount">Order Account</label>
             <select class="form-control" id="field_orderAccount" name="orderAccount" [(ngModel)]="orderAccountProduct.orderAccount" >
                 <option [ngValue]="null"></option>

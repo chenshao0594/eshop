@@ -44,6 +44,20 @@
              />
         </div>
 
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.systemNotification.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="systemNotification.merchantStore" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === systemNotification.merchantStore?.id ? systemNotification.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.systemNotification.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" [(ngModel)]="systemNotification.user" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="userOption.id === systemNotification.user?.id ? systemNotification.user : userOption" *ngFor="let userOption of users; trackBy: trackUserById">{{userOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

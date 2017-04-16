@@ -9,6 +9,7 @@ import { CustomerOptionValueDescription } from './customer-option-value-descript
 import { CustomerOptionValueDescriptionPopupService } from './customer-option-value-description-popup.service';
 import { CustomerOptionValueDescriptionService } from './customer-option-value-description.service';
 import { CustomerOptionValue, CustomerOptionValueService } from '../customer-option-value';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-customer-option-value-description-dialog',
@@ -21,11 +22,14 @@ export class CustomerOptionValueDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     customeroptionvalues: CustomerOptionValue[];
+
+    languages: Language[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private customerOptionValueDescriptionService: CustomerOptionValueDescriptionService,
         private customerOptionValueService: CustomerOptionValueService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['customerOptionValueDescription']);
@@ -37,6 +41,8 @@ export class CustomerOptionValueDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.customerOptionValueService.query().subscribe(
             (res: Response) => { this.customeroptionvalues = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class CustomerOptionValueDescriptionDialogComponent implements OnInit {
     }
 
     trackCustomerOptionValueById(index: number, item: CustomerOptionValue) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

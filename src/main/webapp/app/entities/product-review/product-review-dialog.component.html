@@ -47,6 +47,13 @@
                 <option [ngValue]="customerOption.id === productReview.customer?.id ? productReview.customer : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productReview.customer" for="field_customer">Customer</label>
+            <select class="form-control" id="field_customer" name="customer" [(ngModel)]="productReview.customer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOption.id === productReview.customer?.id ? productReview.customer : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

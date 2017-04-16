@@ -1,3 +1,4 @@
+import { OrderProduct } from '../order-product';
 import { OrderAccount } from '../order-account';
 export class OrderAccountProduct {
     constructor(
@@ -11,6 +12,7 @@ export class OrderAccountProduct {
         public orderAccountProductAccountedDate?: any,
         public orderAccountProductPaymentFrequencyType?: number,
         public orderAccountProductEot?: any,
+        public orderProduct?: OrderProduct,
         public orderAccount?: OrderAccount,
     ) {
     }

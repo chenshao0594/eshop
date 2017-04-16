@@ -1,4 +1,6 @@
+import { ProductOption } from '../product-option';
 import { Product } from '../product';
+import { ProductOptionValue } from '../product-option-value';
 export class ProductAttribute {
     constructor(
         public id?: number,
@@ -10,7 +12,9 @@ export class ProductAttribute {
         public productOptionSortOrder?: number,
         public productAttributeIsFree?: boolean,
         public attributeDiscounted?: boolean,
+        public productOption?: ProductOption,
         public product?: Product,
+        public productOptionValue?: ProductOptionValue,
     ) {
         this.attributeRequired = false;
         this.attributeDefault = false;

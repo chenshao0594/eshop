@@ -12,6 +12,12 @@
             "relationshipName": "taxRates",
             "otherEntityName": "taxRate",
             "otherEntityRelationshipName": "taxClass"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "merchantStore",
+            "otherEntityName": "merchantStore",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

@@ -1,18 +1,12 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A DigitalProduct.
@@ -21,7 +15,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "digital_product")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "digitalproduct")
-public class DigitalProduct extends BusinessDomain<Long,DigitalProduct> implements Serializable {
+public class DigitalProduct extends BusinessDomain<Long,DigitalProduct>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,6 +25,9 @@ public class DigitalProduct extends BusinessDomain<Long,DigitalProduct> implemen
 
     @Column(name = "product_file_name")
     private String productFileName;
+
+    @ManyToOne
+    private Product product;
 
     public Long getId() {
         return id;
@@ -53,31 +50,20 @@ public class DigitalProduct extends BusinessDomain<Long,DigitalProduct> implemen
         this.productFileName = productFileName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        DigitalProduct digitalProduct = (DigitalProduct) o;
-        if (digitalProduct.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, digitalProduct.id);
+    public Product getProduct() {
+        return product;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public DigitalProduct product(Product product) {
+        this.product = product;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "DigitalProduct{" +
-            "id=" + id +
-            ", productFileName='" + productFileName + "'" +
-            '}';
+    public void setProduct(Product product) {
+        this.product = product;
     }
+
+    
+
+    
 }

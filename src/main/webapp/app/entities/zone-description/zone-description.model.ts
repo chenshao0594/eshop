@@ -1,4 +1,5 @@
 import { Zone } from '../zone';
+import { Language } from '../language';
 export class ZoneDescription {
     constructor(
         public id?: number,
@@ -6,6 +7,7 @@ export class ZoneDescription {
         public name?: string,
         public description?: string,
         public zone?: Zone,
+        public language?: Language,
     ) {
     }
 }

@@ -1,19 +1,12 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A CustomerAttribute.
@@ -22,7 +15,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "customer_attribute")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "customerattribute")
-public class CustomerAttribute extends BusinessDomain<Long,CustomerAttribute> implements Serializable {
+public class CustomerAttribute extends BusinessDomain<Long,CustomerAttribute>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -32,6 +25,12 @@ public class CustomerAttribute extends BusinessDomain<Long,CustomerAttribute> im
 
     @Column(name = "text_value")
     private String textValue;
+
+    @ManyToOne
+    private CustomerOptionValue customerOptionValue;
+
+    @ManyToOne
+    private CustomerOption customerOption;
 
     @ManyToOne
     private Customer customer;
@@ -57,6 +56,33 @@ public class CustomerAttribute extends BusinessDomain<Long,CustomerAttribute> im
         this.textValue = textValue;
     }
 
+    public CustomerOptionValue getCustomerOptionValue() {
+        return customerOptionValue;
+    }
+
+    public CustomerAttribute customerOptionValue(CustomerOptionValue customerOptionValue) {
+        this.customerOptionValue = customerOptionValue;
+        return this;
+    }
+
+    public void setCustomerOptionValue(CustomerOptionValue customerOptionValue) {
+        this.customerOptionValue = customerOptionValue;
+    }
+
+    public CustomerOption getCustomerOption() {
+        return customerOption;
+    }
+
+    public CustomerAttribute customerOption(CustomerOption customerOption) {
+        this.customerOption = customerOption;
+        return this;
+    }
+
+    public void setCustomerOption(CustomerOption customerOption) {
+        this.customerOption = customerOption;
+    }
+
+
     public Customer getCustomer() {
         return customer;
     }
@@ -70,31 +96,7 @@ public class CustomerAttribute extends BusinessDomain<Long,CustomerAttribute> im
         this.customer = customer;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        CustomerAttribute customerAttribute = (CustomerAttribute) o;
-        if (customerAttribute.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, customerAttribute.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "CustomerAttribute{" +
-            "id=" + id +
-            ", textValue='" + textValue + "'" +
-            '}';
-    }
+    
 }

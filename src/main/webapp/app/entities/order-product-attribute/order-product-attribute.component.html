@@ -38,6 +38,7 @@
             <th jhiSortBy="productOptionId"><span jhiTranslate="eshopApp.orderProductAttribute.productOptionId">Product Option Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productAttributeValueName"><span jhiTranslate="eshopApp.orderProductAttribute.productAttributeValueName">Product Attribute Value Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="orderProduct.id"><span jhiTranslate="eshopApp.orderProductAttribute.orderProduct">Order Product</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderProduct.id"><span jhiTranslate="eshopApp.orderProductAttribute.orderProduct">Order Product</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -51,6 +52,11 @@
                 <td>{{orderProductAttribute.productAttributeIsFree}}</td>
                 <td>{{orderProductAttribute.productOptionId}}</td>
                 <td>{{orderProductAttribute.productAttributeValueName}}</td>
+                <td>
+                    <div *ngIf="orderProductAttribute.orderProduct">
+                        <a [routerLink]="['../order-product', orderProductAttribute.orderProduct?.id ]" >{{orderProductAttribute.orderProduct?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="orderProductAttribute.orderProduct">
                         <a [routerLink]="['../order-product', orderProductAttribute.orderProduct?.id ]" >{{orderProductAttribute.orderProduct?.id}}</a>

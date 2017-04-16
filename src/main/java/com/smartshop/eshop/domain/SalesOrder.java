@@ -1,31 +1,25 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.smartshop.eshop.domain.enumeration.OrderChannel;
-import com.smartshop.eshop.domain.enumeration.OrderStatus;
-import com.smartshop.eshop.domain.enumeration.OrderType;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
+
 import com.smartshop.eshop.domain.enumeration.PaymentType;
+
+import com.smartshop.eshop.domain.enumeration.OrderChannel;
+
+import com.smartshop.eshop.domain.enumeration.OrderType;
+
+import com.smartshop.eshop.domain.enumeration.OrderStatus;
 
 /**
  * A SalesOrder.
@@ -34,7 +28,7 @@ import com.smartshop.eshop.domain.enumeration.PaymentType;
 @Table(name = "sales_order")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "salesorder")
-public class SalesOrder extends BusinessDomain<Long, SalesOrder> implements Serializable {
+public class SalesOrder extends BusinessDomain<Long,SalesOrder>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -111,6 +105,12 @@ public class SalesOrder extends BusinessDomain<Long, SalesOrder> implements Seri
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<OrderProduct> orderProducts = new HashSet<>();
+
+    @ManyToOne
+    private Currency currency;
+
+    @ManyToOne
+    private MerchantStore merchant;
 
     public Long getId() {
         return id;
@@ -416,47 +416,33 @@ public class SalesOrder extends BusinessDomain<Long, SalesOrder> implements Seri
         this.orderProducts = orderProducts;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        SalesOrder salesOrder = (SalesOrder) o;
-        if (salesOrder.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, salesOrder.id);
+    public Currency getCurrency() {
+        return currency;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public SalesOrder currency(Currency currency) {
+        this.currency = currency;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "SalesOrder{" +
-            "id=" + id +
-            ", customerId='" + customerId + "'" +
-            ", confirmedAddress='" + confirmedAddress + "'" +
-            ", orderDateFinished='" + orderDateFinished + "'" +
-            ", total='" + total + "'" +
-            ", paymentModuleCode='" + paymentModuleCode + "'" +
-            ", paymentType='" + paymentType + "'" +
-            ", locale='" + locale + "'" +
-            ", channel='" + channel + "'" +
-            ", customerEmailAddress='" + customerEmailAddress + "'" +
-            ", orderType='" + orderType + "'" +
-            ", status='" + status + "'" +
-            ", lastModified='" + lastModified + "'" +
-            ", currencyValue='" + currencyValue + "'" +
-            ", datePurchased='" + datePurchased + "'" +
-            ", shippingModuleCode='" + shippingModuleCode + "'" +
-            ", ipAddress='" + ipAddress + "'" +
-            ", customerAgreement='" + customerAgreement + "'" +
-            '}';
+    public void setCurrency(Currency currency) {
+        this.currency = currency;
     }
+
+    public MerchantStore getMerchant() {
+        return merchant;
+    }
+
+    public SalesOrder merchant(MerchantStore merchantStore) {
+        this.merchant = merchantStore;
+        return this;
+    }
+
+    public void setMerchant(MerchantStore merchantStore) {
+        this.merchant = merchantStore;
+    }
+
+    
+
+    
 }

@@ -34,6 +34,8 @@
             <th jhiSortBy="name"><span jhiTranslate="eshopApp.customerOptionValueDescription.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="eshopApp.customerOptionValueDescription.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="customerOptionValue.id"><span jhiTranslate="eshopApp.customerOptionValueDescription.customerOptionValue">Customer Option Value</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.customerOptionValueDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customerOptionValue.id"><span jhiTranslate="eshopApp.customerOptionValueDescription.customerOptionValue">Customer Option Value</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,6 +45,16 @@
                 <td>{{customerOptionValueDescription.title}}</td>
                 <td>{{customerOptionValueDescription.name}}</td>
                 <td>{{customerOptionValueDescription.description}}</td>
+                <td>
+                    <div *ngIf="customerOptionValueDescription.customerOptionValue">
+                        <a [routerLink]="['../customer-option-value', customerOptionValueDescription.customerOptionValue?.id ]" >{{customerOptionValueDescription.customerOptionValue?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="customerOptionValueDescription.language">
+                        <a [routerLink]="['../language', customerOptionValueDescription.language?.id ]" >{{customerOptionValueDescription.language?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="customerOptionValueDescription.customerOptionValue">
                         <a [routerLink]="['../customer-option-value', customerOptionValueDescription.customerOptionValue?.id ]" >{{customerOptionValueDescription.customerOptionValue?.id}}</a>

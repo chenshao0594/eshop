@@ -50,6 +50,13 @@
              />
         </div>
 
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.transaction.order" for="field_order">Order</label>
+            <select class="form-control" id="field_order" name="order" [(ngModel)]="transaction.order" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="salesOrderOption.id === transaction.order?.id ? transaction.order : salesOrderOption" *ngFor="let salesOrderOption of salesorders; trackBy: trackSalesOrderById">{{salesOrderOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

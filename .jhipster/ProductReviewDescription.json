@@ -3,6 +3,18 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
+            "relationshipName": "language",
+            "otherEntityName": "language",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "productReview",
+            "otherEntityName": "productReview",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
             "relationshipName": "productReview",
             "otherEntityName": "productReview",
             "otherEntityField": "id"

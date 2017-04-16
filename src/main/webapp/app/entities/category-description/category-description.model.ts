@@ -1,4 +1,5 @@
 import { Category } from '../category';
+import { Language } from '../language';
 export class CategoryDescription {
     constructor(
         public id?: number,
@@ -11,6 +12,7 @@ export class CategoryDescription {
         public name?: string,
         public metatagTitle?: string,
         public category?: Category,
+        public language?: Language,
     ) {
     }
 }

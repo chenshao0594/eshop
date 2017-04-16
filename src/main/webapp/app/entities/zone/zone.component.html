@@ -32,6 +32,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.zone.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="country.id"><span jhiTranslate="eshopApp.zone.country">Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="country.id"><span jhiTranslate="eshopApp.zone.country">Country</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -39,6 +40,11 @@
             <tr *ngFor="let zone of zones ;trackBy: trackId">
                 <td><a [routerLink]="['../zone', zone.id ]">{{zone.id}}</a></td>
                 <td>{{zone.code}}</td>
+                <td>
+                    <div *ngIf="zone.country">
+                        <a [routerLink]="['../country', zone.country?.id ]" >{{zone.country?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="zone.country">
                         <a [routerLink]="['../country', zone.country?.id ]" >{{zone.country?.id}}</a>

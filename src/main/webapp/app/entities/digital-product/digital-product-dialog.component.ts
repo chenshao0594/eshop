@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { DigitalProduct } from './digital-product.model';
 import { DigitalProductPopupService } from './digital-product-popup.service';
 import { DigitalProductService } from './digital-product.service';
+import { Product, ProductService } from '../product';
 
 @Component({
     selector: 'jhi-digital-product-dialog',
@@ -18,10 +19,13 @@ export class DigitalProductDialogComponent implements OnInit {
     digitalProduct: DigitalProduct;
     authorities: any[];
     isSaving: boolean;
+
+    products: Product[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private digitalProductService: DigitalProductService,
+        private productService: ProductService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['digitalProduct']);
@@ -31,6 +35,8 @@ export class DigitalProductDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.productService.query().subscribe(
+            (res: Response) => { this.products = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +73,10 @@ export class DigitalProductDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackProductById(index: number, item: Product) {
+        return item.id;
     }
 }
 

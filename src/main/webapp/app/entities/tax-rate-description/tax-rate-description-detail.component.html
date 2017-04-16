@@ -37,6 +37,20 @@
                 <option [ngValue]="taxRateOption.id === taxRateDescription.taxRate?.id ? taxRateDescription.taxRate : taxRateOption" *ngFor="let taxRateOption of taxrates; trackBy: trackTaxRateById">{{taxRateOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.taxRateDescription.language" for="field_language">Language</label>
+            <select class="form-control" id="field_language" name="language" [(ngModel)]="taxRateDescription.language" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === taxRateDescription.language?.id ? taxRateDescription.language : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.taxRateDescription.taxRate" for="field_taxRate">Tax Rate</label>
+            <select class="form-control" id="field_taxRate" name="taxRate" [(ngModel)]="taxRateDescription.taxRate" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="taxRateOption.id === taxRateDescription.taxRate?.id ? taxRateDescription.taxRate : taxRateOption" *ngFor="let taxRateOption of taxrates; trackBy: trackTaxRateById">{{taxRateOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

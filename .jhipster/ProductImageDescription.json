@@ -6,6 +6,18 @@
             "relationshipName": "productImage",
             "otherEntityName": "productImage",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "language",
+            "otherEntityName": "language",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "productImage",
+            "otherEntityName": "productImage",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

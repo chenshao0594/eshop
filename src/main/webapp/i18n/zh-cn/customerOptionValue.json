@@ -19,7 +19,8 @@
             "code": "Code",
             "customerOptionValueImage": "Customer Option Value Image",
             "sortOrder": "Sort Order",
-            "descriptions": "Descriptions"
+            "descriptions": "Descriptions",
+            "merchantStore": "Merchant Store"
         }
     }
 }

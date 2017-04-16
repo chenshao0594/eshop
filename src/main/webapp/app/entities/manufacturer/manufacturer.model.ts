@@ -1,4 +1,5 @@
 import { ManufacturerDescription } from '../manufacturer-description';
+import { MerchantStore } from '../merchant-store';
 export class Manufacturer {
     constructor(
         public id?: number,
@@ -6,6 +7,7 @@ export class Manufacturer {
         public image?: string,
         public code?: string,
         public descriptions?: ManufacturerDescription,
+        public merchantStore?: MerchantStore,
     ) {
     }
 }

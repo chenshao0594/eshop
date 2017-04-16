@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -33,7 +32,7 @@ import com.smartshop.eshop.domain.enumeration.ProductPriceType;
 @Table(name = "product_price")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productprice")
-public class ProductPrice extends BusinessDomain<Long, ProductPrice> implements Serializable {
+public class ProductPrice extends BusinessDomain<Long,ProductPrice>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -71,6 +70,7 @@ public class ProductPrice extends BusinessDomain<Long, ProductPrice> implements 
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductPriceDescription> descriptions = new HashSet<>();
+
 
     @ManyToOne
     private ProductAvailability productAvailability;
@@ -225,38 +225,7 @@ public class ProductPrice extends BusinessDomain<Long, ProductPrice> implements 
         this.productAvailability = productAvailability;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductPrice productPrice = (ProductPrice) o;
-        if (productPrice.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, productPrice.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ProductPrice{" +
-            "id=" + id +
-            ", defaultPrice='" + defaultPrice + "'" +
-            ", dEFAULTPRICECODE='" + dEFAULTPRICECODE + "'" +
-            ", code='" + code + "'" +
-            ", productPriceSpecialEndDate='" + productPriceSpecialEndDate + "'" +
-            ", productPriceAmount='" + productPriceAmount + "'" +
-            ", productPriceSpecialAmount='" + productPriceSpecialAmount + "'" +
-            ", productPriceType='" + productPriceType + "'" +
-            ", productPriceSpecialStartDate='" + productPriceSpecialStartDate + "'" +
-            '}';
-    }
+    
 }

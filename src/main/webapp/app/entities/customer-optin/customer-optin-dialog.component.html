@@ -46,6 +46,13 @@
              />
         </div>
 
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.customerOptin.optin" for="field_optin">Optin</label>
+            <select class="form-control" id="field_optin" name="optin" [(ngModel)]="customerOptin.optin" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="optinOption.id === customerOptin.optin?.id ? customerOptin.optin : optinOption" *ngFor="let optinOption of optins; trackBy: trackOptinById">{{optinOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

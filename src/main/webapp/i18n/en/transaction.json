@@ -20,7 +20,8 @@
             "transactionType": "Transaction Type",
             "transactionDate": "Transaction Date",
             "paymentType": "Payment Type",
-            "amount": "Amount"
+            "amount": "Amount",
+            "order": "Order"
         }
     }
 }

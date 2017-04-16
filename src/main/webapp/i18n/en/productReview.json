@@ -21,6 +21,7 @@
             "status": "Status",
             "reviewRating": "Review Rating",
             "descriptions": "Descriptions",
+            "customer": "Customer",
             "customer": "Customer"
         }
     }

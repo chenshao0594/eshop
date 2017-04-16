@@ -1,20 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A GeoZoneDescription.
@@ -23,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "geo_zone_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "geozonedescription")
-public class GeoZoneDescription extends BusinessDomain<Long, GeoZoneDescription> implements Serializable {
+public class GeoZoneDescription extends BusinessDomain<Long,GeoZoneDescription>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,6 +33,9 @@ public class GeoZoneDescription extends BusinessDomain<Long, GeoZoneDescription>
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    private Language language;
 
     @ManyToOne
     private GeoZone geoZone;
@@ -91,6 +87,20 @@ public class GeoZoneDescription extends BusinessDomain<Long, GeoZoneDescription>
         this.description = description;
     }
 
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public GeoZoneDescription language(Language language) {
+        this.language = language;
+        return this;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
     public GeoZone getGeoZone() {
         return geoZone;
     }
@@ -104,33 +114,7 @@ public class GeoZoneDescription extends BusinessDomain<Long, GeoZoneDescription>
         this.geoZone = geoZone;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        GeoZoneDescription geoZoneDescription = (GeoZoneDescription) o;
-        if (geoZoneDescription.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, geoZoneDescription.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "GeoZoneDescription{" +
-            "id=" + id +
-            ", title='" + title + "'" +
-            ", name='" + name + "'" +
-            ", description='" + description + "'" +
-            '}';
-    }
+    
 }

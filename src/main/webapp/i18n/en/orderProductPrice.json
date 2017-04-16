@@ -23,6 +23,7 @@
             "productPriceSpecialEndDate": "Product Price Special End Date",
             "productPriceName": "Product Price Name",
             "defaultPrice": "Default Price",
+            "orderProduct": "Order Product",
             "orderProduct": "Order Product"
         }
     }

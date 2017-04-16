@@ -6,6 +6,18 @@
             "relationshipName": "content",
             "otherEntityName": "content",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "language",
+            "otherEntityName": "language",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "content",
+            "otherEntityName": "content",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

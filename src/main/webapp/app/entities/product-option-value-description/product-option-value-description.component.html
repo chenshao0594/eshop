@@ -34,6 +34,8 @@
             <th jhiSortBy="name"><span jhiTranslate="eshopApp.productOptionValueDescription.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="eshopApp.productOptionValueDescription.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOptionValue.id"><span jhiTranslate="eshopApp.productOptionValueDescription.productOptionValue">Product Option Value</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.productOptionValueDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productOptionValue.id"><span jhiTranslate="eshopApp.productOptionValueDescription.productOptionValue">Product Option Value</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,6 +45,16 @@
                 <td>{{productOptionValueDescription.title}}</td>
                 <td>{{productOptionValueDescription.name}}</td>
                 <td>{{productOptionValueDescription.description}}</td>
+                <td>
+                    <div *ngIf="productOptionValueDescription.productOptionValue">
+                        <a [routerLink]="['../product-option-value', productOptionValueDescription.productOptionValue?.id ]" >{{productOptionValueDescription.productOptionValue?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="productOptionValueDescription.language">
+                        <a [routerLink]="['../language', productOptionValueDescription.language?.id ]" >{{productOptionValueDescription.language?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="productOptionValueDescription.productOptionValue">
                         <a [routerLink]="['../product-option-value', productOptionValueDescription.productOptionValue?.id ]" >{{productOptionValueDescription.productOptionValue?.id}}</a>

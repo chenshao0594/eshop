@@ -6,6 +6,18 @@
             "relationshipName": "customerOption",
             "otherEntityName": "customerOption",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "language",
+            "otherEntityName": "language",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "customerOption",
+            "otherEntityName": "customerOption",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

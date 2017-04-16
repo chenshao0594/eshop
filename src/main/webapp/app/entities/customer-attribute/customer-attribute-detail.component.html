@@ -13,6 +13,27 @@
         </div>
 
         <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.customerAttribute.customerOptionValue" for="field_customerOptionValue">Customer Option Value</label>
+            <select class="form-control" id="field_customerOptionValue" name="customerOptionValue" [(ngModel)]="customerAttribute.customerOptionValue" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOptionValueOption.id === customerAttribute.customerOptionValue?.id ? customerAttribute.customerOptionValue : customerOptionValueOption" *ngFor="let customerOptionValueOption of customeroptionvalues; trackBy: trackCustomerOptionValueById">{{customerOptionValueOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.customerAttribute.customerOption" for="field_customerOption">Customer Option</label>
+            <select class="form-control" id="field_customerOption" name="customerOption" [(ngModel)]="customerAttribute.customerOption" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOptionOption.id === customerAttribute.customerOption?.id ? customerAttribute.customerOption : customerOptionOption" *ngFor="let customerOptionOption of customeroptions; trackBy: trackCustomerOptionById">{{customerOptionOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.customerAttribute.customer" for="field_customer">Customer</label>
+            <select class="form-control" id="field_customer" name="customer" [(ngModel)]="customerAttribute.customer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOption.id === customerAttribute.customer?.id ? customerAttribute.customer : customerOption" *ngFor="let customerOption of customers; trackBy: trackCustomerById">{{customerOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
             <label jhiTranslate="eshopApp.customerAttribute.customer" for="field_customer">Customer</label>
             <select class="form-control" id="field_customer" name="customer" [(ngModel)]="customerAttribute.customer" >
                 <option [ngValue]="null"></option>

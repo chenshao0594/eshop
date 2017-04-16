@@ -19,7 +19,8 @@
             "orderAccountStartDate": "Order Account Start Date",
             "orderAccountEndDate": "Order Account End Date",
             "orderAccountBillDay": "Order Account Bill Day",
-            "orderAccountProducts": "Order Account Products"
+            "orderAccountProducts": "Order Account Products",
+            "order": "Order"
         }
     }
 }

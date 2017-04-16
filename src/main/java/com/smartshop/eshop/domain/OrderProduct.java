@@ -1,25 +1,16 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A OrderProduct.
@@ -28,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "order_product")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "orderproduct")
-public class OrderProduct extends BusinessDomain<Long, OrderProduct> implements Serializable {
+public class OrderProduct extends BusinessDomain<Long,OrderProduct>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -201,6 +192,7 @@ public class OrderProduct extends BusinessDomain<Long, OrderProduct> implements 
         this.prices = orderProductPrices;
     }
 
+
     public SalesOrder getOrder() {
         return order;
     }
@@ -214,34 +206,7 @@ public class OrderProduct extends BusinessDomain<Long, OrderProduct> implements 
         this.order = salesOrder;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OrderProduct orderProduct = (OrderProduct) o;
-        if (orderProduct.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, orderProduct.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "OrderProduct{" +
-            "id=" + id +
-            ", productQuantity='" + productQuantity + "'" +
-            ", sku='" + sku + "'" +
-            ", oneTimeCharge='" + oneTimeCharge + "'" +
-            ", productName='" + productName + "'" +
-            '}';
-    }
+    
 }

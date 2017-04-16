@@ -39,6 +39,7 @@
             <th jhiSortBy="productPriceType"><span jhiTranslate="eshopApp.productPrice.productPriceType">Product Price Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productPriceSpecialStartDate"><span jhiTranslate="eshopApp.productPrice.productPriceSpecialStartDate">Product Price Special Start Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productAvailability.id"><span jhiTranslate="eshopApp.productPrice.productAvailability">Product Availability</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productAvailability.id"><span jhiTranslate="eshopApp.productPrice.productAvailability">Product Availability</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -53,6 +54,11 @@
                 <td>{{productPrice.productPriceSpecialAmount}}</td>
                 <td jhiTranslate="{{'eshopApp.ProductPriceType.' + productPrice.productPriceType}}">{{productPrice.productPriceType}}</td>
                 <td>{{productPrice.productPriceSpecialStartDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="productPrice.productAvailability">
+                        <a [routerLink]="['../product-availability', productPrice.productAvailability?.id ]" >{{productPrice.productAvailability?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="productPrice.productAvailability">
                         <a [routerLink]="['../product-availability', productPrice.productAvailability?.id ]" >{{productPrice.productAvailability?.id}}</a>

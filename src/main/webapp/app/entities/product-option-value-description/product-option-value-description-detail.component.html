@@ -37,6 +37,20 @@
                 <option [ngValue]="productOptionValueOption.id === productOptionValueDescription.productOptionValue?.id ? productOptionValueDescription.productOptionValue : productOptionValueOption" *ngFor="let productOptionValueOption of productoptionvalues; trackBy: trackProductOptionValueById">{{productOptionValueOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.productOptionValueDescription.language" for="field_language">Language</label>
+            <select class="form-control" id="field_language" name="language" [(ngModel)]="productOptionValueDescription.language" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === productOptionValueDescription.language?.id ? productOptionValueDescription.language : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.productOptionValueDescription.productOptionValue" for="field_productOptionValue">Product Option Value</label>
+            <select class="form-control" id="field_productOptionValue" name="productOptionValue" [(ngModel)]="productOptionValueDescription.productOptionValue" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOptionValueOption.id === productOptionValueDescription.productOptionValue?.id ? productOptionValueDescription.productOptionValue : productOptionValueOption" *ngFor="let productOptionValueOption of productoptionvalues; trackBy: trackProductOptionValueById">{{productOptionValueOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

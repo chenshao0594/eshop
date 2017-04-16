@@ -59,6 +59,20 @@
                 <option [ngValue]="manufacturerOption.id === manufacturerDescription.manufacturer?.id ? manufacturerDescription.manufacturer : manufacturerOption" *ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">{{manufacturerOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.manufacturerDescription.language" for="field_language">Language</label>
+            <select class="form-control" id="field_language" name="language" [(ngModel)]="manufacturerDescription.language" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === manufacturerDescription.language?.id ? manufacturerDescription.language : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.manufacturerDescription.manufacturer" for="field_manufacturer">Manufacturer</label>
+            <select class="form-control" id="field_manufacturer" name="manufacturer" [(ngModel)]="manufacturerDescription.manufacturer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="manufacturerOption.id === manufacturerDescription.manufacturer?.id ? manufacturerDescription.manufacturer : manufacturerOption" *ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">{{manufacturerOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

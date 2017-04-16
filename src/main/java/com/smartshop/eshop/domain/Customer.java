@@ -1,30 +1,18 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
+
 import com.smartshop.eshop.domain.enumeration.CustomerGender;
 
 /**
@@ -34,7 +22,8 @@ import com.smartshop.eshop.domain.enumeration.CustomerGender;
 @Table(name = "customer")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "customer")
-public class Customer extends BusinessDomain<Long, Customer> implements Serializable {
+public class Customer extends BusinessDomain<Long,Customer>  implements Serializable {
+
     private static final long serialVersionUID = 1L;
 
     @Id
@@ -74,12 +63,10 @@ public class Customer extends BusinessDomain<Long, Customer> implements Serializ
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductReview> reviews = new HashSet<>();
 
-    @ManyToOne(optional = false)
-    @NotNull
+    @ManyToOne
     private MerchantStore merchantStore;
 
-    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Language.class)
-	@JoinColumn(name = "LANGUAGE_ID", nullable=false)
+    @ManyToOne
     private Language defaultLanguage;
 
     public Long getId() {
@@ -257,37 +244,7 @@ public class Customer extends BusinessDomain<Long, Customer> implements Serializ
         this.defaultLanguage = language;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Customer customer = (Customer) o;
-        if (customer.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, customer.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-            "id=" + id +
-            ", dateOfBirth='" + dateOfBirth + "'" +
-            ", gender='" + gender + "'" +
-            ", anonymous='" + anonymous + "'" +
-            ", company='" + company + "'" +
-            ", nick='" + nick + "'" +
-            ", emailAddress='" + emailAddress + "'" +
-            ", password='" + password + "'" +
-            '}';
-    }
+    
 }

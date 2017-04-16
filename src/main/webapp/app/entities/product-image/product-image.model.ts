@@ -8,7 +8,7 @@ export class ProductImage {
         public defaultImage?: boolean,
         public imageType?: number,
         public imageCrop?: boolean,
-        public imageContent?: any,
+        public content?: any,
         public descriptions?: ProductImageDescription,
         public product?: Product,
     ) {

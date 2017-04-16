@@ -34,6 +34,7 @@
             <th jhiSortBy="startDate"><span jhiTranslate="eshopApp.optin.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.optin.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="endDate"><span jhiTranslate="eshopApp.optin.endDate">End Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="merchant.id"><span jhiTranslate="eshopApp.optin.merchant">Merchant</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -44,6 +45,11 @@
                 <td>{{optin.startDate | date:'mediumDate'}}</td>
                 <td>{{optin.code}}</td>
                 <td>{{optin.endDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="optin.merchant">
+                        <a [routerLink]="['../merchant-store', optin.merchant?.id ]" >{{optin.merchant?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

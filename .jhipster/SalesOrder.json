@@ -18,6 +18,18 @@
             "relationshipName": "orderProducts",
             "otherEntityName": "orderProduct",
             "otherEntityRelationshipName": "order"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "currency",
+            "otherEntityName": "currency",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "merchant",
+            "otherEntityName": "merchantStore",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

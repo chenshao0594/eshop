@@ -20,7 +20,8 @@
             "productOptionType": "Product Option Type",
             "code": "Code",
             "productOptionSortOrder": "Product Option Sort Order",
-            "descriptions": "Descriptions"
+            "descriptions": "Descriptions",
+            "merchantStore": "Merchant Store"
         }
     }
 }

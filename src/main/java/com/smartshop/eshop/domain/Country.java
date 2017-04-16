@@ -1,24 +1,15 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Country.
@@ -27,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "country")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "country")
-public class Country extends BusinessDomain<Long, Country> implements Serializable {
+public class Country extends BusinessDomain<Long,Country>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -151,32 +142,7 @@ public class Country extends BusinessDomain<Long, Country> implements Serializab
         this.geoZone = geoZone;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Country country = (Country) o;
-        if (country.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, country.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Country{" +
-            "id=" + id +
-            ", isoCode='" + isoCode + "'" +
-            ", supported='" + supported + "'" +
-            '}';
-    }
+    
 }

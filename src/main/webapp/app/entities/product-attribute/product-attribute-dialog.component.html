@@ -61,6 +61,27 @@
         </div>
 
         <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productAttribute.productOption" for="field_productOption">Product Option</label>
+            <select class="form-control" id="field_productOption" name="productOption" [(ngModel)]="productAttribute.productOption" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOptionOption.id === productAttribute.productOption?.id ? productAttribute.productOption : productOptionOption" *ngFor="let productOptionOption of productoptions; trackBy: trackProductOptionById">{{productOptionOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productAttribute.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" name="product" [(ngModel)]="productAttribute.product" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOption.id === productAttribute.product?.id ? productAttribute.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productAttribute.productOptionValue" for="field_productOptionValue">Product Option Value</label>
+            <select class="form-control" id="field_productOptionValue" name="productOptionValue" [(ngModel)]="productAttribute.productOptionValue" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOptionValueOption.id === productAttribute.productOptionValue?.id ? productAttribute.productOptionValue : productOptionValueOption" *ngFor="let productOptionValueOption of productoptionvalues; trackBy: trackProductOptionValueById">{{productOptionValueOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
             <label jhiTranslate="eshopApp.productAttribute.product" for="field_product">Product</label>
             <select class="form-control" id="field_product" name="product" [(ngModel)]="productAttribute.product" >
                 <option [ngValue]="null"></option>

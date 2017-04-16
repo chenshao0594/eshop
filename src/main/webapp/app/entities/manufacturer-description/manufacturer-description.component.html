@@ -37,6 +37,8 @@
             <th jhiSortBy="dateLastClick"><span jhiTranslate="eshopApp.manufacturerDescription.dateLastClick">Date Last Click</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="eshopApp.manufacturerDescription.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="manufacturer.id"><span jhiTranslate="eshopApp.manufacturerDescription.manufacturer">Manufacturer</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.manufacturerDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="manufacturer.id"><span jhiTranslate="eshopApp.manufacturerDescription.manufacturer">Manufacturer</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -49,6 +51,16 @@
                 <td>{{manufacturerDescription.name}}</td>
                 <td>{{manufacturerDescription.dateLastClick | date:'mediumDate'}}</td>
                 <td>{{manufacturerDescription.description}}</td>
+                <td>
+                    <div *ngIf="manufacturerDescription.manufacturer">
+                        <a [routerLink]="['../manufacturer', manufacturerDescription.manufacturer?.id ]" >{{manufacturerDescription.manufacturer?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="manufacturerDescription.language">
+                        <a [routerLink]="['../language', manufacturerDescription.language?.id ]" >{{manufacturerDescription.language?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="manufacturerDescription.manufacturer">
                         <a [routerLink]="['../manufacturer', manufacturerDescription.manufacturer?.id ]" >{{manufacturerDescription.manufacturer?.id}}</a>

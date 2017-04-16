@@ -1,28 +1,18 @@
 package com.smartshop.eshop.domain;
 
-import java.io.InputStream;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+
+import java.io.InputStream;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A ProductImage.
@@ -31,7 +21,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "product_image")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productimage")
-public class ProductImage extends BusinessDomain<Long, ProductImage> implements Serializable {
+public class ProductImage extends BusinessDomain<Long,ProductImage>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,9 +29,6 @@ public class ProductImage extends BusinessDomain<Long, ProductImage> implements 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column
-    private String description;
-    
     @Column(name = "product_image")
     private String productImage;
 
@@ -49,7 +36,7 @@ public class ProductImage extends BusinessDomain<Long, ProductImage> implements 
     private String productImageUrl;
 
     @Column(name = "default_image")
-    private Boolean defaultImage;
+    private Boolean defaultImage = true;
 
     @Column(name = "image_type")
     private Integer imageType;
@@ -59,21 +46,23 @@ public class ProductImage extends BusinessDomain<Long, ProductImage> implements 
 
     @NotNull
     @Lob
-    @Column(name = "image_content", nullable = false)
-    private byte[] imageContent;
-    @Transient
-	private InputStream image = null;
+    @Column(name = "content", nullable = false)
+    private byte[] content;
 
-    @Column(name = "image_content_content_type", nullable = false)
-    private String imageContentContentType;
-    
+    @Column(name = "content_type", nullable = false)
+    private String contentType;
+
+    @OneToMany(mappedBy = "productImage")
     @JsonIgnore
-    @OneToMany(mappedBy = "productImage",cascade = CascadeType.ALL)
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductImageDescription> descriptions = new HashSet<>();
 
     @ManyToOne
     private Product product;
+    
+    @Transient
+	private InputStream image = null;
+	
 
     public Long getId() {
         return id;
@@ -148,30 +137,30 @@ public class ProductImage extends BusinessDomain<Long, ProductImage> implements 
         this.imageCrop = imageCrop;
     }
 
-    public byte[] getImageContent() {
-        return imageContent;
+    public byte[] getContent() {
+        return content;
     }
 
-    public ProductImage imageContent(byte[] imageContent) {
-        this.imageContent = imageContent;
+    public ProductImage content(byte[] content) {
+        this.content = content;
         return this;
     }
 
-    public void setImageContent(byte[] imageContent) {
-        this.imageContent = imageContent;
+    public void setContent(byte[] content) {
+        this.content = content;
     }
 
-    public String getImageContentContentType() {
-        return imageContentContentType;
+    public String getContentType() {
+        return contentType;
     }
 
-    public ProductImage imageContentContentType(String imageContentContentType) {
-        this.imageContentContentType = imageContentContentType;
+    public ProductImage contentType(String contentContentType) {
+        this.contentType = contentContentType;
         return this;
     }
 
-    public void setImageContentContentType(String imageContentContentType) {
-        this.imageContentContentType = imageContentContentType;
+    public void setContentType(String contentContentType) {
+        this.contentType = contentContentType;
     }
 
     public Set<ProductImageDescription> getDescriptions() {
@@ -199,6 +188,7 @@ public class ProductImage extends BusinessDomain<Long, ProductImage> implements 
         this.descriptions = productImageDescriptions;
     }
 
+
     public Product getProduct() {
         return product;
     }
@@ -212,22 +202,6 @@ public class ProductImage extends BusinessDomain<Long, ProductImage> implements 
         this.product = product;
     }
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Boolean getDefaultImage() {
-		return defaultImage;
-	}
-
-	public Boolean getImageCrop() {
-		return imageCrop;
-	}
-
 	public InputStream getImage() {
 		return image;
 	}
@@ -235,6 +209,4 @@ public class ProductImage extends BusinessDomain<Long, ProductImage> implements 
 	public void setImage(InputStream image) {
 		this.image = image;
 	}
-
-   
 }

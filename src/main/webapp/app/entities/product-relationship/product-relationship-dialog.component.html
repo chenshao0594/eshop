@@ -31,6 +31,27 @@
                 <option [ngValue]="productOption.id === productRelationship.product?.id ? productRelationship.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productRelationship.relatedProduct" for="field_relatedProduct">Related Product</label>
+            <select class="form-control" id="field_relatedProduct" name="relatedProduct" [(ngModel)]="productRelationship.relatedProduct" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOption.id === productRelationship.relatedProduct?.id ? productRelationship.relatedProduct : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productRelationship.store" for="field_store">Store</label>
+            <select class="form-control" id="field_store" name="store" [(ngModel)]="productRelationship.store" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === productRelationship.store?.id ? productRelationship.store : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productRelationship.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" name="product" [(ngModel)]="productRelationship.product" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOption.id === productRelationship.product?.id ? productRelationship.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

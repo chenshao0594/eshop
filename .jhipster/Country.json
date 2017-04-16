@@ -18,6 +18,12 @@
             "relationshipName": "geoZone",
             "otherEntityName": "geoZone",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "geoZone",
+            "otherEntityName": "geoZone",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

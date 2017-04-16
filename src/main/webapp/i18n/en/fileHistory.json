@@ -21,7 +21,8 @@
             "downloadCount": "Download Count",
             "fileId": "File Id",
             "accountedDate": "Accounted Date",
-            "filesize": "Filesize"
+            "filesize": "Filesize",
+            "store": "Store"
         }
     }
 }

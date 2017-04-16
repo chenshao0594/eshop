@@ -23,6 +23,10 @@
             "taxRate": "Tax Rate",
             "descriptions": "Descriptions",
             "taxRates": "Tax Rates",
+            "country": "Country",
+            "parent": "Parent",
+            "taxClass": "Tax Class",
+            "merchantStore": "Merchant Store",
             "taxClass": "Tax Class",
             "parent": "Parent"
         }

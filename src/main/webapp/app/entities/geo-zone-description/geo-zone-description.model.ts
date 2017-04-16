@@ -1,4 +1,5 @@
 import { GeoZone } from '../geo-zone';
+import { Language } from '../language';
 export class GeoZoneDescription {
     constructor(
         public id?: number,
@@ -6,6 +7,7 @@ export class GeoZoneDescription {
         public name?: string,
         public description?: string,
         public geoZone?: GeoZone,
+        public language?: Language,
     ) {
     }
 }

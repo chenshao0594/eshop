@@ -22,7 +22,8 @@
             "code": "Code",
             "visible": "Visible",
             "contentPosition": "Content Position",
-            "descriptions": "Descriptions"
+            "descriptions": "Descriptions",
+            "merchantStore": "Merchant Store"
         }
     }
 }

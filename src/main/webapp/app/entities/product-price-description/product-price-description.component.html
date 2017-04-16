@@ -35,6 +35,8 @@
             <th jhiSortBy="name"><span jhiTranslate="eshopApp.productPriceDescription.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="eshopApp.productPriceDescription.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productPrice.id"><span jhiTranslate="eshopApp.productPriceDescription.productPrice">Product Price</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.productPriceDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productPrice.id"><span jhiTranslate="eshopApp.productPriceDescription.productPrice">Product Price</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -45,6 +47,16 @@
                 <td>{{productPriceDescription.dEFAULTPRICEDESCRIPTION}}</td>
                 <td>{{productPriceDescription.name}}</td>
                 <td>{{productPriceDescription.description}}</td>
+                <td>
+                    <div *ngIf="productPriceDescription.productPrice">
+                        <a [routerLink]="['../product-price', productPriceDescription.productPrice?.id ]" >{{productPriceDescription.productPrice?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="productPriceDescription.language">
+                        <a [routerLink]="['../language', productPriceDescription.language?.id ]" >{{productPriceDescription.language?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="productPriceDescription.productPrice">
                         <a [routerLink]="['../product-price', productPriceDescription.productPrice?.id ]" >{{productPriceDescription.productPrice?.id}}</a>

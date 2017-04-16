@@ -8,6 +8,8 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { CustomerOptionSet } from './customer-option-set.model';
 import { CustomerOptionSetPopupService } from './customer-option-set-popup.service';
 import { CustomerOptionSetService } from './customer-option-set.service';
+import { CustomerOption, CustomerOptionService } from '../customer-option';
+import { CustomerOptionValue, CustomerOptionValueService } from '../customer-option-value';
 
 @Component({
     selector: 'jhi-customer-option-set-dialog',
@@ -18,10 +20,16 @@ export class CustomerOptionSetDialogComponent implements OnInit {
     customerOptionSet: CustomerOptionSet;
     authorities: any[];
     isSaving: boolean;
+
+    customeroptions: CustomerOption[];
+
+    customeroptionvalues: CustomerOptionValue[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private customerOptionSetService: CustomerOptionSetService,
+        private customerOptionService: CustomerOptionService,
+        private customerOptionValueService: CustomerOptionValueService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['customerOptionSet']);
@@ -31,6 +39,10 @@ export class CustomerOptionSetDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.customerOptionService.query().subscribe(
+            (res: Response) => { this.customeroptions = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.customerOptionValueService.query().subscribe(
+            (res: Response) => { this.customeroptionvalues = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +79,14 @@ export class CustomerOptionSetDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackCustomerOptionById(index: number, item: CustomerOption) {
+        return item.id;
+    }
+
+    trackCustomerOptionValueById(index: number, item: CustomerOptionValue) {
+        return item.id;
     }
 }
 

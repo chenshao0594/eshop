@@ -55,10 +55,10 @@ public class ProductImageControllerIntTest {
     private static final Boolean DEFAULT_IMAGE_CROP = false;
     private static final Boolean UPDATED_IMAGE_CROP = true;
 
-    private static final byte[] DEFAULT_IMAGE_CONTENT = TestUtil.createByteArray(1, "0");
-    private static final byte[] UPDATED_IMAGE_CONTENT = TestUtil.createByteArray(2, "1");
-    private static final String DEFAULT_IMAGE_CONTENT_CONTENT_TYPE = "image/jpg";
-    private static final String UPDATED_IMAGE_CONTENT_CONTENT_TYPE = "image/png";
+    private static final byte[] DEFAULT_CONTENT = TestUtil.createByteArray(1, "0");
+    private static final byte[] UPDATED_CONTENT = TestUtil.createByteArray(2, "1");
+    private static final String DEFAULT_CONTENT_CONTENT_TYPE = "image/jpg";
+    private static final String UPDATED_CONTENT_CONTENT_TYPE = "image/png";
 
     @Autowired
     private ProductImageRepository productImageRepository;
@@ -108,8 +108,8 @@ public class ProductImageControllerIntTest {
             .defaultImage(DEFAULT_DEFAULT_IMAGE)
             .imageType(DEFAULT_IMAGE_TYPE)
             .imageCrop(DEFAULT_IMAGE_CROP)
-            .imageContent(DEFAULT_IMAGE_CONTENT)
-            .imageContentContentType(DEFAULT_IMAGE_CONTENT_CONTENT_TYPE);
+            .content(DEFAULT_CONTENT)
+            .contentType(DEFAULT_CONTENT_CONTENT_TYPE);
         return productImage;
     }
 
@@ -139,8 +139,8 @@ public class ProductImageControllerIntTest {
         assertThat(testProductImage.isDefaultImage()).isEqualTo(DEFAULT_DEFAULT_IMAGE);
         assertThat(testProductImage.getImageType()).isEqualTo(DEFAULT_IMAGE_TYPE);
         assertThat(testProductImage.isImageCrop()).isEqualTo(DEFAULT_IMAGE_CROP);
-        assertThat(testProductImage.getImageContent()).isEqualTo(DEFAULT_IMAGE_CONTENT);
-        assertThat(testProductImage.getImageContentContentType()).isEqualTo(DEFAULT_IMAGE_CONTENT_CONTENT_TYPE);
+        assertThat(testProductImage.getContent()).isEqualTo(DEFAULT_CONTENT);
+        assertThat(testProductImage.getContentType()).isEqualTo(DEFAULT_CONTENT_CONTENT_TYPE);
 
         // Validate the ProductImage in Elasticsearch
         ProductImage productImageEs = productImageSearchRepository.findOne(testProductImage.getId());
@@ -168,10 +168,10 @@ public class ProductImageControllerIntTest {
 
     @Test
     @Transactional
-    public void checkImageContentIsRequired() throws Exception {
+    public void checkContentIsRequired() throws Exception {
         int databaseSizeBeforeTest = productImageRepository.findAll().size();
         // set the field null
-        productImage.setImageContent(null);
+        productImage.setContent(null);
 
         // Create the ProductImage, which fails.
 
@@ -200,8 +200,8 @@ public class ProductImageControllerIntTest {
             .andExpect(jsonPath("$.[*].defaultImage").value(hasItem(DEFAULT_DEFAULT_IMAGE.booleanValue())))
             .andExpect(jsonPath("$.[*].imageType").value(hasItem(DEFAULT_IMAGE_TYPE)))
             .andExpect(jsonPath("$.[*].imageCrop").value(hasItem(DEFAULT_IMAGE_CROP.booleanValue())))
-            .andExpect(jsonPath("$.[*].imageContentContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].imageContent").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE_CONTENT))));
+            .andExpect(jsonPath("$.[*].contentContentType").value(hasItem(DEFAULT_CONTENT_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].content").value(hasItem(Base64Utils.encodeToString(DEFAULT_CONTENT))));
     }
 
     @Test
@@ -220,8 +220,8 @@ public class ProductImageControllerIntTest {
             .andExpect(jsonPath("$.defaultImage").value(DEFAULT_DEFAULT_IMAGE.booleanValue()))
             .andExpect(jsonPath("$.imageType").value(DEFAULT_IMAGE_TYPE))
             .andExpect(jsonPath("$.imageCrop").value(DEFAULT_IMAGE_CROP.booleanValue()))
-            .andExpect(jsonPath("$.imageContentContentType").value(DEFAULT_IMAGE_CONTENT_CONTENT_TYPE))
-            .andExpect(jsonPath("$.imageContent").value(Base64Utils.encodeToString(DEFAULT_IMAGE_CONTENT)));
+            .andExpect(jsonPath("$.contentContentType").value(DEFAULT_CONTENT_CONTENT_TYPE))
+            .andExpect(jsonPath("$.content").value(Base64Utils.encodeToString(DEFAULT_CONTENT)));
     }
 
     @Test
@@ -248,8 +248,8 @@ public class ProductImageControllerIntTest {
             .defaultImage(UPDATED_DEFAULT_IMAGE)
             .imageType(UPDATED_IMAGE_TYPE)
             .imageCrop(UPDATED_IMAGE_CROP)
-            .imageContent(UPDATED_IMAGE_CONTENT)
-            .imageContentContentType(UPDATED_IMAGE_CONTENT_CONTENT_TYPE);
+            .content(UPDATED_CONTENT)
+            .contentType(UPDATED_CONTENT_CONTENT_TYPE);
 
         restProductImageMockMvc.perform(put("/api/product-images")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -265,8 +265,8 @@ public class ProductImageControllerIntTest {
         assertThat(testProductImage.isDefaultImage()).isEqualTo(UPDATED_DEFAULT_IMAGE);
         assertThat(testProductImage.getImageType()).isEqualTo(UPDATED_IMAGE_TYPE);
         assertThat(testProductImage.isImageCrop()).isEqualTo(UPDATED_IMAGE_CROP);
-        assertThat(testProductImage.getImageContent()).isEqualTo(UPDATED_IMAGE_CONTENT);
-        assertThat(testProductImage.getImageContentContentType()).isEqualTo(UPDATED_IMAGE_CONTENT_CONTENT_TYPE);
+        assertThat(testProductImage.getContent()).isEqualTo(UPDATED_CONTENT);
+        assertThat(testProductImage.getContentType()).isEqualTo(UPDATED_CONTENT_CONTENT_TYPE);
 
         // Validate the ProductImage in Elasticsearch
         ProductImage productImageEs = productImageSearchRepository.findOne(testProductImage.getId());
@@ -329,8 +329,8 @@ public class ProductImageControllerIntTest {
             .andExpect(jsonPath("$.[*].defaultImage").value(hasItem(DEFAULT_DEFAULT_IMAGE.booleanValue())))
             .andExpect(jsonPath("$.[*].imageType").value(hasItem(DEFAULT_IMAGE_TYPE)))
             .andExpect(jsonPath("$.[*].imageCrop").value(hasItem(DEFAULT_IMAGE_CROP.booleanValue())))
-            .andExpect(jsonPath("$.[*].imageContentContentType").value(hasItem(DEFAULT_IMAGE_CONTENT_CONTENT_TYPE)))
-            .andExpect(jsonPath("$.[*].imageContent").value(hasItem(Base64Utils.encodeToString(DEFAULT_IMAGE_CONTENT))));
+            .andExpect(jsonPath("$.[*].contentContentType").value(hasItem(DEFAULT_CONTENT_CONTENT_TYPE)))
+            .andExpect(jsonPath("$.[*].content").value(hasItem(Base64Utils.encodeToString(DEFAULT_CONTENT))));
     }
 
     @Test

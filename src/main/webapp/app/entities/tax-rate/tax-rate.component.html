@@ -35,6 +35,10 @@
             <th jhiSortBy="taxPriority"><span jhiTranslate="eshopApp.taxRate.taxPriority">Tax Priority</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.taxRate.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="taxRate"><span jhiTranslate="eshopApp.taxRate.taxRate">Tax Rate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="country.id"><span jhiTranslate="eshopApp.taxRate.country">Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="parent.id"><span jhiTranslate="eshopApp.taxRate.parent">Parent</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.taxRate.taxClass">Tax Class</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.taxRate.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.taxRate.taxClass">Tax Class</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="parent.id"><span jhiTranslate="eshopApp.taxRate.parent">Parent</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -48,6 +52,26 @@
                 <td>{{taxRate.taxPriority}}</td>
                 <td>{{taxRate.code}}</td>
                 <td>{{taxRate.taxRate}}</td>
+                <td>
+                    <div *ngIf="taxRate.country">
+                        <a [routerLink]="['../country', taxRate.country?.id ]" >{{taxRate.country?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="taxRate.parent">
+                        <a [routerLink]="['../tax-rate', taxRate.parent?.id ]" >{{taxRate.parent?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="taxRate.taxClass">
+                        <a [routerLink]="['../tax-class', taxRate.taxClass?.id ]" >{{taxRate.taxClass?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="taxRate.merchantStore">
+                        <a [routerLink]="['../merchant-store', taxRate.merchantStore?.id ]" >{{taxRate.merchantStore?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="taxRate.taxClass">
                         <a [routerLink]="['../tax-class', taxRate.taxClass?.id ]" >{{taxRate.taxClass?.id}}</a>

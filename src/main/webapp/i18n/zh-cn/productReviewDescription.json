@@ -19,6 +19,8 @@
             "title": "Title",
             "name": "Name",
             "description": "Description",
+            "language": "Language",
+            "productReview": "Product Review",
             "productReview": "Product Review"
         }
     }

@@ -8,6 +8,8 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { SalesOrder } from './sales-order.model';
 import { SalesOrderPopupService } from './sales-order-popup.service';
 import { SalesOrderService } from './sales-order.service';
+import { Currency, CurrencyService } from '../currency';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-sales-order-dialog',
@@ -18,10 +20,16 @@ export class SalesOrderDialogComponent implements OnInit {
     salesOrder: SalesOrder;
     authorities: any[];
     isSaving: boolean;
+
+    currencies: Currency[];
+
+    merchantstores: MerchantStore[];
                 constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private salesOrderService: SalesOrderService,
+        private currencyService: CurrencyService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['salesOrder', 'paymentType', 'orderChannel', 'orderType', 'orderStatus']);
@@ -31,6 +39,10 @@ export class SalesOrderDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.currencyService.query().subscribe(
+            (res: Response) => { this.currencies = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +79,14 @@ export class SalesOrderDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackCurrencyById(index: number, item: Currency) {
+        return item.id;
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
     }
 }
 

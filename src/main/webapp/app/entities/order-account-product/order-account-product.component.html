@@ -39,6 +39,8 @@
             <th jhiSortBy="orderAccountProductAccountedDate"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductAccountedDate">Order Account Product Accounted Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="orderAccountProductPaymentFrequencyType"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductPaymentFrequencyType">Order Account Product Payment Frequency Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="orderAccountProductEot"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccountProductEot">Order Account Product Eot</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderProduct.id"><span jhiTranslate="eshopApp.orderAccountProduct.orderProduct">Order Product</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderAccount.id"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccount">Order Account</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="orderAccount.id"><span jhiTranslate="eshopApp.orderAccountProduct.orderAccount">Order Account</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -55,6 +57,16 @@
                 <td>{{orderAccountProduct.orderAccountProductAccountedDate | date:'mediumDate'}}</td>
                 <td>{{orderAccountProduct.orderAccountProductPaymentFrequencyType}}</td>
                 <td>{{orderAccountProduct.orderAccountProductEot | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="orderAccountProduct.orderProduct">
+                        <a [routerLink]="['../order-product', orderAccountProduct.orderProduct?.id ]" >{{orderAccountProduct.orderProduct?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="orderAccountProduct.orderAccount">
+                        <a [routerLink]="['../order-account', orderAccountProduct.orderAccount?.id ]" >{{orderAccountProduct.orderAccount?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="orderAccountProduct.orderAccount">
                         <a [routerLink]="['../order-account', orderAccountProduct.orderAccount?.id ]" >{{orderAccountProduct.orderAccount?.id}}</a>

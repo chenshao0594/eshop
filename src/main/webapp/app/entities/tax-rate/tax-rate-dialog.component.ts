@@ -8,7 +8,9 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { TaxRate } from './tax-rate.model';
 import { TaxRatePopupService } from './tax-rate-popup.service';
 import { TaxRateService } from './tax-rate.service';
+import { Country, CountryService } from '../country';
 import { TaxClass, TaxClassService } from '../tax-class';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-tax-rate-dialog',
@@ -20,14 +22,20 @@ export class TaxRateDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
-    taxclasses: TaxClass[];
+    countries: Country[];
 
     taxrates: TaxRate[];
+
+    taxclasses: TaxClass[];
+
+    merchantstores: MerchantStore[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private taxRateService: TaxRateService,
+        private countryService: CountryService,
         private taxClassService: TaxClassService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['taxRate']);
@@ -37,10 +45,14 @@ export class TaxRateDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
-        this.taxClassService.query().subscribe(
-            (res: Response) => { this.taxclasses = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.countryService.query().subscribe(
+            (res: Response) => { this.countries = res.json(); }, (res: Response) => this.onError(res.json()));
         this.taxRateService.query().subscribe(
             (res: Response) => { this.taxrates = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.taxClassService.query().subscribe(
+            (res: Response) => { this.taxclasses = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -79,11 +91,19 @@ export class TaxRateDialogComponent implements OnInit {
         this.alertService.error(error.message, null, null);
     }
 
-    trackTaxClassById(index: number, item: TaxClass) {
+    trackCountryById(index: number, item: Country) {
         return item.id;
     }
 
     trackTaxRateById(index: number, item: TaxRate) {
+        return item.id;
+    }
+
+    trackTaxClassById(index: number, item: TaxClass) {
+        return item.id;
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
         return item.id;
     }
 }

@@ -18,7 +18,8 @@
             },
             "merchantConfigurationType": "Merchant Configuration Type",
             "key": "Key",
-            "value": "Value"
+            "value": "Value",
+            "merchantStore": "Merchant Store"
         }
     }
 }

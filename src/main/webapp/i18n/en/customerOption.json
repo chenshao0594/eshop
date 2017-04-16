@@ -21,7 +21,8 @@
             "code": "Code",
             "publicOption": "Public Option",
             "sortOrder": "Sort Order",
-            "descriptions": "Descriptions"
+            "descriptions": "Descriptions",
+            "merchantStore": "Merchant Store"
         }
     }
 }

@@ -43,6 +43,34 @@
         </div>
 
         <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.taxRate.country" for="field_country">Country</label>
+            <select class="form-control" id="field_country" name="country" [(ngModel)]="taxRate.country" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="countryOption.id === taxRate.country?.id ? taxRate.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.taxRate.parent" for="field_parent">Parent</label>
+            <select class="form-control" id="field_parent" name="parent" [(ngModel)]="taxRate.parent" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="taxRateOption.id === taxRate.parent?.id ? taxRate.parent : taxRateOption" *ngFor="let taxRateOption of taxrates; trackBy: trackTaxRateById">{{taxRateOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.taxRate.taxClass" for="field_taxClass">Tax Class</label>
+            <select class="form-control" id="field_taxClass" name="taxClass" [(ngModel)]="taxRate.taxClass" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="taxClassOption.id === taxRate.taxClass?.id ? taxRate.taxClass : taxClassOption" *ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.taxRate.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="taxRate.merchantStore" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === taxRate.merchantStore?.id ? taxRate.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
             <label jhiTranslate="eshopApp.taxRate.taxClass" for="field_taxClass">Tax Class</label>
             <select class="form-control" id="field_taxClass" name="taxClass" [(ngModel)]="taxRate.taxClass" >
                 <option [ngValue]="null"></option>

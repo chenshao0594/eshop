@@ -35,6 +35,7 @@
             <th jhiSortBy="value"><span jhiTranslate="eshopApp.customerOptin.value">Value</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="firstName"><span jhiTranslate="eshopApp.customerOptin.firstName">First Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="lastName"><span jhiTranslate="eshopApp.customerOptin.lastName">Last Name</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="optin.id"><span jhiTranslate="eshopApp.customerOptin.optin">Optin</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -46,6 +47,11 @@
                 <td>{{customerOptin.value}}</td>
                 <td>{{customerOptin.firstName}}</td>
                 <td>{{customerOptin.lastName}}</td>
+                <td>
+                    <div *ngIf="customerOptin.optin">
+                        <a [routerLink]="['../optin', customerOptin.optin?.id ]" >{{customerOptin.optin?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

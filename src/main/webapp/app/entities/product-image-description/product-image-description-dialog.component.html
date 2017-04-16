@@ -49,6 +49,20 @@
                 <option [ngValue]="productImageOption.id === productImageDescription.productImage?.id ? productImageDescription.productImage : productImageOption" *ngFor="let productImageOption of productimages; trackBy: trackProductImageById">{{productImageOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productImageDescription.language" for="field_language">Language</label>
+            <select class="form-control" id="field_language" name="language" [(ngModel)]="productImageDescription.language" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === productImageDescription.language?.id ? productImageDescription.language : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productImageDescription.productImage" for="field_productImage">Product Image</label>
+            <select class="form-control" id="field_productImage" name="productImage" [(ngModel)]="productImageDescription.productImage" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productImageOption.id === productImageDescription.productImage?.id ? productImageDescription.productImage : productImageOption" *ngFor="let productImageOption of productimages; trackBy: trackProductImageById">{{productImageOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

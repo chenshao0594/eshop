@@ -25,6 +25,7 @@
             "productPriceType": "Product Price Type",
             "productPriceSpecialStartDate": "Product Price Special Start Date",
             "descriptions": "Descriptions",
+            "productAvailability": "Product Availability",
             "productAvailability": "Product Availability"
         }
     }

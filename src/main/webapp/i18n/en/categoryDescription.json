@@ -24,6 +24,8 @@
             "metatagKeywords": "Metatag Keywords",
             "name": "Name",
             "metatagTitle": "Metatag Title",
+            "category": "Category",
+            "language": "Language",
             "category": "Category"
         }
     }

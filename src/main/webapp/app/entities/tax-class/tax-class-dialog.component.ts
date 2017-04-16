@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { TaxClass } from './tax-class.model';
 import { TaxClassPopupService } from './tax-class-popup.service';
 import { TaxClassService } from './tax-class.service';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-tax-class-dialog',
@@ -18,10 +19,13 @@ export class TaxClassDialogComponent implements OnInit {
     taxClass: TaxClass;
     authorities: any[];
     isSaving: boolean;
+
+    merchantstores: MerchantStore[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private taxClassService: TaxClassService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['taxClass']);
@@ -31,6 +35,8 @@ export class TaxClassDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +73,10 @@ export class TaxClassDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
     }
 }
 

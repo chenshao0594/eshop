@@ -1,19 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * A CustomerOptin.
@@ -22,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "customer_optin")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "customeroptin")
-public class CustomerOptin extends BusinessDomain<Long,CustomerOptin> implements Serializable {
+public class CustomerOptin extends BusinessDomain<Long,CustomerOptin>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,6 +38,9 @@ public class CustomerOptin extends BusinessDomain<Long,CustomerOptin> implements
 
     @Column(name = "last_name")
     private String lastName;
+
+    @ManyToOne
+    private Optin optin;
 
     public Long getId() {
         return id;
@@ -118,35 +115,20 @@ public class CustomerOptin extends BusinessDomain<Long,CustomerOptin> implements
         this.lastName = lastName;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        CustomerOptin customerOptin = (CustomerOptin) o;
-        if (customerOptin.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, customerOptin.id);
+    public Optin getOptin() {
+        return optin;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public CustomerOptin optin(Optin optin) {
+        this.optin = optin;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "CustomerOptin{" +
-            "id=" + id +
-            ", optinDate='" + optinDate + "'" +
-            ", email='" + email + "'" +
-            ", value='" + value + "'" +
-            ", firstName='" + firstName + "'" +
-            ", lastName='" + lastName + "'" +
-            '}';
+    public void setOptin(Optin optin) {
+        this.optin = optin;
     }
+
+    
+
+    
 }

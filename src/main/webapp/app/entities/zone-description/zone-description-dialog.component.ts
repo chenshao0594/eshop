@@ -9,6 +9,7 @@ import { ZoneDescription } from './zone-description.model';
 import { ZoneDescriptionPopupService } from './zone-description-popup.service';
 import { ZoneDescriptionService } from './zone-description.service';
 import { Zone, ZoneService } from '../zone';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-zone-description-dialog',
@@ -21,11 +22,14 @@ export class ZoneDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     zones: Zone[];
+
+    languages: Language[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private zoneDescriptionService: ZoneDescriptionService,
         private zoneService: ZoneService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['zoneDescription']);
@@ -37,6 +41,8 @@ export class ZoneDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.zoneService.query().subscribe(
             (res: Response) => { this.zones = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class ZoneDescriptionDialogComponent implements OnInit {
     }
 
     trackZoneById(index: number, item: Zone) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

@@ -19,6 +19,13 @@
                 <option [ngValue]="countryOption.id === zone.country?.id ? zone.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.zone.country" for="field_country">Country</label>
+            <select class="form-control" id="field_country" name="country" [(ngModel)]="zone.country" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="countryOption.id === zone.country?.id ? zone.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

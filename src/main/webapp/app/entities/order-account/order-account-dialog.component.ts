@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { OrderAccount } from './order-account.model';
 import { OrderAccountPopupService } from './order-account-popup.service';
 import { OrderAccountService } from './order-account.service';
+import { SalesOrder, SalesOrderService } from '../sales-order';
 
 @Component({
     selector: 'jhi-order-account-dialog',
@@ -18,10 +19,13 @@ export class OrderAccountDialogComponent implements OnInit {
     orderAccount: OrderAccount;
     authorities: any[];
     isSaving: boolean;
+
+    salesorders: SalesOrder[];
             constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private orderAccountService: OrderAccountService,
+        private salesOrderService: SalesOrderService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['orderAccount']);
@@ -31,6 +35,8 @@ export class OrderAccountDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.salesOrderService.query().subscribe(
+            (res: Response) => { this.salesorders = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +73,10 @@ export class OrderAccountDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackSalesOrderById(index: number, item: SalesOrder) {
+        return item.id;
     }
 }
 

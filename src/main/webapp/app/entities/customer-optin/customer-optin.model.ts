@@ -1,3 +1,4 @@
+import { Optin } from '../optin';
 export class CustomerOptin {
     constructor(
         public id?: number,
@@ -6,6 +7,7 @@ export class CustomerOptin {
         public value?: string,
         public firstName?: string,
         public lastName?: string,
+        public optin?: Optin,
     ) {
     }
 }

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -36,15 +35,14 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "product")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "product")
-public class Product extends BusinessDomain<Long, Product> implements Serializable {
+public class Product extends BusinessDomain<Long,Product>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
-    
+
     @Column(name = "product_height", precision=10, scale=2)
     private BigDecimal productHeight;
 
@@ -109,20 +107,27 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductAttribute> attributes = new HashSet<>();
 
-    @JsonIgnore
     @OneToMany(mappedBy = "product")
+    @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductDescription> descriptions = new HashSet<>();
 
+    @OneToMany(mappedBy = "product")
     @JsonIgnore
-    @OneToMany(mappedBy = "product") 
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductRelationship> relationships = new HashSet<>();
 
-    @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MERCHANT_ID", nullable=false)
-	private MerchantStore merchantStore;
-    
+    @ManyToOne
+    private Manufacturer manufacturer;
+
+    @ManyToOne
+    private ProductType type;
+
+    @ManyToOne
+    private MerchantStore merchantStore;
+
+    @ManyToOne
+    private TaxClass taxClass;
     @ManyToMany(fetch=FetchType.LAZY, cascade = {CascadeType.REFRESH})
 	@JoinTable(name = "PRODUCT_CATEGORY", joinColumns = { 
 			@JoinColumn(name = "PRODUCT_ID", nullable = false, updatable = false) }
@@ -138,9 +143,6 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 		
 	})
 	private Set<Category> categories = new HashSet<Category>();
-    
-    @ManyToOne
-    private TaxClass taxClass;
 
     public Long getId() {
         return id;
@@ -263,43 +265,7 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
         return this;
     }
 
-    public MerchantStore getMerchantStore() {
-		return merchantStore;
-	}
-
-	public void setMerchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-	}
-
-	public Set<Category> getCategories() {
-		return categories;
-	}
-
-	public void setCategories(Set<Category> categories) {
-		this.categories = categories;
-	}
-
-	public Boolean getProductShipeable() {
-		return productShipeable;
-	}
-
-	public Boolean getProductIsFree() {
-		return productIsFree;
-	}
-
-	public Boolean getAvailable() {
-		return available;
-	}
-
-	public Boolean getProductVirtual() {
-		return productVirtual;
-	}
-
-	public Boolean getPreOrder() {
-		return preOrder;
-	}
-
-	public void setAvailable(Boolean available) {
+    public void setAvailable(Boolean available) {
         this.available = available;
     }
 
@@ -519,6 +485,46 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
         this.relationships = productRelationships;
     }
 
+
+    public Manufacturer getManufacturer() {
+        return manufacturer;
+    }
+
+    public Product manufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+        return this;
+    }
+
+    public void setManufacturer(Manufacturer manufacturer) {
+        this.manufacturer = manufacturer;
+    }
+
+    public ProductType getType() {
+        return type;
+    }
+
+    public Product type(ProductType productType) {
+        this.type = productType;
+        return this;
+    }
+
+    public void setType(ProductType productType) {
+        this.type = productType;
+    }
+
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
+
+    public Product merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
+    }
+
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
+
     public TaxClass getTaxClass() {
         return taxClass;
     }
@@ -532,46 +538,15 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
         this.taxClass = taxClass;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Product product = (Product) o;
-        if (product.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, product.id);
-    }
+	public Set<Category> getCategories() {
+		return categories;
+	}
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
+	public void setCategories(Set<Category> categories) {
+		this.categories = categories;
+	}
 
-    @Override
-    public String toString() {
-        return "Product{" +
-            "id=" + id +
-            ", productHeight='" + productHeight + "'" +
-            ", productWeight='" + productWeight + "'" +
-            ", productShipeable='" + productShipeable + "'" +
-            ", productOrdered='" + productOrdered + "'" +
-            ", productReviewAvg='" + productReviewAvg + "'" +
-            ", dateAvailable='" + dateAvailable + "'" +
-            ", sortOrder='" + sortOrder + "'" +
-            ", productIsFree='" + productIsFree + "'" +
-            ", available='" + available + "'" +
-            ", productReviewCount='" + productReviewCount + "'" +
-            ", refSku='" + refSku + "'" +
-            ", productVirtual='" + productVirtual + "'" +
-            ", productWidth='" + productWidth + "'" +
-            ", preOrder='" + preOrder + "'" +
-            ", productLength='" + productLength + "'" +
-            ", sku='" + sku + "'" +
-            '}';
-    }
+    
+
+    
 }

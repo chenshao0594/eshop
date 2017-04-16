@@ -1,56 +1,70 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A ProductDescription.
  */
 @Entity
-@Table(name = "product_description",uniqueConstraints={
-		@UniqueConstraint(columnNames={
-				"PRODUCT_ID",
-				"LANGUAGE_ID"
-			})
-		})
+@Table(name = "product_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productdescription")
-public class ProductDescription extends Description implements Serializable {
+public class ProductDescription extends BusinessDomain<Long,ProductDescription>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-   
-    @ManyToOne(targetEntity = Product.class)
-	@JoinColumn(name = "PRODUCT_ID", nullable = false)
-	private Product product;
-	
-	@Column(name = "PRODUCT_HIGHLIGHT")
-	private String productHighlight;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(name = "DOWNLOAD_LNK")
-	private String productExternalDl;
+    @Column(name = "metatag_description")
+    private String metatagDescription;
 
-	@Column(name = "SEF_URL")
-	private String seUrl;
+    @Column(name = "se_url")
+    private String seUrl;
 
-	@Column(name = "META_TITLE")
-	private String metatagTitle;
+    @Column(name = "metatag_keywords")
+    private String metatagKeywords;
 
-	@Column(name = "META_KEYWORDS")
-	private String metatagKeywords;
+    @Column(name = "product_highlight")
+    private String productHighlight;
 
-	@Column(name = "META_DESCRIPTION")
-	private String metatagDescription;
+    @Column(name = "title")
+    private String title;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "metatag_title")
+    private String metatagTitle;
+
+    @NotNull
+    @Column(name = "name", nullable = false)
+    private String name;
+
+    @Column(name = "product_external_dl")
+    private String productExternalDl;
+
+    @ManyToOne
+    private Language language;
+
+    @ManyToOne
+    private Product product;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getMetatagDescription() {
         return metatagDescription;
@@ -104,28 +118,98 @@ public class ProductDescription extends Description implements Serializable {
         this.productHighlight = productHighlight;
     }
 
-	public Product getProduct() {
-		return product;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setProduct(Product product) {
-		this.product = product;
-	}
+    public ProductDescription title(String title) {
+        this.title = title;
+        return this;
+    }
 
-	public String getProductExternalDl() {
-		return productExternalDl;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public void setProductExternalDl(String productExternalDl) {
-		this.productExternalDl = productExternalDl;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	public String getMetatagTitle() {
-		return metatagTitle;
-	}
+    public ProductDescription description(String description) {
+        this.description = description;
+        return this;
+    }
 
-	public void setMetatagTitle(String metatagTitle) {
-		this.metatagTitle = metatagTitle;
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
+    public String getMetatagTitle() {
+        return metatagTitle;
+    }
+
+    public ProductDescription metatagTitle(String metatagTitle) {
+        this.metatagTitle = metatagTitle;
+        return this;
+    }
+
+    public void setMetatagTitle(String metatagTitle) {
+        this.metatagTitle = metatagTitle;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public ProductDescription name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getProductExternalDl() {
+        return productExternalDl;
+    }
+
+    public ProductDescription productExternalDl(String productExternalDl) {
+        this.productExternalDl = productExternalDl;
+        return this;
+    }
+
+    public void setProductExternalDl(String productExternalDl) {
+        this.productExternalDl = productExternalDl;
+    }
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public ProductDescription language(Language language) {
+        this.language = language;
+        return this;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public ProductDescription product(Product product) {
+        this.product = product;
+        return this;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
+
+    
+
+    
 }

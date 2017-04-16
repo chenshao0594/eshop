@@ -36,6 +36,7 @@
             <th jhiSortBy="fileId"><span jhiTranslate="eshopApp.fileHistory.fileId">File Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="accountedDate"><span jhiTranslate="eshopApp.fileHistory.accountedDate">Accounted Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="filesize"><span jhiTranslate="eshopApp.fileHistory.filesize">Filesize</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="store.id"><span jhiTranslate="eshopApp.fileHistory.store">Store</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -48,6 +49,11 @@
                 <td>{{fileHistory.fileId}}</td>
                 <td>{{fileHistory.accountedDate | date:'mediumDate'}}</td>
                 <td>{{fileHistory.filesize}}</td>
+                <td>
+                    <div *ngIf="fileHistory.store">
+                        <a [routerLink]="['../merchant-store', fileHistory.store?.id ]" >{{fileHistory.store?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

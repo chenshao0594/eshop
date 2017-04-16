@@ -25,6 +25,8 @@
             "categoryImage": "Category Image",
             "categories": "Categories",
             "descriptions": "Descriptions",
+            "merchantStore": "Merchant Store",
+            "parent": "Parent",
             "parent": "Parent"
         }
     }

@@ -1,21 +1,14 @@
 package com.smartshop.eshop.domain;
 
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
 
 /**
  * A OrderProductPrice.
@@ -24,7 +17,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "order_product_price")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "orderproductprice")
-public class OrderProductPrice extends BusinessDomain<Long, OrderProductPrice> implements Serializable {
+public class OrderProductPrice extends BusinessDomain<Long,OrderProductPrice>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -168,37 +161,7 @@ public class OrderProductPrice extends BusinessDomain<Long, OrderProductPrice> i
         this.orderProduct = orderProduct;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OrderProductPrice orderProductPrice = (OrderProductPrice) o;
-        if (orderProductPrice.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, orderProductPrice.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "OrderProductPrice{" +
-            "id=" + id +
-            ", productPrice='" + productPrice + "'" +
-            ", productPriceCode='" + productPriceCode + "'" +
-            ", productPriceSpecialStartDate='" + productPriceSpecialStartDate + "'" +
-            ", productPriceSpecial='" + productPriceSpecial + "'" +
-            ", productPriceSpecialEndDate='" + productPriceSpecialEndDate + "'" +
-            ", productPriceName='" + productPriceName + "'" +
-            ", defaultPrice='" + defaultPrice + "'" +
-            '}';
-    }
+    
 }

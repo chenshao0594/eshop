@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "store",
+            "otherEntityName": "merchantStore",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "log",

@@ -9,6 +9,7 @@ import { ProductImageDescription } from './product-image-description.model';
 import { ProductImageDescriptionPopupService } from './product-image-description-popup.service';
 import { ProductImageDescriptionService } from './product-image-description.service';
 import { ProductImage, ProductImageService } from '../product-image';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-product-image-description-dialog',
@@ -21,11 +22,14 @@ export class ProductImageDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     productimages: ProductImage[];
+
+    languages: Language[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productImageDescriptionService: ProductImageDescriptionService,
         private productImageService: ProductImageService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['productImageDescription']);
@@ -37,6 +41,8 @@ export class ProductImageDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.productImageService.query().subscribe(
             (res: Response) => { this.productimages = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class ProductImageDescriptionDialogComponent implements OnInit {
     }
 
     trackProductImageById(index: number, item: ProductImage) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

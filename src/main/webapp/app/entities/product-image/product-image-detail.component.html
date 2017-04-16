@@ -36,31 +36,38 @@
              />
         </div>
         <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productImage.imageContent" for="field_imageContent">Image Content</label>
+            <label class="form-control-label" jhiTranslate="eshopApp.productImage.content" for="field_content">Content</label>
             <div>
-                <img [src]="'data:' + productImage.imageContentContentType + ';base64,' + productImage.imageContent" style="max-height: 100px;" *ngIf="productImage.imageContent" alt="productImage image"/>
-                <div *ngIf="productImage.imageContent" class="form-text text-danger clearfix">
-                    <span class="pull-left">{{productImage.imageContentContentType}}, {{byteSize(productImage.imageContent)}}</span>
-                    <button type="button" (click)="productImage.imageContent=null;productImage.imageContentContentType=null;"
+                <img [src]="'data:' + productImage.contentContentType + ';base64,' + productImage.content" style="max-height: 100px;" *ngIf="productImage.content" alt="productImage image"/>
+                <div *ngIf="productImage.content" class="form-text text-danger clearfix">
+                    <span class="pull-left">{{productImage.contentContentType}}, {{byteSize(productImage.content)}}</span>
+                    <button type="button" (click)="productImage.content=null;productImage.contentContentType=null;"
                             class="btn btn-default btn-xs pull-right">
                         <span class="fa fa-times"></span>
                     </button>
                 </div>
-                <input type="file" (change)="setFileData($event, productImage, 'imageContent', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
+                <input type="file" (change)="setFileData($event, productImage, 'content', true)" accept="image/*" jhiTranslate="entity.action.addimage"/>
             </div>
-            <input type="hidden" class="form-control" name="imageContent" id="field_imageContent"
-                [(ngModel)]="productImage.imageContent"
+            <input type="hidden" class="form-control" name="content" id="field_content"
+                [(ngModel)]="productImage.content"
             required />
-            <input type="hidden" class="form-control" name="imageContentContentType" id="field_imageContentContentType"
-                [(ngModel)]="productImage.imageContentContentType" />
-            <div [hidden]="!(editForm.controls.imageContent?.dirty && editForm.controls.imageContent?.invalid)">
+            <input type="hidden" class="form-control" name="contentContentType" id="field_contentContentType"
+                [(ngModel)]="productImage.contentContentType" />
+            <div [hidden]="!(editForm.controls.content?.dirty && editForm.controls.content?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.imageContent?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.content?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>
         </div>
 
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.productImage.product" for="field_product">Product</label>
+            <select class="form-control" id="field_product" name="product" [(ngModel)]="productImage.product" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productOption.id === productImage.product?.id ? productImage.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
+            </select>
+        </div>
         <div class="col-5 form-group ">
             <label jhiTranslate="eshopApp.productImage.product" for="field_product">Product</label>
             <select class="form-control" id="field_product" name="product" [(ngModel)]="productImage.product" >

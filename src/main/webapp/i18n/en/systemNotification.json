@@ -19,7 +19,9 @@
             "endDate": "End Date",
             "key": "Key",
             "startDate": "Start Date",
-            "value": "Value"
+            "value": "Value",
+            "merchantStore": "Merchant Store",
+            "user": "User"
         }
     }
 }

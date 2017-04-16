@@ -38,6 +38,9 @@
             <th jhiSortBy="productOptionSortOrder"><span jhiTranslate="eshopApp.productAttribute.productOptionSortOrder">Product Option Sort Order</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productAttributeIsFree"><span jhiTranslate="eshopApp.productAttribute.productAttributeIsFree">Product Attribute Is Free</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="attributeDiscounted"><span jhiTranslate="eshopApp.productAttribute.attributeDiscounted">Attribute Discounted</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productOption.id"><span jhiTranslate="eshopApp.productAttribute.productOption">Product Option</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="product.id"><span jhiTranslate="eshopApp.productAttribute.product">Product</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productOptionValue.id"><span jhiTranslate="eshopApp.productAttribute.productOptionValue">Product Option Value</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="product.id"><span jhiTranslate="eshopApp.productAttribute.product">Product</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -53,6 +56,21 @@
                 <td>{{productAttribute.productOptionSortOrder}}</td>
                 <td>{{productAttribute.productAttributeIsFree}}</td>
                 <td>{{productAttribute.attributeDiscounted}}</td>
+                <td>
+                    <div *ngIf="productAttribute.productOption">
+                        <a [routerLink]="['../product-option', productAttribute.productOption?.id ]" >{{productAttribute.productOption?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="productAttribute.product">
+                        <a [routerLink]="['../product', productAttribute.product?.id ]" >{{productAttribute.product?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="productAttribute.productOptionValue">
+                        <a [routerLink]="['../product-option-value', productAttribute.productOptionValue?.id ]" >{{productAttribute.productOptionValue?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="productAttribute.product">
                         <a [routerLink]="['../product', productAttribute.product?.id ]" >{{productAttribute.product?.id}}</a>

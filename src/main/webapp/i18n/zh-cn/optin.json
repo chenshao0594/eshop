@@ -19,7 +19,8 @@
             "description": "Description",
             "startDate": "Start Date",
             "code": "Code",
-            "endDate": "End Date"
+            "endDate": "End Date",
+            "merchant": "Merchant"
         }
     }
 }

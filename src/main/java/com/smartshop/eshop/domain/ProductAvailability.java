@@ -1,29 +1,16 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.smartshop.eshop.common.SchemaConstant;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A ProductAvailability.
@@ -32,7 +19,7 @@ import com.smartshop.eshop.common.SchemaConstant;
 @Table(name = "product_availability")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productavailability")
-public class ProductAvailability extends BusinessDomain<Long, ProductAvailability>  implements Serializable {
+public class ProductAvailability extends BusinessDomain<Long,ProductAvailability>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -41,49 +28,36 @@ public class ProductAvailability extends BusinessDomain<Long, ProductAvailabilit
     private Long id;
 
     @Column(name = "product_quantity_order_max")
-    private Integer productQuantityOrderMax = 0;
+    private Integer productQuantityOrderMax;
 
     @Column(name = "product_is_always_free_shipping")
     private Boolean productIsAlwaysFreeShipping;
 
     @Column(name = "region")
-    private String region=SchemaConstant.ALL_REGIONS;;
+    private String region;
 
-    @NotNull
     @Column(name = "product_quantity")
-    private Integer productQuantity=0;
+    private Integer productQuantity;
 
     @Column(name = "product_quantity_order_min")
-    private Integer productQuantityOrderMin=0;
+    private Integer productQuantityOrderMin;
 
     @Column(name = "product_date_available")
     private LocalDate productDateAvailable;
 
     @Column(name = "product_status")
-    private Boolean productStatus=true;
+    private Boolean productStatus;
 
     @Column(name = "region_variant")
     private String regionVariant;
 
-    @JsonIgnore
     @OneToMany(mappedBy = "productAvailability")
+    @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductPrice> prices = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "PRODUCT_ID", nullable = false)
     private Product product;
-    
-    @Transient
-	public ProductPrice defaultPrice() {
-		
-		for(ProductPrice price : prices) {
-			if(price.isDefaultPrice()) {
-				return price;
-			}
-		}
-		return new ProductPrice();
-	}
 
     public Long getId() {
         return id;
@@ -235,38 +209,7 @@ public class ProductAvailability extends BusinessDomain<Long, ProductAvailabilit
         this.product = product;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductAvailability productAvailability = (ProductAvailability) o;
-        if (productAvailability.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, productAvailability.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ProductAvailability{" +
-            "id=" + id +
-            ", productQuantityOrderMax='" + productQuantityOrderMax + "'" +
-            ", productIsAlwaysFreeShipping='" + productIsAlwaysFreeShipping + "'" +
-            ", region='" + region + "'" +
-            ", productQuantity='" + productQuantity + "'" +
-            ", productQuantityOrderMin='" + productQuantityOrderMin + "'" +
-            ", productDateAvailable='" + productDateAvailable + "'" +
-            ", productStatus='" + productStatus + "'" +
-            ", regionVariant='" + regionVariant + "'" +
-            '}';
-    }
+    
 }

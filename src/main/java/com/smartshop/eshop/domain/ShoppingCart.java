@@ -1,23 +1,15 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A ShoppingCart.
@@ -26,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "shopping_cart")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "shoppingcart")
-public class ShoppingCart extends BusinessDomain<Long, ShoppingCart> implements Serializable {
+public class ShoppingCart extends BusinessDomain<Long,ShoppingCart>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -44,6 +36,9 @@ public class ShoppingCart extends BusinessDomain<Long, ShoppingCart> implements 
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ShoppingCartItem> lineItems = new HashSet<>();
+
+    @ManyToOne
+    private MerchantStore merchantStore;
 
     public Long getId() {
         return id;
@@ -104,32 +99,20 @@ public class ShoppingCart extends BusinessDomain<Long, ShoppingCart> implements 
         this.lineItems = shoppingCartItems;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ShoppingCart shoppingCart = (ShoppingCart) o;
-        if (shoppingCart.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, shoppingCart.id);
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public ShoppingCart merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "ShoppingCart{" +
-            "id=" + id +
-            ", customerId='" + customerId + "'" +
-            ", shoppingCartCode='" + shoppingCartCode + "'" +
-            '}';
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
     }
+
+    
+
+    
 }

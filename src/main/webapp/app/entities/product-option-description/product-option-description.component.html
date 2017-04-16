@@ -35,6 +35,8 @@
             <th jhiSortBy="name"><span jhiTranslate="eshopApp.productOptionDescription.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="eshopApp.productOptionDescription.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOption.id"><span jhiTranslate="eshopApp.productOptionDescription.productOption">Product Option</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.productOptionDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productOption.id"><span jhiTranslate="eshopApp.productOptionDescription.productOption">Product Option</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -45,6 +47,16 @@
                 <td>{{productOptionDescription.title}}</td>
                 <td>{{productOptionDescription.name}}</td>
                 <td>{{productOptionDescription.description}}</td>
+                <td>
+                    <div *ngIf="productOptionDescription.productOption">
+                        <a [routerLink]="['../product-option', productOptionDescription.productOption?.id ]" >{{productOptionDescription.productOption?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="productOptionDescription.language">
+                        <a [routerLink]="['../language', productOptionDescription.language?.id ]" >{{productOptionDescription.language?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="productOptionDescription.productOption">
                         <a [routerLink]="['../product-option', productOptionDescription.productOption?.id ]" >{{productOptionDescription.productOption?.id}}</a>

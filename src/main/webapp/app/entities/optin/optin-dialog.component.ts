@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { Optin } from './optin.model';
 import { OptinPopupService } from './optin-popup.service';
 import { OptinService } from './optin.service';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-optin-dialog',
@@ -18,10 +19,13 @@ export class OptinDialogComponent implements OnInit {
     optin: Optin;
     authorities: any[];
     isSaving: boolean;
+
+    merchantstores: MerchantStore[];
             constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private optinService: OptinService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['optin']);
@@ -31,6 +35,8 @@ export class OptinDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +73,10 @@ export class OptinDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
     }
 }
 

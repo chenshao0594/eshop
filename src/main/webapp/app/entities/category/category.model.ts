@@ -1,4 +1,5 @@
 import { CategoryDescription } from '../category-description';
+import { MerchantStore } from '../merchant-store';
 export class Category {
     constructor(
         public id?: number,
@@ -11,6 +12,7 @@ export class Category {
         public categoryImage?: string,
         public categories?: Category,
         public descriptions?: CategoryDescription,
+        public merchantStore?: MerchantStore,
         public parent?: Category,
     ) {
         this.categoryStatus = false;

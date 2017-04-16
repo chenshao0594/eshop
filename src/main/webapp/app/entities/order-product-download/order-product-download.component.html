@@ -34,6 +34,7 @@
             <th jhiSortBy="downloadCount"><span jhiTranslate="eshopApp.orderProductDownload.downloadCount">Download Count</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="orderProductFilename"><span jhiTranslate="eshopApp.orderProductDownload.orderProductFilename">Order Product Filename</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="orderProduct.id"><span jhiTranslate="eshopApp.orderProductDownload.orderProduct">Order Product</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="orderProduct.id"><span jhiTranslate="eshopApp.orderProductDownload.orderProduct">Order Product</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,6 +44,11 @@
                 <td>{{orderProductDownload.maxdays}}</td>
                 <td>{{orderProductDownload.downloadCount}}</td>
                 <td>{{orderProductDownload.orderProductFilename}}</td>
+                <td>
+                    <div *ngIf="orderProductDownload.orderProduct">
+                        <a [routerLink]="['../order-product', orderProductDownload.orderProduct?.id ]" >{{orderProductDownload.orderProduct?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="orderProductDownload.orderProduct">
                         <a [routerLink]="['../order-product', orderProductDownload.orderProduct?.id ]" >{{orderProductDownload.orderProduct?.id}}</a>

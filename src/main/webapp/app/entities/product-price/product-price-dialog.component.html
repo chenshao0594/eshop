@@ -82,6 +82,13 @@
                 <option [ngValue]="productAvailabilityOption.id === productPrice.productAvailability?.id ? productPrice.productAvailability : productAvailabilityOption" *ngFor="let productAvailabilityOption of productavailabilities; trackBy: trackProductAvailabilityById">{{productAvailabilityOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productPrice.productAvailability" for="field_productAvailability">Product Availability</label>
+            <select class="form-control" id="field_productAvailability" name="productAvailability" [(ngModel)]="productPrice.productAvailability" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productAvailabilityOption.id === productPrice.productAvailability?.id ? productPrice.productAvailability : productAvailabilityOption" *ngFor="let productAvailabilityOption of productavailabilities; trackBy: trackProductAvailabilityById">{{productAvailabilityOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

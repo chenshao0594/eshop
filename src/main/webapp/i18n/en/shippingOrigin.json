@@ -20,7 +20,10 @@
             "postalCode": "Postal Code",
             "address": "Address",
             "active": "Active",
-            "state": "State"
+            "state": "State",
+            "zone": "Zone",
+            "country": "Country",
+            "merchantStore": "Merchant Store"
         }
     }
 }

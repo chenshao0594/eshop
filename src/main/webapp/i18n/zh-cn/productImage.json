@@ -21,8 +21,9 @@
             "defaultImage": "Default Image",
             "imageType": "Image Type",
             "imageCrop": "Image Crop",
-            "imageContent": "Image Content",
+            "content": "Content",
             "descriptions": "Descriptions",
+            "product": "Product",
             "product": "Product"
         }
     }

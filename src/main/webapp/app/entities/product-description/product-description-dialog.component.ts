@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { ProductDescription } from './product-description.model';
 import { ProductDescriptionPopupService } from './product-description-popup.service';
 import { ProductDescriptionService } from './product-description.service';
+import { Language, LanguageService } from '../language';
 import { Product, ProductService } from '../product';
 
 @Component({
@@ -20,11 +21,14 @@ export class ProductDescriptionDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
+    languages: Language[];
+
     products: Product[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productDescriptionService: ProductDescriptionService,
+        private languageService: LanguageService,
         private productService: ProductService,
         private eventManager: EventManager
     ) {
@@ -35,6 +39,8 @@ export class ProductDescriptionDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
         this.productService.query().subscribe(
             (res: Response) => { this.products = res.json(); }, (res: Response) => this.onError(res.json()));
     }
@@ -73,6 +79,10 @@ export class ProductDescriptionDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackLanguageById(index: number, item: Language) {
+        return item.id;
     }
 
     trackProductById(index: number, item: Product) {

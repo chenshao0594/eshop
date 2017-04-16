@@ -9,6 +9,7 @@ import { CountryDescription } from './country-description.model';
 import { CountryDescriptionPopupService } from './country-description-popup.service';
 import { CountryDescriptionService } from './country-description.service';
 import { Country, CountryService } from '../country';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-country-description-dialog',
@@ -21,11 +22,14 @@ export class CountryDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     countries: Country[];
+
+    languages: Language[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private countryDescriptionService: CountryDescriptionService,
         private countryService: CountryService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['countryDescription']);
@@ -37,6 +41,8 @@ export class CountryDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.countryService.query().subscribe(
             (res: Response) => { this.countries = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class CountryDescriptionDialogComponent implements OnInit {
     }
 
     trackCountryById(index: number, item: Country) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

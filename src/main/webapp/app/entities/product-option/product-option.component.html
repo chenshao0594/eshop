@@ -34,6 +34,7 @@
             <th jhiSortBy="productOptionType"><span jhiTranslate="eshopApp.productOption.productOptionType">Product Option Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.productOption.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOptionSortOrder"><span jhiTranslate="eshopApp.productOption.productOptionSortOrder">Product Option Sort Order</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.productOption.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -44,6 +45,11 @@
                 <td>{{productOption.productOptionType}}</td>
                 <td>{{productOption.code}}</td>
                 <td>{{productOption.productOptionSortOrder}}</td>
+                <td>
+                    <div *ngIf="productOption.merchantStore">
+                        <a [routerLink]="['../merchant-store', productOption.merchantStore?.id ]" >{{productOption.merchantStore?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

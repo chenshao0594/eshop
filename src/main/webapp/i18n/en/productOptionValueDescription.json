@@ -19,6 +19,8 @@
             "title": "Title",
             "name": "Name",
             "description": "Description",
+            "productOptionValue": "Product Option Value",
+            "language": "Language",
             "productOptionValue": "Product Option Value"
         }
     }

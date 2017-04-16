@@ -16,7 +16,8 @@
             "detail": {
                 "title": "Digital Product"
             },
-            "productFileName": "Product File Name"
+            "productFileName": "Product File Name",
+            "product": "Product"
         }
     }
 }

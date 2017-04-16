@@ -1,4 +1,5 @@
 import { ProductPrice } from '../product-price';
+import { Language } from '../language';
 export class ProductPriceDescription {
     constructor(
         public id?: number,
@@ -7,6 +8,7 @@ export class ProductPriceDescription {
         public name?: string,
         public description?: string,
         public productPrice?: ProductPrice,
+        public language?: Language,
     ) {
     }
 }

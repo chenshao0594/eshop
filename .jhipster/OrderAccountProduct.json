@@ -3,6 +3,18 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
+            "relationshipName": "orderProduct",
+            "otherEntityName": "orderProduct",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "orderAccount",
+            "otherEntityName": "orderAccount",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
             "relationshipName": "orderAccount",
             "otherEntityName": "orderAccount",
             "otherEntityField": "id"

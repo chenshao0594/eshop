@@ -8,6 +8,8 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { SystemNotification } from './system-notification.model';
 import { SystemNotificationPopupService } from './system-notification-popup.service';
 import { SystemNotificationService } from './system-notification.service';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
+import { User, UserService } from '../../shared';
 
 @Component({
     selector: 'jhi-system-notification-dialog',
@@ -18,10 +20,16 @@ export class SystemNotificationDialogComponent implements OnInit {
     systemNotification: SystemNotification;
     authorities: any[];
     isSaving: boolean;
+
+    merchantstores: MerchantStore[];
+
+    users: User[];
             constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private systemNotificationService: SystemNotificationService,
+        private merchantStoreService: MerchantStoreService,
+        private userService: UserService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['systemNotification']);
@@ -31,6 +39,10 @@ export class SystemNotificationDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.userService.query().subscribe(
+            (res: Response) => { this.users = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +79,14 @@ export class SystemNotificationDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
+    }
+
+    trackUserById(index: number, item: User) {
+        return item.id;
     }
 }
 

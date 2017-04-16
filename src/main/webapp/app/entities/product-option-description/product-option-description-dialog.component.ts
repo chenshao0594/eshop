@@ -9,6 +9,7 @@ import { ProductOptionDescription } from './product-option-description.model';
 import { ProductOptionDescriptionPopupService } from './product-option-description-popup.service';
 import { ProductOptionDescriptionService } from './product-option-description.service';
 import { ProductOption, ProductOptionService } from '../product-option';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-product-option-description-dialog',
@@ -21,11 +22,14 @@ export class ProductOptionDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     productoptions: ProductOption[];
+
+    languages: Language[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productOptionDescriptionService: ProductOptionDescriptionService,
         private productOptionService: ProductOptionService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['productOptionDescription']);
@@ -37,6 +41,8 @@ export class ProductOptionDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.productOptionService.query().subscribe(
             (res: Response) => { this.productoptions = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class ProductOptionDescriptionDialogComponent implements OnInit {
     }
 
     trackProductOptionById(index: number, item: ProductOption) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

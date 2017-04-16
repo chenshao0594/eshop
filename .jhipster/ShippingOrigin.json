@@ -1,6 +1,25 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "zone",
+            "otherEntityName": "zone",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "merchantStore",
+            "otherEntityName": "merchantStore",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "city",

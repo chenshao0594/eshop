@@ -1,18 +1,12 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A IntegrationModule.
@@ -21,7 +15,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "integration_module")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "integrationmodule")
-public class IntegrationModule extends BusinessDomain<Long, IntegrationModule> implements Serializable {
+public class IntegrationModule extends BusinessDomain<Long,IntegrationModule>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -165,38 +159,7 @@ public class IntegrationModule extends BusinessDomain<Long, IntegrationModule> i
         this.configuration = configuration;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        IntegrationModule integrationModule = (IntegrationModule) o;
-        if (integrationModule.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, integrationModule.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "IntegrationModule{" +
-            "id=" + id +
-            ", configDetails='" + configDetails + "'" +
-            ", customModule='" + customModule + "'" +
-            ", type='" + type + "'" +
-            ", code='" + code + "'" +
-            ", regions='" + regions + "'" +
-            ", image='" + image + "'" +
-            ", module='" + module + "'" +
-            ", configuration='" + configuration + "'" +
-            '}';
-    }
+    
 }

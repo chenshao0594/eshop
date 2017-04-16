@@ -36,6 +36,10 @@
             "continueshoppingurl": "Continueshoppingurl",
             "storecity": "Storecity",
             "defaultLanguage": "Default Language",
+            "zone": "Zone",
+            "currency": "Currency",
+            "country": "Country",
+            "defaultLanguage": "Default Language",
             "languages": "Languages"
         }
     }

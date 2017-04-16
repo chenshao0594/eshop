@@ -9,6 +9,7 @@ import { ManufacturerDescription } from './manufacturer-description.model';
 import { ManufacturerDescriptionPopupService } from './manufacturer-description-popup.service';
 import { ManufacturerDescriptionService } from './manufacturer-description.service';
 import { Manufacturer, ManufacturerService } from '../manufacturer';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-manufacturer-description-dialog',
@@ -21,11 +22,14 @@ export class ManufacturerDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     manufacturers: Manufacturer[];
+
+    languages: Language[];
         constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private manufacturerDescriptionService: ManufacturerDescriptionService,
         private manufacturerService: ManufacturerService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['manufacturerDescription']);
@@ -37,6 +41,8 @@ export class ManufacturerDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.manufacturerService.query().subscribe(
             (res: Response) => { this.manufacturers = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class ManufacturerDescriptionDialogComponent implements OnInit {
     }
 
     trackManufacturerById(index: number, item: Manufacturer) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

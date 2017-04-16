@@ -1,18 +1,12 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A CustomerOptionSet.
@@ -21,7 +15,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "customer_option_set")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "customeroptionset")
-public class CustomerOptionSet extends BusinessDomain<Long, CustomerOptionSet> implements Serializable {
+public class CustomerOptionSet extends BusinessDomain<Long,CustomerOptionSet>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,6 +25,12 @@ public class CustomerOptionSet extends BusinessDomain<Long, CustomerOptionSet> i
 
     @Column(name = "sort_order")
     private Integer sortOrder;
+
+    @ManyToOne
+    private CustomerOption customerOption;
+
+    @ManyToOne
+    private CustomerOptionValue customerOptionValue;
 
     public Long getId() {
         return id;
@@ -53,31 +53,33 @@ public class CustomerOptionSet extends BusinessDomain<Long, CustomerOptionSet> i
         this.sortOrder = sortOrder;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        CustomerOptionSet customerOptionSet = (CustomerOptionSet) o;
-        if (customerOptionSet.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, customerOptionSet.id);
+    public CustomerOption getCustomerOption() {
+        return customerOption;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public CustomerOptionSet customerOption(CustomerOption customerOption) {
+        this.customerOption = customerOption;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "CustomerOptionSet{" +
-            "id=" + id +
-            ", sortOrder='" + sortOrder + "'" +
-            '}';
+    public void setCustomerOption(CustomerOption customerOption) {
+        this.customerOption = customerOption;
     }
+
+    public CustomerOptionValue getCustomerOptionValue() {
+        return customerOptionValue;
+    }
+
+    public CustomerOptionSet customerOptionValue(CustomerOptionValue customerOptionValue) {
+        this.customerOptionValue = customerOptionValue;
+        return this;
+    }
+
+    public void setCustomerOptionValue(CustomerOptionValue customerOptionValue) {
+        this.customerOptionValue = customerOptionValue;
+    }
+
+    
+
+    
 }

@@ -1,25 +1,17 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.smartshop.eshop.domain.enumeration.OrderTotalType;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Objects;
+
 import com.smartshop.eshop.domain.enumeration.OrderValueType;
+
+import com.smartshop.eshop.domain.enumeration.OrderTotalType;
 
 /**
  * A OrderTotal.
@@ -28,7 +20,7 @@ import com.smartshop.eshop.domain.enumeration.OrderValueType;
 @Table(name = "order_total")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "ordertotal")
-public class OrderTotal extends BusinessDomain<Long, OrderTotal> implements Serializable {
+public class OrderTotal extends BusinessDomain<Long,OrderTotal>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -190,38 +182,7 @@ public class OrderTotal extends BusinessDomain<Long, OrderTotal> implements Seri
         this.order = salesOrder;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OrderTotal orderTotal = (OrderTotal) o;
-        if (orderTotal.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, orderTotal.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "OrderTotal{" +
-            "id=" + id +
-            ", value='" + value + "'" +
-            ", orderTotalCode='" + orderTotalCode + "'" +
-            ", text='" + text + "'" +
-            ", orderValueType='" + orderValueType + "'" +
-            ", sortOrder='" + sortOrder + "'" +
-            ", orderTotalType='" + orderTotalType + "'" +
-            ", title='" + title + "'" +
-            ", module='" + module + "'" +
-            '}';
-    }
+    
 }

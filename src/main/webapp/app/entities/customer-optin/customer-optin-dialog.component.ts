@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { CustomerOptin } from './customer-optin.model';
 import { CustomerOptinPopupService } from './customer-optin-popup.service';
 import { CustomerOptinService } from './customer-optin.service';
+import { Optin, OptinService } from '../optin';
 
 @Component({
     selector: 'jhi-customer-optin-dialog',
@@ -18,10 +19,13 @@ export class CustomerOptinDialogComponent implements OnInit {
     customerOptin: CustomerOptin;
     authorities: any[];
     isSaving: boolean;
+
+    optins: Optin[];
         constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private customerOptinService: CustomerOptinService,
+        private optinService: OptinService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['customerOptin']);
@@ -31,6 +35,8 @@ export class CustomerOptinDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.optinService.query().subscribe(
+            (res: Response) => { this.optins = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +73,10 @@ export class CustomerOptinDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackOptinById(index: number, item: Optin) {
+        return item.id;
     }
 }
 

@@ -17,7 +17,8 @@
                 "title": "Merchant Log"
             },
             "log": "Log",
-            "module": "Module"
+            "module": "Module",
+            "store": "Store"
         }
     }
 }

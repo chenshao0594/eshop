@@ -37,6 +37,20 @@
                 <option [ngValue]="zoneOption.id === zoneDescription.zone?.id ? zoneDescription.zone : zoneOption" *ngFor="let zoneOption of zones; trackBy: trackZoneById">{{zoneOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.zoneDescription.language" for="field_language">Language</label>
+            <select class="form-control" id="field_language" name="language" [(ngModel)]="zoneDescription.language" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === zoneDescription.language?.id ? zoneDescription.language : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.zoneDescription.zone" for="field_zone">Zone</label>
+            <select class="form-control" id="field_zone" name="zone" [(ngModel)]="zoneDescription.zone" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="zoneOption.id === zoneDescription.zone?.id ? zoneDescription.zone : zoneOption" *ngFor="let zoneOption of zones; trackBy: trackZoneById">{{zoneOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

@@ -1,20 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Objects;
 
 /**
  * A OrderProductAttribute.
@@ -23,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "order_product_attribute")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "orderproductattribute")
-public class OrderProductAttribute extends BusinessDomain<Long, OrderProductAttribute> implements Serializable {
+public class OrderProductAttribute extends BusinessDomain<Long,OrderProductAttribute>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -167,37 +160,7 @@ public class OrderProductAttribute extends BusinessDomain<Long, OrderProductAttr
         this.orderProduct = orderProduct;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OrderProductAttribute orderProductAttribute = (OrderProductAttribute) o;
-        if (orderProductAttribute.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, orderProductAttribute.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "OrderProductAttribute{" +
-            "id=" + id +
-            ", productAttributeName='" + productAttributeName + "'" +
-            ", productAttributeWeight='" + productAttributeWeight + "'" +
-            ", productOptionValueId='" + productOptionValueId + "'" +
-            ", productAttributePrice='" + productAttributePrice + "'" +
-            ", productAttributeIsFree='" + productAttributeIsFree + "'" +
-            ", productOptionId='" + productOptionId + "'" +
-            ", productAttributeValueName='" + productAttributeValueName + "'" +
-            '}';
-    }
+    
 }

@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { Category } from './category.model';
 import { CategoryPopupService } from './category-popup.service';
 import { CategoryService } from './category.service';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-category-dialog',
@@ -19,11 +20,14 @@ export class CategoryDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
+    merchantstores: MerchantStore[];
+
     categories: Category[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private categoryService: CategoryService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['category']);
@@ -33,6 +37,8 @@ export class CategoryDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
         this.categoryService.query().subscribe(
             (res: Response) => { this.categories = res.json(); }, (res: Response) => this.onError(res.json()));
     }
@@ -71,6 +77,10 @@ export class CategoryDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
     }
 
     trackCategoryById(index: number, item: Category) {

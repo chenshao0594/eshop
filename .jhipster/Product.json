@@ -36,6 +36,30 @@
             "relationshipName": "taxClass",
             "otherEntityName": "taxClass",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "manufacturer",
+            "otherEntityName": "manufacturer",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "type",
+            "otherEntityName": "productType",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "merchantStore",
+            "otherEntityName": "merchantStore",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "taxClass",
+            "otherEntityName": "taxClass",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

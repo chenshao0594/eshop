@@ -9,6 +9,7 @@ import { ProductOptionValueDescription } from './product-option-value-descriptio
 import { ProductOptionValueDescriptionPopupService } from './product-option-value-description-popup.service';
 import { ProductOptionValueDescriptionService } from './product-option-value-description.service';
 import { ProductOptionValue, ProductOptionValueService } from '../product-option-value';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-product-option-value-description-dialog',
@@ -21,11 +22,14 @@ export class ProductOptionValueDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     productoptionvalues: ProductOptionValue[];
+
+    languages: Language[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productOptionValueDescriptionService: ProductOptionValueDescriptionService,
         private productOptionValueService: ProductOptionValueService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['productOptionValueDescription']);
@@ -37,6 +41,8 @@ export class ProductOptionValueDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.productOptionValueService.query().subscribe(
             (res: Response) => { this.productoptionvalues = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class ProductOptionValueDescriptionDialogComponent implements OnInit {
     }
 
     trackProductOptionValueById(index: number, item: ProductOptionValue) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

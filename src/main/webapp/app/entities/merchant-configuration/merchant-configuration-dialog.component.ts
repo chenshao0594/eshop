@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { MerchantConfiguration } from './merchant-configuration.model';
 import { MerchantConfigurationPopupService } from './merchant-configuration-popup.service';
 import { MerchantConfigurationService } from './merchant-configuration.service';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-merchant-configuration-dialog',
@@ -18,10 +19,13 @@ export class MerchantConfigurationDialogComponent implements OnInit {
     merchantConfiguration: MerchantConfiguration;
     authorities: any[];
     isSaving: boolean;
+
+    merchantstores: MerchantStore[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private merchantConfigurationService: MerchantConfigurationService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['merchantConfiguration', 'merchantConfigurationType']);
@@ -31,6 +35,8 @@ export class MerchantConfigurationDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +73,10 @@ export class MerchantConfigurationDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
     }
 }
 

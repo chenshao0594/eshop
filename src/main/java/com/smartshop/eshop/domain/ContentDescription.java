@@ -1,20 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A ContentDescription.
@@ -23,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "content_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "contentdescription")
-public class ContentDescription extends BusinessDomain<Long, ContentDescription> implements Serializable {
+public class ContentDescription extends BusinessDomain<Long,ContentDescription>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -52,6 +45,9 @@ public class ContentDescription extends BusinessDomain<Long, ContentDescription>
 
     @Column(name = "metatag_keywords")
     private String metatagKeywords;
+
+    @ManyToOne
+    private Language language;
 
     @ManyToOne
     private Content content;
@@ -155,6 +151,19 @@ public class ContentDescription extends BusinessDomain<Long, ContentDescription>
         this.metatagKeywords = metatagKeywords;
     }
 
+    public Language getLanguage() {
+        return language;
+    }
+
+    public ContentDescription language(Language language) {
+        this.language = language;
+        return this;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
     public Content getContent() {
         return content;
     }
@@ -168,37 +177,7 @@ public class ContentDescription extends BusinessDomain<Long, ContentDescription>
         this.content = content;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ContentDescription contentDescription = (ContentDescription) o;
-        if (contentDescription.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, contentDescription.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ContentDescription{" +
-            "id=" + id +
-            ", title='" + title + "'" +
-            ", description='" + description + "'" +
-            ", metatagTitle='" + metatagTitle + "'" +
-            ", metatagDescription='" + metatagDescription + "'" +
-            ", name='" + name + "'" +
-            ", seUrl='" + seUrl + "'" +
-            ", metatagKeywords='" + metatagKeywords + "'" +
-            '}';
-    }
+    
 }

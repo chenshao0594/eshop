@@ -9,6 +9,9 @@ import { Product } from './product.model';
 import { ProductPopupService } from './product-popup.service';
 import { ProductService } from './product.service';
 import { TaxClass, TaxClassService } from '../tax-class';
+import { Manufacturer, ManufacturerService } from '../manufacturer';
+import { ProductType, ProductTypeService } from '../product-type';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-product-dialog',
@@ -21,11 +24,20 @@ export class ProductDialogComponent implements OnInit {
     isSaving: boolean;
 
     taxclasses: TaxClass[];
+
+    manufacturers: Manufacturer[];
+
+    producttypes: ProductType[];
+
+    merchantstores: MerchantStore[];
         constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productService: ProductService,
         private taxClassService: TaxClassService,
+        private manufacturerService: ManufacturerService,
+        private productTypeService: ProductTypeService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['product']);
@@ -37,6 +49,12 @@ export class ProductDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.taxClassService.query().subscribe(
             (res: Response) => { this.taxclasses = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.manufacturerService.query().subscribe(
+            (res: Response) => { this.manufacturers = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.productTypeService.query().subscribe(
+            (res: Response) => { this.producttypes = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +94,18 @@ export class ProductDialogComponent implements OnInit {
     }
 
     trackTaxClassById(index: number, item: TaxClass) {
+        return item.id;
+    }
+
+    trackManufacturerById(index: number, item: Manufacturer) {
+        return item.id;
+    }
+
+    trackProductTypeById(index: number, item: ProductType) {
+        return item.id;
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
         return item.id;
     }
 }

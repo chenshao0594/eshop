@@ -9,6 +9,7 @@ import { TaxRateDescription } from './tax-rate-description.model';
 import { TaxRateDescriptionPopupService } from './tax-rate-description-popup.service';
 import { TaxRateDescriptionService } from './tax-rate-description.service';
 import { TaxRate, TaxRateService } from '../tax-rate';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-tax-rate-description-dialog',
@@ -21,11 +22,14 @@ export class TaxRateDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     taxrates: TaxRate[];
+
+    languages: Language[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private taxRateDescriptionService: TaxRateDescriptionService,
         private taxRateService: TaxRateService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['taxRateDescription']);
@@ -37,6 +41,8 @@ export class TaxRateDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.taxRateService.query().subscribe(
             (res: Response) => { this.taxrates = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class TaxRateDescriptionDialogComponent implements OnInit {
     }
 
     trackTaxRateById(index: number, item: TaxRate) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

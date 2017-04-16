@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { ProductOptionValue } from './product-option-value.model';
 import { ProductOptionValuePopupService } from './product-option-value-popup.service';
 import { ProductOptionValueService } from './product-option-value.service';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-product-option-value-dialog',
@@ -18,10 +19,13 @@ export class ProductOptionValueDialogComponent implements OnInit {
     productOptionValue: ProductOptionValue;
     authorities: any[];
     isSaving: boolean;
+
+    merchantstores: MerchantStore[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productOptionValueService: ProductOptionValueService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['productOptionValue']);
@@ -31,6 +35,8 @@ export class ProductOptionValueDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +73,10 @@ export class ProductOptionValueDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
     }
 }
 

@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { ProductReviewDescription } from './product-review-description.model';
 import { ProductReviewDescriptionPopupService } from './product-review-description-popup.service';
 import { ProductReviewDescriptionService } from './product-review-description.service';
+import { Language, LanguageService } from '../language';
 import { ProductReview, ProductReviewService } from '../product-review';
 
 @Component({
@@ -20,11 +21,14 @@ export class ProductReviewDescriptionDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
+    languages: Language[];
+
     productreviews: ProductReview[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productReviewDescriptionService: ProductReviewDescriptionService,
+        private languageService: LanguageService,
         private productReviewService: ProductReviewService,
         private eventManager: EventManager
     ) {
@@ -35,6 +39,8 @@ export class ProductReviewDescriptionDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
         this.productReviewService.query().subscribe(
             (res: Response) => { this.productreviews = res.json(); }, (res: Response) => this.onError(res.json()));
     }
@@ -73,6 +79,10 @@ export class ProductReviewDescriptionDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackLanguageById(index: number, item: Language) {
+        return item.id;
     }
 
     trackProductReviewById(index: number, item: ProductReview) {

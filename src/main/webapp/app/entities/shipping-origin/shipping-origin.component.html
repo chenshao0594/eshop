@@ -35,6 +35,9 @@
             <th jhiSortBy="address"><span jhiTranslate="eshopApp.shippingOrigin.address">Address</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="active"><span jhiTranslate="eshopApp.shippingOrigin.active">Active</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="state"><span jhiTranslate="eshopApp.shippingOrigin.state">State</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="zone.id"><span jhiTranslate="eshopApp.shippingOrigin.zone">Zone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="country.id"><span jhiTranslate="eshopApp.shippingOrigin.country">Country</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.shippingOrigin.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -46,6 +49,21 @@
                 <td>{{shippingOrigin.address}}</td>
                 <td>{{shippingOrigin.active}}</td>
                 <td>{{shippingOrigin.state}}</td>
+                <td>
+                    <div *ngIf="shippingOrigin.zone">
+                        <a [routerLink]="['../zone', shippingOrigin.zone?.id ]" >{{shippingOrigin.zone?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="shippingOrigin.country">
+                        <a [routerLink]="['../country', shippingOrigin.country?.id ]" >{{shippingOrigin.country?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="shippingOrigin.merchantStore">
+                        <a [routerLink]="['../merchant-store', shippingOrigin.merchantStore?.id ]" >{{shippingOrigin.merchantStore?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

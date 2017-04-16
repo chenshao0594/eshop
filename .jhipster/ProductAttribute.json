@@ -3,6 +3,24 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
+            "relationshipName": "productOption",
+            "otherEntityName": "productOption",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "product",
+            "otherEntityName": "product",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "productOptionValue",
+            "otherEntityName": "productOptionValue",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
             "relationshipName": "product",
             "otherEntityName": "product",
             "otherEntityField": "id"

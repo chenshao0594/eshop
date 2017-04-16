@@ -1,19 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * A SystemNotification.
@@ -22,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "system_notification")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "systemnotification")
-public class SystemNotification extends BusinessDomain<Long, SystemNotification> implements Serializable {
+public class SystemNotification extends BusinessDomain<Long,SystemNotification>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -41,6 +35,12 @@ public class SystemNotification extends BusinessDomain<Long, SystemNotification>
 
     @Column(name = "jhi_value")
     private String value;
+
+    @ManyToOne
+    private MerchantStore merchantStore;
+
+    @ManyToOne
+    private User user;
 
     public Long getId() {
         return id;
@@ -102,34 +102,33 @@ public class SystemNotification extends BusinessDomain<Long, SystemNotification>
         this.value = value;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        SystemNotification systemNotification = (SystemNotification) o;
-        if (systemNotification.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, systemNotification.id);
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public SystemNotification merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "SystemNotification{" +
-            "id=" + id +
-            ", endDate='" + endDate + "'" +
-            ", key='" + key + "'" +
-            ", startDate='" + startDate + "'" +
-            ", value='" + value + "'" +
-            '}';
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
     }
+
+    public User getUser() {
+        return user;
+    }
+
+    public SystemNotification user(User user) {
+        this.user = user;
+        return this;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
+
+    
 }

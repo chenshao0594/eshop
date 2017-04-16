@@ -51,6 +51,13 @@
             </select>
         </div>
 
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.content.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="content.merchantStore" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === content.merchantStore?.id ? content.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

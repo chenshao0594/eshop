@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,9 +13,9 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
@@ -34,7 +33,7 @@ import com.smartshop.eshop.domain.enumeration.ContentType;
 @Table(name = "content")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "content")
-public class Content extends BusinessDomain<Long, Content> implements Serializable {
+public class Content extends BusinessDomain<Long,Content>  implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -63,11 +62,13 @@ public class Content extends BusinessDomain<Long, Content> implements Serializab
 	@Column(name = "content_position")
 	private ContentPosition contentPosition;
 
-	@Valid
-	@JsonIgnore
 	@OneToMany(mappedBy = "content")
+	@JsonIgnore
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	private List<ContentDescription> descriptions = new ArrayList<ContentDescription>();
+	private Set<ContentDescription> descriptions = new HashSet<>();
+
+	@ManyToOne
+	private MerchantStore merchantStore;
 
 	public Long getId() {
 		return id;
@@ -155,19 +156,22 @@ public class Content extends BusinessDomain<Long, Content> implements Serializab
 		this.contentPosition = contentPosition;
 	}
 
-	public List<ContentDescription> getDescriptions() {
+	public Set<ContentDescription> getDescriptions() {
 		return descriptions;
-	}
-
-	public Content descriptions(List<ContentDescription> contentDescriptions) {
-		this.descriptions = contentDescriptions;
-		return this;
 	}
 	public ContentDescription getDescription() {
 		if(this.getDescriptions()!=null && this.getDescriptions().size()>0) {
-			return this.getDescriptions().get(0);
+			List<ContentDescription> list2 = new ArrayList<ContentDescription> ();  
+			list2.addAll(this.getDescriptions()); 
+			return list2.get(0);
 		}
 		return null;
+
+	}
+
+	public Content descriptions(Set<ContentDescription> contentDescriptions) {
+		this.descriptions = contentDescriptions;
+		return this;
 	}
 
 	public Content addDescriptions(ContentDescription contentDescription) {
@@ -182,7 +186,24 @@ public class Content extends BusinessDomain<Long, Content> implements Serializab
 		return this;
 	}
 
-	public void setDescriptions(List<ContentDescription> contentDescriptions) {
+	public void setDescriptions(Set<ContentDescription> contentDescriptions) {
 		this.descriptions = contentDescriptions;
 	}
+
+	public MerchantStore getMerchantStore() {
+		return merchantStore;
+	}
+
+	public Content merchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+		return this;
+	}
+
+	public void setMerchantStore(MerchantStore merchantStore) {
+		this.merchantStore = merchantStore;
+	}
+
+
+
+
 }

@@ -35,6 +35,7 @@
             <th jhiSortBy="dateAdded"><span jhiTranslate="eshopApp.orderStatusHistory.dateAdded">Date Added</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="status"><span jhiTranslate="eshopApp.orderStatusHistory.status">Status</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="order.id"><span jhiTranslate="eshopApp.orderStatusHistory.order">Order</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="order.id"><span jhiTranslate="eshopApp.orderStatusHistory.order">Order</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -45,6 +46,11 @@
                 <td>{{orderStatusHistory.customerNotified}}</td>
                 <td>{{orderStatusHistory.dateAdded | date:'mediumDate'}}</td>
                 <td jhiTranslate="{{'eshopApp.OrderStatus.' + orderStatusHistory.status}}">{{orderStatusHistory.status}}</td>
+                <td>
+                    <div *ngIf="orderStatusHistory.order">
+                        <a [routerLink]="['../sales-order', orderStatusHistory.order?.id ]" >{{orderStatusHistory.order?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="orderStatusHistory.order">
                         <a [routerLink]="['../sales-order', orderStatusHistory.order?.id ]" >{{orderStatusHistory.order?.id}}</a>

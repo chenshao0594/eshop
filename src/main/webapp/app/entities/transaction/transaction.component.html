@@ -35,6 +35,7 @@
             <th jhiSortBy="transactionDate"><span jhiTranslate="eshopApp.transaction.transactionDate">Transaction Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="paymentType"><span jhiTranslate="eshopApp.transaction.paymentType">Payment Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="amount"><span jhiTranslate="eshopApp.transaction.amount">Amount</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="order.id"><span jhiTranslate="eshopApp.transaction.order">Order</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -46,6 +47,11 @@
                 <td>{{transaction.transactionDate | date:'mediumDate'}}</td>
                 <td jhiTranslate="{{'eshopApp.PaymentType.' + transaction.paymentType}}">{{transaction.paymentType}}</td>
                 <td>{{transaction.amount}}</td>
+                <td>
+                    <div *ngIf="transaction.order">
+                        <a [routerLink]="['../sales-order', transaction.order?.id ]" >{{transaction.order?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

@@ -6,6 +6,18 @@
             "relationshipName": "taxRate",
             "otherEntityName": "taxRate",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "language",
+            "otherEntityName": "language",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "taxRate",
+            "otherEntityName": "taxRate",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

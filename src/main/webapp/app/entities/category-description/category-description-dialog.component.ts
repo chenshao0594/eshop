@@ -9,6 +9,7 @@ import { CategoryDescription } from './category-description.model';
 import { CategoryDescriptionPopupService } from './category-description-popup.service';
 import { CategoryDescriptionService } from './category-description.service';
 import { Category, CategoryService } from '../category';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-category-description-dialog',
@@ -21,11 +22,14 @@ export class CategoryDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     categories: Category[];
+
+    languages: Language[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private categoryDescriptionService: CategoryDescriptionService,
         private categoryService: CategoryService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['categoryDescription']);
@@ -37,6 +41,8 @@ export class CategoryDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.categoryService.query().subscribe(
             (res: Response) => { this.categories = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class CategoryDescriptionDialogComponent implements OnInit {
     }
 
     trackCategoryById(index: number, item: Category) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

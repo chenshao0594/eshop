@@ -1,20 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A Template.
@@ -23,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "template")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "template")
-public class Template extends BusinessDomain<Long, Template> implements Serializable {
+public class Template extends BusinessDomain<Long,Template>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -107,34 +100,7 @@ public class Template extends BusinessDomain<Long, Template> implements Serializ
         this.content = content;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Template template = (Template) o;
-        if (template.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, template.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Template{" +
-            "id=" + id +
-            ", name='" + name + "'" +
-            ", superId='" + superId + "'" +
-            ", templateKey='" + templateKey + "'" +
-            ", content='" + content + "'" +
-            '}';
-    }
+    
 }

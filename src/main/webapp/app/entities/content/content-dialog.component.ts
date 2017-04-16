@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { Content } from './content.model';
 import { ContentPopupService } from './content-popup.service';
 import { ContentService } from './content.service';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-content-dialog',
@@ -18,10 +19,13 @@ export class ContentDialogComponent implements OnInit {
     content: Content;
     authorities: any[];
     isSaving: boolean;
+
+    merchantstores: MerchantStore[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private contentService: ContentService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['content', 'contentType', 'contentPosition']);
@@ -31,6 +35,8 @@ export class ContentDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +73,10 @@ export class ContentDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
     }
 }
 

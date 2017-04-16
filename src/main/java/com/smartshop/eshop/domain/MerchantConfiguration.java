@@ -1,20 +1,12 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 import com.smartshop.eshop.domain.enumeration.MerchantConfigurationType;
 
@@ -25,7 +17,7 @@ import com.smartshop.eshop.domain.enumeration.MerchantConfigurationType;
 @Table(name = "merchant_configuration")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "merchantconfiguration")
-public class MerchantConfiguration extends BusinessDomain<Long, MerchantConfiguration> implements Serializable {
+public class MerchantConfiguration extends BusinessDomain<Long,MerchantConfiguration>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -42,6 +34,9 @@ public class MerchantConfiguration extends BusinessDomain<Long, MerchantConfigur
 
     @Column(name = "jhi_value")
     private String value;
+
+    @ManyToOne
+    private MerchantStore merchantStore;
 
     public Long getId() {
         return id;
@@ -90,33 +85,20 @@ public class MerchantConfiguration extends BusinessDomain<Long, MerchantConfigur
         this.value = value;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        MerchantConfiguration merchantConfiguration = (MerchantConfiguration) o;
-        if (merchantConfiguration.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, merchantConfiguration.id);
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public MerchantConfiguration merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "MerchantConfiguration{" +
-            "id=" + id +
-            ", merchantConfigurationType='" + merchantConfigurationType + "'" +
-            ", key='" + key + "'" +
-            ", value='" + value + "'" +
-            '}';
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
     }
+
+    
+
+    
 }

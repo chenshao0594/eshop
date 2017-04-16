@@ -1,19 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A ZoneDescription.
@@ -22,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "zone_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "zonedescription")
-public class ZoneDescription extends BusinessDomain<Long, ZoneDescription> implements Serializable {
+public class ZoneDescription extends BusinessDomain<Long,ZoneDescription>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,6 +33,9 @@ public class ZoneDescription extends BusinessDomain<Long, ZoneDescription> imple
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    private Language language;
 
     @ManyToOne
     private Zone zone;
@@ -90,6 +87,19 @@ public class ZoneDescription extends BusinessDomain<Long, ZoneDescription> imple
         this.description = description;
     }
 
+    public Language getLanguage() {
+        return language;
+    }
+
+    public ZoneDescription language(Language language) {
+        this.language = language;
+        return this;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
     public Zone getZone() {
         return zone;
     }
@@ -103,4 +113,7 @@ public class ZoneDescription extends BusinessDomain<Long, ZoneDescription> imple
         this.zone = zone;
     }
 
+    
+
+    
 }

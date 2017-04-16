@@ -31,6 +31,13 @@
                 <option [ngValue]="orderProductOption.id === orderProductDownload.orderProduct?.id ? orderProductDownload.orderProduct : orderProductOption" *ngFor="let orderProductOption of orderproducts; trackBy: trackOrderProductById">{{orderProductOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.orderProductDownload.orderProduct" for="field_orderProduct">Order Product</label>
+            <select class="form-control" id="field_orderProduct" name="orderProduct" [(ngModel)]="orderProductDownload.orderProduct" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="orderProductOption.id === orderProductDownload.orderProduct?.id ? orderProductDownload.orderProduct : orderProductOption" *ngFor="let orderProductOption of orderproducts; trackBy: trackOrderProductById">{{orderProductOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

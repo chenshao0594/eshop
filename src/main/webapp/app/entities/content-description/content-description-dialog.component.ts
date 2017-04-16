@@ -9,6 +9,7 @@ import { ContentDescription } from './content-description.model';
 import { ContentDescriptionPopupService } from './content-description-popup.service';
 import { ContentDescriptionService } from './content-description.service';
 import { Content, ContentService } from '../content';
+import { Language, LanguageService } from '../language';
 
 @Component({
     selector: 'jhi-content-description-dialog',
@@ -21,11 +22,14 @@ export class ContentDescriptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     contents: Content[];
+
+    languages: Language[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private contentDescriptionService: ContentDescriptionService,
         private contentService: ContentService,
+        private languageService: LanguageService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['contentDescription']);
@@ -37,6 +41,8 @@ export class ContentDescriptionDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.contentService.query().subscribe(
             (res: Response) => { this.contents = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class ContentDescriptionDialogComponent implements OnInit {
     }
 
     trackContentById(index: number, item: Content) {
+        return item.id;
+    }
+
+    trackLanguageById(index: number, item: Language) {
         return item.id;
     }
 }

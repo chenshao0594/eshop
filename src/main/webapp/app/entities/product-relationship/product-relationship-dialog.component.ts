@@ -9,6 +9,7 @@ import { ProductRelationship } from './product-relationship.model';
 import { ProductRelationshipPopupService } from './product-relationship-popup.service';
 import { ProductRelationshipService } from './product-relationship.service';
 import { Product, ProductService } from '../product';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-product-relationship-dialog',
@@ -21,11 +22,14 @@ export class ProductRelationshipDialogComponent implements OnInit {
     isSaving: boolean;
 
     products: Product[];
+
+    merchantstores: MerchantStore[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productRelationshipService: ProductRelationshipService,
         private productService: ProductService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['productRelationship']);
@@ -37,6 +41,8 @@ export class ProductRelationshipDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.productService.query().subscribe(
             (res: Response) => { this.products = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +82,10 @@ export class ProductRelationshipDialogComponent implements OnInit {
     }
 
     trackProductById(index: number, item: Product) {
+        return item.id;
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
         return item.id;
     }
 }

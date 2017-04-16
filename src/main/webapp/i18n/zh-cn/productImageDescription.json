@@ -20,6 +20,8 @@
             "altTag": "Alt Tag",
             "name": "Name",
             "description": "Description",
+            "productImage": "Product Image",
+            "language": "Language",
             "productImage": "Product Image"
         }
     }

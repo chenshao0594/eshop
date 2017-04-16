@@ -18,7 +18,8 @@
             },
             "customerId": "Customer Id",
             "shoppingCartCode": "Shopping Cart Code",
-            "lineItems": "Line Items"
+            "lineItems": "Line Items",
+            "merchantStore": "Merchant Store"
         }
     }
 }

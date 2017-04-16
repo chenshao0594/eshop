@@ -1,20 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A ProductImageDescription.
@@ -23,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "product_image_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productimagedescription")
-public class ProductImageDescription extends BusinessDomain<Long, ProductImageDescription> implements Serializable {
+public class ProductImageDescription extends BusinessDomain<Long,ProductImageDescription>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -43,6 +36,8 @@ public class ProductImageDescription extends BusinessDomain<Long, ProductImageDe
 
     @Column(name = "description")
     private String description;
+    @ManyToOne
+    private Language language;
 
     @ManyToOne
     private ProductImage productImage;
@@ -107,6 +102,19 @@ public class ProductImageDescription extends BusinessDomain<Long, ProductImageDe
         this.description = description;
     }
 
+    public Language getLanguage() {
+        return language;
+    }
+
+    public ProductImageDescription language(Language language) {
+        this.language = language;
+        return this;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
     public ProductImage getProductImage() {
         return productImage;
     }
@@ -120,34 +128,7 @@ public class ProductImageDescription extends BusinessDomain<Long, ProductImageDe
         this.productImage = productImage;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductImageDescription productImageDescription = (ProductImageDescription) o;
-        if (productImageDescription.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, productImageDescription.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ProductImageDescription{" +
-            "id=" + id +
-            ", title='" + title + "'" +
-            ", altTag='" + altTag + "'" +
-            ", name='" + name + "'" +
-            ", description='" + description + "'" +
-            '}';
-    }
+    
 }

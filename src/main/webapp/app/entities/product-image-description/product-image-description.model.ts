@@ -1,4 +1,5 @@
 import { ProductImage } from '../product-image';
+import { Language } from '../language';
 export class ProductImageDescription {
     constructor(
         public id?: number,
@@ -7,6 +8,7 @@ export class ProductImageDescription {
         public name?: string,
         public description?: string,
         public productImage?: ProductImage,
+        public language?: Language,
     ) {
     }
 }

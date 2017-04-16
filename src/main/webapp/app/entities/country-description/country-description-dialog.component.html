@@ -43,6 +43,20 @@
                 <option [ngValue]="countryOption.id === countryDescription.country?.id ? countryDescription.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.countryDescription.language" for="field_language">Language</label>
+            <select class="form-control" id="field_language" name="language" [(ngModel)]="countryDescription.language" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === countryDescription.language?.id ? countryDescription.language : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.countryDescription.country" for="field_country">Country</label>
+            <select class="form-control" id="field_country" name="country" [(ngModel)]="countryDescription.country" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="countryOption.id === countryDescription.country?.id ? countryDescription.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

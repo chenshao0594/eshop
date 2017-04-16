@@ -35,6 +35,7 @@
             <th jhiSortBy="status"><span jhiTranslate="eshopApp.productReview.status">Status</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="reviewRating"><span jhiTranslate="eshopApp.productReview.reviewRating">Review Rating</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="customer.id"><span jhiTranslate="eshopApp.productReview.customer">Customer</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customer.id"><span jhiTranslate="eshopApp.productReview.customer">Customer</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -45,6 +46,11 @@
                 <td>{{productReview.reviewDate | date:'mediumDate'}}</td>
                 <td>{{productReview.status}}</td>
                 <td>{{productReview.reviewRating}}</td>
+                <td>
+                    <div *ngIf="productReview.customer">
+                        <a [routerLink]="['../customer', productReview.customer?.id ]" >{{productReview.customer?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="productReview.customer">
                         <a [routerLink]="['../customer', productReview.customer?.id ]" >{{productReview.customer?.id}}</a>

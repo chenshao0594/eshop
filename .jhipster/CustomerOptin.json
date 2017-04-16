@@ -1,6 +1,13 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "optin",
+            "otherEntityName": "optin",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "optinDate",

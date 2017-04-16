@@ -1,18 +1,12 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A ProductType.
@@ -21,7 +15,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "product_type")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "producttype")
-public class ProductType extends BusinessDomain<Long,ProductType > implements Serializable {
+public class ProductType extends BusinessDomain<Long,ProductType>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -31,9 +25,6 @@ public class ProductType extends BusinessDomain<Long,ProductType > implements Se
 
     @Column(name = "code")
     private String code;
-
-    @Column(name = "g_eneraltype")
-    private String gENERALTYPE;
 
     @Column(name = "allow_add_to_cart")
     private Boolean allowAddToCart;
@@ -59,19 +50,6 @@ public class ProductType extends BusinessDomain<Long,ProductType > implements Se
         this.code = code;
     }
 
-    public String getgENERALTYPE() {
-        return gENERALTYPE;
-    }
-
-    public ProductType gENERALTYPE(String gENERALTYPE) {
-        this.gENERALTYPE = gENERALTYPE;
-        return this;
-    }
-
-    public void setgENERALTYPE(String gENERALTYPE) {
-        this.gENERALTYPE = gENERALTYPE;
-    }
-
     public Boolean isAllowAddToCart() {
         return allowAddToCart;
     }
@@ -85,33 +63,7 @@ public class ProductType extends BusinessDomain<Long,ProductType > implements Se
         this.allowAddToCart = allowAddToCart;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductType productType = (ProductType) o;
-        if (productType.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, productType.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ProductType{" +
-            "id=" + id +
-            ", code='" + code + "'" +
-            ", gENERALTYPE='" + gENERALTYPE + "'" +
-            ", allowAddToCart='" + allowAddToCart + "'" +
-            '}';
-    }
+    
 }

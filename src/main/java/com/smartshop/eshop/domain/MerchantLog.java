@@ -1,18 +1,12 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A MerchantLog.
@@ -21,7 +15,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "merchant_log")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "merchantlog")
-public class MerchantLog extends BusinessDomain<Long, MerchantLog> implements Serializable {
+public class MerchantLog extends BusinessDomain<Long,MerchantLog>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -34,6 +28,9 @@ public class MerchantLog extends BusinessDomain<Long, MerchantLog> implements Se
 
     @Column(name = "module")
     private String module;
+
+    @ManyToOne
+    private MerchantStore store;
 
     public Long getId() {
         return id;
@@ -69,32 +66,20 @@ public class MerchantLog extends BusinessDomain<Long, MerchantLog> implements Se
         this.module = module;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        MerchantLog merchantLog = (MerchantLog) o;
-        if (merchantLog.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, merchantLog.id);
+    public MerchantStore getStore() {
+        return store;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public MerchantLog store(MerchantStore merchantStore) {
+        this.store = merchantStore;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "MerchantLog{" +
-            "id=" + id +
-            ", log='" + log + "'" +
-            ", module='" + module + "'" +
-            '}';
+    public void setStore(MerchantStore merchantStore) {
+        this.store = merchantStore;
     }
+
+    
+
+    
 }

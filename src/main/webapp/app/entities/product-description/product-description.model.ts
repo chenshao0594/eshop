@@ -1,3 +1,4 @@
+import { Language } from '../language';
 import { Product } from '../product';
 export class ProductDescription {
     constructor(
@@ -11,6 +12,7 @@ export class ProductDescription {
         public metatagTitle?: string,
         public name?: string,
         public productExternalDl?: string,
+        public language?: Language,
         public product?: Product,
     ) {
     }

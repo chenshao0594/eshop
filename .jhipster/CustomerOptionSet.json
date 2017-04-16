@@ -1,6 +1,19 @@
 {
     "fluentMethods": true,
-    "relationships": [],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "customerOption",
+            "otherEntityName": "customerOption",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "customerOptionValue",
+            "otherEntityName": "customerOptionValue",
+            "otherEntityField": "id"
+        }
+    ],
     "fields": [
         {
             "fieldName": "sortOrder",

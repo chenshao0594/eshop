@@ -61,6 +61,20 @@
                 <option [ngValue]="contentOption.id === contentDescription.content?.id ? contentDescription.content : contentOption" *ngFor="let contentOption of contents; trackBy: trackContentById">{{contentOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.contentDescription.language" for="field_language">Language</label>
+            <select class="form-control" id="field_language" name="language" [(ngModel)]="contentDescription.language" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === contentDescription.language?.id ? contentDescription.language : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.contentDescription.content" for="field_content">Content</label>
+            <select class="form-control" id="field_content" name="content" [(ngModel)]="contentDescription.content" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="contentOption.id === contentDescription.content?.id ? contentDescription.content : contentOption" *ngFor="let contentOption of contents; trackBy: trackContentById">{{contentOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

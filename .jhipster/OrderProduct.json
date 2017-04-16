@@ -24,6 +24,12 @@
             "relationshipName": "order",
             "otherEntityName": "salesOrder",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "order",
+            "otherEntityName": "salesOrder",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

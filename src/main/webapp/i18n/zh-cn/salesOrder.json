@@ -35,7 +35,9 @@
             "customerAgreement": "Customer Agreement",
             "orderTotal": "Order Total",
             "orderHistory": "Order History",
-            "orderProducts": "Order Products"
+            "orderProducts": "Order Products",
+            "currency": "Currency",
+            "merchant": "Merchant"
         }
     }
 }

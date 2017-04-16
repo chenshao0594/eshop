@@ -1,4 +1,5 @@
 import { OrderAccountProduct } from '../order-account-product';
+import { SalesOrder } from '../sales-order';
 export class OrderAccount {
     constructor(
         public id?: number,
@@ -6,6 +7,7 @@ export class OrderAccount {
         public orderAccountEndDate?: any,
         public orderAccountBillDay?: number,
         public orderAccountProducts?: OrderAccountProduct,
+        public order?: SalesOrder,
     ) {
     }
 }

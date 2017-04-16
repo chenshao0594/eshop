@@ -31,6 +31,9 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="textValue"><span jhiTranslate="eshopApp.customerAttribute.textValue">Text Value</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customerOptionValue.id"><span jhiTranslate="eshopApp.customerAttribute.customerOptionValue">Customer Option Value</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customerOption.id"><span jhiTranslate="eshopApp.customerAttribute.customerOption">Customer Option</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customer.id"><span jhiTranslate="eshopApp.customerAttribute.customer">Customer</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="customer.id"><span jhiTranslate="eshopApp.customerAttribute.customer">Customer</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -39,6 +42,21 @@
             <tr *ngFor="let customerAttribute of customerAttributes ;trackBy: trackId">
                 <td><a [routerLink]="['../customer-attribute', customerAttribute.id ]">{{customerAttribute.id}}</a></td>
                 <td>{{customerAttribute.textValue}}</td>
+                <td>
+                    <div *ngIf="customerAttribute.customerOptionValue">
+                        <a [routerLink]="['../customer-option-value', customerAttribute.customerOptionValue?.id ]" >{{customerAttribute.customerOptionValue?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="customerAttribute.customerOption">
+                        <a [routerLink]="['../customer-option', customerAttribute.customerOption?.id ]" >{{customerAttribute.customerOption?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="customerAttribute.customer">
+                        <a [routerLink]="['../customer', customerAttribute.customer?.id ]" >{{customerAttribute.customer?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="customerAttribute.customer">
                         <a [routerLink]="['../customer', customerAttribute.customer?.id ]" >{{customerAttribute.customer?.id}}</a>

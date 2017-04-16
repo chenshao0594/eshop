@@ -55,6 +55,20 @@
         </div>
 
         <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.category.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="category.merchantStore" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === category.merchantStore?.id ? category.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.category.parent" for="field_parent">Parent</label>
+            <select class="form-control" id="field_parent" name="parent" [(ngModel)]="category.parent" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="categoryOption.id === category.parent?.id ? category.parent : categoryOption" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
             <label jhiTranslate="eshopApp.category.parent" for="field_parent">Parent</label>
             <select class="form-control" id="field_parent" name="parent" [(ngModel)]="category.parent" >
                 <option [ngValue]="null"></option>

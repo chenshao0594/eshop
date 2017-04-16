@@ -3,6 +3,24 @@
     "relationships": [
         {
             "relationshipType": "many-to-one",
+            "relationshipName": "customerOptionValue",
+            "otherEntityName": "customerOptionValue",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "customerOption",
+            "otherEntityName": "customerOption",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "customer",
+            "otherEntityName": "customer",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
             "relationshipName": "customer",
             "otherEntityName": "customer",
             "otherEntityField": "id"

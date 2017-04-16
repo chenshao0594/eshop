@@ -39,6 +39,8 @@
             <th jhiSortBy="metatagTitle"><span jhiTranslate="eshopApp.productDescription.metatagTitle">Metatag Title</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="name"><span jhiTranslate="eshopApp.productDescription.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productExternalDl"><span jhiTranslate="eshopApp.productDescription.productExternalDl">Product External Dl</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.productDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="product.id"><span jhiTranslate="eshopApp.productDescription.product">Product</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="product.id"><span jhiTranslate="eshopApp.productDescription.product">Product</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -55,6 +57,16 @@
                 <td>{{productDescription.metatagTitle}}</td>
                 <td>{{productDescription.name}}</td>
                 <td>{{productDescription.productExternalDl}}</td>
+                <td>
+                    <div *ngIf="productDescription.language">
+                        <a [routerLink]="['../language', productDescription.language?.id ]" >{{productDescription.language?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="productDescription.product">
+                        <a [routerLink]="['../product', productDescription.product?.id ]" >{{productDescription.product?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="productDescription.product">
                         <a [routerLink]="['../product', productDescription.product?.id ]" >{{productDescription.product?.id}}</a>

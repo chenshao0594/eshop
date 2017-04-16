@@ -37,6 +37,10 @@
             "attributes": "Attributes",
             "descriptions": "Descriptions",
             "relationships": "Relationships",
+            "taxClass": "Tax Class",
+            "manufacturer": "Manufacturer",
+            "type": "Type",
+            "merchantStore": "Merchant Store",
             "taxClass": "Tax Class"
         }
     }

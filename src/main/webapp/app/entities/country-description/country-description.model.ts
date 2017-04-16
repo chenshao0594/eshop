@@ -1,4 +1,5 @@
 import { Country } from '../country';
+import { Language } from '../language';
 export class CountryDescription {
     constructor(
         public id?: number,
@@ -6,6 +7,7 @@ export class CountryDescription {
         public name?: string,
         public description?: string,
         public country?: Country,
+        public language?: Language,
     ) {
     }
 }

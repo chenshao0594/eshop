@@ -32,6 +32,7 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="title"><span jhiTranslate="eshopApp.taxClass.title">Title</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.taxClass.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.taxClass.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -40,6 +41,11 @@
                 <td><a [routerLink]="['../tax-class', taxClass.id ]">{{taxClass.id}}</a></td>
                 <td>{{taxClass.title}}</td>
                 <td>{{taxClass.code}}</td>
+                <td>
+                    <div *ngIf="taxClass.merchantStore">
+                        <a [routerLink]="['../merchant-store', taxClass.merchantStore?.id ]" >{{taxClass.merchantStore?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

@@ -34,6 +34,8 @@
             <th jhiSortBy="name"><span jhiTranslate="eshopApp.geoZoneDescription.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="eshopApp.geoZoneDescription.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="geoZone.id"><span jhiTranslate="eshopApp.geoZoneDescription.geoZone">Geo Zone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.geoZoneDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="geoZone.id"><span jhiTranslate="eshopApp.geoZoneDescription.geoZone">Geo Zone</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,6 +45,16 @@
                 <td>{{geoZoneDescription.title}}</td>
                 <td>{{geoZoneDescription.name}}</td>
                 <td>{{geoZoneDescription.description}}</td>
+                <td>
+                    <div *ngIf="geoZoneDescription.geoZone">
+                        <a [routerLink]="['../geo-zone', geoZoneDescription.geoZone?.id ]" >{{geoZoneDescription.geoZone?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="geoZoneDescription.language">
+                        <a [routerLink]="['../language', geoZoneDescription.language?.id ]" >{{geoZoneDescription.language?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="geoZoneDescription.geoZone">
                         <a [routerLink]="['../geo-zone', geoZoneDescription.geoZone?.id ]" >{{geoZoneDescription.geoZone?.id}}</a>

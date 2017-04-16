@@ -111,5 +111,25 @@
     <include file="classpath:config/liquibase/changelog/20170415184211_added_entity_constraints_ProductAttribute.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184212_added_entity_constraints_TaxRateDescription.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184202_added_entity_constraints_Customer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184111_added_entity_constraints_ProductOptionValue.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184113_added_entity_constraints_TaxClass.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184120_added_entity_constraints_ShippingOrigin.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184125_added_entity_constraints_SystemNotification.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184130_added_entity_constraints_Optin.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184133_added_entity_constraints_CustomerOption.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184134_added_entity_constraints_Transaction.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184140_added_entity_constraints_MerchantLog.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184141_added_entity_constraints_ShoppingCart.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184144_added_entity_constraints_OrderAccount.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184145_added_entity_constraints_DigitalProduct.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184146_added_entity_constraints_MerchantConfiguration.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184148_added_entity_constraints_ProductOption.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184150_added_entity_constraints_CustomerOptionValue.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184155_added_entity_constraints_CustomerOptionSet.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184156_added_entity_constraints_Content.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184200_added_entity_constraints_FileHistory.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184208_added_entity_constraints_CustomerOptin.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184209_added_entity_constraints_Manufacturer.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/20170415184213_added_entity_constraints_SalesOrder.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

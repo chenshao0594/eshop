@@ -8,6 +8,7 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { OrderAccountProduct } from './order-account-product.model';
 import { OrderAccountProductPopupService } from './order-account-product-popup.service';
 import { OrderAccountProductService } from './order-account-product.service';
+import { OrderProduct, OrderProductService } from '../order-product';
 import { OrderAccount, OrderAccountService } from '../order-account';
 
 @Component({
@@ -20,11 +21,14 @@ export class OrderAccountProductDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
+    orderproducts: OrderProduct[];
+
     orderaccounts: OrderAccount[];
                         constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private orderAccountProductService: OrderAccountProductService,
+        private orderProductService: OrderProductService,
         private orderAccountService: OrderAccountService,
         private eventManager: EventManager
     ) {
@@ -35,6 +39,8 @@ export class OrderAccountProductDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.orderProductService.query().subscribe(
+            (res: Response) => { this.orderproducts = res.json(); }, (res: Response) => this.onError(res.json()));
         this.orderAccountService.query().subscribe(
             (res: Response) => { this.orderaccounts = res.json(); }, (res: Response) => this.onError(res.json()));
     }
@@ -73,6 +79,10 @@ export class OrderAccountProductDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackOrderProductById(index: number, item: OrderProduct) {
+        return item.id;
     }
 
     trackOrderAccountById(index: number, item: OrderAccount) {

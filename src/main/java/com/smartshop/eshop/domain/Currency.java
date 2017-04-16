@@ -1,17 +1,12 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A Currency.
@@ -20,7 +15,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "currency")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "currency")
-public class Currency extends BusinessDomain<Long, Currency> implements Serializable {
+public class Currency extends BusinessDomain<Long,Currency>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -37,8 +32,7 @@ public class Currency extends BusinessDomain<Long, Currency> implements Serializ
     @Column(name = "name")
     private String name;
 
-
-	@Column(name = "CURRENCY_CURRENCY_CODE" ,nullable = false, unique = true)
+    @Column(name = "CURRENCY_CURRENCY_CODE" ,nullable = false, unique = true)
 	private java.util.Currency currency;
 
     public Long getId() {
@@ -50,12 +44,9 @@ public class Currency extends BusinessDomain<Long, Currency> implements Serializ
     }
 
     public String getCode() {
-		if (currency.getCurrencyCode() != code) {
-			return currency.getCurrencyCode();
-		}
-		return code;
-	}
-	
+        return code;
+    }
+
     public Currency code(String code) {
         this.code = code;
         return this;
@@ -90,12 +81,21 @@ public class Currency extends BusinessDomain<Long, Currency> implements Serializ
     public void setName(String name) {
         this.name = name;
     }
+
     public java.util.Currency getCurrency() {
-		return currency;
-	}
+        return currency;
+    }
+
+    public Currency currency(java.util.Currency currency) {
+        this.currency = currency;
+        return this;
+    }
 
     public void setCurrency(java.util.Currency currency) {
-		this.currency = currency;
-		this.code = currency.getCurrencyCode();
-	}
+        this.currency = currency;
+    }
+
+    
+
+    
 }

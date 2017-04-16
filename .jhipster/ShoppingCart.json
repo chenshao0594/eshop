@@ -6,6 +6,12 @@
             "relationshipName": "lineItems",
             "otherEntityName": "shoppingCartItem",
             "otherEntityRelationshipName": "shoppingCart"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "merchantStore",
+            "otherEntityName": "merchantStore",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

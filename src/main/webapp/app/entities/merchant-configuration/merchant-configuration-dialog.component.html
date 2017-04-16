@@ -32,6 +32,13 @@
              />
         </div>
 
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.merchantConfiguration.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="merchantConfiguration.merchantStore" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === merchantConfiguration.merchantStore?.id ? merchantConfiguration.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

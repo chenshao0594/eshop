@@ -14,18 +14,15 @@
             "otherEntityRelationshipName": "customer"
         },
         {
+            "relationshipType": "many-to-one",
             "relationshipName": "merchantStore",
             "otherEntityName": "merchantStore",
-            "relationshipType": "many-to-one",
-            "relationshipValidateRules": [
-                "required"
-            ],
-            "otherEntityField": "storename"
+            "otherEntityField": "id"
         },
         {
+            "relationshipType": "many-to-one",
             "relationshipName": "defaultLanguage",
             "otherEntityName": "language",
-            "relationshipType": "many-to-one",
             "otherEntityField": "id"
         }
     ],
@@ -64,8 +61,9 @@
         }
     ],
     "changelogDate": "20170415184202",
-    "dto": "no",
-    "service": "serviceImpl",
     "entityTableName": "customer",
-    "pagination": "pagination"
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "serviceImpl",
+    "searchEngine": "elasticsearch"
 }

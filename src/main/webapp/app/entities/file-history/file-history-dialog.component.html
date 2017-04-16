@@ -60,6 +60,13 @@
              />
         </div>
 
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.fileHistory.store" for="field_store">Store</label>
+            <select class="form-control" id="field_store" name="store" [(ngModel)]="fileHistory.store" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === fileHistory.store?.id ? fileHistory.store : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

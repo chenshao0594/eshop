@@ -1,4 +1,5 @@
 import { Content } from '../content';
+import { Language } from '../language';
 export class ContentDescription {
     constructor(
         public id?: number,
@@ -10,6 +11,7 @@ export class ContentDescription {
         public seUrl?: string,
         public metatagKeywords?: string,
         public content?: Content,
+        public language?: Language,
     ) {
     }
 }

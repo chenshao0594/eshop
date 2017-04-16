@@ -1,19 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A ShippingOrigin.
@@ -22,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "shipping_origin")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "shippingorigin")
-public class ShippingOrigin extends BusinessDomain<Long, ShippingOrigin> implements Serializable {
+public class ShippingOrigin extends BusinessDomain<Long,ShippingOrigin>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +41,15 @@ public class ShippingOrigin extends BusinessDomain<Long, ShippingOrigin> impleme
 
     @Column(name = "state")
     private String state;
+
+    @ManyToOne
+    private Zone zone;
+
+    @ManyToOne
+    private Country country;
+
+    @ManyToOne
+    private MerchantStore merchantStore;
 
     public Long getId() {
         return id;
@@ -121,35 +124,46 @@ public class ShippingOrigin extends BusinessDomain<Long, ShippingOrigin> impleme
         this.state = state;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ShippingOrigin shippingOrigin = (ShippingOrigin) o;
-        if (shippingOrigin.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, shippingOrigin.id);
+    public Zone getZone() {
+        return zone;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public ShippingOrigin zone(Zone zone) {
+        this.zone = zone;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "ShippingOrigin{" +
-            "id=" + id +
-            ", city='" + city + "'" +
-            ", postalCode='" + postalCode + "'" +
-            ", address='" + address + "'" +
-            ", active='" + active + "'" +
-            ", state='" + state + "'" +
-            '}';
+    public void setZone(Zone zone) {
+        this.zone = zone;
     }
+
+    public Country getCountry() {
+        return country;
+    }
+
+    public ShippingOrigin country(Country country) {
+        this.country = country;
+        return this;
+    }
+
+    public void setCountry(Country country) {
+        this.country = country;
+    }
+
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
+
+    public ShippingOrigin merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
+    }
+
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
+
+    
+
+    
 }

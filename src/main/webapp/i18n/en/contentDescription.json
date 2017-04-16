@@ -23,6 +23,8 @@
             "name": "Name",
             "seUrl": "Se Url",
             "metatagKeywords": "Metatag Keywords",
+            "content": "Content",
+            "language": "Language",
             "content": "Content"
         }
     }

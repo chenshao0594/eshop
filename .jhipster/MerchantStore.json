@@ -8,6 +8,30 @@
             "otherEntityField": "id"
         },
         {
+            "relationshipType": "many-to-one",
+            "relationshipName": "zone",
+            "otherEntityName": "zone",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "currency",
+            "otherEntityName": "currency",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "defaultLanguage",
+            "otherEntityName": "language",
+            "otherEntityField": "id"
+        },
+        {
             "relationshipType": "many-to-many",
             "relationshipName": "languages",
             "otherEntityName": "language",

@@ -37,6 +37,20 @@
         </div>
 
         <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productReviewDescription.language" for="field_language">Language</label>
+            <select class="form-control" id="field_language" name="language" [(ngModel)]="productReviewDescription.language" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="languageOption.id === productReviewDescription.language?.id ? productReviewDescription.language : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.productReviewDescription.productReview" for="field_productReview">Product Review</label>
+            <select class="form-control" id="field_productReview" name="productReview" [(ngModel)]="productReviewDescription.productReview" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productReviewOption.id === productReviewDescription.productReview?.id ? productReviewDescription.productReview : productReviewOption" *ngFor="let productReviewOption of productreviews; trackBy: trackProductReviewById">{{productReviewOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
             <label jhiTranslate="eshopApp.productReviewDescription.productReview" for="field_productReview">Product Review</label>
             <select class="form-control" id="field_productReview" name="productReview" [(ngModel)]="productReviewDescription.productReview" >
                 <option [ngValue]="null"></option>

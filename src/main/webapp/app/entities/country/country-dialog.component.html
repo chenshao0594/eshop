@@ -31,6 +31,13 @@
                 <option [ngValue]="geoZoneOption.id === country.geoZone?.id ? country.geoZone : geoZoneOption" *ngFor="let geoZoneOption of geozones; trackBy: trackGeoZoneById">{{geoZoneOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.country.geoZone" for="field_geoZone">Geo Zone</label>
+            <select class="form-control" id="field_geoZone" name="geoZone" [(ngModel)]="country.geoZone" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="geoZoneOption.id === country.geoZone?.id ? country.geoZone : geoZoneOption" *ngFor="let geoZoneOption of geozones; trackBy: trackGeoZoneById">{{geoZoneOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

@@ -34,6 +34,8 @@
             <th jhiSortBy="name"><span jhiTranslate="eshopApp.zoneDescription.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="eshopApp.zoneDescription.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="zone.id"><span jhiTranslate="eshopApp.zoneDescription.zone">Zone</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.zoneDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="zone.id"><span jhiTranslate="eshopApp.zoneDescription.zone">Zone</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,6 +45,16 @@
                 <td>{{zoneDescription.title}}</td>
                 <td>{{zoneDescription.name}}</td>
                 <td>{{zoneDescription.description}}</td>
+                <td>
+                    <div *ngIf="zoneDescription.zone">
+                        <a [routerLink]="['../zone', zoneDescription.zone?.id ]" >{{zoneDescription.zone?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="zoneDescription.language">
+                        <a [routerLink]="['../language', zoneDescription.language?.id ]" >{{zoneDescription.language?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="zoneDescription.zone">
                         <a [routerLink]="['../zone', zoneDescription.zone?.id ]" >{{zoneDescription.zone?.id}}</a>

@@ -12,6 +12,12 @@
             "relationshipName": "country",
             "otherEntityName": "country",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "country",
+            "otherEntityName": "country",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

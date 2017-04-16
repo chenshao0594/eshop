@@ -6,6 +6,12 @@
             "relationshipName": "descriptions",
             "otherEntityName": "contentDescription",
             "otherEntityRelationshipName": "content"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "merchantStore",
+            "otherEntityName": "merchantStore",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

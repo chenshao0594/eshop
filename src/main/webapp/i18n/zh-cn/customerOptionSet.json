@@ -16,7 +16,9 @@
             "detail": {
                 "title": "Customer Option Set"
             },
-            "sortOrder": "Sort Order"
+            "sortOrder": "Sort Order",
+            "customerOption": "Customer Option",
+            "customerOptionValue": "Customer Option Value"
         }
     }
 }

@@ -12,6 +12,20 @@
              />
         </div>
 
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.customerOptionSet.customerOption" for="field_customerOption">Customer Option</label>
+            <select class="form-control" id="field_customerOption" name="customerOption" [(ngModel)]="customerOptionSet.customerOption" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOptionOption.id === customerOptionSet.customerOption?.id ? customerOptionSet.customerOption : customerOptionOption" *ngFor="let customerOptionOption of customeroptions; trackBy: trackCustomerOptionById">{{customerOptionOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.customerOptionSet.customerOptionValue" for="field_customerOptionValue">Customer Option Value</label>
+            <select class="form-control" id="field_customerOptionValue" name="customerOptionValue" [(ngModel)]="customerOptionSet.customerOptionValue" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="customerOptionValueOption.id === customerOptionSet.customerOptionValue?.id ? customerOptionSet.customerOptionValue : customerOptionValueOption" *ngFor="let customerOptionValueOption of customeroptionvalues; trackBy: trackCustomerOptionValueById">{{customerOptionValueOption.id}}</option>
+            </select>
+        </div>
     </div>
 
     <button type="button"

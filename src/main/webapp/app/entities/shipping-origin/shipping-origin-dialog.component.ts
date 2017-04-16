@@ -8,6 +8,9 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { ShippingOrigin } from './shipping-origin.model';
 import { ShippingOriginPopupService } from './shipping-origin-popup.service';
 import { ShippingOriginService } from './shipping-origin.service';
+import { Zone, ZoneService } from '../zone';
+import { Country, CountryService } from '../country';
+import { MerchantStore, MerchantStoreService } from '../merchant-store';
 
 @Component({
     selector: 'jhi-shipping-origin-dialog',
@@ -18,10 +21,19 @@ export class ShippingOriginDialogComponent implements OnInit {
     shippingOrigin: ShippingOrigin;
     authorities: any[];
     isSaving: boolean;
+
+    zones: Zone[];
+
+    countries: Country[];
+
+    merchantstores: MerchantStore[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private shippingOriginService: ShippingOriginService,
+        private zoneService: ZoneService,
+        private countryService: CountryService,
+        private merchantStoreService: MerchantStoreService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['shippingOrigin']);
@@ -31,6 +43,12 @@ export class ShippingOriginDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.zoneService.query().subscribe(
+            (res: Response) => { this.zones = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.countryService.query().subscribe(
+            (res: Response) => { this.countries = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.merchantStoreService.query().subscribe(
+            (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -67,6 +85,18 @@ export class ShippingOriginDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackZoneById(index: number, item: Zone) {
+        return item.id;
+    }
+
+    trackCountryById(index: number, item: Country) {
+        return item.id;
+    }
+
+    trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
     }
 }
 

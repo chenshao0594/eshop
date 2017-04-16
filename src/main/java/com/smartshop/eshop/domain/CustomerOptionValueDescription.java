@@ -1,20 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A CustomerOptionValueDescription.
@@ -23,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "customer_option_value_desc")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "customeroptionvaluedescription")
-public class CustomerOptionValueDescription extends BusinessDomain<Long,CustomerOptionValueDescription> implements Serializable {
+public class CustomerOptionValueDescription extends BusinessDomain<Long,CustomerOptionValueDescription>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -40,6 +33,9 @@ public class CustomerOptionValueDescription extends BusinessDomain<Long,Customer
 
     @Column(name = "description")
     private String description;
+
+    @ManyToOne
+    private Language language;
 
     @ManyToOne
     private CustomerOptionValue customerOptionValue;
@@ -91,6 +87,19 @@ public class CustomerOptionValueDescription extends BusinessDomain<Long,Customer
         this.description = description;
     }
 
+    public Language getLanguage() {
+        return language;
+    }
+
+    public CustomerOptionValueDescription language(Language language) {
+        this.language = language;
+        return this;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
+    }
+
     public CustomerOptionValue getCustomerOptionValue() {
         return customerOptionValue;
     }
@@ -104,33 +113,7 @@ public class CustomerOptionValueDescription extends BusinessDomain<Long,Customer
         this.customerOptionValue = customerOptionValue;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        CustomerOptionValueDescription customerOptionValueDescription = (CustomerOptionValueDescription) o;
-        if (customerOptionValueDescription.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, customerOptionValueDescription.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "CustomerOptionValueDescription{" +
-            "id=" + id +
-            ", title='" + title + "'" +
-            ", name='" + name + "'" +
-            ", description='" + description + "'" +
-            '}';
-    }
+    
 }

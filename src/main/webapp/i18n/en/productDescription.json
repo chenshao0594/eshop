@@ -25,6 +25,8 @@
             "metatagTitle": "Metatag Title",
             "name": "Name",
             "productExternalDl": "Product External Dl",
+            "language": "Language",
+            "product": "Product",
             "product": "Product"
         }
     }

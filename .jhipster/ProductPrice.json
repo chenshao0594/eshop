@@ -12,6 +12,12 @@
             "relationshipName": "productAvailability",
             "otherEntityName": "productAvailability",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "productAvailability",
+            "otherEntityName": "productAvailability",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

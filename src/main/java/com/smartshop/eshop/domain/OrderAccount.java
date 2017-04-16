@@ -1,24 +1,16 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A OrderAccount.
@@ -27,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "order_account")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "orderaccount")
-public class OrderAccount extends BusinessDomain<Long, OrderAccount> implements Serializable {
+public class OrderAccount extends BusinessDomain<Long,OrderAccount>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -48,6 +40,9 @@ public class OrderAccount extends BusinessDomain<Long, OrderAccount> implements 
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<OrderAccountProduct> orderAccountProducts = new HashSet<>();
+
+    @ManyToOne
+    private SalesOrder order;
 
     public Long getId() {
         return id;
@@ -121,33 +116,20 @@ public class OrderAccount extends BusinessDomain<Long, OrderAccount> implements 
         this.orderAccountProducts = orderAccountProducts;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        OrderAccount orderAccount = (OrderAccount) o;
-        if (orderAccount.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, orderAccount.id);
+    public SalesOrder getOrder() {
+        return order;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public OrderAccount order(SalesOrder salesOrder) {
+        this.order = salesOrder;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "OrderAccount{" +
-            "id=" + id +
-            ", orderAccountStartDate='" + orderAccountStartDate + "'" +
-            ", orderAccountEndDate='" + orderAccountEndDate + "'" +
-            ", orderAccountBillDay='" + orderAccountBillDay + "'" +
-            '}';
+    public void setOrder(SalesOrder salesOrder) {
+        this.order = salesOrder;
     }
+
+    
+
+    
 }

@@ -6,6 +6,18 @@
             "relationshipName": "manufacturer",
             "otherEntityName": "manufacturer",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "language",
+            "otherEntityName": "language",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "relationshipName": "manufacturer",
+            "otherEntityName": "manufacturer",
+            "otherEntityField": "id"
         }
     ],
     "fields": [

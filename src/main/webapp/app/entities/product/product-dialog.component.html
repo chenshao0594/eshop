@@ -125,6 +125,34 @@
                 <option [ngValue]="taxClassOption.id === product.taxClass?.id ? product.taxClass : taxClassOption" *ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.product.manufacturer" for="field_manufacturer">Manufacturer</label>
+            <select class="form-control" id="field_manufacturer" name="manufacturer" [(ngModel)]="product.manufacturer" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="manufacturerOption.id === product.manufacturer?.id ? product.manufacturer : manufacturerOption" *ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">{{manufacturerOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.product.type" for="field_type">Type</label>
+            <select class="form-control" id="field_type" name="type" [(ngModel)]="product.type" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="productTypeOption.id === product.type?.id ? product.type : productTypeOption" *ngFor="let productTypeOption of producttypes; trackBy: trackProductTypeById">{{productTypeOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.product.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="product.merchantStore" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === product.merchantStore?.id ? product.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.product.taxClass" for="field_taxClass">Tax Class</label>
+            <select class="form-control" id="field_taxClass" name="taxClass" [(ngModel)]="product.taxClass" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="taxClassOption.id === product.taxClass?.id ? product.taxClass : taxClassOption" *ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

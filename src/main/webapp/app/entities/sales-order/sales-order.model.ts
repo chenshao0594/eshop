@@ -32,6 +32,8 @@ const enum OrderStatus {
 import { OrderTotal } from '../order-total';
 import { OrderStatusHistory } from '../order-status-history';
 import { OrderProduct } from '../order-product';
+import { Currency } from '../currency';
+import { MerchantStore } from '../merchant-store';
 export class SalesOrder {
     constructor(
         public id?: number,
@@ -55,6 +57,8 @@ export class SalesOrder {
         public orderTotal?: OrderTotal,
         public orderHistory?: OrderStatusHistory,
         public orderProducts?: OrderProduct,
+        public currency?: Currency,
+        public merchant?: MerchantStore,
     ) {
         this.confirmedAddress = false;
         this.customerAgreement = false;

@@ -34,6 +34,8 @@
             <th jhiSortBy="name"><span jhiTranslate="eshopApp.taxRateDescription.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="eshopApp.taxRateDescription.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="taxRate.id"><span jhiTranslate="eshopApp.taxRateDescription.taxRate">Tax Rate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.taxRateDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="taxRate.id"><span jhiTranslate="eshopApp.taxRateDescription.taxRate">Tax Rate</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -43,6 +45,16 @@
                 <td>{{taxRateDescription.title}}</td>
                 <td>{{taxRateDescription.name}}</td>
                 <td>{{taxRateDescription.description}}</td>
+                <td>
+                    <div *ngIf="taxRateDescription.taxRate">
+                        <a [routerLink]="['../tax-rate', taxRateDescription.taxRate?.id ]" >{{taxRateDescription.taxRate?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="taxRateDescription.language">
+                        <a [routerLink]="['../language', taxRateDescription.language?.id ]" >{{taxRateDescription.language?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="taxRateDescription.taxRate">
                         <a [routerLink]="['../tax-rate', taxRateDescription.taxRate?.id ]" >{{taxRateDescription.taxRate?.id}}</a>

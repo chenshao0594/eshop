@@ -35,6 +35,8 @@
             <th jhiSortBy="name"><span jhiTranslate="eshopApp.customerOptionDescription.name">Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="description"><span jhiTranslate="eshopApp.customerOptionDescription.description">Description</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="customerOption.id"><span jhiTranslate="eshopApp.customerOptionDescription.customerOption">Customer Option</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="language.id"><span jhiTranslate="eshopApp.customerOptionDescription.language">Language</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customerOption.id"><span jhiTranslate="eshopApp.customerOptionDescription.customerOption">Customer Option</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -45,6 +47,16 @@
                 <td>{{customerOptionDescription.customerOptionComment}}</td>
                 <td>{{customerOptionDescription.name}}</td>
                 <td>{{customerOptionDescription.description}}</td>
+                <td>
+                    <div *ngIf="customerOptionDescription.customerOption">
+                        <a [routerLink]="['../customer-option', customerOptionDescription.customerOption?.id ]" >{{customerOptionDescription.customerOption?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="customerOptionDescription.language">
+                        <a [routerLink]="['../language', customerOptionDescription.language?.id ]" >{{customerOptionDescription.language?.id}}</a>
+                    </div>
+                </td>
                 <td>
                     <div *ngIf="customerOptionDescription.customerOption">
                         <a [routerLink]="['../customer-option', customerOptionDescription.customerOption?.id ]" >{{customerOptionDescription.customerOption?.id}}</a>

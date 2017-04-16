@@ -20,7 +20,8 @@
             "email": "Email",
             "value": "Value",
             "firstName": "First Name",
-            "lastName": "Last Name"
+            "lastName": "Last Name",
+            "optin": "Optin"
         }
     }
 }

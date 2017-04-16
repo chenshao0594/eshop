@@ -31,6 +31,8 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="sortOrder"><span jhiTranslate="eshopApp.customerOptionSet.sortOrder">Sort Order</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customerOption.id"><span jhiTranslate="eshopApp.customerOptionSet.customerOption">Customer Option</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="customerOptionValue.id"><span jhiTranslate="eshopApp.customerOptionSet.customerOptionValue">Customer Option Value</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -38,6 +40,16 @@
             <tr *ngFor="let customerOptionSet of customerOptionSets ;trackBy: trackId">
                 <td><a [routerLink]="['../customer-option-set', customerOptionSet.id ]">{{customerOptionSet.id}}</a></td>
                 <td>{{customerOptionSet.sortOrder}}</td>
+                <td>
+                    <div *ngIf="customerOptionSet.customerOption">
+                        <a [routerLink]="['../customer-option', customerOptionSet.customerOption?.id ]" >{{customerOptionSet.customerOption?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="customerOptionSet.customerOptionValue">
+                        <a [routerLink]="['../customer-option-value', customerOptionSet.customerOptionValue?.id ]" >{{customerOptionSet.customerOptionValue?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

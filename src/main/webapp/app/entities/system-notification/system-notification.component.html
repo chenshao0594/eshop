@@ -34,6 +34,8 @@
             <th jhiSortBy="key"><span jhiTranslate="eshopApp.systemNotification.key">Key</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="startDate"><span jhiTranslate="eshopApp.systemNotification.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="value"><span jhiTranslate="eshopApp.systemNotification.value">Value</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.systemNotification.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="user.id"><span jhiTranslate="eshopApp.systemNotification.user">User</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -44,6 +46,14 @@
                 <td>{{systemNotification.key}}</td>
                 <td>{{systemNotification.startDate | date:'mediumDate'}}</td>
                 <td>{{systemNotification.value}}</td>
+                <td>
+                    <div *ngIf="systemNotification.merchantStore">
+                        <a [routerLink]="['../merchant-store', systemNotification.merchantStore?.id ]" >{{systemNotification.merchantStore?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    {{systemNotification.user?.id}}
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

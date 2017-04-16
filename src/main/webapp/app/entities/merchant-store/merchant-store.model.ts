@@ -1,4 +1,7 @@
 import { Language } from '../language';
+import { Zone } from '../zone';
+import { Currency } from '../currency';
+import { Country } from '../country';
 export class MerchantStore {
     constructor(
         public id?: number,
@@ -22,6 +25,9 @@ export class MerchantStore {
         public continueshoppingurl?: string,
         public storecity?: string,
         public defaultLanguage?: Language,
+        public zone?: Zone,
+        public currency?: Currency,
+        public country?: Country,
         public languages?: Language,
     ) {
         this.useCache = false;

@@ -51,6 +51,13 @@
                 <option [ngValue]="salesOrderOption.id === orderStatusHistory.order?.id ? orderStatusHistory.order : salesOrderOption" *ngFor="let salesOrderOption of salesorders; trackBy: trackSalesOrderById">{{salesOrderOption.id}}</option>
             </select>
         </div>
+        <div class="col-5 form-group">
+            <label jhiTranslate="eshopApp.orderStatusHistory.order" for="field_order">Order</label>
+            <select class="form-control" id="field_order" name="order" [(ngModel)]="orderStatusHistory.order" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="salesOrderOption.id === orderStatusHistory.order?.id ? orderStatusHistory.order : salesOrderOption" *ngFor="let salesOrderOption of salesorders; trackBy: trackSalesOrderById">{{salesOrderOption.id}}</option>
+            </select>
+        </div>
     </div>
     </div> 
     <div class="modal-footer">

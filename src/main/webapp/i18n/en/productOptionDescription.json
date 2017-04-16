@@ -20,6 +20,8 @@
             "title": "Title",
             "name": "Name",
             "description": "Description",
+            "productOption": "Product Option",
+            "language": "Language",
             "productOption": "Product Option"
         }
     }

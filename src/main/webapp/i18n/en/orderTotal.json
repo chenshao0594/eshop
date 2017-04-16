@@ -24,6 +24,7 @@
             "orderTotalType": "Order Total Type",
             "title": "Title",
             "module": "Module",
+            "order": "Order",
             "order": "Order"
         }
     }

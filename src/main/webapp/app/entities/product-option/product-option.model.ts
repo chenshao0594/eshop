@@ -1,4 +1,5 @@
 import { ProductOptionDescription } from '../product-option-description';
+import { MerchantStore } from '../merchant-store';
 export class ProductOption {
     constructor(
         public id?: number,
@@ -7,6 +8,7 @@ export class ProductOption {
         public code?: string,
         public productOptionSortOrder?: number,
         public descriptions?: ProductOptionDescription,
+        public merchantStore?: MerchantStore,
     ) {
         this.readOnly = false;
     }

@@ -9,6 +9,9 @@ import { MerchantStore } from './merchant-store.model';
 import { MerchantStorePopupService } from './merchant-store-popup.service';
 import { MerchantStoreService } from './merchant-store.service';
 import { Language, LanguageService } from '../language';
+import { Zone, ZoneService } from '../zone';
+import { Currency, CurrencyService } from '../currency';
+import { Country, CountryService } from '../country';
 
 @Component({
     selector: 'jhi-merchant-store-dialog',
@@ -21,11 +24,20 @@ export class MerchantStoreDialogComponent implements OnInit {
     isSaving: boolean;
 
     languages: Language[];
+
+    zones: Zone[];
+
+    currencies: Currency[];
+
+    countries: Country[];
         constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private merchantStoreService: MerchantStoreService,
         private languageService: LanguageService,
+        private zoneService: ZoneService,
+        private currencyService: CurrencyService,
+        private countryService: CountryService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['merchantStore']);
@@ -37,6 +49,12 @@ export class MerchantStoreDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.languageService.query().subscribe(
             (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.zoneService.query().subscribe(
+            (res: Response) => { this.zones = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.currencyService.query().subscribe(
+            (res: Response) => { this.currencies = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.countryService.query().subscribe(
+            (res: Response) => { this.countries = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -76,6 +94,18 @@ export class MerchantStoreDialogComponent implements OnInit {
     }
 
     trackLanguageById(index: number, item: Language) {
+        return item.id;
+    }
+
+    trackZoneById(index: number, item: Zone) {
+        return item.id;
+    }
+
+    trackCurrencyById(index: number, item: Currency) {
+        return item.id;
+    }
+
+    trackCountryById(index: number, item: Country) {
         return item.id;
     }
 

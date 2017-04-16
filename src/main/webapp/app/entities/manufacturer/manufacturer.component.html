@@ -33,6 +33,7 @@
             <th jhiSortBy="order"><span jhiTranslate="eshopApp.manufacturer.order">Order</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="image"><span jhiTranslate="eshopApp.manufacturer.image">Image</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.manufacturer.code">Code</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.manufacturer.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -42,6 +43,11 @@
                 <td>{{manufacturer.order}}</td>
                 <td>{{manufacturer.image}}</td>
                 <td>{{manufacturer.code}}</td>
+                <td>
+                    <div *ngIf="manufacturer.merchantStore">
+                        <a [routerLink]="['../merchant-store', manufacturer.merchantStore?.id ]" >{{manufacturer.merchantStore?.id}}</a>
+                    </div>
+                </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"

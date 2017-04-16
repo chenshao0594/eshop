@@ -1,24 +1,15 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A ShoppingCartItem.
@@ -27,7 +18,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "shopping_cart_item")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "shoppingcartitem")
-public class ShoppingCartItem extends BusinessDomain<Long, ShoppingCartItem> implements Serializable {
+public class ShoppingCartItem extends BusinessDomain<Long,ShoppingCartItem>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -121,32 +112,7 @@ public class ShoppingCartItem extends BusinessDomain<Long, ShoppingCartItem> imp
         this.shoppingCart = shoppingCart;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ShoppingCartItem shoppingCartItem = (ShoppingCartItem) o;
-        if (shoppingCartItem.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, shoppingCartItem.id);
-    }
+    
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
-    }
-
-    @Override
-    public String toString() {
-        return "ShoppingCartItem{" +
-            "id=" + id +
-            ", productId='" + productId + "'" +
-            ", quantity='" + quantity + "'" +
-            '}';
-    }
+    
 }

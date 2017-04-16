@@ -8,6 +8,8 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { CustomerAttribute } from './customer-attribute.model';
 import { CustomerAttributePopupService } from './customer-attribute-popup.service';
 import { CustomerAttributeService } from './customer-attribute.service';
+import { CustomerOptionValue, CustomerOptionValueService } from '../customer-option-value';
+import { CustomerOption, CustomerOptionService } from '../customer-option';
 import { Customer, CustomerService } from '../customer';
 
 @Component({
@@ -20,11 +22,17 @@ export class CustomerAttributeDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
+    customeroptionvalues: CustomerOptionValue[];
+
+    customeroptions: CustomerOption[];
+
     customers: Customer[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private customerAttributeService: CustomerAttributeService,
+        private customerOptionValueService: CustomerOptionValueService,
+        private customerOptionService: CustomerOptionService,
         private customerService: CustomerService,
         private eventManager: EventManager
     ) {
@@ -35,6 +43,10 @@ export class CustomerAttributeDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.customerOptionValueService.query().subscribe(
+            (res: Response) => { this.customeroptionvalues = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.customerOptionService.query().subscribe(
+            (res: Response) => { this.customeroptions = res.json(); }, (res: Response) => this.onError(res.json()));
         this.customerService.query().subscribe(
             (res: Response) => { this.customers = res.json(); }, (res: Response) => this.onError(res.json()));
     }
@@ -73,6 +85,14 @@ export class CustomerAttributeDialogComponent implements OnInit {
 
     private onError(error) {
         this.alertService.error(error.message, null, null);
+    }
+
+    trackCustomerOptionValueById(index: number, item: CustomerOptionValue) {
+        return item.id;
+    }
+
+    trackCustomerOptionById(index: number, item: CustomerOption) {
+        return item.id;
     }
 
     trackCustomerById(index: number, item: Customer) {

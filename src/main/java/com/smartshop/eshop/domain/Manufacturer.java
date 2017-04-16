@@ -1,24 +1,16 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A Manufacturer.
@@ -27,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "manufacturer")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "manufacturer")
-public class Manufacturer extends BusinessDomain<Long,Manufacturer> implements Serializable {
+public class Manufacturer extends BusinessDomain<Long,Manufacturer>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -49,6 +41,9 @@ public class Manufacturer extends BusinessDomain<Long,Manufacturer> implements S
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ManufacturerDescription> descriptions = new HashSet<>();
+
+    @ManyToOne
+    private MerchantStore merchantStore;
 
     public Long getId() {
         return id;
@@ -122,33 +117,20 @@ public class Manufacturer extends BusinessDomain<Long,Manufacturer> implements S
         this.descriptions = manufacturerDescriptions;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Manufacturer manufacturer = (Manufacturer) o;
-        if (manufacturer.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, manufacturer.id);
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public Manufacturer merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "Manufacturer{" +
-            "id=" + id +
-            ", order='" + order + "'" +
-            ", image='" + image + "'" +
-            ", code='" + code + "'" +
-            '}';
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
     }
+
+    
+
+    
 }

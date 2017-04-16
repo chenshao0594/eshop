@@ -1,19 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Objects;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.util.Objects;
 
 /**
  * A FileHistory.
@@ -22,7 +16,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "file_history")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "filehistory")
-public class FileHistory extends BusinessDomain<Long, FileHistory> implements Serializable {
+public class FileHistory extends BusinessDomain<Long,FileHistory>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -47,6 +41,9 @@ public class FileHistory extends BusinessDomain<Long, FileHistory> implements Se
 
     @Column(name = "filesize")
     private Integer filesize;
+
+    @ManyToOne
+    private MerchantStore store;
 
     public Long getId() {
         return id;
@@ -134,36 +131,20 @@ public class FileHistory extends BusinessDomain<Long, FileHistory> implements Se
         this.filesize = filesize;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        FileHistory fileHistory = (FileHistory) o;
-        if (fileHistory.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, fileHistory.id);
+    public MerchantStore getStore() {
+        return store;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public FileHistory store(MerchantStore merchantStore) {
+        this.store = merchantStore;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "FileHistory{" +
-            "id=" + id +
-            ", dateAdded='" + dateAdded + "'" +
-            ", dateDeleted='" + dateDeleted + "'" +
-            ", downloadCount='" + downloadCount + "'" +
-            ", fileId='" + fileId + "'" +
-            ", accountedDate='" + accountedDate + "'" +
-            ", filesize='" + filesize + "'" +
-            '}';
+    public void setStore(MerchantStore merchantStore) {
+        this.store = merchantStore;
     }
+
+    
+
+    
 }

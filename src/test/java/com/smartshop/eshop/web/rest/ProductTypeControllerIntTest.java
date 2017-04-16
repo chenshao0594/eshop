@@ -92,7 +92,6 @@ public class ProductTypeControllerIntTest {
     public static ProductType createEntity(EntityManager em) {
         ProductType productType = new ProductType()
             .code(DEFAULT_CODE)
-            .gENERALTYPE(DEFAULT_G_ENERALTYPE)
             .allowAddToCart(DEFAULT_ALLOW_ADD_TO_CART);
         return productType;
     }
@@ -119,7 +118,6 @@ public class ProductTypeControllerIntTest {
         assertThat(productTypeList).hasSize(databaseSizeBeforeCreate + 1);
         ProductType testProductType = productTypeList.get(productTypeList.size() - 1);
         assertThat(testProductType.getCode()).isEqualTo(DEFAULT_CODE);
-        assertThat(testProductType.getgENERALTYPE()).isEqualTo(DEFAULT_G_ENERALTYPE);
         assertThat(testProductType.isAllowAddToCart()).isEqualTo(DEFAULT_ALLOW_ADD_TO_CART);
 
         // Validate the ProductType in Elasticsearch
@@ -198,7 +196,6 @@ public class ProductTypeControllerIntTest {
         ProductType updatedProductType = productTypeRepository.findOne(productType.getId());
         updatedProductType
             .code(UPDATED_CODE)
-            .gENERALTYPE(UPDATED_G_ENERALTYPE)
             .allowAddToCart(UPDATED_ALLOW_ADD_TO_CART);
 
         restProductTypeMockMvc.perform(put("/api/product-types")
@@ -211,7 +208,6 @@ public class ProductTypeControllerIntTest {
         assertThat(productTypeList).hasSize(databaseSizeBeforeUpdate);
         ProductType testProductType = productTypeList.get(productTypeList.size() - 1);
         assertThat(testProductType.getCode()).isEqualTo(UPDATED_CODE);
-        assertThat(testProductType.getgENERALTYPE()).isEqualTo(UPDATED_G_ENERALTYPE);
         assertThat(testProductType.isAllowAddToCart()).isEqualTo(UPDATED_ALLOW_ADD_TO_CART);
 
         // Validate the ProductType in Elasticsearch

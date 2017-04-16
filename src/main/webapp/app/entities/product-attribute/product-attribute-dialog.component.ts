@@ -8,7 +8,9 @@ import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { ProductAttribute } from './product-attribute.model';
 import { ProductAttributePopupService } from './product-attribute-popup.service';
 import { ProductAttributeService } from './product-attribute.service';
+import { ProductOption, ProductOptionService } from '../product-option';
 import { Product, ProductService } from '../product';
+import { ProductOptionValue, ProductOptionValueService } from '../product-option-value';
 
 @Component({
     selector: 'jhi-product-attribute-dialog',
@@ -20,12 +22,18 @@ export class ProductAttributeDialogComponent implements OnInit {
     authorities: any[];
     isSaving: boolean;
 
+    productoptions: ProductOption[];
+
     products: Product[];
+
+    productoptionvalues: ProductOptionValue[];
     constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productAttributeService: ProductAttributeService,
+        private productOptionService: ProductOptionService,
         private productService: ProductService,
+        private productOptionValueService: ProductOptionValueService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['productAttribute']);
@@ -35,8 +43,12 @@ export class ProductAttributeDialogComponent implements OnInit {
     ngOnInit() {
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+        this.productOptionService.query().subscribe(
+            (res: Response) => { this.productoptions = res.json(); }, (res: Response) => this.onError(res.json()));
         this.productService.query().subscribe(
             (res: Response) => { this.products = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.productOptionValueService.query().subscribe(
+            (res: Response) => { this.productoptionvalues = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
         window.history.back();
@@ -75,7 +87,15 @@ export class ProductAttributeDialogComponent implements OnInit {
         this.alertService.error(error.message, null, null);
     }
 
+    trackProductOptionById(index: number, item: ProductOption) {
+        return item.id;
+    }
+
     trackProductById(index: number, item: Product) {
+        return item.id;
+    }
+
+    trackProductOptionValueById(index: number, item: ProductOptionValue) {
         return item.id;
     }
 }

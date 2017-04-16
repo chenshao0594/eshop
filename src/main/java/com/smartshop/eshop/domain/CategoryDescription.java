@@ -1,18 +1,13 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
+
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.Objects;
 
 /**
  * A CategoryDescription.
@@ -21,16 +16,25 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "category_description")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "categorydescription")
-public class CategoryDescription extends Description implements Serializable {
+public class CategoryDescription extends BusinessDomain<Long,CategoryDescription>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "category_highlight")
     private String categoryHighlight;
 
+    @Column(name = "title")
+    private String title;
 
     @Column(name = "metatag_description")
     private String metatagDescription;
+
+    @Column(name = "description")
+    private String description;
 
     @Column(name = "se_url")
     private String seUrl;
@@ -38,11 +42,26 @@ public class CategoryDescription extends Description implements Serializable {
     @Column(name = "metatag_keywords")
     private String metatagKeywords;
 
+    @NotNull
+    @Column(name = "name", nullable = false)
+    private String name;
+
     @Column(name = "metatag_title")
     private String metatagTitle;
 
     @ManyToOne
+    private Language language;
+
+    @ManyToOne
     private Category category;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public String getCategoryHighlight() {
         return categoryHighlight;
@@ -57,6 +76,18 @@ public class CategoryDescription extends Description implements Serializable {
         this.categoryHighlight = categoryHighlight;
     }
 
+    public String getTitle() {
+        return title;
+    }
+
+    public CategoryDescription title(String title) {
+        this.title = title;
+        return this;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public String getMetatagDescription() {
         return metatagDescription;
@@ -71,6 +102,18 @@ public class CategoryDescription extends Description implements Serializable {
         this.metatagDescription = metatagDescription;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public CategoryDescription description(String description) {
+        this.description = description;
+        return this;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
     public String getSeUrl() {
         return seUrl;
@@ -98,6 +141,19 @@ public class CategoryDescription extends Description implements Serializable {
         this.metatagKeywords = metatagKeywords;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public CategoryDescription name(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     public String getMetatagTitle() {
         return metatagTitle;
     }
@@ -109,6 +165,20 @@ public class CategoryDescription extends Description implements Serializable {
 
     public void setMetatagTitle(String metatagTitle) {
         this.metatagTitle = metatagTitle;
+    }
+
+
+    public Language getLanguage() {
+        return language;
+    }
+
+    public CategoryDescription language(Language language) {
+        this.language = language;
+        return this;
+    }
+
+    public void setLanguage(Language language) {
+        this.language = language;
     }
 
     public Category getCategory() {

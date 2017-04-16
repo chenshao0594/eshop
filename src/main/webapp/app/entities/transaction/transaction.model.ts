@@ -18,6 +18,7 @@ const enum PaymentType {
     'WEPAY'
 
 };
+import { SalesOrder } from '../sales-order';
 export class Transaction {
     constructor(
         public id?: number,
@@ -26,6 +27,7 @@ export class Transaction {
         public transactionDate?: any,
         public paymentType?: PaymentType,
         public amount?: number,
+        public order?: SalesOrder,
     ) {
     }
 }

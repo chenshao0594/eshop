@@ -206,7 +206,6 @@ public class CurrencyControllerIntTest {
             .code(UPDATED_CODE)
             .supported(UPDATED_SUPPORTED)
             .name(UPDATED_NAME);
-
         restCurrencyMockMvc.perform(put("/api/currencies")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(updatedCurrency)))

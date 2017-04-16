@@ -1,27 +1,16 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
-
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import javax.persistence.*;
+import javax.validation.constraints.*;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Objects;
 
 /**
  * A ProductOption.
@@ -30,7 +19,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "product_option")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productoption")
-public class ProductOption extends BusinessDomain<Long, ProductOption> implements Serializable {
+public class ProductOption extends BusinessDomain<Long,ProductOption>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -55,25 +44,11 @@ public class ProductOption extends BusinessDomain<Long, ProductOption> implement
     @JsonIgnore
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<ProductOptionDescription> descriptions = new HashSet<>();
-    
-    @ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MERCHANT_ID", nullable=false)
-	private MerchantStore merchantStore;
-	
 
-    public MerchantStore getMerchantStore() {
-		return merchantStore;
-	}
+    @ManyToOne
+    private MerchantStore merchantStore;
 
-	public void setMerchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-	}
-
-	public Boolean getReadOnly() {
-		return readOnly;
-	}
-
-	public Long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -158,34 +133,20 @@ public class ProductOption extends BusinessDomain<Long, ProductOption> implement
         this.descriptions = productOptionDescriptions;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        ProductOption productOption = (ProductOption) o;
-        if (productOption.id == null || id == null) {
-            return false;
-        }
-        return Objects.equals(id, productOption.id);
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
     }
 
-    @Override
-    public int hashCode() {
-        return Objects.hashCode(id);
+    public ProductOption merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
     }
 
-    @Override
-    public String toString() {
-        return "ProductOption{" +
-            "id=" + id +
-            ", readOnly='" + readOnly + "'" +
-            ", productOptionType='" + productOptionType + "'" +
-            ", code='" + code + "'" +
-            ", productOptionSortOrder='" + productOptionSortOrder + "'" +
-            '}';
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
     }
+
+    
+
+    
 }

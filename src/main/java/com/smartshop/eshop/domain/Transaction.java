@@ -1,24 +1,18 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.smartshop.eshop.domain.enumeration.PaymentType;
+import javax.persistence.*;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.util.Objects;
+
 import com.smartshop.eshop.domain.enumeration.TransactionType;
+
+import com.smartshop.eshop.domain.enumeration.PaymentType;
 
 /**
  * A Transaction.
@@ -27,7 +21,7 @@ import com.smartshop.eshop.domain.enumeration.TransactionType;
 @Table(name = "transaction")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "transaction")
-public class Transaction extends BusinessDomain<Long, Transaction> implements Serializable {
+public class Transaction extends BusinessDomain<Long,Transaction>  implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -51,6 +45,9 @@ public class Transaction extends BusinessDomain<Long, Transaction> implements Se
 
     @Column(name = "amount", precision=10, scale=2)
     private BigDecimal amount;
+
+    @ManyToOne
+    private SalesOrder order;
 
     public Long getId() {
         return id;
@@ -124,4 +121,21 @@ public class Transaction extends BusinessDomain<Long, Transaction> implements Se
     public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
+
+    public SalesOrder getOrder() {
+        return order;
+    }
+
+    public Transaction order(SalesOrder salesOrder) {
+        this.order = salesOrder;
+        return this;
+    }
+
+    public void setOrder(SalesOrder salesOrder) {
+        this.order = salesOrder;
+    }
+
+    
+
+    
 }

@@ -57,6 +57,7 @@
                 "salesOrder": "Sales Order",
                  "orderProductAttribute": "Order Product Attribute",
                 "template": "Template",
+                "productAvailability": "Product Availability",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "categories": {
