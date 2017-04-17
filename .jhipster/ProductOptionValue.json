@@ -33,6 +33,28 @@
         {
             "fieldName": "productOptionDisplayOnly",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "created_by",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "created_date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "last_modified_by",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "last_modified_date",
+            "fieldType": "LocalDate"
         }
     ],
     "changelogDate": "20170415184111",
