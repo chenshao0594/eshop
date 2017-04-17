@@ -34,7 +34,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="created_date" type="date">
+            <column name="created_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
@@ -42,7 +42,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="last_modified_date" type="date">
+            <column name="last_modified_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
@@ -52,6 +52,11 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/init/tax_class.csv"
+                  separator=","
+                  tableName="tax_class">
+        </loadData>
         
     </changeSet>
 </databaseChangeLog>

@@ -50,7 +50,7 @@
         </createTable>
          <loadData encoding="UTF-8"
                   file="config/liquibase/init/zone.csv"
-                  separator=";"
+                  separator=","
                   tableName="zone">
         </loadData>
         

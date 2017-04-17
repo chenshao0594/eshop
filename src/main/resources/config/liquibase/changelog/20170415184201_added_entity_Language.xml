@@ -34,7 +34,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="created_date" type="date">
+            <column name="created_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
@@ -42,7 +42,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="last_modified_date" type="date">
+            <column name="last_modified_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
@@ -57,6 +57,11 @@
                 <constraints nullable="false"/>
             </column>
         </createTable>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/init/language.csv"
+                  separator=","
+                  tableName="language">
+        </loadData>
 
         <addPrimaryKey columnNames="languages_id, stores_id" tableName="language_stores"/>
         

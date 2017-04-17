@@ -1,15 +1,15 @@
-DESCRIPTION_ID;"DATE_CREATED";"DATE_MODIFIED";"UPDT_ID";"DESCRIPTION";"NAME";"TITLE";"CATEGORY_HIGHLIGHT";"META_DESCRIPTION";"META_KEYWORDS";"META_TITLE";"SEF_URL";LANGUAGE_ID;CATEGORY_ID
-600;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Computer Books";;;;;;"computer-books";1;1
-601;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Livres d'informatique";;;;;;"livres-informatiques";2;1
-602;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Novels";;;;;;"novels";1;2
-603;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Romans";;;;;;"romans";2;2
-604;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Technology";;;;;;"technology";1;3
-605;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Technologie";;;;;;"technologie";2;3
-606;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Web";;;;;;"the-web";1;4
-607;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Web";;;;;;"le-web";2;4
-608;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Fiction";;;;;;"fiction";1;5
-609;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Sc Fiction";;;;;;"fiction";2;5
-610;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Business";;;;;;"business";1;6
-611;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Affaires";;;;;;"affaires";2;6
-612;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Cloud computing";;;;;;"cloud-computing";1;7
-613;"2017-04-16 22:59:11";"2017-04-16 22:59:11";;;"Programmation pour le cloud";;;;;;"programmation-cloud";2;7
+ID,UPDT_ID,DESCRIPTION,NAME,TITLE,CATEGORY_HIGHLIGHT,META_DESCRIPTION,META_KEYWORDS,META_TITLE,SEF_URL,LANGUAGE_ID,CATEGORY_ID
+600,,,Computer Books,,,,,,computer-books,1,1
+601,,,Livres d'informatique,,,,,,livres-informatiques,2,1
+602,,,Novels,,,,,,novels,1,2
+603,,,Romans,,,,,,romans,2,2
+604,,,Technology,,,,,,technology,1,3
+605,,,Technologie,,,,,,technologie,2,3
+606,,,Web,,,,,,the-web,1,4
+607,,,Web,,,,,,le-web,2,4
+608,,,Fiction,,,,,,fiction,1,5
+609,,,Sc Fiction,,,,,,fiction,2,5
+610,,,Business,,,,,,business,1,6
+611,,,Affaires,,,,,,affaires,2,6
+612,,,Cloud computing,,,,,,cloud-computing,1,7
+613,,,Programmation pour le cloud,,,,,,programmation-cloud,2,7
