@@ -26,12 +26,6 @@
             "otherEntityField": "id"
         },
         {
-            "relationshipType": "many-to-one",
-            "relationshipName": "defaultLanguage",
-            "otherEntityName": "language",
-            "otherEntityField": "id"
-        },
-        {
             "relationshipType": "many-to-many",
             "relationshipName": "languages",
             "otherEntityName": "language",

@@ -6,12 +6,6 @@
             "relationshipName": "orderProduct",
             "otherEntityName": "orderProduct",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "orderProduct",
-            "otherEntityName": "orderProduct",
-            "otherEntityField": "id"
         }
     ],
     "fields": [

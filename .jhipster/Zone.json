@@ -12,18 +12,28 @@
             "relationshipName": "country",
             "otherEntityName": "country",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "country",
-            "otherEntityName": "country",
-            "otherEntityField": "id"
         }
     ],
     "fields": [
         {
             "fieldName": "code",
             "fieldType": "String"
+        },
+        {
+            "fieldName": "created_by",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "created_date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "last_modified_by",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "last_modified_date",
+            "fieldType": "LocalDate"
         }
     ],
     "changelogDate": "20170415184210",

@@ -12,12 +12,6 @@
             "relationshipName": "customer",
             "otherEntityName": "customer",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "customer",
-            "otherEntityName": "customer",
-            "otherEntityField": "id"
         }
     ],
     "fields": [

@@ -36,18 +36,6 @@
             "relationshipName": "merchantStore",
             "otherEntityName": "merchantStore",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "taxClass",
-            "otherEntityName": "taxClass",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "parent",
-            "otherEntityName": "taxRate",
-            "otherEntityField": "id"
         }
     ],
     "fields": [

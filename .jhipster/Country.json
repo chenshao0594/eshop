@@ -18,12 +18,6 @@
             "relationshipName": "geoZone",
             "otherEntityName": "geoZone",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "geoZone",
-            "otherEntityName": "geoZone",
-            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -34,6 +28,22 @@
         {
             "fieldName": "supported",
             "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "created_by",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "created_date",
+            "fieldType": "LocalDate"
+        },
+        {
+            "fieldName": "last_modified_by",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "last_modified_date",
+            "fieldType": "LocalDate"
         }
     ],
     "changelogDate": "20170415184206",

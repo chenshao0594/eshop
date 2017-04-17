@@ -12,12 +12,6 @@
             "relationshipName": "product",
             "otherEntityName": "product",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "product",
-            "otherEntityName": "product",
-            "otherEntityField": "id"
         }
     ],
     "fields": [

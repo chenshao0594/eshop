@@ -12,12 +12,6 @@
             "relationshipName": "language",
             "otherEntityName": "language",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "zone",
-            "otherEntityName": "zone",
-            "otherEntityField": "id"
         }
     ],
     "fields": [

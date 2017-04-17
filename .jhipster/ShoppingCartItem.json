@@ -12,12 +12,6 @@
             "relationshipName": "shoppingCart",
             "otherEntityName": "shoppingCart",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "shoppingCart",
-            "otherEntityName": "shoppingCart",
-            "otherEntityField": "id"
         }
     ],
     "fields": [

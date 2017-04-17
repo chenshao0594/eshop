@@ -12,12 +12,6 @@
             "relationshipName": "orderAccount",
             "otherEntityName": "orderAccount",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "orderAccount",
-            "otherEntityName": "orderAccount",
-            "otherEntityField": "id"
         }
     ],
     "fields": [

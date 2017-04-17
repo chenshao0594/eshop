@@ -24,12 +24,6 @@
             "relationshipName": "parent",
             "otherEntityName": "category",
             "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "parent",
-            "otherEntityName": "category",
-            "otherEntityField": "id"
         }
     ],
     "fields": [

@@ -33,12 +33,6 @@
         },
         {
             "relationshipType": "many-to-one",
-            "relationshipName": "taxClass",
-            "otherEntityName": "taxClass",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
             "relationshipName": "manufacturer",
             "otherEntityName": "manufacturer",
             "otherEntityField": "id"
