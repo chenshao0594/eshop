@@ -22,7 +22,7 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="config_details" type="varchar(255)">
+            <column name="details" type="clob">
                 <constraints nullable="true" />
             </column>
 
@@ -30,7 +30,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="jhi_type" type="varchar(255)">
+            <column name="config_type" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -50,7 +50,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="configuration" type="varchar(255)">
+            <column name="configuration" type="clob">
                 <constraints nullable="true" />
             </column>
 
@@ -58,7 +58,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="created_date" type="date">
+            <column name="created_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
@@ -66,12 +66,17 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="last_modified_date" type="date">
+            <column name="last_modified_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/init/INTEGRATION_MODULE.csv"
+                  separator=";"
+                  tableName="integration_module">
+        </loadData>
         
     </changeSet>
 </databaseChangeLog>

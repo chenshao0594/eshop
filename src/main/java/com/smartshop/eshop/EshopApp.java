@@ -27,7 +27,7 @@ import io.github.jhipster.config.JHipsterConstants;
 @EnableAutoConfiguration(exclude = { MetricFilterAutoConfiguration.class, MetricRepositoryAutoConfiguration.class })
 @EnableConfigurationProperties({ LiquibaseProperties.class, ApplicationProperties.class })
 public class EshopApp {
-	private static final Logger log = LoggerFactory.getLogger(EshopApp.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(EshopApp.class);
 
 	private final Environment env;
 
@@ -50,12 +50,12 @@ public class EshopApp {
 		Collection<String> activeProfiles = Arrays.asList(env.getActiveProfiles());
 		if (activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)
 				&& activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_PRODUCTION)) {
-			log.error("You have misconfigured your application! It should not run "
+			LOGGER.error("You have misconfigured your application! It should not run "
 					+ "with both the 'dev' and 'prod' profiles at the same time.");
 		}
 		if (activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_DEVELOPMENT)
 				&& activeProfiles.contains(JHipsterConstants.SPRING_PROFILE_CLOUD)) {
-			log.error("You have misconfigured your application! It should not"
+			LOGGER.error("You have misconfigured your application! It should not"
 					+ "run with both the 'dev' and 'cloud' profiles at the same time.");
 		}
 	}
@@ -76,7 +76,7 @@ public class EshopApp {
 		if (env.getProperty("server.ssl.key-store") != null) {
 			protocol = "https";
 		}
-		log.info(
+		LOGGER.info(
 				"\n----------------------------------------------------------\n\t"
 						+ "Application '{}' is running! Access URLs:\n\t" + "Local: \t\t{}://localhost:{}\n\t"
 						+ "External: \t{}://{}:{}\n\t"

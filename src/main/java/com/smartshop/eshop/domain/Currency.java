@@ -22,13 +22,13 @@ public class Currency extends BusinessDomain<Long, Currency> implements Serializ
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "code")
+	@Column(name = "CURRENCY_CODE")
 	private String code;
 
-	@Column(name = "supported")
-	private Boolean supported;
+	@Column(name = "CURRENCY_SUPPORTED")
+	private Boolean supported =true;
 
-	@Column(name = "name")
+	@Column(name = "CURRENCY_NAME")
 	private String name;
 
 	@Column(name = "CURRENCY_CURRENCY_CODE", nullable = false, unique = true)

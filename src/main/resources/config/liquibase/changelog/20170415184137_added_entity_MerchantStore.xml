@@ -22,27 +22,27 @@
             <column name="id" type="bigint" autoIncrement="${autoIncrement}">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
-            <column name="storeaddress" type="varchar(255)">
+            <column name="store_address" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="code" type="varchar(255)">
+            <column name="STORE_CODE" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="storename" type="varchar(255)">
+            <column name="store_name" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="store_email_address" type="varchar(255)">
+            <column name="store_email" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="d_efaultstore" type="varchar(255)">
+            <column name="default_store" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
-            <column name="storephone" type="varchar(255)">
+            <column name="store_phone" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
@@ -78,7 +78,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="storepostalcode" type="varchar(255)">
+            <column name="store_postal_code" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
@@ -86,7 +86,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="storestateprovince" type="varchar(255)">
+            <column name="STORE_STATE_PROVINCE" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 
@@ -94,7 +94,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="storecity" type="varchar(255)">
+            <column name="store_city" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
@@ -102,7 +102,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="created_date" type="date">
+            <column name="created_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
@@ -110,11 +110,11 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="last_modified_date" type="date">
+            <column name="last_modified_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
-            <column name="default_language_id" type="bigint">
+            <column name="LANGUAGE_ID" type="bigint">
                 <constraints nullable="true" />
             </column>
 
@@ -132,6 +132,11 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/init/merchant_store.csv"
+                  separator=","
+                  tableName="merchant_store">
+        </loadData>
         
     </changeSet>
 </databaseChangeLog>

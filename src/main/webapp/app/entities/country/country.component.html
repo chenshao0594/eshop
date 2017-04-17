@@ -33,7 +33,6 @@
             <th jhiSortBy="isoCode"><span jhiTranslate="eshopApp.country.isoCode">Iso Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="supported"><span jhiTranslate="eshopApp.country.supported">Supported</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="geoZone.id"><span jhiTranslate="eshopApp.country.geoZone">Geo Zone</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="geoZone.id"><span jhiTranslate="eshopApp.country.geoZone">Geo Zone</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -42,11 +41,6 @@
                 <td><a [routerLink]="['../country', country.id ]">{{country.id}}</a></td>
                 <td>{{country.isoCode}}</td>
                 <td>{{country.supported}}</td>
-                <td>
-                    <div *ngIf="country.geoZone">
-                        <a [routerLink]="['../geo-zone', country.geoZone?.id ]" >{{country.geoZone?.id}}</a>
-                    </div>
-                </td>
                 <td>
                     <div *ngIf="country.geoZone">
                         <a [routerLink]="['../geo-zone', country.geoZone?.id ]" >{{country.geoZone?.id}}</a>

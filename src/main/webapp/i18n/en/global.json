@@ -85,6 +85,12 @@
 			"order": {
 				"main": "Order"
 			},
+			"audit":{
+			"createdBy":"Creator",
+			"createdDate":"Create Date",
+			"lastModifiedBy": "Last Modified By",
+			"last_modified_date": "Last Modified Date"
+			},
 			"account": {
 				"main": "Account",
 				"settings": "Settings",

@@ -30,7 +30,7 @@ public abstract class AbstractAuditingEntity implements Serializable {
 	private String createdBy;
 
 	@CreatedDate
-	@Column(name = "created_date", nullable = false)
+	@Column(name = "created_date", nullable = false, updatable=false)
 	private ZonedDateTime createdDate = ZonedDateTime.now();
 
 	@LastModifiedBy
@@ -38,7 +38,7 @@ public abstract class AbstractAuditingEntity implements Serializable {
 	private String lastModifiedBy;
 
 	@LastModifiedDate
-	@Column(name = "last_modified_date")
+	@Column(name = "last_modified_date",nullable = false)
 	private ZonedDateTime lastModifiedDate = ZonedDateTime.now();
 
 	public String getCreatedBy() {

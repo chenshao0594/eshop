@@ -42,7 +42,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="jhi_password" type="varchar(255)">
+            <column name="Email_password" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
@@ -50,7 +50,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="created_date" type="date">
+            <column name="created_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
@@ -58,12 +58,17 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="last_modified_date" type="date">
+            <column name="last_modified_date" type="date" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+        <loadData encoding="UTF-8"
+                  file="config/liquibase/init/email_setting.csv"
+                  separator=","
+                  tableName="email_setting">
+        </loadData>
         
     </changeSet>
 </databaseChangeLog>

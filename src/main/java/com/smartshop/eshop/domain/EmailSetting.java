@@ -15,7 +15,7 @@ import com.smartshop.eshop.domain.enumeration.SMTPSecurityEnum;
 @Entity
 @Table(name = "email_setting")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-@Document(indexName = "emailsetting")
+@Document(indexName="emailsetting")
 public class EmailSetting extends BusinessDomain<Long, EmailSetting> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
@@ -46,7 +46,7 @@ public class EmailSetting extends BusinessDomain<Long, EmailSetting> implements 
 	private String userName;
 
 	@NotNull
-	@Column(name = "jhi_password", nullable = false)
+	@Column(name = "Email_password", nullable = false)
 	private String password;
 
 	@Override

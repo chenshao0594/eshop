@@ -22,10 +22,10 @@ public class SystemConfiguration extends BusinessDomain<Long, SystemConfiguratio
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "jhi_key")
+	@Column(name = "CONFIG_KEY")
 	private String key;
 
-	@Column(name = "jhi_value")
+	@Column(name = "value")
 	private String value;
 
 	@Override

@@ -34,22 +34,14 @@
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.merchantStore.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="storename"><span jhiTranslate="eshopApp.merchantStore.storename">Storename</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="storeEmailAddress"><span jhiTranslate="eshopApp.merchantStore.storeEmailAddress">Store Email Address</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="dEFAULTSTORE"><span jhiTranslate="eshopApp.merchantStore.dEFAULTSTORE">D EFAULTSTORE</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="defaultStore"><span jhiTranslate="eshopApp.merchantStore.defaultStore">Default Store</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="storephone"><span jhiTranslate="eshopApp.merchantStore.storephone">Storephone</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="weightunitcode"><span jhiTranslate="eshopApp.merchantStore.weightunitcode">Weightunitcode</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="useCache"><span jhiTranslate="eshopApp.merchantStore.useCache">Use Cache</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="storeTemplate"><span jhiTranslate="eshopApp.merchantStore.storeTemplate">Store Template</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="domainName"><span jhiTranslate="eshopApp.merchantStore.domainName">Domain Name</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="invoiceTemplate"><span jhiTranslate="eshopApp.merchantStore.invoiceTemplate">Invoice Template</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="storeLogo"><span jhiTranslate="eshopApp.merchantStore.storeLogo">Store Logo</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="inBusinessSince"><span jhiTranslate="eshopApp.merchantStore.inBusinessSince">In Business Since</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="currencyFormatNational"><span jhiTranslate="eshopApp.merchantStore.currencyFormatNational">Currency Format National</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="storepostalcode"><span jhiTranslate="eshopApp.merchantStore.storepostalcode">Storepostalcode</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="seizeunitcode"><span jhiTranslate="eshopApp.merchantStore.seizeunitcode">Seizeunitcode</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="storestateprovince"><span jhiTranslate="eshopApp.merchantStore.storestateprovince">Storestateprovince</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="continueshoppingurl"><span jhiTranslate="eshopApp.merchantStore.continueshoppingurl">Continueshoppingurl</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="storecity"><span jhiTranslate="eshopApp.merchantStore.storecity">Storecity</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="defaultLanguage.id"><span jhiTranslate="eshopApp.merchantStore.defaultLanguage">Default Language</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="zone.id"><span jhiTranslate="eshopApp.merchantStore.zone">Zone</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="currency.id"><span jhiTranslate="eshopApp.merchantStore.currency">Currency</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="country.id"><span jhiTranslate="eshopApp.merchantStore.country">Country</span> <span class="fa fa-sort"></span></th>
@@ -64,26 +56,14 @@
                 <td>{{merchantStore.code}}</td>
                 <td>{{merchantStore.storename}}</td>
                 <td>{{merchantStore.storeEmailAddress}}</td>
-                <td>{{merchantStore.dEFAULTSTORE}}</td>
+                <td>{{merchantStore.defaultStore}}</td>
                 <td>{{merchantStore.storephone}}</td>
-                <td>{{merchantStore.weightunitcode}}</td>
-                <td>{{merchantStore.useCache}}</td>
-                <td>{{merchantStore.storeTemplate}}</td>
                 <td>{{merchantStore.domainName}}</td>
-                <td>{{merchantStore.invoiceTemplate}}</td>
                 <td>{{merchantStore.storeLogo}}</td>
                 <td>{{merchantStore.inBusinessSince | date:'mediumDate'}}</td>
                 <td>{{merchantStore.currencyFormatNational}}</td>
                 <td>{{merchantStore.storepostalcode}}</td>
                 <td>{{merchantStore.seizeunitcode}}</td>
-                <td>{{merchantStore.storestateprovince}}</td>
-                <td>{{merchantStore.continueshoppingurl}}</td>
-                <td>{{merchantStore.storecity}}</td>
-                <td>
-                    <div *ngIf="merchantStore.defaultLanguage">
-                        <a [routerLink]="['../language', merchantStore.defaultLanguage?.id ]" >{{merchantStore.defaultLanguage?.id}}</a>
-                    </div>
-                </td>
                 <td>
                     <div *ngIf="merchantStore.zone">
                         <a [routerLink]="['../zone', merchantStore.zone?.id ]" >{{merchantStore.zone?.id}}</a>

@@ -1,27 +1,33 @@
 package com.smartshop.eshop.domain;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.smartshop.eshop.common.MeasureUnit;
 
 /**
  * A MerchantStore.
@@ -39,87 +45,89 @@ public class MerchantStore extends BusinessDomain<Long, MerchantStore> implement
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "storeaddress")
-	private String storeaddress;
-
-	@NotNull
-	@Pattern(regexp = "^[a-zA-Z0-9_]*$")
-	@Column(name = "code", nullable = false)
-	private String code;
-
-	@NotNull
-	@Column(name = "storename", nullable = false)
+	@NotEmpty
+	@Column(name = "STORE_NAME", nullable=false, length=100)
 	private String storename;
-
-	@NotNull
-	@Column(name = "store_email_address", nullable = false)
-	private String storeEmailAddress;
-
-	@Column(name = "d_efaultstore")
-	private String dEFAULTSTORE;
-
-	@NotNull
-	@Column(name = "storephone", nullable = false)
+	
+	@NotEmpty
+	@Pattern(regexp="^[a-zA-Z0-9_]*$")
+	@Column(name = "STORE_CODE", nullable=false, unique=true, length=100)
+	private String code;
+	
+	@NotEmpty
+	@Column(name = "STORE_PHONE", length=50)
 	private String storephone;
 
-	@Column(name = "weightunitcode")
-	private String weightunitcode;
+	@Column(name = "STORE_ADDRESS")
+	private String storeaddress;
 
-	@Column(name = "use_cache")
-	private Boolean useCache;
-
-	@Column(name = "store_template")
-	private String storeTemplate;
-
-	@Column(name = "domain_name")
-	private String domainName;
-
-	@Column(name = "invoice_template")
-	private String invoiceTemplate;
-
-	@Column(name = "store_logo")
-	private String storeLogo;
-
-	@Column(name = "in_business_since")
-	private LocalDate inBusinessSince;
-
-	@Column(name = "currency_format_national")
-	private Boolean currencyFormatNational;
-
-	@NotNull
-	@Column(name = "storepostalcode", nullable = false)
-	private String storepostalcode;
-
-	@Column(name = "seizeunitcode")
-	private String seizeunitcode;
-
-	@Column(name = "storestateprovince")
-	private String storestateprovince;
-
-	@Column(name = "continueshoppingurl")
-	private String continueshoppingurl;
-
-	@NotNull
-	@Column(name = "storecity", nullable = false)
+	@NotEmpty
+	@Column(name = "STORE_CITY", length=100)
 	private String storecity;
 
-	@ManyToOne
-	private Zone zone;
+	@NotEmpty
+	@Column(name = "STORE_POSTAL_CODE", length=15)
+	private String storepostalcode;
 
-	@ManyToOne
-	private Currency currency;
-
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Country.class)
+	@JoinColumn(name="COUNTRY_ID", nullable=false, updatable=true)
 	private Country country;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Zone.class)
+	@JoinColumn(name="ZONE_ID", nullable=true, updatable=true)
+	private Zone zone;
+
+	@Column(name = "STORE_STATE_PROVINCE", length=100)
+	private String storestateprovince;
+	
+	@Column(name = "WEIGHTUNITCODE", length=5)
+	private String weightunitcode = MeasureUnit.LB.name();
+
+	@Column(name = "SEIZEUNITCODE", length=5)
+	private String seizeunitcode = MeasureUnit.IN.name();
+
+	@Temporal(TemporalType.DATE)
+	@Column(name = "IN_BUSINESS_SINCE")
+	private Date inBusinessSince = new Date();
+	
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Language.class)
+	@JoinColumn(name = "LANGUAGE_ID", nullable=false)
 	private Language defaultLanguage;
 
-	@ManyToMany(mappedBy = "stores")
-	@JsonIgnore
-	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	private Set<Language> languages = new HashSet<>();
-
+	@NotEmpty
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "MERCHANT_LANGUAGE")
+	private Set<Language> languages = new HashSet<Language>();
+	
+	@Column(name = "USE_CACHE")
+	private boolean useCache = false;
+	
+	@Column(name="STORE_TEMPLATE", length=25)
+	private String storeTemplate;
+	
+	@Column(name="INVOICE_TEMPLATE", length=25)
+	private String invoiceTemplate;
+	
+	@Column(name="DOMAIN_NAME", length=80)
+	private String domainName;
+	
+	@Column(name="CONTINUESHOPPINGURL", length=150)
+	private String continueshoppingurl;
+	
+	@Email
+	@NotEmpty
+	@Column(name = "STORE_EMAIL", length=60, nullable=false)
+	private String storeEmailAddress;
+	
+	@Column(name="STORE_LOGO", length=100)
+	private String storeLogo;
+	
+	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Currency.class)
+	@JoinColumn(name = "CURRENCY_ID", nullable=false)
+	private Currency currency;
+	
+	@Column(name = "CURRENCY_FORMAT_NATIONAL")
+	private boolean currencyFormatNational;
 	@Transient
 	private String dateBusinessSince;
 
@@ -183,19 +191,6 @@ public class MerchantStore extends BusinessDomain<Long, MerchantStore> implement
 
 	public void setStoreEmailAddress(String storeEmailAddress) {
 		this.storeEmailAddress = storeEmailAddress;
-	}
-
-	public String getdEFAULTSTORE() {
-		return dEFAULTSTORE;
-	}
-
-	public MerchantStore dEFAULTSTORE(String dEFAULTSTORE) {
-		this.dEFAULTSTORE = dEFAULTSTORE;
-		return this;
-	}
-
-	public void setdEFAULTSTORE(String dEFAULTSTORE) {
-		this.dEFAULTSTORE = dEFAULTSTORE;
 	}
 
 	public String getStorephone() {
@@ -287,19 +282,6 @@ public class MerchantStore extends BusinessDomain<Long, MerchantStore> implement
 
 	public void setStoreLogo(String storeLogo) {
 		this.storeLogo = storeLogo;
-	}
-
-	public LocalDate getInBusinessSince() {
-		return inBusinessSince;
-	}
-
-	public MerchantStore inBusinessSince(LocalDate inBusinessSince) {
-		this.inBusinessSince = inBusinessSince;
-		return this;
-	}
-
-	public void setInBusinessSince(LocalDate inBusinessSince) {
-		this.inBusinessSince = inBusinessSince;
 	}
 
 	public Boolean isCurrencyFormatNational() {

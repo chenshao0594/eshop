@@ -145,7 +145,6 @@ public class MerchantStoreControllerIntTest {
             .code(DEFAULT_CODE)
             .storename(DEFAULT_STORENAME)
             .storeEmailAddress(DEFAULT_STORE_EMAIL_ADDRESS)
-            .dEFAULTSTORE(DEFAULT_D_EFAULTSTORE)
             .storephone(DEFAULT_STOREPHONE)
             .weightunitcode(DEFAULT_WEIGHTUNITCODE)
             .useCache(DEFAULT_USE_CACHE)
@@ -153,7 +152,6 @@ public class MerchantStoreControllerIntTest {
             .domainName(DEFAULT_DOMAIN_NAME)
             .invoiceTemplate(DEFAULT_INVOICE_TEMPLATE)
             .storeLogo(DEFAULT_STORE_LOGO)
-            .inBusinessSince(DEFAULT_IN_BUSINESS_SINCE)
             .currencyFormatNational(DEFAULT_CURRENCY_FORMAT_NATIONAL)
             .storepostalcode(DEFAULT_STOREPOSTALCODE)
             .seizeunitcode(DEFAULT_SEIZEUNITCODE)
@@ -188,7 +186,6 @@ public class MerchantStoreControllerIntTest {
         assertThat(testMerchantStore.getCode()).isEqualTo(DEFAULT_CODE);
         assertThat(testMerchantStore.getStorename()).isEqualTo(DEFAULT_STORENAME);
         assertThat(testMerchantStore.getStoreEmailAddress()).isEqualTo(DEFAULT_STORE_EMAIL_ADDRESS);
-        assertThat(testMerchantStore.getdEFAULTSTORE()).isEqualTo(DEFAULT_D_EFAULTSTORE);
         assertThat(testMerchantStore.getStorephone()).isEqualTo(DEFAULT_STOREPHONE);
         assertThat(testMerchantStore.getWeightunitcode()).isEqualTo(DEFAULT_WEIGHTUNITCODE);
         assertThat(testMerchantStore.isUseCache()).isEqualTo(DEFAULT_USE_CACHE);
@@ -196,7 +193,6 @@ public class MerchantStoreControllerIntTest {
         assertThat(testMerchantStore.getDomainName()).isEqualTo(DEFAULT_DOMAIN_NAME);
         assertThat(testMerchantStore.getInvoiceTemplate()).isEqualTo(DEFAULT_INVOICE_TEMPLATE);
         assertThat(testMerchantStore.getStoreLogo()).isEqualTo(DEFAULT_STORE_LOGO);
-        assertThat(testMerchantStore.getInBusinessSince()).isEqualTo(DEFAULT_IN_BUSINESS_SINCE);
         assertThat(testMerchantStore.isCurrencyFormatNational()).isEqualTo(DEFAULT_CURRENCY_FORMAT_NATIONAL);
         assertThat(testMerchantStore.getStorepostalcode()).isEqualTo(DEFAULT_STOREPOSTALCODE);
         assertThat(testMerchantStore.getSeizeunitcode()).isEqualTo(DEFAULT_SEIZEUNITCODE);
@@ -423,7 +419,6 @@ public class MerchantStoreControllerIntTest {
             .code(UPDATED_CODE)
             .storename(UPDATED_STORENAME)
             .storeEmailAddress(UPDATED_STORE_EMAIL_ADDRESS)
-            .dEFAULTSTORE(UPDATED_D_EFAULTSTORE)
             .storephone(UPDATED_STOREPHONE)
             .weightunitcode(UPDATED_WEIGHTUNITCODE)
             .useCache(UPDATED_USE_CACHE)
@@ -431,7 +426,6 @@ public class MerchantStoreControllerIntTest {
             .domainName(UPDATED_DOMAIN_NAME)
             .invoiceTemplate(UPDATED_INVOICE_TEMPLATE)
             .storeLogo(UPDATED_STORE_LOGO)
-            .inBusinessSince(UPDATED_IN_BUSINESS_SINCE)
             .currencyFormatNational(UPDATED_CURRENCY_FORMAT_NATIONAL)
             .storepostalcode(UPDATED_STOREPOSTALCODE)
             .seizeunitcode(UPDATED_SEIZEUNITCODE)
@@ -452,7 +446,6 @@ public class MerchantStoreControllerIntTest {
         assertThat(testMerchantStore.getCode()).isEqualTo(UPDATED_CODE);
         assertThat(testMerchantStore.getStorename()).isEqualTo(UPDATED_STORENAME);
         assertThat(testMerchantStore.getStoreEmailAddress()).isEqualTo(UPDATED_STORE_EMAIL_ADDRESS);
-        assertThat(testMerchantStore.getdEFAULTSTORE()).isEqualTo(UPDATED_D_EFAULTSTORE);
         assertThat(testMerchantStore.getStorephone()).isEqualTo(UPDATED_STOREPHONE);
         assertThat(testMerchantStore.getWeightunitcode()).isEqualTo(UPDATED_WEIGHTUNITCODE);
         assertThat(testMerchantStore.isUseCache()).isEqualTo(UPDATED_USE_CACHE);
@@ -460,7 +453,6 @@ public class MerchantStoreControllerIntTest {
         assertThat(testMerchantStore.getDomainName()).isEqualTo(UPDATED_DOMAIN_NAME);
         assertThat(testMerchantStore.getInvoiceTemplate()).isEqualTo(UPDATED_INVOICE_TEMPLATE);
         assertThat(testMerchantStore.getStoreLogo()).isEqualTo(UPDATED_STORE_LOGO);
-        assertThat(testMerchantStore.getInBusinessSince()).isEqualTo(UPDATED_IN_BUSINESS_SINCE);
         assertThat(testMerchantStore.isCurrencyFormatNational()).isEqualTo(UPDATED_CURRENCY_FORMAT_NATIONAL);
         assertThat(testMerchantStore.getStorepostalcode()).isEqualTo(UPDATED_STOREPOSTALCODE);
         assertThat(testMerchantStore.getSeizeunitcode()).isEqualTo(UPDATED_SEIZEUNITCODE);

@@ -1,11 +1,24 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import com.smartshop.eshop.core.config.ModuleConfig;
 
 /**
  * A IntegrationModule.
@@ -22,13 +35,13 @@ public class IntegrationModule extends BusinessDomain<Long, IntegrationModule> i
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
-	@Column(name = "config_details")
+	@Column(name = "details")
 	private String configDetails;
 
 	@Column(name = "custom_module")
 	private Boolean customModule;
 
-	@Column(name = "jhi_type")
+	@Column(name = "config_type")
 	private String type;
 
 	@Column(name = "code")
@@ -45,6 +58,20 @@ public class IntegrationModule extends BusinessDomain<Long, IntegrationModule> i
 
 	@Column(name = "configuration")
 	private String configuration;
+	
+	@Transient
+	private Set<String> regionsSet = new HashSet<String>();
+	
+	/**
+	 * Contains a map of module config by environment (DEV,PROD)
+	 */
+	@Transient
+	private Map<String,ModuleConfig> moduleConfigs = new HashMap<String,ModuleConfig>();
+	
+	
+	@Transient
+	private Map<String,String> details = new HashMap<String,String>();
+
 
 	@Override
 	public Long getId() {
@@ -159,5 +186,34 @@ public class IntegrationModule extends BusinessDomain<Long, IntegrationModule> i
 	public void setConfiguration(String configuration) {
 		this.configuration = configuration;
 	}
+
+	public Set<String> getRegionsSet() {
+		return regionsSet;
+	}
+
+	public void setRegionsSet(Set<String> regionsSet) {
+		this.regionsSet = regionsSet;
+	}
+
+	public Map<String, ModuleConfig> getModuleConfigs() {
+		return moduleConfigs;
+	}
+
+	public void setModuleConfigs(Map<String, ModuleConfig> moduleConfigs) {
+		this.moduleConfigs = moduleConfigs;
+	}
+
+	public Map<String, String> getDetails() {
+		return details;
+	}
+
+	public void setDetails(Map<String, String> details) {
+		this.details = details;
+	}
+
+	public Boolean getCustomModule() {
+		return customModule;
+	}
+	
 
 }

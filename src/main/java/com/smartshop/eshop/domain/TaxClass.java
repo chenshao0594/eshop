@@ -27,11 +27,11 @@ public class TaxClass extends BusinessDomain<Long, TaxClass> implements Serializ
 	private Long id;
 
 	@NotNull
-	@Column(name = "title", nullable = false)
+	@Column(name = "TAX_CLASS_TITLE", nullable = false)
 	private String title;
 
 	@NotNull
-	@Column(name = "code", nullable = false)
+	@Column(name = "TAX_CLASS_CODE", nullable = false)
 	private String code;
 
 	@OneToMany(mappedBy = "taxClass")
@@ -44,7 +44,8 @@ public class TaxClass extends BusinessDomain<Long, TaxClass> implements Serializ
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<TaxRate> taxRates = new HashSet<>();
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name="MERCHANT_ID", nullable=true)
 	private MerchantStore merchantStore;
 
 	@Override
