@@ -21,14 +21,17 @@
             "taxPriority": "Tax Priority",
             "code": "Code",
             "taxRate": "Tax Rate",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date",
             "descriptions": "Descriptions",
             "taxRates": "Tax Rates",
             "country": "Country",
             "parent": "Parent",
             "taxClass": "Tax Class",
             "merchantStore": "Merchant Store",
-            "taxClass": "Tax Class",
-            "parent": "Parent"
+            "zone": "Zone"
         }
     }
 }

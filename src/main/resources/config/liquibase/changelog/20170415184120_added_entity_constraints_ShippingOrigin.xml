@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity ShippingOrigin.
+    -->
+    <changeSet id="20170415184120-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="zone_id"
+                                 baseTableName="shipping_origin"
+                                 constraintName="fk_shipping_origin_zone_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="zone"/>
+
+        <addForeignKeyConstraint baseColumnNames="country_id"
+                                 baseTableName="shipping_origin"
+                                 constraintName="fk_shipping_origin_country_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="country"/>
+
+        <addForeignKeyConstraint baseColumnNames="merchant_store_id"
+                                 baseTableName="shipping_origin"
+                                 constraintName="fk_shipping_origin_merchant_store_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="merchant_store"/>
+
+    </changeSet>
+</databaseChangeLog>

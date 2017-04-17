@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity SalesOrder.
+    -->
+    <changeSet id="20170415184213-1" author="jhipster">
+        <createTable tableName="sales_order">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="customer_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="confirmed_address" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_date_finished" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="total" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="payment_module_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="payment_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="locale" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="channel" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="customer_email_address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_type" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="status" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_modified" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="currency_value" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="date_purchased" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="shipping_module_code" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="ip_address" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="customer_agreement" type="bit">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="created_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_modified_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="currency_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="merchant_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+</databaseChangeLog>

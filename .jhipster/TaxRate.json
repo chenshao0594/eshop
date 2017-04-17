@@ -36,6 +36,14 @@
             "relationshipName": "merchantStore",
             "otherEntityName": "merchantStore",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "zone",
+            "otherEntityName": "zone",
+            "relationshipType": "one-to-one",
+            "otherEntityField": "id",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "zone"
         }
     ],
     "fields": [

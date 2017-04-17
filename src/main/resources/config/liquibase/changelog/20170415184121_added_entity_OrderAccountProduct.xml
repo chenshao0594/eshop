@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <property name="now" value="now()" dbms="h2"/>
+
+    <property name="now" value="now()" dbms="mysql"/>
+    <property name="autoIncrement" value="true"/>
+
+    <property name="floatType" value="float4" dbms="postgresql, h2"/>
+    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+
+    <!--
+        Added the entity OrderAccountProduct.
+    -->
+    <changeSet id="20170415184121-1" author="jhipster">
+        <createTable tableName="order_account_product">
+            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="order_account_product_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_account_product_last_transaction_status" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_account_product_end_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_account_product_start_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_account_product_last_status_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_account_product_status" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_account_product_accounted_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_account_product_payment_frequency_type" type="integer">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_account_product_eot" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="created_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="created_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="last_modified_by" type="varchar(255)">
+                <constraints nullable="false" />
+            </column>
+
+            <column name="last_modified_date" type="date">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_product_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <column name="order_account_id" type="bigint">
+                <constraints nullable="true" />
+            </column>
+
+            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
+        </createTable>
+        
+    </changeSet>
+</databaseChangeLog>

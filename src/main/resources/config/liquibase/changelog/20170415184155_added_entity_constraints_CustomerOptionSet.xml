@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    <!--
+        Added the constraints for entity CustomerOptionSet.
+    -->
+    <changeSet id="20170415184155-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="customer_option_id"
+                                 baseTableName="customer_option_set"
+                                 constraintName="fk_customer_option_set_customer_option_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer_option"/>
+
+        <addForeignKeyConstraint baseColumnNames="customer_option_value_id"
+                                 baseTableName="customer_option_set"
+                                 constraintName="fk_customer_option_set_customer_option_value_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="customer_option_value"/>
+
+    </changeSet>
+</databaseChangeLog>
