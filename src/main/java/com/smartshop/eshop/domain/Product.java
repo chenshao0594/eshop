@@ -117,17 +117,18 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<ProductRelationship> relationships = new HashSet<>();
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
 	private Manufacturer manufacturer;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
 	private ProductType type;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY)
 	private MerchantStore merchantStore;
 
-	@ManyToOne
+	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
 	private TaxClass taxClass;
+	
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REFRESH })
 	@JoinTable(name = "PRODUCT_CATEGORY", joinColumns = {
 			@JoinColumn(name = "PRODUCT_ID", nullable = false, updatable = false) }, inverseJoinColumns = {

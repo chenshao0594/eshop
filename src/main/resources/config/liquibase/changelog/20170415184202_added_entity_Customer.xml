@@ -1,81 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<databaseChangeLog
-    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
-    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+	xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd
                         http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
 
-    <property name="now" value="now()" dbms="h2"/>
+	<property name="now" value="now()" dbms="h2" />
 
-    <property name="now" value="now()" dbms="mysql"/>
-    <property name="autoIncrement" value="true"/>
+	<property name="now" value="now()" dbms="mysql" />
+	<property name="autoIncrement" value="true" />
 
-    <property name="floatType" value="float4" dbms="postgresql, h2"/>
-    <property name="floatType" value="float" dbms="mysql, oracle, mssql"/>
+	<property name="floatType" value="float4" dbms="postgresql, h2" />
+	<property name="floatType" value="float" dbms="mysql, oracle, mssql" />
 
-    <!--
-        Added the entity Customer.
-    -->
-    <changeSet id="20170415184202-1" author="jhipster">
-        <createTable tableName="customer">
-            <column name="id" type="bigint" autoIncrement="${autoIncrement}">
-                <constraints primaryKey="true" nullable="false"/>
-            </column>
-            <column name="date_of_birth" type="date">
-                <constraints nullable="true" />
-            </column>
+	<!-- Added the entity Customer. -->
+	<changeSet id="20170415184202-1" author="jhipster">
+		<createTable tableName="customer">
+			<column name="id" type="bigint" autoIncrement="${autoIncrement}">
+				<constraints primaryKey="true" nullable="false" />
+			</column>
+			<column name="date_of_birth" type="date">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="gender" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
+			<column name="gender" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="anonymous" type="bit">
-                <constraints nullable="true" />
-            </column>
+			<column name="anonymous" type="bit">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="company" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
+			<column name="company" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="nick" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
+			<column name="nick" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="email_address" type="varchar(255)">
-                <constraints nullable="false" />
-            </column>
+			<column name="email_address" type="varchar(255)">
+				<constraints nullable="false" />
+			</column>
+			<column name="BILLING_COUNTRY_ID" type="int(11)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_ZONE_ID" type="bigint(20)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_STREET_ADDRESS" type="varchar(256)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_CITY" type="varchar(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_COMPANY" type="varchar(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_FIRST_NAME" type="varchar(64)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_LAST_NAME" type="varchar(64)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_POSTCODE" type="varchar(20)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_STATE" type="varchar(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_TELEPHONE" type="varchar(32)">
+				<constraints nullable="true" />
+			</column>
+			<column name="DELIVERY_STREET_ADDRESS" type="varchar(256)">
+			</column>
+			<column name="DELIVERY_CITY" type="varchar(100)">
+			</column>
+			<column name="DELIVERY_COMPANY" type="varchar(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="DELIVERY_FIRST_NAME" type="varchar(64)">
+				<constraints nullable="true" />
+			</column>
+			<column name="DELIVERY_LAST_NAME" type="varchar(64)">
+				<constraints nullable="true" />
+			</column>
+			<column name="DELIVERY_POSTCODE" type="varchar(20)">
+				<constraints nullable="true" />
+			</column>
+			<column name="DELIVERY_STATE" type="varchar(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="DELIVERY_TELEPHONE" type="varchar(32)">
+				<constraints nullable="true" />
+			</column>
+			<column name="DELIVERY_COUNTRY_ID" type="int(11)">
+				<constraints nullable="true" />
+			</column>
+			<column name="DELIVERY_ZONE_ID" type="bigint(20)">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="jhi_password" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
+			<column name="CUSTOMER_PASSWORD" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="created_by" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
+			<column name="created_by" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="created_date" type="date">
-                <constraints nullable="true" />
-            </column>
+			<column name="created_date" type="date">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="last_modified_by" type="varchar(255)">
-                <constraints nullable="true" />
-            </column>
+			<column name="last_modified_by" type="varchar(255)">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="last_modified_date" type="date">
-                <constraints nullable="true" />
-            </column>
+			<column name="last_modified_date" type="date">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="merchant_store_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
+			<column name="merchant_store_id" type="bigint">
+				<constraints nullable="true" />
+			</column>
 
-            <column name="default_language_id" type="bigint">
-                <constraints nullable="true" />
-            </column>
+			<column name="default_language_id" type="bigint">
+				<constraints nullable="true" />
+			</column>
 
-            <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
-        </createTable>
-        
-    </changeSet>
+			<!-- jhipster-needle-liquibase-add-column - JHipster will add columns 
+				here, do not remove -->
+		</createTable>
+
+	</changeSet>
 </databaseChangeLog>

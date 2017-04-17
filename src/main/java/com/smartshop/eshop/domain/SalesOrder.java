@@ -1,23 +1,34 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
-import com.smartshop.eshop.domain.enumeration.PaymentEnum;
 
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.Valid;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.smartshop.eshop.domain.common.Billing;
 import com.smartshop.eshop.domain.enumeration.OrderChannelEnum;
-
 import com.smartshop.eshop.domain.enumeration.OrderEnum;
-
 import com.smartshop.eshop.domain.enumeration.OrderStatusEnum;
+import com.smartshop.eshop.domain.enumeration.PaymentEnum;
 
 /**
  * A SalesOrder.
@@ -109,6 +120,10 @@ public class SalesOrder extends BusinessDomain<Long, SalesOrder> implements Seri
 
 	@ManyToOne
 	private MerchantStore merchant;
+	
+	@Valid
+	@Embedded
+	private Billing billing = null;
 
 	@Override
 	public Long getId() {
@@ -441,5 +456,22 @@ public class SalesOrder extends BusinessDomain<Long, SalesOrder> implements Seri
 	public void setMerchant(MerchantStore merchantStore) {
 		this.merchant = merchantStore;
 	}
+
+	public Billing getBilling() {
+		return billing;
+	}
+
+	public void setBilling(Billing billing) {
+		this.billing = billing;
+	}
+
+	public Boolean getConfirmedAddress() {
+		return confirmedAddress;
+	}
+
+	public Boolean getCustomerAgreement() {
+		return customerAgreement;
+	}
+	
 
 }

@@ -54,7 +54,7 @@
                 <td>{{customer.password}}</td>
                 <td>
                     <div *ngIf="customer.merchantStore">
-                        <a [routerLink]="['../merchant-store', customer.merchantStore?.id ]" >{{customer.merchantStore?.id}}</a>
+                        <a [routerLink]="['../merchant-store', customer.merchantStore?.id ]" >{{customer.merchantStore?.storename}}</a>
                     </div>
                 </td>
                 <td>

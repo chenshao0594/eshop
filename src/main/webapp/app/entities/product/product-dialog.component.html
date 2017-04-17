@@ -124,7 +124,7 @@
             <label jhiTranslate="eshopApp.product.taxClass" for="field_taxClass">Tax Class</label>
             <select class="form-control" id="field_taxClass" name="taxClass" [(ngModel)]="product.taxClass" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="taxClassOption.id === product.taxClass?.id ? product.taxClass : taxClassOption" *ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.id}}</option>
+                <option [ngValue]="taxClassOption.id === product.taxClass?.id ? product.taxClass : taxClassOption" *ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.code}}</option>
             </select>
         </div>
         <div class="col-5 form-group">
