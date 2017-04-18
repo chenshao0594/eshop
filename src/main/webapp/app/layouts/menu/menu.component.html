@@ -1,0 +1,46 @@
+<nav class=" hidden-xs-down bg-faded sidebar" style="padding-top: 66px;">
+	<ul class="navbar-nav ml-auto menu-ul">
+		<li class="nav-item menu-item" routerLinkActive="active"
+			[routerLinkActiveOptions]="{exact: true}"><a class="nav-link"
+			routerLink="book" (click)="collapseNavbar()"> <i
+				class="fa fa-home" aria-hidden="true"></i> <span
+				jhiTranslate="global.menu.categories.book">Book</span>
+		</a></li>
+		<li class="nav-item menu-item" routerLinkActive="active"
+			[routerLinkActiveOptions]="{exact: true}"><a class="nav-link"
+			routerLink="product" (click)="collapseNavbar()"> <i
+				class="fa fa-home" aria-hidden="true"></i> <span
+				jhiTranslate="global.menu.categories.product">Product</span>
+		</a></li>
+	</ul>
+	<ul class="navbar-nav ml-auto menu-ul">
+		<li class="nav-item menu-item" routerLinkActive="active"
+			[routerLinkActiveOptions]="{exact: true}"><a class="nav-link"
+			routerLink="customer" (click)="collapseNavbar()"> <i
+				class="fa fa-home" aria-hidden="true"></i> <span
+				jhiTranslate="global.menu.entities.customer">Customer</span>
+		</a></li>
+		<li class="nav-item menu-item" routerLinkActive="active"
+			[routerLinkActiveOptions]="{exact: true}"><a class="nav-link"
+			routerLink="sales-order" (click)="collapseNavbar()"> <i
+				class="fa fa-home" aria-hidden="true"></i> <span
+				jhiTranslate="global.menu.entities.salesOrder">SalesOrder</span>
+		</a></li>
+	</ul>
+	<ul class="navbar-nav ml-auto menu-ul">
+		<li uiSrefActive="active"><a
+			routerLink="merchant-store" (click)="collapseNavbar()"> <i
+				class="fa fa-fw fa-asterisk" aria-hidden="true"></i> <span
+				jhiTranslate="global.menu.entities.merchantStore">Merchant
+					Store</span>
+		</a>
+		</li>
+		<li class="nav-item menu-item" routerLinkActive="active"
+			[routerLinkActiveOptions]="{exact: true}"><a class="nav-link"
+			routerLink="sales-order" (click)="collapseNavbar()"> <i
+				class="fa fa-home" aria-hidden="true"></i> <span
+				jhiTranslate="global.menu.entities.salesOrder">SalesOrder</span>
+		</a>
+		</li>
+	</ul>
+</nav>

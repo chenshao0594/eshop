@@ -1,9 +1,10 @@
 package com.smartshop.eshop.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 
 import com.smartshop.eshop.domain.Product;
 
-public interface ProductRepository extends JpaRepository<Product, Long>, ProductRepositoryCustom {
+public interface ProductRepository extends JpaRepository<Product, Long>, ProductRepositoryCustom, QueryDslPredicateExecutor<Product> {
 
 }

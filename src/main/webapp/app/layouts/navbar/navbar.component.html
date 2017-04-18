@@ -33,12 +33,6 @@
                             <span jhiTranslate="global.menu.categories.book">Book</span>
                         </a>
                     </li>
-                     <li uiSrefActive="active">
-                        <a class="dropdown-item" routerLink="product" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.categories.product">Product</span>
-                        </a>
-                    </li>
                     <li uiSrefActive="active">
                         <a class="dropdown-item" routerLink="product-option-value" (click)="collapseNavbar()">
                             <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
@@ -124,16 +118,7 @@
                         <b class="caret"></b>
                     </span>
                 </a>
-                <ul class="dropdown-menu" ngbDropdownMenu>
-                	<li uiSrefActive="active">
-                        <a class="dropdown-item" routerLink="sales-order" (click)="collapseNavbar()">
-                            <i class="fa fa-fw fa-asterisk" aria-hidden="true"></i>
-                            <span jhiTranslate="global.menu.entities.salesOrder">Sales Order</span>
-                        </a>
-                    </li>
-                </ul>
-                </li>
-                
+                </li>                
             <!-- jhipster-needle-add-element-to-menu - JHipster will add new menu items here -->
             <li *ngSwitchCase="true" ngbDropdown class="nav-item dropdown pointer">
                 <a class="nav-link dropdown-toggle" routerLinkActive="active" ngbDropdownToggle href="javascript:void(0);" id="entity-menu">

@@ -30,10 +30,7 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="productShipeable"><span jhiTranslate="eshopApp.product.productShipeable">Product Shipeable</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="productOrdered"><span jhiTranslate="eshopApp.product.productOrdered">Product Ordered</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="dateAvailable"><span jhiTranslate="eshopApp.product.dateAvailable">Date Available</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="sortOrder"><span jhiTranslate="eshopApp.product.sortOrder">Sort Order</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="available"><span jhiTranslate="eshopApp.product.available">Available</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="preOrder"><span jhiTranslate="eshopApp.product.preOrder">Pre Order</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="sku"><span jhiTranslate="eshopApp.product.sku">Sku</span> <span class="fa fa-sort"></span></th>
@@ -47,16 +44,13 @@
             <tbody>
             <tr *ngFor="let product of products ;trackBy: trackId">
                 <td><a [routerLink]="['../product', product.id ]">{{product.id}}</a></td>
-                <td>{{product.productShipeable}}</td>
-                <td>{{product.productOrdered}}</td>
                 <td>{{product.dateAvailable | date:'mediumDate'}}</td>
-                <td>{{product.sortOrder}}</td>
                 <td>{{product.available}}</td>
                 <td>{{product.preOrder}}</td>
                 <td>{{product.sku}}</td>
                 <td>
                     <div *ngIf="product.taxClass">
-                        <a [routerLink]="['../tax-class', product.taxClass?.id ]" >{{product.taxClass?.id}}</a>
+                        <a [routerLink]="['../tax-class', product.taxClass?.id ]" >{{product.taxClass?.code}}</a>
                     </div>
                 </td>
                 <td>

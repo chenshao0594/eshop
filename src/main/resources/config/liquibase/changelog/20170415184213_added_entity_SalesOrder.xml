@@ -89,6 +89,36 @@
             <column name="customer_agreement" type="bit">
                 <constraints nullable="true" />
             </column>
+            <column name="BILLING_COUNTRY_ID" type="int(11)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_ZONE_ID" type="bigint(20)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_STREET_ADDRESS" type="varchar(256)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_CITY" type="varchar(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_COMPANY" type="varchar(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_FIRST_NAME" type="varchar(64)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_LAST_NAME" type="varchar(64)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_POSTCODE" type="varchar(20)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_STATE" type="varchar(100)">
+				<constraints nullable="true" />
+			</column>
+			<column name="BILLING_TELEPHONE" type="varchar(32)">
+				<constraints nullable="true" />
+			</column>
 
             <column name="created_by" type="varchar(255)">
                 <constraints nullable="false" />
