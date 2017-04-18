@@ -6,6 +6,35 @@
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="row justify-content-right">
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.category.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="category.code"
+            required />
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        
+         <p class="divider"></p>
+        
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.category.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="category.merchantStore" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === category.merchantStore?.id ? category.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.code}}</option>
+            </select>
+        </div>
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.category.parent" for="field_parent">Parent</label>
+            <select class="form-control" id="field_parent" name="parent" [(ngModel)]="category.parent" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="categoryOption.id === category.parent?.id ? category.parent : categoryOption" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
+            </select>
+        </div>
         <div class="col-5 form-group" [hidden]="!category.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
@@ -41,18 +70,7 @@
                 [(ngModel)]="category.visible"
              />
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.category.code" for="field_code">Code</label>
-            <input type="text" class="form-control" name="code" id="field_code"
-                [(ngModel)]="category.code"
-            required />
-            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
-        </div>
+        
         <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.category.categoryImage" for="field_categoryImage">Category Image</label>
             <input type="text" class="form-control" name="categoryImage" id="field_categoryImage"
@@ -60,20 +78,7 @@
              />
         </div>
 
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.category.merchantStore" for="field_merchantStore">Merchant Store</label>
-            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="category.merchantStore" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="merchantStoreOption.id === category.merchantStore?.id ? category.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.code}}</option>
-            </select>
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.category.parent" for="field_parent">Parent</label>
-            <select class="form-control" id="field_parent" name="parent" [(ngModel)]="category.parent" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="categoryOption.id === category.parent?.id ? category.parent : categoryOption" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
-            </select>
-        </div>
+        
     </div>
     </div> 
     <div class="modal-footer">
