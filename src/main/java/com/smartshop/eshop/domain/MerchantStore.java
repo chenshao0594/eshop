@@ -94,8 +94,8 @@ public class MerchantStore extends BusinessDomain<Long, MerchantStore> implement
 	@JoinColumn(name = "LANGUAGE_ID")
 	private Language defaultLanguage;
 
-//	@ManyToMany(fetch = FetchType.LAZY)
-//	@JoinTable(name = "MERCHANT_LANGUAGE")
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "MERCHANT_LANGUAGE")
 	private Set<Language> languages = new HashSet<Language>();
 	
 	@Column(name = "USE_CACHE")
@@ -121,7 +121,7 @@ public class MerchantStore extends BusinessDomain<Long, MerchantStore> implement
 	@Column(name="STORE_LOGO", length=100)
 	private String storeLogo;
 	
-	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Currency.class)
+	@ManyToOne(targetEntity = Currency.class)
 	@JoinColumn(name = "CURRENCY_ID", nullable=false)
 	private Currency currency;
 	

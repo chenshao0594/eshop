@@ -29,7 +29,7 @@
             "relationshipType": "many-to-many",
             "relationshipName": "languages",
             "otherEntityName": "language",
-            "ownerSide": false,
+            "ownerSide": true,
             "otherEntityRelationshipName": "stores"
         }
     ],

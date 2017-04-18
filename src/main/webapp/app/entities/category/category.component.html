@@ -39,7 +39,6 @@
             <th jhiSortBy="categoryImage"><span jhiTranslate="eshopApp.category.categoryImage">Category Image</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.category.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="parent.id"><span jhiTranslate="eshopApp.category.parent">Parent</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="parent.id"><span jhiTranslate="eshopApp.category.parent">Parent</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -56,11 +55,6 @@
                 <td>
                     <div *ngIf="category.merchantStore">
                         <a [routerLink]="['../merchant-store', category.merchantStore?.id ]" >{{category.merchantStore?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="category.parent">
-                        <a [routerLink]="['../category', category.parent?.id ]" >{{category.parent?.id}}</a>
                     </div>
                 </td>
                 <td>

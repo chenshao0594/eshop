@@ -48,22 +48,10 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
-        
-        <createTable tableName="language_stores">
-            <column name="stores_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-            <column name="languages_id" type="bigint">
-                <constraints nullable="false"/>
-            </column>
-        </createTable>
         <loadData encoding="UTF-8"
                   file="config/liquibase/init/language.csv"
                   separator=","
                   tableName="language">
         </loadData>
-
-        <addPrimaryKey columnNames="languages_id, stores_id" tableName="language_stores"/>
-        
     </changeSet>
 </databaseChangeLog>

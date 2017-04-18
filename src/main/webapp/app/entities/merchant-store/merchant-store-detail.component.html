@@ -47,12 +47,12 @@
                 </small>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <!-- <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.defaultStore" for="field_defaultStore">Default Store</label>
             <input type="text" class="form-control" name="defaultStore" id="field_defaultStore"
                 [(ngModel)]="merchantStore.defaultStore"
              />
-        </div>
+        </div> -->
         <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.storephone" for="field_storephone">Storephone</label>
             <input type="text" class="form-control" name="storephone" id="field_storephone"
@@ -69,12 +69,6 @@
             <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.weightunitcode" for="field_weightunitcode">Weightunitcode</label>
             <input type="text" class="form-control" name="weightunitcode" id="field_weightunitcode"
                 [(ngModel)]="merchantStore.weightunitcode"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.useCache" for="field_useCache">Use Cache</label>
-            <input type="checkbox" class="form-control" name="useCache" id="field_useCache"
-                [(ngModel)]="merchantStore.useCache"
              />
         </div>
         <div class="col-5 form-group">
@@ -167,13 +161,17 @@
                 <option [ngValue]="zoneOption.id === merchantStore.zone?.id ? merchantStore.zone : zoneOption" *ngFor="let zoneOption of zones; trackBy: trackZoneById">{{zoneOption.id}}</option>
             </select>
         </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.merchantStore.currency" for="field_currency">Currency</label>
-            <select class="form-control" id="field_currency" name="currency" [(ngModel)]="merchantStore.currency" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="currencyOption.id === merchantStore.currency?.id ? merchantStore.currency : currencyOption" *ngFor="let currencyOption of currencies; trackBy: trackCurrencyById">{{currencyOption.id}}</option>
-            </select>
-        </div>
+        <div class="col-5 form-group">
+				<label jhiTranslate="eshopApp.merchantStore.currency"
+					for="field_currency">Currency</label> <select class="form-control"
+					id="field_currency" name="currency"
+					[(ngModel)]="merchantStore.currency">
+					<option [ngValue]="null"></option>
+					<option
+						[ngValue]="currencyOption.id === merchantStore.currency?.id ? merchantStore.currency : currencyOption"
+						*ngFor="let currencyOption of currencies; trackBy: trackCurrencyById">{{currencyOption.name}}</option>
+				</select>
+			</div>
         <div class="col-5 form-group ">
             <label jhiTranslate="eshopApp.merchantStore.country" for="field_country">Country</label>
             <select class="form-control" id="field_country" name="country" [(ngModel)]="merchantStore.country" >

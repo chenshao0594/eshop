@@ -1,10 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Response } from '@angular/http';
 import { Subscription } from 'rxjs/Rx';
 import { EventManager , JhiLanguageService , AlertService } from 'ng-jhipster';
 
 import { MerchantStore } from './merchant-store.model';
+import { MerchantStorePopupService } from './merchant-store-popup.service';
 import { MerchantStoreService } from './merchant-store.service';
+import { Language, LanguageService } from '../language';
+import { Zone, ZoneService } from '../zone';
+import { Currency, CurrencyService } from '../currency';
+import { Country, CountryService } from '../country';
 
 @Component({
     selector: 'jhi-merchant-store-detail',
@@ -16,13 +22,20 @@ export class MerchantStoreDetailComponent implements OnInit, OnDestroy {
     private subscription: any;
     private eventSubscriber: Subscription;
     isSaving: boolean;
-
+    languages: Language[];
+    zones: Zone[];
+    currencies: Currency[];
+    countries: Country[];
     constructor(
         private eventManager: EventManager,
         private jhiLanguageService: JhiLanguageService,
         private merchantStoreService: MerchantStoreService,
         private route: ActivatedRoute,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private languageService: LanguageService,
+        private zoneService: ZoneService,
+        private currencyService: CurrencyService,
+        private countryService: CountryService,
     ) {
         this.jhiLanguageService.setLocations(['merchantStore']);
     }
@@ -31,6 +44,14 @@ export class MerchantStoreDetailComponent implements OnInit, OnDestroy {
         this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
         });
+        this.languageService.query().subscribe(
+            (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.zoneService.query().subscribe(
+            (res: Response) => { this.zones = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.currencyService.query().subscribe(
+            (res: Response) => { this.currencies = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.countryService.query().subscribe(
+            (res: Response) => { this.countries = res.json(); }, (res: Response) => this.onError(res.json()));
         this.registerChangeInMerchantStores();
     }
 

@@ -1,14 +1,23 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A Language.
@@ -36,9 +45,8 @@ public class Language extends BusinessDomain<Long, Language> implements Serializ
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<MerchantStore> storesDefaultLanguages = new HashSet<>();
 
-	@ManyToMany
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	@JoinTable(name = "language_stores", joinColumns = @JoinColumn(name = "languages_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "stores_id", referencedColumnName = "id"))
+	@ManyToMany(mappedBy = "languages", targetEntity = MerchantStore.class)
 	private Set<MerchantStore> stores = new HashSet<>();
 
 	@Override
