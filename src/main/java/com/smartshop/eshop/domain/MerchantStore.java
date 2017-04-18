@@ -91,12 +91,11 @@ public class MerchantStore extends BusinessDomain<Long, MerchantStore> implement
 	private Date inBusinessSince = new Date();
 	
 	@ManyToOne(fetch = FetchType.LAZY, targetEntity = Language.class)
-	@JoinColumn(name = "LANGUAGE_ID", nullable=false)
+	@JoinColumn(name = "LANGUAGE_ID")
 	private Language defaultLanguage;
 
-	@NotEmpty
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "MERCHANT_LANGUAGE")
+//	@ManyToMany(fetch = FetchType.LAZY)
+//	@JoinTable(name = "MERCHANT_LANGUAGE")
 	private Set<Language> languages = new HashSet<Language>();
 	
 	@Column(name = "USE_CACHE")
@@ -128,6 +127,7 @@ public class MerchantStore extends BusinessDomain<Long, MerchantStore> implement
 	
 	@Column(name = "CURRENCY_FORMAT_NATIONAL")
 	private boolean currencyFormatNational;
+	
 	@Transient
 	private String dateBusinessSince;
 
@@ -451,5 +451,15 @@ public class MerchantStore extends BusinessDomain<Long, MerchantStore> implement
 	public void setDateBusinessSince(String dateBusinessSince) {
 		this.dateBusinessSince = dateBusinessSince;
 	}
+
+	public Date getInBusinessSince() {
+		return inBusinessSince;
+	}
+
+	public void setInBusinessSince(Date inBusinessSince) {
+		this.inBusinessSince = inBusinessSince;
+	}
+	
+	
 
 }

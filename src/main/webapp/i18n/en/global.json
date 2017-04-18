@@ -85,6 +85,12 @@
 			"order": {
 				"main": "Order"
 			},
+			"setting": {
+				"main": "Setting"
+			},
+			"payment": {
+				"main": "Payment"
+			},
 			"audit":{
 			"createdBy":"Creator",
 			"createdDate":"Create Date",

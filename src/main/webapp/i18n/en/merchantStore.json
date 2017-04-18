@@ -16,7 +16,7 @@
             "detail": {
                 "title": "Merchant Store"
             },
-            "storeaddress": "Storeaddress",
+            "storeaddress": "Store Address",
             "code": "Code",
             "storename": "Store Name",
             "storeEmailAddress": "Store Email Address",
@@ -30,9 +30,9 @@
             "storeLogo": "Store Logo",
             "inBusinessSince": "In Business Since",
             "currencyFormatNational": "Currency Format National",
-            "storepostalcode": "Storepostalcode",
-            "seizeunitcode": "Seizeunitcode",
-            "storestateprovince": "Store state province",
+            "storepostalcode": "Postcode",
+            "seizeunitcode": "Size Unit Code",
+            "storestateprovince": "State Province",
             "continueshoppingurl": "Continue shopping URL",
             "storecity": "Store City",
             "defaultLanguage": "Default Language",

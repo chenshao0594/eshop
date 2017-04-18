@@ -25,6 +25,10 @@
             <column name="iso_code" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
+            
+             <column name="country_name" type="varchar(255)">
+                <constraints nullable="true" />
+            </column>
 
             <column name="supported" type="bit">
                 <constraints nullable="true" />

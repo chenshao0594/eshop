@@ -48,9 +48,9 @@
             </div>
         </div>
         <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.dEFAULTSTORE" for="field_dEFAULTSTORE">D EFAULTSTORE</label>
-            <input type="text" class="form-control" name="dEFAULTSTORE" id="field_dEFAULTSTORE"
-                [(ngModel)]="merchantStore.dEFAULTSTORE"
+            <label class="form-control-label" jhiTranslate="eshopApp.merchantStore.defaultStore" for="field_defaultStore">Default Store</label>
+            <input type="text" class="form-control" name="defaultStore" id="field_defaultStore"
+                [(ngModel)]="merchantStore.defaultStore"
              />
         </div>
         <div class="col-5 form-group">
@@ -161,13 +161,6 @@
         </div>
 
         <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.merchantStore.defaultLanguage" for="field_defaultLanguage">Default Language</label>
-            <select class="form-control" id="field_defaultLanguage" name="defaultLanguage" [(ngModel)]="merchantStore.defaultLanguage" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="languageOption.id === merchantStore.defaultLanguage?.id ? merchantStore.defaultLanguage : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
-            </select>
-        </div>
-        <div class="col-5 form-group ">
             <label jhiTranslate="eshopApp.merchantStore.zone" for="field_zone">Zone</label>
             <select class="form-control" id="field_zone" name="zone" [(ngModel)]="merchantStore.zone" >
                 <option [ngValue]="null"></option>
@@ -186,13 +179,6 @@
             <select class="form-control" id="field_country" name="country" [(ngModel)]="merchantStore.country" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="countryOption.id === merchantStore.country?.id ? merchantStore.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
-            </select>
-        </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.merchantStore.defaultLanguage" for="field_defaultLanguage">Default Language</label>
-            <select class="form-control" id="field_defaultLanguage" name="defaultLanguage" [(ngModel)]="merchantStore.defaultLanguage" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="languageOption.id === merchantStore.defaultLanguage?.id ? merchantStore.defaultLanguage : languageOption" *ngFor="let languageOption of languages; trackBy: trackLanguageById">{{languageOption.id}}</option>
             </select>
         </div>
     </div>

@@ -27,6 +27,9 @@ public class Country extends BusinessDomain<Long, Country> implements Serializab
 
 	@Column(name = "iso_code")
 	private String isoCode;
+	
+	@Column(name = "country_name")
+	private String countryName;
 
 	@Column(name = "supported")
 	private Boolean supported;
@@ -142,5 +145,14 @@ public class Country extends BusinessDomain<Long, Country> implements Serializab
 	public void setGeoZone(GeoZone geoZone) {
 		this.geoZone = geoZone;
 	}
+
+	public String getCountryName() {
+		return countryName;
+	}
+
+	public void setCountryName(String countryName) {
+		this.countryName = countryName;
+	}
+	
 
 }
