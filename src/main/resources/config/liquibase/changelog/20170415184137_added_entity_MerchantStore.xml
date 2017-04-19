@@ -46,7 +46,7 @@
 				<constraints nullable="true" />
 			</column>
 
-			<column name="use_cache" type="bit">
+			<column name="use_cache" type="boolean">
 				<constraints nullable="true" />
 			</column>
 
@@ -70,7 +70,7 @@
 				<constraints nullable="true" />
 			</column>
 
-			<column name="currency_format_national" type="bit">
+			<column name="currency_format_national" type="boolean">
 				<constraints nullable="true" />
 			</column>
 
@@ -141,6 +141,8 @@
 			tableName="MERCHANT_LANGUAGE" />
 		<loadData encoding="UTF-8" file="config/liquibase/init/merchant_store.csv"
 			separator="," tableName="merchant_store">
+			  <column name="currency_format_national" type="boolean"/>
+			  <column name="use_cache" type="boolean"/>
 		</loadData>
 
 	</changeSet>

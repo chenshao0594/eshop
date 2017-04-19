@@ -29,14 +29,11 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="depth"><span jhiTranslate="eshopApp.category.depth">Depth</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="code"><span jhiTranslate="eshopApp.category.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="sortOrder"><span jhiTranslate="eshopApp.category.sortOrder">Sort Order</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="categoryStatus"><span jhiTranslate="eshopApp.category.categoryStatus">Category Status</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="lineage"><span jhiTranslate="eshopApp.category.lineage">Lineage</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="visible"><span jhiTranslate="eshopApp.category.visible">Visible</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="code"><span jhiTranslate="eshopApp.category.code">Code</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="categoryImage"><span jhiTranslate="eshopApp.category.categoryImage">Category Image</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.category.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="parent.id"><span jhiTranslate="eshopApp.category.parent">Parent</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -44,14 +41,11 @@
             </thead>
             <tbody>
             <tr *ngFor="let category of categories ;trackBy: trackId">
-                <td><a [routerLink]="['../category', category.id ]">{{category.id}}</a></td>
-                <td>{{category.depth}}</td>
+                <td><a [routerLink]="['../category', category.id ]">{{category.code}}</a></td>
                 <td>{{category.sortOrder}}</td>
                 <td>{{category.categoryStatus}}</td>
                 <td>{{category.lineage}}</td>
                 <td>{{category.visible}}</td>
-                <td>{{category.code}}</td>
-                <td>{{category.categoryImage}}</td>
                 <td>
                     <div *ngIf="category.merchantStore">
                         <a [routerLink]="['../merchant-store', category.merchantStore?.id ]" >{{category.merchantStore?.storename}}</a>
@@ -64,12 +58,12 @@
                 </td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
-                        <button type="submit"
+                       <!--  <button type="submit"
                                 [routerLink]="['../category', category.id ]"
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
-                        </button>
+                        </button> -->
                       <!--   <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'category/'+ category.id + '/delete'} }]"
                                 replaceUrl="true"

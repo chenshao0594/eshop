@@ -39,7 +39,7 @@ public class IntegrationModule extends BusinessDomain<Long, IntegrationModule> i
 	private String configDetails;
 
 	@Column(name = "custom_module")
-	private Boolean customModule;
+	private Boolean customModule=true;
 
 	@Column(name = "config_type")
 	private String type;

@@ -265,7 +265,10 @@ public class CategoryServiceImpl extends AbstractDomainServiceImpl<Category, Lon
 			} else {
 				Category p = this.getById(parent.getId());// parent
 				String lineage = p.getLineage();
-				int depth = p.getDepth();// TODO sometimes null
+				int depth =0;
+				if(p.getDepth()!=null){;
+					depth = depth+ p.getDepth();
+				}
 				child.setParent(p);
 				child.setDepth(depth + 1);
 				child.setLineage(new StringBuilder().append(lineage).append(p.getId()).append("/").toString());

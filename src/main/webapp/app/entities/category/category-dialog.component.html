@@ -6,6 +6,11 @@
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
         <div class="row justify-content-right">
+         <div class="col-5 form-group" [hidden]="!category.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="category.id" readonly />
+        </div>
         <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.category.code" for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
@@ -35,11 +40,7 @@
                 <option [ngValue]="categoryOption.id === category.parent?.id ? category.parent : categoryOption" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
             </select>
         </div>
-        <div class="col-5 form-group" [hidden]="!category.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="category.id" readonly />
-        </div>
+       
        <!--  <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.category.depth" for="field_depth">Depth</label>
             <input type="number" class="form-control" name="depth" id="field_depth"

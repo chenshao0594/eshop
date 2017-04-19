@@ -27,7 +27,7 @@ public class Category extends BusinessDomain<Long, Category> implements Serializ
 	private Long id;
 
 	@Column(name = "depth")
-	private Integer depth;
+	private Integer depth=0;
 
 	@Column(name = "sort_order")
 	private Integer sortOrder=0;

@@ -7,7 +7,7 @@ import java.util.Locale;
 import org.hibernate.Hibernate;
 
 public abstract class BusinessDomain<K extends Serializable & Comparable<K>, E extends BusinessDomain<K, ?>>
-		extends AbstractAuditingEntity implements BusinessDomainInterface, Serializable, Comparable<E> {
+		extends AbstractAuditingEntity implements BusinessDomainInterface, Comparable<E> {
 
 	public static final Collator DEFAULT_STRING_COLLATOR = Collator.getInstance(Locale.FRENCH);
 
