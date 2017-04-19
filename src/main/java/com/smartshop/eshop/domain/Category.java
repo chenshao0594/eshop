@@ -30,7 +30,7 @@ public class Category extends BusinessDomain<Long, Category> implements Serializ
 	private Integer depth;
 
 	@Column(name = "sort_order")
-	private Integer sortOrder;
+	private Integer sortOrder=0;
 
 	@Column(name = "category_status")
 	private Boolean categoryStatus;
@@ -48,20 +48,20 @@ public class Category extends BusinessDomain<Long, Category> implements Serializ
 	@Column(name = "category_image")
 	private String categoryImage;
 
-	@OneToMany(mappedBy = "parent")
 	@JsonIgnore
+	@OneToMany(mappedBy = "parent")
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<Category> categories = new HashSet<>();
 
 	@OneToMany(mappedBy = "category")
-	@JsonIgnore
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<CategoryDescription> descriptions = new HashSet<>();
 
 	@ManyToOne
 	private MerchantStore merchantStore;
 
-	@ManyToOne
+	@ManyToOne(targetEntity = Category.class)
+	@JoinColumn(name = "PARENT_ID")
 	private Category parent;
 
 	@Override

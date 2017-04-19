@@ -53,7 +53,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="created_date" type="date">
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 
@@ -61,7 +61,7 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="last_modified_date" type="date">
+            <column name="last_modified_date" type="timestamp" defaultValueDate="${now}">
                 <constraints nullable="true" />
             </column>
 

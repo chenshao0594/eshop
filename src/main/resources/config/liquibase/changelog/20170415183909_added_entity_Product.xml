@@ -90,16 +90,15 @@
                 <constraints nullable="false" />
             </column>
 
-            <column name="created_date" type="date">
-                <constraints nullable="true" />
+            <column name="created_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false" />
             </column>
-
             <column name="last_modified_by" type="varchar(255)">
                 <constraints nullable="false" />
             </column>
 
-            <column name="last_modified_date" type="date">
-                <constraints nullable="true" />
+            <column name="last_modified_date" type="timestamp" defaultValueDate="${now}">
+                <constraints nullable="false" />
             </column>
 
             <column name="manufacturer_id" type="bigint">

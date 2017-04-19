@@ -46,6 +46,9 @@ public abstract class AbstractDomainController<E extends BusinessDomain, K exten
 
 	protected abstract String getEntityName();
 
+	protected void preCreate(E entity){};
+	protected E postCreate(E entity){
+		return entity;};
 	public AbstractDomainController(AbstractDomainService<E, K> service) {
 		this.service = service;
 	}
@@ -58,7 +61,9 @@ public abstract class AbstractDomainController<E extends BusinessDomain, K exten
 			return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(getEntityName(), "idexists",
 					"A new entity cannot already have an ID")).body(null);
 		}
+		preCreate(entity);
 		E result = service.save(entity);
+		result = postCreate(result);
 		return ResponseEntity.created(new URI("/api/" + getSectionKey() + "/" + result.getId()))
 				.headers(HeaderUtil.createEntityCreationAlert(getEntityName(), result.getId().toString())).body(result);
 	}

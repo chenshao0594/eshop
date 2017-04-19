@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.smartshop.eshop.domain.Category;
+import com.smartshop.eshop.exception.BusinessException;
 import com.smartshop.eshop.service.CategoryService;
 
 /**
@@ -24,6 +25,31 @@ public class CategoryController extends AbstractDomainController<Category, Long>
 	public CategoryController(CategoryService categoryService) {
 		super(categoryService);
 		this.categoryService = categoryService;
+	}
+	@Override
+	protected Category postCreate(Category category){
+		if(category.getParent()==null){
+			return category;
+		}
+		if (category.getParent().getId() == -1) {// this is a root category
+			category.setParent(null);
+			category.setLineage("/");
+			category.setDepth(0);
+		}else{
+			Category parent = new Category();
+			parent.setId(category.getParent().getId());
+			parent.setMerchantStore(category.getMerchantStore());
+			try {
+				categoryService.addChild(parent, category);
+			} catch (BusinessException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
+		categoryService.saveOrUpdate(category);
+		return category;
+
 	}
 
 	@Override

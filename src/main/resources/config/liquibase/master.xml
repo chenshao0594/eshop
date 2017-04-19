@@ -5,7 +5,7 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="classpath:config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
-    <include file="classpath:config/liquibase/changelog/20170414181209_added_entity_Book.xml" relativeToChangelogFile="false"/>
+    <include file="classpath:config/liquibase/changelog/Book.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184210_added_entity_Zone.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184206_added_entity_Country.xml" relativeToChangelogFile="false"/>
     <include file="classpath:config/liquibase/changelog/20170415184204_added_entity_Category.xml" relativeToChangelogFile="false"/>
