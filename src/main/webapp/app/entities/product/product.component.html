@@ -12,7 +12,7 @@
     <div class="row">
         <div class="col-sm-12 no-padding-right">
             <form name="searchForm" class="form-inline">
-                <div class="input-group w-100 mt-3">
+                <div class="input-group w-100 mt-3 offset-6">
                     <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.product.home.search' | translate }}">
                     <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
                         <span class="fa fa-search"></span>
@@ -29,21 +29,21 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="dateAvailable"><span jhiTranslate="eshopApp.product.dateAvailable">Date Available</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="available"><span jhiTranslate="eshopApp.product.available">Available</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="preOrder"><span jhiTranslate="eshopApp.product.preOrder">Pre Order</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="sku"><span jhiTranslate="eshopApp.product.sku">Sku</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.product.taxClass">Tax Class</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="manufacturer.id"><span jhiTranslate="eshopApp.product.manufacturer">Manufacturer</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="type.id"><span jhiTranslate="eshopApp.product.type">Type</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.product.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
-            <th></th>
-            </tr>
+            <th jhiSortBy="name"><span jhiTranslate="eshopApp.product.name">Name</span>  </th>
+            <th jhiSortBy="dateAvailable"><span jhiTranslate="eshopApp.product.dateAvailable">Date Available</span>  </th>
+            <th jhiSortBy="available"><span jhiTranslate="eshopApp.product.available">Available</span>  </th>
+            <th jhiSortBy="preOrder"><span jhiTranslate="eshopApp.product.preOrder">Pre Order</span>  </th>
+            <th jhiSortBy="sku"><span jhiTranslate="eshopApp.product.sku">Sku</span>  </th>
+            <th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.product.taxClass">Tax Class</span>  </th>
+            <th jhiSortBy="manufacturer.id"><span jhiTranslate="eshopApp.product.manufacturer">Manufacturer</span>  </th>
+            <th jhiSortBy="type.id"><span jhiTranslate="eshopApp.product.type">Type</span>  </th>
+            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.product.merchantStore">Merchant Store</span>  </th>
+<!--             <th></th>
+ -->            </tr>
             </thead>
             <tbody>
             <tr *ngFor="let product of products ;trackBy: trackId">
-                <td><a [routerLink]="['../product', product.id ]">{{product.id}}</a></td>
+                <td><a [routerLink]="['../product', product.id ]">{{product.name}}</a></td>
                 <td>{{product.dateAvailable | date:'mediumDate'}}</td>
                 <td>{{product.available}}</td>
                 <td>{{product.preOrder}}</td>
@@ -69,7 +69,7 @@
                     </div>
                 </td>
                 
-                <td class="text-right">
+                <!-- <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
                                 [routerLink]="['../product', product.id ]"
@@ -85,7 +85,7 @@
                             <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
                         </button>
                     </div>
-                </td>
+                </td> -->
             </tr>
             </tbody>
         </table>

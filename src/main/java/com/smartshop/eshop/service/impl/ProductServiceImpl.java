@@ -244,8 +244,8 @@ public class ProductServiceImpl extends AbstractDomainServiceImpl<Product, Long>
 	private void saveOrUpdate(Product product) throws ServiceException {
 		LOGGER.debug("Save or update product ");
 		Validate.notNull(product, "product cannot be null");
-		Validate.notNull(product.getAvailabilities(), "product must have at least one availability");
-		Validate.notEmpty(product.getAvailabilities(), "product must have at least one availability");
+		//Validate.notNull(product.getAvailabilities(), "product must have at least one availability");
+		//Validate.notEmpty(product.getAvailabilities(), "product must have at least one availability");
 		// List of original images
 		Set<ProductImage> originalProductImages = null;
 		if (product.getId() != null && product.getId() > 0) {

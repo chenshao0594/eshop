@@ -224,7 +224,7 @@
 						<option [ngValue]="null"></option>
 						<option
 							[ngValue]="countryOption.id === merchantStore.country?.id ? merchantStore.country : countryOption"
-							*ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
+							*ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}-{{countryOption.countryName}}</option>
 					</select>
 				</div>
 			</div>

@@ -17,7 +17,7 @@
                 "title": "Product Description"
             },
             "metatagDescription": "Metatag Description",
-            "seUrl": "Se Url",
+            "seUrl": "Search Url",
             "metatagKeywords": "Metatag Keywords",
             "productHighlight": "Product Highlight",
             "title": "Title",
@@ -26,7 +26,6 @@
             "name": "Name",
             "productExternalDl": "Product External Dl",
             "language": "Language",
-            "product": "Product",
             "product": "Product"
         }
     }

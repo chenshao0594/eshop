@@ -14,7 +14,7 @@ import java.io.Serializable;
 @Table(name = "currency")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "currency")
-public class Currency implements BusinessDomainInterface {
+public class Currency extends BusinessDomain<Long, Currency> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,10 +34,12 @@ public class Currency implements BusinessDomainInterface {
 	@Column(name = "CURRENCY_CURRENCY_CODE", nullable = false, unique = true)
 	private java.util.Currency currency;
 
+	@Override
 	public Long getId() {
 		return id;
 	}
 
+	@Override
 	public void setId(Long id) {
 		this.id = id;
 	}

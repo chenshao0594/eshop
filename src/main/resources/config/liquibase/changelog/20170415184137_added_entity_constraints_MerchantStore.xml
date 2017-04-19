@@ -8,7 +8,7 @@
     -->
     <changeSet id="20170415184137-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="default_language_id"
+        <addForeignKeyConstraint baseColumnNames="LANGUAGE_ID"
                                  baseTableName="merchant_store"
                                  constraintName="fk_merchant_store_default_language_id"
                                  referencedColumnNames="id"

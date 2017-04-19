@@ -35,12 +35,10 @@ public class Country extends BusinessDomain<Long, Country> implements Serializab
 	private Boolean supported;
 
 	@OneToMany(mappedBy = "country")
-	@JsonIgnore
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<CountryDescription> descriptions = new HashSet<>();
 
 	@OneToMany(mappedBy = "country")
-	@JsonIgnore
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<Zone> zones = new HashSet<>();
 

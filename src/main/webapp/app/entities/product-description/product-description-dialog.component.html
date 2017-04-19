@@ -86,13 +86,6 @@
                 <option [ngValue]="productOption.id === productDescription.product?.id ? productDescription.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
             </select>
         </div>
-        <div class="col-5 form-group">
-            <label jhiTranslate="eshopApp.productDescription.product" for="field_product">Product</label>
-            <select class="form-control" id="field_product" name="product" [(ngModel)]="productDescription.product" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="productOption.id === productDescription.product?.id ? productDescription.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
-            </select>
-        </div>
     </div>
     </div> 
     <div class="modal-footer">

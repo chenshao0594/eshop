@@ -8,16 +8,5 @@
     -->
     <changeSet id="20170415184201-2" author="jhipster">
         
-        <addForeignKeyConstraint baseColumnNames="languages_id"
-                                 baseTableName="language_stores"
-                                 constraintName="fk_language_stores_languages_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="language"/>
-        <addForeignKeyConstraint baseColumnNames="stores_id"
-                                 baseTableName="language_stores"
-                                 constraintName="fk_language_stores_stores_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="merchant_store"/>
-        
     </changeSet>
 </databaseChangeLog>

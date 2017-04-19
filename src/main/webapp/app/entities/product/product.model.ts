@@ -28,17 +28,26 @@ export class Product {
         public sku?: string,
         public images?: ProductImage,
         public availabilities?: ProductAvailability,
-        public attributes?: ProductAttribute,
-        public descriptions?: ProductDescription,
-        public relationships?: ProductRelationship,
+        public attributes?: ProductAttribute[],
+        public descriptions?: ProductDescription[],
+        public relationships?: ProductRelationship[],
         public taxClass?: TaxClass,
         public manufacturer?: Manufacturer,
         public type?: ProductType,
         public merchantStore?: MerchantStore,
+        public metatagDescription?: string,
+        public searchUrl?: string,
+        public metatagKeywords?: string,
+        public productHighlight?: string,
+        public title?: string,
+        public description?: string,
+        public metatagTitle?: string,
+        public name?: string,
+        public productExternalDl?: string,
     ) {
-        this.productShipeable = false;
+        this.productShipeable = true;
         this.productIsFree = false;
-        this.available = false;
+        this.available = true;
         this.productVirtual = false;
         this.preOrder = false;
     }

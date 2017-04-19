@@ -42,6 +42,36 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(name = "metatag_description")
+	private String metatagDescription;
+
+	@Column(name = "search_url")
+	private String searchUrl;
+
+	@Column(name = "metatag_keywords")
+	private String metatagKeywords;
+
+	@Column(name = "product_highlight")
+	private String productHighlight;
+
+	@Column(name = "title")
+	private String title;
+
+	@Column(name = "description")
+	private String description;
+
+	@Column(name = "metatag_title")
+	private String metatagTitle;
+
+	@NotNull
+	@Column(name = "name", nullable = false)
+	private String name;
+
+	@Column(name = "product_external_dl")
+	private String productExternalDl;
+	
+	
 
 	@Column(name = "product_height", precision = 10, scale = 2)
 	private BigDecimal productHeight;
@@ -83,7 +113,7 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	private BigDecimal productWidth;
 
 	@Column(name = "pre_order")
-	private Boolean preOrder;
+	private Boolean preOrder=true;
 
 	@Column(name = "product_length", precision = 10, scale = 2)
 	private BigDecimal productLength;
@@ -541,5 +571,90 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
 	}
+
+	public String getMetatagDescription() {
+		return metatagDescription;
+	}
+
+	public void setMetatagDescription(String metatagDescription) {
+		this.metatagDescription = metatagDescription;
+	}
+
+	public String getSearchUrl() {
+		return searchUrl;
+	}
+
+	public void setSearchUrl(String searchUrl) {
+		this.searchUrl = searchUrl;
+	}
+
+	public String getMetatagKeywords() {
+		return metatagKeywords;
+	}
+
+	public void setMetatagKeywords(String metatagKeywords) {
+		this.metatagKeywords = metatagKeywords;
+	}
+
+	public String getProductHighlight() {
+		return productHighlight;
+	}
+
+	public void setProductHighlight(String productHighlight) {
+		this.productHighlight = productHighlight;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getMetatagTitle() {
+		return metatagTitle;
+	}
+
+	public void setMetatagTitle(String metatagTitle) {
+		this.metatagTitle = metatagTitle;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getProductExternalDl() {
+		return productExternalDl;
+	}
+
+	public void setProductExternalDl(String productExternalDl) {
+		this.productExternalDl = productExternalDl;
+	}
+
+	public Boolean getProductShipeable() {
+		return productShipeable;
+	}
+
+	public Boolean getProductIsFree() {
+		return productIsFree;
+	}
+
+	public Boolean getProductVirtual() {
+		return productVirtual;
+	}
+	
 
 }

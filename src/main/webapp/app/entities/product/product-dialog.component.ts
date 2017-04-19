@@ -12,6 +12,7 @@ import { TaxClass, TaxClassService } from '../tax-class';
 import { Manufacturer, ManufacturerService } from '../manufacturer';
 import { ProductType, ProductTypeService } from '../product-type';
 import { MerchantStore, MerchantStoreService } from '../merchant-store';
+import { ProductDescription } from '../product-description';
 
 @Component({
     selector: 'jhi-product-dialog',
@@ -22,13 +23,10 @@ export class ProductDialogComponent implements OnInit {
     product: Product;
     authorities: any[];
     isSaving: boolean;
-
     taxclasses: TaxClass[];
-
     manufacturers: Manufacturer[];
-
     producttypes: ProductType[];
-
+    descriptions: ProductDescription[];
     merchantstores: MerchantStore[];
         constructor(
         private jhiLanguageService: JhiLanguageService,
