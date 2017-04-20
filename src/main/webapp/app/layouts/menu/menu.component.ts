@@ -23,6 +23,7 @@ export class MenuComponent implements OnInit {
     isCollapseCategory: boolean;
     isCollapseCustomer: boolean;
     isCollapsedOrder: boolean;
+    isCollapsedSetting: boolean;
     constructor(
         private languageService: JhiLanguageService,
         private router: Router
@@ -32,6 +33,7 @@ export class MenuComponent implements OnInit {
         this.isCollapseCategory = true;
         this.isCollapseCustomer = true;
         this.isCollapsedOrder = true;
+        this.isCollapsedSetting = true;
     }
 
     ngOnInit() {

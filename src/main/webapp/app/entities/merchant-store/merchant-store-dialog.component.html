@@ -5,6 +5,9 @@
 		<h4 class="modal-title" id="myMerchantStoreLabel"
 			jhiTranslate="eshopApp.merchantStore.home.createOrEditLabel">Create
 			or edit a Merchant Store</h4>
+			<div class="col-5 form-group" >
+				<label [hidden]="!merchantStore.id" >{{merchantStore.id}}</label>
+			</div>
 	</div>
 	<div class="modal-body">
 		<jhi-alert-error></jhi-alert-error>
