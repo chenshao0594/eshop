@@ -17,6 +17,18 @@
 			</div>
 			<div class="col-5 form-group">
 				<label class="form-control-label"
+					jhiTranslate="eshopApp.customer.firstName" for="field_firstName">First Name</label>
+				<input type="text" class="form-control" name="firstName" id="field_firstName"
+					[(ngModel)]="customer.firstName" />
+			</div>
+			<div class="col-5 form-group">
+				<label class="form-control-label"
+					jhiTranslate="eshopApp.customer.lastName" for="field_lastName">Last Name</label>
+				<input type="text" class="form-control" name="lastName" id="field_lastName"
+					[(ngModel)]="customer.lastName" />
+			</div>
+			<div class="col-5 form-group">
+				<label class="form-control-label"
 					jhiTranslate="eshopApp.customer.nick" for="field_nick">Nick</label>
 				<input type="text" class="form-control" name="nick" id="field_nick"
 					[(ngModel)]="customer.nick" />
@@ -85,7 +97,6 @@
 				<input type="checkbox" class="form-control" name="anonymous"
 					id="field_anonymous" [(ngModel)]="customer.anonymous" />
 			</div>
-
 			
 			<!--  <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.customer.password" for="field_password">Password</label>

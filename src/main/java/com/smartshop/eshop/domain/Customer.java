@@ -22,6 +22,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.validator.constraints.NotEmpty;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -43,6 +44,16 @@ public class Customer extends BusinessDomain<Long, Customer> implements Serializ
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	
+	@NotEmpty
+	@Column (name ="LAST_NAME", length=64, nullable=false)
+	private String lastName;
+
+	@NotEmpty
+	@Column (name ="FIRST_NAME", length=64, nullable=false)
+	private String firstName;
+	
 
 	@Column(name = "date_of_birth")
 	private LocalDate dateOfBirth;
@@ -315,6 +326,23 @@ public class Customer extends BusinessDomain<Long, Customer> implements Serializ
 	public void setShowDeliveryStateList(String showDeliveryStateList) {
 		this.showDeliveryStateList = showDeliveryStateList;
 	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	
 	
 
 }

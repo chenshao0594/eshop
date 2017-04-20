@@ -1,0 +1,87 @@
+<div>
+    <h2>
+        <span jhiTranslate="eshopApp.delivery.home.title">Deliveries</span>
+        <button class="btn btn-primary float-right create-delivery" [routerLink]="['/', { outlets: { popup: ['delivery-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span class="hidden-sm-down"  jhiTranslate="eshopApp.delivery.home.createLabel">
+            Create new Delivery
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+        <div class="col-sm-12 no-padding-right">
+            <form name="searchForm" class="form-inline">
+                <div class="input-group w-100 mt-3">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.delivery.home.search' | translate }}">
+                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+                        <span class="fa fa-search"></span>
+                    </button>
+                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+                        <span class="fa fa-trash-o"></span>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="deliveries">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="eshopApp.delivery.company">Company</span></th>
+            <th><span jhiTranslate="eshopApp.delivery.firstName">First Name</span></th>
+            <th><span jhiTranslate="eshopApp.delivery.lastName">Last Name</span></th>
+            <th><span jhiTranslate="eshopApp.delivery.address">Address</span></th>
+            <th><span jhiTranslate="eshopApp.delivery.city">City</span></th>
+            <th><span jhiTranslate="eshopApp.delivery.state">State</span></th>
+            <th><span jhiTranslate="eshopApp.delivery.postalCode">Postal Code</span></th>
+            <th><span jhiTranslate="eshopApp.delivery.country">Country</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let delivery of deliveries ;trackBy: trackId">
+                <td><a [routerLink]="['../delivery', delivery.id ]">{{delivery.id}}</a></td>
+                <td>{{delivery.company}}</td>
+                <td>{{delivery.firstName}}</td>
+                <td>{{delivery.lastName}}</td>
+                <td>{{delivery.address}}</td>
+                <td>{{delivery.city}}</td>
+                <td>{{delivery.state}}</td>
+                <td>{{delivery.postalCode}}</td>
+                <td>
+                    <div *ngIf="delivery.country">
+                        <a [routerLink]="['../country', delivery.country?.id ]" >{{delivery.country?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../delivery', delivery.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'delivery/'+ delivery.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'delivery/'+ delivery.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

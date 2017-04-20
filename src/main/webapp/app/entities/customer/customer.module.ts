@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 import { EshopSharedModule } from '../../shared';
+import { BillingDialogComponent } from '../billing';
 import {
     CustomerService,
     CustomerPopupService,
@@ -40,6 +41,7 @@ const ENTITY_STATES = [
         CustomerPopupComponent,
         CustomerDeleteDialogComponent,
         CustomerDeletePopupComponent,
+        BillingDialogComponent,
     ],
     providers: [
         CustomerService,

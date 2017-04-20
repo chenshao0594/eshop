@@ -1,0 +1,53 @@
+
+<div *ngIf="billing">
+    <h2><span jhiTranslate="eshopApp.billing.detail.title">Billing</span> {{billing.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eshopApp.billing.firstName">First Name</span></dt>
+        <dd>
+            <span>{{billing.firstName}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.billing.lastName">Last Name</span></dt>
+        <dd>
+            <span>{{billing.lastName}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.billing.company">Company</span></dt>
+        <dd>
+            <span>{{billing.company}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.billing.address">Address</span></dt>
+        <dd>
+            <span>{{billing.address}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.billing.city">City</span></dt>
+        <dd>
+            <span>{{billing.city}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.billing.state">State</span></dt>
+        <dd>
+            <span>{{billing.state}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.billing.postalCode">Postal Code</span></dt>
+        <dd>
+            <span>{{billing.postalCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.billing.telephone">Telephone</span></dt>
+        <dd>
+            <span>{{billing.telephone}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'billing/'+ billing.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

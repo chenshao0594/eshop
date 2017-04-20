@@ -68,6 +68,8 @@ import { EshopSalesOrderModule } from './sales-order/sales-order.module';
 import { EshopTemplateModule } from './template/template.module';
 import { EshopEmailTemplateModule } from './email-template/email-template.module';
 import { EshopEmailSettingModule } from './email-setting/email-setting.module';
+import { EshopBillingModule } from './billing/billing.module';
+import { EshopDeliveryModule } from './delivery/delivery.module';
 /* jhipster-needle-add-entity-module-import - JHipster will add entity modules imports here */
 
 @NgModule({
@@ -140,6 +142,8 @@ import { EshopEmailSettingModule } from './email-setting/email-setting.module';
         EshopTemplateModule,
         EshopEmailTemplateModule,
         EshopEmailSettingModule,
+        EshopBillingModule,
+        EshopDeliveryModule,
         /* jhipster-needle-add-entity-module - JHipster will add entity modules here */
     ],
     declarations: [],

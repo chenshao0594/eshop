@@ -75,6 +75,8 @@
                 "template": "Template",
                 "emailTemplate": "Email Template",
                 "emailSetting": "Email Setting",
+                "billing": "Billing",
+                "delivery": "Delivery",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

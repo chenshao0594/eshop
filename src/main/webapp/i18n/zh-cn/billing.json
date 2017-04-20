@@ -1,0 +1,29 @@
+{
+    "eshopApp": {
+        "billing" : {
+            "home": {
+                "title": "Billings",
+                "createLabel": "Create a new Billing",
+                "createOrEditLabel": "Create or edit a Billing",
+                "search": "Search for Billing"
+            },
+            "created": "A new Billing is created with identifier {{ param }}",
+            "updated": "A Billing is updated with identifier {{ param }}",
+            "deleted": "A Billing is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Billing {{ id }}?"
+            },
+            "detail": {
+                "title": "Billing"
+            },
+            "firstName": "First Name",
+            "lastName": "Last Name",
+            "company": "Company",
+            "address": "Address",
+            "city": "City",
+            "state": "State",
+            "postalCode": "Postal Code",
+            "telephone": "Telephone"
+        }
+    }
+}

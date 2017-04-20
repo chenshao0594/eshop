@@ -1,0 +1,92 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myBillingLabel" jhiTranslate="eshopApp.billing.home.createOrEditLabel">Create or edit a Billing</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!billing.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="billing.id" readonly />
+        </div>
+        
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.billing.firstName" for="field_firstName">First Name</label>
+            <input type="text" class="form-control" name="firstName" id="field_firstName"
+                [(ngModel)]="billing.firstName"
+            required />
+            <div [hidden]="!(editForm.controls.firstName?.dirty && editForm.controls.firstName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.firstName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.billing.lastName" for="field_lastName">Last Name</label>
+            <input type="text" class="form-control" name="lastName" id="field_lastName"
+                [(ngModel)]="billing.lastName"
+            required />
+            <div [hidden]="!(editForm.controls.lastName?.dirty && editForm.controls.lastName?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastName?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.billing.company" for="field_company">Company</label>
+            <input type="text" class="form-control" name="company" id="field_company"
+                [(ngModel)]="billing.company"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.billing.address" for="field_address">Address</label>
+            <input type="text" class="form-control" name="address" id="field_address"
+                [(ngModel)]="billing.address"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.billing.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                [(ngModel)]="billing.city"
+            required />
+            <div [hidden]="!(editForm.controls.city?.dirty && editForm.controls.city?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.city?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.billing.state" for="field_state">State</label>
+            <input type="text" class="form-control" name="state" id="field_state"
+                [(ngModel)]="billing.state"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.billing.postalCode" for="field_postalCode">Postal Code</label>
+            <input type="text" class="form-control" name="postalCode" id="field_postalCode"
+                [(ngModel)]="billing.postalCode"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.billing.telephone" for="field_telephone">Telephone</label>
+            <input type="text" class="form-control" name="telephone" id="field_telephone"
+                [(ngModel)]="billing.telephone"
+             />
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

@@ -17,6 +17,8 @@
                 "title": "Customer"
             },
             "dateOfBirth": "Date Of Birth",
+            "firstName": "First Name",
+            "lastName": "Last Name",
             "gender": "Gender",
             "anonymous": "Anonymous",
             "company": "Company",

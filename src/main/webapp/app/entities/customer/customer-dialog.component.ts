@@ -1,3 +1,5 @@
+import { Billing } from '../billing';
+import { Delivery } from '../delivery';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
@@ -16,14 +18,13 @@ import { Language, LanguageService } from '../language';
     templateUrl: './customer-dialog.component.html'
 })
 export class CustomerDialogComponent implements OnInit {
-
     customer: Customer;
     authorities: any[];
     isSaving: boolean;
-
     merchantstores: MerchantStore[];
-
     languages: Language[];
+    billing: Billing;
+    delivery: Delivery;
         constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
@@ -32,8 +33,9 @@ export class CustomerDialogComponent implements OnInit {
         private languageService: LanguageService,
         private eventManager: EventManager
     ) {
-        this.jhiLanguageService.setLocations(['customer', 'customerGender']);
+        this.jhiLanguageService.setLocations(['customer', 'customerGender', 'billing', 'delivery']);
         this.customer = new Customer();
+//        this.customer.delivery = new Delivery();
     }
 
     ngOnInit() {
@@ -43,6 +45,8 @@ export class CustomerDialogComponent implements OnInit {
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
         this.languageService.query().subscribe(
             (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.customer.billing = new Billing();
+        this.customer.delivery = new Delivery();
     }
     clear() {
         window.history.back();
