@@ -17,5 +17,6 @@ export class Category {
     ) {
         this.categoryStatus = false;
         this.visible = false;
+        this.parent.id = -1;
     }
 }

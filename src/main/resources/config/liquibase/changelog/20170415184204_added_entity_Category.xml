@@ -38,7 +38,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="visible" type="bit">
+            <column name="visible" type="boolean">
                 <constraints nullable="true" />
             </column>
 
@@ -83,6 +83,12 @@
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+         <loadData encoding="UTF-8"
+                  file="config/liquibase/init/CATEGORY.csv"
+                  separator=";"
+                  tableName="category">
+                    <column name="VISIBLE" type="boolean"/>
+        </loadData>
         
     </changeSet>
 </databaseChangeLog>

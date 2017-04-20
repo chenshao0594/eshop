@@ -15,28 +15,32 @@ import { VERSION, DEBUG_INFO_ENABLED } from '../../app.constants';
 export class MenuComponent implements OnInit {
 
     inProduction: boolean;
-    isNavbarCollapsed: boolean;
     languages: any[];
     swaggerEnabled: boolean;
     modalRef: NgbModalRef;
     version: string;
-
+    isCollapseMerchant: boolean;
+    isCollapseCategory: boolean;
+    isCollapseCustomer: boolean;
+    isCollapsedOrder: boolean;
     constructor(
         private languageService: JhiLanguageService,
         private router: Router
     ) {
-        this.isNavbarCollapsed = true;
         this.languageService.addLocation('home');
+        this.isCollapseMerchant = true;
+        this.isCollapseCategory = true;
+        this.isCollapseCustomer = true;
+        this.isCollapsedOrder = true;
     }
 
     ngOnInit() {
     }
 
     collapseNavbar() {
-        this.isNavbarCollapsed = true;
+//        this.isNavbarCollapsed = true;
     }
     toggleNavbar() {
-        this.isNavbarCollapsed = !this.isNavbarCollapsed;
     }
 
 }
