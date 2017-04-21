@@ -30,26 +30,27 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="readOnly"><span jhiTranslate="eshopApp.productOption.readOnly">Read Only</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="productOptionType"><span jhiTranslate="eshopApp.productOption.productOptionType">Product Option Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.productOption.code">Code</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="productOptionSortOrder"><span jhiTranslate="eshopApp.productOption.productOptionSortOrder">Product Option Sort Order</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.productOption.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
+            
+            <th jhiSortBy="productOptionType"><span jhiTranslate="eshopApp.productOption.productOptionType">Product Option Type</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productOptionSortOrder"><span jhiTranslate="eshopApp.productOption.productOptionSortOrder">Product Option Sort Order</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="readOnly"><span jhiTranslate="eshopApp.productOption.readOnly">Read Only</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let productOption of productOptions ;trackBy: trackId">
                 <td><a [routerLink]="['../product-option', productOption.id ]">{{productOption.id}}</a></td>
-                <td>{{productOption.readOnly}}</td>
-                <td>{{productOption.productOptionType}}</td>
                 <td>{{productOption.code}}</td>
-                <td>{{productOption.productOptionSortOrder}}</td>
                 <td>
                     <div *ngIf="productOption.merchantStore">
-                        <a [routerLink]="['../merchant-store', productOption.merchantStore?.id ]" >{{productOption.merchantStore?.id}}</a>
+                        <a [routerLink]="['../merchant-store', productOption.merchantStore?.id ]" >{{productOption.merchantStore?.storename}}</a>
                     </div>
                 </td>
+                <td>{{productOption.productOptionType}}</td>
+                <td>{{productOption.productOptionSortOrder}}</td>
+                <td>{{productOption.readOnly}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -58,15 +59,16 @@
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
                         </button>
-                        <button type="submit"
+                        <!-- <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'product-option/'+ productOption.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
-                        </button>
+                        </button> -->
                     </div>
                 </td>
+                
             </tr>
             </tbody>
         </table>

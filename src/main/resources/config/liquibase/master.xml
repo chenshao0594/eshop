@@ -15,7 +15,7 @@
 		file="classpath:config/liquibase/changelog/20170415184206_added_entity_Country.xml"
 		relativeToChangelogFile="false" />
 	<include
-		file="classpath:config/liquibase/changelog/20170415184204_added_entity_Category.xml"
+		file="classpath:config/liquibase/changelog/Category.xml"
 		relativeToChangelogFile="false" />
 	<include
 		file="classpath:config/liquibase/changelog/20170415184153_added_entity_CategoryDescription.xml"

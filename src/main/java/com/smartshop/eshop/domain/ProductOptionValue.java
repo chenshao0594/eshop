@@ -46,6 +46,9 @@ public class ProductOptionValue extends BusinessDomain<Long, ProductOptionValue>
 
 	@ManyToOne
 	private MerchantStore merchantStore;
+	
+	@ManyToOne
+	private ProductOption ProductOption;
 
 	@Override
 	public Long getId() {

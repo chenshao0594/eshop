@@ -40,9 +40,12 @@ public class ProductOption extends BusinessDomain<Long, ProductOption> implement
 	private Integer productOptionSortOrder;
 
 	@OneToMany(mappedBy = "productOption")
-	@JsonIgnore
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<ProductOptionDescription> descriptions = new HashSet<>();
+	
+	@OneToMany(mappedBy = "productOption")
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	private Set<ProductOptionValue> productOptionValues = new HashSet<>();
 
 	@ManyToOne
 	private MerchantStore merchantStore;
@@ -146,5 +149,14 @@ public class ProductOption extends BusinessDomain<Long, ProductOption> implement
 	public void setMerchantStore(MerchantStore merchantStore) {
 		this.merchantStore = merchantStore;
 	}
+
+	public Set<ProductOptionValue> getProductOptionValues() {
+		return productOptionValues;
+	}
+
+	public void setProductOptionValues(Set<ProductOptionValue> productOptionValues) {
+		this.productOptionValues = productOptionValues;
+	}
+	
 
 }

@@ -15,8 +15,7 @@ export class Category {
         public merchantStore?: MerchantStore,
         public parent?: Category,
     ) {
-        this.categoryStatus = false;
-        this.visible = false;
-        this.parent.id = -1;
+        this.categoryStatus = true;
+        this.visible = true;
     }
 }

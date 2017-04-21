@@ -1,97 +1,73 @@
-<nav
-	class=" hidden-xs-down bg-faded sidebar"
-	style="padding-top: 66px;">
+<nav class=" hidden-xs-down bg-faded sidebar" style="padding-top: 66px;">
 	<ul class="navbar-nav ml-auto menu-ul">
-		<li
-			class="nav-item menu-item"
-			routerLinkActive="active"
-			[routerLinkActiveOptions]="{exact: true}"><a
-			class="nav-link"
-			routerLink="book"
-			(click)="collapseNavbar()"> <i
-				class="fa fa-home"
-				aria-hidden="true"></i> <span jhiTranslate="global.menu.categories.book">Book</span>
-		</a>
-		</li>		
+		<li class="nav-item menu-item" routerLinkActive="active"
+			[routerLinkActiveOptions]="{exact: true}"><a class="nav-link"
+			routerLink="book" (click)="collapseNavbar()"> <i
+				class="fa fa-home" aria-hidden="true"></i> <span
+				jhiTranslate="global.menu.categories.book">Book</span>
+		</a></li>
 		<li class="nav-item menu-item"><a
-			class="accordion-toggle collapsed"
-			routerLink="merchant-store"
+			class="accordion-toggle collapsed" routerLink="merchant-store"
 			(click)="isCollapseMerchant = !isCollapseMerchant"
 			[attr.aria-expanded]="!isCollapseMerchant"
-			aria-controls="collapseMerchantStore"><i class="fa fa-pencil"></i> 
-				<span class="menu-name"  jhiTranslate="global.menu.entities.merchantStore">Merchant Store</span>
-			</a>
-			<ul
-				id="collapseMerchantStore"
-				[ngbCollapse]="isCollapseMerchant">
+			aria-controls="collapseMerchantStore"><i class="fa fa-pencil"></i>
+				<span class="menu-name"
+				jhiTranslate="global.menu.entities.merchantStore">Merchant
+					Store</span> </a>
+			<ul id="collapseMerchantStore" [ngbCollapse]="isCollapseMerchant">
 				<li class=""><a href="form_account.html">....</a></li>
 				<li class=""><a href="form_article.html">......</a></li>
-			</ul>
-		</li>
+			</ul></li>
 		<li class="nav-item menu-item"><a
-			class="accordion-toggle collapsed"
-			routerLink="manufacturer-store"
+			class="accordion-toggle collapsed" routerLink="category"
 			(click)="isCollapseCategory = !isCollapseCategory"
 			[attr.aria-expanded]="!isCollapseCategory"
-			aria-controls="collapseCategory"><i class="fa fa-tags"></i> 
-				<span class="menu-name"  jhiTranslate="global.menu.entities.category">Category</span>
-			</a>
-			<ul
-				id="collapseCategory"
-				[ngbCollapse]="isCollapseCategory">
-				<li class=""><a href="form_account.html">....</a></li>
+			aria-controls="collapseCategory"><i class="fa fa-tags"></i> <span
+				class="menu-name" jhiTranslate="global.menu.entities.category">Category</span>
+		</a>
+			<ul id="collapseCategory" [ngbCollapse]="isCollapseCategory">
+				<li class=""><a routerLink="product-option"><span
+						class="menu-name" jhiTranslate="global.menu.categories.productOption">Product Option</span></a></li>
 				<li class=""><a href="form_article.html">......</a></li>
-			</ul>
-		</li>
-		
+			</ul></li>
+
 		<li class="nav-item menu-item"><a
-			class="accordion-toggle collapsed"
-			routerLink="customer"
+			class="accordion-toggle collapsed" routerLink="customer"
 			(click)="isCollapseCustomer = !isCollapseCustomer"
 			[attr.aria-expanded]="!isCollapseCustomer"
-			aria-controls="collapseCustomer"><i class="fa fa-user"></i> 
-				<span class="menu-name"  jhiTranslate="global.menu.entities.customer">Category</span>
-			</a>
-			<ul
-				id="collapseCustomer"
-				[ngbCollapse]="isCollapseCustomer">
+			aria-controls="collapseCustomer"><i class="fa fa-user"></i> <span
+				class="menu-name" jhiTranslate="global.menu.entities.customer">Category</span>
+		</a>
+			<ul id="collapseCustomer" [ngbCollapse]="isCollapseCustomer">
 				<li class=""><a href="form_account.html">....</a></li>
 				<li class=""><a href="form_article.html">......</a></li>
-			</ul>
-		</li>
+			</ul></li>
 		<li class="nav-item menu-item"><a
-			class="accordion-toggle collapsed"
-			routerLink="sales-order"
+			class="accordion-toggle collapsed" routerLink="sales-order"
 			(click)="isCollapsedOrder = !isCollapsedOrder"
 			[attr.aria-expanded]="!isCollapsedOrder"
-			aria-controls="collapseOrder"><i class="fa fa-dollar"></i> 
-				<span class="menu-name"  jhiTranslate="global.menu.entities.salesOrder">Sales Order</span></a>
-			<ul
-				id="collapseOrder"
-				[ngbCollapse]="isCollapsedOrder">
+			aria-controls="collapseOrder"><i class="fa fa-dollar"></i> <span
+				class="menu-name" jhiTranslate="global.menu.entities.salesOrder">Sales
+					Order</span></a>
+			<ul id="collapseOrder" [ngbCollapse]="isCollapsedOrder">
 				<li class=""><a href="form_account.html">Account</a></li>
 				<li class=""><a href="form_article.html">Article</a></li>
 				<li class=""><a href="form_elements.html">Elements</a></li>
 				<li class=""><a href="form_validation.html">Validation</a></li>
 				<li class=""><a href="form_wizard.html">Wizard</a></li>
-			</ul>
-		</li>
+			</ul></li>
 		<li class="nav-item menu-item"><a
-			class="accordion-toggle collapsed"
-			routerLink="#"
+			class="accordion-toggle collapsed" routerLink="#"
 			(click)="isCollapsedSetting = !isCollapsedSetting"
 			[attr.aria-expanded]="!isCollapsedSetting"
-			aria-controls="collapsedSetting"><i class="fa fa-cog"></i> 
-				<span class="menu-name"  jhiTranslate="global.menu.setting.main">Settings</span></a>
-			<ul
-				id="collapseOrder"
-				[ngbCollapse]="isCollapsedSetting">
+			aria-controls="collapsedSetting"><i class="fa fa-cog"></i> <span
+				class="menu-name" jhiTranslate="global.menu.setting.main">Settings</span></a>
+			<ul id="collapseOrder" [ngbCollapse]="isCollapsedSetting">
 				<li class=""><a href="form_account.html">Account</a></li>
 				<li class=""><a href="form_article.html">Article</a></li>
 				<li class=""><a href="form_elements.html">Elements</a></li>
 				<li class=""><a href="form_validation.html">Validation</a></li>
 				<li class=""><a href="form_wizard.html">Wizard</a></li>
-			</ul>
-		</li>
+			</ul></li>
 	</ul>
 </nav>

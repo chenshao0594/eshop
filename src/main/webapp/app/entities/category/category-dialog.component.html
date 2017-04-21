@@ -37,7 +37,7 @@
             <label class="form-control-label" jhiTranslate="eshopApp.category.parent" for="field_parent">Parent</label>
             <select class="form-control" id="field_parent" name="parent" [(ngModel)]="category.parent" >
                 <option [ngValue]="null"></option>
-                <option [ngValue]="categoryOption.id === category.parent?.id ? category.parent : categoryOption" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.id}}</option>
+                <option [ngValue]="categoryOption.id === category.parent?.id ? category.parent : categoryOption" *ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.code}}</option>
             </select>
         </div>
        

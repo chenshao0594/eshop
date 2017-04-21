@@ -6,18 +6,6 @@
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
         <div class="row justify-content-center">
         <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOption.readOnly" for="field_readOnly">Read Only</label>
-            <input type="checkbox" class="form-control" name="readOnly" id="field_readOnly"
-                [(ngModel)]="productOption.readOnly"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOption.productOptionType" for="field_productOptionType">Product Option Type</label>
-            <input type="text" class="form-control" name="productOptionType" id="field_productOptionType"
-                [(ngModel)]="productOption.productOptionType"
-             />
-        </div>
-        <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.productOption.code" for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
                 [(ngModel)]="productOption.code"
@@ -29,6 +17,26 @@
                 </small>
             </div>
         </div>
+         <div class="col-5 form-group ">
+            <label jhiTranslate="eshopApp.productOption.merchantStore" for="field_merchantStore">Merchant Store</label>
+            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="productOption.merchantStore" >
+                <option [ngValue]="null"></option>
+                <option [ngValue]="merchantStoreOption.id === productOption.merchantStore?.id ? productOption.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
+            </select>
+        </div>
+       <!--  <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productOption.readOnly" for="field_readOnly">Read Only</label>
+            <input type="checkbox" class="form-control" name="readOnly" id="field_readOnly"
+                [(ngModel)]="productOption.readOnly"
+             />
+        </div> -->
+        <div class="col-5 form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.productOption.productOptionType" for="field_productOptionType">Product Option Type</label>
+            <input type="text" class="form-control" name="productOptionType" id="field_productOptionType"
+                [(ngModel)]="productOption.productOptionType"
+             />
+        </div>
+        
         <div class="col-5 form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.productOption.productOptionSortOrder" for="field_productOptionSortOrder">Product Option Sort Order</label>
             <input type="number" class="form-control" name="productOptionSortOrder" id="field_productOptionSortOrder"
@@ -36,13 +44,7 @@
              />
         </div>
 
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.productOption.merchantStore" for="field_merchantStore">Merchant Store</label>
-            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="productOption.merchantStore" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="merchantStoreOption.id === productOption.merchantStore?.id ? productOption.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
-            </select>
-        </div>
+       
     </div>
 
     <button type="button"
