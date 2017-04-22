@@ -30,7 +30,11 @@
     "sockjs-client": "1.1.2",
     "webstomp-client": "1.0.6",
     "tether": "1.4.0",
-    "zone.js": "0.8.5"
+    "zone.js": "0.8.5",
+    "awesome-bootstrap-checkbox": "1.0.0-alpha.5",
+    "bootstrap-select": "1.12.2",
+    "animate.css": "3.5.1",
+    "glyphicons-halflings": "1.9.0"
   },
   "devDependencies": {
     "@angular/cli": "1.0.0",

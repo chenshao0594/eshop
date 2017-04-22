@@ -1,19 +1,20 @@
 <jhi-page-ribbon></jhi-page-ribbon>
-<div class="container-fluid">
+<div class="logo">
+	<h4>
+	<span jhiTranslate="global.title" class="navbar-title">Eshop</span> <span class="navbar-version">{{version}}</span>
+	</h4>
+</div>
+<nav id="sidebar" class="sidebar nav-collapse collapse">
+	<router-outlet name="menu"></router-outlet>
+</nav>
+<div class="wrap">
 	<div>
-		<router-outlet name="navbar"></router-outlet>
+		<header class="page-header">
+			<router-outlet name="navbar"></router-outlet>
+		</header>
 	</div>
-	<div class="row">
-		<div class="col-sm-3 col-md-2 col-2 no-padding-right">
-			<router-outlet name="menu"></router-outlet>
-		</div>
-		<div class="col-10 ">
-			<div class="card jh-card" style="padding-top: 0px;">
-				<router-outlet></router-outlet>
-				<router-outlet name="popup"></router-outlet>
-			</div>
-			
-		</div>
+	<div class="content container">
+		<router-outlet></router-outlet>
+		<router-outlet name="popup"></router-outlet>
 	</div>
-	<jhi-footer></jhi-footer>
 </div>

@@ -1,10 +1,39 @@
 
+@import "variables";
+@import "mixins";
+
+// essential libs
+//
+@import "node_modules/bootstrap/scss/bootstrap";
+@import "node_modules/font-awesome/scss/font-awesome";
+@import "node_modules/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.scss";
+@import "node_modules/bootstrap-select/dist/css/bootstrap-select";
+@import "node_modules/animate.css/animate";
+
+@import "override-libs";
+@import "override-bootstrap";
+
+@import "override-custom-libs";
+
+@import "font";
+
+@import "general";
+
+@import "utils";
+
+@import "base";
+
+@import "responsive";
+
+@import "widgets";
+
+@import "print";
 /* ==============================================================
 Bootstrap tweaks
 ===============================================================*/
 
 body, h1, h2, h3, h4 {
-    font-weight: 300;
+    font-weight: 400;
 }
 
 
@@ -252,7 +281,7 @@ Social button
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
 .form-control-label{
-	font-weight: 500;
+	font-weight: 300;
     font-size: medium;
     margin-bottom: 0px;
 }

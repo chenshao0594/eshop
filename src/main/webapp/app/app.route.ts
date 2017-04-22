@@ -1,6 +1,6 @@
 import { Route } from '@angular/router';
 
-import { NavbarComponent, MenuComponent } from './layouts';
+import { NavbarComponent, MenuComponent, SidebarComponent} from './layouts';
 
 export const navbarRoute: Route = {
     path: '',
@@ -12,3 +12,8 @@ export const menuRoute: Route = {
     component: MenuComponent,
     outlet: 'menu'
 };
+//export const sidebarRoute: Route = {
+//    path: '',
+//    component: SidebarComponent,
+//    outlet: 'sidebar'
+//};

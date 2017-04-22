@@ -16,10 +16,10 @@
             "detail": {
                 "title": "Product Option Value"
             },
-            "productOptionValueImage": "Product Option Value Image",
+            "productOptionValueImage": "Image",
             "code": "Code",
-            "productOptionValueSortOrder": "Product Option Value Sort Order",
-            "productOptionDisplayOnly": "Product Option Display Only",
+            "productOptionValueSortOrder": "Sort Order",
+            "productOptionDisplayOnly": "Display Only",
             "created_by": "Created By",
             "created_date": "Created Date",
             "last_modified_by": "Last Modified By",

@@ -60,12 +60,12 @@
 				"productAvailability": "Product Availability",
 				"emailTemplate": "Email Template",
 				"emailSetting": "Email Setting",
-"billing": "Billing",
-"delivery": "Delivery",
+				"billing": "Billing",
+				"delivery": "Delivery",
 				"jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
 			},
-			"categories": {
-				"main": "Categories",
+			"catalog": {
+				"main": "Catalog",
 				"book": "Book",
 				"product": "Product",
 				"productOptionValue": "Product Option Value",

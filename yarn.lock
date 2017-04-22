@@ -233,6 +233,10 @@ angular2-template-loader@0.6.2:
   dependencies:
     loader-utils "^0.2.15"
 
+animate.css@3.5.1:
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/animate.css/-/animate.css-3.5.1.tgz#9f9e4df53ba2bde030891bcf73d8f0d940b57c63"
+
 ansi-align@^1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/ansi-align/-/ansi-align-1.1.0.tgz#2f0c1658829739add5ebb15e6b0c6e3423f016ba"
@@ -445,6 +449,10 @@ autoprefixer@^6.3.1, autoprefixer@^6.5.3:
     num2fraction "^1.2.2"
     postcss "^5.2.16"
     postcss-value-parser "^3.2.3"
+
+awesome-bootstrap-checkbox@1.0.0-alpha.5:
+  version "1.0.0-alpha.5"
+  resolved "https://registry.yarnpkg.com/awesome-bootstrap-checkbox/-/awesome-bootstrap-checkbox-1.0.0-alpha.5.tgz#359db3d5ab1da7c1dffde6f90ab19ca6bc4ae14f"
 
 awesome-typescript-loader@3.1.2:
   version "3.1.2"
@@ -668,6 +676,12 @@ boom@2.x.x:
   resolved "https://registry.yarnpkg.com/boom/-/boom-2.10.1.tgz#39c8918ceff5799f83f9492a848f625add0c766f"
   dependencies:
     hoek "2.x.x"
+
+bootstrap-select@1.12.2:
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/bootstrap-select/-/bootstrap-select-1.12.2.tgz#58d095b3fd584b31443866fbe39b6fdd4e4e12a4"
+  dependencies:
+    jquery ">=1.8"
 
 bootstrap@4.0.0-alpha.6:
   version "4.0.0-alpha.6"
@@ -3330,6 +3344,10 @@ glogg@^1.0.0:
   dependencies:
     sparkles "^1.0.0"
 
+glyphicons-halflings@1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/glyphicons-halflings/-/glyphicons-halflings-1.9.0.tgz#fa6a1bae13b7fdfd79491fec2e7564b9d1969210"
+
 got@^3.2.0:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/got/-/got-3.3.1.tgz#e5d0ed4af55fc3eef4d56007769d98192bcb2eca"
@@ -4387,7 +4405,7 @@ jodid25519@^1.0.0:
   dependencies:
     jsbn "~0.1.0"
 
-jquery@3.2.1, jquery@>=1.9.1:
+jquery@3.2.1, jquery@>=1.8, jquery@>=1.9.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.2.1.tgz#5c4d9de652af6cd0a770154a631bba12b015c787"
 

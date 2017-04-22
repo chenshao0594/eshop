@@ -17,9 +17,9 @@
                 "title": "Product Option"
             },
             "readOnly": "Read Only",
-            "productOptionType": "Product Option Type",
+            "productOptionType": "Option Type",
             "code": "Code",
-            "productOptionSortOrder": "Product Option Sort Order",
+            "productOptionSortOrder": "Sort Order",
             "descriptions": "Descriptions",
             "merchantStore": "Merchant Store"
         }
