@@ -12,6 +12,13 @@
             "relationshipName": "merchantStore",
             "otherEntityName": "merchantStore",
             "otherEntityField": "id"
+        },
+        {
+            "relationshipName": "productOption",
+            "otherEntityName": "productOption",
+            "relationshipType": "many-to-one",
+            "relationshipValidateRules": [],
+            "otherEntityField": "id"
         }
     ],
     "fields": [
@@ -58,9 +65,8 @@
         }
     ],
     "changelogDate": "20170415184111",
-    "entityTableName": "product_option_value",
     "dto": "no",
-    "pagination": "pagination",
     "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+    "entityTableName": "product_option_value",
+    "pagination": "pagination"
 }

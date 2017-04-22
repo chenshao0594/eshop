@@ -8,8 +8,10 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Objects;
 
 /**
  * A ProductOptionValue.
@@ -18,136 +20,177 @@ import java.util.Set;
 @Table(name = "product_option_value")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productoptionvalue")
-public class ProductOptionValue extends BusinessDomain<Long, ProductOptionValue> implements Serializable {
+public class ProductOptionValue extends BusinessDomain<Long, ProductOption> implements Serializable {
 
-	private static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-	@Column(name = "product_option_value_image")
-	private String productOptionValueImage;
+    @Column(name = "product_option_value_image")
+    private String productOptionValueImage;
 
-	@NotNull
-	@Column(name = "code", nullable = false)
-	private String code;
+    @NotNull
+    @Column(name = "code", nullable = false)
+    private String code;
 
-	@Column(name = "product_option_value_sort_order")
-	private Integer productOptionValueSortOrder;
+    @Column(name = "product_option_value_sort_order")
+    private Integer productOptionValueSortOrder;
 
-	@Column(name = "product_option_display_only")
-	private Boolean productOptionDisplayOnly;
+    @Column(name = "product_option_display_only")
+    private Boolean productOptionDisplayOnly;
 
-	@OneToMany(mappedBy = "productOptionValue")
-	@JsonIgnore
-	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-	private Set<ProductOptionValueDescription> descriptions = new HashSet<>();
+    @OneToMany(mappedBy = "productOptionValue")
+    @JsonIgnore
+    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    private Set<ProductOptionValueDescription> descriptions = new HashSet<>();
 
-	@ManyToOne
-	private MerchantStore merchantStore;
-	
-	@ManyToOne
-	private ProductOption ProductOption;
+    @ManyToOne
+    private MerchantStore merchantStore;
 
-	@Override
-	public Long getId() {
-		return id;
-	}
+    @ManyToOne
+    private ProductOption productOption;
 
-	@Override
-	public void setId(Long id) {
-		this.id = id;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getProductOptionValueImage() {
-		return productOptionValueImage;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public ProductOptionValue productOptionValueImage(String productOptionValueImage) {
-		this.productOptionValueImage = productOptionValueImage;
-		return this;
-	}
+    public String getProductOptionValueImage() {
+        return productOptionValueImage;
+    }
 
-	public void setProductOptionValueImage(String productOptionValueImage) {
-		this.productOptionValueImage = productOptionValueImage;
-	}
+    public ProductOptionValue productOptionValueImage(String productOptionValueImage) {
+        this.productOptionValueImage = productOptionValueImage;
+        return this;
+    }
 
-	public String getCode() {
-		return code;
-	}
+    public void setProductOptionValueImage(String productOptionValueImage) {
+        this.productOptionValueImage = productOptionValueImage;
+    }
 
-	public ProductOptionValue code(String code) {
-		this.code = code;
-		return this;
-	}
+    public String getCode() {
+        return code;
+    }
 
-	public void setCode(String code) {
-		this.code = code;
-	}
+    public ProductOptionValue code(String code) {
+        this.code = code;
+        return this;
+    }
 
-	public Integer getProductOptionValueSortOrder() {
-		return productOptionValueSortOrder;
-	}
+    public void setCode(String code) {
+        this.code = code;
+    }
 
-	public ProductOptionValue productOptionValueSortOrder(Integer productOptionValueSortOrder) {
-		this.productOptionValueSortOrder = productOptionValueSortOrder;
-		return this;
-	}
+    public Integer getProductOptionValueSortOrder() {
+        return productOptionValueSortOrder;
+    }
 
-	public void setProductOptionValueSortOrder(Integer productOptionValueSortOrder) {
-		this.productOptionValueSortOrder = productOptionValueSortOrder;
-	}
+    public ProductOptionValue productOptionValueSortOrder(Integer productOptionValueSortOrder) {
+        this.productOptionValueSortOrder = productOptionValueSortOrder;
+        return this;
+    }
 
-	public Boolean isProductOptionDisplayOnly() {
-		return productOptionDisplayOnly;
-	}
+    public void setProductOptionValueSortOrder(Integer productOptionValueSortOrder) {
+        this.productOptionValueSortOrder = productOptionValueSortOrder;
+    }
 
-	public ProductOptionValue productOptionDisplayOnly(Boolean productOptionDisplayOnly) {
-		this.productOptionDisplayOnly = productOptionDisplayOnly;
-		return this;
-	}
+    public Boolean isProductOptionDisplayOnly() {
+        return productOptionDisplayOnly;
+    }
 
-	public void setProductOptionDisplayOnly(Boolean productOptionDisplayOnly) {
-		this.productOptionDisplayOnly = productOptionDisplayOnly;
-	}
+    public ProductOptionValue productOptionDisplayOnly(Boolean productOptionDisplayOnly) {
+        this.productOptionDisplayOnly = productOptionDisplayOnly;
+        return this;
+    }
 
-	public Set<ProductOptionValueDescription> getDescriptions() {
-		return descriptions;
-	}
+    public void setProductOptionDisplayOnly(Boolean productOptionDisplayOnly) {
+        this.productOptionDisplayOnly = productOptionDisplayOnly;
+    }
 
-	public ProductOptionValue descriptions(Set<ProductOptionValueDescription> productOptionValueDescriptions) {
-		this.descriptions = productOptionValueDescriptions;
-		return this;
-	}
+    public Set<ProductOptionValueDescription> getDescriptions() {
+        return descriptions;
+    }
 
-	public ProductOptionValue addDescriptions(ProductOptionValueDescription productOptionValueDescription) {
-		this.descriptions.add(productOptionValueDescription);
-		productOptionValueDescription.setProductOptionValue(this);
-		return this;
-	}
+    public ProductOptionValue descriptions(Set<ProductOptionValueDescription> productOptionValueDescriptions) {
+        this.descriptions = productOptionValueDescriptions;
+        return this;
+    }
 
-	public ProductOptionValue removeDescriptions(ProductOptionValueDescription productOptionValueDescription) {
-		this.descriptions.remove(productOptionValueDescription);
-		productOptionValueDescription.setProductOptionValue(null);
-		return this;
-	}
+    public ProductOptionValue addDescriptions(ProductOptionValueDescription productOptionValueDescription) {
+        this.descriptions.add(productOptionValueDescription);
+        productOptionValueDescription.setProductOptionValue(this);
+        return this;
+    }
 
-	public void setDescriptions(Set<ProductOptionValueDescription> productOptionValueDescriptions) {
-		this.descriptions = productOptionValueDescriptions;
-	}
+    public ProductOptionValue removeDescriptions(ProductOptionValueDescription productOptionValueDescription) {
+        this.descriptions.remove(productOptionValueDescription);
+        productOptionValueDescription.setProductOptionValue(null);
+        return this;
+    }
 
-	public MerchantStore getMerchantStore() {
-		return merchantStore;
-	}
+    public void setDescriptions(Set<ProductOptionValueDescription> productOptionValueDescriptions) {
+        this.descriptions = productOptionValueDescriptions;
+    }
 
-	public ProductOptionValue merchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-		return this;
-	}
+    public MerchantStore getMerchantStore() {
+        return merchantStore;
+    }
 
-	public void setMerchantStore(MerchantStore merchantStore) {
-		this.merchantStore = merchantStore;
-	}
+    public ProductOptionValue merchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+        return this;
+    }
 
+    public void setMerchantStore(MerchantStore merchantStore) {
+        this.merchantStore = merchantStore;
+    }
+
+    public ProductOption getProductOption() {
+        return productOption;
+    }
+
+    public ProductOptionValue productOption(ProductOption productOption) {
+        this.productOption = productOption;
+        return this;
+    }
+
+    public void setProductOption(ProductOption productOption) {
+        this.productOption = productOption;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        ProductOptionValue productOptionValue = (ProductOptionValue) o;
+        if (productOptionValue.id == null || id == null) {
+            return false;
+        }
+        return Objects.equals(id, productOptionValue.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(id);
+    }
+
+    @Override
+    public String toString() {
+        return "ProductOptionValue{" +
+            "id=" + id +
+            ", productOptionValueImage='" + productOptionValueImage + "'" +
+            ", code='" + code + "'" +
+            ", productOptionValueSortOrder='" + productOptionValueSortOrder + "'" +
+            ", productOptionDisplayOnly='" + productOptionDisplayOnly + "'" +
+            '}';
+    }
 }

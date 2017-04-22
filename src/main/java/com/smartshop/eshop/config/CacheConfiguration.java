@@ -55,6 +55,8 @@ public class CacheConfiguration {
 			cm.createCache(com.smartshop.eshop.domain.ProductOptionValue.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.ProductOptionValue.class.getName() + ".descriptions",
 					jcacheConfiguration);
+			cm.createCache(com.smartshop.eshop.domain.ProductOptionValue.class.getName() + ".productOption",
+					jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.ProductDescription.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.TaxClass.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.TaxClass.class.getName() + ".products", jcacheConfiguration);
@@ -116,6 +118,8 @@ public class CacheConfiguration {
 			cm.createCache(com.smartshop.eshop.domain.ZoneDescription.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.ProductOption.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.ProductOption.class.getName() + ".descriptions",
+					jcacheConfiguration);
+			cm.createCache(com.smartshop.eshop.domain.ProductOption.class.getName() + ".productOptionValues",
 					jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.ProductOptionValueDescription.class.getName(),
 					jcacheConfiguration);

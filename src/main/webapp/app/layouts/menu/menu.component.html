@@ -26,10 +26,14 @@
 				class="menu-name" jhiTranslate="global.menu.entities.category">Category</span>
 		</a>
 			<ul id="collapseCategory" [ngbCollapse]="isCollapseCategory">
+				<li class=""><a routerLink="product"><span
+						class="menu-name" jhiTranslate="global.menu.categories.product">Product</span></a></li>
 				<li class=""><a routerLink="product-option"><span
 						class="menu-name" jhiTranslate="global.menu.categories.productOption">Product Option</span></a></li>
 				<li class=""><a href="form_article.html">......</a></li>
-			</ul></li>
+			</ul>
+			
+		</li>
 
 		<li class="nav-item menu-item"><a
 			class="accordion-toggle collapsed" routerLink="customer"

@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { EventManager , JhiLanguageService , AlertService } from 'ng-jhipster';
+import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 
 import { ProductOption } from './product-option.model';
 import { ProductOptionService } from './product-option.service';
@@ -22,9 +23,13 @@ export class ProductOptionDetailComponent implements OnInit, OnDestroy {
         private jhiLanguageService: JhiLanguageService,
         private productOptionService: ProductOptionService,
         private route: ActivatedRoute,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private modalService: NgbModal
     ) {
         this.jhiLanguageService.setLocations(['productOption']);
+    }
+    addOptionValue(content) {
+      this.modalService.open(content);
     }
 
     ngOnInit() {

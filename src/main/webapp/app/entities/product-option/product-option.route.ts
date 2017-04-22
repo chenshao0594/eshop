@@ -10,6 +10,7 @@ import { ProductOptionPopupComponent, ProductOptionDialogComponent } from './pro
 import { ProductOptionDeletePopupComponent } from './product-option-delete-dialog.component';
 
 import { Principal } from '../../shared';
+import { ProductOptionValuePopupComponent } from '../product-option-value';
 
 @Injectable()
 export class ProductOptionResolvePagingParams implements Resolve<any> {
@@ -77,5 +78,15 @@ export const productOptionPopupRoute: Routes = [
     },
     canActivate: [UserRouteAccessService],
     outlet: 'popup'
-  }
+  },
+  {
+    path: 'product-option/:id/option-value-new',
+    component: ProductOptionPopupComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.productOption.home.title'
+    },
+    canActivate: [UserRouteAccessService],
+    outlet: 'popup'
+  },
 ];

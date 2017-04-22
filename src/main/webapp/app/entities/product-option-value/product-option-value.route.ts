@@ -6,7 +6,7 @@ import { PaginationUtil } from 'ng-jhipster';
 
 import { ProductOptionValueComponent } from './product-option-value.component';
 import { ProductOptionValueDetailComponent } from './product-option-value-detail.component';
-import { ProductOptionValuePopupComponent, ProductOptionValueDialogComponent } from './product-option-value-dialog.component';
+import { ProductOptionValuePopupComponent } from './product-option-value-dialog.component';
 import { ProductOptionValueDeletePopupComponent } from './product-option-value-delete-dialog.component';
 
 import { Principal } from '../../shared';
@@ -40,13 +40,6 @@ export const productOptionValueRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
-    path: 'product-option-value-new',
-    component: ProductOptionValueDialogComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.productOptionValue.home.title'
-    },
-  }, {
     path: 'product-option-value/:id',
     component: ProductOptionValueDetailComponent,
     data: {
@@ -58,6 +51,16 @@ export const productOptionValueRoute: Routes = [
 ];
 
 export const productOptionValuePopupRoute: Routes = [
+  {
+    path: 'product-option-value-new',
+    component: ProductOptionValuePopupComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.productOptionValue.home.title'
+    },
+    canActivate: [UserRouteAccessService],
+    outlet: 'popup'
+  },
   {
     path: 'product-option-value/:id/edit',
     component: ProductOptionValuePopupComponent,

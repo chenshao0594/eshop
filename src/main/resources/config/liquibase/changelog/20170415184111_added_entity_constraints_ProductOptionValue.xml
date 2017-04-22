@@ -14,5 +14,11 @@
                                  referencedColumnNames="id"
                                  referencedTableName="merchant_store"/>
 
+        <addForeignKeyConstraint baseColumnNames="product_option_id"
+                                 baseTableName="product_option_value"
+                                 constraintName="fk_product_option_value_product_option_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="product_option"/>
+
     </changeSet>
 </databaseChangeLog>

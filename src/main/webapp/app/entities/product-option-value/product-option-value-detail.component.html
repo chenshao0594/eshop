@@ -3,58 +3,63 @@
     <h2><span jhiTranslate="eshopApp.productOptionValue.detail.title">Product Option Value</span> {{productOptionValue.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.productOptionValueImage" for="field_productOptionValueImage">Product Option Value Image</label>
-            <input type="text" class="form-control" name="productOptionValueImage" id="field_productOptionValueImage"
-                [(ngModel)]="productOptionValue.productOptionValueImage"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.code" for="field_code">Code</label>
-            <input type="text" class="form-control" name="code" id="field_code"
-                [(ngModel)]="productOptionValue.code"
-            required />
-            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eshopApp.productOptionValue.productOptionValueImage">Product Option Value Image</span></dt>
+        <dd>
+            <span>{{productOptionValue.productOptionValueImage}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.productOptionValue.code">Code</span></dt>
+        <dd>
+            <span>{{productOptionValue.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.productOptionValue.productOptionValueSortOrder">Product Option Value Sort Order</span></dt>
+        <dd>
+            <span>{{productOptionValue.productOptionValueSortOrder}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.productOptionValue.productOptionDisplayOnly">Product Option Display Only</span></dt>
+        <dd>
+            <span>{{productOptionValue.productOptionDisplayOnly}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.productOptionValue.created_by">Created By</span></dt>
+        <dd>
+            <span>{{productOptionValue.created_by}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.productOptionValue.created_date">Created Date</span></dt>
+        <dd>
+            <span>{{productOptionValue.created_date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.productOptionValue.last_modified_by">Last Modified By</span></dt>
+        <dd>
+            <span>{{productOptionValue.last_modified_by}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.productOptionValue.last_modified_date">Last Modified Date</span></dt>
+        <dd>
+            <span>{{productOptionValue.last_modified_date | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.productOptionValue.merchantStore">Merchant Store</span></dt>
+        <dd>
+            <div *ngIf="productOptionValue.merchantStore">
+                <a [routerLink]="['/merchant-store', productOptionValue.merchantStore?.id]">{{productOptionValue.merchantStore?.id}}</a>
             </div>
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.productOptionValueSortOrder" for="field_productOptionValueSortOrder">Product Option Value Sort Order</label>
-            <input type="number" class="form-control" name="productOptionValueSortOrder" id="field_productOptionValueSortOrder"
-                [(ngModel)]="productOptionValue.productOptionValueSortOrder"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.productOptionDisplayOnly" for="field_productOptionDisplayOnly">Product Option Display Only</label>
-            <input type="checkbox" class="form-control" name="productOptionDisplayOnly" id="field_productOptionDisplayOnly"
-                [(ngModel)]="productOptionValue.productOptionDisplayOnly"
-             />
-        </div>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.productOptionValue.productOption">Product Option</span></dt>
+        <dd>
+            <div *ngIf="productOptionValue.productOption">
+                <a [routerLink]="['/product-option', productOptionValue.productOption?.id]">{{productOptionValue.productOption?.id}}</a>
+            </div>
+        </dd>
+    </dl>
 
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.productOptionValue.merchantStore" for="field_merchantStore">Merchant Store</label>
-            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="productOptionValue.merchantStore" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="merchantStoreOption.id === productOptionValue.merchantStore?.id ? productOptionValue.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
-            </select>
-        </div>
-    </div>
-
-    <button type="button"
+    <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
     </button>
 
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'product-option-value/'+ productOptionValue.id + '/edit'} }]"
+            replaceUrl="true"
             class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
-    </form>
 </div>

@@ -20,8 +20,13 @@
             "code": "Code",
             "productOptionValueSortOrder": "Product Option Value Sort Order",
             "productOptionDisplayOnly": "Product Option Display Only",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date",
             "descriptions": "Descriptions",
-            "merchantStore": "Merchant Store"
+            "merchantStore": "Merchant Store",
+            "productOption": "Product Option"
         }
     }
 }

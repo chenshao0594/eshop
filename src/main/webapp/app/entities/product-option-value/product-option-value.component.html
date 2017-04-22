@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="eshopApp.productOptionValue.home.title">Product Option Values</span>
-        <button class="btn btn-primary float-right create-product-option-value" [routerLink]="['../product-option-value-new']">
+        <button class="btn btn-primary float-right create-product-option-value" [routerLink]="['/', { outlets: { popup: ['product-option-value-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="eshopApp.productOptionValue.home.createLabel">
             Create new Product Option Value
@@ -34,7 +34,12 @@
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.productOptionValue.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOptionValueSortOrder"><span jhiTranslate="eshopApp.productOptionValue.productOptionValueSortOrder">Product Option Value Sort Order</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOptionDisplayOnly"><span jhiTranslate="eshopApp.productOptionValue.productOptionDisplayOnly">Product Option Display Only</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.productOptionValue.created_by">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.productOptionValue.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.productOptionValue.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.productOptionValue.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.productOptionValue.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productOption.id"><span jhiTranslate="eshopApp.productOptionValue.productOption">Product Option</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -45,9 +50,18 @@
                 <td>{{productOptionValue.code}}</td>
                 <td>{{productOptionValue.productOptionValueSortOrder}}</td>
                 <td>{{productOptionValue.productOptionDisplayOnly}}</td>
+                <td>{{productOptionValue.created_by}}</td>
+                <td>{{productOptionValue.created_date | date:'mediumDate'}}</td>
+                <td>{{productOptionValue.last_modified_by}}</td>
+                <td>{{productOptionValue.last_modified_date | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="productOptionValue.merchantStore">
                         <a [routerLink]="['../merchant-store', productOptionValue.merchantStore?.id ]" >{{productOptionValue.merchantStore?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="productOptionValue.productOption">
+                        <a [routerLink]="['../product-option', productOptionValue.productOption?.id ]" >{{productOptionValue.productOption?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -57,6 +71,13 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'product-option-value/'+ productOptionValue.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'product-option-value/'+ productOptionValue.id + '/delete'} }]"

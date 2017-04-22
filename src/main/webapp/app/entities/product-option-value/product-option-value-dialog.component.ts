@@ -9,6 +9,7 @@ import { ProductOptionValue } from './product-option-value.model';
 import { ProductOptionValuePopupService } from './product-option-value-popup.service';
 import { ProductOptionValueService } from './product-option-value.service';
 import { MerchantStore, MerchantStoreService } from '../merchant-store';
+import { ProductOption, ProductOptionService } from '../product-option';
 
 @Component({
     selector: 'jhi-product-option-value-dialog',
@@ -21,15 +22,18 @@ export class ProductOptionValueDialogComponent implements OnInit {
     isSaving: boolean;
 
     merchantstores: MerchantStore[];
-    constructor(
+
+    productoptions: ProductOption[];
+            constructor(
+        public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productOptionValueService: ProductOptionValueService,
         private merchantStoreService: MerchantStoreService,
+        private productOptionService: ProductOptionService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['productOptionValue']);
-        this.productOptionValue = new ProductOptionValue();
     }
 
     ngOnInit() {
@@ -37,9 +41,11 @@ export class ProductOptionValueDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.productOptionService.query().subscribe(
+            (res: Response) => { this.productoptions = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
-        window.history.back();
+        this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -58,7 +64,7 @@ export class ProductOptionValueDialogComponent implements OnInit {
     private onSaveSuccess(result: ProductOptionValue) {
         this.eventManager.broadcast({ name: 'productOptionValueListModification', content: 'OK'});
         this.isSaving = false;
-        this.productOptionValue = result;
+        this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {
@@ -78,6 +84,10 @@ export class ProductOptionValueDialogComponent implements OnInit {
     trackMerchantStoreById(index: number, item: MerchantStore) {
         return item.id;
     }
+
+    trackProductOptionById(index: number, item: ProductOption) {
+        return item.id;
+    }
 }
 
 @Component({
@@ -88,6 +98,7 @@ export class ProductOptionValuePopupComponent implements OnInit, OnDestroy {
 
     modalRef: NgbModalRef;
     routeSub: any;
+    productOptionId: number;
 
     constructor(
         private route: ActivatedRoute,
@@ -96,13 +107,9 @@ export class ProductOptionValuePopupComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-            if ( params['id'] ) {
-                this.modalRef = this.productOptionValuePopupService
-                    .open(ProductOptionValueDialogComponent, params['id']);
-            } else {
+                this.productOptionId = params['id'];
                 this.modalRef = this.productOptionValuePopupService
                     .open(ProductOptionValueDialogComponent);
-            }
         });
     }
 
