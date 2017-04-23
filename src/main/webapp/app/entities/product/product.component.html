@@ -1,75 +1,80 @@
-<div>
-    <h2>
-        <span jhiTranslate="eshopApp.product.home.title">Products</span>
-        <button class="btn btn-primary float-right create-product" [routerLink]="['../product-new']">
-            <span class="fa fa-plus"></span>
-            <span class="hidden-sm-down"  jhiTranslate="eshopApp.product.home.createLabel">
-            Create new Product
-            </span>
-        </button>
-    </h2>
-    <jhi-alert></jhi-alert>
-    <div class="row">
-        <div class="col-sm-12 no-padding-right">
-            <form name="searchForm" class="form-inline">
-                <div class="input-group w-100 mt-3 offset-6">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.product.home.search' | translate }}">
-                    <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
-                        <span class="fa fa-search"></span>
-                    </button>
-                    <button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
-                        <span class="fa fa-trash-o"></span>
-                    </button>
-                </div>
-            </form>
-        </div>
-    </div>
-    <br/>
-    <div class="table-responsive" *ngIf="products">
-        <table class="table table-striped">
-            <thead>
-            <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="name"><span jhiTranslate="eshopApp.product.name">Name</span>  </th>
-            <th jhiSortBy="dateAvailable"><span jhiTranslate="eshopApp.product.dateAvailable">Date Available</span>  </th>
-            <th jhiSortBy="available"><span jhiTranslate="eshopApp.product.available">Available</span>  </th>
-            <th jhiSortBy="preOrder"><span jhiTranslate="eshopApp.product.preOrder">Pre Order</span>  </th>
-            <th jhiSortBy="sku"><span jhiTranslate="eshopApp.product.sku">Sku</span>  </th>
-            <th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.product.taxClass">Tax Class</span>  </th>
-            <th jhiSortBy="manufacturer.id"><span jhiTranslate="eshopApp.product.manufacturer">Manufacturer</span>  </th>
-            <th jhiSortBy="type.id"><span jhiTranslate="eshopApp.product.type">Type</span>  </th>
-            <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.product.merchantStore">Merchant Store</span>  </th>
-<!--             <th></th>
- -->            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let product of products ;trackBy: trackId">
-                <td><a [routerLink]="['../product', product.id ]">{{product.name}}</a></td>
-                <td>{{product.dateAvailable | date:'mediumDate'}}</td>
-                <td>{{product.available}}</td>
-                <td>{{product.preOrder}}</td>
-                <td>{{product.sku}}</td>
-                <td>
-                    <div *ngIf="product.taxClass">
-                        <a [routerLink]="['../tax-class', product.taxClass?.id ]" >{{product.taxClass?.code}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="product.manufacturer">
-                        <a [routerLink]="['../manufacturer', product.manufacturer?.id ]" >{{product.manufacturer?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="product.type">
-                        <a [routerLink]="['../product-type', product.type?.id ]" >{{product.type?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="product.merchantStore">
-                        <a [routerLink]="['../merchant-store', product.merchantStore?.id ]" >{{product.merchantStore?.id}}</a>
-                    </div>
-                </td>
-                
-                <!-- <td class="text-right">
+<div class="page-title">
+	<span jhiTranslate="eshopApp.product.home.title">Products</span>
+	<button class="btn btn-primary float-right " [routerLink]="['../product-new']">
+		<span class="fa fa-plus"></span><span class="hidden-sm-down" jhiTranslate="eshopApp.product.home.createLabel"> Create new
+			Product </span>
+	</button>
+</div>
+<section class="widget">
+	<div class="body">
+		<div class="row">
+			<div class="col-sm-12 no-padding-right">
+				<form name="searchForm" class="form-inline">
+					<div class="input-group w-100 mt-3 offset-6">
+						<input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch"
+							name="currentSearch" placeholder="{{ 'eshopApp.product.home.search' | translate }}">
+						<button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
+							<span class="fa fa-search"></span>
+						</button>
+						<button class="input-group-addon btn btn-danger" (click)="clear()" *ngIf="currentSearch">
+							<span class="fa fa-trash-o"></span>
+						</button>
+					</div>
+				</form>
+			</div>
+		</div>
+		<div class="mt">
+			<table id="datatable-table" class="table table-striped table-hover">
+				<thead>
+					<tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse"
+						[callback]="transition.bind(this)">
+						<th jhiSortBy="name"><span jhiTranslate="eshopApp.product.name">Name</span></th>
+						<th jhiSortBy="dateAvailable"><span jhiTranslate="eshopApp.product.dateAvailable">Date
+								Available</span></th>
+						<th jhiSortBy="available"><span jhiTranslate="eshopApp.product.available">Available</span>
+						</th>
+						<th jhiSortBy="preOrder"><span jhiTranslate="eshopApp.product.preOrder">Pre Order</span>
+						</th>
+						<th jhiSortBy="sku"><span jhiTranslate="eshopApp.product.sku">Sku</span></th>
+						<th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.product.taxClass">Tax
+								Class</span></th>
+						<th jhiSortBy="manufacturer.id"><span jhiTranslate="eshopApp.product.manufacturer">Manufacturer</span>
+						</th>
+						<th jhiSortBy="type.id"><span jhiTranslate="eshopApp.product.type">Type</span></th>
+						<th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.product.merchantStore">Merchant
+								Store</span></th>
+						<!--             <th></th>
+ -->
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let product of products ;trackBy: trackId">
+						<td><a [routerLink]="['../product', product.id ]">{{product.name}}</a></td>
+						<td>{{product.dateAvailable | date:'mediumDate'}}</td>
+						<td>{{product.available}}</td>
+						<td>{{product.preOrder}}</td>
+						<td>{{product.sku}}</td>
+						<td>
+							<div *ngIf="product.taxClass">
+								<a [routerLink]="['../tax-class', product.taxClass?.id ]">{{product.taxClass?.code}}</a>
+							</div>
+						</td>
+						<td>
+							<div *ngIf="product.manufacturer">
+								<a [routerLink]="['../manufacturer', product.manufacturer?.id ]">{{product.manufacturer?.id}}</a>
+							</div>
+						</td>
+						<td>
+							<div *ngIf="product.type">
+								<a [routerLink]="['../product-type', product.type?.id ]">{{product.type?.id}}</a>
+							</div>
+						</td>
+						<td>
+							<div *ngIf="product.merchantStore">
+								<a [routerLink]="['../merchant-store', product.merchantStore?.id ]">{{product.merchantStore?.id}}</a>
+							</div>
+						</td>
+						<!-- <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
                                 [routerLink]="['../product', product.id ]"
@@ -86,16 +91,19 @@
                         </button>
                     </div>
                 </td> -->
-            </tr>
-            </tbody>
-        </table>
-    </div>
-        <div *ngIf="products && products.length">
-            <div class="row justify-content-center">
-                <jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
-            </div>
-            <div class="row justify-content-center">
-                <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
-            </div>
-        </div>
-</div>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div *ngIf="products && products.length">
+			<div class="row justify-content-between">
+				<div class="col-6">
+					<jhi-item-count [page]="page" [total]="queryCount" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+				</div>
+				<div class="col-3">
+					<ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

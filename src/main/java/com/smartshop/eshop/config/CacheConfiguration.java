@@ -174,6 +174,7 @@ public class CacheConfiguration {
 			cm.createCache(com.smartshop.eshop.domain.Template.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.EmailTemplate.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.EmailSetting.class.getName(), jcacheConfiguration);
+cm.createCache(com.smartshop.eshop.domain.Attachment.class.getName(), jcacheConfiguration);
 			// jhipster-needle-ehcache-add-entry
 		};
 	}

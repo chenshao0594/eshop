@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
 import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
+import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jhipster';
 
 import { Product } from './product.model';
 import { ProductPopupService } from './product-popup.service';
@@ -13,6 +13,7 @@ import { Manufacturer, ManufacturerService } from '../manufacturer';
 import { ProductType, ProductTypeService } from '../product-type';
 import { MerchantStore, MerchantStoreService } from '../merchant-store';
 import { ProductDescription } from '../product-description';
+import { Attachment, AttachmentService } from '../attachment';
 
 @Component({
     selector: 'jhi-product-dialog',
@@ -28,6 +29,7 @@ export class ProductDialogComponent implements OnInit {
     producttypes: ProductType[];
     descriptions: ProductDescription[];
     merchantstores: MerchantStore[];
+    attachment: Attachment;
         constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
@@ -36,10 +38,13 @@ export class ProductDialogComponent implements OnInit {
         private manufacturerService: ManufacturerService,
         private productTypeService: ProductTypeService,
         private merchantStoreService: MerchantStoreService,
-        private eventManager: EventManager
+        private attachmentService: AttachmentService,
+        private eventManager: EventManager,
+        private dataUtils: DataUtils
     ) {
         this.jhiLanguageService.setLocations(['product']);
         this.product = new Product();
+       
     }
 
     ngOnInit() {
@@ -105,6 +110,29 @@ export class ProductDialogComponent implements OnInit {
 
     trackMerchantStoreById(index: number, item: MerchantStore) {
         return item.id;
+    }
+    setFileData(event, isImage) {
+        if (event.target.files && event.target.files[0]) {
+            const file = event.target.files[0];
+            if (isImage && !/^image\//.test(file.type)) {
+                return;
+            }
+            let attachment = new Attachment();
+            this.dataUtils.toBase64(file, (base64Data) => {
+                attachment['content'] = base64Data;
+                attachment['contentContentType'] = file.type;
+            });
+            attachment['boName'] = "Product";
+            attachment['boId'] = 1;
+            this.attachmentService.create(attachment)
+                                   .subscribe((res: Attachment) =>
+                                       this.onCreateAttachmentSuccess(res), (res: Response) => this.onSaveError(res));
+        }
+    }
+    private onCreateAttachmentSuccess(result: Product) {
+      //  this.eventManager.broadcast({ name: 'productListModification', content: 'OK'});
+        this.isSaving = false;
+        this.product = result;
     }
 }
 

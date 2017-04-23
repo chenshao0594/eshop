@@ -210,6 +210,7 @@
 		file="classpath:config/liquibase/changelog/20170415184147_added_entity_ZoneDescription.xml"
 		relativeToChangelogFile="false" />
 <include file="classpath:config/liquibase/changelog/20170415184111_added_entity_ProductOptionValue.xml" relativeToChangelogFile="false"/>
+<include file="classpath:config/liquibase/changelog/20170423015404_added_entity_Attachment.xml" relativeToChangelogFile="false"/>
 	<!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase 
 		changelogs here -->
 	<!-- <include

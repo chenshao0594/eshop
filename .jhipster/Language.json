@@ -13,7 +13,7 @@
             "relationshipName": "stores",
             "otherEntityName": "merchantStore",
             "otherEntityField": "id",
-            "ownerSide": true
+            "ownerSide": false
         }
     ],
     "fields": [

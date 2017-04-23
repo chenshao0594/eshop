@@ -3,6 +3,7 @@
 		edit a Category</span> 
 		<small> <span [hidden]="!category.id"> #{{category.id}} </span></small>
 </h2>
+<jhi-alert-error></jhi-alert-error>
 <section class="widget">
 	<div class="body">
 		<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">

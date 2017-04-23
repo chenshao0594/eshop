@@ -10,7 +10,7 @@ import { ProductService } from './product.service';
     selector: 'jhi-product-detail',
     templateUrl: './product-detail.component.html'
 })
-export class ProductDetailComponent implements OnInit, OnDestroy {
+export class ProductDetailComponent implements OnInit {
 
     product: Product;
     private subscription: any;
@@ -31,7 +31,6 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
         this.subscription = this.route.params.subscribe((params) => {
             this.load(params['id']);
         });
-        this.registerChangeInProducts();
     }
 
     load(id) {
@@ -41,45 +40,5 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     }
     previousState() {
         window.history.back();
-    }
-    save() {
-        this.isSaving = true;
-        if (this.product.id !== undefined) {
-            this.productService.update(this.product)
-                .subscribe((res: Product) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        } else {
-            this.productService.create(this.product)
-                .subscribe((res: Product) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        }
-    }
-
-    private onSaveSuccess(result: Product) {
-        this.eventManager.broadcast({ name: 'productModification', content: 'OK'});
-        this.isSaving = false;
-    }
-
-    private onSaveError(error) {
-        try {
-            error.json();
-        } catch (exception) {
-            error.message = error.text();
-        }
-        this.isSaving = false;
-        this.onError(error);
-    }
-
-    private onError(error) {
-        this.alertService.error(error.message, null, null);
-    }
-
-    ngOnDestroy() {
-        this.subscription.unsubscribe();
-        this.eventManager.destroy(this.eventSubscriber);
-    }
-
-    registerChangeInProducts() {
-        this.eventSubscriber = this.eventManager.subscribe('productListModification', (response) => this.load(this.product.id));
     }
 }

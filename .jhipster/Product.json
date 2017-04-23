@@ -54,6 +54,13 @@
             "relationshipName": "taxClass",
             "otherEntityName": "taxClass",
             "otherEntityField": "id"
+        },
+         {
+            "relationshipType": "many-to-many",
+            "relationshipName": "categories",
+            "otherEntityName": "category",
+            "ownerSide": true,
+            "otherEntityRelationshipName": "products"
         }
     ],
     "fields": [

@@ -1,0 +1,44 @@
+
+<div *ngIf="attachment">
+    <h2><span jhiTranslate="eshopApp.attachment.detail.title">Attachment</span> {{attachment.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eshopApp.attachment.name">Name</span></dt>
+        <dd>
+            <span>{{attachment.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.attachment.content">Content</span></dt>
+        <dd>
+            <div *ngIf="attachment.content">
+                <a (click)="openFile(attachment.contentContentType, attachment.content)" jhiTranslate="entity.action.open">open</a>
+                {{attachment.contentContentType}}, {{byteSize(attachment.content)}}
+            </div>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.attachment.size">Size</span></dt>
+        <dd>
+            <span>{{attachment.size}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.attachment.boName">Bo Name</span></dt>
+        <dd>
+            <span>{{attachment.boName}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.attachment.boId">Bo Id</span></dt>
+        <dd>
+            <span>{{attachment.boId}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'attachment/'+ attachment.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -77,6 +77,7 @@
                 "emailSetting": "Email Setting",
                 "billing": "Billing",
                 "delivery": "Delivery",
+                "attachment": "Attachment",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
