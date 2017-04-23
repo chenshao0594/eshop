@@ -8,10 +8,6 @@ import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jh
 import { Attachment } from './attachment.model';
 import { AttachmentPopupService } from './attachment-popup.service';
 import { AttachmentService } from './attachment.service';
-import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
-
-const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-
 
 @Component({
     selector: 'jhi-attachment-dialog',

@@ -40,10 +40,11 @@ export class ProductDialogComponent implements OnInit {
         private merchantStoreService: MerchantStoreService,
         private attachmentService: AttachmentService,
         private eventManager: EventManager,
-        private dataUtils: DataUtils
+        private dataUtils: DataUtils,
+        private route: ActivatedRoute,
     ) {
         this.jhiLanguageService.setLocations(['product']);
-        this.product = new Product();
+      
        
     }
 
@@ -58,6 +59,9 @@ export class ProductDialogComponent implements OnInit {
             (res: Response) => { this.producttypes = res.json(); }, (res: Response) => this.onError(res.json()));
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.route.params.subscribe((params) => {
+                this.product = this.productService.find(params['id']);
+        });
     }
     clear() {
         window.history.back();

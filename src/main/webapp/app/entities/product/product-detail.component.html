@@ -1,105 +1,174 @@
 <div *ngIf="product">
-<h2 class="page-title">
-	<span jhiTranslate="eshopApp.product.detail.title">Create or
-		edit a Product</span> 
-		<small> <span [hidden]="!product.id"> #{{product.id}} </span></small>
-</h2>
- <jhi-alert-error></jhi-alert-error>
-    <section class="widget">
-	<div class="body">
-        <div class="row">
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.productShipeable" for="field_productShipeable">Product Shipeable</label>
-            <p class="form-control-static">{{product.productShipeable}}</p>
-        </div>
-        <div class="form-group">
-             <label class="control-label col-sm-4" for="last-name">Last Name <span class="required">*</span></label>
-             <div class="col-sm-8"><input type="text" id="last-name" name="last-name" required="required" class="form-control input-transparent" ></div>
-              </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.productOrdered" for="field_productOrdered">Product Ordered</label>
-            <p class="form-control-static">{{product.productOrdered}}</p>
-             
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.dateAvailable" for="field_dateAvailable">Date Available</label>
-            <div class="input-group">
-            	<p class="form-control-static">{{product.dateAvailable}}</p>
-            </div>
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.sortOrder" for="field_sortOrder">Sort Order</label>
-            <p class="form-control-static">{{product.sortOrder}}</p>
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.productIsFree" for="field_productIsFree">Product Is Free</label>
-             <p class="form-control-static">{{product.productIsFree}}</p>
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.available" for="field_available">Available</label>
-              <p class="form-control-static">{{product.available}}</p>
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.refSku" for="field_refSku">Ref Sku</label>
-             <p class="form-control-static">{{product.refSku}}</p>
-             
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.productHeight" for="field_productHeight">Product Height</label>
-             <p class="form-control-static">{{product.productHeight}}</p>
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.productWeight" for="field_productWeight">Product Weight</label>
-             <p class="form-control-static">{{product.productWeight}}</p>
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.productWidth" for="field_productWidth">Product Width</label>
-             <p class="form-control-static">{{product.productWidth}}</p>
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.productLength" for="field_productLength">Product Length</label>
-             <p class="form-control-static">{{product.productLength}}</p>
-        </div>
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.preOrder" for="field_preOrder">Pre Order</label>
-             <p class="form-control-static">{{product.available}}</p>
-        </div>
-        
-        <div class="col-5 form-group">
-            <label class="col-form-label" jhiTranslate="eshopApp.product.sku" for="field_sku">Sku</label>
-            <p class="form-control-static">{{product.sku}}</p>
-        </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.product.manufacturer" for="field_manufacturer">Manufacturer</label>
-            <p class="form-control-static" [hidden]="!product.manufacturer">{{product.manufacturer}}</p>
-            
-        </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.product.type" for="field_type">Type</label>
-            <p class="form-control-static" [hidden]="!product.type">{{product.type}}</p>
-        </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.product.merchantStore" for="field_merchantStore">Merchant Store</label>
-            <p class="form-control-static" [hidden]="!product.merchantStore">{{product.merchantStore.storename}}</p>
-        </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.product.taxClass" for="field_taxClass">Tax Class</label>
-            <p class="form-control-static" [hidden]="!product.taxClass">{{product.taxClass.code}}</p>
-        </div>
-    </div>
-
-    <button type="button"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button" [disabled]="editForm.form.invalid || isSaving"
-            class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
-    </button>
-    </div>
-    </section>
-    
+	<h2 class="page-title">
+		<span jhiTranslate="eshopApp.product.detail.title">Product</span> <small>{{product.id}}</small>
+		<!-- <button type="button" (click)="previousState()" class="btn btn-info">
+			<span class="fa fa-arrow-left"></span>&nbsp;<label class="control-label col-2 text-right no-padding-right" jhiTranslate="entity.action.back"> Back</span>
+		</button> -->
+		<button type="button" class="btn btn-primary pull-right" [routerLink]="['/product/'+ product.id + '/edit']">Update</button>
+	</h2>
+	<section class="widget">
+		<div class="body">
+			<div class="form-horizontal form-label-left">
+				<fieldset>
+					<legend class="section">Info</legend>
+					<div class="row">
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productHeight">Prefix</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">test ...</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productHeight">Product Height</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productHeight}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productWeight">Product Weight</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productWeight}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productShipeable">Product Shipeable</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productShipeable}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productOrdered">Product Ordered</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productOrdered}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productReviewAvg">Product Review Avg</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productReviewAvg}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.dateAvailable">Date Available</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.dateAvailable | date:'mediumDate'}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.sortOrder">Sort Order</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.sortOrder}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productIsFree">Product Is Free</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productIsFree}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.available">Available</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.available}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productReviewCount">Product Review Count</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productReviewCount}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.refSku">Ref Sku</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.refSku}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productVirtual">Product Virtual</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productVirtual}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productWidth">Product Width</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productWidth}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.preOrder">Pre Order</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.preOrder}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.productLength">Product Length</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.productLength}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.sku">Sku</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.sku}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.manufacturer">Manufacturer</label>
+						<div class="col-4">
+							<div *ngIf="product.manufacturer">
+								<a [routerLink]="['/manufacturer', product.manufacturer?.id]">{{product.manufacturer?.id}}</a>
+							</div>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.type">Type</label>
+						<div class="col-4">
+							<div *ngIf="product.type">
+								<a [routerLink]="['/product-type', product.type?.id]">{{product.type?.id}}</a>
+							</div>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.merchantStore">Merchant Store</label>
+						<div class="col-4">
+							<div *ngIf="product.merchantStore">
+								<a [routerLink]="['/merchant-store', product.merchantStore?.id]">{{product.merchantStore?.id}}</a>
+							</div>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.taxClass">Tax Class</label>
+						<div class="col-4">
+							<div *ngIf="product.taxClass">
+								<a [routerLink]="['/tax-class', product.taxClass?.id]">{{product.taxClass?.id}}</a>
+							</div>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.categories">Categories</label>
+						<div class="col-4">
+							<span *ngFor="let categories of product.categories; let last = last"> <a
+								[routerLink]="['/category', categories?.id ]">{{categories.id}}</a>
+							</span>
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend class="section">Audit Info</legend>
+					<div class="row">
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.created_by">Created By</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.createdBy}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.created_date">Created Date</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.createdDate | date:'mediumDate'}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.last_modified_by">Last Modified By</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.lastModifiedBy}}</p>
+						</div>
+						<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.last_modified_date">Last Modified Date</label>
+						<div class="col-4">
+							<p class="form-control input-transparent">{{product.lastModifiedDate |
+								date:'mediumDate'}}</p>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+		</div>
+</section>
 </div>
+<!-- <button type="submit" (click)="previousState()" class="btn btn-info">
+		<span class="fa fa-arrow-left"></span>&nbsp;<label class="control-label col-2 text-right no-padding-right" jhiTranslate="entity.action.back"> Back</span>
+	</button>
+	<button type="button" [routerLink]="['/', { outlets: { popup: 'product/'+ product.id + '/edit'} }]"
+		replaceUrl="true" class="btn btn-primary">
+		<span class="fa fa-pencil"></span>&nbsp;<label class="control-label col-2 text-right no-padding-right" jhiTranslate="entity.action.edit"> Edit</span>
+	</button>
+ -->

@@ -226,7 +226,13 @@ legend {
     }
   }
 }
-
+.form-horizontal.form-label-right {
+  @include media-breakpoint-up(sm) {
+    .control-label {
+      text-align: right;
+    }
+  }
+}
 /***************************/
 /*      Input Groups       */
 /***************************/

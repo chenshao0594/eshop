@@ -54,6 +54,14 @@ export const productRoute: Routes = [
         pageTitle: 'eshopApp.product.home.title'
     },
     canActivate: [UserRouteAccessService]
+  }, {
+      path: 'product/:id/edit',
+      component: ProductDialogComponent,
+      data: {
+          authorities: ['ROLE_USER'],
+          pageTitle: 'eshopApp.product.home.title'
+      },
+      canActivate: [UserRouteAccessService]
   }
 ];
 
