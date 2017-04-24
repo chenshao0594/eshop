@@ -1,9 +1,9 @@
-ID;CATEGORY_IMAGE";CATEGORY_STATUS;"CODE";DEPTH;"LINEAGE";SORT_ORDER;VISIBLE;merchant_store_id;PARENT_ID；created_by, last_modified_by
--1;;0;"root";0;"/";0;1;1;system;system
-1;;0;"computerbooks";0;"/";0;1;1;system;system
-2;;0;"novels";0;"/";0;0;1;;system;system
-3;;0;"tech";1;"/1/";0;0;1;1;system;system
-4;;0;"web";1;"/1/";0;1;1;1;system;system
-5;;0;"fiction";1;"/2/";0;1;1;2;system;system
-6;;0;"business";0;"/";0;1;1;;system;system
-7;;0;"cloud";2;"/1/3/";0;1;1;3;system;system
+ID;CATEGORY_IMAGE";CATEGORY_STATUS;"CODE";DEPTH;"LINEAGE";SORT_ORDER;VISIBLE;MERCHANT_ID;PARENT_ID;created_by;last_modified_by
+-1;NULL;0;"Root";0;"/";0;1;1;NULL;system;system
+1;NULL;0;"computerbooks";0;"/";0;1;1;NULL;system;system
+2;NULL;0;"novels";0;"/";0;0;1;NULL;system;system
+3;NULL;0;"tech";1;"/1/";0;0;1;1;system;system
+4;NULL;0;"web";1;"/1/";0;1;1;1;system;system
+5;NULL;0;"fiction";1;"/2/";0;1;1;2;system;system
+6;NULL;0;"business";0;"/";0;1;1;NULL;system;system
+7;NULL;0;"cloud";2;"/1/3/";0;1;1;3;system;system
