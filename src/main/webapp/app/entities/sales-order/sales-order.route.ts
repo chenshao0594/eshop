@@ -40,15 +40,26 @@ export const salesOrderRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'sales-order/:id',
+    component: SalesOrderDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.salesOrder.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'sales-order-new',
     component: SalesOrderDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.salesOrder.home.title'
     },
-  }, {
-    path: 'sales-order/:id',
-    component: SalesOrderDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'sales-order/:id/edit',
+    component: SalesOrderDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.salesOrder.home.title'
@@ -58,16 +69,8 @@ export const salesOrderRoute: Routes = [
 ];
 
 export const salesOrderPopupRoute: Routes = [
-  {
-    path: 'sales-order/:id/edit',
-    component: SalesOrderPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.salesOrder.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'sales-order/:id/delete',
     component: SalesOrderDeletePopupComponent,

@@ -20,6 +20,10 @@ export class SalesOrderService {
             .convertLocalDateToServer(salesOrder.lastModified);
         copy.datePurchased = this.dateUtils
             .convertLocalDateToServer(salesOrder.datePurchased);
+        copy.created_date = this.dateUtils
+            .convertLocalDateToServer(salesOrder.created_date);
+        copy.last_modified_date = this.dateUtils
+            .convertLocalDateToServer(salesOrder.last_modified_date);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -33,6 +37,10 @@ export class SalesOrderService {
             .convertLocalDateToServer(salesOrder.lastModified);
         copy.datePurchased = this.dateUtils
             .convertLocalDateToServer(salesOrder.datePurchased);
+        copy.created_date = this.dateUtils
+            .convertLocalDateToServer(salesOrder.created_date);
+        copy.last_modified_date = this.dateUtils
+            .convertLocalDateToServer(salesOrder.last_modified_date);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -47,6 +55,10 @@ export class SalesOrderService {
                 .convertLocalDateFromServer(jsonResponse.lastModified);
             jsonResponse.datePurchased = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse.datePurchased);
+            jsonResponse.created_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.created_date);
+            jsonResponse.last_modified_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.last_modified_date);
             return jsonResponse;
         });
     }
@@ -69,6 +81,7 @@ export class SalesOrderService {
         ;
     }
 
+
     private convertResponse(res: any): any {
         const jsonResponse = res.json();
         for (let i = 0; i < jsonResponse.length; i++) {
@@ -78,6 +91,10 @@ export class SalesOrderService {
                 .convertLocalDateFromServer(jsonResponse[i].lastModified);
             jsonResponse[i].datePurchased = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse[i].datePurchased);
+            jsonResponse[i].created_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].created_date);
+            jsonResponse[i].last_modified_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].last_modified_date);
         }
         res._body = jsonResponse;
         return res;

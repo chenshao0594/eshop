@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { SalesOrder } from './sales-order.model';
@@ -24,19 +24,26 @@ export class SalesOrderDialogComponent implements OnInit {
     currencies: Currency[];
 
     merchantstores: MerchantStore[];
-                constructor(
+                        constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private salesOrderService: SalesOrderService,
         private currencyService: CurrencyService,
         private merchantStoreService: MerchantStoreService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['salesOrder', 'paymentType', 'orderChannel', 'orderType', 'orderStatus']);
-        this.salesOrder = new SalesOrder();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.salesOrder = new SalesOrder();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.currencyService.query().subscribe(
@@ -44,8 +51,14 @@ export class SalesOrderDialogComponent implements OnInit {
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
+    load(id) {
+         this.salesOrderService.find(id).subscribe((salesOrder) => {
+                this.salesOrder = salesOrder;
+                
+         });
+    }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -64,7 +77,7 @@ export class SalesOrderDialogComponent implements OnInit {
     private onSaveSuccess(result: SalesOrder) {
         this.eventManager.broadcast({ name: 'salesOrderListModification', content: 'OK'});
         this.isSaving = false;
-        this.salesOrder = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {
