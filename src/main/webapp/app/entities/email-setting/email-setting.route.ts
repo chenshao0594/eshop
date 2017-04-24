@@ -21,15 +21,26 @@ export const emailSettingRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'email-setting/:id',
+    component: EmailSettingDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.emailSetting.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'email-setting-new',
     component: EmailSettingDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.emailSetting.home.title'
     },
-  }, {
-    path: 'email-setting/:id',
-    component: EmailSettingDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'email-setting/:id/edit',
+    component: EmailSettingDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.emailSetting.home.title'
@@ -39,16 +50,8 @@ export const emailSettingRoute: Routes = [
 ];
 
 export const emailSettingPopupRoute: Routes = [
-  {
-    path: 'email-setting/:id/edit',
-    component: EmailSettingPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.emailSetting.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'email-setting/:id/delete',
     component: EmailSettingDeletePopupComponent,

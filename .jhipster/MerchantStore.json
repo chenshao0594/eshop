@@ -60,7 +60,7 @@
             ]
         },
         {
-            "fieldName": "dEFAULTSTORE",
+            "fieldName": "defaultStore",
             "fieldType": "String"
         },
         {

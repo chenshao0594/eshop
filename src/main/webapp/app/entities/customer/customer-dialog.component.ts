@@ -1,10 +1,8 @@
-import { Billing } from '../billing';
-import { Delivery } from '../delivery';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { Customer } from './customer.model';
@@ -18,38 +16,49 @@ import { Language, LanguageService } from '../language';
     templateUrl: './customer-dialog.component.html'
 })
 export class CustomerDialogComponent implements OnInit {
+
     customer: Customer;
     authorities: any[];
     isSaving: boolean;
+
     merchantstores: MerchantStore[];
+
     languages: Language[];
-    billing: Billing;
-    delivery: Delivery;
-        constructor(
+                constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private customerService: CustomerService,
         private merchantStoreService: MerchantStoreService,
         private languageService: LanguageService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
-        this.jhiLanguageService.setLocations(['customer', 'customerGender', 'billing', 'delivery']);
-        this.customer = new Customer();
-//        this.customer.delivery = new Delivery();
+        this.jhiLanguageService.setLocations(['customer', 'customerGender']);
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.customer = new Customer();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
         this.languageService.query().subscribe(
             (res: Response) => { this.languages = res.json(); }, (res: Response) => this.onError(res.json()));
-        this.customer.billing = new Billing();
-        this.customer.delivery = new Delivery();
+    }
+    load(id) {
+         this.customerService.find(id).subscribe((customer) => {
+                this.customer = customer;
+                
+         });
     }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -68,7 +77,7 @@ export class CustomerDialogComponent implements OnInit {
     private onSaveSuccess(result: Customer) {
         this.eventManager.broadcast({ name: 'customerListModification', content: 'OK'});
         this.isSaving = false;
-        this.customer = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

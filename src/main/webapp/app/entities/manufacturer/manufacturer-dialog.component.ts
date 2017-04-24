@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { Manufacturer } from './manufacturer.model';
@@ -21,25 +21,38 @@ export class ManufacturerDialogComponent implements OnInit {
     isSaving: boolean;
 
     merchantstores: MerchantStore[];
-    constructor(
+            constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private manufacturerService: ManufacturerService,
         private merchantStoreService: MerchantStoreService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['manufacturer']);
-        this.manufacturer = new Manufacturer();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.manufacturer = new Manufacturer();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
+    load(id) {
+         this.manufacturerService.find(id).subscribe((manufacturer) => {
+                this.manufacturer = manufacturer;
+                
+         });
+    }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -58,7 +71,7 @@ export class ManufacturerDialogComponent implements OnInit {
     private onSaveSuccess(result: Manufacturer) {
         this.eventManager.broadcast({ name: 'manufacturerListModification', content: 'OK'});
         this.isSaving = false;
-        this.manufacturer = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

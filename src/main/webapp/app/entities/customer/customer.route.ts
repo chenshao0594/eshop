@@ -40,15 +40,26 @@ export const customerRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'customer/:id',
+    component: CustomerDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.customer.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'customer-new',
     component: CustomerDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.customer.home.title'
     },
-  }, {
-    path: 'customer/:id',
-    component: CustomerDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'customer/:id/edit',
+    component: CustomerDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.customer.home.title'
@@ -58,16 +69,8 @@ export const customerRoute: Routes = [
 ];
 
 export const customerPopupRoute: Routes = [
-  {
-    path: 'customer/:id/edit',
-    component: CustomerPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.customer.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'customer/:id/delete',
     component: CustomerDeletePopupComponent,

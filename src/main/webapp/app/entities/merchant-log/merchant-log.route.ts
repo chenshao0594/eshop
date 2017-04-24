@@ -40,15 +40,26 @@ export const merchantLogRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'merchant-log/:id',
+    component: MerchantLogDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.merchantLog.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'merchant-log-new',
     component: MerchantLogDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.merchantLog.home.title'
     },
-  }, {
-    path: 'merchant-log/:id',
-    component: MerchantLogDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'merchant-log/:id/edit',
+    component: MerchantLogDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.merchantLog.home.title'
@@ -58,16 +69,8 @@ export const merchantLogRoute: Routes = [
 ];
 
 export const merchantLogPopupRoute: Routes = [
-  {
-    path: 'merchant-log/:id/edit',
-    component: MerchantLogPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.merchantLog.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'merchant-log/:id/delete',
     component: MerchantLogDeletePopupComponent,

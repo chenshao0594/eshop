@@ -40,15 +40,26 @@ export const templateRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'template/:id',
+    component: TemplateDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.template.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'template-new',
     component: TemplateDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.template.home.title'
     },
-  }, {
-    path: 'template/:id',
-    component: TemplateDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'template/:id/edit',
+    component: TemplateDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.template.home.title'
@@ -58,16 +69,8 @@ export const templateRoute: Routes = [
 ];
 
 export const templatePopupRoute: Routes = [
-  {
-    path: 'template/:id/edit',
-    component: TemplatePopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.template.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'template/:id/delete',
     component: TemplateDeletePopupComponent,

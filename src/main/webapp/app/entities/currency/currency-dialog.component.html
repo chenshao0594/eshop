@@ -1,49 +1,90 @@
+<div *ngIf="currency">
+<h2 class="page-title">
+    <span >Create or edit</span> 
+    <small> <span [hidden]="!currency.id"> #id </span></small>
+</h2>
+ <jhi-alert-error></jhi-alert-error>
+<section class="widget">
+<div class="body">
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-
-    <div class="modal-header">
-        <h4 class="modal-title" id="myCurrencyLabel" jhiTranslate="eshopApp.currency.home.createOrEditLabel">Create or edit a Currency</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
+       
         <div class="col-5 form-group" [hidden]="!currency.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="currency.id" readonly />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.currency.code" for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
                 [(ngModel)]="currency.code"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.currency.supported" for="field_supported">Supported</label>
             <input type="checkbox" class="form-control" name="supported" id="field_supported"
                 [(ngModel)]="currency.supported"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.currency.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                 [(ngModel)]="currency.name"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.currency.currency" for="field_currency">Currency</label>
             <input type="text" class="form-control" name="currency" id="field_currency"
                 [(ngModel)]="currency.currency"
              />
         </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.currency.created_by" for="field_created_by">Created By</label>
+            <input type="text" class="form-control" name="created_by" id="field_created_by"
+                [(ngModel)]="currency.created_by"
+             />
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.currency.created_date" for="field_created_date">Created Date</label>
+            <div class="input-group">
+                <input id="field_created_date" type="text" class="form-control" name="created_date" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="currency.created_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="created_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.currency.last_modified_by" for="field_last_modified_by">Last Modified By</label>
+            <input type="text" class="form-control" name="last_modified_by" id="field_last_modified_by"
+                [(ngModel)]="currency.last_modified_by"
+             />
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.currency.last_modified_date" for="field_last_modified_date">Last Modified Date</label>
+            <div class="input-group">
+                <input id="field_last_modified_date" type="text" class="form-control" name="last_modified_date" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="currency.last_modified_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="last_modified_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
 
     </div>
-    </div> 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-        </button>
-    </div>
+    <div class="form-actions">
+                <div class="row">
+                    <div class="offset-9">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+                            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </div>
+          </div>
 </form>
+</div>
+</section>
+</div>

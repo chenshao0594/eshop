@@ -8,7 +8,7 @@ import { DateUtils } from 'ng-jhipster';
 export class ProductOptionValueService {
 
     private resourceUrl = 'api/product-option-values';
-    private resourceSearchUrl = 'api/_search/product-option-values';
+    private resourceSearchUrl = 'api/product-option-values/_search';
 
     constructor(private http: Http, private dateUtils: DateUtils) { }
 

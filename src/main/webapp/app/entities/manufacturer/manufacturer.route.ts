@@ -40,15 +40,26 @@ export const manufacturerRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'manufacturer/:id',
+    component: ManufacturerDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.manufacturer.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'manufacturer-new',
     component: ManufacturerDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.manufacturer.home.title'
     },
-  }, {
-    path: 'manufacturer/:id',
-    component: ManufacturerDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'manufacturer/:id/edit',
+    component: ManufacturerDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.manufacturer.home.title'
@@ -58,16 +69,8 @@ export const manufacturerRoute: Routes = [
 ];
 
 export const manufacturerPopupRoute: Routes = [
-  {
-    path: 'manufacturer/:id/edit',
-    component: ManufacturerPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.manufacturer.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'manufacturer/:id/delete',
     component: ManufacturerDeletePopupComponent,

@@ -40,15 +40,26 @@ export const taxClassRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'tax-class/:id',
+    component: TaxClassDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.taxClass.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'tax-class-new',
     component: TaxClassDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.taxClass.home.title'
     },
-  }, {
-    path: 'tax-class/:id',
-    component: TaxClassDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'tax-class/:id/edit',
+    component: TaxClassDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.taxClass.home.title'
@@ -58,16 +69,8 @@ export const taxClassRoute: Routes = [
 ];
 
 export const taxClassPopupRoute: Routes = [
-  {
-    path: 'tax-class/:id/edit',
-    component: TaxClassPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.taxClass.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'tax-class/:id/delete',
     component: TaxClassDeletePopupComponent,

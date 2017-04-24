@@ -1,5 +1,5 @@
 <div>
-    <h2>
+    <h2 class="page-title">
         <span jhiTranslate="eshopApp.merchantLog.home.title">Merchant Logs</span>
         <button class="btn btn-primary float-right create-merchant-log" [routerLink]="['../merchant-log-new']">
             <span class="fa fa-plus"></span>
@@ -9,10 +9,12 @@
         </button>
     </h2>
     <jhi-alert></jhi-alert>
+    <section class="widget">
+    <div class="body">
     <div class="row">
         <div class="col-sm-12 no-padding-right">
             <form name="searchForm" class="form-inline">
-                <div class="input-group w-100 mt-3">
+                <div class="input-group w-100 mt-3 offset-6">
                     <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.merchantLog.home.search' | translate }}">
                     <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
                         <span class="fa fa-search"></span>
@@ -26,12 +28,16 @@
     </div>
     <br/>
     <div class="table-responsive" *ngIf="merchantLogs">
-        <table class="table table-striped">
+        <table class="table table-striped table-hover">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="log"><span jhiTranslate="eshopApp.merchantLog.log">Log</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="module"><span jhiTranslate="eshopApp.merchantLog.module">Module</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.merchantLog.created_by">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.merchantLog.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.merchantLog.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.merchantLog.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="store.id"><span jhiTranslate="eshopApp.merchantLog.store">Store</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -41,6 +47,10 @@
                 <td><a [routerLink]="['../merchant-log', merchantLog.id ]">{{merchantLog.id}}</a></td>
                 <td>{{merchantLog.log}}</td>
                 <td>{{merchantLog.module}}</td>
+                <td>{{merchantLog.created_by}}</td>
+                <td>{{merchantLog.created_date | date:'mediumDate'}}</td>
+                <td>{{merchantLog.last_modified_by}}</td>
+                <td>{{merchantLog.last_modified_date | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="merchantLog.store">
                         <a [routerLink]="['../merchant-store', merchantLog.store?.id ]" >{{merchantLog.store?.id}}</a>
@@ -53,6 +63,13 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'merchant-log/'+ merchantLog.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'merchant-log/'+ merchantLog.id + '/delete'} }]"
@@ -75,4 +92,6 @@
                 <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
             </div>
         </div>
+    </div>
+    </section>
 </div>

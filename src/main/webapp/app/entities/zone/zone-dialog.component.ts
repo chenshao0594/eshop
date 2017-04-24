@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { Zone } from './zone.model';
@@ -21,25 +21,38 @@ export class ZoneDialogComponent implements OnInit {
     isSaving: boolean;
 
     countries: Country[];
-    constructor(
+            constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private zoneService: ZoneService,
         private countryService: CountryService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['zone']);
-        this.zone = new Zone();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.zone = new Zone();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.countryService.query().subscribe(
             (res: Response) => { this.countries = res.json(); }, (res: Response) => this.onError(res.json()));
     }
+    load(id) {
+         this.zoneService.find(id).subscribe((zone) => {
+                this.zone = zone;
+                
+         });
+    }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -58,7 +71,7 @@ export class ZoneDialogComponent implements OnInit {
     private onSaveSuccess(result: Zone) {
         this.eventManager.broadcast({ name: 'zoneListModification', content: 'OK'});
         this.isSaving = false;
-        this.zone = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

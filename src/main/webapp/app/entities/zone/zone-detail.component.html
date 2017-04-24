@@ -1,43 +1,67 @@
 
 <div *ngIf="zone">
-    <h2><span jhiTranslate="eshopApp.zone.detail.title">Zone</span> {{zone.id}}</h2>
-    <hr>
+    <h2 class="page-title"><span jhiTranslate="eshopApp.zone.detail.title">Zone</span> {{zone.id}}
+        <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+            <span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+    </h2>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.zone.code" for="field_code">Code</label>
-            <input type="text" class="form-control" name="code" id="field_code"
-                [(ngModel)]="zone.code"
-             />
-        </div>
 
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.zone.country" for="field_country">Country</label>
-            <select class="form-control" id="field_country" name="country" [(ngModel)]="zone.country" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="countryOption.id === zone.country?.id ? zone.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
-            </select>
+    <section class="widget">
+        <div class="body">
+            <fieldset>
+                <legend class="section">Info</legend>
+                <div class="row">
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.zone.code">Code</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{zone.code}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.zone.country" for="field_country">Country</label>
-            <select class="form-control" id="field_country" name="country" [(ngModel)]="zone.country" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="countryOption.id === zone.country?.id ? zone.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
-            </select>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.zone.created_by">Created By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{zone.created_by}}</span>
+            </p>
         </div>
-    </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.zone.created_date">Created Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{zone.created_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.zone.last_modified_by">Last Modified By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{zone.last_modified_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.zone.last_modified_date">Last Modified Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{zone.last_modified_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.zone.country">Country</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
+            <div *ngIf="zone.country">
+                <a [routerLink]="['/country', zone.country?.id]">{{zone.country?.id}}</a>
+            </div>
+            </div>
 
-    <button type="button"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
-            class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
-    </button>
-    </form>
+</div>
+</fieldset>
+</div>
+</section>
+    
 </div>

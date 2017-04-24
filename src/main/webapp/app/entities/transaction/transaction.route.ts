@@ -40,15 +40,26 @@ export const transactionRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'transaction/:id',
+    component: TransactionDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.transaction.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'transaction-new',
     component: TransactionDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.transaction.home.title'
     },
-  }, {
-    path: 'transaction/:id',
-    component: TransactionDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'transaction/:id/edit',
+    component: TransactionDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.transaction.home.title'
@@ -58,16 +69,8 @@ export const transactionRoute: Routes = [
 ];
 
 export const transactionPopupRoute: Routes = [
-  {
-    path: 'transaction/:id/edit',
-    component: TransactionPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.transaction.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'transaction/:id/delete',
     component: TransactionDeletePopupComponent,

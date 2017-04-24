@@ -1,24 +1,26 @@
+<div *ngIf="productOptionValue">
+<h2 class="page-title">
+    <span >Create or edit</span> 
+    <small> <span [hidden]="!productOptionValue.id"> #id </span></small>
+</h2>
+ <jhi-alert-error></jhi-alert-error>
+<section class="widget">
+<div class="body">
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-
-    <div class="modal-header">
-        <h4 class="modal-title" id="myProductOptionValueLabel" jhiTranslate="eshopApp.productOptionValue.home.createOrEditLabel">Create or edit a Product Option Value</h4>
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                (click)="clear()">&times;</button>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="form-group" [hidden]="!productOptionValue.id">
+    <div class="row justify-content-center">
+       
+        <div class="col-5 form-group" [hidden]="!productOptionValue.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="productOptionValue.id" readonly />
         </div>
-        <div class="form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.productOptionValueImage" for="field_productOptionValueImage">Product Option Value Image</label>
             <input type="text" class="form-control" name="productOptionValueImage" id="field_productOptionValueImage"
                 [(ngModel)]="productOptionValue.productOptionValueImage"
              />
         </div>
-        <div class="form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.code" for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
                 [(ngModel)]="productOptionValue.code"
@@ -30,34 +32,91 @@
                 </small>
             </div>
         </div>
-        <div class="form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.productOptionValueSortOrder" for="field_productOptionValueSortOrder">Product Option Value Sort Order</label>
             <input type="number" class="form-control" name="productOptionValueSortOrder" id="field_productOptionValueSortOrder"
                 [(ngModel)]="productOptionValue.productOptionValueSortOrder"
              />
         </div>
-        <input type="hidden" name="productOption.id" value="{{productOptionId}}"/>
-        <!-- <div class="form-group">
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.productOptionDisplayOnly" for="field_productOptionDisplayOnly">Product Option Display Only</label>
+            <input type="checkbox" class="form-control" name="productOptionDisplayOnly" id="field_productOptionDisplayOnly"
+                [(ngModel)]="productOptionValue.productOptionDisplayOnly"
+             />
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.created_by" for="field_created_by">Created By</label>
+            <input type="text" class="form-control" name="created_by" id="field_created_by"
+                [(ngModel)]="productOptionValue.created_by"
+            required />
+            <div [hidden]="!(editForm.controls.created_by?.dirty && editForm.controls.created_by?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.created_by?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.created_date" for="field_created_date">Created Date</label>
+            <div class="input-group">
+                <input id="field_created_date" type="text" class="form-control" name="created_date" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="productOptionValue.created_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="created_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.last_modified_by" for="field_last_modified_by">Last Modified By</label>
+            <input type="text" class="form-control" name="last_modified_by" id="field_last_modified_by"
+                [(ngModel)]="productOptionValue.last_modified_by"
+            required />
+            <div [hidden]="!(editForm.controls.last_modified_by?.dirty && editForm.controls.last_modified_by?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.last_modified_by?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.productOptionValue.last_modified_date" for="field_last_modified_date">Last Modified Date</label>
+            <div class="input-group">
+                <input id="field_last_modified_date" type="text" class="form-control" name="last_modified_date" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="productOptionValue.last_modified_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="last_modified_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+
+        <div class="form-group col-5">
             <label jhiTranslate="eshopApp.productOptionValue.merchantStore" for="field_merchantStore">Merchant Store</label>
             <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="productOptionValue.merchantStore" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="merchantStoreOption.id === productOptionValue.merchantStore?.id ? productOptionValue.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
             </select>
-        </div> -->
-        <!-- <div class="form-group">
+        </div>
+        <div class="form-group col-5">
             <label jhiTranslate="eshopApp.productOptionValue.productOption" for="field_productOption">Product Option</label>
             <select class="form-control" id="field_productOption" name="productOption" [(ngModel)]="productOptionValue.productOption" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="productOptionOption.id === productOptionValue.productOption?.id ? productOptionValue.productOption : productOptionOption" *ngFor="let productOptionOption of productoptions; trackBy: trackProductOptionById">{{productOptionOption.id}}</option>
             </select>
-        </div> -->
+        </div>
     </div>
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-        </button>
-    </div>
+    <div class="form-actions">
+                <div class="row">
+                    <div class="offset-9">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+                            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </div>
+          </div>
 </form>
+</div>
+</section>
+</div>

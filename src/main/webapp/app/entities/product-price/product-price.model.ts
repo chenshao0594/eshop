@@ -17,6 +17,10 @@ export class ProductPrice {
         public productPriceSpecialAmount?: number,
         public productPriceType?: ProductPriceType,
         public productPriceSpecialStartDate?: any,
+        public created_by?: string,
+        public created_date?: any,
+        public last_modified_by?: string,
+        public last_modified_date?: any,
         public descriptions?: ProductPriceDescription,
         public productAvailability?: ProductAvailability,
     ) {

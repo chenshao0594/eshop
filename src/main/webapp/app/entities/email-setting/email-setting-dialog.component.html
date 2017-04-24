@@ -1,17 +1,20 @@
+<div *ngIf="emailSetting">
+<h2 class="page-title">
+    <span >Create or edit</span> 
+    <small> <span [hidden]="!emailSetting.id"> #id </span></small>
+</h2>
+ <jhi-alert-error></jhi-alert-error>
+<section class="widget">
+<div class="body">
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-
-    <div class="modal-header">
-        <h4 class="modal-title" id="myEmailSettingLabel" jhiTranslate="eshopApp.emailSetting.home.createOrEditLabel">Create or edit a Email Setting</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
+       
         <div class="col-5 form-group" [hidden]="!emailSetting.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="emailSetting.id" readonly />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.host" for="field_host">Host</label>
             <input type="text" class="form-control" name="host" id="field_host"
                 [(ngModel)]="emailSetting.host"
@@ -23,7 +26,7 @@
                 </small>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.port" for="field_port">Port</label>
             <input type="number" class="form-control" name="port" id="field_port"
                 [(ngModel)]="emailSetting.port"
@@ -39,7 +42,7 @@
                 </small>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.smtpSecurity" for="field_smtpSecurity">Smtp Security</label>
             <select class="form-control" name="smtpSecurity" [(ngModel)]="emailSetting.smtpSecurity" id="field_smtpSecurity"  required>
                 <option value="PLAIN" jhiTranslate="eshopApp.SMTPSecurityEnum.PLAIN">PLAIN</option>
@@ -53,7 +56,7 @@
                 </small>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.fromAddress" for="field_fromAddress">From Address</label>
             <input type="text" class="form-control" name="fromAddress" id="field_fromAddress"
                 [(ngModel)]="emailSetting.fromAddress"
@@ -65,7 +68,7 @@
                 </small>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.userName" for="field_userName">User Name</label>
             <input type="text" class="form-control" name="userName" id="field_userName"
                 [(ngModel)]="emailSetting.userName"
@@ -77,7 +80,7 @@
                 </small>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.password" for="field_password">Password</label>
             <input type="text" class="form-control" name="password" id="field_password"
                 [(ngModel)]="emailSetting.password"
@@ -89,15 +92,53 @@
                 </small>
             </div>
         </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.created_by" for="field_created_by">Created By</label>
+            <input type="text" class="form-control" name="created_by" id="field_created_by"
+                [(ngModel)]="emailSetting.created_by"
+             />
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.created_date" for="field_created_date">Created Date</label>
+            <div class="input-group">
+                <input id="field_created_date" type="text" class="form-control" name="created_date" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="emailSetting.created_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="created_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.last_modified_by" for="field_last_modified_by">Last Modified By</label>
+            <input type="text" class="form-control" name="last_modified_by" id="field_last_modified_by"
+                [(ngModel)]="emailSetting.last_modified_by"
+             />
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailSetting.last_modified_date" for="field_last_modified_date">Last Modified Date</label>
+            <div class="input-group">
+                <input id="field_last_modified_date" type="text" class="form-control" name="last_modified_date" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="emailSetting.last_modified_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="last_modified_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
 
     </div>
-    </div> 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-        </button>
-    </div>
+    <div class="form-actions">
+                <div class="row">
+                    <div class="offset-9">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+                            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </div>
+          </div>
 </form>
+</div>
+</section>
+</div>

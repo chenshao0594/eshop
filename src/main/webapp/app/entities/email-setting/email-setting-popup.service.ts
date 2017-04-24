@@ -21,6 +21,20 @@ export class EmailSettingPopupService {
 
         if (id) {
             this.emailSettingService.find(id).subscribe((emailSetting) => {
+                if (emailSetting.created_date) {
+                    emailSetting.created_date = {
+                        year: emailSetting.created_date.getFullYear(),
+                        month: emailSetting.created_date.getMonth() + 1,
+                        day: emailSetting.created_date.getDate()
+                    };
+                }
+                if (emailSetting.last_modified_date) {
+                    emailSetting.last_modified_date = {
+                        year: emailSetting.last_modified_date.getFullYear(),
+                        month: emailSetting.last_modified_date.getMonth() + 1,
+                        day: emailSetting.last_modified_date.getDate()
+                    };
+                }
                 this.emailSettingModalRef(component, emailSetting);
             });
         } else {

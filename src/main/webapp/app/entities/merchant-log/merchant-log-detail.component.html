@@ -1,42 +1,75 @@
 
 <div *ngIf="merchantLog">
-    <h2><span jhiTranslate="eshopApp.merchantLog.detail.title">Merchant Log</span> {{merchantLog.id}}</h2>
-    <hr>
+    <h2 class="page-title"><span jhiTranslate="eshopApp.merchantLog.detail.title">Merchant Log</span> {{merchantLog.id}}
+        <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+            <span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+    </h2>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.merchantLog.log" for="field_log">Log</label>
-            <input type="text" class="form-control" name="log" id="field_log"
-                [(ngModel)]="merchantLog.log"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.merchantLog.module" for="field_module">Module</label>
-            <input type="text" class="form-control" name="module" id="field_module"
-                [(ngModel)]="merchantLog.module"
-             />
-        </div>
 
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.merchantLog.store" for="field_store">Store</label>
-            <select class="form-control" id="field_store" name="store" [(ngModel)]="merchantLog.store" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="merchantStoreOption.id === merchantLog.store?.id ? merchantLog.store : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
-            </select>
+    <section class="widget">
+        <div class="body">
+            <fieldset>
+                <legend class="section">Info</legend>
+                <div class="row">
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.merchantLog.log">Log</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{merchantLog.log}}</span>
+            </p>
         </div>
-    </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.merchantLog.module">Module</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{merchantLog.module}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.merchantLog.created_by">Created By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{merchantLog.created_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.merchantLog.created_date">Created Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{merchantLog.created_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.merchantLog.last_modified_by">Last Modified By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{merchantLog.last_modified_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.merchantLog.last_modified_date">Last Modified Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{merchantLog.last_modified_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.merchantLog.store">Store</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
+            <div *ngIf="merchantLog.store">
+                <a [routerLink]="['/merchant-store', merchantLog.store?.id]">{{merchantLog.store?.id}}</a>
+            </div>
+            </div>
 
-    <button type="button"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
-            class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
-    </button>
-    </form>
+</div>
+</fieldset>
+</div>
+</section>
+    
 </div>

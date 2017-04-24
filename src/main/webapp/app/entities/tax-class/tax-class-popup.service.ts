@@ -21,6 +21,20 @@ export class TaxClassPopupService {
 
         if (id) {
             this.taxClassService.find(id).subscribe((taxClass) => {
+                if (taxClass.created_date) {
+                    taxClass.created_date = {
+                        year: taxClass.created_date.getFullYear(),
+                        month: taxClass.created_date.getMonth() + 1,
+                        day: taxClass.created_date.getDate()
+                    };
+                }
+                if (taxClass.last_modified_date) {
+                    taxClass.last_modified_date = {
+                        year: taxClass.last_modified_date.getFullYear(),
+                        month: taxClass.last_modified_date.getMonth() + 1,
+                        day: taxClass.last_modified_date.getDate()
+                    };
+                }
                 this.taxClassModalRef(component, taxClass);
             });
         } else {

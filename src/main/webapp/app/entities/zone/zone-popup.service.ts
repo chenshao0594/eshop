@@ -21,6 +21,20 @@ export class ZonePopupService {
 
         if (id) {
             this.zoneService.find(id).subscribe((zone) => {
+                if (zone.created_date) {
+                    zone.created_date = {
+                        year: zone.created_date.getFullYear(),
+                        month: zone.created_date.getMonth() + 1,
+                        day: zone.created_date.getDate()
+                    };
+                }
+                if (zone.last_modified_date) {
+                    zone.last_modified_date = {
+                        year: zone.last_modified_date.getFullYear(),
+                        month: zone.last_modified_date.getMonth() + 1,
+                        day: zone.last_modified_date.getDate()
+                    };
+                }
                 this.zoneModalRef(component, zone);
             });
         } else {

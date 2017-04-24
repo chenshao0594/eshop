@@ -17,8 +17,11 @@
                 "title": "Zone"
             },
             "code": "Code",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date",
             "descriptions": "Descriptions",
-            "country": "Country",
             "country": "Country"
         }
     }

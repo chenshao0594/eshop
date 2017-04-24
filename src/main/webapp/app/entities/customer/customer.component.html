@@ -1,18 +1,20 @@
 <div>
-    <h2>
+    <h2 class="page-title">
         <span jhiTranslate="eshopApp.customer.home.title">Customers</span>
         <button class="btn btn-primary float-right create-customer" [routerLink]="['../customer-new']">
-            <span class="fa fa-user-plus"></span>
+            <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="eshopApp.customer.home.createLabel">
             Create new Customer
             </span>
         </button>
     </h2>
     <jhi-alert></jhi-alert>
+    <section class="widget">
+    <div class="body">
     <div class="row">
         <div class="col-sm-12 no-padding-right">
             <form name="searchForm" class="form-inline">
-                <div class="input-group w-100 mt-3">
+                <div class="input-group w-100 mt-3 offset-6">
                     <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.customer.home.search' | translate }}">
                     <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
                         <span class="fa fa-search"></span>
@@ -26,28 +28,48 @@
     </div>
     <br/>
     <div class="table-responsive" *ngIf="customers">
-        <table class="table table-striped">
+        <table class="table table-striped table-hover">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="nick"><span jhiTranslate="eshopApp.customer.nick">Nick</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="dateOfBirth"><span jhiTranslate="eshopApp.customer.dateOfBirth">Date Of Birth</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="gender"><span jhiTranslate="eshopApp.customer.gender">Gender</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="anonymous"><span jhiTranslate="eshopApp.customer.anonymous">Anonymous</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="company"><span jhiTranslate="eshopApp.customer.company">Company</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="nick"><span jhiTranslate="eshopApp.customer.nick">Nick</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="emailAddress"><span jhiTranslate="eshopApp.customer.emailAddress">Email Address</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="password"><span jhiTranslate="eshopApp.customer.password">Password</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.customer.created_by">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.customer.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.customer.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.customer.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.customer.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="defaultLanguage.id"><span jhiTranslate="eshopApp.customer.defaultLanguage">Default Language</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let customer of customers ;trackBy: trackId">
-                <td><a [routerLink]="['../customer', customer.id ]">{{customer.nick}}</a></td>
+                <td><a [routerLink]="['../customer', customer.id ]">{{customer.id}}</a></td>
+                <td>{{customer.dateOfBirth | date:'mediumDate'}}</td>
                 <td jhiTranslate="{{'eshopApp.CustomerGender.' + customer.gender}}">{{customer.gender}}</td>
                 <td>{{customer.anonymous}}</td>
                 <td>{{customer.company}}</td>
+                <td>{{customer.nick}}</td>
                 <td>{{customer.emailAddress}}</td>
+                <td>{{customer.password}}</td>
+                <td>{{customer.created_by}}</td>
+                <td>{{customer.created_date | date:'mediumDate'}}</td>
+                <td>{{customer.last_modified_by}}</td>
+                <td>{{customer.last_modified_date | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="customer.merchantStore">
-                        <a [routerLink]="['../merchant-store', customer.merchantStore?.id ]" >{{customer.merchantStore?.storename}}</a>
+                        <a [routerLink]="['../merchant-store', customer.merchantStore?.id ]" >{{customer.merchantStore?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="customer.defaultLanguage">
+                        <a [routerLink]="['../language', customer.defaultLanguage?.id ]" >{{customer.defaultLanguage?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -58,13 +80,20 @@
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
                         </button>
-                        <!-- <button type="submit"
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'customer/'+ customer.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'customer/'+ customer.id + '/delete'} }]"
                                 replaceUrl="true"
                                 class="btn btn-danger btn-sm">
                             <span class="fa fa-remove"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.delete">Delete</span>
-                        </button> -->
+                        </button>
                     </div>
                 </td>
             </tr>
@@ -79,4 +108,6 @@
                 <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
             </div>
         </div>
+    </div>
+    </section>
 </div>

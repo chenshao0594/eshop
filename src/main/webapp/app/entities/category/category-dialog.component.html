@@ -1,74 +1,72 @@
-<h2 class="page-title">
-	<span id="myCategoryLabel" jhiTranslate="eshopApp.category.home.createOrEditLabel">Create or
-		edit a Category</span> 
-		<small> <span [hidden]="!category.id"> #{{category.id}} </span></small>
-</h2>
-<jhi-alert-error></jhi-alert-error>
-<section class="widget">
-	<div class="body">
-		<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-			<div class="row justify-content-center">
-				<div class="col-5 form-group">
-					<label class="form-control-label" jhiTranslate="eshopApp.category.code" for="field_code">Code</label>
-					<input type="text" class="form-control" name="code" id="field_code" [(ngModel)]="category.code"
-						required />
-					<div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
-						<small class="form-text text-danger" [hidden]="!editForm.controls.code?.errors?.required"
-							jhiTranslate="entity.validation.required"> This field is required. </small>
+<div *ngIf="category">
+	<h2 class="page-title">
+		<span id="myCategoryLabel" jhiTranslate="eshopApp.category.home.createOrEditLabel">Create
+			or edit a Category</span> <small> <span [hidden]="!category.id"> #{{category.id}} </span></small>
+	</h2>
+	<jhi-alert-error></jhi-alert-error>
+	<section class="widget">
+		<div class="body">
+			<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+				<div class="row justify-content-center">
+					<div class="col-5 form-group">
+						<label class="form-control-label" jhiTranslate="eshopApp.category.code" for="field_code">Code</label>
+						<input type="text" class="form-control" name="code" id="field_code"
+							[(ngModel)]="category.code" required />
+					</div>
+					<div class="col-5 form-group">
+						<label class="form-control-label" jhiTranslate="eshopApp.category.merchantStore"
+							for="field_merchantStore">Merchant Store</label> <select class="form-control"
+							id="field_merchantStore" name="merchantStore" [(ngModel)]="category.merchantStore">
+							<option [ngValue]="null"></option>
+							<option
+								[ngValue]="merchantStoreOption.id === category.merchantStore?.id ? category.merchantStore : merchantStoreOption"
+								*ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption?.code}}</option>
+						</select>
+					</div>
+					<div class="col-5 form-group">
+						<label class="form-control-label" jhiTranslate="eshopApp.category.parent" for="field_parent">Parent</label>
+						<select class="form-control" id="field_parent" name="parent" [(ngModel)]="category.parent">
+							<option [ngValue]="null"></option>
+							<option
+								[ngValue]="categoryOption.id === category.parent?.id ? category.parent : categoryOption"
+								*ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption?.code}}</option>
+						</select>
+					</div>
+					<div class="col-5 form-group">
+						<label class="form-control-label" jhiTranslate="eshopApp.category.sortOrder"
+							for="field_sortOrder">Sort Order</label> <input type="number" class="form-control"
+							name="sortOrder" id="field_sortOrder" [(ngModel)]="category.sortOrder" />
+					</div>
+					<div class="col-5 form-group">
+						<label class="form-control-label" jhiTranslate="eshopApp.category.categoryStatus"
+							for="field_categoryStatus">Category Status</label> <input type="checkbox"
+							class="form-control" name="categoryStatus" id="field_categoryStatus"
+							[(ngModel)]="category.categoryStatus" />
+					</div>
+					<div class="col-5 form-group">
+						<label class="form-control-label" jhiTranslate="eshopApp.category.visible" for="field_visible">Visible</label>
+						<input type="checkbox" class="form-control" name="visible" id="field_visible"
+							[(ngModel)]="category.visible" />
+					</div>
+					<div class="col-5 form-group">
+						<label class="form-control-label" jhiTranslate="eshopApp.category.categoryImage"
+							for="field_categoryImage">Category Image</label> <input type="text" class="form-control"
+							name="categoryImage" id="field_categoryImage" [(ngModel)]="category.categoryImage" />
 					</div>
 				</div>
-				<div class="col-5 form-group">
-					<label class="form-control-label" jhiTranslate="eshopApp.category.merchantStore"
-						for="field_merchantStore">Merchant Store</label> <select class="form-control"
-						id="field_merchantStore" name="merchantStore" [(ngModel)]="category.merchantStore">
-						<option [ngValue]="null"></option>
-						<option
-							[ngValue]="merchantStoreOption.id === category.merchantStore?.id ? category.merchantStore : merchantStoreOption"
-							*ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.code}}</option>
-					</select>
-				</div>
-				<div class="col-5 form-group">
-					<label class="form-control-label" jhiTranslate="eshopApp.category.parent" for="field_parent">Parent</label>
-					<select class="form-control" id="field_parent" name="parent" [(ngModel)]="category.parent">
-						<option [ngValue]="null"></option>
-						<option
-							[ngValue]="categoryOption.id === category.parent?.id ? category.parent : categoryOption"
-							*ngFor="let categoryOption of categories; trackBy: trackCategoryById">{{categoryOption.code}}</option>
-					</select>
-				</div>
-				<div class="col-5 form-group">
-					<label class="form-control-label" jhiTranslate="eshopApp.category.sortOrder"
-						for="field_sortOrder">Sort Order</label> <input type="number" class="form-control"
-						name="sortOrder" id="field_sortOrder" [(ngModel)]="category.sortOrder" />
-				</div>
-				<div class="col-5 form-group">
-					<label class="form-control-label" jhiTranslate="eshopApp.category.categoryStatus"
-						for="field_categoryStatus">Category Status</label> <input type="checkbox" class="form-control"
-						name="categoryStatus" id="field_categoryStatus" [(ngModel)]="category.categoryStatus" />
-				</div>
-				<div class="col-5 form-group">
-					<label class="form-control-label" jhiTranslate="eshopApp.category.visible" for="field_visible">Visible</label>
-					<input type="checkbox" class="form-control" name="visible" id="field_visible"
-						[(ngModel)]="category.visible" />
-				</div>
-				<div class="col-5 form-group">
-					<label class="form-control-label" jhiTranslate="eshopApp.category.categoryImage"
-						for="field_categoryImage">Category Image</label> <input type="text" class="form-control"
-						name="categoryImage" id="field_categoryImage" [(ngModel)]="category.categoryImage" />
-				</div>
-			</div>
-			<div class="form-actions">
-				<div class="row">
-					<div class="offset-9">
-						<button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
-							<span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-						</button>
-						<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-							<span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-						</button>
+				<div class="form-actions">
+					<div class="row">
+						<div class="offset-9">
+							<button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+								<span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+							</button>
+							<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+								<span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+							</button>
+						</div>
 					</div>
 				</div>
-			</div>
-		</form>
-	</div>
-</section>
+			</form>
+		</div>
+	</section>
+</div>

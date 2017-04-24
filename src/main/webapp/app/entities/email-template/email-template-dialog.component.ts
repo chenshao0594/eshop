@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jhipster';
 
 import { EmailTemplate } from './email-template.model';
@@ -18,20 +18,33 @@ export class EmailTemplateDialogComponent implements OnInit {
     emailTemplate: EmailTemplate;
     authorities: any[];
     isSaving: boolean;
-    constructor(
+            constructor(
         private jhiLanguageService: JhiLanguageService,
         private dataUtils: DataUtils,
         private alertService: AlertService,
         private emailTemplateService: EmailTemplateService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['emailTemplate']);
-        this.emailTemplate = new EmailTemplate();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.emailTemplate = new EmailTemplate();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+    }
+    load(id) {
+         this.emailTemplateService.find(id).subscribe((emailTemplate) => {
+                this.emailTemplate = emailTemplate;
+                
+         });
     }
     byteSize(field) {
         return this.dataUtils.byteSize(field);
@@ -54,7 +67,7 @@ export class EmailTemplateDialogComponent implements OnInit {
         }
     }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -73,7 +86,7 @@ export class EmailTemplateDialogComponent implements OnInit {
     private onSaveSuccess(result: EmailTemplate) {
         this.eventManager.broadcast({ name: 'emailTemplateListModification', content: 'OK'});
         this.isSaving = false;
-        this.emailTemplate = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

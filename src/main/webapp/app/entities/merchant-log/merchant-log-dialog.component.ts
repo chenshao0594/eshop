@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { MerchantLog } from './merchant-log.model';
@@ -21,25 +21,38 @@ export class MerchantLogDialogComponent implements OnInit {
     isSaving: boolean;
 
     merchantstores: MerchantStore[];
-    constructor(
+            constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private merchantLogService: MerchantLogService,
         private merchantStoreService: MerchantStoreService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['merchantLog']);
-        this.merchantLog = new MerchantLog();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.merchantLog = new MerchantLog();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
+    load(id) {
+         this.merchantLogService.find(id).subscribe((merchantLog) => {
+                this.merchantLog = merchantLog;
+                
+         });
+    }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -58,7 +71,7 @@ export class MerchantLogDialogComponent implements OnInit {
     private onSaveSuccess(result: MerchantLog) {
         this.eventManager.broadcast({ name: 'merchantLogListModification', content: 'OK'});
         this.isSaving = false;
-        this.merchantLog = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

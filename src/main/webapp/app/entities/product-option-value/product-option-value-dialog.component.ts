@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { ProductOptionValue } from './product-option-value.model';
@@ -25,18 +25,25 @@ export class ProductOptionValueDialogComponent implements OnInit {
 
     productoptions: ProductOption[];
             constructor(
-        public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productOptionValueService: ProductOptionValueService,
         private merchantStoreService: MerchantStoreService,
         private productOptionService: ProductOptionService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['productOptionValue']);
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.productOptionValue = new ProductOptionValue();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.merchantStoreService.query().subscribe(
@@ -44,8 +51,14 @@ export class ProductOptionValueDialogComponent implements OnInit {
         this.productOptionService.query().subscribe(
             (res: Response) => { this.productoptions = res.json(); }, (res: Response) => this.onError(res.json()));
     }
+    load(id) {
+         this.productOptionValueService.find(id).subscribe((productOptionValue) => {
+                this.productOptionValue = productOptionValue;
+                
+         });
+    }
     clear() {
-        this.activeModal.dismiss('cancel');
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -64,7 +77,7 @@ export class ProductOptionValueDialogComponent implements OnInit {
     private onSaveSuccess(result: ProductOptionValue) {
         this.eventManager.broadcast({ name: 'productOptionValueListModification', content: 'OK'});
         this.isSaving = false;
-        this.activeModal.dismiss(result);
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {
@@ -98,7 +111,6 @@ export class ProductOptionValuePopupComponent implements OnInit, OnDestroy {
 
     modalRef: NgbModalRef;
     routeSub: any;
-    productOptionId: number;
 
     constructor(
         private route: ActivatedRoute,
@@ -107,9 +119,13 @@ export class ProductOptionValuePopupComponent implements OnInit, OnDestroy {
 
     ngOnInit() {
         this.routeSub = this.route.params.subscribe((params) => {
-                this.productOptionId = params['id'];
+            if ( params['id'] ) {
+                this.modalRef = this.productOptionValuePopupService
+                    .open(ProductOptionValueDialogComponent, params['id']);
+            } else {
                 this.modalRef = this.productOptionValuePopupService
                     .open(ProductOptionValueDialogComponent);
+            }
         });
     }
 

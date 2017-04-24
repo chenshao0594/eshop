@@ -21,7 +21,11 @@
             "smtpSecurity": "Smtp Security",
             "fromAddress": "From Address",
             "userName": "User Name",
-            "password": "Password"
+            "password": "Password",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date"
         }
     }
 }

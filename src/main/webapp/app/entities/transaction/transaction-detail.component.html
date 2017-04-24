@@ -1,74 +1,100 @@
 
 <div *ngIf="transaction">
-    <h2><span jhiTranslate="eshopApp.transaction.detail.title">Transaction</span> {{transaction.id}}</h2>
-    <hr>
+    <h2 class="page-title"><span jhiTranslate="eshopApp.transaction.detail.title">Transaction</span> {{transaction.id}}
+        <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+            <span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+    </h2>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.transaction.details" for="field_details">Details</label>
-            <input type="text" class="form-control" name="details" id="field_details"
-                [(ngModel)]="transaction.details"
-             />
+
+    <section class="widget">
+        <div class="body">
+            <fieldset>
+                <legend class="section">Info</legend>
+                <div class="row">
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.transaction.details">Details</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{transaction.details}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.transaction.transactionType" for="field_transactionType">Transaction Type</label>
-            <select class="form-control" name="transactionType" [(ngModel)]="transaction.transactionType" id="field_transactionType" >
-                <option value="INIT" jhiTranslate="eshopApp.TransactionType.INIT">INIT</option>
-                <option value="AUTHORIZE" jhiTranslate="eshopApp.TransactionType.AUTHORIZE">AUTHORIZE</option>
-                <option value="CAPTURE" jhiTranslate="eshopApp.TransactionType.CAPTURE">CAPTURE</option>
-                <option value="AUTHORIZECAPTURE" jhiTranslate="eshopApp.TransactionType.AUTHORIZECAPTURE">AUTHORIZECAPTURE</option>
-                <option value="REFUND" jhiTranslate="eshopApp.TransactionType.REFUND">REFUND</option>
-            </select>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.transaction.transactionType">Transaction Type</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
+            <span jhiTranslate="{{'eshopApp.TransactionType.' + transaction.transactionType}}">{{transaction.transactionType}}</span>
+            </p>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.transaction.transactionDate" for="field_transactionDate">Transaction Date</label>
-            <div class="input-group">
-                <input id="field_transactionDate" type="text" class="form-control" name="transactionDate" ngbDatepicker  #transactionDateDp="ngbDatepicker" [(ngModel)]="transaction.transactionDate"
-                />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" (click)="transactionDateDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.transaction.transactionDate">Transaction Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{transaction.transactionDate | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.transaction.paymentType">Payment Type</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
+            <span jhiTranslate="{{'eshopApp.PaymentType.' + transaction.paymentType}}">{{transaction.paymentType}}</span>
+            </p>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.transaction.amount">Amount</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{transaction.amount}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.transaction.created_by">Created By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{transaction.created_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.transaction.created_date">Created Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{transaction.created_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.transaction.last_modified_by">Last Modified By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{transaction.last_modified_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.transaction.last_modified_date">Last Modified Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{transaction.last_modified_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.transaction.order">Order</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
+            <div *ngIf="transaction.order">
+                <a [routerLink]="['/sales-order', transaction.order?.id]">{{transaction.order?.id}}</a>
             </div>
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.transaction.paymentType" for="field_paymentType">Payment Type</label>
-            <select class="form-control" name="paymentType" [(ngModel)]="transaction.paymentType" id="field_paymentType" >
-                <option value="CREDITCARD" jhiTranslate="eshopApp.PaymentType.CREDITCARD">CREDITCARD</option>
-                <option value="FREE" jhiTranslate="eshopApp.PaymentType.FREE">FREE</option>
-                <option value="COD" jhiTranslate="eshopApp.PaymentType.COD">COD</option>
-                <option value="MONEYORDER" jhiTranslate="eshopApp.PaymentType.MONEYORDER">MONEYORDER</option>
-                <option value="PAYPAL" jhiTranslate="eshopApp.PaymentType.PAYPAL">PAYPAL</option>
-                <option value="STRIPE" jhiTranslate="eshopApp.PaymentType.STRIPE">STRIPE</option>
-                <option value="WEPAY" jhiTranslate="eshopApp.PaymentType.WEPAY">WEPAY</option>
-            </select>
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.transaction.amount" for="field_amount">Amount</label>
-            <input type="number" class="form-control" name="amount" id="field_amount"
-                [(ngModel)]="transaction.amount"
-             />
-        </div>
+            </div>
 
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.transaction.order" for="field_order">Order</label>
-            <select class="form-control" id="field_order" name="order" [(ngModel)]="transaction.order" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="salesOrderOption.id === transaction.order?.id ? transaction.order : salesOrderOption" *ngFor="let salesOrderOption of salesorders; trackBy: trackSalesOrderById">{{salesOrderOption.id}}</option>
-            </select>
-        </div>
-    </div>
-
-    <button type="button"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
-            class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
-    </button>
-    </form>
+</div>
+</fieldset>
+</div>
+</section>
+    
 </div>

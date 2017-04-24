@@ -40,15 +40,26 @@ export const currencyRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'currency/:id',
+    component: CurrencyDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.currency.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'currency-new',
     component: CurrencyDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.currency.home.title'
     },
-  }, {
-    path: 'currency/:id',
-    component: CurrencyDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'currency/:id/edit',
+    component: CurrencyDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.currency.home.title'
@@ -58,16 +69,8 @@ export const currencyRoute: Routes = [
 ];
 
 export const currencyPopupRoute: Routes = [
-  {
-    path: 'currency/:id/edit',
-    component: CurrencyPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.currency.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'currency/:id/delete',
     component: CurrencyDeletePopupComponent,

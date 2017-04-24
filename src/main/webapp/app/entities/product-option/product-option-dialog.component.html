@@ -1,17 +1,24 @@
+<div *ngIf="productOption">
 <h2 class="page-title">
     <span >Create or edit</span> 
-    <small> <span [hidden]="!productOption.id"> #id </span></small>
+    <small> <span [hidden]="!productOption.id"> {{productOption.id}} </span></small>
 </h2>
  <jhi-alert-error></jhi-alert-error>
 <section class="widget">
 <div class="body">
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
     <div class="row justify-content-center">
-       
-        <div class="col-5 form-group" [hidden]="!productOption.id">
-            <label for="id" jhiTranslate="global.field.id">ID</label>
-            <input type="text" class="form-control" id="id" name="id"
-                   [(ngModel)]="productOption.id" readonly />
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.productOption.code" for="field_code">Code</label>
+            <input type="text" class="form-control" name="code" id="field_code"
+                [(ngModel)]="productOption.code"
+            required />
+            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
         </div>
         <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.productOption.readOnly" for="field_readOnly">Read Only</label>
@@ -26,68 +33,11 @@
              />
         </div>
         <div class="form-group col-5">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOption.code" for="field_code">Code</label>
-            <input type="text" class="form-control" name="code" id="field_code"
-                [(ngModel)]="productOption.code"
-            required />
-            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
-        </div>
-        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.productOption.productOptionSortOrder" for="field_productOptionSortOrder">Product Option Sort Order</label>
             <input type="number" class="form-control" name="productOptionSortOrder" id="field_productOptionSortOrder"
                 [(ngModel)]="productOption.productOptionSortOrder"
              />
         </div>
-        <div class="form-group col-5">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOption.created_by" for="field_created_by">Created By</label>
-            <input type="text" class="form-control" name="created_by" id="field_created_by"
-                [(ngModel)]="productOption.created_by"
-            required />
-            <div [hidden]="!(editForm.controls.created_by?.dirty && editForm.controls.created_by?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.created_by?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
-        </div>
-        <div class="form-group col-5">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOption.created_date" for="field_created_date">Created Date</label>
-            <div class="input-group">
-                <input id="field_created_date" type="text" class="form-control" name="created_date" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="productOption.created_date"
-                />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" (click)="created_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-            </div>
-        </div>
-        <div class="form-group col-5">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOption.last_modified_by" for="field_last_modified_by">Last Modified By</label>
-            <input type="text" class="form-control" name="last_modified_by" id="field_last_modified_by"
-                [(ngModel)]="productOption.last_modified_by"
-            required />
-            <div [hidden]="!(editForm.controls.last_modified_by?.dirty && editForm.controls.last_modified_by?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.last_modified_by?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
-        </div>
-        <div class="form-group col-5">
-            <label class="form-control-label" jhiTranslate="eshopApp.productOption.last_modified_date" for="field_last_modified_date">Last Modified Date</label>
-            <div class="input-group">
-                <input id="field_last_modified_date" type="text" class="form-control" name="last_modified_date" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="productOption.last_modified_date"
-                />
-                <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" (click)="last_modified_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
-                </span>
-            </div>
-        </div>
-
         <div class="form-group col-5">
             <label jhiTranslate="eshopApp.productOption.merchantStore" for="field_merchantStore">Merchant Store</label>
             <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="productOption.merchantStore" >
@@ -111,3 +61,4 @@
 </form>
 </div>
 </section>
+</div>

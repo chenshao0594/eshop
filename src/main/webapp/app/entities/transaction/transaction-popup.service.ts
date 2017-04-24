@@ -28,6 +28,20 @@ export class TransactionPopupService {
                         day: transaction.transactionDate.getDate()
                     };
                 }
+                if (transaction.created_date) {
+                    transaction.created_date = {
+                        year: transaction.created_date.getFullYear(),
+                        month: transaction.created_date.getMonth() + 1,
+                        day: transaction.created_date.getDate()
+                    };
+                }
+                if (transaction.last_modified_date) {
+                    transaction.last_modified_date = {
+                        year: transaction.last_modified_date.getFullYear(),
+                        month: transaction.last_modified_date.getMonth() + 1,
+                        day: transaction.last_modified_date.getDate()
+                    };
+                }
                 this.transactionModalRef(component, transaction);
             });
         } else {

@@ -1,47 +1,83 @@
 
 <div *ngIf="currency">
-    <h2><span jhiTranslate="eshopApp.currency.detail.title">Currency</span> {{currency.id}}</h2>
-    <hr>
+    <h2 class="page-title"><span jhiTranslate="eshopApp.currency.detail.title">Currency</span> {{currency.id}}
+        <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+            <span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+    </h2>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.currency.code" for="field_code">Code</label>
-            <input type="text" class="form-control" name="code" id="field_code"
-                [(ngModel)]="currency.code"
-             />
+
+    <section class="widget">
+        <div class="body">
+            <fieldset>
+                <legend class="section">Info</legend>
+                <div class="row">
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.currency.code">Code</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{currency.code}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.currency.supported" for="field_supported">Supported</label>
-            <input type="checkbox" class="form-control" name="supported" id="field_supported"
-                [(ngModel)]="currency.supported"
-             />
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.currency.supported">Supported</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{currency.supported}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.currency.name" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                [(ngModel)]="currency.name"
-             />
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.currency.name">Name</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{currency.name}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.currency.currency" for="field_currency">Currency</label>
-            <input type="text" class="form-control" name="currency" id="field_currency"
-                [(ngModel)]="currency.currency"
-             />
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.currency.currency">Currency</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{currency.currency}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.currency.created_by">Created By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{currency.created_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.currency.created_date">Created Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{currency.created_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.currency.last_modified_by">Last Modified By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{currency.last_modified_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.currency.last_modified_date">Last Modified Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{currency.last_modified_date | date:'mediumDate'}}</span>
+            </p>
         </div>
 
-    </div>
-
-    <button type="button"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
-            class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
-    </button>
-    </form>
+</div>
+</fieldset>
+</div>
+</section>
+    
 </div>

@@ -93,7 +93,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**").antMatchers("/app/**/*.{js,html}")
 				.antMatchers("/bower_components/**").antMatchers("/i18n/**").antMatchers("/content/**")
-				.antMatchers("/swagger-ui/index.html").antMatchers("/test/**").antMatchers("/h2-console/**");
+				.antMatchers("/swagger-ui/index.html").antMatchers("/test/**").antMatchers("/h2-console/**")
+				.antMatchers("/assets/**");
 	}
 
 	@Override

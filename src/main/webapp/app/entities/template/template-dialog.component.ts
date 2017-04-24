@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jhipster';
 
 import { Template } from './template.model';
@@ -18,20 +18,33 @@ export class TemplateDialogComponent implements OnInit {
     template: Template;
     authorities: any[];
     isSaving: boolean;
-    constructor(
+            constructor(
         private jhiLanguageService: JhiLanguageService,
         private dataUtils: DataUtils,
         private alertService: AlertService,
         private templateService: TemplateService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['template']);
-        this.template = new Template();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.template = new Template();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
+    }
+    load(id) {
+         this.templateService.find(id).subscribe((template) => {
+                this.template = template;
+                
+         });
     }
     byteSize(field) {
         return this.dataUtils.byteSize(field);
@@ -54,7 +67,7 @@ export class TemplateDialogComponent implements OnInit {
         }
     }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -73,7 +86,7 @@ export class TemplateDialogComponent implements OnInit {
     private onSaveSuccess(result: Template) {
         this.eventManager.broadcast({ name: 'templateListModification', content: 'OK'});
         this.isSaving = false;
-        this.template = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

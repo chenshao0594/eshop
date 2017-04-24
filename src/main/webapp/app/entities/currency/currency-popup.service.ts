@@ -21,6 +21,20 @@ export class CurrencyPopupService {
 
         if (id) {
             this.currencyService.find(id).subscribe((currency) => {
+                if (currency.created_date) {
+                    currency.created_date = {
+                        year: currency.created_date.getFullYear(),
+                        month: currency.created_date.getMonth() + 1,
+                        day: currency.created_date.getDate()
+                    };
+                }
+                if (currency.last_modified_date) {
+                    currency.last_modified_date = {
+                        year: currency.last_modified_date.getFullYear(),
+                        month: currency.last_modified_date.getMonth() + 1,
+                        day: currency.last_modified_date.getDate()
+                    };
+                }
                 this.currencyModalRef(component, currency);
             });
         } else {

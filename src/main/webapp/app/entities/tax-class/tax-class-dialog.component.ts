@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { TaxClass } from './tax-class.model';
@@ -21,25 +21,38 @@ export class TaxClassDialogComponent implements OnInit {
     isSaving: boolean;
 
     merchantstores: MerchantStore[];
-    constructor(
+            constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private taxClassService: TaxClassService,
         private merchantStoreService: MerchantStoreService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['taxClass']);
-        this.taxClass = new TaxClass();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.taxClass = new TaxClass();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
+    load(id) {
+         this.taxClassService.find(id).subscribe((taxClass) => {
+                this.taxClass = taxClass;
+                
+         });
+    }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -58,7 +71,7 @@ export class TaxClassDialogComponent implements OnInit {
     private onSaveSuccess(result: TaxClass) {
         this.eventManager.broadcast({ name: 'taxClassListModification', content: 'OK'});
         this.isSaving = false;
-        this.taxClass = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

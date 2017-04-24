@@ -1,5 +1,5 @@
 <div>
-    <h2>
+    <h2 class="page-title">
         <span jhiTranslate="eshopApp.template.home.title">Templates</span>
         <button class="btn btn-primary float-right create-template" [routerLink]="['../template-new']">
             <span class="fa fa-plus"></span>
@@ -9,10 +9,12 @@
         </button>
     </h2>
     <jhi-alert></jhi-alert>
+    <section class="widget">
+    <div class="body">
     <div class="row">
         <div class="col-sm-12 no-padding-right">
             <form name="searchForm" class="form-inline">
-                <div class="input-group w-100 mt-3">
+                <div class="input-group w-100 mt-3 offset-6">
                     <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.template.home.search' | translate }}">
                     <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
                         <span class="fa fa-search"></span>
@@ -26,7 +28,7 @@
     </div>
     <br/>
     <div class="table-responsive" *ngIf="templates">
-        <table class="table table-striped">
+        <table class="table table-striped table-hover">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
@@ -34,6 +36,10 @@
             <th jhiSortBy="superId"><span jhiTranslate="eshopApp.template.superId">Super Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="templateKey"><span jhiTranslate="eshopApp.template.templateKey">Template Key</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="content"><span jhiTranslate="eshopApp.template.content">Content</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.template.created_by">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.template.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.template.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.template.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -44,6 +50,10 @@
                 <td>{{template.superId}}</td>
                 <td>{{template.templateKey}}</td>
                 <td>{{template.content}}</td>
+                <td>{{template.created_by}}</td>
+                <td>{{template.created_date | date:'mediumDate'}}</td>
+                <td>{{template.last_modified_by}}</td>
+                <td>{{template.last_modified_date | date:'mediumDate'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -51,6 +61,13 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'template/'+ template.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'template/'+ template.id + '/delete'} }]"
@@ -73,4 +90,6 @@
                 <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
             </div>
         </div>
+    </div>
+    </section>
 </div>

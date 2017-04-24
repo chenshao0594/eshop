@@ -1,23 +1,26 @@
+<div *ngIf="transaction">
+<h2 class="page-title">
+    <span >Create or edit</span> 
+    <small> <span [hidden]="!transaction.id"> #id </span></small>
+</h2>
+ <jhi-alert-error></jhi-alert-error>
+<section class="widget">
+<div class="body">
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-
-    <div class="modal-header">
-        <h4 class="modal-title" id="myTransactionLabel" jhiTranslate="eshopApp.transaction.home.createOrEditLabel">Create or edit a Transaction</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
+       
         <div class="col-5 form-group" [hidden]="!transaction.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="transaction.id" readonly />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.transaction.details" for="field_details">Details</label>
             <input type="text" class="form-control" name="details" id="field_details"
                 [(ngModel)]="transaction.details"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.transaction.transactionType" for="field_transactionType">Transaction Type</label>
             <select class="form-control" name="transactionType" [(ngModel)]="transaction.transactionType" id="field_transactionType" >
                 <option value="INIT" jhiTranslate="eshopApp.TransactionType.INIT">INIT</option>
@@ -27,7 +30,7 @@
                 <option value="REFUND" jhiTranslate="eshopApp.TransactionType.REFUND">REFUND</option>
             </select>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.transaction.transactionDate" for="field_transactionDate">Transaction Date</label>
             <div class="input-group">
                 <input id="field_transactionDate" type="text" class="form-control" name="transactionDate" ngbDatepicker  #transactionDateDp="ngbDatepicker" [(ngModel)]="transaction.transactionDate"
@@ -37,7 +40,7 @@
                 </span>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.transaction.paymentType" for="field_paymentType">Payment Type</label>
             <select class="form-control" name="paymentType" [(ngModel)]="transaction.paymentType" id="field_paymentType" >
                 <option value="CREDITCARD" jhiTranslate="eshopApp.PaymentType.CREDITCARD">CREDITCARD</option>
@@ -49,14 +52,58 @@
                 <option value="WEPAY" jhiTranslate="eshopApp.PaymentType.WEPAY">WEPAY</option>
             </select>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.transaction.amount" for="field_amount">Amount</label>
             <input type="number" class="form-control" name="amount" id="field_amount"
                 [(ngModel)]="transaction.amount"
              />
         </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.transaction.created_by" for="field_created_by">Created By</label>
+            <input type="text" class="form-control" name="created_by" id="field_created_by"
+                [(ngModel)]="transaction.created_by"
+            required />
+            <div [hidden]="!(editForm.controls.created_by?.dirty && editForm.controls.created_by?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.created_by?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.transaction.created_date" for="field_created_date">Created Date</label>
+            <div class="input-group">
+                <input id="field_created_date" type="text" class="form-control" name="created_date" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="transaction.created_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="created_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.transaction.last_modified_by" for="field_last_modified_by">Last Modified By</label>
+            <input type="text" class="form-control" name="last_modified_by" id="field_last_modified_by"
+                [(ngModel)]="transaction.last_modified_by"
+            required />
+            <div [hidden]="!(editForm.controls.last_modified_by?.dirty && editForm.controls.last_modified_by?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.last_modified_by?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.transaction.last_modified_date" for="field_last_modified_date">Last Modified Date</label>
+            <div class="input-group">
+                <input id="field_last_modified_date" type="text" class="form-control" name="last_modified_date" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="transaction.last_modified_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="last_modified_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
 
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label jhiTranslate="eshopApp.transaction.order" for="field_order">Order</label>
             <select class="form-control" id="field_order" name="order" [(ngModel)]="transaction.order" >
                 <option [ngValue]="null"></option>
@@ -64,13 +111,19 @@
             </select>
         </div>
     </div>
-    </div> 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-        </button>
-    </div>
+    <div class="form-actions">
+                <div class="row">
+                    <div class="offset-9">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+                            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </div>
+          </div>
 </form>
+</div>
+</section>
+</div>

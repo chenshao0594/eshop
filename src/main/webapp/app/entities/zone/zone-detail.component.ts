@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { EventManager , JhiLanguageService , AlertService } from 'ng-jhipster';
+import { EventManager , JhiLanguageService  } from 'ng-jhipster';
 
 import { Zone } from './zone.model';
 import { ZoneService } from './zone.service';
@@ -15,14 +15,12 @@ export class ZoneDetailComponent implements OnInit, OnDestroy {
     zone: Zone;
     private subscription: any;
     private eventSubscriber: Subscription;
-    isSaving: boolean;
 
     constructor(
         private eventManager: EventManager,
         private jhiLanguageService: JhiLanguageService,
         private zoneService: ZoneService,
-        private route: ActivatedRoute,
-        private alertService: AlertService
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['zone']);
     }
@@ -41,37 +39,6 @@ export class ZoneDetailComponent implements OnInit, OnDestroy {
     }
     previousState() {
         window.history.back();
-    }
-    save() {
-        this.isSaving = true;
-        if (this.zone.id !== undefined) {
-            this.zoneService.update(this.zone)
-                .subscribe((res: Zone) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        } else {
-            this.zoneService.create(this.zone)
-                .subscribe((res: Zone) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        }
-    }
-
-    private onSaveSuccess(result: Zone) {
-        this.eventManager.broadcast({ name: 'zoneModification', content: 'OK'});
-        this.isSaving = false;
-    }
-
-    private onSaveError(error) {
-        try {
-            error.json();
-        } catch (exception) {
-            error.message = error.text();
-        }
-        this.isSaving = false;
-        this.onError(error);
-    }
-
-    private onError(error) {
-        this.alertService.error(error.message, null, null);
     }
 
     ngOnDestroy() {

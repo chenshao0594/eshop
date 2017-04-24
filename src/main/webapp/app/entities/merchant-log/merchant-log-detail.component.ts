@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { EventManager , JhiLanguageService , AlertService } from 'ng-jhipster';
+import { EventManager , JhiLanguageService  } from 'ng-jhipster';
 
 import { MerchantLog } from './merchant-log.model';
 import { MerchantLogService } from './merchant-log.service';
@@ -15,14 +15,12 @@ export class MerchantLogDetailComponent implements OnInit, OnDestroy {
     merchantLog: MerchantLog;
     private subscription: any;
     private eventSubscriber: Subscription;
-    isSaving: boolean;
 
     constructor(
         private eventManager: EventManager,
         private jhiLanguageService: JhiLanguageService,
         private merchantLogService: MerchantLogService,
-        private route: ActivatedRoute,
-        private alertService: AlertService
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['merchantLog']);
     }
@@ -41,37 +39,6 @@ export class MerchantLogDetailComponent implements OnInit, OnDestroy {
     }
     previousState() {
         window.history.back();
-    }
-    save() {
-        this.isSaving = true;
-        if (this.merchantLog.id !== undefined) {
-            this.merchantLogService.update(this.merchantLog)
-                .subscribe((res: MerchantLog) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        } else {
-            this.merchantLogService.create(this.merchantLog)
-                .subscribe((res: MerchantLog) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        }
-    }
-
-    private onSaveSuccess(result: MerchantLog) {
-        this.eventManager.broadcast({ name: 'merchantLogModification', content: 'OK'});
-        this.isSaving = false;
-    }
-
-    private onSaveError(error) {
-        try {
-            error.json();
-        } catch (exception) {
-            error.message = error.text();
-        }
-        this.isSaving = false;
-        this.onError(error);
-    }
-
-    private onError(error) {
-        this.alertService.error(error.message, null, null);
     }
 
     ngOnDestroy() {

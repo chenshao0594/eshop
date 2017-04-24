@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { Transaction } from './transaction.model';
@@ -21,25 +21,38 @@ export class TransactionDialogComponent implements OnInit {
     isSaving: boolean;
 
     salesorders: SalesOrder[];
-        constructor(
+                constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private transactionService: TransactionService,
         private salesOrderService: SalesOrderService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['transaction', 'transactionType', 'paymentType']);
-        this.transaction = new Transaction();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.transaction = new Transaction();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.salesOrderService.query().subscribe(
             (res: Response) => { this.salesorders = res.json(); }, (res: Response) => this.onError(res.json()));
     }
+    load(id) {
+         this.transactionService.find(id).subscribe((transaction) => {
+                this.transaction = transaction;
+                
+         });
+    }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -58,7 +71,7 @@ export class TransactionDialogComponent implements OnInit {
     private onSaveSuccess(result: Transaction) {
         this.eventManager.broadcast({ name: 'transactionListModification', content: 'OK'});
         this.isSaving = false;
-        this.transaction = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { EmailSetting } from './email-setting.model';
@@ -18,22 +18,35 @@ export class EmailSettingDialogComponent implements OnInit {
     emailSetting: EmailSetting;
     authorities: any[];
     isSaving: boolean;
-    constructor(
+            constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private emailSettingService: EmailSettingService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['emailSetting', 'sMTPSecurityEnum']);
-        this.emailSetting = new EmailSetting();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.emailSetting = new EmailSetting();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     }
+    load(id) {
+         this.emailSettingService.find(id).subscribe((emailSetting) => {
+                this.emailSetting = emailSetting;
+                
+         });
+    }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -52,7 +65,7 @@ export class EmailSettingDialogComponent implements OnInit {
     private onSaveSuccess(result: EmailSetting) {
         this.eventManager.broadcast({ name: 'emailSettingListModification', content: 'OK'});
         this.isSaving = false;
-        this.emailSetting = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

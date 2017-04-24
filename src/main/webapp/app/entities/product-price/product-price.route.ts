@@ -40,15 +40,26 @@ export const productPriceRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'product-price/:id',
+    component: ProductPriceDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.productPrice.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'product-price-new',
     component: ProductPriceDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.productPrice.home.title'
     },
-  }, {
-    path: 'product-price/:id',
-    component: ProductPriceDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'product-price/:id/edit',
+    component: ProductPriceDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.productPrice.home.title'
@@ -58,16 +69,8 @@ export const productPriceRoute: Routes = [
 ];
 
 export const productPricePopupRoute: Routes = [
-  {
-    path: 'product-price/:id/edit',
-    component: ProductPricePopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.productPrice.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'product-price/:id/delete',
     component: ProductPriceDeletePopupComponent,

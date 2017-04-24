@@ -21,6 +21,20 @@ export class TemplatePopupService {
 
         if (id) {
             this.templateService.find(id).subscribe((template) => {
+                if (template.created_date) {
+                    template.created_date = {
+                        year: template.created_date.getFullYear(),
+                        month: template.created_date.getMonth() + 1,
+                        day: template.created_date.getDate()
+                    };
+                }
+                if (template.last_modified_date) {
+                    template.last_modified_date = {
+                        year: template.last_modified_date.getFullYear(),
+                        month: template.last_modified_date.getMonth() + 1,
+                        day: template.last_modified_date.getDate()
+                    };
+                }
                 this.templateModalRef(component, template);
             });
         } else {

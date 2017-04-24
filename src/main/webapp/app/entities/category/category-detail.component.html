@@ -24,15 +24,16 @@
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.category.merchantStore">merchantStore</label>
 					<div class="col-4">
-						<p class="form-control input-transparent">{{category.merchantStore.storename}}</p>
+						<p class="form-control input-transparent">{{category.merchantStore?.storename}}</p>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.category.parent">Status</label>
 					<div class="col-4">
-						<p class="form-control input-transparent">{{category.parent.code}}</p>
+						<p class="form-control input-transparent">{{category.parent?.code}}</p>
 					</div>
 				</div>
 			</fieldset>
+			
 		</div>
 	</section>
 </div>

@@ -1,64 +1,83 @@
 
 <div *ngIf="template">
-    <h2><span jhiTranslate="eshopApp.template.detail.title">Template</span> {{template.id}}</h2>
-    <hr>
+    <h2 class="page-title"><span jhiTranslate="eshopApp.template.detail.title">Template</span> {{template.id}}
+        <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+            <span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+    </h2>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.template.name" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                [(ngModel)]="template.name"
-            required />
-            <div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.name?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
+
+    <section class="widget">
+        <div class="body">
+            <fieldset>
+                <legend class="section">Info</legend>
+                <div class="row">
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.template.name">Name</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{template.name}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.template.superId" for="field_superId">Super Id</label>
-            <input type="number" class="form-control" name="superId" id="field_superId"
-                [(ngModel)]="template.superId"
-             />
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.template.superId">Super Id</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{template.superId}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.template.templateKey" for="field_templateKey">Template Key</label>
-            <input type="text" class="form-control" name="templateKey" id="field_templateKey"
-                [(ngModel)]="template.templateKey"
-            required />
-            <div [hidden]="!(editForm.controls.templateKey?.dirty && editForm.controls.templateKey?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.templateKey?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.template.templateKey">Template Key</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{template.templateKey}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.template.content" for="field_content">Content</label>
-            <textarea class="form-control" name="content" id="field_content"
-                [(ngModel)]="template.content" required ></textarea>
-            <div [hidden]="!(editForm.controls.content?.dirty && editForm.controls.content?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.content?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
-            </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.template.content">Content</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{template.content}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.template.created_by">Created By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{template.created_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.template.created_date">Created Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{template.created_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.template.last_modified_by">Last Modified By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{template.last_modified_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.template.last_modified_date">Last Modified Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{template.last_modified_date | date:'mediumDate'}}</span>
+            </p>
         </div>
 
-    </div>
-
-    <button type="button"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
-            class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
-    </button>
-    </form>
+</div>
+</fieldset>
+</div>
+</section>
+    
 </div>

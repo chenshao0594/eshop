@@ -1,17 +1,20 @@
+<div *ngIf="emailTemplate">
+<h2 class="page-title">
+    <span >Create or edit</span> 
+    <small> <span [hidden]="!emailTemplate.id"> #id </span></small>
+</h2>
+ <jhi-alert-error></jhi-alert-error>
+<section class="widget">
+<div class="body">
 <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-
-    <div class="modal-header">
-        <h4 class="modal-title" id="myEmailTemplateLabel" jhiTranslate="eshopApp.emailTemplate.home.createOrEditLabel">Create or edit a Email Template</h4>
-    </div>
-    <div class="modal-body">
-        <jhi-alert-error></jhi-alert-error>
-        <div class="row justify-content-center">
+    <div class="row justify-content-center">
+       
         <div class="col-5 form-group" [hidden]="!emailTemplate.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="emailTemplate.id" readonly />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.name" for="field_name">Name</label>
             <input type="text" class="form-control" name="name" id="field_name"
                 [(ngModel)]="emailTemplate.name"
@@ -23,7 +26,7 @@
                 </small>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.subject" for="field_subject">Subject</label>
             <input type="text" class="form-control" name="subject" id="field_subject"
                 [(ngModel)]="emailTemplate.subject"
@@ -35,26 +38,64 @@
                 </small>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.content" for="field_content">Content</label>
             <textarea class="form-control" name="content" id="field_content"
                 [(ngModel)]="emailTemplate.content"  ></textarea>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group col-5">
             <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.actionKey" for="field_actionKey">Action Key</label>
             <input type="text" class="form-control" name="actionKey" id="field_actionKey"
                 [(ngModel)]="emailTemplate.actionKey"
              />
         </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.created_by" for="field_created_by">Created By</label>
+            <input type="text" class="form-control" name="created_by" id="field_created_by"
+                [(ngModel)]="emailTemplate.created_by"
+             />
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.created_date" for="field_created_date">Created Date</label>
+            <div class="input-group">
+                <input id="field_created_date" type="text" class="form-control" name="created_date" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="emailTemplate.created_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="created_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.last_modified_by" for="field_last_modified_by">Last Modified By</label>
+            <input type="text" class="form-control" name="last_modified_by" id="field_last_modified_by"
+                [(ngModel)]="emailTemplate.last_modified_by"
+             />
+        </div>
+        <div class="form-group col-5">
+            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.last_modified_date" for="field_last_modified_date">Last Modified Date</label>
+            <div class="input-group">
+                <input id="field_last_modified_date" type="text" class="form-control" name="last_modified_date" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="emailTemplate.last_modified_date"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="last_modified_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
 
     </div>
-    </div> 
-    <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
-            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-        </button>
-        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-        </button>
-    </div>
+    <div class="form-actions">
+                <div class="row">
+                    <div class="offset-9">
+                        <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+                            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                        </button>
+                        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                        </button>
+                    </div>
+                </div>
+          </div>
 </form>
+</div>
+</section>
+</div>

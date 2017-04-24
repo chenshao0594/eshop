@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { EventManager , JhiLanguageService , AlertService } from 'ng-jhipster';
+import { EventManager , JhiLanguageService  } from 'ng-jhipster';
 
 import { Customer } from './customer.model';
 import { CustomerService } from './customer.service';
@@ -15,14 +15,12 @@ export class CustomerDetailComponent implements OnInit, OnDestroy {
     customer: Customer;
     private subscription: any;
     private eventSubscriber: Subscription;
-    isSaving: boolean;
 
     constructor(
         private eventManager: EventManager,
         private jhiLanguageService: JhiLanguageService,
         private customerService: CustomerService,
-        private route: ActivatedRoute,
-        private alertService: AlertService
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['customer', 'customerGender']);
     }
@@ -41,37 +39,6 @@ export class CustomerDetailComponent implements OnInit, OnDestroy {
     }
     previousState() {
         window.history.back();
-    }
-    save() {
-        this.isSaving = true;
-        if (this.customer.id !== undefined) {
-            this.customerService.update(this.customer)
-                .subscribe((res: Customer) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        } else {
-            this.customerService.create(this.customer)
-                .subscribe((res: Customer) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        }
-    }
-
-    private onSaveSuccess(result: Customer) {
-        this.eventManager.broadcast({ name: 'customerModification', content: 'OK'});
-        this.isSaving = false;
-    }
-
-    private onSaveError(error) {
-        try {
-            error.json();
-        } catch (exception) {
-            error.message = error.text();
-        }
-        this.isSaving = false;
-        this.onError(error);
-    }
-
-    private onError(error) {
-        this.alertService.error(error.message, null, null);
     }
 
     ngOnDestroy() {

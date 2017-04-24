@@ -1,85 +1,102 @@
 
 <div *ngIf="productOption">
-    <h2 class="page-title"><span jhiTranslate="eshopApp.productOption.detail.title">Product Option</span> {{productOption.id}}
-        <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
-            <span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-        </button>
-    </h2>
-    <jhi-alert-error></jhi-alert-error>
-
-    <section class="widget">
-        <div class="body">
-            <fieldset>
-                <legend class="section">Info</legend>
-                <div class="row">
-        <label class="control-label col-2 text-right no-padding-right" >
-        <span jhiTranslate="eshopApp.productOption.readOnly">Read Only</span>
-        </label>
-        <div class="col-4">
-            <span>{{productOption.readOnly}}</span>
-            </p>
-        </div>
-        <label class="control-label col-2 text-right no-padding-right" >
-        <span jhiTranslate="eshopApp.productOption.productOptionType">Product Option Type</span>
-        </label>
-        <div class="col-4">
-            <span>{{productOption.productOptionType}}</span>
-            </p>
-        </div>
-        <label class="control-label col-2 text-right no-padding-right" >
-        <span jhiTranslate="eshopApp.productOption.code">Code</span>
-        </label>
-        <div class="col-4">
-            <span>{{productOption.code}}</span>
-            </p>
-        </div>
-        <label class="control-label col-2 text-right no-padding-right" >
-        <span jhiTranslate="eshopApp.productOption.productOptionSortOrder">Product Option Sort Order</span>
-        </label>
-        <div class="col-4">
-            <span>{{productOption.productOptionSortOrder}}</span>
-            </p>
-        </div>
-        <label class="control-label col-2 text-right no-padding-right" >
-        <span jhiTranslate="eshopApp.productOption.created_by">Created By</span>
-        </label>
-        <div class="col-4">
-            <span>{{productOption.created_by}}</span>
-            </p>
-        </div>
-        <label class="control-label col-2 text-right no-padding-right" >
-        <span jhiTranslate="eshopApp.productOption.created_date">Created Date</span>
-        </label>
-        <div class="col-4">
-            <span>{{productOption.created_date | date:'mediumDate'}}</span>
-            </p>
-        </div>
-        <label class="control-label col-2 text-right no-padding-right" >
-        <span jhiTranslate="eshopApp.productOption.last_modified_by">Last Modified By</span>
-        </label>
-        <div class="col-4">
-            <span>{{productOption.last_modified_by}}</span>
-            </p>
-        </div>
-        <label class="control-label col-2 text-right no-padding-right" >
-        <span jhiTranslate="eshopApp.productOption.last_modified_date">Last Modified Date</span>
-        </label>
-        <div class="col-4">
-            <span>{{productOption.last_modified_date | date:'mediumDate'}}</span>
-            </p>
-        </div>
-        <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.productOption.merchantStore">Merchant Store</span>
-        </label>
-        <div class="col-4">
-            <p class="form-control input-transparent">
-            <div *ngIf="productOption.merchantStore">
-                <a [routerLink]="['/merchant-store', productOption.merchantStore?.id]">{{productOption.merchantStore?.id}}</a>
-            </div>
-            </div>
-
-</div>
-</fieldset>
-</div>
-</section>
-    
+	<h2 class="page-title">
+		<span jhiTranslate="eshopApp.productOption.detail.title">Product Option</span>
+		{{productOption.id}}
+		<button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+			<span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+		</button>
+	</h2>
+	<jhi-alert-error></jhi-alert-error>
+	<section class="widget">
+		<div class="body">
+			<fieldset>
+				<legend class="section">Info</legend>
+				<div class="row">
+					<label class="control-label col-2 text-right no-padding-right"> <span
+						jhiTranslate="eshopApp.productOption.readOnly">Read Only</span>
+					</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">
+							<span>{{productOption.readOnly}}</span>
+						</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"> <span
+						jhiTranslate="eshopApp.productOption.productOptionType">Product Option Type</span>
+					</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">
+							<span>{{productOption.productOptionType}}</span>
+						</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"> <span
+						jhiTranslate="eshopApp.productOption.code">Code</span>
+					</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">
+							<span>{{productOption.code}}</span>
+						</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"> <span
+						jhiTranslate="eshopApp.productOption.productOptionSortOrder">Product Option Sort Order</span>
+					</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">
+							<span>{{productOption.productOptionSortOrder}}</span>
+						</p>
+					</div>
+					
+					<label class="control-label col-2 text-right no-padding-right"><span
+						jhiTranslate="eshopApp.productOption.merchantStore">Merchant Store</span> </label>
+					<div class="col-4">
+						<div *ngIf="productOption.merchantStore">
+							<p class="form-control input-transparent">
+								<a [routerLink]="['/merchant-store', productOption.merchantStore?.id]">{{productOption.merchantStore?.storename}}</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</fieldset>
+			
+			<fieldset>
+				<legend class="section">Audit Info</legend>
+				<div class="row">
+				<label class="control-label col-2 text-right no-padding-right"> <span
+						jhiTranslate="eshopApp.productOption.createdBy">Created By</span>
+					</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">
+							<span>{{productOption.createdBy}}</span>
+						</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"> <span
+						jhiTranslate="eshopApp.productOption.createdDate">Created Date</span>
+					</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">
+							<span>{{productOption.createdDate}}</span>
+						</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"> <span
+						jhiTranslate="eshopApp.productOption.lastModifiedBy">Last Modified By</span>
+					</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">
+							<span>{{productOption.lastModifiedBy}}</span>
+						</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"> <span
+						jhiTranslate="eshopApp.productOption.lastModifiedDate">Last Modified Date</span>
+					</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">
+							<span>{{productOption.lastModifiedDate}}</span>
+						</p>
+					</div>
+				
+				</div>
+				</fieldset>
+				
+		</div>
+	</section>
 </div>

@@ -40,15 +40,26 @@ export const zoneRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'zone/:id',
+    component: ZoneDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.zone.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'zone-new',
     component: ZoneDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.zone.home.title'
     },
-  }, {
-    path: 'zone/:id',
-    component: ZoneDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'zone/:id/edit',
+    component: ZoneDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.zone.home.title'
@@ -58,16 +69,8 @@ export const zoneRoute: Routes = [
 ];
 
 export const zonePopupRoute: Routes = [
-  {
-    path: 'zone/:id/edit',
-    component: ZonePopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.zone.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'zone/:id/delete',
     component: ZoneDeletePopupComponent,

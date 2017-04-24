@@ -19,7 +19,11 @@
             "name": "Name",
             "superId": "Super Id",
             "templateKey": "Template Key",
-            "content": "Content"
+            "content": "Content",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date"
         }
     }
 }

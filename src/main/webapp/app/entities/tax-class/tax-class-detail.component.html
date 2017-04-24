@@ -1,54 +1,75 @@
 
 <div *ngIf="taxClass">
-    <h2><span jhiTranslate="eshopApp.taxClass.detail.title">Tax Class</span> {{taxClass.id}}</h2>
-    <hr>
+    <h2 class="page-title"><span jhiTranslate="eshopApp.taxClass.detail.title">Tax Class</span> {{taxClass.id}}
+        <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+            <span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+    </h2>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.taxClass.title" for="field_title">Title</label>
-            <input type="text" class="form-control" name="title" id="field_title"
-                [(ngModel)]="taxClass.title"
-            required />
-            <div [hidden]="!(editForm.controls.title?.dirty && editForm.controls.title?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.title?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
+
+    <section class="widget">
+        <div class="body">
+            <fieldset>
+                <legend class="section">Info</legend>
+                <div class="row">
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.taxClass.title">Title</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{taxClass.title}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.taxClass.code">Code</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{taxClass.code}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.taxClass.created_by">Created By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{taxClass.created_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.taxClass.created_date">Created Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{taxClass.created_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.taxClass.last_modified_by">Last Modified By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{taxClass.last_modified_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.taxClass.last_modified_date">Last Modified Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{taxClass.last_modified_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.taxClass.merchantStore">Merchant Store</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
+            <div *ngIf="taxClass.merchantStore">
+                <a [routerLink]="['/merchant-store', taxClass.merchantStore?.id]">{{taxClass.merchantStore?.id}}</a>
             </div>
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.taxClass.code" for="field_code">Code</label>
-            <input type="text" class="form-control" name="code" id="field_code"
-                [(ngModel)]="taxClass.code"
-            required />
-            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
             </div>
-        </div>
 
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.taxClass.merchantStore" for="field_merchantStore">Merchant Store</label>
-            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="taxClass.merchantStore" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="merchantStoreOption.id === taxClass.merchantStore?.id ? taxClass.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
-            </select>
-        </div>
-    </div>
-
-    <button type="button"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
-            class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
-    </button>
-    </form>
+</div>
+</fieldset>
+</div>
+</section>
+    
 </div>

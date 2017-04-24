@@ -14,6 +14,10 @@ export class EmailSetting {
         public fromAddress?: string,
         public userName?: string,
         public password?: string,
+        public created_by?: string,
+        public created_date?: any,
+        public last_modified_by?: string,
+        public last_modified_date?: any,
     ) {
     }
 }

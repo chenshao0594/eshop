@@ -1,54 +1,83 @@
 
 <div *ngIf="manufacturer">
-    <h2><span jhiTranslate="eshopApp.manufacturer.detail.title">Manufacturer</span> {{manufacturer.id}}</h2>
-    <hr>
+    <h2 class="page-title"><span jhiTranslate="eshopApp.manufacturer.detail.title">Manufacturer</span> {{manufacturer.id}}
+        <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+            <span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+    </h2>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.manufacturer.order" for="field_order">Order</label>
-            <input type="number" class="form-control" name="order" id="field_order"
-                [(ngModel)]="manufacturer.order"
-             />
+
+    <section class="widget">
+        <div class="body">
+            <fieldset>
+                <legend class="section">Info</legend>
+                <div class="row">
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.manufacturer.order">Order</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{manufacturer.order}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.manufacturer.image" for="field_image">Image</label>
-            <input type="text" class="form-control" name="image" id="field_image"
-                [(ngModel)]="manufacturer.image"
-             />
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.manufacturer.image">Image</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{manufacturer.image}}</span>
+            </p>
         </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.manufacturer.code" for="field_code">Code</label>
-            <input type="text" class="form-control" name="code" id="field_code"
-                [(ngModel)]="manufacturer.code"
-            required />
-            <div [hidden]="!(editForm.controls.code?.dirty && editForm.controls.code?.invalid)">
-                <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.code?.errors?.required" jhiTranslate="entity.validation.required">
-                   This field is required.
-                </small>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.manufacturer.code">Code</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{manufacturer.code}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.manufacturer.created_by">Created By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{manufacturer.created_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.manufacturer.created_date">Created Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{manufacturer.created_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.manufacturer.last_modified_by">Last Modified By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{manufacturer.last_modified_by}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.manufacturer.last_modified_date">Last Modified Date</span>
+        </label>
+        <div class="col-4">
+            <span>{{manufacturer.last_modified_date | date:'mediumDate'}}</span>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.manufacturer.merchantStore">Merchant Store</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
+            <div *ngIf="manufacturer.merchantStore">
+                <a [routerLink]="['/merchant-store', manufacturer.merchantStore?.id]">{{manufacturer.merchantStore?.id}}</a>
             </div>
-        </div>
+            </div>
 
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.manufacturer.merchantStore" for="field_merchantStore">Merchant Store</label>
-            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="manufacturer.merchantStore" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="merchantStoreOption.id === manufacturer.merchantStore?.id ? manufacturer.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
-            </select>
-        </div>
-    </div>
-
-    <button type="button"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
-            class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
-    </button>
-    </form>
+</div>
+</fieldset>
+</div>
+</section>
+    
 </div>

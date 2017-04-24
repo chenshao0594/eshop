@@ -1,65 +1,99 @@
 
 <div *ngIf="productOptionValue">
-    <h2><span jhiTranslate="eshopApp.productOptionValue.detail.title">Product Option Value</span> {{productOptionValue.id}}</h2>
-    <hr>
+    <h2 class="page-title"><span jhiTranslate="eshopApp.productOptionValue.detail.title">Product Option Value</span> {{productOptionValue.id}}
+        <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+            <span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+        </button>
+    </h2>
     <jhi-alert-error></jhi-alert-error>
-    <dl class="row-md jh-entity-details">
-        <dt><span jhiTranslate="eshopApp.productOptionValue.productOptionValueImage">Product Option Value Image</span></dt>
-        <dd>
+
+    <section class="widget">
+        <div class="body">
+            <fieldset>
+                <legend class="section">Info</legend>
+                <div class="row">
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.productOptionValue.productOptionValueImage">Product Option Value Image</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
             <span>{{productOptionValue.productOptionValueImage}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.productOptionValue.code">Code</span></dt>
-        <dd>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.productOptionValue.code">Code</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
             <span>{{productOptionValue.code}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.productOptionValue.productOptionValueSortOrder">Product Option Value Sort Order</span></dt>
-        <dd>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.productOptionValue.productOptionValueSortOrder">Product Option Value Sort Order</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
             <span>{{productOptionValue.productOptionValueSortOrder}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.productOptionValue.productOptionDisplayOnly">Product Option Display Only</span></dt>
-        <dd>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.productOptionValue.productOptionDisplayOnly">Product Option Display Only</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
             <span>{{productOptionValue.productOptionDisplayOnly}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.productOptionValue.created_by">Created By</span></dt>
-        <dd>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.productOptionValue.created_by">Created By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
             <span>{{productOptionValue.created_by}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.productOptionValue.created_date">Created Date</span></dt>
-        <dd>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.productOptionValue.created_date">Created Date</span>
+        </label>
+        <div class="col-4">
             <span>{{productOptionValue.created_date | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.productOptionValue.last_modified_by">Last Modified By</span></dt>
-        <dd>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.productOptionValue.last_modified_by">Last Modified By</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
             <span>{{productOptionValue.last_modified_by}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.productOptionValue.last_modified_date">Last Modified Date</span></dt>
-        <dd>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.productOptionValue.last_modified_date">Last Modified Date</span>
+        </label>
+        <div class="col-4">
             <span>{{productOptionValue.last_modified_date | date:'mediumDate'}}</span>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.productOptionValue.merchantStore">Merchant Store</span></dt>
-        <dd>
+            </p>
+        </div>
+        <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.productOptionValue.merchantStore">Merchant Store</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
             <div *ngIf="productOptionValue.merchantStore">
                 <a [routerLink]="['/merchant-store', productOptionValue.merchantStore?.id]">{{productOptionValue.merchantStore?.id}}</a>
             </div>
-        </dd>
-        <dt><span jhiTranslate="eshopApp.productOptionValue.productOption">Product Option</span></dt>
-        <dd>
+            </div>
+        <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.productOptionValue.productOption">Product Option</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
             <div *ngIf="productOptionValue.productOption">
                 <a [routerLink]="['/product-option', productOptionValue.productOption?.id]">{{productOptionValue.productOption?.id}}</a>
             </div>
-        </dd>
-    </dl>
+            </div>
 
-    <button type="submit"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'product-option-value/'+ productOptionValue.id + '/edit'} }]"
-            replaceUrl="true"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-    </button>
+</div>
+</fieldset>
+</div>
+</section>
+    
 </div>

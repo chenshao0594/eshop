@@ -40,15 +40,26 @@ export const emailTemplateRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'email-template/:id',
+    component: EmailTemplateDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.emailTemplate.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'email-template-new',
     component: EmailTemplateDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.emailTemplate.home.title'
     },
-  }, {
-    path: 'email-template/:id',
-    component: EmailTemplateDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'email-template/:id/edit',
+    component: EmailTemplateDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.emailTemplate.home.title'
@@ -58,16 +69,8 @@ export const emailTemplateRoute: Routes = [
 ];
 
 export const emailTemplatePopupRoute: Routes = [
-  {
-    path: 'email-template/:id/edit',
-    component: EmailTemplatePopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.emailTemplate.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'email-template/:id/delete',
     component: EmailTemplateDeletePopupComponent,

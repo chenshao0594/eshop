@@ -28,6 +28,20 @@ export class CustomerPopupService {
                         day: customer.dateOfBirth.getDate()
                     };
                 }
+                if (customer.created_date) {
+                    customer.created_date = {
+                        year: customer.created_date.getFullYear(),
+                        month: customer.created_date.getMonth() + 1,
+                        day: customer.created_date.getDate()
+                    };
+                }
+                if (customer.last_modified_date) {
+                    customer.last_modified_date = {
+                        year: customer.last_modified_date.getFullYear(),
+                        month: customer.last_modified_date.getMonth() + 1,
+                        day: customer.last_modified_date.getDate()
+                    };
+                }
                 this.customerModalRef(component, customer);
             });
         } else {

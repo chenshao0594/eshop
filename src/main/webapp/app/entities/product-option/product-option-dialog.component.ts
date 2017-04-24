@@ -53,6 +53,7 @@ export class ProductOptionDialogComponent implements OnInit {
     }
     clear() {
        // this.activeModal.dismiss('cancel');
+        window.history.back();
     }
 
     save() {

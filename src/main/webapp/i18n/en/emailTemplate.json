@@ -19,7 +19,11 @@
             "name": "Name",
             "subject": "Subject",
             "content": "Content",
-            "actionKey": "Action Key"
+            "actionKey": "Action Key",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date"
         }
     }
 }
