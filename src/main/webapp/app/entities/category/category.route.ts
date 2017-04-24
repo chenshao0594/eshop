@@ -54,20 +54,20 @@ export const categoryRoute: Routes = [
         pageTitle: 'eshopApp.category.home.title'
     },
     canActivate: [UserRouteAccessService]
+  },
+  {
+      path: 'category/:id/edit',
+      component: CategoryDialogComponent,
+      data: {
+          authorities: ['ROLE_USER'],
+          pageTitle: 'eshopApp.category.home.title'
+      },
+      canActivate: [UserRouteAccessService],
   }
 ];
 
 export const categoryPopupRoute: Routes = [
-  {
-    path: 'category/:id/edit',
-    component: CategoryPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.category.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
   {
     path: 'category/:id/delete',
     component: CategoryDeletePopupComponent,

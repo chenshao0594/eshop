@@ -28,6 +28,20 @@ export class MerchantStorePopupService {
                         day: merchantStore.inBusinessSince.getDate()
                     };
                 }
+                if (merchantStore.created_date) {
+                    merchantStore.created_date = {
+                        year: merchantStore.created_date.getFullYear(),
+                        month: merchantStore.created_date.getMonth() + 1,
+                        day: merchantStore.created_date.getDate()
+                    };
+                }
+                if (merchantStore.last_modified_date) {
+                    merchantStore.last_modified_date = {
+                        year: merchantStore.last_modified_date.getFullYear(),
+                        month: merchantStore.last_modified_date.getMonth() + 1,
+                        day: merchantStore.last_modified_date.getDate()
+                    };
+                }
                 this.merchantStoreModalRef(component, merchantStore);
             });
         } else {

@@ -10,7 +10,6 @@ import { ProductOptionPopupComponent, ProductOptionDialogComponent } from './pro
 import { ProductOptionDeletePopupComponent } from './product-option-delete-dialog.component';
 
 import { Principal } from '../../shared';
-import { ProductOptionValuePopupComponent } from '../product-option-value';
 
 @Injectable()
 export class ProductOptionResolvePagingParams implements Resolve<any> {
@@ -41,15 +40,26 @@ export const productOptionRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
+    path: 'product-option/:id',
+    component: ProductOptionDetailComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.productOption.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'product-option-new',
     component: ProductOptionDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.productOption.home.title'
     },
-  }, {
-    path: 'product-option/:id',
-    component: ProductOptionDetailComponent,
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'product-option/:id/edit',
+    component: ProductOptionDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.productOption.home.title'
@@ -59,16 +69,8 @@ export const productOptionRoute: Routes = [
 ];
 
 export const productOptionPopupRoute: Routes = [
-  {
-    path: 'product-option/:id/edit',
-    component: ProductOptionPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.productOption.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
+  
   {
     path: 'product-option/:id/delete',
     component: ProductOptionDeletePopupComponent,
@@ -78,15 +80,5 @@ export const productOptionPopupRoute: Routes = [
     },
     canActivate: [UserRouteAccessService],
     outlet: 'popup'
-  },
-  {
-    path: 'product-option/:id/option-value-new',
-    component: ProductOptionPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.productOption.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  }
 ];

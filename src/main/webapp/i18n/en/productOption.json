@@ -17,9 +17,13 @@
                 "title": "Product Option"
             },
             "readOnly": "Read Only",
-            "productOptionType": "Option Type",
+            "productOptionType": "Product Option Type",
             "code": "Code",
-            "productOptionSortOrder": "Sort Order",
+            "productOptionSortOrder": "Product Option Sort Order",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date",
             "descriptions": "Descriptions",
             "merchantStore": "Merchant Store"
         }

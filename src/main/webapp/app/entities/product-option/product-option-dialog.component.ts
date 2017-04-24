@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { ProductOption } from './product-option.model';
@@ -21,25 +21,38 @@ export class ProductOptionDialogComponent implements OnInit {
     isSaving: boolean;
 
     merchantstores: MerchantStore[];
-    constructor(
+            constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productOptionService: ProductOptionService,
         private merchantStoreService: MerchantStoreService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['productOption']);
-        this.productOption = new ProductOption();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.productOption = new ProductOption();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
+    load(id) {
+         this.productOptionService.find(id).subscribe((productOption) => {
+                this.productOption = productOption;
+                
+         });
+    }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -58,7 +71,7 @@ export class ProductOptionDialogComponent implements OnInit {
     private onSaveSuccess(result: ProductOption) {
         this.eventManager.broadcast({ name: 'productOptionListModification', content: 'OK'});
         this.isSaving = false;
-        this.productOption = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

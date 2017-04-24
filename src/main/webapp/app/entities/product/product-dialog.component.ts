@@ -62,14 +62,11 @@ export class ProductDialogComponent implements OnInit {
     ngOnInit() {
         this.route.params.subscribe((params) => {
             if ( params['id'] ) {
-               this.id = params['id'];
+                this.load(params['id']);
             } else {
                 this.product = new Product();
             }
         });
-        
-        this.load(this.id);
-        
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.taxClassService.query().subscribe(
@@ -141,11 +138,11 @@ export class ProductDialogComponent implements OnInit {
             }
             let attachment = new Attachment();
             this.dataUtils.toBase64(file, (base64Data) => {
-                attachment['content'] = base64Data;
-                attachment['contentContentType'] = file.type;
+                attachment.content = base64Data;
+                attachment.contentContentType = file.type;
             });
-            attachment['boName'] = "Product";
-            attachment['boId'] = 1;
+            attachment.boName = "Product";
+            attachment.boId = 1;
             this.attachmentService.create(attachment)
                                    .subscribe((res: Attachment) =>
                                        this.onCreateAttachmentSuccess(res), (res: Response) => this.onSaveError(res));

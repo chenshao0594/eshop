@@ -20,6 +20,10 @@
             "productOptionType": "Product Option Type",
             "code": "Code",
             "productOptionSortOrder": "Product Option Sort Order",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date",
             "descriptions": "Descriptions",
             "merchantStore": "Merchant Store"
         }

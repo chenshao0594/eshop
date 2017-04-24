@@ -4,166 +4,164 @@
 		<!-- <button type="button" (click)="previousState()" class="btn btn-info">
 			<span class="fa fa-arrow-left"></span>&nbsp;<label class="control-label col-2 text-right no-padding-right" jhiTranslate="entity.action.back"> Back</span>
 		</button> -->
-		<button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']"><span class="fa fa-pencil"></span></span>&nbsp;<span
-				jhiTranslate="entity.action.edit">Edit</span></button>
+		<button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+			<span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+		</button>
 	</h2>
 	<section class="widget">
 		<div class="body">
-			<div class="form-horizontal form-label-left">
-				<fieldset>
-					<legend class="section">Info</legend>
-					<div class="row">
+			<fieldset>
+				<legend class="section">Info</legend>
+				<div class="row">
 					<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.name">Name</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.name}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productHeight">Product Height</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productHeight}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productWeight">Product Weight</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productWeight}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productShipeable">Product Shipeable</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productShipeable}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productOrdered">Product Ordered</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productOrdered}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productReviewAvg">Product Review Avg</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productReviewAvg}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.dateAvailable">Date Available</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.dateAvailable | date:'mediumDate'}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.sortOrder">Sort Order</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.sortOrder}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productIsFree">Product Is Free</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productIsFree}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.available">Available</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.available}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productReviewCount">Product Review Count</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productReviewCount}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.refSku">Ref Sku</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.refSku}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productVirtual">Product Virtual</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productVirtual}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productWidth">Product Width</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productWidth}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.preOrder">Pre Order</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.preOrder}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productLength">Product Length</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.productLength}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.sku">Sku</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.sku}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.manufacturer">Manufacturer</label>
-						<div class="col-4">
-							<div *ngIf="product.manufacturer">
-								<a [routerLink]="['/manufacturer', product.manufacturer?.id]">{{product.manufacturer?.id}}</a>
-							</div>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.type">Type</label>
-						<div class="col-4">
-							<div *ngIf="product.type">
-								<a [routerLink]="['/product-type', product.type?.id]">{{product.type?.id}}</a>
-							</div>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.merchantStore">Merchant Store</label>
-						<div class="col-4">
-							<div *ngIf="product.merchantStore">
-								<a [routerLink]="['/merchant-store', product.merchantStore?.id]">{{product.merchantStore?.id}}</a>
-							</div>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.taxClass">Tax Class</label>
-						<div class="col-4">
-							<div *ngIf="product.taxClass">
-								<a [routerLink]="['/tax-class', product.taxClass?.id]">{{product.taxClass?.id}}</a>
-							</div>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.categories">Categories</label>
-						<div class="col-4">
-							<span *ngFor="let categories of product.categories; let last = last"> <a
-								[routerLink]="['/category', categories?.id ]">{{categories.id}}</a>
-							</span>
+						jhiTranslate="eshopApp.product.name">Name</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.name}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productHeight">Product Height</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productHeight}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productWeight">Product Weight</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productWeight}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productShipeable">Product Shipeable</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productShipeable}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productOrdered">Product Ordered</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productOrdered}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productReviewAvg">Product Review Avg</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productReviewAvg}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.dateAvailable">Date Available</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.dateAvailable | date:'mediumDate'}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.sortOrder">Sort Order</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.sortOrder}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productIsFree">Product Is Free</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productIsFree}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.available">Available</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.available}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productReviewCount">Product Review Count</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productReviewCount}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.refSku">Ref Sku</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.refSku}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productVirtual">Product Virtual</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productVirtual}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productWidth">Product Width</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productWidth}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.preOrder">Pre Order</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.preOrder}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productLength">Product Length</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productLength}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.sku">Sku</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.sku}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.manufacturer">Manufacturer</label>
+					<div class="col-4">
+						<div *ngIf="product.manufacturer">
+							<a [routerLink]="['/manufacturer', product.manufacturer?.id]">{{product.manufacturer?.id}}</a>
 						</div>
 					</div>
-				</fieldset>
-				<fieldset>
-					<legend class="section">Audit Info</legend>
-					<div class="row">
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.created_by">Created By</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.createdBy}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.created_date">Created Date</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.createdDate | date:'mediumDate'}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.last_modified_by">Last Modified By</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.lastModifiedBy}}</p>
-						</div>
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.last_modified_date">Last Modified Date</label>
-						<div class="col-4">
-							<p class="form-control input-transparent">{{product.lastModifiedDate |
-								date:'mediumDate'}}</p>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.type">Type</label>
+					<div class="col-4">
+						<div *ngIf="product.type">
+							<a [routerLink]="['/product-type', product.type?.id]">{{product.type?.id}}</a>
 						</div>
 					</div>
-				</fieldset>
-			</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.merchantStore">Merchant Store</label>
+					<div class="col-4">
+						<div *ngIf="product.merchantStore">
+							<a [routerLink]="['/merchant-store', product.merchantStore?.id]">{{product.merchantStore?.id}}</a>
+						</div>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.taxClass">Tax Class</label>
+					<div class="col-4">
+						<div *ngIf="product.taxClass">
+							<a [routerLink]="['/tax-class', product.taxClass?.id]">{{product.taxClass?.id}}</a>
+						</div>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.categories">Categories</label>
+					<div class="col-4">
+						<span *ngFor="let categories of product.categories; let last = last"> <a
+							[routerLink]="['/category', categories?.id ]">{{categories.id}}</a>
+						</span>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend class="section">Audit Info</legend>
+				<div class="row">
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.created_by">Created By</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.createdBy}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.created_date">Created Date</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.createdDate | date:'mediumDate'}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.last_modified_by">Last Modified By</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.lastModifiedBy}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.last_modified_date">Last Modified Date</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.lastModifiedDate | date:'mediumDate'}}</p>
+					</div>
+				</div>
+			</fieldset>
 		</div>
-</section>
+	</section>
 </div>
 <!-- <button type="submit" (click)="previousState()" class="btn btn-info">
 		<span class="fa fa-arrow-left"></span>&nbsp;<label class="control-label col-2 text-right no-padding-right" jhiTranslate="entity.action.back"> Back</span>

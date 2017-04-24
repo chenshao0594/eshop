@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
-import { NgbActiveModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 
 import { MerchantStore } from './merchant-store.model';
@@ -30,7 +30,7 @@ export class MerchantStoreDialogComponent implements OnInit {
     currencies: Currency[];
 
     countries: Country[];
-        constructor(
+                constructor(
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private merchantStoreService: MerchantStoreService,
@@ -38,13 +38,20 @@ export class MerchantStoreDialogComponent implements OnInit {
         private zoneService: ZoneService,
         private currencyService: CurrencyService,
         private countryService: CountryService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['merchantStore']);
-        this.merchantStore = new MerchantStore();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.merchantStore = new MerchantStore();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.languageService.query().subscribe(
@@ -56,8 +63,14 @@ export class MerchantStoreDialogComponent implements OnInit {
         this.countryService.query().subscribe(
             (res: Response) => { this.countries = res.json(); }, (res: Response) => this.onError(res.json()));
     }
+    load(id) {
+         this.merchantStoreService.find(id).subscribe((merchantStore) => {
+                this.merchantStore = merchantStore;
+                
+         });
+    }
     clear() {
-        window.history.back();
+       // this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -76,7 +89,7 @@ export class MerchantStoreDialogComponent implements OnInit {
     private onSaveSuccess(result: MerchantStore) {
         this.eventManager.broadcast({ name: 'merchantStoreListModification', content: 'OK'});
         this.isSaving = false;
-        this.merchantStore = result;
+      //  this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

@@ -28,19 +28,33 @@ export class CategoryDialogComponent implements OnInit {
         private alertService: AlertService,
         private categoryService: CategoryService,
         private merchantStoreService: MerchantStoreService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute,
     ) {
         this.jhiLanguageService.setLocations(['category']);
         this.category = new Category();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.category = new Category();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
         this.categoryService.query().subscribe(
             (res: Response) => { this.categories = res.json(); }, (res: Response) => this.onError(res.json()));
+    }
+    
+    load(id) {
+        this.categoryService.find(id).subscribe((category) => {
+               this.category = category;
+        });
     }
     clear() {
         window.history.back();

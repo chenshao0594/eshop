@@ -1,8 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
-import { EventManager , JhiLanguageService , AlertService } from 'ng-jhipster';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { EventManager , JhiLanguageService  } from 'ng-jhipster';
 
 import { ProductOption } from './product-option.model';
 import { ProductOptionService } from './product-option.service';
@@ -16,20 +15,14 @@ export class ProductOptionDetailComponent implements OnInit, OnDestroy {
     productOption: ProductOption;
     private subscription: any;
     private eventSubscriber: Subscription;
-    isSaving: boolean;
 
     constructor(
         private eventManager: EventManager,
         private jhiLanguageService: JhiLanguageService,
         private productOptionService: ProductOptionService,
-        private route: ActivatedRoute,
-        private alertService: AlertService,
-        private modalService: NgbModal
+        private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['productOption']);
-    }
-    addOptionValue(content) {
-      this.modalService.open(content);
     }
 
     ngOnInit() {
@@ -46,37 +39,6 @@ export class ProductOptionDetailComponent implements OnInit, OnDestroy {
     }
     previousState() {
         window.history.back();
-    }
-    save() {
-        this.isSaving = true;
-        if (this.productOption.id !== undefined) {
-            this.productOptionService.update(this.productOption)
-                .subscribe((res: ProductOption) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        } else {
-            this.productOptionService.create(this.productOption)
-                .subscribe((res: ProductOption) =>
-                    this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-        }
-    }
-
-    private onSaveSuccess(result: ProductOption) {
-        this.eventManager.broadcast({ name: 'productOptionModification', content: 'OK'});
-        this.isSaving = false;
-    }
-
-    private onSaveError(error) {
-        try {
-            error.json();
-        } catch (exception) {
-            error.message = error.text();
-        }
-        this.isSaving = false;
-        this.onError(error);
-    }
-
-    private onError(error) {
-        this.alertService.error(error.message, null, null);
     }
 
     ngOnDestroy() {

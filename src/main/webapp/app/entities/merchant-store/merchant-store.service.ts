@@ -16,6 +16,10 @@ export class MerchantStoreService {
         const copy: MerchantStore = Object.assign({}, merchantStore);
         copy.inBusinessSince = this.dateUtils
             .convertLocalDateToServer(merchantStore.inBusinessSince);
+        copy.created_date = this.dateUtils
+            .convertLocalDateToServer(merchantStore.created_date);
+        copy.last_modified_date = this.dateUtils
+            .convertLocalDateToServer(merchantStore.last_modified_date);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -25,6 +29,10 @@ export class MerchantStoreService {
         const copy: MerchantStore = Object.assign({}, merchantStore);
         copy.inBusinessSince = this.dateUtils
             .convertLocalDateToServer(merchantStore.inBusinessSince);
+        copy.created_date = this.dateUtils
+            .convertLocalDateToServer(merchantStore.created_date);
+        copy.last_modified_date = this.dateUtils
+            .convertLocalDateToServer(merchantStore.last_modified_date);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -35,6 +43,10 @@ export class MerchantStoreService {
             const jsonResponse = res.json();
             jsonResponse.inBusinessSince = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse.inBusinessSince);
+            jsonResponse.created_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.created_date);
+            jsonResponse.last_modified_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.last_modified_date);
             return jsonResponse;
         });
     }
@@ -57,11 +69,16 @@ export class MerchantStoreService {
         ;
     }
 
+
     private convertResponse(res: any): any {
         const jsonResponse = res.json();
         for (let i = 0; i < jsonResponse.length; i++) {
             jsonResponse[i].inBusinessSince = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse[i].inBusinessSince);
+            jsonResponse[i].created_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].created_date);
+            jsonResponse[i].last_modified_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].last_modified_date);
         }
         res._body = jsonResponse;
         return res;

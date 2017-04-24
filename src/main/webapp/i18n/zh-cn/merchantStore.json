@@ -35,11 +35,14 @@
             "storestateprovince": "Storestateprovince",
             "continueshoppingurl": "Continueshoppingurl",
             "storecity": "Storecity",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date",
             "defaultLanguage": "Default Language",
             "zone": "Zone",
             "currency": "Currency",
             "country": "Country",
-            "defaultLanguage": "Default Language",
             "languages": "Languages"
         }
     }
