@@ -45,7 +45,6 @@
 							<span>{{productOption.productOptionSortOrder}}</span>
 						</p>
 					</div>
-					
 					<label class="control-label col-2 text-right no-padding-right"><span
 						jhiTranslate="eshopApp.productOption.merchantStore">Merchant Store</span> </label>
 					<div class="col-4">
@@ -57,11 +56,38 @@
 					</div>
 				</div>
 			</fieldset>
-			
+			<fieldset>
+				<legend class="section">Option Values</legend>
+				<div class="row">
+				<div class="col-8  offset-2 table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>#</th>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Email</th>
+                                    <th>Status</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>Mark</td>
+                                    <td>Otto</td>
+                                    <td><a href="#">ottoto@example.com</a></td>
+                                    <td><span class="badge bg-gray-lighter text-gray fw-semi-bold">Pending</span></td>
+                                </tr>
+                                </tbody>
+                                </table>
+                                </div>
+                                
+				</div>
+			</fieldset>
 			<fieldset>
 				<legend class="section">Audit Info</legend>
 				<div class="row">
-				<label class="control-label col-2 text-right no-padding-right"> <span
+					<label class="control-label col-2 text-right no-padding-right"> <span
 						jhiTranslate="eshopApp.productOption.createdBy">Created By</span>
 					</label>
 					<div class="col-4">
@@ -93,10 +119,8 @@
 							<span>{{productOption.lastModifiedDate}}</span>
 						</p>
 					</div>
-				
 				</div>
-				</fieldset>
-				
+			</fieldset>
 		</div>
 	</section>
 </div>
