@@ -1,3 +1,5 @@
+<div *ngIf="product">
+
 <h2 class="page-title">
 	<span id="myCategoryLabel" jhiTranslate="eshopApp.product.home.createOrEditLabel">Create or
 		edit a Product</span> 
@@ -5,7 +7,7 @@
 </h2>
 <jhi-alert-error></jhi-alert-error>
 <section class="widget">
-	<div class="body">
+	<div class="">
 		<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 			<ngb-tabset>
 				<ngb-tab> 
@@ -221,18 +223,16 @@
 			<div class="form-actions">
 				<div class="row">
 					<div class="offset-9">
-
-					<button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
-						<span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-					</button>
-					<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-						<span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-					</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+							<span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+						</button>
+						<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+							<span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+						</button>
 					</div>
 				</div>
 		  </div>
 	</form><!-- form end -->
 	</div><!-- body end  -->
 </section>
-			
-		
+</div>

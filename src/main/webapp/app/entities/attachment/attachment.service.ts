@@ -3,16 +3,21 @@ import { Http, Response, URLSearchParams, BaseRequestOptions } from '@angular/ht
 import { Observable } from 'rxjs/Rx';
 
 import { Attachment } from './attachment.model';
+import { DateUtils } from 'ng-jhipster';
 @Injectable()
 export class AttachmentService {
 
     private resourceUrl = 'api/attachments';
     private resourceSearchUrl = 'api/_search/attachments';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private dateUtils: DateUtils) { }
 
     create(attachment: Attachment): Observable<Attachment> {
         const copy: Attachment = Object.assign({}, attachment);
+        copy.created_date = this.dateUtils
+            .convertLocalDateToServer(attachment.created_date);
+        copy.last_modified_date = this.dateUtils
+            .convertLocalDateToServer(attachment.last_modified_date);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -20,6 +25,10 @@ export class AttachmentService {
 
     update(attachment: Attachment): Observable<Attachment> {
         const copy: Attachment = Object.assign({}, attachment);
+        copy.created_date = this.dateUtils
+            .convertLocalDateToServer(attachment.created_date);
+        copy.last_modified_date = this.dateUtils
+            .convertLocalDateToServer(attachment.last_modified_date);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -27,13 +36,19 @@ export class AttachmentService {
 
     find(id: number): Observable<Attachment> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
-            return res.json();
+            const jsonResponse = res.json();
+            jsonResponse.created_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.created_date);
+            jsonResponse.last_modified_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.last_modified_date);
+            return jsonResponse;
         });
     }
 
     query(req?: any): Observable<Response> {
         const options = this.createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
+            .map((res: any) => this.convertResponse(res))
         ;
     }
 
@@ -44,7 +59,21 @@ export class AttachmentService {
     search(req?: any): Observable<Response> {
         const options = this.createRequestOption(req);
         return this.http.get(this.resourceSearchUrl, options)
+            .map((res: any) => this.convertResponse(res))
         ;
+    }
+
+
+    private convertResponse(res: any): any {
+        const jsonResponse = res.json();
+        for (let i = 0; i < jsonResponse.length; i++) {
+            jsonResponse[i].created_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].created_date);
+            jsonResponse[i].last_modified_date = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].last_modified_date);
+        }
+        res._body = jsonResponse;
+        return res;
     }
 
     private createRequestOption(req?: any): BaseRequestOptions {

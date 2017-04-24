@@ -7,6 +7,11 @@
                 "createOrEditLabel": "Create or edit a Product",
                 "search": "Search for Product"
             },
+            "tabs": {
+            	"basicInfo": "Basic Info",
+            	"images": "Images",
+            	"seo": "SEO"
+           	},
             "created": "A new Product is created with identifier {{ param }}",
             "updated": "A Product is updated with identifier {{ param }}",
             "deleted": "A Product is deleted with identifier {{ param }}",
@@ -16,21 +21,21 @@
             "detail": {
                 "title": "Product"
             },
-            "productHeight": "Product Height",
-            "productWeight": "Product Weight",
-            "productShipeable": "Product Shipeable",
-            "productOrdered": "Product Ordered",
-            "productReviewAvg": "Product Review Avg",
+            "productHeight": "Height",
+            "productWeight": "Weight",
+            "productShipeable": "Shipeable",
+            "productOrdered": "Ordered",
+            "productReviewAvg": "Review Avg",
             "dateAvailable": "Date Available",
             "sortOrder": "Sort Order",
-            "productIsFree": "Product Is Free",
+            "productIsFree": "Is Free",
             "available": "Available",
-            "productReviewCount": "Product Review Count",
+            "productReviewCount": "Review Count",
             "refSku": "Ref Sku",
             "productVirtual": "Product Virtual",
-            "productWidth": "Product Width",
+            "productWidth": "Width",
             "preOrder": "Pre Order",
-            "productLength": "Product Length",
+            "productLength": "Length",
             "sku": "Sku",
             "images": "Images",
             "availabilities": "Availabilities",
@@ -41,7 +46,19 @@
             "manufacturer": "Manufacturer",
             "type": "Type",
             "merchantStore": "Merchant Store",
-            "taxClass": "Tax Class"
-        }
+            "metatagDescription": "Metatag Description",
+            "searchUrl": "Search Url",
+            "metatagKeywords": "Metatag Keywords",
+            "productHighlight": "Highlight",
+            "title": "Title",
+            "description": "Description",
+            "metatagTitle": "Metatag Title",
+            "name": "Name",
+            "productExternalDl": "External Dl",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+           	"last_modified_by" : "Last Modified By",
+           	"last_modified_date" : "Last Modified Date"
+       	}
     }
 }

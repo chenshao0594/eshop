@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Response } from '@angular/http';
 
@@ -18,7 +18,7 @@ export class AttachmentDialogComponent implements OnInit {
     attachment: Attachment;
     authorities: any[];
     isSaving: boolean;
-    constructor(
+            constructor(
         public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private dataUtils: DataUtils,
@@ -51,7 +51,6 @@ export class AttachmentDialogComponent implements OnInit {
                 attachment[field] = base64Data;
                 attachment[`${field}ContentType`] = file.type;
             });
-            
         }
     }
     clear() {

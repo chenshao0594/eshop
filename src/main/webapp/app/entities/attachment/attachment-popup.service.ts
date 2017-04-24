@@ -21,6 +21,20 @@ export class AttachmentPopupService {
 
         if (id) {
             this.attachmentService.find(id).subscribe((attachment) => {
+                if (attachment.created_date) {
+                    attachment.created_date = {
+                        year: attachment.created_date.getFullYear(),
+                        month: attachment.created_date.getMonth() + 1,
+                        day: attachment.created_date.getDate()
+                    };
+                }
+                if (attachment.last_modified_date) {
+                    attachment.last_modified_date = {
+                        year: attachment.last_modified_date.getFullYear(),
+                        month: attachment.last_modified_date.getMonth() + 1,
+                        day: attachment.last_modified_date.getDate()
+                    };
+                }
                 this.attachmentModalRef(component, attachment);
             });
         } else {

@@ -4,7 +4,8 @@
 		<!-- <button type="button" (click)="previousState()" class="btn btn-info">
 			<span class="fa fa-arrow-left"></span>&nbsp;<label class="control-label col-2 text-right no-padding-right" jhiTranslate="entity.action.back"> Back</span>
 		</button> -->
-		<button type="button" class="btn btn-primary pull-right" [routerLink]="['/product/'+ product.id + '/edit']">Update</button>
+		<button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']"><span class="fa fa-pencil"></span></span>&nbsp;<span
+				jhiTranslate="entity.action.edit">Edit</span></button>
 	</h2>
 	<section class="widget">
 		<div class="body">
@@ -12,10 +13,10 @@
 				<fieldset>
 					<legend class="section">Info</legend>
 					<div class="row">
-						<label class="control-label col-2 text-right no-padding-right"
-							jhiTranslate="eshopApp.product.productHeight">Prefix</label>
+					<label class="control-label col-2 text-right no-padding-right"
+							jhiTranslate="eshopApp.product.name">Name</label>
 						<div class="col-4">
-							<p class="form-control input-transparent">test ...</p>
+							<p class="form-control input-transparent">{{product.name}}</p>
 						</div>
 						<label class="control-label col-2 text-right no-padding-right"
 							jhiTranslate="eshopApp.product.productHeight">Product Height</label>

@@ -67,16 +67,6 @@ export const productRoute: Routes = [
 
 export const productPopupRoute: Routes = [
   {
-    path: 'product/:id/edit',
-    component: ProductPopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.product.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
-  {
     path: 'product/:id/delete',
     component: ProductDeletePopupComponent,
     data: {

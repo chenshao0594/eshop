@@ -29,6 +29,7 @@ export class ProductDialogComponent implements OnInit {
     producttypes: ProductType[];
     descriptions: ProductDescription[];
     merchantstores: MerchantStore[];
+    id: Number;
     attachment: Attachment;
         constructor(
         private jhiLanguageService: JhiLanguageService,
@@ -44,11 +45,31 @@ export class ProductDialogComponent implements OnInit {
         private route: ActivatedRoute,
     ) {
         this.jhiLanguageService.setLocations(['product']);
-      
        
     }
-
+    load(id) {
+         this.productService.find(id).subscribe((product) => {
+                this.product = product;
+                if (product.dateAvailable) {
+                    product.dateAvailable = {
+                        year: product.dateAvailable.getFullYear(),
+                        month: product.dateAvailable.getMonth() + 1,
+                        day: product.dateAvailable.getDate()
+                    };
+                }
+         });
+    }
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+               this.id = params['id'];
+            } else {
+                this.product = new Product();
+            }
+        });
+        
+        this.load(this.id);
+        
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.taxClassService.query().subscribe(
@@ -59,9 +80,6 @@ export class ProductDialogComponent implements OnInit {
             (res: Response) => { this.producttypes = res.json(); }, (res: Response) => this.onError(res.json()));
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
-        this.route.params.subscribe((params) => {
-                this.product = this.productService.find(params['id']);
-        });
     }
     clear() {
         window.history.back();
@@ -136,7 +154,6 @@ export class ProductDialogComponent implements OnInit {
     private onCreateAttachmentSuccess(result: Product) {
       //  this.eventManager.broadcast({ name: 'productListModification', content: 'OK'});
         this.isSaving = false;
-        this.product = result;
     }
 }
 

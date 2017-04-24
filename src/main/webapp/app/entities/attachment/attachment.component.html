@@ -35,6 +35,10 @@
             <th jhiSortBy="size"><span jhiTranslate="eshopApp.attachment.size">Size</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="boName"><span jhiTranslate="eshopApp.attachment.boName">Bo Name</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="boId"><span jhiTranslate="eshopApp.attachment.boId">Bo Id</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.attachment.created_by">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.attachment.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.attachment.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.attachment.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -49,6 +53,10 @@
                 <td>{{attachment.size}}</td>
                 <td>{{attachment.boName}}</td>
                 <td>{{attachment.boId}}</td>
+                <td>{{attachment.created_by}}</td>
+                <td>{{attachment.created_date | date:'mediumDate'}}</td>
+                <td>{{attachment.last_modified_by}}</td>
+                <td>{{attachment.last_modified_date | date:'mediumDate'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
