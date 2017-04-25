@@ -1,8 +1,9 @@
-package com.smartshop.eshop.temp;
+package com.smartshop.core.salesorder.model;
 
 import java.util.List;
 
 import com.smartshop.eshop.domain.SalesOrder;
+import com.smartshop.eshop.temp.EntityList;
 
 public class SalesOrderList extends EntityList {
 

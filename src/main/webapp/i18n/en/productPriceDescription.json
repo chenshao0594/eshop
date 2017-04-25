@@ -20,7 +20,6 @@
             "dEFAULTPRICEDESCRIPTION": "D EFAULTPRICEDESCRIPTION",
             "name": "Name",
             "description": "Description",
-            "productPrice": "Product Price",
             "language": "Language",
             "productPrice": "Product Price"
         }

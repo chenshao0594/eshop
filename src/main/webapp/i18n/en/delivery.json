@@ -16,14 +16,14 @@
             "detail": {
                 "title": "Delivery"
             },
-            "company": "Company",
-            "firstName": "First Name",
-            "lastName": "Last Name",
-            "address": "Address",
-            "city": "City",
-            "state": "State",
-            "postalCode": "Postal Code",
-            "country": "Country"
+            "company": "Company(Delivery)",
+            "firstName": "First Name(Delivery)",
+            "lastName": "Last Name(Delivery)",
+            "address": "Address(Delivery)",
+            "city": "City(Delivery)",
+            "state": "State(Delivery)",
+            "postalCode": "Postal Code(Delivery)",
+            "country": "Country(Delivery)"
         }
     }
 }

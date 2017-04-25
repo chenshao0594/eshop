@@ -1,14 +1,26 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.smartshop.eshop.core.catalog.product.FinalPrice;
 
 /**
  * A ShoppingCartItem.
@@ -38,6 +50,23 @@ public class ShoppingCartItem extends BusinessDomain<Long, ShoppingCartItem> imp
 
 	@ManyToOne
 	private ShoppingCart shoppingCart;
+
+	@Transient
+	private boolean productVirtual;
+	@Transient
+	private BigDecimal itemPrice;// item final price including all rebates
+
+	@Transient
+	private BigDecimal subTotal;// item final price * quantity
+
+	@Transient
+	private FinalPrice finalPrice;// contains price details (raw prices)
+
+	@Transient
+	private Product product;
+
+	@Transient
+	private boolean obsolete = false;
 
 	@Override
 	public Long getId() {
@@ -111,6 +140,54 @@ public class ShoppingCartItem extends BusinessDomain<Long, ShoppingCartItem> imp
 
 	public void setShoppingCart(ShoppingCart shoppingCart) {
 		this.shoppingCart = shoppingCart;
+	}
+
+	public boolean isProductVirtual() {
+		return productVirtual;
+	}
+
+	public void setProductVirtual(boolean productVirtual) {
+		this.productVirtual = productVirtual;
+	}
+
+	public BigDecimal getItemPrice() {
+		return itemPrice;
+	}
+
+	public void setItemPrice(BigDecimal itemPrice) {
+		this.itemPrice = itemPrice;
+	}
+
+	public BigDecimal getSubTotal() {
+		return subTotal;
+	}
+
+	public void setSubTotal(BigDecimal subTotal) {
+		this.subTotal = subTotal;
+	}
+
+	public FinalPrice getFinalPrice() {
+		return finalPrice;
+	}
+
+	public void setFinalPrice(FinalPrice finalPrice) {
+		this.finalPrice = finalPrice;
+	}
+
+	public Product getProduct() {
+		return product;
+	}
+
+	public void setProduct(Product product) {
+		this.product = product;
+	}
+
+	public boolean isObsolete() {
+		return obsolete;
+	}
+
+	public void setObsolete(boolean obsolete) {
+		this.obsolete = obsolete;
 	}
 
 }

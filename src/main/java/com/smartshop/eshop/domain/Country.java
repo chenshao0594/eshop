@@ -1,14 +1,22 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
 import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 /**
  * A Country.
@@ -27,7 +35,7 @@ public class Country extends BusinessDomain<Long, Country> implements Serializab
 
 	@Column(name = "iso_code")
 	private String isoCode;
-	
+
 	@Column(name = "country_name")
 	private String countryName;
 
@@ -44,6 +52,24 @@ public class Country extends BusinessDomain<Long, Country> implements Serializab
 
 	@ManyToOne
 	private GeoZone geoZone;
+
+	@Transient
+	private String name;
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Country() {
+	}
+
+	public Country(String isoCode) {
+		this.setIsoCode(isoCode);
+	}
 
 	@Override
 	public Long getId() {
@@ -151,6 +177,5 @@ public class Country extends BusinessDomain<Long, Country> implements Serializab
 	public void setCountryName(String countryName) {
 		this.countryName = countryName;
 	}
-	
 
 }

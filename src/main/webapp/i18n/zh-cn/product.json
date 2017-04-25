@@ -37,15 +37,19 @@
             "preOrder": "Pre Order",
             "productLength": "Length",
             "sku": "Sku",
+            "created_by": "Created By",
+            "created_date": "Created Date",
+            "last_modified_by": "Last Modified By",
+            "last_modified_date": "Last Modified Date",
             "images": "Images",
             "availabilities": "Availabilities",
             "attributes": "Attributes",
             "descriptions": "Descriptions",
             "relationships": "Relationships",
-            "taxClass": "Tax Class",
             "manufacturer": "Manufacturer",
             "type": "Type",
             "merchantStore": "Merchant Store",
+<<<<<<< Updated upstream
             "metatagDescription": "Metatag Description",
             "searchUrl": "Search Url",
             "metatagKeywords": "Metatag Keywords",
@@ -60,5 +64,10 @@
            	"last_modified_by" : "Last Modified By",
            	"last_modified_date" : "Last Modified Date"
        	}
+=======
+            "taxClass": "Tax Class",
+            "categories": "Categories"
+        }
+>>>>>>> Stashed changes
     }
 }

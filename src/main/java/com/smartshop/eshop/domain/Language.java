@@ -49,6 +49,13 @@ public class Language extends BusinessDomain<Long, Language> implements Serializ
 	@ManyToMany(mappedBy = "languages", targetEntity = MerchantStore.class)
 	private Set<MerchantStore> stores = new HashSet<>();
 
+	public Language() {
+	}
+
+	public Language(String code) {
+		this.setCode(code);
+	}
+
 	@Override
 	public Long getId() {
 		return id;

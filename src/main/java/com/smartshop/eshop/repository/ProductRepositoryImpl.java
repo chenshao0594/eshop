@@ -10,8 +10,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.util.CollectionUtils;
 
 import com.smartshop.eshop.config.Constants;
 import com.smartshop.eshop.domain.Language;
@@ -439,7 +439,7 @@ public class ProductRepositoryImpl implements ProductRepositoryCustom {
 
 	/**
 	 * Used for all purpose !
-	 * 
+	 *
 	 * @param store
 	 * @param first
 	 * @param max

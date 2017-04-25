@@ -42,7 +42,7 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@Column(name = "metatag_description")
 	private String metatagDescription;
 
@@ -70,8 +70,6 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 
 	@Column(name = "product_external_dl")
 	private String productExternalDl;
-	
-	
 
 	@Column(name = "product_height", precision = 10, scale = 2)
 	private BigDecimal productHeight;
@@ -113,7 +111,7 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	private BigDecimal productWidth;
 
 	@Column(name = "pre_order")
-	private Boolean preOrder=true;
+	private Boolean preOrder = true;
 
 	@Column(name = "product_length", precision = 10, scale = 2)
 	private BigDecimal productLength;
@@ -147,18 +145,18 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<ProductRelationship> relationships = new HashSet<>();
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.REFRESH })
 	private Manufacturer manufacturer;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.REFRESH })
 	private ProductType type;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	private MerchantStore merchantStore;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH})
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.REFRESH })
 	private TaxClass taxClass;
-	
+
 	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.REFRESH })
 	@JoinTable(name = "PRODUCT_CATEGORY", joinColumns = {
 			@JoinColumn(name = "PRODUCT_ID", nullable = false, updatable = false) }, inverseJoinColumns = {
@@ -655,6 +653,12 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	public Boolean getProductVirtual() {
 		return productVirtual;
 	}
-	
+
+	public ProductDescription getProductDescription() {
+		if (this.getDescriptions() != null && this.getDescriptions().size() > 0) {
+			return this.getDescriptions().iterator().next();
+		}
+		return null;
+	}
 
 }

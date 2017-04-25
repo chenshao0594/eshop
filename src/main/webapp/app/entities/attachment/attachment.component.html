@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="eshopApp.attachment.home.title">Attachments</span>
-        <button class="btn btn-primary float-right create-attachment" [routerLink]="['/', { outlets: { popup: ['attachment-new'] } }]">
+        <button class="btn btn-primary float-right create-attachment" [routerLink]="['/attachment-new']">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="eshopApp.attachment.home.createLabel">
             Create new Attachment
@@ -66,7 +66,7 @@
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'attachment/'+ attachment.id + '/edit'} }]"
+                                [routerLink]="['/attachment-edit', attachment.id]"
                                 replaceUrl="true"
                                 class="btn btn-primary btn-sm">
                             <span class="fa fa-pencil"></span>

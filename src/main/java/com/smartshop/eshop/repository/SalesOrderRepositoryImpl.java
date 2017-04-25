@@ -6,10 +6,10 @@ import javax.persistence.Query;
 
 import org.apache.commons.lang3.StringUtils;
 
+import com.smartshop.core.salesorder.model.SalesOrderList;
 import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.temp.CriteriaOrderBy;
 import com.smartshop.eshop.temp.SalesOrderCriteria;
-import com.smartshop.eshop.temp.SalesOrderList;
 
 public class SalesOrderRepositoryImpl implements SalesOrderRepositoryCustom {
 

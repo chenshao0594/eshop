@@ -1,12 +1,22 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+import java.util.Date;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.time.LocalDate;
 import com.smartshop.eshop.domain.enumeration.OrderStatusEnum;
 
 /**
@@ -31,7 +41,7 @@ public class OrderStatusHistory extends BusinessDomain<Long, OrderStatusHistory>
 	private Integer customerNotified;
 
 	@Column(name = "date_added")
-	private LocalDate dateAdded;
+	private Date dateAdded;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "status")
@@ -76,16 +86,16 @@ public class OrderStatusHistory extends BusinessDomain<Long, OrderStatusHistory>
 		this.customerNotified = customerNotified;
 	}
 
-	public LocalDate getDateAdded() {
+	public Date getDateAdded() {
 		return dateAdded;
 	}
 
-	public OrderStatusHistory dateAdded(LocalDate dateAdded) {
+	public OrderStatusHistory dateAdded(Date dateAdded) {
 		this.dateAdded = dateAdded;
 		return this;
 	}
 
-	public void setDateAdded(LocalDate dateAdded) {
+	public void setDateAdded(Date dateAdded) {
 		this.dateAdded = dateAdded;
 	}
 

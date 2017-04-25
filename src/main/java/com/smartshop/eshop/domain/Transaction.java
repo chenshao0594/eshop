@@ -1,16 +1,29 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
-import java.time.LocalDate;
-import com.smartshop.eshop.domain.enumeration.TransactionEnum;
-
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smartshop.eshop.domain.enumeration.PaymentEnum;
+import com.smartshop.eshop.domain.enumeration.TransactionEnum;
 
 /**
  * A Transaction.
@@ -35,7 +48,7 @@ public class Transaction extends BusinessDomain<Long, Transaction> implements Se
 	private TransactionEnum transactionType;
 
 	@Column(name = "transaction_date")
-	private LocalDate transactionDate;
+	private Date transactionDate;
 
 	@Enumerated(EnumType.STRING)
 	@Column(name = "payment_type")
@@ -46,6 +59,9 @@ public class Transaction extends BusinessDomain<Long, Transaction> implements Se
 
 	@ManyToOne
 	private SalesOrder order;
+
+	@Transient
+	private Map<String, String> transactionDetails = new HashMap<String, String>();
 
 	@Override
 	public Long getId() {
@@ -83,16 +99,16 @@ public class Transaction extends BusinessDomain<Long, Transaction> implements Se
 		this.transactionType = transactionType;
 	}
 
-	public LocalDate getTransactionDate() {
+	public Date getTransactionDate() {
 		return transactionDate;
 	}
 
-	public Transaction transactionDate(LocalDate transactionDate) {
+	public Transaction transactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 		return this;
 	}
 
-	public void setTransactionDate(LocalDate transactionDate) {
+	public void setTransactionDate(Date transactionDate) {
 		this.transactionDate = transactionDate;
 	}
 
@@ -133,6 +149,28 @@ public class Transaction extends BusinessDomain<Long, Transaction> implements Se
 
 	public void setOrder(SalesOrder salesOrder) {
 		this.order = salesOrder;
+	}
+
+	public Map<String, String> getTransactionDetails() {
+		return transactionDetails;
+	}
+
+	public void setTransactionDetails(Map<String, String> transactionDetails) {
+		this.transactionDetails = transactionDetails;
+	}
+
+	public String toJSONString() {
+
+		if (this.getTransactionDetails() != null && this.getTransactionDetails().size() > 0) {
+			ObjectMapper mapper = new ObjectMapper();
+			try {
+				return mapper.writeValueAsString(this.getTransactionDetails());
+			} catch (Exception e) {
+			}
+
+		}
+
+		return null;
 	}
 
 }

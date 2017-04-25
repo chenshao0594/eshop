@@ -21,8 +21,7 @@
             "name": "Name",
             "description": "Description",
             "customerOption": "Customer Option",
-            "language": "Language",
-            "customerOption": "Customer Option"
-        }
+            "language": "Language"
+       }
     }
 }

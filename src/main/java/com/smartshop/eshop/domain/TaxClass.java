@@ -1,15 +1,26 @@
 package com.smartshop.eshop.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 /**
  * A TaxClass.
@@ -21,6 +32,8 @@ import java.util.Set;
 public class TaxClass extends BusinessDomain<Long, TaxClass> implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+
+	public static final String DEFAULT_TAX_CLASS = "DEFAULT";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,7 +58,7 @@ public class TaxClass extends BusinessDomain<Long, TaxClass> implements Serializ
 	private Set<TaxRate> taxRates = new HashSet<>();
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="MERCHANT_ID", nullable=true)
+	@JoinColumn(name = "MERCHANT_ID", nullable = true)
 	private MerchantStore merchantStore;
 
 	@Override

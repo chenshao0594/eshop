@@ -16,14 +16,14 @@
             "detail": {
                 "title": "Billing"
             },
-            "firstName": "First Name",
-            "lastName": "Last Name",
-            "company": "Company",
-            "address": "Address",
-            "city": "City",
-            "state": "State",
-            "postalCode": "Postal Code",
-            "telephone": "Telephone"
+            "firstName": "First Name(Billing)",
+            "lastName": "Last Name(Billing)",
+            "company": "Company(Billing)",
+            "address": "Address(Billing)",
+            "city": "City(Billing)",
+            "state": "State(Billing)",
+            "postalCode": "Postal Code(Billing)",
+            "telephone": "Telephone(Billing)"
         }
     }
 }
