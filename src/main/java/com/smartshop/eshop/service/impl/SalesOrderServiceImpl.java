@@ -25,7 +25,6 @@ import com.smartshop.core.salesorder.model.OrderTotalSummary;
 import com.smartshop.core.salesorder.model.OrderTotalVariation;
 import com.smartshop.core.salesorder.model.SalesOrderList;
 import com.smartshop.core.salesorder.model.SalesOrderSummary;
-import com.smartshop.core.salesorder.module.InvoiceModule;
 import com.smartshop.core.shipping.model.ShippingConfiguration;
 import com.smartshop.core.shipping.service.ShippingService;
 import com.smartshop.core.tax.model.TaxItem;
@@ -67,8 +66,9 @@ public class SalesOrderServiceImpl extends AbstractDomainServiceImpl<SalesOrder,
 	private final SalesOrderRepository salesOrderRepository;
 	private final SalesOrderSearchRepository salesOrderSearchRepository;
 
-	@Inject
-	private InvoiceModule invoiceModule;
+	/*
+	 * @Inject private InvoiceModule invoiceModule;
+	 */
 
 	@Inject
 	private ShippingService shippingService;
@@ -468,7 +468,8 @@ public class SalesOrderServiceImpl extends AbstractDomainServiceImpl<SalesOrder,
 		Validate.notNull(order.getOrderTotals(), "Order totals cannot be null");
 
 		try {
-			ByteArrayOutputStream stream = invoiceModule.createInvoice(store, order, language);
+			ByteArrayOutputStream stream = null;// invoiceModule.createInvoice(store,
+												// order, language);
 			return stream;
 		} catch (Exception e) {
 			throw new BusinessException(e);

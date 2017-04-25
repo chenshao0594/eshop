@@ -1,18 +1,14 @@
 package com.smartshop.eshop.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import javax.annotation.Resource;
 import javax.inject.Inject;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.smartshop.core.salesorder.model.OrderTotalPostProcessorModule;
 import com.smartshop.core.salesorder.model.OrderTotalVariation;
 import com.smartshop.core.salesorder.model.RebatesOrderTotalVariation;
 import com.smartshop.core.salesorder.model.SalesOrderSummary;
@@ -20,8 +16,6 @@ import com.smartshop.eshop.domain.Customer;
 import com.smartshop.eshop.domain.Language;
 import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.domain.OrderTotal;
-import com.smartshop.eshop.domain.Product;
-import com.smartshop.eshop.domain.ShoppingCartItem;
 import com.smartshop.eshop.repository.OrderTotalRepository;
 import com.smartshop.eshop.repository.search.OrderTotalSearchRepository;
 import com.smartshop.eshop.service.LanguageService;
@@ -39,9 +33,13 @@ public class OrderTotalServiceImpl extends AbstractDomainServiceImpl<OrderTotal,
 	private final OrderTotalRepository orderTotalRepository;
 	private final OrderTotalSearchRepository orderTotalSearchRepository;
 
-	@Autowired
-	@Resource(name = "orderTotalsPostProcessors")
-	List<OrderTotalPostProcessorModule> orderTotalPostProcessors;
+	/*
+	 * @Autowired
+	 *
+	 * @Resource(name = "orderTotalsPostProcessors")
+	 * List<OrderTotalPostProcessorModule> orderTotalPostProcessors;
+	 */
+
 	@Inject
 	private ProductService productService;
 
@@ -63,35 +61,34 @@ public class OrderTotalServiceImpl extends AbstractDomainServiceImpl<OrderTotal,
 
 		List<OrderTotal> totals = null;
 
-		if (orderTotalPostProcessors != null) {
-			for (OrderTotalPostProcessorModule module : orderTotalPostProcessors) {
-				// TODO check if the module is enabled from the Admin
-
-				List<ShoppingCartItem> items = summary.getProducts();
-				for (ShoppingCartItem item : items) {
-
-					Long productId = item.getProductId();
-					Product product = productService.getProductForLocale(productId, language,
-							languageService.toLocale(language));
-
-					OrderTotal orderTotal = module.caculateProductPiceVariation(summary, item, product, customer,
-							store);
-					if (orderTotal == null) {
-						continue;
-					}
-					if (totals == null) {
-						totals = new ArrayList<OrderTotal>();
-						variation.setVariations(totals);
-					}
-					// if product is null it will be catched when invoking the
-					// module
-					orderTotal.setText(product.getProductDescription().getName());
-					variation.getVariations().add(orderTotal);
-				}
-			}
-		}
+		/*
+		 * if (orderTotalPostProcessors != null) { for
+		 * (OrderTotalPostProcessorModule module : orderTotalPostProcessors) {
+		 * // TODO check if the module is enabled from the Admin
+		 */
+		/*
+		 * List<ShoppingCartItem> items = summary.getProducts(); for
+		 * (ShoppingCartItem item : items) {
+		 * 
+		 * Long productId = item.getProductId(); Product product =
+		 * productService.getProductForLocale(productId, language,
+		 * languageService.toLocale(language));
+		 * 
+		 * OrderTotal orderTotal =
+		 * orderTotalPostProcessor.caculateProductPiceVariation(summary, item,
+		 * product, customer, store); if (orderTotal == null) { continue; } if
+		 * (totals == null) { totals = new ArrayList<OrderTotal>();
+		 * variation.setVariations(totals); } // if product is null it will be
+		 * catched when invoking the // module
+		 * orderTotal.setText(product.getProductDescription().getName());
+		 * variation.getVariations().add(orderTotal);
+		 * 
+		 * } } }
+		 * 
+		 * }
+		 */
 
 		return variation;
-	}
 
+	}
 }

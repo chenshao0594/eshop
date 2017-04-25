@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.domain.ShippingOrigin;
 import com.smartshop.eshop.repository.ShippingOriginRepository;
 import com.smartshop.eshop.repository.search.ShippingOriginSearchRepository;
@@ -27,6 +28,12 @@ public class ShippingOriginServiceImpl extends AbstractDomainServiceImpl<Shippin
 		super(shippingOriginRepository, shippingOriginSearchRepository);
 		this.shippingOriginRepository = shippingOriginRepository;
 		this.shippingOriginSearchRepository = shippingOriginSearchRepository;
+	}
+
+	@Override
+	public ShippingOrigin getByStore(MerchantStore store) {
+		ShippingOrigin origin = shippingOriginRepository.findByStore(store.getId());
+		return origin;
 	}
 
 }

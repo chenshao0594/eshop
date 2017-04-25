@@ -1,11 +1,18 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import java.io.Serializable;
 
 /**
  * A MerchantLog.
@@ -30,6 +37,20 @@ public class MerchantLog extends BusinessDomain<Long, MerchantLog> implements Se
 
 	@ManyToOne
 	private MerchantStore store;
+
+	public MerchantLog() {
+	}
+
+	public MerchantLog(MerchantStore store, String log) {
+		this.store = store;
+		this.log = log;
+	}
+
+	public MerchantLog(MerchantStore store, String module, String log) {
+		this.store = store;
+		this.module = module;
+		this.log = log;
+	}
 
 	@Override
 	public Long getId() {

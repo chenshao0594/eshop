@@ -22,7 +22,7 @@ import org.jopendocument.model.OpenDocument;
 import org.jopendocument.renderer.ODTRenderer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.PageSize;
@@ -44,7 +44,7 @@ import com.smartshop.eshop.service.ZoneService;
 import com.smartshop.eshop.utils.ProductPriceUtils;
 import com.smartshop.eshop.utils.ProductUtils;
 
-@Component
+@Service
 public class ODSInvoiceModule implements InvoiceModule {
 
 	private final static String INVOICE_TEMPLATE = "templates/invoice/Invoice";
