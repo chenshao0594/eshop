@@ -19,7 +19,9 @@ import org.springframework.boot.context.embedded.MimeMappings;
 import org.springframework.boot.context.embedded.undertow.UndertowEmbeddedServletContainerFactory;
 import org.springframework.boot.web.servlet.ServletContextInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.ImportResource;
 import org.springframework.core.env.Environment;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -38,6 +40,8 @@ import io.undertow.UndertowOptions;
  * Configuration of web application with Servlet 3.0 APIs.
  */
 @Configuration
+@ComponentScan({ "com.smartshop.core.**.service.**" })
+@ImportResource("classpath:/spring/application-context.xml")
 public class WebConfigurer implements ServletContextInitializer, EmbeddedServletContainerCustomizer {
 
 	private final Logger log = LoggerFactory.getLogger(WebConfigurer.class);

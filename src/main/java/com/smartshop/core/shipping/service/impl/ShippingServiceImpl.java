@@ -25,8 +25,6 @@ import com.smartshop.core.catelog.service.PricingService;
 import com.smartshop.core.integration.CustomIntegrationConfiguration;
 import com.smartshop.core.model.system.IntegrationConfiguration;
 import com.smartshop.core.shipping.integration.model.Packaging;
-import com.smartshop.core.shipping.integration.model.ShippingQuoteModule;
-import com.smartshop.core.shipping.integration.model.ShippingQuotePrePostProcessModule;
 import com.smartshop.core.shipping.model.PackageDetails;
 import com.smartshop.core.shipping.model.ShippingConfiguration;
 import com.smartshop.core.shipping.model.ShippingEnum;
@@ -37,6 +35,8 @@ import com.smartshop.core.shipping.model.ShippingPackageEnum;
 import com.smartshop.core.shipping.model.ShippingProduct;
 import com.smartshop.core.shipping.model.ShippingQuote;
 import com.smartshop.core.shipping.model.ShippingSummary;
+import com.smartshop.core.shipping.module.ShippingQuoteModule;
+import com.smartshop.core.shipping.module.ShippingQuotePrePostProcessModule;
 import com.smartshop.core.shipping.service.ShippingService;
 import com.smartshop.core.utils.Encryption;
 import com.smartshop.eshop.config.ShippingConstants;
@@ -60,7 +60,7 @@ import com.smartshop.eshop.service.MerchantLogService;
 import com.smartshop.eshop.service.ShippingOriginService;
 import com.smartshop.reference.loader.ConfigurationModulesLoader;
 
-@Service("shippingService")
+@Service()
 public class ShippingServiceImpl implements ShippingService {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ShippingServiceImpl.class);

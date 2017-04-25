@@ -1,4 +1,4 @@
-package com.smartshop.core.shipping.integration.model;
+package com.smartshop.core.shipping.module;
 
 import java.math.BigDecimal;
 import java.util.List;

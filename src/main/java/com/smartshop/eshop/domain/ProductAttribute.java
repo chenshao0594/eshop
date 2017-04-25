@@ -1,12 +1,20 @@
 package com.smartshop.eshop.domain;
 
+import java.io.Serializable;
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+import javax.persistence.Transient;
+
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 import org.springframework.data.elasticsearch.annotations.Document;
-
-import javax.persistence.*;
-import java.io.Serializable;
-import java.math.BigDecimal;
 
 /**
  * A ProductAttribute.
@@ -55,6 +63,9 @@ public class ProductAttribute extends BusinessDomain<Long, ProductAttribute> imp
 
 	@ManyToOne
 	private ProductOptionValue productOptionValue;
+
+	@Transient
+	private String attributeAdditionalWeight = "0";
 
 	@Override
 	public Long getId() {
@@ -207,6 +218,34 @@ public class ProductAttribute extends BusinessDomain<Long, ProductAttribute> imp
 
 	public void setProduct(Product product) {
 		this.product = product;
+	}
+
+	public String getAttributeAdditionalWeight() {
+		return attributeAdditionalWeight;
+	}
+
+	public void setAttributeAdditionalWeight(String attributeAdditionalWeight) {
+		this.attributeAdditionalWeight = attributeAdditionalWeight;
+	}
+
+	public Boolean getAttributeRequired() {
+		return attributeRequired;
+	}
+
+	public Boolean getAttributeDefault() {
+		return attributeDefault;
+	}
+
+	public Boolean getAttributeDisplayOnly() {
+		return attributeDisplayOnly;
+	}
+
+	public Boolean getProductAttributeIsFree() {
+		return productAttributeIsFree;
+	}
+
+	public Boolean getAttributeDiscounted() {
+		return attributeDiscounted;
 	}
 
 }

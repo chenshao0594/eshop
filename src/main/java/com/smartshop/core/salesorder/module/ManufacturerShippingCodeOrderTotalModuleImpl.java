@@ -20,7 +20,7 @@ import com.smartshop.eshop.domain.ShoppingCartItem;
  * @author carlsamson
  *
  */
-@Component("orderTotalsPostProcessor")
+@Component("manufacturerShippingCodeOrderTotalModule")
 public class ManufacturerShippingCodeOrderTotalModuleImpl implements OrderTotalPostProcessorModule {
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(ManufacturerShippingCodeOrderTotalModuleImpl.class);

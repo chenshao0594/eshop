@@ -18,6 +18,7 @@ import org.apache.commons.lang3.Validate;
 import org.springframework.stereotype.Service;
 
 import com.smartshop.core.model.system.IntegrationConfiguration;
+import com.smartshop.core.payment.modules.PaymentModule;
 import com.smartshop.core.utils.Encryption;
 import com.smartshop.eshop.config.Constants;
 import com.smartshop.eshop.domain.Customer;
@@ -43,7 +44,6 @@ import com.smartshop.payment.dto.CreditCardPaymentDTO;
 import com.smartshop.payment.dto.PaymentDTO;
 import com.smartshop.payment.dto.PaymentEnum;
 import com.smartshop.payment.dto.PaymentMethodDTO;
-import com.smartshop.payment.dto.PaymentModule;
 import com.smartshop.payment.service.PaymentService;
 import com.smartshop.reference.loader.ConfigurationModulesLoader;
 

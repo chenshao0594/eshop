@@ -1,4 +1,4 @@
-package com.smartshop.core.shipping.integration.model;
+package com.smartshop.core.shipping.module;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,7 +17,6 @@ import com.smartshop.eshop.domain.common.Delivery;
 import com.smartshop.eshop.exception.IntegrationException;
 
 public interface ShippingQuoteModule {
-
 	public void validateModuleConfiguration(IntegrationConfiguration integrationConfiguration, MerchantStore store)
 			throws IntegrationException;
 
