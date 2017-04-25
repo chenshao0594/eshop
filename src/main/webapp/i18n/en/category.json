@@ -27,7 +27,10 @@
             "descriptions": "Descriptions",
             "merchantStore": "Merchant Store",
             "parent": "Parent",
-            "parent": "Parent"
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+           	"lastModifiedBy" : "Last Modified By",
+           	"lastModifiedDate" : "Last Modified Date"
         }
     }
 }
