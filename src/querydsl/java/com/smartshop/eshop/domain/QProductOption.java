@@ -34,6 +34,8 @@ public class QProductOption extends EntityPathBase<ProductOption> {
 
     public final StringPath productOptionType = createString("productOptionType");
 
+    public final SetPath<ProductOptionValue, QProductOptionValue> productOptionValues = this.<ProductOptionValue, QProductOptionValue>createSet("productOptionValues", ProductOptionValue.class, QProductOptionValue.class, PathInits.DIRECT2);
+
     public final BooleanPath readOnly = createBoolean("readOnly");
 
     public QProductOption(String variable) {

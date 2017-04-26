@@ -31,7 +31,7 @@ import com.itextpdf.text.pdf.PdfContentByte;
 import com.itextpdf.text.pdf.PdfDocument;
 import com.itextpdf.text.pdf.PdfTemplate;
 import com.itextpdf.text.pdf.PdfWriter;
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Country;
 import com.smartshop.eshop.domain.Language;
 import com.smartshop.eshop.domain.MerchantStore;
@@ -197,7 +197,7 @@ public class ODSInvoiceModule implements InvoiceModule {
 		}
 
 		// invoice date
-		SimpleDateFormat format = new SimpleDateFormat(Constants.DEFAULT_DATE_FORMAT);
+		SimpleDateFormat format = new SimpleDateFormat(BusinessConstants.DEFAULT_DATE_FORMAT);
 		sheet.setValueAt(format.format(order.getDatePurchased()), 3, 2);
 
 		// invoice number

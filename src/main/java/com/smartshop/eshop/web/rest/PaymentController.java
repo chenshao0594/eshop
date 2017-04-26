@@ -5,7 +5,7 @@ import javax.inject.Inject;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.smartshop.payment.service.PaymentService;
+import com.smartshop.core.payment.service.PaymentService;
 
 @RestController
 @RequestMapping("/api/payments")

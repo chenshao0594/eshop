@@ -32,6 +32,8 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final DatePath<java.time.LocalDate> dateAvailable = createDate("dateAvailable", java.time.LocalDate.class);
 
+    public final StringPath description = createString("description");
+
     public final SetPath<ProductDescription, QProductDescription> descriptions = this.<ProductDescription, QProductDescription>createSet("descriptions", ProductDescription.class, QProductDescription.class, PathInits.DIRECT2);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
@@ -42,9 +44,21 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final QMerchantStore merchantStore;
 
+    public final StringPath metatagDescription = createString("metatagDescription");
+
+    public final StringPath metatagKeywords = createString("metatagKeywords");
+
+    public final StringPath metatagTitle = createString("metatagTitle");
+
+    public final StringPath name = createString("name");
+
     public final BooleanPath preOrder = createBoolean("preOrder");
 
+    public final StringPath productExternalDl = createString("productExternalDl");
+
     public final NumberPath<java.math.BigDecimal> productHeight = createNumber("productHeight", java.math.BigDecimal.class);
+
+    public final StringPath productHighlight = createString("productHighlight");
 
     public final BooleanPath productIsFree = createBoolean("productIsFree");
 
@@ -68,11 +82,15 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final SetPath<ProductRelationship, QProductRelationship> relationships = this.<ProductRelationship, QProductRelationship>createSet("relationships", ProductRelationship.class, QProductRelationship.class, PathInits.DIRECT2);
 
+    public final StringPath searchUrl = createString("searchUrl");
+
     public final StringPath sku = createString("sku");
 
     public final NumberPath<Integer> sortOrder = createNumber("sortOrder", Integer.class);
 
     public final QTaxClass taxClass;
+
+    public final StringPath title = createString("title");
 
     public final QProductType type;
 

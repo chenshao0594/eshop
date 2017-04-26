@@ -27,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.User;
 import com.smartshop.eshop.repository.UserRepository;
 import com.smartshop.eshop.repository.search.UserSearchRepository;
@@ -200,7 +200,7 @@ public class UserResource {
 	 * @return the ResponseEntity with status 200 (OK) and with body the "login"
 	 *         user, or with status 404 (Not Found)
 	 */
-	@GetMapping("/users/{login:" + Constants.LOGIN_REGEX + "}")
+	@GetMapping("/users/{login:" + BusinessConstants.LOGIN_REGEX + "}")
 	@Timed
 	public ResponseEntity<UserDTO> getUser(@PathVariable String login) {
 		log.debug("REST request to get User : {}", login);
@@ -214,7 +214,7 @@ public class UserResource {
 	 *            the login of the user to delete
 	 * @return the ResponseEntity with status 200 (OK)
 	 */
-	@DeleteMapping("/users/{login:" + Constants.LOGIN_REGEX + "}")
+	@DeleteMapping("/users/{login:" + BusinessConstants.LOGIN_REGEX + "}")
 	@Timed
 	@Secured(AuthoritiesConstants.ADMIN)
 	public ResponseEntity<Void> deleteUser(@PathVariable String login) {

@@ -26,7 +26,7 @@ public class QOrderStatusHistory extends EntityPathBase<OrderStatusHistory> {
 
     public final NumberPath<Integer> customerNotified = createNumber("customerNotified", Integer.class);
 
-    public final DatePath<java.time.LocalDate> dateAdded = createDate("dateAdded", java.time.LocalDate.class);
+    public final DateTimePath<java.util.Date> dateAdded = createDateTime("dateAdded", java.util.Date.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
 

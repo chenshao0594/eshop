@@ -1,4 +1,4 @@
-package com.smartshop.payment.service.impl;
+package com.smartshop.core.payment.service.impl;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -19,8 +19,9 @@ import org.springframework.stereotype.Service;
 
 import com.smartshop.core.model.system.IntegrationConfiguration;
 import com.smartshop.core.payment.modules.PaymentModule;
+import com.smartshop.core.payment.service.PaymentService;
 import com.smartshop.core.utils.Encryption;
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Customer;
 import com.smartshop.eshop.domain.IntegrationModule;
 import com.smartshop.eshop.domain.MerchantConfiguration;
@@ -32,6 +33,7 @@ import com.smartshop.eshop.domain.ShoppingCartItem;
 import com.smartshop.eshop.domain.Transaction;
 import com.smartshop.eshop.domain.enumeration.OrderStatusEnum;
 import com.smartshop.eshop.domain.enumeration.OrderTotalEnum;
+import com.smartshop.eshop.domain.enumeration.PaymentEnum;
 import com.smartshop.eshop.domain.enumeration.TransactionEnum;
 import com.smartshop.eshop.exception.BusinessException;
 import com.smartshop.eshop.exception.IntegrationException;
@@ -42,9 +44,7 @@ import com.smartshop.eshop.service.TransactionService;
 import com.smartshop.payment.dto.CreditCardEnum;
 import com.smartshop.payment.dto.CreditCardPaymentDTO;
 import com.smartshop.payment.dto.PaymentDTO;
-import com.smartshop.payment.dto.PaymentEnum;
 import com.smartshop.payment.dto.PaymentMethodDTO;
-import com.smartshop.payment.service.PaymentService;
 import com.smartshop.reference.loader.ConfigurationModulesLoader;
 
 @Service("paymentService")
@@ -479,10 +479,10 @@ public class PaymentServiceImpl implements PaymentService {
 		transactionService.save(transaction);
 
 		OrderTotal refund = new OrderTotal();
-		refund.setModule(Constants.OT_REFUND_MODULE_CODE);
-		refund.setText(Constants.OT_REFUND_MODULE_CODE);
-		refund.setTitle(Constants.OT_REFUND_MODULE_CODE);
-		refund.setOrderTotalCode(Constants.OT_REFUND_MODULE_CODE);
+		refund.setModule(BusinessConstants.OT_REFUND_MODULE_CODE);
+		refund.setText(BusinessConstants.OT_REFUND_MODULE_CODE);
+		refund.setTitle(BusinessConstants.OT_REFUND_MODULE_CODE);
+		refund.setOrderTotalCode(BusinessConstants.OT_REFUND_MODULE_CODE);
 		refund.setOrderTotalType(OrderTotalEnum.REFUND);
 		refund.setValue(amount);
 		refund.setSortOrder(100);
@@ -496,7 +496,7 @@ public class PaymentServiceImpl implements PaymentService {
 		// update ordertotal refund
 		Set<OrderTotal> totals = order.getOrderTotals();
 		for (OrderTotal total : totals) {
-			if (total.getModule().equals(Constants.OT_TOTAL_MODULE_CODE)) {
+			if (total.getModule().equals(BusinessConstants.OT_TOTAL_MODULE_CODE)) {
 				total.setValue(orderTotal);
 			}
 		}

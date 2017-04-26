@@ -1,4 +1,4 @@
-package com.smartshop.eshop.config;
+package com.smartshop.eshop.common;
 
 import java.util.Currency;
 import java.util.Locale;
@@ -6,7 +6,9 @@ import java.util.Locale;
 /**
  * Application constants.
  */
-public final class Constants {
+public final class BusinessConstants {
+	public final static String TEST_ENVIRONMENT = "TEST";
+	public final static String PRODUCTION_ENVIRONMENT = "PROD";
 
 	// Regex for acceptable logins
 	public static final String LOGIN_REGEX = "^[_'.@A-Za-z0-9-]*$";
@@ -40,6 +42,6 @@ public final class Constants {
 	public final static Locale DEFAULT_LOCALE = Locale.US;
 	public final static Currency DEFAULT_CURRENCY = Currency.getInstance(Locale.US);
 
-	private Constants() {
+	private BusinessConstants() {
 	}
 }

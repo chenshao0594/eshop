@@ -38,9 +38,13 @@ public class QCustomer extends EntityPathBase<Customer> {
 
     public final StringPath emailAddress = createString("emailAddress");
 
+    public final StringPath firstName = createString("firstName");
+
     public final EnumPath<com.smartshop.eshop.domain.enumeration.CustomerGender> gender = createEnum("gender", com.smartshop.eshop.domain.enumeration.CustomerGender.class);
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    public final StringPath lastName = createString("lastName");
 
     public final QMerchantStore merchantStore;
 

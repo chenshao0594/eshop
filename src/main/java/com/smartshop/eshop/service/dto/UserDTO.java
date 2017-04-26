@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.Email;
 
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Authority;
 import com.smartshop.eshop.domain.User;
 
@@ -20,7 +20,7 @@ public class UserDTO {
 
 	private Long id;
 
-	@Pattern(regexp = Constants.LOGIN_REGEX)
+	@Pattern(regexp = BusinessConstants.LOGIN_REGEX)
 	@Size(min = 1, max = 100)
 	private String login;
 

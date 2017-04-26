@@ -1,4 +1,4 @@
-package com.smartshop.core.shipping.module;
+package com.smartshop.core.shipping.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -13,7 +13,6 @@ import com.smartshop.core.shipping.integration.model.Packaging;
 import com.smartshop.core.shipping.model.PackageDetails;
 import com.smartshop.core.shipping.model.ShippingConfiguration;
 import com.smartshop.core.shipping.model.ShippingProduct;
-import com.smartshop.core.shipping.service.ShippingService;
 import com.smartshop.eshop.domain.MerchantLog;
 import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.domain.Product;

@@ -1,4 +1,7 @@
 package com.smartshop.payment.dto;
+
+import com.smartshop.eshop.domain.enumeration.PaymentEnum;
+
 /**
  * When the user performs a payment using paypal
  * @author Carl Samson

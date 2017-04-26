@@ -30,6 +30,8 @@ public class QProductOptionValue extends EntityPathBase<ProductOptionValue> {
 
     public final QMerchantStore merchantStore;
 
+    public final QProductOption productOption;
+
     public final BooleanPath productOptionDisplayOnly = createBoolean("productOptionDisplayOnly");
 
     public final StringPath productOptionValueImage = createString("productOptionValueImage");
@@ -55,6 +57,7 @@ public class QProductOptionValue extends EntityPathBase<ProductOptionValue> {
     public QProductOptionValue(Class<? extends ProductOptionValue> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.merchantStore = inits.isInitialized("merchantStore") ? new QMerchantStore(forProperty("merchantStore"), inits.get("merchantStore")) : null;
+        this.productOption = inits.isInitialized("productOption") ? new QProductOption(forProperty("productOption"), inits.get("productOption")) : null;
     }
 
 }

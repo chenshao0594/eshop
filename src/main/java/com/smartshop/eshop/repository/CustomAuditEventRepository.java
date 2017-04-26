@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.config.audit.AuditEventConverter;
 import com.smartshop.eshop.domain.PersistentAuditEvent;
 
@@ -67,7 +67,7 @@ public class CustomAuditEventRepository implements AuditEventRepository {
 	@Override
 	@Transactional(propagation = Propagation.REQUIRES_NEW)
 	public void add(AuditEvent event) {
-		if (!AUTHORIZATION_FAILURE.equals(event.getType()) && !Constants.ANONYMOUS_USER.equals(event.getPrincipal())) {
+		if (!AUTHORIZATION_FAILURE.equals(event.getType()) && !BusinessConstants.ANONYMOUS_USER.equals(event.getPrincipal())) {
 
 			PersistentAuditEvent persistentAuditEvent = new PersistentAuditEvent();
 			persistentAuditEvent.setPrincipal(event.getPrincipal());

@@ -32,7 +32,7 @@ public class QTransaction extends EntityPathBase<Transaction> {
 
     public final EnumPath<com.smartshop.eshop.domain.enumeration.PaymentEnum> paymentType = createEnum("paymentType", com.smartshop.eshop.domain.enumeration.PaymentEnum.class);
 
-    public final DatePath<java.time.LocalDate> transactionDate = createDate("transactionDate", java.time.LocalDate.class);
+    public final DateTimePath<java.util.Date> transactionDate = createDateTime("transactionDate", java.util.Date.class);
 
     public final EnumPath<com.smartshop.eshop.domain.enumeration.TransactionEnum> transactionType = createEnum("transactionType", com.smartshop.eshop.domain.enumeration.TransactionEnum.class);
 

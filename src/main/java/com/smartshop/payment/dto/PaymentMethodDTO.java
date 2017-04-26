@@ -3,6 +3,7 @@ import java.io.Serializable;
 
 import com.smartshop.core.model.system.IntegrationConfiguration;
 import com.smartshop.eshop.domain.IntegrationModule;
+import com.smartshop.eshop.domain.enumeration.PaymentEnum;
 
 /**
  * Object to be used in store front with meta data and configuration

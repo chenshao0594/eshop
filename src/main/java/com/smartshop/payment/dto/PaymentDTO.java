@@ -2,6 +2,7 @@ package com.smartshop.payment.dto;
 import java.util.Map;
 
 import com.smartshop.eshop.domain.Currency;
+import com.smartshop.eshop.domain.enumeration.PaymentEnum;
 import com.smartshop.eshop.domain.enumeration.TransactionEnum;
 
 public class PaymentDTO {

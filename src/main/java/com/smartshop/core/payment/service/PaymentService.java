@@ -1,4 +1,4 @@
-package com.smartshop.payment.service;
+package com.smartshop.core.payment.service;
 
 import java.math.BigDecimal;
 import java.util.List;

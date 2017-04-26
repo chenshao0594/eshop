@@ -4,7 +4,7 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
 
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Product;
 import com.smartshop.eshop.domain.ProductAttribute;
 import com.smartshop.eshop.domain.ProductAvailability;
@@ -67,7 +67,7 @@ public class CatalogServiceHelper {
 
 		for (ProductAvailability availability : availabilities) {
 
-			if (availability.getRegion().equals(Constants.ALL_REGIONS)) {
+			if (availability.getRegion().equals(BusinessConstants.ALL_REGIONS)) {
 				defaultAvailability = availability;
 			}
 			if (availability.getRegion().equals(locale.getCountry())) {

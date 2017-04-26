@@ -1,10 +1,10 @@
 package com.smartshop.eshop.service;
 
 import com.smartshop.eshop.EshopApp;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.PersistentToken;
 import com.smartshop.eshop.domain.User;
 import com.smartshop.eshop.repository.PersistentTokenRepository;
-import com.smartshop.eshop.config.Constants;
 import com.smartshop.eshop.repository.UserRepository;
 import com.smartshop.eshop.service.dto.UserDTO;
 import java.time.ZonedDateTime;
@@ -152,7 +152,7 @@ public class UserServiceIntTest {
         final PageRequest pageable = new PageRequest(0, (int) userRepository.count());
         final Page<UserDTO> allManagedUsers = userService.getAllManagedUsers(pageable);
         assertThat(allManagedUsers.getContent().stream()
-            .noneMatch(user -> Constants.ANONYMOUS_USER.equals(user.getLogin())))
+            .noneMatch(user -> BusinessConstants.ANONYMOUS_USER.equals(user.getLogin())))
             .isTrue();
     }
 }

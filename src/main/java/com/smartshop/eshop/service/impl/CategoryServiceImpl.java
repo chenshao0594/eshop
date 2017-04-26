@@ -17,7 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Category;
 import com.smartshop.eshop.domain.CategoryDescription;
 import com.smartshop.eshop.domain.Language;
@@ -181,7 +181,7 @@ public class CategoryServiceImpl extends AbstractDomainServiceImpl<Category, Lon
 	public void delete(Category category) {
 		// get category with lineage (subcategories)
 		StringBuilder lineage = new StringBuilder();
-		lineage.append(category.getLineage()).append(category.getId()).append(Constants.SLASH);
+		lineage.append(category.getLineage()).append(category.getId()).append(BusinessConstants.SLASH);
 		List<Category> categories = this.listByLineage(category.getMerchantStore(), lineage.toString());
 
 		Category dbCategory = this.getById(category.getId());

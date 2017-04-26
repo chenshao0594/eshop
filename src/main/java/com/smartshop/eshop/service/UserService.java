@@ -16,7 +16,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Authority;
 import com.smartshop.eshop.domain.User;
 import com.smartshop.eshop.repository.AuthorityRepository;
@@ -219,7 +219,7 @@ public class UserService {
 
 	@Transactional(readOnly = true)
 	public Page<UserDTO> getAllManagedUsers(Pageable pageable) {
-		return userRepository.findAllByLoginNot(pageable, Constants.ANONYMOUS_USER).map(UserDTO::new);
+		return userRepository.findAllByLoginNot(pageable, BusinessConstants.ANONYMOUS_USER).map(UserDTO::new);
 	}
 
 	@Transactional(readOnly = true)

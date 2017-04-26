@@ -10,7 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Language;
 import com.smartshop.eshop.exception.BusinessException;
 import com.smartshop.eshop.repository.LanguageRepository;
@@ -55,7 +55,7 @@ public class LanguageServiceImpl extends AbstractDomainServiceImpl<Language, Lon
 			LOGGER.error("Cannot convert locale " + locale.getLanguage() + " to language");
 		}
 
-		return new Language(Constants.DEFAULT_LANGUAGE);
+		return new Language(BusinessConstants.DEFAULT_LANGUAGE);
 
 	}
 

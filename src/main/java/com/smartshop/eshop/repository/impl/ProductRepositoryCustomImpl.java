@@ -13,7 +13,7 @@ import javax.persistence.Query;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.util.CollectionUtils;
 
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Language;
 import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.domain.Product;
@@ -361,7 +361,7 @@ public class ProductRepositoryCustomImpl implements ProductRepositoryCustom {
 			int first, int max) {
 
 		List regionList = new ArrayList();
-		regionList.add(Constants.ALL_REGIONS);
+		regionList.add(BusinessConstants.ALL_REGIONS);
 		if (locale != null) {
 			regionList.add(locale.getCountry());
 		}

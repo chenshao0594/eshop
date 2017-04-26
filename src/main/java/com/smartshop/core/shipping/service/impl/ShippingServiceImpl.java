@@ -17,6 +17,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONValue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
@@ -78,7 +79,7 @@ public class ShippingServiceImpl implements ShippingService {
 	@Inject
 	private IntegrationModuleService moduleConfigurationService;
 
-	@Inject
+	@Autowired
 	private Packaging packaging;
 
 	@Inject
@@ -87,8 +88,7 @@ public class ShippingServiceImpl implements ShippingService {
 	@Inject
 	private LanguageService languageService;
 
-	@Inject
-	private Encryption encryption;
+	private Encryption encryption = new Encryption();
 
 	@Inject
 	private MerchantLogService merchantLogService;

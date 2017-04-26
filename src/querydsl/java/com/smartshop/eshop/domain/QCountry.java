@@ -22,6 +22,8 @@ public class QCountry extends EntityPathBase<Country> {
 
     public static final QCountry country = new QCountry("country");
 
+    public final StringPath countryName = createString("countryName");
+
     public final SetPath<CountryDescription, QCountryDescription> descriptions = this.<CountryDescription, QCountryDescription>createSet("descriptions", CountryDescription.class, QCountryDescription.class, PathInits.DIRECT2);
 
     public final QGeoZone geoZone;

@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
-	xsi:schemaLocation="
-	http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+<beans:beans xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/data/jpa"
+	xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/tx 
+    http://www.springframework.org/schema/tx/spring-tx.xsd
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd
+    http://www.springframework.org/schema/util
+    http://www.springframework.org/schema/util/spring-util.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/data/jpa
+    http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
+	
+	
 	<util:list id="orderTotalsPostProcessors"
 		value-type="com.smartshop.core.salesorder.model.OrderTotalPostProcessorModule">
 		<!-- From rules -->
@@ -16,16 +29,39 @@
 			enabling -->
 		<!-- <ref bean="shippingDistancePreProcessor"/> <ref bean="shippingMethodDecisionProcess"/> -->
 	</util:list>
-	<util:list id="shippingModulePostProcessors" value-type="com.smartshop.core.shipping.integration.model.ShippingQuotePrePostProcessModule">
-			<!-- Not configured by default, should be configured to be used -->
-			<!-- <ref bean="storePickUp"/> --><!-- defined in core-modules -->
-		</util:list>
-		
-		<!-- List of accepted zones for using shipping distance pre processor -->
-		<util:list id="acceptedZones" value-type="java.lang.String">
-			<value>NY</value>
-			<value>NJ</value>
-    	</util:list>
+	<util:list id="shippingModulePostProcessors"
+		value-type="com.smartshop.core.shipping.integration.model.ShippingQuotePrePostProcessModule">
+		<!-- Not configured by default, should be configured to be used -->
+		<!-- <ref bean="storePickUp"/> --><!-- defined in core-modules -->
+	</util:list>
+
+	<!-- List of accepted zones for using shipping distance pre processor -->
+	<util:list id="acceptedZones" value-type="java.lang.String">
+		<value>NY</value>
+		<value>NJ</value>
+	</util:list>
+	
+	<!-- Payment integration modules -->
+	<util:map id="paymentModules" map-class="java.util.HashMap"
+		key-type="java.lang.String"
+		value-type="com.salesmanager.core.business.modules.integration.payment.model.PaymentModule">
+		<beans:entry key="beanstream" value-ref="beanstream" />
+		<beans:entry key="paypal-express-checkout" value-ref="paypal-ec" />
+		<beans:entry key="moneyorder" value-ref="moneyorder" />
+		<beans:entry key="stripe" value-ref="stripe" />
+	</util:map>
+	
+	<!-- Payment -->
+	<beans:bean id="beanstream"
+		class="com.salesmanager.core.business.modules.integration.payment.impl.BeanStreamPayment" />
+	<beans:bean id="moneyorder"
+		class="com.salesmanager.core.business.modules.integration.payment.impl.MoneyOrderPayment" />
+	<beans:bean id="paypal-ec"
+		class="com.salesmanager.core.business.modules.integration.payment.impl.PayPalExpressCheckoutPayment" />
+	<beans:bean id="stripe"
+		class="com.salesmanager.core.business.modules.integration.payment.impl.StripePayment" />
+	
+	
 
 
 

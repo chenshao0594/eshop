@@ -11,7 +11,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Country;
 import com.smartshop.eshop.domain.Language;
 import com.smartshop.eshop.domain.Zone;
@@ -66,7 +66,7 @@ public class ZoneServiceImpl extends AbstractDomainServiceImpl<Zone, Long> imple
 		List<Zone> zones = null;
 		try {
 
-			String cacheKey = ZONE_CACHE_PREFIX + country.getIsoCode() + Constants.UNDERSCORE + language.getCode();
+			String cacheKey = ZONE_CACHE_PREFIX + country.getIsoCode() + BusinessConstants.UNDERSCORE + language.getCode();
 
 			zones = zoneRepository.listByLanguageAndCountry(country.getIsoCode(), language.getId());
 

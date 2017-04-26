@@ -40,7 +40,7 @@ import io.undertow.UndertowOptions;
  * Configuration of web application with Servlet 3.0 APIs.
  */
 @Configuration
-@ComponentScan({ "com.smartshop.core.**.service.**" })
+@ComponentScan({ "com.smartshop.**.service.**" })
 @ImportResource("classpath:/spring/application-context.xml")
 public class WebConfigurer implements ServletContextInitializer, EmbeddedServletContainerCustomizer {
 

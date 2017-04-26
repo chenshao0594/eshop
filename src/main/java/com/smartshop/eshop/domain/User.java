@@ -28,7 +28,7 @@ import org.hibernate.validator.constraints.Email;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 
 /**
  * A user.
@@ -46,7 +46,7 @@ public class User extends AbstractAuditingEntity implements Serializable {
 	private Long id;
 
 	@NotNull
-	@Pattern(regexp = Constants.LOGIN_REGEX)
+	@Pattern(regexp = BusinessConstants.LOGIN_REGEX)
 	@Size(min = 1, max = 100)
 	@Column(length = 100, unique = true, nullable = false)
 	private String login;

@@ -18,7 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 import com.smartshop.eshop.catalog.product.ProductImageSize;
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.domain.Product;
 import com.smartshop.eshop.domain.ProductImage;
 import com.smartshop.eshop.exception.BusinessException;
@@ -156,7 +156,7 @@ public class ProductFileManagerImpl extends ProductFileManager {
 				}
 
 				if (!StringUtils.isBlank(configuration.getProperty(CROP_UPLOADED_IMAGES))
-						&& configuration.getProperty(CROP_UPLOADED_IMAGES).equals(Constants.TRUE)) {
+						&& configuration.getProperty(CROP_UPLOADED_IMAGES).equals(BusinessConstants.TRUE)) {
 					// crop image
 					ProductImageCropUtils utils = new ProductImageCropUtils(bufferedImage, largeImageWidth,
 							largeImageHeight);

@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.CollectionUtils;
 
+import com.smartshop.core.payment.service.PaymentService;
 import com.smartshop.core.salesorder.model.OrderSummaryEnum;
 import com.smartshop.core.salesorder.model.OrderTotalSummary;
 import com.smartshop.core.salesorder.model.OrderTotalVariation;
@@ -29,7 +30,7 @@ import com.smartshop.core.shipping.model.ShippingConfiguration;
 import com.smartshop.core.shipping.service.ShippingService;
 import com.smartshop.core.tax.model.TaxItem;
 import com.smartshop.core.tax.service.TaxService;
-import com.smartshop.eshop.config.Constants;
+import com.smartshop.eshop.common.BusinessConstants;
 import com.smartshop.eshop.core.catalog.product.FinalPrice;
 import com.smartshop.eshop.domain.Customer;
 import com.smartshop.eshop.domain.Language;
@@ -53,7 +54,6 @@ import com.smartshop.eshop.service.SalesOrderService;
 import com.smartshop.eshop.service.TransactionService;
 import com.smartshop.eshop.temp.SalesOrderCriteria;
 import com.smartshop.payment.dto.PaymentDTO;
-import com.smartshop.payment.service.PaymentService;
 
 /**
  * Service Implementation for managing SalesOrder.
@@ -212,9 +212,9 @@ public class SalesOrderServiceImpl extends AbstractDomainServiceImpl<SalesOrder,
 
 							if (itemSubTotal == null) {
 								itemSubTotal = new OrderTotal();
-								itemSubTotal.setModule(Constants.OT_ITEM_PRICE_MODULE_CODE);
+								itemSubTotal.setModule(BusinessConstants.OT_ITEM_PRICE_MODULE_CODE);
 								// itemSubTotal.setText(Constants.OT_ITEM_PRICE_MODULE_CODE);
-								itemSubTotal.setTitle(Constants.OT_ITEM_PRICE_MODULE_CODE);
+								itemSubTotal.setTitle(BusinessConstants.OT_ITEM_PRICE_MODULE_CODE);
 								itemSubTotal.setOrderTotalCode(price.getProductPrice().getCode());
 								itemSubTotal.setOrderTotalType(OrderTotalEnum.PRODUCT);
 								itemSubTotal.setSortOrder(0);
@@ -264,10 +264,10 @@ public class SalesOrderServiceImpl extends AbstractDomainServiceImpl<SalesOrder,
 		grandTotal = grandTotal.add(subTotal);
 
 		OrderTotal orderTotalSubTotal = new OrderTotal();
-		orderTotalSubTotal.setModule(Constants.OT_SUBTOTAL_MODULE_CODE);
+		orderTotalSubTotal.setModule(BusinessConstants.OT_SUBTOTAL_MODULE_CODE);
 		orderTotalSubTotal.setOrderTotalType(OrderTotalEnum.SUBTOTAL);
 		orderTotalSubTotal.setOrderTotalCode("order.total.subtotal");
-		orderTotalSubTotal.setTitle(Constants.OT_SUBTOTAL_MODULE_CODE);
+		orderTotalSubTotal.setTitle(BusinessConstants.OT_SUBTOTAL_MODULE_CODE);
 		// orderTotalSubTotal.setText("order.total.subtotal");
 		orderTotalSubTotal.setSortOrder(5);
 		orderTotalSubTotal.setValue(subTotal);
@@ -278,10 +278,10 @@ public class SalesOrderServiceImpl extends AbstractDomainServiceImpl<SalesOrder,
 		if (summary.getShippingSummary() != null) {
 
 			OrderTotal shippingSubTotal = new OrderTotal();
-			shippingSubTotal.setModule(Constants.OT_SHIPPING_MODULE_CODE);
+			shippingSubTotal.setModule(BusinessConstants.OT_SHIPPING_MODULE_CODE);
 			shippingSubTotal.setOrderTotalType(OrderTotalEnum.SHIPPING);
 			shippingSubTotal.setOrderTotalCode("order.total.shipping");
-			shippingSubTotal.setTitle(Constants.OT_SHIPPING_MODULE_CODE);
+			shippingSubTotal.setTitle(BusinessConstants.OT_SHIPPING_MODULE_CODE);
 			// shippingSubTotal.setText("order.total.shipping");
 			shippingSubTotal.setSortOrder(100);
 
@@ -302,10 +302,10 @@ public class SalesOrderServiceImpl extends AbstractDomainServiceImpl<SalesOrder,
 				if (shippingConfiguration.getHandlingFees() != null
 						&& shippingConfiguration.getHandlingFees().doubleValue() > 0) {
 					OrderTotal handlingubTotal = new OrderTotal();
-					handlingubTotal.setModule(Constants.OT_HANDLING_MODULE_CODE);
+					handlingubTotal.setModule(BusinessConstants.OT_HANDLING_MODULE_CODE);
 					handlingubTotal.setOrderTotalType(OrderTotalEnum.HANDLING);
 					handlingubTotal.setOrderTotalCode("order.total.handling");
-					handlingubTotal.setTitle(Constants.OT_HANDLING_MODULE_CODE);
+					handlingubTotal.setTitle(BusinessConstants.OT_HANDLING_MODULE_CODE);
 					// handlingubTotal.setText("order.total.handling");
 					handlingubTotal.setSortOrder(120);
 					handlingubTotal.setValue(summary.getShippingSummary().getHandling());
@@ -324,11 +324,11 @@ public class SalesOrderServiceImpl extends AbstractDomainServiceImpl<SalesOrder,
 			for (TaxItem tax : taxes) {
 
 				OrderTotal taxLine = new OrderTotal();
-				taxLine.setModule(Constants.OT_TAX_MODULE_CODE);
+				taxLine.setModule(BusinessConstants.OT_TAX_MODULE_CODE);
 				taxLine.setOrderTotalType(OrderTotalEnum.TAX);
 				taxLine.setOrderTotalCode(tax.getLabel());
 				taxLine.setSortOrder(taxCount);
-				taxLine.setTitle(Constants.OT_TAX_MODULE_CODE);
+				taxLine.setTitle(BusinessConstants.OT_TAX_MODULE_CODE);
 				taxLine.setText(tax.getLabel());
 				taxLine.setValue(tax.getItemPrice());
 
@@ -345,10 +345,10 @@ public class SalesOrderServiceImpl extends AbstractDomainServiceImpl<SalesOrder,
 
 		// grand total
 		OrderTotal orderTotal = new OrderTotal();
-		orderTotal.setModule(Constants.OT_TOTAL_MODULE_CODE);
+		orderTotal.setModule(BusinessConstants.OT_TOTAL_MODULE_CODE);
 		orderTotal.setOrderTotalType(OrderTotalEnum.TOTAL);
 		orderTotal.setOrderTotalCode("order.total.total");
-		orderTotal.setTitle(Constants.OT_TOTAL_MODULE_CODE);
+		orderTotal.setTitle(BusinessConstants.OT_TOTAL_MODULE_CODE);
 		// orderTotal.setText("order.total.total");
 		orderTotal.setSortOrder(500);
 		orderTotal.setValue(grandTotal);
