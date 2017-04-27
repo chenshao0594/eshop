@@ -27,15 +27,7 @@ public class QAttachment extends EntityPathBase<Attachment> {
 
     public final StringPath contentContentType = createString("contentContentType");
 
-    public final StringPath created_by = createString("created_by");
-
-    public final DatePath<java.time.LocalDate> created_date = createDate("created_date", java.time.LocalDate.class);
-
     public final NumberPath<Long> id = createNumber("id", Long.class);
-
-    public final StringPath last_modified_by = createString("last_modified_by");
-
-    public final DatePath<java.time.LocalDate> last_modified_date = createDate("last_modified_date", java.time.LocalDate.class);
 
     public final StringPath name = createString("name");
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
+import { Response } from '@angular/http';
 import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jhipster';
 
 import { Product } from './product.model';
@@ -18,7 +19,6 @@ const URL = '/api/attachments';
 export class ProductAttachmentComponent  implements OnInit {
     product: Product;
     boId: number;
-    attachment: Attachment;
     attachments : Attachment[];
     private subscription: any;
     private eventSubscriber: Subscription;
@@ -40,11 +40,12 @@ export class ProductAttachmentComponent  implements OnInit {
     }
 
     ngOnInit() {
-        this.attachment = new Attachment();
+      
         this.subscription = this.route.params.subscribe((params) => {
-        this.boId=params['id'];
-       
-        });
+            this.boId=params['id'];
+            });
+        this.attachmentService.queryAttachmentsByBO('products',this.boId).subscribe(
+            (res: Response) => { this.attachments = res.json(); }, (res: Response) => this.onError(res.json()));
     // this.registerChangeInProducts();
     }
     byteSize(field) {
@@ -55,9 +56,10 @@ export class ProductAttachmentComponent  implements OnInit {
         return this.dataUtils.openFile(contentType, field);
     }
 
-    setFileData(event, attachment, field, isImage) {
+    setFileData(event, field, isImage) {
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0];
+            Attachment attachment = new Attachment();
             attachment['boName'] ='product';
             attachment['boId'] = this.boId;
             attachment['name'] = file.name;
@@ -69,9 +71,16 @@ export class ProductAttachmentComponent  implements OnInit {
                 attachment[field] = base64Data;
                 alert("work !!!");
                 attachment[`${field}ContentType`] = file.type;
+                this.upload(attachment);
+
             });
-            alert("content: " + attachment['content']);
         }
+    }
+    upload(attachment: Attachment){
+         this.attachmentService.create(attachment)
+        .subscribe((res: Attachment) =>
+        this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+
     }
     clear() {
         // this.activeModal.dismiss('cancel');
@@ -79,12 +88,13 @@ export class ProductAttachmentComponent  implements OnInit {
 
     save() {
         this.attachmentService.create(this.attachment)
-        .subscribe((res: Attachment) =>
-        this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
+            .subscribe((res: Attachment) =>
+                this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
     }
 
     private onSaveSuccess(result: Attachment) {
       //  this.eventManager.broadcast({ name: 'attachmentListModification', content: 'OK'});
+        this.attachments.concat(result);
         this.isSaving = false;
     }
 

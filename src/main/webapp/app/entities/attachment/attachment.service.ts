@@ -9,6 +9,7 @@ export class AttachmentService {
 
     private resourceUrl = 'api/attachments';
     private resourceSearchUrl = 'api/_search/attachments';
+    private boAttachmentsUrl = 'api/${boname}/${boid}/attachments'
 
     constructor(private http: Http, private dateUtils: DateUtils) { }
 
@@ -52,6 +53,12 @@ export class AttachmentService {
         ;
     }
 
+    queryAttachmentsByBO(boname:string, boid: number,req?: any): Observable<Response> {
+        const options = this.createRequestOption(req);
+        return this.http.get('api/'+boname+'/'+boid+'/attachments', options)
+            .map((res: any) => this.convertResponse(res))
+        ;
+    }
     delete(id: number): Observable<Response> {
         return this.http.delete(`${this.resourceUrl}/${id}`);
     }

@@ -6,49 +6,27 @@
 	<div class="col-12">
 		<section widget class="widget">
 			<div class="widget-body">
-				<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
 					<div class="form-actions fileupload-buttonbar no-margin">
 						<button class="btn btn-default add-files-btn fileinput-button mr-xs">
 							<i class="glyphicon glyphicon-plus"></i> <span>Add files...</span> <input type="file"
-								(change)="setFileData($event, attachment, 'content', false)"
+								(change)="setFileData($event,'content', false)"
 								jhiTranslate="entity.action.addblob">
 						</button>
-						<button type="submit" class="btn btn-primary start mr-xs" (click)="save()">
-							<i class="glyphicon glyphicon-upload"></i> <span>upload</span>
-						</button>
 					</div>
-					<input type="hidden" class="form-control" name="content" id="field_content"
-						[(ngModel)]="attachment.content" required /> <input type="hidden" class="form-control"
-						name="contentContentType" id="field_contentContentType"
-						[(ngModel)]="attachment.contentContentType" />
-					<div [hidden]="!(editForm.controls.content?.dirty && editForm.controls.content?.invalid)">
-						<small class="form-text text-danger" [hidden]="!editForm.controls.content?.errors?.required"
-							jhiTranslate="entity.validation.required"> This field is required. </small>
-					</div>
-				</form>
 				<table role="presentation" class="table table-striped files-table">
 					<tbody class="files">
 						<tr class="template-upload fade" *ngFor="let item of attachments">
 							<td>
-								<p class="name">{{ item?.file?.name }}</p> <strong class="error text-danger"></strong>
+								<img src="data:{{item?.contentContentType}};base64,{{item?.content}}" class="thumbnail" style="width:65px;height: 65px">
 							</td>
 							<td>
-								<p class="size">{{ item?.file?.size/1024 | number:'.2' }} KB</p>
-								<div hide-on-upload [fileItem]="item" class="progress progress-xs bg-blue-light">
-									<div class="progress-bar progress-xs bg-success" role="progressbar" aria-valuemin="0"
-										aria-valuemax="100" [ngStyle]="{'width': item?.progress + '%'}"></div>
-								</div>
+								<p class="name">{{ item?.name }}</p> <strong class="error text-danger"></strong>
+							</td>
+							<td>
+								<p class="size">{{ item?.size/1024 | number:'.2' }} KB</p>
 							</td>
 							<td class="width-150">
-								<button class="btn btn-primary btn-sm start" *ngIf="!item.isUploaded"
-									(click)="item.upload()" [disabled]="item.isReady || item.isUploading || item.isSuccess">
-									<i class="glyphicon glyphicon-upload"></i> <span>Start</span>
-								</button>
-								<button class="btn btn-warning btn-sm cancel" *ngIf="!item.isUploaded"
-									(click)="cancelItem(item)">
-									<i class="glyphicon glyphicon-ban-circle"></i> <span>Cancel</span>
-								</button>
-								<button class="btn btn-danger btn-sm delete" *ngIf="item.isUploaded" (click)="item.remove()">
+								<button class="btn btn-danger btn-sm delete" >
 									<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
 								</button>
 							</td>

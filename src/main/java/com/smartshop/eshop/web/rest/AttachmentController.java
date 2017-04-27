@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -63,18 +62,18 @@ public class AttachmentController {
 				.headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString())).body(result);
 	}
 
-	@PutMapping()
-	@Timed
-	public ResponseEntity<Attachment> updateAttachment(@Valid @RequestBody Attachment attachment)
-			throws URISyntaxException {
-		log.debug("REST request to update Attachment : {}", attachment);
-		if (attachment.getId() == null) {
-			return createAttachment(attachment);
-		}
-		Attachment result = attachmentService.save(attachment);
-		return ResponseEntity.ok()
-				.headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, attachment.getId().toString())).body(result);
-	}
+	/*
+	 * @PutMapping()
+	 * 
+	 * @Timed public ResponseEntity<Attachment>
+	 * updateAttachment(@Valid @RequestBody Attachment attachment) throws
+	 * URISyntaxException { log.debug("REST request to update Attachment : {}",
+	 * attachment); if (attachment.getId() == null) { return
+	 * createAttachment(attachment); } Attachment result =
+	 * attachmentService.save(attachment); return ResponseEntity.ok()
+	 * .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME,
+	 * attachment.getId().toString())).body(result); }
+	 */
 
 	@GetMapping()
 	@Timed
