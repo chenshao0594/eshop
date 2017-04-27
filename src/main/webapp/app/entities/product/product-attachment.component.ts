@@ -2,7 +2,6 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jhipster';
-import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 
 import { Product } from './product.model';
 import { ProductService } from './product.service';
@@ -14,8 +13,7 @@ const URL = '/api/attachments';
 @Component( {
     selector: '[fileupload]',
     templateUrl: './product-attachment.component.html',
-    styleUrls: [ './fileupload.style.scss' ],
-    encapsulation: ViewEncapsulation.None
+    styleUrls: [ './fileupload.style.scss' ]
 } )
 export class ProductAttachmentComponent  implements OnInit {
     product: Product;
@@ -69,9 +67,10 @@ export class ProductAttachmentComponent  implements OnInit {
             }
             this.dataUtils.toBase64(file, (base64Data) => {
                 attachment[field] = base64Data;
+                alert("work !!!");
                 attachment[`${field}ContentType`] = file.type;
             });
-        
+            alert("content: " + attachment['content']);
         }
     }
     clear() {
@@ -85,7 +84,7 @@ export class ProductAttachmentComponent  implements OnInit {
     }
 
     private onSaveSuccess(result: Attachment) {
-        this.eventManager.broadcast({ name: 'attachmentListModification', content: 'OK'});
+      //  this.eventManager.broadcast({ name: 'attachmentListModification', content: 'OK'});
         this.isSaving = false;
     }
 
