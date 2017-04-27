@@ -33,10 +33,10 @@
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.zone.code">Code</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.zone.created_by">Created By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.zone.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.zone.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.zone.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="eshopApp.zone.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="eshopApp.zone.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="eshopApp.zone.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="eshopApp.zone.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="country.id"><span jhiTranslate="eshopApp.zone.country">Country</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -45,10 +45,10 @@
             <tr *ngFor="let zone of zones ;trackBy: trackId">
                 <td><a [routerLink]="['../zone', zone.id ]">{{zone.id}}</a></td>
                 <td>{{zone.code}}</td>
-                <td>{{zone.created_by}}</td>
-                <td>{{zone.created_date | date:'mediumDate'}}</td>
-                <td>{{zone.last_modified_by}}</td>
-                <td>{{zone.last_modified_date | date:'mediumDate'}}</td>
+                <td>{{zone.createdBy}}</td>
+                <td>{{zone.createdDate | date:'mediumDate'}}</td>
+                <td>{{zone.lastModifiedBy}}</td>
+                <td>{{zone.lastModifiedDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="zone.country">
                         <a [routerLink]="['../country', zone.country?.id ]" >{{zone.country?.id}}</a>

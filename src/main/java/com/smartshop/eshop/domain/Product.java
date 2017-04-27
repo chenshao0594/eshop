@@ -135,7 +135,7 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<ProductAttribute> attributes = new HashSet<>();
 
-	@OneToMany(mappedBy = "product")
+	@OneToMany(mappedBy = "product", fetch = FetchType.EAGER)
 	@JsonIgnore
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<ProductDescription> descriptions = new HashSet<>();

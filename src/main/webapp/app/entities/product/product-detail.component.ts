@@ -49,4 +49,5 @@ export class ProductDetailComponent implements OnInit, OnDestroy {
     registerChangeInProducts() {
         this.eventSubscriber = this.eventManager.subscribe('productListModification', (response) => this.load(this.product.id));
     }
+    
 }

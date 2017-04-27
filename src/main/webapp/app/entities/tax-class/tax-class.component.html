@@ -34,10 +34,10 @@
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="title"><span jhiTranslate="eshopApp.taxClass.title">Title</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.taxClass.code">Code</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.taxClass.created_by">Created By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.taxClass.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.taxClass.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.taxClass.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="eshopApp.taxClass.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="eshopApp.taxClass.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="eshopApp.taxClass.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="eshopApp.taxClass.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.taxClass.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -47,10 +47,10 @@
                 <td><a [routerLink]="['../tax-class', taxClass.id ]">{{taxClass.id}}</a></td>
                 <td>{{taxClass.title}}</td>
                 <td>{{taxClass.code}}</td>
-                <td>{{taxClass.created_by}}</td>
-                <td>{{taxClass.created_date | date:'mediumDate'}}</td>
-                <td>{{taxClass.last_modified_by}}</td>
-                <td>{{taxClass.last_modified_date | date:'mediumDate'}}</td>
+                <td>{{taxClass.createdBy}}</td>
+                <td>{{taxClass.createdDate | date:'mediumDate'}}</td>
+                <td>{{taxClass.lastModifiedBy}}</td>
+                <td>{{taxClass.lastModifiedDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="taxClass.merchantStore">
                         <a [routerLink]="['../merchant-store', taxClass.merchantStore?.id ]" >{{taxClass.merchantStore?.id}}</a>

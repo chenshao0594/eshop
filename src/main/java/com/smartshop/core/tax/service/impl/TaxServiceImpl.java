@@ -12,6 +12,7 @@ import java.util.TreeMap;
 import javax.inject.Inject;
 
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.smartshop.core.salesorder.model.SalesOrderSummary;
@@ -36,6 +37,7 @@ import com.smartshop.eshop.service.MerchantConfigurationService;
 import com.smartshop.eshop.service.TaxClassService;
 import com.smartshop.eshop.service.TaxRateService;
 
+@Service
 public class TaxServiceImpl implements TaxService {
 
 	private final static String TAX_CONFIGURATION = "TAX_CONFIG";

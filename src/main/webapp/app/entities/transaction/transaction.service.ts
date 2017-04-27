@@ -16,10 +16,10 @@ export class TransactionService {
         const copy: Transaction = Object.assign({}, transaction);
         copy.transactionDate = this.dateUtils
             .convertLocalDateToServer(transaction.transactionDate);
-        copy.created_date = this.dateUtils
-            .convertLocalDateToServer(transaction.created_date);
-        copy.last_modified_date = this.dateUtils
-            .convertLocalDateToServer(transaction.last_modified_date);
+        copy.createdDate = this.dateUtils
+            .convertLocalDateToServer(transaction.createdDate);
+        copy.lastModifiedDate = this.dateUtils
+            .convertLocalDateToServer(transaction.lastModifiedDate);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -29,10 +29,10 @@ export class TransactionService {
         const copy: Transaction = Object.assign({}, transaction);
         copy.transactionDate = this.dateUtils
             .convertLocalDateToServer(transaction.transactionDate);
-        copy.created_date = this.dateUtils
-            .convertLocalDateToServer(transaction.created_date);
-        copy.last_modified_date = this.dateUtils
-            .convertLocalDateToServer(transaction.last_modified_date);
+        copy.createdDate = this.dateUtils
+            .convertLocalDateToServer(transaction.createdDate);
+        copy.lastModifiedDate = this.dateUtils
+            .convertLocalDateToServer(transaction.lastModifiedDate);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -43,10 +43,10 @@ export class TransactionService {
             const jsonResponse = res.json();
             jsonResponse.transactionDate = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse.transactionDate);
-            jsonResponse.created_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse.created_date);
-            jsonResponse.last_modified_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse.last_modified_date);
+            jsonResponse.createdDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.createdDate);
+            jsonResponse.lastModifiedDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.lastModifiedDate);
             return jsonResponse;
         });
     }
@@ -75,10 +75,10 @@ export class TransactionService {
         for (let i = 0; i < jsonResponse.length; i++) {
             jsonResponse[i].transactionDate = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse[i].transactionDate);
-            jsonResponse[i].created_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse[i].created_date);
-            jsonResponse[i].last_modified_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse[i].last_modified_date);
+            jsonResponse[i].createdDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].createdDate);
+            jsonResponse[i].lastModifiedDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].lastModifiedDate);
         }
         res._body = jsonResponse;
         return res;

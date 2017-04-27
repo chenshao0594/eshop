@@ -21,7 +21,7 @@
 	<util:list id="orderTotalsPostProcessors"
 		value-type="com.smartshop.core.salesorder.model.OrderTotalPostProcessorModule">
 		<!-- From rules -->
-		<ref bean="manufacturerShippingCodeOrderTotalModule" />
+		<!-- <ref bean="manufacturerShippingCodeOrderTotalModule" /> -->
 	</util:list>
 	<util:list id="shippingModulePreProcessors"
 		value-type="com.smartshop.core.shipping.integration.model.ShippingQuotePrePostProcessModule">
@@ -36,15 +36,15 @@
 	</util:list>
 
 	<!-- List of accepted zones for using shipping distance pre processor -->
-	<util:list id="acceptedZones" value-type="java.lang.String">
+	<!-- <util:list id="acceptedZones" value-type="java.lang.String">
 		<value>NY</value>
 		<value>NJ</value>
 	</util:list>
-	
+	 -->
 	<!-- Payment integration modules -->
 	<util:map id="paymentModules" map-class="java.util.HashMap"
 		key-type="java.lang.String"
-		value-type="com.salesmanager.core.business.modules.integration.payment.model.PaymentModule">
+		value-type="com.smartshop.core.payment.modules">
 		<beans:entry key="beanstream" value-ref="beanstream" />
 		<beans:entry key="paypal-express-checkout" value-ref="paypal-ec" />
 		<beans:entry key="moneyorder" value-ref="moneyorder" />
@@ -53,16 +53,12 @@
 	
 	<!-- Payment -->
 	<beans:bean id="beanstream"
-		class="com.salesmanager.core.business.modules.integration.payment.impl.BeanStreamPayment" />
+		class="com.smartshop.core.payment.modules.BeanStreamPayment" />
 	<beans:bean id="moneyorder"
-		class="com.salesmanager.core.business.modules.integration.payment.impl.MoneyOrderPayment" />
+		class="com.smartshop.core.payment.modules.MoneyOrderPayment" />
 	<beans:bean id="paypal-ec"
-		class="com.salesmanager.core.business.modules.integration.payment.impl.PayPalExpressCheckoutPayment" />
+		class="com.smartshop.core.payment.modules.PayPalExpressCheckoutPayment" />
 	<beans:bean id="stripe"
-		class="com.salesmanager.core.business.modules.integration.payment.impl.StripePayment" />
-	
-	
+		class="com.smartshop.core.payment.modules.StripePayment" />
 
-
-
-</beans>
+</beans:beans>

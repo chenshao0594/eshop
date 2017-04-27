@@ -37,10 +37,10 @@
             <th jhiSortBy="transactionDate"><span jhiTranslate="eshopApp.transaction.transactionDate">Transaction Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="paymentType"><span jhiTranslate="eshopApp.transaction.paymentType">Payment Type</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="amount"><span jhiTranslate="eshopApp.transaction.amount">Amount</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.transaction.created_by">Created By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.transaction.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.transaction.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.transaction.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="eshopApp.transaction.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="eshopApp.transaction.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="eshopApp.transaction.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="eshopApp.transaction.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="order.id"><span jhiTranslate="eshopApp.transaction.order">Order</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
@@ -53,10 +53,10 @@
                 <td>{{transaction.transactionDate | date:'mediumDate'}}</td>
                 <td jhiTranslate="{{'eshopApp.PaymentType.' + transaction.paymentType}}">{{transaction.paymentType}}</td>
                 <td>{{transaction.amount}}</td>
-                <td>{{transaction.created_by}}</td>
-                <td>{{transaction.created_date | date:'mediumDate'}}</td>
-                <td>{{transaction.last_modified_by}}</td>
-                <td>{{transaction.last_modified_date | date:'mediumDate'}}</td>
+                <td>{{transaction.createdBy}}</td>
+                <td>{{transaction.createdDate | date:'mediumDate'}}</td>
+                <td>{{transaction.lastModifiedBy}}</td>
+                <td>{{transaction.lastModifiedDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="transaction.order">
                         <a [routerLink]="['../sales-order', transaction.order?.id ]" >{{transaction.order?.id}}</a>

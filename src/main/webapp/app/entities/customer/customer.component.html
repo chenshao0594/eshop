@@ -39,10 +39,10 @@
             <th jhiSortBy="nick"><span jhiTranslate="eshopApp.customer.nick">Nick</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="emailAddress"><span jhiTranslate="eshopApp.customer.emailAddress">Email Address</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="password"><span jhiTranslate="eshopApp.customer.password">Password</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.customer.created_by">Created By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.customer.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.customer.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.customer.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="eshopApp.customer.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="eshopApp.customer.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="eshopApp.customer.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="eshopApp.customer.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.customer.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="defaultLanguage.id"><span jhiTranslate="eshopApp.customer.defaultLanguage">Default Language</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -58,10 +58,10 @@
                 <td>{{customer.nick}}</td>
                 <td>{{customer.emailAddress}}</td>
                 <td>{{customer.password}}</td>
-                <td>{{customer.created_by}}</td>
-                <td>{{customer.created_date | date:'mediumDate'}}</td>
-                <td>{{customer.last_modified_by}}</td>
-                <td>{{customer.last_modified_date | date:'mediumDate'}}</td>
+                <td>{{customer.createdBy}}</td>
+                <td>{{customer.createdDate | date:'mediumDate'}}</td>
+                <td>{{customer.lastModifiedBy}}</td>
+                <td>{{customer.lastModifiedDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="customer.merchantStore">
                         <a [routerLink]="['../merchant-store', customer.merchantStore?.id ]" >{{customer.merchantStore?.id}}</a>

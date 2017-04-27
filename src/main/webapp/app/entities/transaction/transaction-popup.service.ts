@@ -28,18 +28,18 @@ export class TransactionPopupService {
                         day: transaction.transactionDate.getDate()
                     };
                 }
-                if (transaction.created_date) {
-                    transaction.created_date = {
-                        year: transaction.created_date.getFullYear(),
-                        month: transaction.created_date.getMonth() + 1,
-                        day: transaction.created_date.getDate()
+                if (transaction.createdDate) {
+                    transaction.createdDate = {
+                        year: transaction.createdDate.getFullYear(),
+                        month: transaction.createdDate.getMonth() + 1,
+                        day: transaction.createdDate.getDate()
                     };
                 }
-                if (transaction.last_modified_date) {
-                    transaction.last_modified_date = {
-                        year: transaction.last_modified_date.getFullYear(),
-                        month: transaction.last_modified_date.getMonth() + 1,
-                        day: transaction.last_modified_date.getDate()
+                if (transaction.lastModifiedDate) {
+                    transaction.lastModifiedDate = {
+                        year: transaction.lastModifiedDate.getFullYear(),
+                        month: transaction.lastModifiedDate.getMonth() + 1,
+                        day: transaction.lastModifiedDate.getDate()
                     };
                 }
                 this.transactionModalRef(component, transaction);

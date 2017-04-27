@@ -84,21 +84,21 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.attachment.created_by" for="field_created_by">Created By</label>
-            <input type="text" class="form-control" name="created_by" id="field_created_by"
-                [(ngModel)]="attachment.created_by"
+            <label class="form-control-label" jhiTranslate="eshopApp.attachment.createdBy" for="field_created_by">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_created_by"
+                [(ngModel)]="attachment.createdBy"
             required />
-            <div [hidden]="!(editForm.controls.created_by?.dirty && editForm.controls.created_by?.invalid)">
+            <div [hidden]="!(editForm.controls.createdBy?.dirty && editForm.controls.createdBy?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.created_by?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.createdBy?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.attachment.created_date" for="field_created_date">Created Date</label>
+            <label class="form-control-label" jhiTranslate="eshopApp.attachment.createdDate" for="field_created_date">Created Date</label>
             <div class="input-group">
-                <input id="field_created_date" type="text" class="form-control" name="created_date" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="attachment.created_date"
+                <input id="field_created_date" type="text" class="form-control" name="createdDate" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="attachment.createdDate"
                 />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" (click)="created_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
@@ -106,21 +106,21 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.attachment.last_modified_by" for="field_last_modified_by">Last Modified By</label>
-            <input type="text" class="form-control" name="last_modified_by" id="field_last_modified_by"
-                [(ngModel)]="attachment.last_modified_by"
+            <label class="form-control-label" jhiTranslate="eshopApp.attachment.lastModifiedBy" for="field_last_modified_by">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_last_modified_by"
+                [(ngModel)]="attachment.lastModifiedBy"
             required />
-            <div [hidden]="!(editForm.controls.last_modified_by?.dirty && editForm.controls.last_modified_by?.invalid)">
+            <div [hidden]="!(editForm.controls.lastModifiedBy?.dirty && editForm.controls.lastModifiedBy?.invalid)">
                 <small class="form-text text-danger"
-                   [hidden]="!editForm.controls.last_modified_by?.errors?.required" jhiTranslate="entity.validation.required">
+                   [hidden]="!editForm.controls.lastModifiedBy?.errors?.required" jhiTranslate="entity.validation.required">
                    This field is required.
                 </small>
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.attachment.last_modified_date" for="field_last_modified_date">Last Modified Date</label>
+            <label class="form-control-label" jhiTranslate="eshopApp.attachment.lastModifiedDate" for="field_last_modified_date">Last Modified Date</label>
             <div class="input-group">
-                <input id="field_last_modified_date" type="text" class="form-control" name="last_modified_date" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="attachment.last_modified_date"
+                <input id="field_last_modified_date" type="text" class="form-control" name="lastModifiedDate" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="attachment.lastModifiedDate"
                 />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" (click)="last_modified_dateDp.toggle()"><i class="fa fa-calendar"></i></button>

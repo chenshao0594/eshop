@@ -14,10 +14,10 @@ export class ManufacturerService {
 
     create(manufacturer: Manufacturer): Observable<Manufacturer> {
         const copy: Manufacturer = Object.assign({}, manufacturer);
-        copy.created_date = this.dateUtils
-            .convertLocalDateToServer(manufacturer.created_date);
-        copy.last_modified_date = this.dateUtils
-            .convertLocalDateToServer(manufacturer.last_modified_date);
+        copy.createdDate = this.dateUtils
+            .convertLocalDateToServer(manufacturer.createdDate);
+        copy.lastModifiedDate = this.dateUtils
+            .convertLocalDateToServer(manufacturer.lastModifiedDate);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -25,10 +25,10 @@ export class ManufacturerService {
 
     update(manufacturer: Manufacturer): Observable<Manufacturer> {
         const copy: Manufacturer = Object.assign({}, manufacturer);
-        copy.created_date = this.dateUtils
-            .convertLocalDateToServer(manufacturer.created_date);
-        copy.last_modified_date = this.dateUtils
-            .convertLocalDateToServer(manufacturer.last_modified_date);
+        copy.createdDate = this.dateUtils
+            .convertLocalDateToServer(manufacturer.createdDate);
+        copy.lastModifiedDate = this.dateUtils
+            .convertLocalDateToServer(manufacturer.lastModifiedDate);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -37,10 +37,10 @@ export class ManufacturerService {
     find(id: number): Observable<Manufacturer> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
             const jsonResponse = res.json();
-            jsonResponse.created_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse.created_date);
-            jsonResponse.last_modified_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse.last_modified_date);
+            jsonResponse.createdDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.createdDate);
+            jsonResponse.lastModifiedDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.lastModifiedDate);
             return jsonResponse;
         });
     }
@@ -67,10 +67,10 @@ export class ManufacturerService {
     private convertResponse(res: any): any {
         const jsonResponse = res.json();
         for (let i = 0; i < jsonResponse.length; i++) {
-            jsonResponse[i].created_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse[i].created_date);
-            jsonResponse[i].last_modified_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse[i].last_modified_date);
+            jsonResponse[i].createdDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].createdDate);
+            jsonResponse[i].lastModifiedDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].lastModifiedDate);
         }
         res._body = jsonResponse;
         return res;

@@ -35,18 +35,18 @@ export class ProductPricePopupService {
                         day: productPrice.productPriceSpecialStartDate.getDate()
                     };
                 }
-                if (productPrice.created_date) {
-                    productPrice.created_date = {
-                        year: productPrice.created_date.getFullYear(),
-                        month: productPrice.created_date.getMonth() + 1,
-                        day: productPrice.created_date.getDate()
+                if (productPrice.createdDate) {
+                    productPrice.createdDate = {
+                        year: productPrice.createdDate.getFullYear(),
+                        month: productPrice.createdDate.getMonth() + 1,
+                        day: productPrice.createdDate.getDate()
                     };
                 }
-                if (productPrice.last_modified_date) {
-                    productPrice.last_modified_date = {
-                        year: productPrice.last_modified_date.getFullYear(),
-                        month: productPrice.last_modified_date.getMonth() + 1,
-                        day: productPrice.last_modified_date.getDate()
+                if (productPrice.lastModifiedDate) {
+                    productPrice.lastModifiedDate = {
+                        year: productPrice.lastModifiedDate.getFullYear(),
+                        month: productPrice.lastModifiedDate.getMonth() + 1,
+                        day: productPrice.lastModifiedDate.getDate()
                     };
                 }
                 this.productPriceModalRef(component, productPrice);

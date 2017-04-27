@@ -21,18 +21,18 @@ export class TemplatePopupService {
 
         if (id) {
             this.templateService.find(id).subscribe((template) => {
-                if (template.created_date) {
-                    template.created_date = {
-                        year: template.created_date.getFullYear(),
-                        month: template.created_date.getMonth() + 1,
-                        day: template.created_date.getDate()
+                if (template.createdDate) {
+                    template.createdDate = {
+                        year: template.createdDate.getFullYear(),
+                        month: template.createdDate.getMonth() + 1,
+                        day: template.createdDate.getDate()
                     };
                 }
-                if (template.last_modified_date) {
-                    template.last_modified_date = {
-                        year: template.last_modified_date.getFullYear(),
-                        month: template.last_modified_date.getMonth() + 1,
-                        day: template.last_modified_date.getDate()
+                if (template.lastModifiedDate) {
+                    template.lastModifiedDate = {
+                        year: template.lastModifiedDate.getFullYear(),
+                        month: template.lastModifiedDate.getMonth() + 1,
+                        day: template.lastModifiedDate.getDate()
                     };
                 }
                 this.templateModalRef(component, template);

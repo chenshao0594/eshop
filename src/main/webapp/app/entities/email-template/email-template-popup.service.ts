@@ -21,18 +21,18 @@ export class EmailTemplatePopupService {
 
         if (id) {
             this.emailTemplateService.find(id).subscribe((emailTemplate) => {
-                if (emailTemplate.created_date) {
-                    emailTemplate.created_date = {
-                        year: emailTemplate.created_date.getFullYear(),
-                        month: emailTemplate.created_date.getMonth() + 1,
-                        day: emailTemplate.created_date.getDate()
+                if (emailTemplate.createdDate) {
+                    emailTemplate.createdDate = {
+                        year: emailTemplate.createdDate.getFullYear(),
+                        month: emailTemplate.createdDate.getMonth() + 1,
+                        day: emailTemplate.createdDate.getDate()
                     };
                 }
-                if (emailTemplate.last_modified_date) {
-                    emailTemplate.last_modified_date = {
-                        year: emailTemplate.last_modified_date.getFullYear(),
-                        month: emailTemplate.last_modified_date.getMonth() + 1,
-                        day: emailTemplate.last_modified_date.getDate()
+                if (emailTemplate.lastModifiedDate) {
+                    emailTemplate.lastModifiedDate = {
+                        year: emailTemplate.lastModifiedDate.getFullYear(),
+                        month: emailTemplate.lastModifiedDate.getMonth() + 1,
+                        day: emailTemplate.lastModifiedDate.getDate()
                     };
                 }
                 this.emailTemplateModalRef(component, emailTemplate);

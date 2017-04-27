@@ -1,5 +1,6 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { FileUploadModule } from "ng2-file-upload";
 
 import { EshopSharedModule } from '../../shared';
 import {
@@ -14,6 +15,9 @@ import {
     productRoute,
     productPopupRoute,
     ProductResolvePagingParams,
+    ProductAttachmentComponent,
+    HideOnUpload,
+    
 } from './';
 
 const ENTITY_STATES = [
@@ -24,7 +28,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         EshopSharedModule,
-        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
+        RouterModule.forRoot(ENTITY_STATES, { useHash: true }),
+        FileUploadModule
     ],
     declarations: [
         ProductComponent,
@@ -33,6 +38,8 @@ const ENTITY_STATES = [
         ProductDeleteDialogComponent,
         ProductPopupComponent,
         ProductDeletePopupComponent,
+        ProductAttachmentComponent,
+        HideOnUpload,
     ],
     entryComponents: [
         ProductComponent,

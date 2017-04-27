@@ -42,18 +42,18 @@ export class SalesOrderPopupService {
                         day: salesOrder.datePurchased.getDate()
                     };
                 }
-                if (salesOrder.created_date) {
-                    salesOrder.created_date = {
-                        year: salesOrder.created_date.getFullYear(),
-                        month: salesOrder.created_date.getMonth() + 1,
-                        day: salesOrder.created_date.getDate()
+                if (salesOrder.createdDate) {
+                    salesOrder.createdDate = {
+                        year: salesOrder.createdDate.getFullYear(),
+                        month: salesOrder.createdDate.getMonth() + 1,
+                        day: salesOrder.createdDate.getDate()
                     };
                 }
-                if (salesOrder.last_modified_date) {
-                    salesOrder.last_modified_date = {
-                        year: salesOrder.last_modified_date.getFullYear(),
-                        month: salesOrder.last_modified_date.getMonth() + 1,
-                        day: salesOrder.last_modified_date.getDate()
+                if (salesOrder.lastModifiedDate) {
+                    salesOrder.lastModifiedDate = {
+                        year: salesOrder.lastModifiedDate.getFullYear(),
+                        month: salesOrder.lastModifiedDate.getMonth() + 1,
+                        day: salesOrder.lastModifiedDate.getDate()
                     };
                 }
                 this.salesOrderModalRef(component, salesOrder);

@@ -1,9 +1,9 @@
 <div *ngIf="product">
 	<h2 class="page-title">
+		<a [routerLink]="['attachments']">
+		<img src="/content/images/hipster.png" class="rounded float-left">
+		</a>
 		<span jhiTranslate="eshopApp.product.detail.title">Product</span> <small>{{product.id}}</small>
-		<!-- <button type="button" (click)="previousState()" class="btn btn-info">
-			<span class="fa fa-arrow-left"></span>&nbsp;<label class="control-label col-2 text-right no-padding-right" jhiTranslate="entity.action.back"> Back</span>
-		</button> -->
 		<button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
 			<span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
 		</button>
@@ -29,6 +29,17 @@
 						<p class="form-control input-transparent">{{product.productWeight}}</p>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productWidth">Product Width</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productWidth}}</p>
+					</div>
+					
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productLength">Product Length</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productLength}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.productShipeable">Product Shipeable</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.productShipeable}}</p>
@@ -37,11 +48,6 @@
 						jhiTranslate="eshopApp.product.productOrdered">Product Ordered</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.productOrdered}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productReviewAvg">Product Review Avg</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productReviewAvg}}</p>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.dateAvailable">Date Available</label>
@@ -53,45 +59,11 @@
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.sortOrder}}</p>
 					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productIsFree">Product Is Free</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productIsFree}}</p>
-					</div>
+					
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.available">Available</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.available}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productReviewCount">Product Review Count</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productReviewCount}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.refSku">Ref Sku</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.refSku}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productVirtual">Product Virtual</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productVirtual}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productWidth">Product Width</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productWidth}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.preOrder">Pre Order</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.preOrder}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productLength">Product Length</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productLength}}</p>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.sku">Sku</label>

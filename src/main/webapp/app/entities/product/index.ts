@@ -6,3 +6,5 @@ export * from './product-delete-dialog.component';
 export * from './product-detail.component';
 export * from './product.component';
 export * from './product.route';
+export * from './product-attachment.component';
+export * from './hideOnUpload.directive';

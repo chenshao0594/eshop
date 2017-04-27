@@ -21,18 +21,18 @@ export class MerchantLogPopupService {
 
         if (id) {
             this.merchantLogService.find(id).subscribe((merchantLog) => {
-                if (merchantLog.created_date) {
-                    merchantLog.created_date = {
-                        year: merchantLog.created_date.getFullYear(),
-                        month: merchantLog.created_date.getMonth() + 1,
-                        day: merchantLog.created_date.getDate()
+                if (merchantLog.createdDate) {
+                    merchantLog.createdDate = {
+                        year: merchantLog.createdDate.getFullYear(),
+                        month: merchantLog.createdDate.getMonth() + 1,
+                        day: merchantLog.createdDate.getDate()
                     };
                 }
-                if (merchantLog.last_modified_date) {
-                    merchantLog.last_modified_date = {
-                        year: merchantLog.last_modified_date.getFullYear(),
-                        month: merchantLog.last_modified_date.getMonth() + 1,
-                        day: merchantLog.last_modified_date.getDate()
+                if (merchantLog.lastModifiedDate) {
+                    merchantLog.lastModifiedDate = {
+                        year: merchantLog.lastModifiedDate.getFullYear(),
+                        month: merchantLog.lastModifiedDate.getMonth() + 1,
+                        day: merchantLog.lastModifiedDate.getDate()
                     };
                 }
                 this.merchantLogModalRef(component, merchantLog);

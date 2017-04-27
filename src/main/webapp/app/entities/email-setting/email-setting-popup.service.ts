@@ -21,18 +21,18 @@ export class EmailSettingPopupService {
 
         if (id) {
             this.emailSettingService.find(id).subscribe((emailSetting) => {
-                if (emailSetting.created_date) {
-                    emailSetting.created_date = {
-                        year: emailSetting.created_date.getFullYear(),
-                        month: emailSetting.created_date.getMonth() + 1,
-                        day: emailSetting.created_date.getDate()
+                if (emailSetting.createdDate) {
+                    emailSetting.createdDate = {
+                        year: emailSetting.createdDate.getFullYear(),
+                        month: emailSetting.createdDate.getMonth() + 1,
+                        day: emailSetting.createdDate.getDate()
                     };
                 }
-                if (emailSetting.last_modified_date) {
-                    emailSetting.last_modified_date = {
-                        year: emailSetting.last_modified_date.getFullYear(),
-                        month: emailSetting.last_modified_date.getMonth() + 1,
-                        day: emailSetting.last_modified_date.getDate()
+                if (emailSetting.lastModifiedDate) {
+                    emailSetting.lastModifiedDate = {
+                        year: emailSetting.lastModifiedDate.getFullYear(),
+                        month: emailSetting.lastModifiedDate.getMonth() + 1,
+                        day: emailSetting.lastModifiedDate.getDate()
                     };
                 }
                 this.emailSettingModalRef(component, emailSetting);

@@ -2,6 +2,7 @@ package com.smartshop.eshop.web.rest;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,6 +12,7 @@ import com.smartshop.eshop.service.ProductService;
 /**
  * REST controller for managing Product.
  */
+@Transactional
 @RestController
 @RequestMapping("/api/" + ProductController.SECTION_KEY)
 public class ProductController extends AbstractDomainController<Product, Long> {

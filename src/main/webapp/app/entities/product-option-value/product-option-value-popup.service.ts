@@ -21,18 +21,18 @@ export class ProductOptionValuePopupService {
 
         if (id) {
             this.productOptionValueService.find(id).subscribe((productOptionValue) => {
-                if (productOptionValue.created_date) {
-                    productOptionValue.created_date = {
-                        year: productOptionValue.created_date.getFullYear(),
-                        month: productOptionValue.created_date.getMonth() + 1,
-                        day: productOptionValue.created_date.getDate()
+                if (productOptionValue.createdDate) {
+                    productOptionValue.createdDate = {
+                        year: productOptionValue.createdDate.getFullYear(),
+                        month: productOptionValue.createdDate.getMonth() + 1,
+                        day: productOptionValue.createdDate.getDate()
                     };
                 }
-                if (productOptionValue.last_modified_date) {
-                    productOptionValue.last_modified_date = {
-                        year: productOptionValue.last_modified_date.getFullYear(),
-                        month: productOptionValue.last_modified_date.getMonth() + 1,
-                        day: productOptionValue.last_modified_date.getDate()
+                if (productOptionValue.lastModifiedDate) {
+                    productOptionValue.lastModifiedDate = {
+                        year: productOptionValue.lastModifiedDate.getFullYear(),
+                        month: productOptionValue.lastModifiedDate.getMonth() + 1,
+                        day: productOptionValue.lastModifiedDate.getDate()
                     };
                 }
                 this.productOptionValueModalRef(component, productOptionValue);

@@ -28,18 +28,18 @@ export class CustomerPopupService {
                         day: customer.dateOfBirth.getDate()
                     };
                 }
-                if (customer.created_date) {
-                    customer.created_date = {
-                        year: customer.created_date.getFullYear(),
-                        month: customer.created_date.getMonth() + 1,
-                        day: customer.created_date.getDate()
+                if (customer.createdDate) {
+                    customer.createdDate = {
+                        year: customer.createdDate.getFullYear(),
+                        month: customer.createdDate.getMonth() + 1,
+                        day: customer.createdDate.getDate()
                     };
                 }
-                if (customer.last_modified_date) {
-                    customer.last_modified_date = {
-                        year: customer.last_modified_date.getFullYear(),
-                        month: customer.last_modified_date.getMonth() + 1,
-                        day: customer.last_modified_date.getDate()
+                if (customer.lastModifiedDate) {
+                    customer.lastModifiedDate = {
+                        year: customer.lastModifiedDate.getFullYear(),
+                        month: customer.lastModifiedDate.getMonth() + 1,
+                        day: customer.lastModifiedDate.getDate()
                     };
                 }
                 this.customerModalRef(component, customer);

@@ -21,18 +21,18 @@ export class ManufacturerPopupService {
 
         if (id) {
             this.manufacturerService.find(id).subscribe((manufacturer) => {
-                if (manufacturer.created_date) {
-                    manufacturer.created_date = {
-                        year: manufacturer.created_date.getFullYear(),
-                        month: manufacturer.created_date.getMonth() + 1,
-                        day: manufacturer.created_date.getDate()
+                if (manufacturer.createdDate) {
+                    manufacturer.createdDate = {
+                        year: manufacturer.createdDate.getFullYear(),
+                        month: manufacturer.createdDate.getMonth() + 1,
+                        day: manufacturer.createdDate.getDate()
                     };
                 }
-                if (manufacturer.last_modified_date) {
-                    manufacturer.last_modified_date = {
-                        year: manufacturer.last_modified_date.getFullYear(),
-                        month: manufacturer.last_modified_date.getMonth() + 1,
-                        day: manufacturer.last_modified_date.getDate()
+                if (manufacturer.lastModifiedDate) {
+                    manufacturer.lastModifiedDate = {
+                        year: manufacturer.lastModifiedDate.getFullYear(),
+                        month: manufacturer.lastModifiedDate.getMonth() + 1,
+                        day: manufacturer.lastModifiedDate.getDate()
                     };
                 }
                 this.manufacturerModalRef(component, manufacturer);

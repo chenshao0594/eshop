@@ -75,12 +75,6 @@
 					for="field_available">Available</label> 
 				<input type="checkbox" class="form-control" name="available" id="field_available" [(ngModel)]="product.available"/>
 			</div>
-			<!-- <div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.productExternalDl"
-					for="field_productExternalDl">Product External Dl</label> 
-				<input type="text" class="form-control" name="productExternalDl"
-					id="field_productExternalDl" [(ngModel)]="product.productExternalDl"/>
-			</div> -->
 			<div class="col-5 form-group">
 				<label class="form-control-label" jhiTranslate="eshopApp.product.refSku" for="field_refSku">Ref
 					Sku</label> <input type="text" class="form-control" name="refSku" id="field_refSku"
@@ -148,6 +142,7 @@
 					</template>
 					</ngb-tab> <!-- basic info end -->
 					<!-- images -->
+					<div *ngIf="product.id">
 					<ngb-tab>
 						<template ngbTabTitle> 
 							<span jhiTranslate="eshopApp.product.tabs.images"></span> 
@@ -180,6 +175,7 @@
 						</div> 
 						</template> 
 					</ngb-tab>
+					</div>
 					
 					<!-- shipping info -->	
 					

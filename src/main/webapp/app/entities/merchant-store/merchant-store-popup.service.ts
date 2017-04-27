@@ -28,18 +28,18 @@ export class MerchantStorePopupService {
                         day: merchantStore.inBusinessSince.getDate()
                     };
                 }
-                if (merchantStore.created_date) {
-                    merchantStore.created_date = {
-                        year: merchantStore.created_date.getFullYear(),
-                        month: merchantStore.created_date.getMonth() + 1,
-                        day: merchantStore.created_date.getDate()
+                if (merchantStore.createdDate) {
+                    merchantStore.createdDate = {
+                        year: merchantStore.createdDate.getFullYear(),
+                        month: merchantStore.createdDate.getMonth() + 1,
+                        day: merchantStore.createdDate.getDate()
                     };
                 }
-                if (merchantStore.last_modified_date) {
-                    merchantStore.last_modified_date = {
-                        year: merchantStore.last_modified_date.getFullYear(),
-                        month: merchantStore.last_modified_date.getMonth() + 1,
-                        day: merchantStore.last_modified_date.getDate()
+                if (merchantStore.lastModifiedDate) {
+                    merchantStore.lastModifiedDate = {
+                        year: merchantStore.lastModifiedDate.getFullYear(),
+                        month: merchantStore.lastModifiedDate.getMonth() + 1,
+                        day: merchantStore.lastModifiedDate.getDate()
                     };
                 }
                 this.merchantStoreModalRef(component, merchantStore);

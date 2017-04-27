@@ -21,18 +21,18 @@ export class AttachmentPopupService {
 
         if (id) {
             this.attachmentService.find(id).subscribe((attachment) => {
-                if (attachment.created_date) {
-                    attachment.created_date = {
-                        year: attachment.created_date.getFullYear(),
-                        month: attachment.created_date.getMonth() + 1,
-                        day: attachment.created_date.getDate()
+                if (attachment.createdDate) {
+                    attachment.createdDate = {
+                        year: attachment.createdDate.getFullYear(),
+                        month: attachment.createdDate.getMonth() + 1,
+                        day: attachment.createdDate.getDate()
                     };
                 }
-                if (attachment.last_modified_date) {
-                    attachment.last_modified_date = {
-                        year: attachment.last_modified_date.getFullYear(),
-                        month: attachment.last_modified_date.getMonth() + 1,
-                        day: attachment.last_modified_date.getDate()
+                if (attachment.lastModifiedDate) {
+                    attachment.lastModifiedDate = {
+                        year: attachment.lastModifiedDate.getFullYear(),
+                        month: attachment.lastModifiedDate.getMonth() + 1,
+                        day: attachment.lastModifiedDate.getDate()
                     };
                 }
                 this.attachmentModalRef(component, attachment);

@@ -5354,9 +5354,9 @@ ng-jhipster@0.1.12:
   dependencies:
     ng2-translate "4.2.0"
 
-ng2-file-upload@1.2.1:
-  version "1.2.1"
-  resolved "https://registry.yarnpkg.com/ng2-file-upload/-/ng2-file-upload-1.2.1.tgz#5563c5dfd6f43fbfbe815c206e343464a0a6a197"
+ng2-file-upload@1.1.4-2:
+  version "1.1.4-2"
+  resolved "https://registry.yarnpkg.com/ng2-file-upload/-/ng2-file-upload-1.1.4-2.tgz#61d8e74f726eeeb2514136347f220e1fd45059e3"
 
 ng2-translate@4.2.0:
   version "4.2.0"

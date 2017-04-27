@@ -36,10 +36,10 @@
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.productOptionValue.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOptionValueSortOrder"><span jhiTranslate="eshopApp.productOptionValue.productOptionValueSortOrder">Product Option Value Sort Order</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOptionDisplayOnly"><span jhiTranslate="eshopApp.productOptionValue.productOptionDisplayOnly">Product Option Display Only</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.productOptionValue.created_by">Created By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.productOptionValue.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.productOptionValue.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.productOptionValue.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="eshopApp.productOptionValue.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="eshopApp.productOptionValue.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="eshopApp.productOptionValue.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="eshopApp.productOptionValue.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.productOptionValue.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOption.id"><span jhiTranslate="eshopApp.productOptionValue.productOption">Product Option</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -52,10 +52,10 @@
                 <td>{{productOptionValue.code}}</td>
                 <td>{{productOptionValue.productOptionValueSortOrder}}</td>
                 <td>{{productOptionValue.productOptionDisplayOnly}}</td>
-                <td>{{productOptionValue.created_by}}</td>
-                <td>{{productOptionValue.created_date | date:'mediumDate'}}</td>
-                <td>{{productOptionValue.last_modified_by}}</td>
-                <td>{{productOptionValue.last_modified_date | date:'mediumDate'}}</td>
+                <td>{{productOptionValue.createdBy}}</td>
+                <td>{{productOptionValue.createdDate | date:'mediumDate'}}</td>
+                <td>{{productOptionValue.lastModifiedBy}}</td>
+                <td>{{productOptionValue.lastModifiedDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="productOptionValue.merchantStore">
                         <a [routerLink]="['../merchant-store', productOptionValue.merchantStore?.id ]" >{{productOptionValue.merchantStore?.id}}</a>

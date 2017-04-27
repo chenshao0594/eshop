@@ -18,10 +18,10 @@ export class ProductPriceService {
             .convertLocalDateToServer(productPrice.productPriceSpecialEndDate);
         copy.productPriceSpecialStartDate = this.dateUtils
             .convertLocalDateToServer(productPrice.productPriceSpecialStartDate);
-        copy.created_date = this.dateUtils
-            .convertLocalDateToServer(productPrice.created_date);
-        copy.last_modified_date = this.dateUtils
-            .convertLocalDateToServer(productPrice.last_modified_date);
+        copy.createdDate = this.dateUtils
+            .convertLocalDateToServer(productPrice.createdDate);
+        copy.lastModifiedDate = this.dateUtils
+            .convertLocalDateToServer(productPrice.lastModifiedDate);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -33,10 +33,10 @@ export class ProductPriceService {
             .convertLocalDateToServer(productPrice.productPriceSpecialEndDate);
         copy.productPriceSpecialStartDate = this.dateUtils
             .convertLocalDateToServer(productPrice.productPriceSpecialStartDate);
-        copy.created_date = this.dateUtils
-            .convertLocalDateToServer(productPrice.created_date);
-        copy.last_modified_date = this.dateUtils
-            .convertLocalDateToServer(productPrice.last_modified_date);
+        copy.createdDate = this.dateUtils
+            .convertLocalDateToServer(productPrice.createdDate);
+        copy.lastModifiedDate = this.dateUtils
+            .convertLocalDateToServer(productPrice.lastModifiedDate);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -49,10 +49,10 @@ export class ProductPriceService {
                 .convertLocalDateFromServer(jsonResponse.productPriceSpecialEndDate);
             jsonResponse.productPriceSpecialStartDate = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse.productPriceSpecialStartDate);
-            jsonResponse.created_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse.created_date);
-            jsonResponse.last_modified_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse.last_modified_date);
+            jsonResponse.createdDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.createdDate);
+            jsonResponse.lastModifiedDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.lastModifiedDate);
             return jsonResponse;
         });
     }
@@ -83,10 +83,10 @@ export class ProductPriceService {
                 .convertLocalDateFromServer(jsonResponse[i].productPriceSpecialEndDate);
             jsonResponse[i].productPriceSpecialStartDate = this.dateUtils
                 .convertLocalDateFromServer(jsonResponse[i].productPriceSpecialStartDate);
-            jsonResponse[i].created_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse[i].created_date);
-            jsonResponse[i].last_modified_date = this.dateUtils
-                .convertLocalDateFromServer(jsonResponse[i].last_modified_date);
+            jsonResponse[i].createdDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].createdDate);
+            jsonResponse[i].lastModifiedDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].lastModifiedDate);
         }
         res._body = jsonResponse;
         return res;

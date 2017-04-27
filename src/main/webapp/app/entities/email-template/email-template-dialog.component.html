@@ -50,15 +50,15 @@
              />
         </div>
         <div class="form-group col-5">
-            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.created_by" for="field_created_by">Created By</label>
-            <input type="text" class="form-control" name="created_by" id="field_created_by"
-                [(ngModel)]="emailTemplate.created_by"
+            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.createdBy" for="field_created_by">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_created_by"
+                [(ngModel)]="emailTemplate.createdBy"
              />
         </div>
         <div class="form-group col-5">
-            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.created_date" for="field_created_date">Created Date</label>
+            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.createdDate" for="field_created_date">Created Date</label>
             <div class="input-group">
-                <input id="field_created_date" type="text" class="form-control" name="created_date" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="emailTemplate.created_date"
+                <input id="field_created_date" type="text" class="form-control" name="createdDate" ngbDatepicker  #created_dateDp="ngbDatepicker" [(ngModel)]="emailTemplate.createdDate"
                 />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" (click)="created_dateDp.toggle()"><i class="fa fa-calendar"></i></button>
@@ -66,15 +66,15 @@
             </div>
         </div>
         <div class="form-group col-5">
-            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.last_modified_by" for="field_last_modified_by">Last Modified By</label>
-            <input type="text" class="form-control" name="last_modified_by" id="field_last_modified_by"
-                [(ngModel)]="emailTemplate.last_modified_by"
+            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.lastModifiedBy" for="field_last_modified_by">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_last_modified_by"
+                [(ngModel)]="emailTemplate.lastModifiedBy"
              />
         </div>
         <div class="form-group col-5">
-            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.last_modified_date" for="field_last_modified_date">Last Modified Date</label>
+            <label class="form-control-label" jhiTranslate="eshopApp.emailTemplate.lastModifiedDate" for="field_last_modified_date">Last Modified Date</label>
             <div class="input-group">
-                <input id="field_last_modified_date" type="text" class="form-control" name="last_modified_date" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="emailTemplate.last_modified_date"
+                <input id="field_last_modified_date" type="text" class="form-control" name="lastModifiedDate" ngbDatepicker  #last_modified_dateDp="ngbDatepicker" [(ngModel)]="emailTemplate.lastModifiedDate"
                 />
                 <span class="input-group-btn">
                     <button type="button" class="btn btn-default" (click)="last_modified_dateDp.toggle()"><i class="fa fa-calendar"></i></button>

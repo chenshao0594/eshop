@@ -27,10 +27,10 @@ export class Transaction {
         public transactionDate?: any,
         public paymentType?: PaymentType,
         public amount?: number,
-        public created_by?: string,
-        public created_date?: any,
-        public last_modified_by?: string,
-        public last_modified_date?: any,
+        public createdBy?: string,
+        public createdDate?: any,
+        public lastModifiedBy?: string,
+        public lastModifiedDate?: any,
         public order?: SalesOrder,
     ) {
     }

@@ -36,10 +36,10 @@
             <th jhiSortBy="superId"><span jhiTranslate="eshopApp.template.superId">Super Id</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="templateKey"><span jhiTranslate="eshopApp.template.templateKey">Template Key</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="content"><span jhiTranslate="eshopApp.template.content">Content</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_by"><span jhiTranslate="eshopApp.template.created_by">Created By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="created_date"><span jhiTranslate="eshopApp.template.created_date">Created Date</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_by"><span jhiTranslate="eshopApp.template.last_modified_by">Last Modified By</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="last_modified_date"><span jhiTranslate="eshopApp.template.last_modified_date">Last Modified Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="eshopApp.template.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="eshopApp.template.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="eshopApp.template.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="eshopApp.template.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -50,10 +50,10 @@
                 <td>{{template.superId}}</td>
                 <td>{{template.templateKey}}</td>
                 <td>{{template.content}}</td>
-                <td>{{template.created_by}}</td>
-                <td>{{template.created_date | date:'mediumDate'}}</td>
-                <td>{{template.last_modified_by}}</td>
-                <td>{{template.last_modified_date | date:'mediumDate'}}</td>
+                <td>{{template.createdBy}}</td>
+                <td>{{template.createdDate | date:'mediumDate'}}</td>
+                <td>{{template.lastModifiedBy}}</td>
+                <td>{{template.lastModifiedDate | date:'mediumDate'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
