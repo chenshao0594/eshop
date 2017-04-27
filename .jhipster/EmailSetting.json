@@ -46,19 +46,19 @@
             ]
         },
         {
-            "fieldName": "created_by",
+            "fieldName": "createdBy",
             "fieldType": "String"
         },
         {
-            "fieldName": "created_date",
+            "fieldName": "createdDate",
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "last_modified_by",
+            "fieldName": "lastModifiedBy",
             "fieldType": "String"
         },
         {
-            "fieldName": "last_modified_date",
+            "fieldName": "lastModifiedDate",
             "fieldType": "LocalDate"
         }
     ],

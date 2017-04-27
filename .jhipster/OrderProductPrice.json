@@ -38,25 +38,25 @@
             "fieldType": "Boolean"
         },
         {
-            "fieldName": "created_by",
+            "fieldName": "createdBy",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "created_date",
+            "fieldName": "createdDate",
             "fieldType": "LocalDate"
         },
         {
-            "fieldName": "last_modified_by",
+            "fieldName": "lastModifiedBy",
             "fieldType": "String",
             "fieldValidateRules": [
                 "required"
             ]
         },
         {
-            "fieldName": "last_modified_date",
+            "fieldName": "lastModifiedDate",
             "fieldType": "LocalDate"
         }
     ],
