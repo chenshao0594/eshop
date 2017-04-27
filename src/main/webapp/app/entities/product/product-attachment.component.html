@@ -7,9 +7,9 @@
 		<section widget class="widget">
 			<div class="widget-body">
 					<div class="form-actions fileupload-buttonbar no-margin">
-						<button class="btn btn-default add-files-btn fileinput-button mr-xs">
-							<i class="glyphicon glyphicon-plus"></i> <span>Add files...</span> <input type="file"
-								(change)="setFileData($event,'content', false)"
+						<button class="btn btn-primary add-files-btn fileinput-button mr-xs">
+							 <span class="fa fa-plus"></span> <span>Add files...</span> <input type="file"
+								(change)="setFileData($event, attachment, 'content', false)"
 								jhiTranslate="entity.action.addblob">
 						</button>
 					</div>
@@ -26,7 +26,7 @@
 								<p class="size">{{ item?.size/1024 | number:'.2' }} KB</p>
 							</td>
 							<td class="width-150">
-								<button class="btn btn-danger btn-sm delete" >
+								<button  type="button"  class="btn btn-danger btn-sm delete" (click)="deleteAttachment(item.id)" >
 									<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
 								</button>
 							</td>

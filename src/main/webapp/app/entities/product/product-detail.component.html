@@ -1,9 +1,8 @@
 <div *ngIf="product">
 	<h2 class="page-title">
-		<a [routerLink]="['attachments']">
-		<img src="/content/images/hipster.png" class="rounded float-left">
-		</a>
-		<span jhiTranslate="eshopApp.product.detail.title">Product</span> <small>{{product.id}}</small>
+		<a [routerLink]="['attachments']"> <img src="/content/images/hipster.png"
+			class="rounded float-left">
+		</a> <span jhiTranslate="eshopApp.product.detail.title">Product</span> <small>{{product.id}}</small>
 		<button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
 			<span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
 		</button>
@@ -11,33 +10,12 @@
 	<section class="widget">
 		<div class="body">
 			<fieldset>
-				<legend class="section">Info</legend>
+				<legend class="section">Basic Info</legend>
 				<div class="row">
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.name">Name</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.name}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productHeight">Product Height</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productHeight}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productWeight">Product Weight</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productWeight}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productWidth">Product Width</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productWidth}}</p>
-					</div>
-					
-					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productLength">Product Length</label>
-					<div class="col-4">
-						<p class="form-control input-transparent">{{product.productLength}}</p>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.productShipeable">Product Shipeable</label>
@@ -59,7 +37,6 @@
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.sortOrder}}</p>
 					</div>
-					
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.available">Available</label>
 					<div class="col-4">
@@ -109,8 +86,64 @@
 			</fieldset>
 			<fieldset>
 				<legend class="section">Price Info</legend>
+				<div class="row">price ....</div>
+			</fieldset>
+			<fieldset>
+				<legend class="section">SEO Info</legend>
 				<div class="row">
-					price ....
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.searchUrl">SeUrl</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.searchUrl}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.metatagKeywords" >Metatag
+						Keywords</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.metatagKeywords}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.metatagTitle" >Metatag Title</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.metatagTitle}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.metatagDescription">Metatag
+						Description</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.metatagDescription}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productHighlight" >Product
+						Highlight</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productHighlight}}</p>
+					</div>
+				</div>
+			</fieldset>
+			<fieldset>
+				<legend class="section">Shipping Info</legend>
+				<div class="row">
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productHeight">Product Height</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productHeight}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productWeight">Product Weight</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productWeight}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productWidth">Product Width</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productWidth}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.product.productLength">Product Length</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{product.productLength}}</p>
+					</div>
 				</div>
 			</fieldset>
 			<fieldset>

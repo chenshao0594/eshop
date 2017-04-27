@@ -19,6 +19,7 @@ const URL = '/api/attachments';
 export class ProductAttachmentComponent  implements OnInit {
     product: Product;
     boId: number;
+    attachment: Attachment;
     attachments : Attachment[];
     private subscription: any;
     private eventSubscriber: Subscription;
@@ -56,10 +57,10 @@ export class ProductAttachmentComponent  implements OnInit {
         return this.dataUtils.openFile(contentType, field);
     }
 
-    setFileData(event, field, isImage) {
+    setFileData(event, attachment, field, isImage) {
         if (event.target.files && event.target.files[0]) {
             const file = event.target.files[0];
-            Attachment attachment = new Attachment();
+            attachment = new Attachment();
             attachment['boName'] ='product';
             attachment['boId'] = this.boId;
             attachment['name'] = file.name;
@@ -83,6 +84,11 @@ export class ProductAttachmentComponent  implements OnInit {
 
     }
     clear() {
+        // this.activeModal.dismiss('cancel');
+    }
+    
+    deleteAttachment(attachmentId: number) {
+        this.attachmentService.delete(attachmentId);
         // this.activeModal.dismiss('cancel');
     }
 

@@ -16,7 +16,6 @@ import {
     productPopupRoute,
     ProductResolvePagingParams,
     ProductAttachmentComponent,
-    HideOnUpload,
     
 } from './';
 
@@ -28,9 +27,8 @@ const ENTITY_STATES = [
 @NgModule({
     imports: [
         EshopSharedModule,
-        RouterModule.forRoot(ENTITY_STATES, { useHash: true }),
-        FileUploadModule
-    ],
+        RouterModule.forRoot(ENTITY_STATES, { useHash: true })
+        ],
     declarations: [
         ProductComponent,
         ProductDetailComponent,
@@ -39,7 +37,6 @@ const ENTITY_STATES = [
         ProductPopupComponent,
         ProductDeletePopupComponent,
         ProductAttachmentComponent,
-        HideOnUpload,
     ],
     entryComponents: [
         ProductComponent,

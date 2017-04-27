@@ -141,44 +141,7 @@
 						</div>
 					</template>
 					</ngb-tab> <!-- basic info end -->
-					<!-- images -->
-					<div *ngIf="product.id">
-					<ngb-tab>
-						<template ngbTabTitle> 
-							<span jhiTranslate="eshopApp.product.tabs.images"></span> 
-						</template> 
-						<template ngbTabContent>
-						 <div class="row">
-            			 <div class="col-md-10">
-                			<ul class="row thumbnails">
-                    			<li class="col-sm-4">
-                        			<div class="thumbnail">
-                            			<img src="/assets/img/10.jpg" alt="">
-                            			<div class="caption">
-                                			<p><a href="#" class="btn btn-danger">Favorite</a> <a href="#" class="btn btn-inverse">Read more...</a></p>
-                            			</div>
-                        			</div>
-                    			</li>
-                    			
-                    			<li class="col-sm-4">
-                        			<div class="thumbnail">
-                            			<img src="/assets/img/10.jpg" alt="">
-                            			<div class="caption">
-                                			<p>
-                                			 <input type="file" class="btn btn-inverse" (change)="setFileData($event, false)" jhiTranslate="entity.action.addblob"/>
-                                			</p>
-                            			</div>
-                        			</div>
-                    			</li>
-                    		</ul>
-                    	</div>
-						</div> 
-						</template> 
-					</ngb-tab>
-					</div>
-					
 					<!-- shipping info -->	
-					
 					<!-- seo -->		
 					<ngb-tab> 
 						<template ngbTabTitle>

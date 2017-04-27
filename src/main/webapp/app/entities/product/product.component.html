@@ -29,15 +29,11 @@
 					<tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse"
 						[callback]="transition.bind(this)">
 						<th jhiSortBy="name"><span jhiTranslate="eshopApp.product.name">Name</span></th>
-						<th jhiSortBy="dateAvailable"><span jhiTranslate="eshopApp.product.dateAvailable">Date
-								Available</span></th>
 						<th jhiSortBy="available"><span jhiTranslate="eshopApp.product.available">Available</span>
 						</th>
 						<th jhiSortBy="preOrder"><span jhiTranslate="eshopApp.product.preOrder">Pre Order</span>
 						</th>
 						<th jhiSortBy="sku"><span jhiTranslate="eshopApp.product.sku">Sku</span></th>
-						<th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.product.taxClass">Tax
-								Class</span></th>
 						<th jhiSortBy="manufacturer.id"><span jhiTranslate="eshopApp.product.manufacturer">Manufacturer</span>
 						</th>
 						<th jhiSortBy="type.id"><span jhiTranslate="eshopApp.product.type">Type</span></th>
@@ -50,18 +46,12 @@
 				<tbody>
 					<tr *ngFor="let product of products ;trackBy: trackId">
 						<td><a [routerLink]="['../product', product.id ]">{{product.name}}</a></td>
-						<td>{{product.dateAvailable | date:'mediumDate'}}</td>
 						<td>{{product.available}}</td>
 						<td>{{product.preOrder}}</td>
 						<td>{{product.sku}}</td>
 						<td>
-							<div *ngIf="product.taxClass">
-								<a [routerLink]="['../tax-class', product.taxClass?.id ]">{{product.taxClass?.code}}</a>
-							</div>
-						</td>
-						<td>
 							<div *ngIf="product.manufacturer">
-								<a [routerLink]="['../manufacturer', product.manufacturer?.id ]">{{product.manufacturer?.id}}</a>
+								<a [routerLink]="['../manufacturer', product.manufacturer?.id ]">{{product.manufacturer?.code}}</a>
 							</div>
 						</td>
 						<td>
