@@ -3,40 +3,49 @@
     <h2><span jhiTranslate="eshopApp.shoppingCart.detail.title">Shopping Cart</span> {{shoppingCart.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.shoppingCart.customerId" for="field_customerId">Customer Id</label>
-            <input type="number" class="form-control" name="customerId" id="field_customerId"
-                [(ngModel)]="shoppingCart.customerId"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.shoppingCart.shoppingCartCode" for="field_shoppingCartCode">Shopping Cart Code</label>
-            <input type="text" class="form-control" name="shoppingCartCode" id="field_shoppingCartCode"
-                [(ngModel)]="shoppingCart.shoppingCartCode"
-             />
-        </div>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eshopApp.shoppingCart.customerId">Customer Id</span></dt>
+        <dd>
+            <span>{{shoppingCart.customerId}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.shoppingCart.shoppingCartCode">Shopping Cart Code</span></dt>
+        <dd>
+            <span>{{shoppingCart.shoppingCartCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.shoppingCart.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{shoppingCart.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.shoppingCart.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{shoppingCart.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.shoppingCart.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{shoppingCart.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.shoppingCart.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{shoppingCart.lastModifiedDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.shoppingCart.merchantStore">Merchant Store</span></dt>
+        <dd>
+            <div *ngIf="shoppingCart.merchantStore">
+                <a [routerLink]="['/merchant-store', shoppingCart.merchantStore?.id]">{{shoppingCart.merchantStore?.id}}</a>
+            </div>
+        </dd>
+    </dl>
 
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.shoppingCart.merchantStore" for="field_merchantStore">Merchant Store</label>
-            <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="shoppingCart.merchantStore" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="merchantStoreOption.id === shoppingCart.merchantStore?.id ? shoppingCart.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
-            </select>
-        </div>
-    </div>
-
-    <button type="button"
+    <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
     </button>
 
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'shopping-cart/'+ shoppingCart.id + '/edit'} }]"
+            replaceUrl="true"
             class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
-    </form>
 </div>

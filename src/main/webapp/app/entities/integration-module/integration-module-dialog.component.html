@@ -2,66 +2,98 @@
 
     <div class="modal-header">
         <h4 class="modal-title" id="myIntegrationModuleLabel" jhiTranslate="eshopApp.integrationModule.home.createOrEditLabel">Create or edit a Integration Module</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="row justify-content-center">
-        <div class="col-5 form-group" [hidden]="!integrationModule.id">
+        <div class="form-group" [hidden]="!integrationModule.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="integrationModule.id" readonly />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.configDetails" for="field_configDetails">Config Details</label>
             <input type="text" class="form-control" name="configDetails" id="field_configDetails"
                 [(ngModel)]="integrationModule.configDetails"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.customModule" for="field_customModule">Custom Module</label>
             <input type="checkbox" class="form-control" name="customModule" id="field_customModule"
                 [(ngModel)]="integrationModule.customModule"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.type" for="field_type">Type</label>
             <input type="text" class="form-control" name="type" id="field_type"
                 [(ngModel)]="integrationModule.type"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.code" for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
                 [(ngModel)]="integrationModule.code"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.regions" for="field_regions">Regions</label>
             <input type="text" class="form-control" name="regions" id="field_regions"
                 [(ngModel)]="integrationModule.regions"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.image" for="field_image">Image</label>
             <input type="text" class="form-control" name="image" id="field_image"
                 [(ngModel)]="integrationModule.image"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.module" for="field_module">Module</label>
             <input type="text" class="form-control" name="module" id="field_module"
                 [(ngModel)]="integrationModule.module"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.configuration" for="field_configuration">Configuration</label>
             <input type="text" class="form-control" name="configuration" id="field_configuration"
                 [(ngModel)]="integrationModule.configuration"
              />
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="integrationModule.createdBy"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.createdDate" for="field_createdDate">Created Date</label>
+            <div class="input-group">
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="integrationModule.createdDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                [(ngModel)]="integrationModule.lastModifiedBy"
+             />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+            <div class="input-group">
+                <input id="field_lastModifiedDate" type="text" class="form-control" name="lastModifiedDate" ngbDatepicker  #lastModifiedDateDp="ngbDatepicker" [(ngModel)]="integrationModule.lastModifiedDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="lastModifiedDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
 
     </div>
-    </div> 
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>

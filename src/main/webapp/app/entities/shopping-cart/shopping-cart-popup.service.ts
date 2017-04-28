@@ -21,6 +21,20 @@ export class ShoppingCartPopupService {
 
         if (id) {
             this.shoppingCartService.find(id).subscribe((shoppingCart) => {
+                if (shoppingCart.createdDate) {
+                    shoppingCart.createdDate = {
+                        year: shoppingCart.createdDate.getFullYear(),
+                        month: shoppingCart.createdDate.getMonth() + 1,
+                        day: shoppingCart.createdDate.getDate()
+                    };
+                }
+                if (shoppingCart.lastModifiedDate) {
+                    shoppingCart.lastModifiedDate = {
+                        year: shoppingCart.lastModifiedDate.getFullYear(),
+                        month: shoppingCart.lastModifiedDate.getMonth() + 1,
+                        day: shoppingCart.lastModifiedDate.getDate()
+                    };
+                }
                 this.shoppingCartModalRef(component, shoppingCart);
             });
         } else {

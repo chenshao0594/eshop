@@ -2,34 +2,35 @@
 
     <div class="modal-header">
         <h4 class="modal-title" id="myTaxRateLabel" jhiTranslate="eshopApp.taxRate.home.createOrEditLabel">Create or edit a Tax Rate</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="row justify-content-center">
-        <div class="col-5 form-group" [hidden]="!taxRate.id">
+        <div class="form-group" [hidden]="!taxRate.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="taxRate.id" readonly />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.taxRate.piggyback" for="field_piggyback">Piggyback</label>
             <input type="checkbox" class="form-control" name="piggyback" id="field_piggyback"
                 [(ngModel)]="taxRate.piggyback"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.taxRate.stateProvince" for="field_stateProvince">State Province</label>
             <input type="text" class="form-control" name="stateProvince" id="field_stateProvince"
                 [(ngModel)]="taxRate.stateProvince"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.taxRate.taxPriority" for="field_taxPriority">Tax Priority</label>
             <input type="number" class="form-control" name="taxPriority" id="field_taxPriority"
                 [(ngModel)]="taxRate.taxPriority"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.taxRate.code" for="field_code">Code</label>
             <input type="text" class="form-control" name="code" id="field_code"
                 [(ngModel)]="taxRate.code"
@@ -41,57 +42,93 @@
                 </small>
             </div>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.taxRate.taxRate" for="field_taxRate">Tax Rate</label>
             <input type="number" class="form-control" name="taxRate" id="field_taxRate"
                 [(ngModel)]="taxRate.taxRate"
              />
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.taxRate.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="taxRate.createdBy"
+            required />
+            <div [hidden]="!(editForm.controls.createdBy?.dirty && editForm.controls.createdBy?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.createdBy?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.taxRate.createdDate" for="field_createdDate">Created Date</label>
+            <div class="input-group">
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="taxRate.createdDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.taxRate.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                [(ngModel)]="taxRate.lastModifiedBy"
+            required />
+            <div [hidden]="!(editForm.controls.lastModifiedBy?.dirty && editForm.controls.lastModifiedBy?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastModifiedBy?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.taxRate.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+            <div class="input-group">
+                <input id="field_lastModifiedDate" type="text" class="form-control" name="lastModifiedDate" ngbDatepicker  #lastModifiedDateDp="ngbDatepicker" [(ngModel)]="taxRate.lastModifiedDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="lastModifiedDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
 
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label jhiTranslate="eshopApp.taxRate.country" for="field_country">Country</label>
             <select class="form-control" id="field_country" name="country" [(ngModel)]="taxRate.country" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="countryOption.id === taxRate.country?.id ? taxRate.country : countryOption" *ngFor="let countryOption of countries; trackBy: trackCountryById">{{countryOption.id}}</option>
             </select>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label jhiTranslate="eshopApp.taxRate.parent" for="field_parent">Parent</label>
             <select class="form-control" id="field_parent" name="parent" [(ngModel)]="taxRate.parent" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="taxRateOption.id === taxRate.parent?.id ? taxRate.parent : taxRateOption" *ngFor="let taxRateOption of taxrates; trackBy: trackTaxRateById">{{taxRateOption.id}}</option>
             </select>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label jhiTranslate="eshopApp.taxRate.taxClass" for="field_taxClass">Tax Class</label>
             <select class="form-control" id="field_taxClass" name="taxClass" [(ngModel)]="taxRate.taxClass" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="taxClassOption.id === taxRate.taxClass?.id ? taxRate.taxClass : taxClassOption" *ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.id}}</option>
             </select>
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label jhiTranslate="eshopApp.taxRate.merchantStore" for="field_merchantStore">Merchant Store</label>
             <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="taxRate.merchantStore" >
                 <option [ngValue]="null"></option>
                 <option [ngValue]="merchantStoreOption.id === taxRate.merchantStore?.id ? taxRate.merchantStore : merchantStoreOption" *ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.id}}</option>
             </select>
         </div>
-        <div class="col-5 form-group">
-            <label jhiTranslate="eshopApp.taxRate.taxClass" for="field_taxClass">Tax Class</label>
-            <select class="form-control" id="field_taxClass" name="taxClass" [(ngModel)]="taxRate.taxClass" >
+        <div class="form-group">
+            <label jhiTranslate="eshopApp.taxRate.zone" for="field_zone">Zone</label>
+            <select class="form-control" id="field_zone" name="zone" [(ngModel)]="taxRate.zone">
                 <option [ngValue]="null"></option>
-                <option [ngValue]="taxClassOption.id === taxRate.taxClass?.id ? taxRate.taxClass : taxClassOption" *ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.id}}</option>
-            </select>
-        </div>
-        <div class="col-5 form-group">
-            <label jhiTranslate="eshopApp.taxRate.parent" for="field_parent">Parent</label>
-            <select class="form-control" id="field_parent" name="parent" [(ngModel)]="taxRate.parent" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="taxRateOption.id === taxRate.parent?.id ? taxRate.parent : taxRateOption" *ngFor="let taxRateOption of taxrates; trackBy: trackTaxRateById">{{taxRateOption.id}}</option>
+                <option [ngValue]="zoneOption.id === taxRate.zone?.id ? taxRate.zone : zoneOption" *ngFor="let zoneOption of zones; trackBy: trackZoneById">{{zoneOption.id}}</option>
             </select>
         </div>
     </div>
-    </div> 
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>

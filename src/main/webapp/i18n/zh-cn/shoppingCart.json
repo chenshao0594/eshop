@@ -18,6 +18,10 @@
             },
             "customerId": "Customer Id",
             "shoppingCartCode": "Shopping Cart Code",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date",
             "lineItems": "Line Items",
             "merchantStore": "Merchant Store"
         }

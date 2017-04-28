@@ -23,7 +23,11 @@
             "regions": "Regions",
             "image": "Image",
             "module": "Module",
-            "configuration": "Configuration"
+            "configuration": "Configuration",
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date"
         }
     }
 }

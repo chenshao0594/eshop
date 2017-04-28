@@ -21,7 +21,8 @@ export class ShoppingCartDialogComponent implements OnInit {
     isSaving: boolean;
 
     merchantstores: MerchantStore[];
-    constructor(
+            constructor(
+        public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private shoppingCartService: ShoppingCartService,
@@ -29,7 +30,6 @@ export class ShoppingCartDialogComponent implements OnInit {
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['shoppingCart']);
-        this.shoppingCart = new ShoppingCart();
     }
 
     ngOnInit() {
@@ -39,7 +39,7 @@ export class ShoppingCartDialogComponent implements OnInit {
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
     }
     clear() {
-        window.history.back();
+        this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -58,7 +58,7 @@ export class ShoppingCartDialogComponent implements OnInit {
     private onSaveSuccess(result: ShoppingCart) {
         this.eventManager.broadcast({ name: 'shoppingCartListModification', content: 'OK'});
         this.isSaving = false;
-        this.shoppingCart = result;
+        this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

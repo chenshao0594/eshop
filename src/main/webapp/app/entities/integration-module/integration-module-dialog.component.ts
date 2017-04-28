@@ -18,14 +18,14 @@ export class IntegrationModuleDialogComponent implements OnInit {
     integrationModule: IntegrationModule;
     authorities: any[];
     isSaving: boolean;
-    constructor(
+            constructor(
+        public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private integrationModuleService: IntegrationModuleService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['integrationModule']);
-        this.integrationModule = new IntegrationModule();
     }
 
     ngOnInit() {
@@ -33,7 +33,7 @@ export class IntegrationModuleDialogComponent implements OnInit {
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
     }
     clear() {
-        window.history.back();
+        this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -52,7 +52,7 @@ export class IntegrationModuleDialogComponent implements OnInit {
     private onSaveSuccess(result: IntegrationModule) {
         this.eventManager.broadcast({ name: 'integrationModuleListModification', content: 'OK'});
         this.isSaving = false;
-        this.integrationModule = result;
+        this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {

@@ -56,7 +56,15 @@ export const productOptionValueRoute: Routes = [
         pageTitle: 'eshopApp.productOptionValue.home.title'
     },
     canActivate: [UserRouteAccessService]
-  }
+  },{
+      path: 'product-option-value-new',
+      component: ProductOptionValueDialogComponent,
+      data: {
+          authorities: ['ROLE_USER'],
+          pageTitle: 'eshopApp.productOptionValue.home.title'
+      },
+      canActivate: [UserRouteAccessService],
+    }
 ];
 
 export const productOptionValuePopupRoute: Routes = [
@@ -71,14 +79,5 @@ export const productOptionValuePopupRoute: Routes = [
     },
     canActivate: [UserRouteAccessService],
     outlet: 'popup'
-  },{
-      path: 'product-option-value-new',
-      component: ProductOptionValueDialogComponent,
-      data: {
-          authorities: ['ROLE_USER'],
-          pageTitle: 'eshopApp.productOptionValue.home.title'
-      },
-      canActivate: [UserRouteAccessService],
-      outlet: 'popup' 
-    }
+  }
 ];

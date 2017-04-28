@@ -11,6 +11,7 @@ import { TaxRateService } from './tax-rate.service';
 import { Country, CountryService } from '../country';
 import { TaxClass, TaxClassService } from '../tax-class';
 import { MerchantStore, MerchantStoreService } from '../merchant-store';
+import { Zone, ZoneService } from '../zone';
 
 @Component({
     selector: 'jhi-tax-rate-dialog',
@@ -29,17 +30,20 @@ export class TaxRateDialogComponent implements OnInit {
     taxclasses: TaxClass[];
 
     merchantstores: MerchantStore[];
-    constructor(
+
+    zones: Zone[];
+            constructor(
+        public activeModal: NgbActiveModal,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private taxRateService: TaxRateService,
         private countryService: CountryService,
         private taxClassService: TaxClassService,
         private merchantStoreService: MerchantStoreService,
+        private zoneService: ZoneService,
         private eventManager: EventManager
     ) {
         this.jhiLanguageService.setLocations(['taxRate']);
-        this.taxRate = new TaxRate();
     }
 
     ngOnInit() {
@@ -53,9 +57,18 @@ export class TaxRateDialogComponent implements OnInit {
             (res: Response) => { this.taxclasses = res.json(); }, (res: Response) => this.onError(res.json()));
         this.merchantStoreService.query().subscribe(
             (res: Response) => { this.merchantstores = res.json(); }, (res: Response) => this.onError(res.json()));
+        this.zoneService.query({filter: 'zone-is-null'}).subscribe((res: Response) => {
+            if (!this.taxRate.zone || !this.taxRate.zone.id) {
+                this.zones = res.json();
+            } else {
+                this.zoneService.find(this.taxRate.zone.id).subscribe((subRes: Zone) => {
+                    this.zones = [subRes].concat(res.json());
+                }, (subRes: Response) => this.onError(subRes.json()));
+            }
+        }, (res: Response) => this.onError(res.json()));
     }
     clear() {
-        window.history.back();
+        this.activeModal.dismiss('cancel');
     }
 
     save() {
@@ -74,7 +87,7 @@ export class TaxRateDialogComponent implements OnInit {
     private onSaveSuccess(result: TaxRate) {
         this.eventManager.broadcast({ name: 'taxRateListModification', content: 'OK'});
         this.isSaving = false;
-        this.taxRate = result;
+        this.activeModal.dismiss(result);
     }
 
     private onSaveError(error) {
@@ -104,6 +117,10 @@ export class TaxRateDialogComponent implements OnInit {
     }
 
     trackMerchantStoreById(index: number, item: MerchantStore) {
+        return item.id;
+    }
+
+    trackZoneById(index: number, item: Zone) {
         return item.id;
     }
 }

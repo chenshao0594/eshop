@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="eshopApp.integrationModule.home.title">Integration Modules</span>
-        <button class="btn btn-primary float-right create-integration-module" [routerLink]="['../integration-module-new']">
+        <button class="btn btn-primary float-right create-integration-module" [routerLink]="['/', { outlets: { popup: ['integration-module-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="eshopApp.integrationModule.home.createLabel">
             Create new Integration Module
@@ -38,6 +38,10 @@
             <th jhiSortBy="image"><span jhiTranslate="eshopApp.integrationModule.image">Image</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="module"><span jhiTranslate="eshopApp.integrationModule.module">Module</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="configuration"><span jhiTranslate="eshopApp.integrationModule.configuration">Configuration</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="eshopApp.integrationModule.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="eshopApp.integrationModule.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="eshopApp.integrationModule.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="eshopApp.integrationModule.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -52,6 +56,10 @@
                 <td>{{integrationModule.image}}</td>
                 <td>{{integrationModule.module}}</td>
                 <td>{{integrationModule.configuration}}</td>
+                <td>{{integrationModule.createdBy}}</td>
+                <td>{{integrationModule.createdDate | date:'mediumDate'}}</td>
+                <td>{{integrationModule.lastModifiedBy}}</td>
+                <td>{{integrationModule.lastModifiedDate | date:'mediumDate'}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
@@ -59,6 +67,13 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'integration-module/'+ integrationModule.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'integration-module/'+ integrationModule.id + '/delete'} }]"

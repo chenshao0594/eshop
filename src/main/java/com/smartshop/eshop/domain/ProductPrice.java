@@ -43,8 +43,8 @@ public class ProductPrice extends BusinessDomain<Long, ProductPrice> implements 
 	@Column(name = "default_price")
 	private Boolean defaultPrice;
 
-	@Column(name = "d_efaultpricecode")
-	private String dEFAULTPRICECODE;
+	@Column(name = "default_price_code")
+	private String defaultPriceCode;
 
 	@NotNull
 	@Column(name = "code", nullable = false)
@@ -97,17 +97,17 @@ public class ProductPrice extends BusinessDomain<Long, ProductPrice> implements 
 		this.defaultPrice = defaultPrice;
 	}
 
-	public String getdEFAULTPRICECODE() {
-		return dEFAULTPRICECODE;
+	public String getdefaultPriceCode() {
+		return defaultPriceCode;
 	}
 
-	public ProductPrice dEFAULTPRICECODE(String dEFAULTPRICECODE) {
-		this.dEFAULTPRICECODE = dEFAULTPRICECODE;
+	public ProductPrice defaultPriceCode(String defaultPriceCode) {
+		this.defaultPriceCode = defaultPriceCode;
 		return this;
 	}
 
-	public void setdEFAULTPRICECODE(String dEFAULTPRICECODE) {
-		this.dEFAULTPRICECODE = dEFAULTPRICECODE;
+	public void setDefaultPriceCode(String defaultPriceCode) {
+		this.defaultPriceCode = defaultPriceCode;
 	}
 
 	public String getCode() {

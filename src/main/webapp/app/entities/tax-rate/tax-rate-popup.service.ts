@@ -21,6 +21,20 @@ export class TaxRatePopupService {
 
         if (id) {
             this.taxRateService.find(id).subscribe((taxRate) => {
+                if (taxRate.createdDate) {
+                    taxRate.createdDate = {
+                        year: taxRate.createdDate.getFullYear(),
+                        month: taxRate.createdDate.getMonth() + 1,
+                        day: taxRate.createdDate.getDate()
+                    };
+                }
+                if (taxRate.lastModifiedDate) {
+                    taxRate.lastModifiedDate = {
+                        year: taxRate.lastModifiedDate.getFullYear(),
+                        month: taxRate.lastModifiedDate.getMonth() + 1,
+                        day: taxRate.lastModifiedDate.getDate()
+                    };
+                }
                 this.taxRateModalRef(component, taxRate);
             });
         } else {

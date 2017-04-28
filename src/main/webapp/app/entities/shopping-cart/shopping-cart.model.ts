@@ -5,6 +5,10 @@ export class ShoppingCart {
         public id?: number,
         public customerId?: number,
         public shoppingCartCode?: string,
+        public createdBy?: string,
+        public createdDate?: any,
+        public lastModifiedBy?: string,
+        public lastModifiedDate?: any,
         public lineItems?: ShoppingCartItem,
         public merchantStore?: MerchantStore,
     ) {

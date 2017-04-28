@@ -2,29 +2,74 @@
 
     <div class="modal-header">
         <h4 class="modal-title" id="myShoppingCartLabel" jhiTranslate="eshopApp.shoppingCart.home.createOrEditLabel">Create or edit a Shopping Cart</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
     </div>
     <div class="modal-body">
         <jhi-alert-error></jhi-alert-error>
-        <div class="row justify-content-center">
-        <div class="col-5 form-group" [hidden]="!shoppingCart.id">
+        <div class="form-group" [hidden]="!shoppingCart.id">
             <label for="id" jhiTranslate="global.field.id">ID</label>
             <input type="text" class="form-control" id="id" name="id"
                    [(ngModel)]="shoppingCart.id" readonly />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.shoppingCart.customerId" for="field_customerId">Customer Id</label>
             <input type="number" class="form-control" name="customerId" id="field_customerId"
                 [(ngModel)]="shoppingCart.customerId"
              />
         </div>
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label class="form-control-label" jhiTranslate="eshopApp.shoppingCart.shoppingCartCode" for="field_shoppingCartCode">Shopping Cart Code</label>
             <input type="text" class="form-control" name="shoppingCartCode" id="field_shoppingCartCode"
                 [(ngModel)]="shoppingCart.shoppingCartCode"
              />
         </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.shoppingCart.createdBy" for="field_createdBy">Created By</label>
+            <input type="text" class="form-control" name="createdBy" id="field_createdBy"
+                [(ngModel)]="shoppingCart.createdBy"
+            required />
+            <div [hidden]="!(editForm.controls.createdBy?.dirty && editForm.controls.createdBy?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.createdBy?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.shoppingCart.createdDate" for="field_createdDate">Created Date</label>
+            <div class="input-group">
+                <input id="field_createdDate" type="text" class="form-control" name="createdDate" ngbDatepicker  #createdDateDp="ngbDatepicker" [(ngModel)]="shoppingCart.createdDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="createdDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.shoppingCart.lastModifiedBy" for="field_lastModifiedBy">Last Modified By</label>
+            <input type="text" class="form-control" name="lastModifiedBy" id="field_lastModifiedBy"
+                [(ngModel)]="shoppingCart.lastModifiedBy"
+            required />
+            <div [hidden]="!(editForm.controls.lastModifiedBy?.dirty && editForm.controls.lastModifiedBy?.invalid)">
+                <small class="form-text text-danger"
+                   [hidden]="!editForm.controls.lastModifiedBy?.errors?.required" jhiTranslate="entity.validation.required">
+                   This field is required.
+                </small>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="eshopApp.shoppingCart.lastModifiedDate" for="field_lastModifiedDate">Last Modified Date</label>
+            <div class="input-group">
+                <input id="field_lastModifiedDate" type="text" class="form-control" name="lastModifiedDate" ngbDatepicker  #lastModifiedDateDp="ngbDatepicker" [(ngModel)]="shoppingCart.lastModifiedDate"
+                />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" (click)="lastModifiedDateDp.toggle()"><i class="fa fa-calendar"></i></button>
+                </span>
+            </div>
+        </div>
 
-        <div class="col-5 form-group">
+        <div class="form-group">
             <label jhiTranslate="eshopApp.shoppingCart.merchantStore" for="field_merchantStore">Merchant Store</label>
             <select class="form-control" id="field_merchantStore" name="merchantStore" [(ngModel)]="shoppingCart.merchantStore" >
                 <option [ngValue]="null"></option>
@@ -32,7 +77,6 @@
             </select>
         </div>
     </div>
-    </div> 
     <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
             <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>

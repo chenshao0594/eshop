@@ -26,7 +26,7 @@
                 <constraints nullable="true" />
             </column>
 
-            <column name="d_efaultpricecode" type="varchar(255)">
+            <column name="d_efault_price_code" type="varchar(255)">
                 <constraints nullable="true" />
             </column>
 

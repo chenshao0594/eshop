@@ -3,16 +3,21 @@ import { Http, Response, URLSearchParams, BaseRequestOptions } from '@angular/ht
 import { Observable } from 'rxjs/Rx';
 
 import { ShoppingCart } from './shopping-cart.model';
+import { DateUtils } from 'ng-jhipster';
 @Injectable()
 export class ShoppingCartService {
 
     private resourceUrl = 'api/shopping-carts';
-    private resourceSearchUrl = 'api/shopping-carts/_search';
+    private resourceSearchUrl = 'api/_search/shopping-carts';
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private dateUtils: DateUtils) { }
 
     create(shoppingCart: ShoppingCart): Observable<ShoppingCart> {
         const copy: ShoppingCart = Object.assign({}, shoppingCart);
+        copy.createdDate = this.dateUtils
+            .convertLocalDateToServer(shoppingCart.createdDate);
+        copy.lastModifiedDate = this.dateUtils
+            .convertLocalDateToServer(shoppingCart.lastModifiedDate);
         return this.http.post(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -20,6 +25,10 @@ export class ShoppingCartService {
 
     update(shoppingCart: ShoppingCart): Observable<ShoppingCart> {
         const copy: ShoppingCart = Object.assign({}, shoppingCart);
+        copy.createdDate = this.dateUtils
+            .convertLocalDateToServer(shoppingCart.createdDate);
+        copy.lastModifiedDate = this.dateUtils
+            .convertLocalDateToServer(shoppingCart.lastModifiedDate);
         return this.http.put(this.resourceUrl, copy).map((res: Response) => {
             return res.json();
         });
@@ -27,13 +36,19 @@ export class ShoppingCartService {
 
     find(id: number): Observable<ShoppingCart> {
         return this.http.get(`${this.resourceUrl}/${id}`).map((res: Response) => {
-            return res.json();
+            const jsonResponse = res.json();
+            jsonResponse.createdDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.createdDate);
+            jsonResponse.lastModifiedDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse.lastModifiedDate);
+            return jsonResponse;
         });
     }
 
     query(req?: any): Observable<Response> {
         const options = this.createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
+            .map((res: any) => this.convertResponse(res))
         ;
     }
 
@@ -44,8 +59,23 @@ export class ShoppingCartService {
     search(req?: any): Observable<Response> {
         const options = this.createRequestOption(req);
         return this.http.get(this.resourceSearchUrl, options)
+            .map((res: any) => this.convertResponse(res))
         ;
     }
+
+
+    private convertResponse(res: any): any {
+        const jsonResponse = res.json();
+        for (let i = 0; i < jsonResponse.length; i++) {
+            jsonResponse[i].createdDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].createdDate);
+            jsonResponse[i].lastModifiedDate = this.dateUtils
+                .convertLocalDateFromServer(jsonResponse[i].lastModifiedDate);
+        }
+        res._body = jsonResponse;
+        return res;
+    }
+
     private createRequestOption(req?: any): BaseRequestOptions {
         const options: BaseRequestOptions = new BaseRequestOptions();
         if (req) {

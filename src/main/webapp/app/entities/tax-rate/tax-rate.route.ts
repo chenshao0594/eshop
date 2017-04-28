@@ -6,7 +6,7 @@ import { PaginationUtil } from 'ng-jhipster';
 
 import { TaxRateComponent } from './tax-rate.component';
 import { TaxRateDetailComponent } from './tax-rate-detail.component';
-import { TaxRatePopupComponent, TaxRateDialogComponent } from './tax-rate-dialog.component';
+import { TaxRatePopupComponent } from './tax-rate-dialog.component';
 import { TaxRateDeletePopupComponent } from './tax-rate-delete-dialog.component';
 
 import { Principal } from '../../shared';
@@ -40,13 +40,6 @@ export const taxRateRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
-    path: 'tax-rate-new',
-    component: TaxRateDialogComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.taxRate.home.title'
-    },
-  }, {
     path: 'tax-rate/:id',
     component: TaxRateDetailComponent,
     data: {
@@ -58,6 +51,16 @@ export const taxRateRoute: Routes = [
 ];
 
 export const taxRatePopupRoute: Routes = [
+  {
+    path: 'tax-rate-new',
+    component: TaxRatePopupComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.taxRate.home.title'
+    },
+    canActivate: [UserRouteAccessService],
+    outlet: 'popup'
+  },
   {
     path: 'tax-rate/:id/edit',
     component: TaxRatePopupComponent,

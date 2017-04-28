@@ -21,6 +21,20 @@ export class IntegrationModulePopupService {
 
         if (id) {
             this.integrationModuleService.find(id).subscribe((integrationModule) => {
+                if (integrationModule.createdDate) {
+                    integrationModule.createdDate = {
+                        year: integrationModule.createdDate.getFullYear(),
+                        month: integrationModule.createdDate.getMonth() + 1,
+                        day: integrationModule.createdDate.getDate()
+                    };
+                }
+                if (integrationModule.lastModifiedDate) {
+                    integrationModule.lastModifiedDate = {
+                        year: integrationModule.lastModifiedDate.getFullYear(),
+                        month: integrationModule.lastModifiedDate.getMonth() + 1,
+                        day: integrationModule.lastModifiedDate.getDate()
+                    };
+                }
                 this.integrationModuleModalRef(component, integrationModule);
             });
         } else {

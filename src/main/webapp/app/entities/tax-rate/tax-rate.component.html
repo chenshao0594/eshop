@@ -1,7 +1,7 @@
 <div>
     <h2>
         <span jhiTranslate="eshopApp.taxRate.home.title">Tax Rates</span>
-        <button class="btn btn-primary float-right create-tax-rate" [routerLink]="['../tax-rate-new']">
+        <button class="btn btn-primary float-right create-tax-rate" [routerLink]="['/', { outlets: { popup: ['tax-rate-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="eshopApp.taxRate.home.createLabel">
             Create new Tax Rate
@@ -35,12 +35,15 @@
             <th jhiSortBy="taxPriority"><span jhiTranslate="eshopApp.taxRate.taxPriority">Tax Priority</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.taxRate.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="taxRate"><span jhiTranslate="eshopApp.taxRate.taxRate">Tax Rate</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="eshopApp.taxRate.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="eshopApp.taxRate.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="eshopApp.taxRate.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="eshopApp.taxRate.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="country.id"><span jhiTranslate="eshopApp.taxRate.country">Country</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="parent.id"><span jhiTranslate="eshopApp.taxRate.parent">Parent</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.taxRate.taxClass">Tax Class</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.taxRate.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="taxClass.id"><span jhiTranslate="eshopApp.taxRate.taxClass">Tax Class</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="parent.id"><span jhiTranslate="eshopApp.taxRate.parent">Parent</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="zone.id"><span jhiTranslate="eshopApp.taxRate.zone">Zone</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -52,6 +55,10 @@
                 <td>{{taxRate.taxPriority}}</td>
                 <td>{{taxRate.code}}</td>
                 <td>{{taxRate.taxRate}}</td>
+                <td>{{taxRate.createdBy}}</td>
+                <td>{{taxRate.createdDate | date:'mediumDate'}}</td>
+                <td>{{taxRate.lastModifiedBy}}</td>
+                <td>{{taxRate.lastModifiedDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="taxRate.country">
                         <a [routerLink]="['../country', taxRate.country?.id ]" >{{taxRate.country?.id}}</a>
@@ -73,13 +80,8 @@
                     </div>
                 </td>
                 <td>
-                    <div *ngIf="taxRate.taxClass">
-                        <a [routerLink]="['../tax-class', taxRate.taxClass?.id ]" >{{taxRate.taxClass?.id}}</a>
-                    </div>
-                </td>
-                <td>
-                    <div *ngIf="taxRate.parent">
-                        <a [routerLink]="['../tax-rate', taxRate.parent?.id ]" >{{taxRate.parent?.id}}</a>
+                    <div *ngIf="taxRate.zone">
+                        <a [routerLink]="['../zone', taxRate.zone?.id ]" >{{taxRate.zone?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -89,6 +91,13 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'tax-rate/'+ taxRate.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'tax-rate/'+ taxRate.id + '/delete'} }]"

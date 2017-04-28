@@ -3,69 +3,67 @@
     <h2><span jhiTranslate="eshopApp.integrationModule.detail.title">Integration Module</span> {{integrationModule.id}}</h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.configDetails" for="field_configDetails">Config Details</label>
-            <input type="text" class="form-control" name="configDetails" id="field_configDetails"
-                [(ngModel)]="integrationModule.configDetails"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.customModule" for="field_customModule">Custom Module</label>
-            <input type="checkbox" class="form-control" name="customModule" id="field_customModule"
-                [(ngModel)]="integrationModule.customModule"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.type" for="field_type">Type</label>
-            <input type="text" class="form-control" name="type" id="field_type"
-                [(ngModel)]="integrationModule.type"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.code" for="field_code">Code</label>
-            <input type="text" class="form-control" name="code" id="field_code"
-                [(ngModel)]="integrationModule.code"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.regions" for="field_regions">Regions</label>
-            <input type="text" class="form-control" name="regions" id="field_regions"
-                [(ngModel)]="integrationModule.regions"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.image" for="field_image">Image</label>
-            <input type="text" class="form-control" name="image" id="field_image"
-                [(ngModel)]="integrationModule.image"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.module" for="field_module">Module</label>
-            <input type="text" class="form-control" name="module" id="field_module"
-                [(ngModel)]="integrationModule.module"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.integrationModule.configuration" for="field_configuration">Configuration</label>
-            <input type="text" class="form-control" name="configuration" id="field_configuration"
-                [(ngModel)]="integrationModule.configuration"
-             />
-        </div>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="eshopApp.integrationModule.configDetails">Config Details</span></dt>
+        <dd>
+            <span>{{integrationModule.configDetails}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.customModule">Custom Module</span></dt>
+        <dd>
+            <span>{{integrationModule.customModule}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.type">Type</span></dt>
+        <dd>
+            <span>{{integrationModule.type}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.code">Code</span></dt>
+        <dd>
+            <span>{{integrationModule.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.regions">Regions</span></dt>
+        <dd>
+            <span>{{integrationModule.regions}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.image">Image</span></dt>
+        <dd>
+            <span>{{integrationModule.image}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.module">Module</span></dt>
+        <dd>
+            <span>{{integrationModule.module}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.configuration">Configuration</span></dt>
+        <dd>
+            <span>{{integrationModule.configuration}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.createdBy">Created By</span></dt>
+        <dd>
+            <span>{{integrationModule.createdBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.createdDate">Created Date</span></dt>
+        <dd>
+            <span>{{integrationModule.createdDate | date:'mediumDate'}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.lastModifiedBy">Last Modified By</span></dt>
+        <dd>
+            <span>{{integrationModule.lastModifiedBy}}</span>
+        </dd>
+        <dt><span jhiTranslate="eshopApp.integrationModule.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{integrationModule.lastModifiedDate | date:'mediumDate'}}</span>
+        </dd>
+    </dl>
 
-    </div>
-
-    <button type="button"
+    <button type="submit"
             (click)="previousState()"
             class="btn btn-info">
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
     </button>
 
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'integration-module/'+ integrationModule.id + '/edit'} }]"
+            replaceUrl="true"
             class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
     </button>
-    </form>
 </div>

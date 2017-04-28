@@ -61,6 +61,9 @@ export class ProductOptionValueDialogComponent implements OnInit {
        // this.activeModal.dismiss('cancel');
     }
 
+    back() {
+         window.history.back();
+     }
     save() {
         this.isSaving = true;
         if (this.productOptionValue.id !== undefined) {

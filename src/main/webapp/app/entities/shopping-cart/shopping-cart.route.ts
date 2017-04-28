@@ -6,7 +6,7 @@ import { PaginationUtil } from 'ng-jhipster';
 
 import { ShoppingCartComponent } from './shopping-cart.component';
 import { ShoppingCartDetailComponent } from './shopping-cart-detail.component';
-import { ShoppingCartPopupComponent, ShoppingCartDialogComponent } from './shopping-cart-dialog.component';
+import { ShoppingCartPopupComponent } from './shopping-cart-dialog.component';
 import { ShoppingCartDeletePopupComponent } from './shopping-cart-delete-dialog.component';
 
 import { Principal } from '../../shared';
@@ -40,13 +40,6 @@ export const shoppingCartRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
-    path: 'shopping-cart-new',
-    component: ShoppingCartDialogComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.shoppingCart.home.title'
-    },
-  }, {
     path: 'shopping-cart/:id',
     component: ShoppingCartDetailComponent,
     data: {
@@ -58,6 +51,16 @@ export const shoppingCartRoute: Routes = [
 ];
 
 export const shoppingCartPopupRoute: Routes = [
+  {
+    path: 'shopping-cart-new',
+    component: ShoppingCartPopupComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.shoppingCart.home.title'
+    },
+    canActivate: [UserRouteAccessService],
+    outlet: 'popup'
+  },
   {
     path: 'shopping-cart/:id/edit',
     component: ShoppingCartPopupComponent,

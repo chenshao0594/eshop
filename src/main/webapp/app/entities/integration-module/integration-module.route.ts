@@ -6,7 +6,7 @@ import { PaginationUtil } from 'ng-jhipster';
 
 import { IntegrationModuleComponent } from './integration-module.component';
 import { IntegrationModuleDetailComponent } from './integration-module-detail.component';
-import { IntegrationModulePopupComponent, IntegrationModuleDialogComponent } from './integration-module-dialog.component';
+import { IntegrationModulePopupComponent } from './integration-module-dialog.component';
 import { IntegrationModuleDeletePopupComponent } from './integration-module-delete-dialog.component';
 
 import { Principal } from '../../shared';
@@ -40,13 +40,6 @@ export const integrationModuleRoute: Routes = [
     },
     canActivate: [UserRouteAccessService]
   }, {
-    path: 'integration-module-new',
-    component: IntegrationModuleDialogComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.integrationModule.home.title'
-    },
-  }, {
     path: 'integration-module/:id',
     component: IntegrationModuleDetailComponent,
     data: {
@@ -58,6 +51,16 @@ export const integrationModuleRoute: Routes = [
 ];
 
 export const integrationModulePopupRoute: Routes = [
+  {
+    path: 'integration-module-new',
+    component: IntegrationModulePopupComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.integrationModule.home.title'
+    },
+    canActivate: [UserRouteAccessService],
+    outlet: 'popup'
+  },
   {
     path: 'integration-module/:id/edit',
     component: IntegrationModulePopupComponent,
