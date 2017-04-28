@@ -54,6 +54,9 @@ export class ManufacturerDialogComponent implements OnInit {
     clear() {
        // this.activeModal.dismiss('cancel');
     }
+    back(){
+        window.history.back();
+    }
 
     save() {
         this.isSaving = true;

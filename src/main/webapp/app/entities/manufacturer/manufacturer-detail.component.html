@@ -12,6 +12,23 @@
             <fieldset>
                 <legend class="section">Info</legend>
                 <div class="row">
+                <label class="control-label col-2 text-right no-padding-right" >
+        <span jhiTranslate="eshopApp.manufacturer.code">Code</span>
+        </label>
+        <div class="col-4">
+             <p class="form-control input-transparent">
+            <span>{{manufacturer.code}}</span>
+            </p>
+        </div>
+                <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.manufacturer.merchantStore">Merchant Store</span>
+        </label>
+        <div class="col-4">
+            <p class="form-control input-transparent">
+            <div *ngIf="manufacturer.merchantStore">
+                {{manufacturer.merchantStore?.storename}}
+            </div>
+            </p>
+        </div>
         <label class="control-label col-2 text-right no-padding-right" >
         <span jhiTranslate="eshopApp.manufacturer.order">Order</span>
         </label>
@@ -28,14 +45,12 @@
             <span>{{manufacturer.image}}</span>
             </p>
         </div>
-        <label class="control-label col-2 text-right no-padding-right" >
-        <span jhiTranslate="eshopApp.manufacturer.code">Code</span>
-        </label>
-        <div class="col-4">
-             <p class="form-control input-transparent">
-            <span>{{manufacturer.code}}</span>
-            </p>
         </div>
+        </fieldset>
+        <fieldset>
+                <legend class="section">Info</legend>
+                <div class="row">
+        
         <label class="control-label col-2 text-right no-padding-right" >
         <span jhiTranslate="eshopApp.manufacturer.createdBy">Created By</span>
         </label>
@@ -48,7 +63,8 @@
         <span jhiTranslate="eshopApp.manufacturer.createdDate">Created Date</span>
         </label>
         <div class="col-4">
-            <span>{{manufacturer.createdDate | date:'mediumDate'}}</span>
+            <p>
+            <span>{{manufacturer.createdDate}}</span>
             </p>
         </div>
         <label class="control-label col-2 text-right no-padding-right" >
@@ -63,17 +79,11 @@
         <span jhiTranslate="eshopApp.manufacturer.lastModifiedDate">Last Modified Date</span>
         </label>
         <div class="col-4">
-            <span>{{manufacturer.lastModifiedDate | date:'mediumDate'}}</span>
+            <p>
+            <span>{{manufacturer.lastModifiedDate}}</span>
             </p>
         </div>
-        <label class="control-label col-2 text-right no-padding-right"><span jhiTranslate="eshopApp.manufacturer.merchantStore">Merchant Store</span>
-        </label>
-        <div class="col-4">
-            <p class="form-control input-transparent">
-            <div *ngIf="manufacturer.merchantStore">
-                <a [routerLink]="['/merchant-store', manufacturer.merchantStore?.id]">{{manufacturer.merchantStore?.id}}</a>
-            </div>
-            </div>
+        
 
 </div>
 </fieldset>

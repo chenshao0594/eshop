@@ -5,7 +5,7 @@
 </div>
 <div class="modal-body">
     <div class="row">
-        <div class="col-md-4 offset-md-4">
+        <div class="col-md-8 offset-md-4">
             <h1 jhiTranslate="login.title">Sign in</h1>
         </div>
         <div class="col-md-8 offset-md-2">
@@ -34,13 +34,7 @@
                 <button type="submit" class="btn btn-primary" jhiTranslate="login.form.button">Sign in</button>
             </form>
             <p></p>
-            <div class="alert alert-warning">
-                <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Did you forget your password?</a>
-            </div>
-            <div class="alert alert-warning">
-            	<span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
-                <a class="alert-link" (click)="register()" jhiTranslate="global.messages.info.register.link">Register a new account</a>
-            </div>
+           
         </div>
         <div class="col-md-6">
             <br/>
@@ -49,5 +43,16 @@
             <jhi-social provider="twitter"></jhi-social>
             <!-- jhipster-needle-add-social-button -->
         </div>
+    </div>
+    <div class="row">
+        <div class="alert alert-warning">
+                <a class="alert-link" (click)="requestResetPassword()" jhiTranslate="login.password.forgot">Did you forget your password?</a>
+        </div>
+    </div>
+    <div class="row">
+            <div class="alert alert-warning">
+                <span jhiTranslate="global.messages.info.register.noaccount">You don't have an account yet?</span>
+                <a class="alert-link" (click)="register()" jhiTranslate="global.messages.info.register.link">Register a new account</a>
+            </div>
     </div>
 </div>
