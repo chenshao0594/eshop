@@ -9,6 +9,7 @@ import { ProductDetailComponent } from './product-detail.component';
 import { ProductPopupComponent, ProductDialogComponent } from './product-dialog.component';
 import { ProductDeletePopupComponent } from './product-delete-dialog.component';
 import {ProductAttachmentComponent } from './product-attachment.component';
+import {ProductSkuComponent } from './product-sku.component';
 
 import { Principal } from '../../shared';
 
@@ -66,6 +67,14 @@ export const productRoute: Routes = [
   }, {
       path: 'product/:id/attachments',
       component: ProductAttachmentComponent,
+      data: {
+          authorities: ['ROLE_USER'],
+          pageTitle: 'eshopApp.product.home.title'
+      },
+      canActivate: [UserRouteAccessService]
+  }, {
+      path: 'product/:id/skus',
+      component: ProductSkuComponent,
       data: {
           authorities: ['ROLE_USER'],
           pageTitle: 'eshopApp.product.home.title'

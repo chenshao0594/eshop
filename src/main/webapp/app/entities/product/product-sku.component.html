@@ -1,0 +1,57 @@
+<h2 class="page-title">
+	<span class="fw-semi-bold">Products</span> <small>skus</small>
+	<button type="button" class="btn btn-primary pull-right" (click)="back()">
+		<span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+	</button>
+</h2>
+<jhi-alert-error></jhi-alert-error>
+<div class="row">
+	<div class="col-12">
+		<section widget class="widget">
+			<div class="widget-body">
+				<button class="btn btn-primary pull-right">Add skus</button>
+				<br />
+				<table role="presentation" class="table table-striped files-table">
+					<tbody class="files">
+						<tr class="template-upload fade" *ngFor="let item of attachments">
+							<td><img src="data:{{item?.contentContentType}};base64,{{item?.content}}"
+								class="thumbnail" style="width: 65px; height: 65px"></td>
+							<td>
+								<p class="name">{{ item?.name }}</p> <strong class="error text-danger"></strong>
+							</td>
+							<td>
+								<p class="size">{{ item?.size/1024 | number:'.2' }} KB</p>
+							</td>
+							<td class="width-150">
+								<button type="button" class="btn btn-danger btn-sm delete"
+									(click)="deleteAttachment(item.id)">
+									<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<table role="presentation" class="table table-striped files-table">
+					<tbody class="files">
+						<tr class="template-upload fade" *ngFor="let item of attachments">
+							<td><img src="data:{{item?.contentContentType}};base64,{{item?.content}}"
+								class="thumbnail" style="width: 65px; height: 65px"></td>
+							<td>
+								<p class="name">{{ item?.name }}</p> <strong class="error text-danger"></strong>
+							</td>
+							<td>
+								<p class="size">{{ item?.size/1024 | number:'.2' }} KB</p>
+							</td>
+							<td class="width-150">
+								<button type="button" class="btn btn-danger btn-sm delete"
+									(click)="deleteAttachment(item.id)">
+									<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
+								</button>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</section>
+	</div>
+</div>

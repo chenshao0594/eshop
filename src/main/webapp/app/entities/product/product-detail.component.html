@@ -1,12 +1,30 @@
 <div *ngIf="product">
-	<h2 class="page-title">
-		<a [routerLink]="['attachments']"> <img src="/content/images/hipster.png"
-			class="rounded float-left">
-		</a> <span jhiTranslate="eshopApp.product.detail.title">Product</span> <small>{{product.id}}</small>
-		<button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+	<div class="row">
+		<h2 class="col-10 page-title">
+			<span jhiTranslate="eshopApp.product.detail.title">Product</span> <small>{{product.id}}</small>
+			<!-- <button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
 			<span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
-		</button>
-	</h2>
+		</button> -->
+		</h2>
+		<div class="col-2" style="padding-top: 10px;">
+			<div ngbDropdown class="d-inline-block">
+				<button class="btn btn-primary dropdown-toggle" ngbDropdownToggle>
+					<span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="eshopApp.product.actions.main">&nbsp;&nbsp;Edit&nbsp;&nbsp;&nbsp;</span>
+				</button>
+				<div class="dropdown-menu " aria-labelledby="dropdownBasic1">
+					<button type="button" class="dropdown-item" [routerLink]="['attachments']">
+						<span jhiTranslate="eshopApp.product.actions.editImages">Edit Images</span>
+					</button>
+					<button type="button" class="dropdown-item">
+						<span jhiTranslate="eshopApp.product.actions.editSKU" [routerLink]="['skus']">Edit SKUs</span>
+					</button>
+					<button type="button" class="dropdown-item">
+						<span jhiTranslate="eshopApp.product.actions.editSEO">Edit SEOs</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<section class="widget">
 		<div class="body">
 			<fieldset>
@@ -17,16 +35,16 @@
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.name}}</p>
 					</div>
-					<label class="control-label col-2 text-right no-padding-right"
+					<!-- <label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.productShipeable">Product Shipeable</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.productShipeable}}</p>
-					</div>
-					<label class="control-label col-2 text-right no-padding-right"
+					</div> -->
+					<!-- <label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.productOrdered">Product Ordered</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.productOrdered}}</p>
-					</div>
+					</div> -->
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.dateAvailable">Date Available</label>
 					<div class="col-4">
@@ -54,13 +72,13 @@
 							<a [routerLink]="['/manufacturer', product.manufacturer?.id]">{{product.manufacturer?.id}}</a>
 						</div>
 					</div>
-					<label class="control-label col-2 text-right no-padding-right"
+					<!-- <label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.type">Type</label>
 					<div class="col-4">
 						<div *ngIf="product.type">
 							<a [routerLink]="['/product-type', product.type?.id]">{{product.type?.id}}</a>
 						</div>
-					</div>
+					</div> -->
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.merchantStore">Merchant Store</label>
 					<div class="col-4">
@@ -97,25 +115,22 @@
 						<p class="form-control input-transparent">{{product.searchUrl}}</p>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.metatagKeywords" >Metatag
-						Keywords</label>
+						jhiTranslate="eshopApp.product.metatagKeywords">Metatag Keywords</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.metatagKeywords}}</p>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.metatagTitle" >Metatag Title</label>
+						jhiTranslate="eshopApp.product.metatagTitle">Metatag Title</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.metatagTitle}}</p>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.metatagDescription">Metatag
-						Description</label>
+						jhiTranslate="eshopApp.product.metatagDescription">Metatag Description</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.metatagDescription}}</p>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
-						jhiTranslate="eshopApp.product.productHighlight" >Product
-						Highlight</label>
+						jhiTranslate="eshopApp.product.productHighlight">Product Highlight</label>
 					<div class="col-4">
 						<p class="form-control input-transparent">{{product.productHighlight}}</p>
 					</div>

@@ -12,6 +12,12 @@
             	"images": "Images",
             	"seo": "SEO"
            	},
+           	"actions": {
+           		"main": "Edit Products",
+           		"editImages": "Edit Images",
+            	"editSEO": "Edit SEO",
+            	"editSKU": "Edit SKUs"
+           	},
             "created": "A new Product is created with identifier {{ param }}",
             "updated": "A Product is updated with identifier {{ param }}",
             "deleted": "A Product is deleted with identifier {{ param }}",

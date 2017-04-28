@@ -16,6 +16,7 @@ import {
     productPopupRoute,
     ProductResolvePagingParams,
     ProductAttachmentComponent,
+    ProductSkuComponent,
     
 } from './';
 
@@ -37,6 +38,7 @@ const ENTITY_STATES = [
         ProductPopupComponent,
         ProductDeletePopupComponent,
         ProductAttachmentComponent,
+        ProductSkuComponent,
     ],
     entryComponents: [
         ProductComponent,

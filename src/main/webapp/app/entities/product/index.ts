@@ -7,3 +7,4 @@ export * from './product-detail.component';
 export * from './product.component';
 export * from './product.route';
 export * from './product-attachment.component';
+export * from './product-sku.component';

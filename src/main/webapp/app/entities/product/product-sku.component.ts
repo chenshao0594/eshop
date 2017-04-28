@@ -12,10 +12,9 @@ import { Attachment } from '../attachment/attachment.model';
 const URL = '/api/attachments';
 
 @Component( {
-    templateUrl: './product-attachment.component.html',
-    styleUrls: [ './fileupload.style.scss' ]
+    templateUrl: './product-sku.component.html'
 } )
-export class ProductAttachmentComponent  implements OnInit {
+export class ProductSkuComponent  implements OnInit {
     product: Product;
     boId: number;
     attachment: Attachment;
@@ -85,7 +84,6 @@ export class ProductAttachmentComponent  implements OnInit {
     clear() {
         // this.activeModal.dismiss('cancel');
     }
-    
     back() {
         window.history.back();
     }

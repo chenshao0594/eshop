@@ -32,9 +32,9 @@
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="storename"><span jhiTranslate="eshopApp.merchantStore.storename">Storename</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.merchantStore.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="storeaddress"><span jhiTranslate="eshopApp.merchantStore.storeaddress">Storeaddress</span> <span class="fa fa-sort"></span></th>
-            <th jhiSortBy="storename"><span jhiTranslate="eshopApp.merchantStore.storename">Storename</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="storeEmailAddress"><span jhiTranslate="eshopApp.merchantStore.storeEmailAddress">Store Email Address</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="storephone"><span jhiTranslate="eshopApp.merchantStore.storephone">Storephone</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="domainName"><span jhiTranslate="eshopApp.merchantStore.domainName">Domain Name</span> <span class="fa fa-sort"></span></th>
@@ -46,9 +46,9 @@
             <tbody>
             <tr *ngFor="let merchantStore of merchantStores ;trackBy: trackId">
                 <td><a [routerLink]="['../merchant-store', merchantStore.id ]">{{merchantStore.id}}</a></td>
+                <td>{{merchantStore.storename}}</td>
                 <td>{{merchantStore.code}}</td>
                 <td>{{merchantStore.storeaddress}}</td>
-                <td>{{merchantStore.storename}}</td>
                 <td>{{merchantStore.storeEmailAddress}}</td>
                 <td>{{merchantStore.storephone}}</td>
                 <td>{{merchantStore.domainName}}</td>
@@ -61,13 +61,6 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
-                        </button>
-                        <button type="submit"
-                                [routerLink]="['/', { outlets: { popup: 'merchant-store/'+ merchantStore.id + '/edit'} }]"
-                                replaceUrl="true"
-                                class="btn btn-primary btn-sm">
-                            <span class="fa fa-pencil"></span>
-                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'merchant-store/'+ merchantStore.id + '/delete'} }]"
