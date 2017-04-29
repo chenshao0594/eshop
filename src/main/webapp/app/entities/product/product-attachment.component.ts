@@ -40,13 +40,20 @@ export class ProductAttachmentComponent  implements OnInit {
     }
 
     ngOnInit() {
-      
         this.subscription = this.route.params.subscribe((params) => {
-            this.boId=params['id'];
+            this.boId = params['id'];
+            this.loadAttachments(params['id']);
             });
+         this.registerChangeInProductAttachments();
+    }
+    loadAttachments(productId){
         this.attachmentService.queryAttachmentsByBO('products',this.boId).subscribe(
-            (res: Response) => { this.attachments = res.json(); }, (res: Response) => this.onError(res.json()));
-    // this.registerChangeInProducts();
+                (res: Response) => { this.attachments = res.json(); }, 
+                (res: Response) => this.onError(res.json()));
+    }
+    
+    registerChangeInProductAttachments() {
+        this.eventSubscriber = this.eventManager.subscribe('attachmentListModification', (response) => this.loadAttachments(this.boId));
     }
     byteSize(field) {
         return this.dataUtils.byteSize(field);
@@ -69,10 +76,8 @@ export class ProductAttachmentComponent  implements OnInit {
             }
             this.dataUtils.toBase64(file, (base64Data) => {
                 attachment[field] = base64Data;
-                alert("work !!!");
                 attachment[`${field}ContentType`] = file.type;
                 this.upload(attachment);
-
             });
         }
     }
@@ -91,10 +96,14 @@ export class ProductAttachmentComponent  implements OnInit {
     }
     
     deleteAttachment(attachmentId: number) {
-        this.attachmentService.delete(attachmentId);
-        // this.activeModal.dismiss('cancel');
+        this.attachmentService.delete(attachmentId)
+                .subscribe((res: Attachment) =>this.onDeleteSuccess(res), 
+                        (res: Response) => this.onSaveError(res));
     }
 
+    private onDeleteSuccess(result: any) {
+        this.eventManager.broadcast({ name: 'attachmentListModification', content: 'OK'});
+    }
     save() {
         this.attachmentService.create(this.attachment)
             .subscribe((res: Attachment) =>
@@ -102,8 +111,7 @@ export class ProductAttachmentComponent  implements OnInit {
     }
 
     private onSaveSuccess(result: Attachment) {
-      //  this.eventManager.broadcast({ name: 'attachmentListModification', content: 'OK'});
-        this.attachments.concat(result);
+        this.eventManager.broadcast({ name: 'attachmentListModification', content: 'OK'});
         this.isSaving = false;
     }
 

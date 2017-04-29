@@ -8,9 +8,10 @@ import org.springframework.data.jpa.repository.Query;
 import com.smartshop.eshop.domain.ProductOption;
 
 public interface ProductOptionRepository extends JpaRepository<ProductOption, Long> {
-
-	@Query("select p from ProductOption p join fetch p.merchantStore pm left join fetch p.descriptions pd where p.id = ?2 and pm.id = ?1")
-	ProductOption findOne(Long storeId, Long id);
+	//
+	// @Query("select p from ProductOption p join fetch p.merchantStore pm left
+	// join fetch p.descriptions pd where p.id = ?2 and pm.id = ?1")
+	// ProductOption findOne(Long storeId, Long id);
 
 	@Query("select distinct p from ProductOption p join fetch p.merchantStore pm left join fetch p.descriptions pd where pm.id = ?1 and pd.language.id = ?2")
 	List<ProductOption> findByStoreId(Integer storeId, Integer languageId);

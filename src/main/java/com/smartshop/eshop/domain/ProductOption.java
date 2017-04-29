@@ -1,6 +1,5 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -26,7 +25,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "product_option")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productoption")
-public class ProductOption extends BusinessDomain<Long, ProductOption> implements Serializable {
+public class ProductOption extends BusinessDomain<Long, ProductOption> implements BusinessDomainInterface {
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,6 +1,5 @@
 package com.smartshop.eshop.domain;
 
-import java.io.Serializable;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -28,7 +27,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "product_option_value")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productoptionvalue")
-public class ProductOptionValue extends BusinessDomain<Long, ProductOption> implements Serializable {
+public class ProductOptionValue extends BusinessDomain<Long, ProductOption> implements BusinessDomainInterface {
 
 	private static final long serialVersionUID = 1L;
 
@@ -57,6 +56,7 @@ public class ProductOptionValue extends BusinessDomain<Long, ProductOption> impl
 	@ManyToOne(fetch = FetchType.LAZY)
 	private MerchantStore merchantStore;
 
+	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	private ProductOption productOption;
 
