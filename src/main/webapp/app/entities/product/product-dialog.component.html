@@ -1,197 +1,192 @@
 <div *ngIf="product">
-
-<h2 class="page-title">
-	<span id="myCategoryLabel" jhiTranslate="eshopApp.product.home.createOrEditLabel">Create or
-		edit a Product</span> 
-		<small> <span [hidden]="!product.id"> #{{product.id}} </span></small>
-</h2>
-<jhi-alert-error></jhi-alert-error>
-<section class="widget">
-	<div class="">
-		<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-			<ngb-tabset>
-				<ngb-tab> 
-					<template ngbTabTitle>
-						<span jhiTranslate="eshopApp.product.tabs.basicInfo"></span>
-					</template>
-					<template ngbTabContent>
-						<div class="row justify-content-center">
-							<div class="col-5 form-group">
-								<label class="form-control-label" jhiTranslate="eshopApp.product.name" for="field_name">Name</label>
-								<input type="text" class="form-control" name="name" id="field_name" [(ngModel)]="product.name" required/>
-								<div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
-									<small class="form-text text-danger" [hidden]="!editForm.controls.name?.errors?.required"
+	<h2 class="page-title">
+		<span id="myCategoryLabel" jhiTranslate="eshopApp.product.home.createOrEditLabel">Create or
+			edit a Product</span> <small> <span [hidden]="!product.id"> #{{product.id}} </span></small>
+	</h2>
+	<jhi-alert-error></jhi-alert-error>
+	<section class="widget">
+		<div class="body">
+			<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+				<fieldset>
+					<legend class="section">Basic Info</legend>
+					<div class="row justify-content-center">
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.name" for="field_name">Name</label>
+							<input type="text" class="form-control" name="name" id="field_name"
+								[(ngModel)]="product.name" required />
+							<div [hidden]="!(editForm.controls.name?.dirty && editForm.controls.name?.invalid)">
+								<small class="form-text text-danger" [hidden]="!editForm.controls.name?.errors?.required"
 									jhiTranslate="entity.validation.required"> This field is required. </small>
-								</div>
 							</div>
-								<div class="col-5 form-group">
-									<label class="form-control-label" jhiTranslate="eshopApp.product.title" for="field_title">Title</label>
-										<input type="text" class="form-control" name="title" id="field_title"
-										[(ngModel)]="product.title"/>
-								</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.sku" for="field_sku">Sku</label>
-				<input type="text" class="form-control" name="sku" id="field_sku" [(ngModel)]="product.sku"
-					required/>
-				<div [hidden]="!(editForm.controls.sku?.dirty && editForm.controls.sku?.invalid)">
-					<small class="form-text text-danger" [hidden]="!editForm.controls.sku?.errors?.required"
-						jhiTranslate="entity.validation.required"
-					> This field is required. </small>
-				</div>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.type" for="field_type">Type</label>
-				<select class="form-control" id="field_type" name="type" [(ngModel)]="product.type">
-					<option [ngValue]="null"></option>
-					<option [ngValue]="productTypeOption.id === product.type?.id ? product.type : productTypeOption"
-						*ngFor="let productTypeOption of producttypes; trackBy: trackProductTypeById">{{productTypeOption.id}}</option>
-				</select>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.taxClass" for="field_taxClass">Tax
-					Class</label> <select class="form-control" id="field_taxClass" name="taxClass"
-					[(ngModel)]="product.taxClass">
-					<option [ngValue]="null"></option>
-					<option [ngValue]="taxClassOption.id === product.taxClass?.id ? product.taxClass : taxClassOption"
-						*ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.title}}</option>
-				</select>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.dateAvailable"
-					for="field_dateAvailable"
-				>Date Available</label>
-				<div class="input-group">
-					<input id="field_dateAvailable" type="text" class="form-control" name="dateAvailable"
-						ngbDatepicker #dateAvailableDp="ngbDatepicker" [(ngModel)]="product.dateAvailable"/> 
-					<span class="input-group-btn">
-						<button type="button" class="btn btn-default" (click)="dateAvailableDp.toggle()">
-							<i class="fa fa-calendar"></i>
-						</button>
-					</span>
-				</div>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.available"
-					for="field_available">Available</label> 
-				<input type="checkbox" class="form-control" name="available" id="field_available" [(ngModel)]="product.available"/>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.refSku" for="field_refSku">Ref
-					Sku</label> <input type="text" class="form-control" name="refSku" id="field_refSku"
-					[(ngModel)]="product.refSku"/>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.manufacturer"
-					for="field_manufacturer">Manufacturer</label> <select class="form-control" id="field_manufacturer" name="manufacturer"
-					[(ngModel)]="product.manufacturer">
-					<option [ngValue]="null"></option>
-					<option [ngValue]="manufacturerOption.id === product.manufacturer?.id ? product.manufacturer : manufacturerOption"
-						*ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">
-						{{manufacturerOption.code}}</option>
-				</select>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.merchantStore"
-					for="field_merchantStore">Merchant Store</label> <select class="form-control" id="field_merchantStore" name="merchantStore"
-					[(ngModel)]="product.merchantStore">
-					<option [ngValue]="null"></option>
-					<option
-						[ngValue]="merchantStoreOption.id === product.merchantStore?.id ? product.merchantStore : merchantStoreOption"
-						*ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById"
-					>{{merchantStoreOption.storename}}</option>
-				</select>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.productShipeable"
-					for="field_productShipeable" >Product Shipeable</label> 
-				<input type="checkbox" class="form-control" name="productShipeable"
-					id="field_productShipeable" [(ngModel)]="product.productShipeable"/>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.sortOrder"
-					for="field_sortOrder">Sort Order</label> 
-				<input type="number" class="form-control" name="sortOrder" id="field_sortOrder" [(ngModel)]="product.sortOrder"/>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.productHeight"
-					for="field_productHeight">Product Height</label> <input type="number" class="form-control" name="productHeight"
-					id="field_productHeight" [(ngModel)]="product.productHeight"/>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.productWeight"
-					for="field_productWeight">Product Weight</label> 
-				<input type="number" class="form-control" name="productWeight"
-					id="field_productWeight" [(ngModel)]="product.productWeight"/>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.productWidth" for="field_productWidth">Product Width</label>
-				<input type="number" class="form-control" name="productWidth"
-					id="field_productWidth" [(ngModel)]="product.productWidth"/>
-			</div>
-			<div class="col-5 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.productLength"
-					for="field_productLength">Product Length</label> <input type="number" class="form-control" name="productLength"
-					id="field_productLength" [(ngModel)]="product.productLength"/>
-			</div>
-			<div class="col-10 form-group">
-				<label class="form-control-label" jhiTranslate="eshopApp.product.description"
-					for="field_description">Description</label> <input type="text" class="form-control" name="description" id="field_description"
-					[(ngModel)]="product.description"/>
-			</div>
 						</div>
-					</template>
-					</ngb-tab> <!-- basic info end -->
-					<!-- shipping info -->	
-					<!-- seo -->		
-					<ngb-tab> 
-						<template ngbTabTitle>
-							<span jhiTranslate="eshopApp.product.tabs.seo"></span> 
-						</template> 
-						<template ngbTabContent>
-							<div class="row justify-content-center">
-								<div class="col-5 form-group">
-									<label class="form-control-label" jhiTranslate="eshopApp.product.searchUrl" for="field_seUrl">SeUrl</label> 
-									<input type="text" class="form-control" name="searchUrl" id="field_searchUrl" [(ngModel)]="product.searchUrl"/>
-								</div>
-								<div class="col-5 form-group">
-									<label class="form-control-label" jhiTranslate="eshopApp.product.metatagKeywords"
-											for="field_metatagKeywords">Metatag Keywords</label> 
-									<input type="text" class="form-control" name="metatagKeywords"
-										id="field_metatagKeywords" [(ngModel)]="product.metatagKeywords"/>
-								</div>
-								<div class="col-5 form-group">
-									<label class="form-control-label" jhiTranslate="eshopApp.product.metatagTitle"
-										for="field_metatagTitle">Metatag Title</label> <input type="text" class="form-control" name="metatagTitle"
-										id="field_metatagTitle" [(ngModel)]="product.metatagTitle"/>
-								</div>
-								<div class="col-5 form-group">
-									<label class="form-control-label" jhiTranslate="eshopApp.product.metatagDescription"
-										for="field_metatagDescription">Metatag Description</label> 
-									<input type="text" class="form-control" name="metatagDescription" id="field_metatagDescription" [(ngModel)]="product.metatagDescription"/>
-								</div>
-								<div class="col-5 form-group">
-									<label class="form-control-label" jhiTranslate="eshopApp.product.productHighlight"
-										for="field_productHighlight">Product Highlight</label> 
-									<input type="text" class="form-control" name="productHighlight"
-										id="field_productHighlight" [(ngModel)]="product.productHighlight"/>
-								</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.sku" for="field_sku">Sku</label>
+							<input type="text" class="form-control" name="sku" id="field_sku" [(ngModel)]="product.sku"
+								required />
+							<div [hidden]="!(editForm.controls.sku?.dirty && editForm.controls.sku?.invalid)">
+								<small class="form-text text-danger" [hidden]="!editForm.controls.sku?.errors?.required"
+									jhiTranslate="entity.validation.required"> This field is required. </small>
 							</div>
-						</template> 
-					</ngb-tab><!-- seo end -->
-			</ngb-tabset>
-			<div class="form-actions">
-				<div class="row">
-					<div class="offset-9">
-						<button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
-							<span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-						</button>
-						<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
-							<span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
-						</button>
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.title" for="field_title">Title</label>
+							<input type="text" class="form-control" name="title" id="field_title"
+								[(ngModel)]="product.title" />
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.type" for="field_type">Type</label>
+							<select class="form-control" id="field_type" name="type" [(ngModel)]="product.type">
+								<option [ngValue]="null"></option>
+								<option
+									[ngValue]="productTypeOption.id === product.type?.id ? product.type : productTypeOption"
+									*ngFor="let productTypeOption of producttypes; trackBy: trackProductTypeById">{{productTypeOption.id}}</option>
+							</select>
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.taxClass"
+								for="field_taxClass">Tax Class</label> <select class="form-control" id="field_taxClass"
+								name="taxClass" [(ngModel)]="product.taxClass">
+								<option [ngValue]="null"></option>
+								<option
+									[ngValue]="taxClassOption.id === product.taxClass?.id ? product.taxClass : taxClassOption"
+									*ngFor="let taxClassOption of taxclasses; trackBy: trackTaxClassById">{{taxClassOption.title}}</option>
+							</select>
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.dateAvailable"
+								for="field_dateAvailable">Date Available</label>
+							<div class="input-group">
+								<input id="field_dateAvailable" type="text" class="form-control" name="dateAvailable"
+									ngbDatepicker #dateAvailableDp="ngbDatepicker" [(ngModel)]="product.dateAvailable" /> <span
+									class="input-group-btn">
+									<button type="button" class="btn btn-default" (click)="dateAvailableDp.toggle()">
+										<i class="fa fa-calendar"></i>
+									</button>
+								</span>
+							</div>
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.available"
+								for="field_available">Available</label> <input type="checkbox" class="form-control"
+								name="available" id="field_available" [(ngModel)]="product.available" />
+						</div>
+						<!-- <div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.refSku" for="field_refSku">Ref
+								Sku</label> <input type="text" class="form-control" name="refSku" id="field_refSku"
+								[(ngModel)]="product.refSku" />
+						</div> -->
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.manufacturer"
+								for="field_manufacturer">Manufacturer</label> <select class="form-control"
+								id="field_manufacturer" name="manufacturer" [(ngModel)]="product.manufacturer">
+								<option [ngValue]="null"></option>
+								<option
+									[ngValue]="manufacturerOption.id === product.manufacturer?.id ? product.manufacturer : manufacturerOption"
+									*ngFor="let manufacturerOption of manufacturers; trackBy: trackManufacturerById">
+									{{manufacturerOption.code}}</option>
+							</select>
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.merchantStore"
+								for="field_merchantStore">Merchant Store</label> <select class="form-control"
+								id="field_merchantStore" name="merchantStore" [(ngModel)]="product.merchantStore">
+								<option [ngValue]="null"></option>
+								<option
+									[ngValue]="merchantStoreOption.id === product.merchantStore?.id ? product.merchantStore : merchantStoreOption"
+									*ngFor="let merchantStoreOption of merchantstores; trackBy: trackMerchantStoreById">{{merchantStoreOption.storename}}</option>
+							</select>
+						</div>
+						<!-- <div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.productShipeable"
+								for="field_productShipeable">Product Shipeable</label> <input type="checkbox"
+								class="form-control" name="productShipeable" id="field_productShipeable"
+								[(ngModel)]="product.productShipeable" />
+						</div> -->
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.sortOrder"
+								for="field_sortOrder">Sort Order</label> <input type="number" class="form-control"
+								name="sortOrder" id="field_sortOrder" [(ngModel)]="product.sortOrder" />
+						</div>
+						<div class="col-10 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.description"
+								for="field_description">Description</label> <input type="text" class="form-control"
+								name="description" id="field_description" [(ngModel)]="product.description" />
+						</div>
+					</div>
+				</fieldSet>
+				<fieldset>
+					<legend class="section">Shipping Info</legend>
+					<div class="row justify-content-center">
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.productHeight"
+								for="field_productHeight">Product Height</label> <input type="number" class="form-control"
+								name="productHeight" id="field_productHeight" [(ngModel)]="product.productHeight" />
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.productWeight"
+								for="field_productWeight">Product Weight</label> <input type="number" class="form-control"
+								name="productWeight" id="field_productWeight" [(ngModel)]="product.productWeight" />
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.productWidth"
+								for="field_productWidth">Product Width</label> <input type="number" class="form-control"
+								name="productWidth" id="field_productWidth" [(ngModel)]="product.productWidth" />
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.productLength"
+								for="field_productLength">Product Length</label> <input type="number" class="form-control"
+								name="productLength" id="field_productLength" [(ngModel)]="product.productLength" />
+						</div>
+					</div>
+				</fieldset>
+				<fieldset>
+					<legend class="section">SEO Info</legend>
+					<div class="row justify-content-center">
+						
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.searchUrl" for="field_seUrl">SeUrl</label>
+							<input type="text" class="form-control" name="searchUrl" id="field_searchUrl"
+								[(ngModel)]="product.searchUrl" />
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.metatagKeywords"
+								for="field_metatagKeywords">Metatag Keywords</label> <input type="text" class="form-control"
+								name="metatagKeywords" id="field_metatagKeywords" [(ngModel)]="product.metatagKeywords" />
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.metatagTitle"
+								for="field_metatagTitle">Metatag Title</label> <input type="text" class="form-control"
+								name="metatagTitle" id="field_metatagTitle" [(ngModel)]="product.metatagTitle" />
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.metatagDescription"
+								for="field_metatagDescription">Metatag Description</label> <input type="text"
+								class="form-control" name="metatagDescription" id="field_metatagDescription"
+								[(ngModel)]="product.metatagDescription" />
+						</div>
+						<div class="col-5 form-group">
+							<label class="form-control-label" jhiTranslate="eshopApp.product.productHighlight"
+								for="field_productHighlight">Product Highlight</label> <input type="text"
+								class="form-control" name="productHighlight" id="field_productHighlight"
+								[(ngModel)]="product.productHighlight" />
+						</div>
+					</div>
+				</fieldset>
+				<div class="form-actions">
+					<div class="row">
+						<div class="offset-9">
+							<button type="button" class="btn btn-default" data-dismiss="modal" (click)="clear()">
+								<span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+							</button>
+							<button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+								<span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+							</button>
+						</div>
 					</div>
 				</div>
-		  </div>
-	</form><!-- form end -->
-	</div><!-- body end  -->
-</section>
+			</form>
+			<!-- form end -->
+		</div>
+		<!-- body end  -->
+	</section>
 </div>

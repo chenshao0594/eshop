@@ -34,13 +34,20 @@ export class ProductAttributeDialogComponent implements OnInit {
         private productOptionService: ProductOptionService,
         private productService: ProductService,
         private productOptionValueService: ProductOptionValueService,
-        private eventManager: EventManager
+        private eventManager: EventManager,
+        private route: ActivatedRoute,
     ) {
         this.jhiLanguageService.setLocations(['productAttribute']);
-        this.productAttribute = new ProductAttribute();
     }
 
     ngOnInit() {
+        this.route.params.subscribe((params) => {
+            if ( params['id'] ) {
+                this.load(params['id']);
+            } else {
+                this.productAttribute = new ProductAttribute();
+            }
+        });
         this.isSaving = false;
         this.authorities = ['ROLE_USER', 'ROLE_ADMIN'];
         this.productOptionService.query().subscribe(
@@ -49,6 +56,12 @@ export class ProductAttributeDialogComponent implements OnInit {
             (res: Response) => { this.products = res.json(); }, (res: Response) => this.onError(res.json()));
         this.productOptionValueService.query().subscribe(
             (res: Response) => { this.productoptionvalues = res.json(); }, (res: Response) => this.onError(res.json()));
+    }
+    
+    load(id) {
+        this.productAttributeService.find(id).subscribe((result) => {
+               this.productAttribute = result;
+        });
     }
     clear() {
         window.history.back();

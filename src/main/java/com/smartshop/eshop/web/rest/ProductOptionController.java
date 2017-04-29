@@ -1,5 +1,6 @@
 package com.smartshop.eshop.web.rest;
 
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
 
@@ -61,9 +62,11 @@ public class ProductOptionController extends AbstractDomainController<ProductOpt
 					"A new entity cannot already have an ID")).body(null);
 		}
 		ProductOption productOption = this.productOptionService.findOne(id);
-		productOption.getProductOptionValues().add(entity);
-		this.productOptionService.update(productOption);
-		return new ResponseEntity<>(HttpStatus.OK);
+		entity.setProductOption(productOption);
+		ProductOptionValue result = this.productOptionValueService.save(entity);
+		return ResponseEntity.created(new URI("/api/product-options/" + id + "/" + result.getId()))
+				.headers(HeaderUtil.createEntityCreationAlert(getEntityName(), result.getId().toString())).body(result);
+
 	}
 
 	@Timed

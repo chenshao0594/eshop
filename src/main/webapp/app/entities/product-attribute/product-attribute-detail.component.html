@@ -1,99 +1,80 @@
-
 <div *ngIf="productAttribute">
-    <h2><span jhiTranslate="eshopApp.productAttribute.detail.title">Product Attribute</span> {{productAttribute.id}}</h2>
-    <hr>
-    <jhi-alert-error></jhi-alert-error>
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
-        <div class="row justify-content-center">
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productAttribute.productAttributeWeight" for="field_productAttributeWeight">Product Attribute Weight</label>
-            <input type="number" class="form-control" name="productAttributeWeight" id="field_productAttributeWeight"
-                [(ngModel)]="productAttribute.productAttributeWeight"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productAttribute.productAttributePrice" for="field_productAttributePrice">Product Attribute Price</label>
-            <input type="number" class="form-control" name="productAttributePrice" id="field_productAttributePrice"
-                [(ngModel)]="productAttribute.productAttributePrice"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productAttribute.attributeRequired" for="field_attributeRequired">Attribute Required</label>
-            <input type="checkbox" class="form-control" name="attributeRequired" id="field_attributeRequired"
-                [(ngModel)]="productAttribute.attributeRequired"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productAttribute.attributeDefault" for="field_attributeDefault">Attribute Default</label>
-            <input type="checkbox" class="form-control" name="attributeDefault" id="field_attributeDefault"
-                [(ngModel)]="productAttribute.attributeDefault"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productAttribute.attributeDisplayOnly" for="field_attributeDisplayOnly">Attribute Display Only</label>
-            <input type="checkbox" class="form-control" name="attributeDisplayOnly" id="field_attributeDisplayOnly"
-                [(ngModel)]="productAttribute.attributeDisplayOnly"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productAttribute.productOptionSortOrder" for="field_productOptionSortOrder">Product Option Sort Order</label>
-            <input type="number" class="form-control" name="productOptionSortOrder" id="field_productOptionSortOrder"
-                [(ngModel)]="productAttribute.productOptionSortOrder"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productAttribute.productAttributeIsFree" for="field_productAttributeIsFree">Product Attribute Is Free</label>
-            <input type="checkbox" class="form-control" name="productAttributeIsFree" id="field_productAttributeIsFree"
-                [(ngModel)]="productAttribute.productAttributeIsFree"
-             />
-        </div>
-        <div class="col-5 form-group">
-            <label class="form-control-label" jhiTranslate="eshopApp.productAttribute.attributeDiscounted" for="field_attributeDiscounted">Attribute Discounted</label>
-            <input type="checkbox" class="form-control" name="attributeDiscounted" id="field_attributeDiscounted"
-                [(ngModel)]="productAttribute.attributeDiscounted"
-             />
-        </div>
-
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.productAttribute.productOption" for="field_productOption">Product Option</label>
-            <select class="form-control" id="field_productOption" name="productOption" [(ngModel)]="productAttribute.productOption" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="productOptionOption.id === productAttribute.productOption?.id ? productAttribute.productOption : productOptionOption" *ngFor="let productOptionOption of productoptions; trackBy: trackProductOptionById">{{productOptionOption.id}}</option>
-            </select>
-        </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.productAttribute.product" for="field_product">Product</label>
-            <select class="form-control" id="field_product" name="product" [(ngModel)]="productAttribute.product" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="productOption.id === productAttribute.product?.id ? productAttribute.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
-            </select>
-        </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.productAttribute.productOptionValue" for="field_productOptionValue">Product Option Value</label>
-            <select class="form-control" id="field_productOptionValue" name="productOptionValue" [(ngModel)]="productAttribute.productOptionValue" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="productOptionValueOption.id === productAttribute.productOptionValue?.id ? productAttribute.productOptionValue : productOptionValueOption" *ngFor="let productOptionValueOption of productoptionvalues; trackBy: trackProductOptionValueById">{{productOptionValueOption.id}}</option>
-            </select>
-        </div>
-        <div class="col-5 form-group ">
-            <label jhiTranslate="eshopApp.productAttribute.product" for="field_product">Product</label>
-            <select class="form-control" id="field_product" name="product" [(ngModel)]="productAttribute.product" >
-                <option [ngValue]="null"></option>
-                <option [ngValue]="productOption.id === productAttribute.product?.id ? productAttribute.product : productOption" *ngFor="let productOption of products; trackBy: trackProductById">{{productOption.id}}</option>
-            </select>
-        </div>
-    </div>
-
-    <button type="button"
-            (click)="previousState()"
-            class="btn btn-info">
-        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
-    </button>
-
-    <button type="submit" [disabled]="editForm.form.invalid || isSaving"
-            class="btn btn-primary">
-            <span class="fa fa-save"></span>&nbsp;<span
-                jhiTranslate="entity.action.save">Save</span>
-    </button>
-    </form>
+	<h2 class="page-title">
+		<span jhiTranslate="eshopApp.productAttribute.detail.title">Product Attribute</span> <small>{{productAttribute.id}}</small>
+		<button type="button" class="btn btn-primary pull-right" [routerLink]="['edit']">
+			<span class="fa fa-pencil"></span></span>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+		</button>
+	</h2>
+	<jhi-alert-error></jhi-alert-error>
+	<section class="widget">
+		<div class="body">
+			<fieldset>
+				<legend class="section">Info</legend>
+				<div class="row">
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.productAttribute.productAttributeWeight"
+						for="field_productAttributeWeight">Product Attribute Weight</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.productAttributeWeight}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.productAttribute.productAttributePrice"
+						for="field_productAttributePrice">Product Attribute Price</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.productAttributePrice}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.productAttribute.attributeRequired" for="field_attributeRequired">Attribute
+						Required</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.attributeRequired}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.productAttribute.attributeDefault" for="field_attributeDefault">Attribute
+						Default</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.attributeDefault}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.productAttribute.attributeDisplayOnly" for="field_attributeDisplayOnly">Attribute
+						Display Only</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.attributeDisplayOnly}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.productAttribute.productOptionSortOrder"
+						for="field_productOptionSortOrder">Product Option Sort Order</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.productOptionSortOrder}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.productAttribute.productAttributeIsFree"
+						for="field_productAttributeIsFree">Product Attribute Is Free</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.productAttributeIsFree}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right"
+						jhiTranslate="eshopApp.productAttribute.attributeDiscounted" for="field_attributeDiscounted">Attribute
+						Discounted</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.attributeDiscounted}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right" jhiTranslate="eshopApp.productAttribute.productOption" for="field_productOption">Product
+						Option</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.productOption?.code}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right" jhiTranslate="eshopApp.productAttribute.product" for="field_product">Product</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.product?.code}}</p>
+					</div>
+					<label class="control-label col-2 text-right no-padding-right" jhiTranslate="eshopApp.productAttribute.productOptionValue"
+						for="field_productOptionValue">Product Option Value</label>
+					<div class="col-4">
+						<p class="form-control input-transparent">{{productAttribute.productOptionValue?.id}}</p>
+					</div>
+				</div>
+			</fieldset>
+		</div>
+	</section>
 </div>

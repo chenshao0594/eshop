@@ -40,8 +40,7 @@ export class ProductOptionService {
     query(req?: any): Observable<Response> {
         const options = this.createRequestOption(req);
         return this.http.get(this.resourceUrl, options)
-            .map((res: any) => this.convertResponse(res))
-        ;
+            .map((res: any) => this.convertResponse(res));
     }
 
     delete(id: number): Observable<Response> {
@@ -60,6 +59,10 @@ export class ProductOptionService {
         return this.http.post('api/product-options/'+id+'/product-option-values', copy).map((res: Response) => {
             return res.json();
         });
+    }
+    queryOptionValue(id:number): Observable<Response> {
+        return this.http.get('api/product-options/'+id+'/product-option-values')
+            .map((res: any) => this.convertResponse(res));
     }
 
     private convertResponse(res: any): any {

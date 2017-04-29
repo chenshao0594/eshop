@@ -70,19 +70,15 @@
 							<thead>
 								<tr>
 									<th>#</th>
-									<th>First Name</th>
-									<th>Last Name</th>
-									<th>Email</th>
-									<th>Status</th>
+									<th>Code</th>
+									<th>Sort Order</th>
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>1</td>
-									<td>Mark</td>
-									<td>Otto</td>
-									<td><a href="#">ottoto@example.com</a></td>
-									<td><span class="badge bg-gray-lighter text-gray fw-semi-bold">Pending</span></td>
+								<tr *ngFor="let item of productOptionValues">
+									<td>{{item.id}}</td>
+									<td>{{item.code}}</td>
+									<td>{{item.productOptionValueSortOrder}}</td>
 								</tr>
 							</tbody>
 						</table>

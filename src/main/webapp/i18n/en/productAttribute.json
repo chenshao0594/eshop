@@ -16,14 +16,14 @@
             "detail": {
                 "title": "Product Attribute"
             },
-            "productAttributeWeight": "Product Attribute Weight",
-            "productAttributePrice": "Product Attribute Price",
+            "productAttributeWeight": " Weight",
+            "productAttributePrice": " Price",
             "attributeRequired": "Attribute Required",
             "attributeDefault": "Attribute Default",
             "attributeDisplayOnly": "Attribute Display Only",
-            "productOptionSortOrder": "Product Option Sort Order",
-            "productAttributeIsFree": "Product Attribute Is Free",
-            "attributeDiscounted": "Attribute Discounted",
+            "productOptionSortOrder": "Sort Order",
+            "productAttributeIsFree": "Is Free",
+            "attributeDiscounted": " Discounted",
             "productOption": "Product Option",
             "productOptionValue": "Product Option Value",
             "product": "Product"

@@ -9,48 +9,62 @@
 	<div class="col-12">
 		<section widget class="widget">
 			<div class="widget-body">
-				<button class="btn btn-primary pull-right">Add skus</button>
-				<br />
-				<table role="presentation" class="table table-striped files-table">
-					<tbody class="files">
-						<tr class="template-upload fade" *ngFor="let item of attachments">
-							<td><img src="data:{{item?.contentContentType}};base64,{{item?.content}}"
-								class="thumbnail" style="width: 65px; height: 65px"></td>
-							<td>
-								<p class="name">{{ item?.name }}</p> <strong class="error text-danger"></strong>
-							</td>
-							<td>
-								<p class="size">{{ item?.size/1024 | number:'.2' }} KB</p>
-							</td>
-							<td class="width-150">
-								<button type="button" class="btn btn-danger btn-sm delete"
-									(click)="deleteAttachment(item.id)">
-									<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
-				<table role="presentation" class="table table-striped files-table">
-					<tbody class="files">
-						<tr class="template-upload fade" *ngFor="let item of attachments">
-							<td><img src="data:{{item?.contentContentType}};base64,{{item?.content}}"
-								class="thumbnail" style="width: 65px; height: 65px"></td>
-							<td>
-								<p class="name">{{ item?.name }}</p> <strong class="error text-danger"></strong>
-							</td>
-							<td>
-								<p class="size">{{ item?.size/1024 | number:'.2' }} KB</p>
-							</td>
-							<td class="width-150">
-								<button type="button" class="btn btn-danger btn-sm delete"
-									(click)="deleteAttachment(item.id)">
-									<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
-								</button>
-							</td>
-						</tr>
-					</tbody>
-				</table>
+				<fieldset>
+					<legend class="section">
+						SKUs Info
+						<button type="button" class="btn btn-primary btn-xs pull-right" style="height: 24px;">
+							<i class="fa fa-plus"></i> Add SKUs
+						</button>
+					</legend>
+					<table role="presentation" class="table table-striped files-table">
+						<tbody class="files">
+							<tr class="template-upload fade" *ngFor="let item of attachments">
+								<td><img src="data:{{item?.contentContentType}};base64,{{item?.content}}"
+									class="thumbnail" style="width: 65px; height: 65px"></td>
+								<td>
+									<p class="name">{{ item?.name }}</p> <strong class="error text-danger"></strong>
+								</td>
+								<td>
+									<p class="size">{{ item?.size/1024 | number:'.2' }} KB</p>
+								</td>
+								<td class="width-150">
+									<button type="button" class="btn btn-danger btn-sm delete"
+										(click)="deleteAttachment(item.id)">
+										<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
+				<fieldset>
+					<legend class="section">
+						Product Attributes Info
+						<button type="button" class="btn btn-primary btn-xs pull-right" style="height: 24px;">
+							<i class="fa fa-plus"></i> Add Product Attribute
+						</button>
+					</legend>
+					<table role="presentation" class="table table-striped files-table">
+						<tbody class="files">
+							<tr class="template-upload fade" *ngFor="let item of attachments">
+								<td><img src="data:{{item?.contentContentType}};base64,{{item?.content}}"
+									class="thumbnail" style="width: 65px; height: 65px"></td>
+								<td>
+									<p class="name">{{ item?.name }}</p> <strong class="error text-danger"></strong>
+								</td>
+								<td>
+									<p class="size">{{ item?.size/1024 | number:'.2' }} KB</p>
+								</td>
+								<td class="width-150">
+									<button type="button" class="btn btn-danger btn-sm delete"
+										(click)="deleteAttachment(item.id)">
+										<i class="glyphicon glyphicon-trash"></i> <span>Delete</span>
+									</button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</fieldset>
 			</div>
 		</section>
 	</div>

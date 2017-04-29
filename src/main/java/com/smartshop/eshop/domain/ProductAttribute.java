@@ -38,19 +38,19 @@ public class ProductAttribute extends BusinessDomain<Long, ProductAttribute> imp
 	private BigDecimal productAttributePrice;
 
 	@Column(name = "attribute_required")
-	private Boolean attributeRequired;
+	private Boolean attributeRequired = true;
 
 	@Column(name = "attribute_default")
 	private Boolean attributeDefault;
 
 	@Column(name = "attribute_display_only")
-	private Boolean attributeDisplayOnly;
+	private Boolean attributeDisplayOnly = true;
 
 	@Column(name = "product_option_sort_order")
 	private Integer productOptionSortOrder;
 
 	@Column(name = "product_attribute_is_free")
-	private Boolean productAttributeIsFree;
+	private Boolean productAttributeIsFree = false;
 
 	@Column(name = "attribute_discounted")
 	private Boolean attributeDiscounted;

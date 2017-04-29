@@ -93,10 +93,10 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	private Integer sortOrder;
 
 	@Column(name = "product_is_free")
-	private Boolean productIsFree;
+	private Boolean productIsFree = false;
 
 	@Column(name = "available")
-	private Boolean available;
+	private Boolean available = true;
 
 	@Column(name = "product_review_count")
 	private Integer productReviewCount;
@@ -105,7 +105,7 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	private String refSku;
 
 	@Column(name = "product_virtual")
-	private Boolean productVirtual;
+	private Boolean productVirtual = false;
 
 	@Column(name = "product_width", precision = 10, scale = 2)
 	private BigDecimal productWidth;

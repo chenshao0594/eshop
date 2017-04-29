@@ -54,20 +54,20 @@ export const productAttributeRoute: Routes = [
         pageTitle: 'eshopApp.productAttribute.home.title'
     },
     canActivate: [UserRouteAccessService]
-  }
+  },
+  {
+      path: 'product-attribute/:id/edit',
+      component: ProductAttributeDialogComponent,
+      data: {
+          authorities: ['ROLE_USER'],
+          pageTitle: 'eshopApp.productAttribute.home.title'
+      },
+      canActivate: [UserRouteAccessService],
+    }
 ];
 
 export const productAttributePopupRoute: Routes = [
-  {
-    path: 'product-attribute/:id/edit',
-    component: ProductAttributePopupComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.productAttribute.home.title'
-    },
-    canActivate: [UserRouteAccessService],
-    outlet: 'popup'
-  },
+  
   {
     path: 'product-attribute/:id/delete',
     component: ProductAttributeDeletePopupComponent,
