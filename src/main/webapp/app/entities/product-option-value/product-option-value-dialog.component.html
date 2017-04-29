@@ -1,6 +1,6 @@
 <div *ngIf="productOptionValue">
 	<h2 class="page-title">
-		<span>Create or edit</span> <small> <span [hidden]="!productOptionValue.id">
+		<span>Create or edit Option Value</span> <small> <span [hidden]="!productOptionValue.id">
 				#{{productOptionValue.id}} </span></small>
 	</h2>
 	<jhi-alert-error></jhi-alert-error>
@@ -25,13 +25,13 @@
 							id="field_productOptionValueSortOrder"
 							[(ngModel)]="productOptionValue.productOptionValueSortOrder" />
 					</div>
-					<div class="form-group col-5">
+					<!-- <div class="form-group col-5">
 						<label class="form-control-label"
 							jhiTranslate="eshopApp.productOptionValue.productOptionDisplayOnly"
 							for="field_productOptionDisplayOnly">Product Option Display Only</label> <input
 							type="checkbox" class="form-control" name="productOptionDisplayOnly"
 							id="field_productOptionDisplayOnly" [(ngModel)]="productOptionValue.productOptionDisplayOnly" />
-					</div>
+					</div> -->
 					<div class="form-group col-5">
 						<label jhiTranslate="eshopApp.productOptionValue.merchantStore" for="field_merchantStore">Merchant
 							Store</label> <select class="form-control" id="field_merchantStore" name="merchantStore"

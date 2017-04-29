@@ -83,19 +83,24 @@
 						jhiTranslate="eshopApp.product.merchantStore">Merchant Store</label>
 					<div class="col-4">
 						<div *ngIf="product.merchantStore">
-							<a [routerLink]="['/merchant-store', product.merchantStore?.id]">{{product.merchantStore?.id}}</a>
+							<p class="form-control input-transparent">
+								<a [routerLink]="['/merchant-store', product.merchantStore?.id]">{{product.merchantStore?.id}}</a>
+							</p>
 						</div>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.taxClass">Tax Class</label>
 					<div class="col-4">
 						<div *ngIf="product.taxClass">
+						<p class="form-control input-transparent">
 							<a [routerLink]="['/tax-class', product.taxClass?.id]">{{product.taxClass?.id}}</a>
+							</p>
 						</div>
 					</div>
 					<label class="control-label col-2 text-right no-padding-right"
 						jhiTranslate="eshopApp.product.categories">Categories</label>
 					<div class="col-4">
+					
 						<span *ngFor="let categories of product.categories; let last = last"> <a
 							[routerLink]="['/category', categories?.id ]">{{categories.id}}</a>
 						</span>

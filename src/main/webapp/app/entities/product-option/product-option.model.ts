@@ -14,6 +14,6 @@ export class ProductOption {
         public descriptions?: ProductOptionDescription,
         public merchantStore?: MerchantStore,
     ) {
-        this.readOnly = false;
+        this.readOnly = true;
     }
 }
