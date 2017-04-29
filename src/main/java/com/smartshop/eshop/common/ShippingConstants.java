@@ -1,4 +1,4 @@
-package com.smartshop.eshop.config;
+package com.smartshop.eshop.common;
 
 public class ShippingConstants {
 

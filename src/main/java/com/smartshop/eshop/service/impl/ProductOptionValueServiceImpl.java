@@ -1,11 +1,15 @@
 package com.smartshop.eshop.service.impl;
 
+import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.smartshop.eshop.domain.ProductOption;
 import com.smartshop.eshop.domain.ProductOptionValue;
+import com.smartshop.eshop.domain.QProductOptionValue;
 import com.smartshop.eshop.repository.ProductOptionValueRepository;
 import com.smartshop.eshop.repository.search.ProductOptionValueSearchRepository;
 import com.smartshop.eshop.service.ProductOptionValueService;
@@ -27,6 +31,13 @@ public class ProductOptionValueServiceImpl extends AbstractDomainServiceImpl<Pro
 		super(productOptionValueRepository, productOptionValueSearchRepository);
 		this.productOptionValueRepository = productOptionValueRepository;
 		this.productOptionValueSearchRepository = productOptionValueSearchRepository;
+	}
+
+	@Override
+	public List<ProductOptionValue> queryOptionValuesByOption(ProductOption productOption) {
+		QProductOptionValue qProductOptionValue = QProductOptionValue.productOptionValue;
+		return (List<ProductOptionValue>) this.productOptionValueRepository
+				.findAll(qProductOptionValue.productOption.eq(productOption));
 	}
 
 }

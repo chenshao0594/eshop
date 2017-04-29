@@ -9,7 +9,6 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -73,9 +72,11 @@ public class ProductOptionController extends AbstractDomainController<ProductOpt
 	@GetMapping("/{id}/product-option-values")
 	public ResponseEntity<List<ProductOptionValue>> getAllProductOptionValues(@PathVariable Long id,
 			@ApiParam Pageable pageable) {
-		Page<ProductOptionValue> page = productOptionValueService.findAll(pageable);
-		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/" + getSectionKey());
-		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
+		ProductOption option = this.productOptionService.findOne(id);
+
+		List<ProductOptionValue> page = productOptionValueService.queryOptionValuesByOption(option);
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(null, "/api/" + getSectionKey());
+		return new ResponseEntity<>(page, headers, HttpStatus.OK);
 	}
 
 	@Override

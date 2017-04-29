@@ -40,7 +40,7 @@ import com.smartshop.core.shipping.module.ShippingQuoteModule;
 import com.smartshop.core.shipping.module.ShippingQuotePrePostProcessModule;
 import com.smartshop.core.shipping.service.ShippingService;
 import com.smartshop.core.utils.Encryption;
-import com.smartshop.eshop.config.ShippingConstants;
+import com.smartshop.eshop.common.ShippingConstants;
 import com.smartshop.eshop.domain.Country;
 import com.smartshop.eshop.domain.IntegrationModule;
 import com.smartshop.eshop.domain.Language;

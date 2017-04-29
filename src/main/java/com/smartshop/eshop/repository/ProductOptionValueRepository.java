@@ -4,10 +4,12 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 
 import com.smartshop.eshop.domain.ProductOptionValue;
 
-public interface ProductOptionValueRepository extends JpaRepository<ProductOptionValue, Long> {
+public interface ProductOptionValueRepository
+		extends JpaRepository<ProductOptionValue, Long>, QueryDslPredicateExecutor<ProductOptionValue> {
 	//
 	// @Override
 	// @Query("select p from ProductOptionValue p join fetch p.merchantStore pm
