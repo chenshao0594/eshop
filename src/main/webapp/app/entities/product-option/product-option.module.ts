@@ -13,7 +13,7 @@ import {
     ProductOptionDeleteDialogComponent,
     productOptionRoute,
     productOptionPopupRoute,
-    ProductOptionResolvePagingParams,
+    ProductOptionResolvePagingParams
 } from './';
 
 const ENTITY_STATES = [
@@ -32,19 +32,19 @@ const ENTITY_STATES = [
         ProductOptionDialogComponent,
         ProductOptionDeleteDialogComponent,
         ProductOptionPopupComponent,
-        ProductOptionDeletePopupComponent,
+        ProductOptionDeletePopupComponent
     ],
     entryComponents: [
         ProductOptionComponent,
         ProductOptionDialogComponent,
         ProductOptionPopupComponent,
         ProductOptionDeleteDialogComponent,
-        ProductOptionDeletePopupComponent,
+        ProductOptionDeletePopupComponent
     ],
     providers: [
         ProductOptionService,
         ProductOptionPopupService,
-        ProductOptionResolvePagingParams,
+        ProductOptionResolvePagingParams
     ],
     schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

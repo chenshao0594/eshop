@@ -1,7 +1,7 @@
 <div>
-    <h2 class="page-title">
+    <h2>
         <span jhiTranslate="eshopApp.productOptionValue.home.title">Product Option Values</span>
-        <button class="btn btn-primary float-right create-product-option-value" [routerLink]="['../product-option-value-new']">
+        <button class="btn btn-primary float-right create-product-option-value" [routerLink]="['/', { outlets: { popup: ['product-option-value-new'] } }]">
             <span class="fa fa-plus"></span>
             <span class="hidden-sm-down"  jhiTranslate="eshopApp.productOptionValue.home.createLabel">
             Create new Product Option Value
@@ -9,12 +9,10 @@
         </button>
     </h2>
     <jhi-alert></jhi-alert>
-    <section class="widget">
-    <div class="body">
     <div class="row">
         <div class="col-sm-12 no-padding-right">
             <form name="searchForm" class="form-inline">
-                <div class="input-group w-100 mt-3 offset-6">
+                <div class="input-group w-100 mt-3">
                     <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'eshopApp.productOptionValue.home.search' | translate }}">
                     <button class="input-group-addon btn btn-info" (click)="search(currentSearch)">
                         <span class="fa fa-search"></span>
@@ -28,13 +26,18 @@
     </div>
     <br/>
     <div class="table-responsive" *ngIf="productOptionValues">
-        <table class="table table-striped table-hover">
+        <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
             <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="productOptionValueImage"><span jhiTranslate="eshopApp.productOptionValue.productOptionValueImage">Product Option Value Image</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="code"><span jhiTranslate="eshopApp.productOptionValue.code">Code</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOptionValueSortOrder"><span jhiTranslate="eshopApp.productOptionValue.productOptionValueSortOrder">Product Option Value Sort Order</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOptionDisplayOnly"><span jhiTranslate="eshopApp.productOptionValue.productOptionDisplayOnly">Product Option Display Only</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdBy"><span jhiTranslate="eshopApp.productOptionValue.createdBy">Created By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="createdDate"><span jhiTranslate="eshopApp.productOptionValue.createdDate">Created Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedBy"><span jhiTranslate="eshopApp.productOptionValue.lastModifiedBy">Last Modified By</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="lastModifiedDate"><span jhiTranslate="eshopApp.productOptionValue.lastModifiedDate">Last Modified Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="merchantStore.id"><span jhiTranslate="eshopApp.productOptionValue.merchantStore">Merchant Store</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="productOption.id"><span jhiTranslate="eshopApp.productOptionValue.productOption">Product Option</span> <span class="fa fa-sort"></span></th>
             <th></th>
@@ -43,17 +46,22 @@
             <tbody>
             <tr *ngFor="let productOptionValue of productOptionValues ;trackBy: trackId">
                 <td><a [routerLink]="['../product-option-value', productOptionValue.id ]">{{productOptionValue.id}}</a></td>
+                <td>{{productOptionValue.productOptionValueImage}}</td>
                 <td>{{productOptionValue.code}}</td>
                 <td>{{productOptionValue.productOptionValueSortOrder}}</td>
                 <td>{{productOptionValue.productOptionDisplayOnly}}</td>
+                <td>{{productOptionValue.createdBy}}</td>
+                <td>{{productOptionValue.createdDate | date:'mediumDate'}}</td>
+                <td>{{productOptionValue.lastModifiedBy}}</td>
+                <td>{{productOptionValue.lastModifiedDate | date:'mediumDate'}}</td>
                 <td>
                     <div *ngIf="productOptionValue.merchantStore">
-                        <a [routerLink]="['../merchant-store', productOptionValue.merchantStore?.id ]" >{{productOptionValue.merchantStore?.storename}}</a>
+                        <a [routerLink]="['../merchant-store', productOptionValue.merchantStore?.id ]" >{{productOptionValue.merchantStore?.id}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="productOptionValue.productOption">
-                        <a [routerLink]="['../product-option', productOptionValue.productOption?.id ]" >{{productOptionValue.productOption?.code}}</a>
+                        <a [routerLink]="['../product-option', productOptionValue.productOption?.id ]" >{{productOptionValue.productOption?.id}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -63,6 +71,13 @@
                                 class="btn btn-info btn-sm">
                             <span class="fa fa-eye"></span>
                             <span class="hidden-md-down" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'product-option-value/'+ productOptionValue.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="hidden-md-down" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', { outlets: { popup: 'product-option-value/'+ productOptionValue.id + '/delete'} }]"
@@ -85,6 +100,4 @@
                 <ngb-pagination [collectionSize]="totalItems" [(page)]="page" (pageChange)="loadPage(page)"></ngb-pagination>
             </div>
         </div>
-    </div>
-    </section>
 </div>

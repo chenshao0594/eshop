@@ -17,3 +17,20 @@ export class ProductOption {
         this.readOnly = true;
     }
 }
+export class ProductOptionValue {
+    constructor(
+        public id?: number,
+        public productOptionValueImage?: string,
+        public code?: string,
+        public productOptionValueSortOrder?: number,
+        public productOptionDisplayOnly?: boolean,
+        public createdBy?: string,
+        public createdDate?: any,
+        public lastModifiedBy?: string,
+        public lastModifiedDate?: any,
+        public merchantStore?: MerchantStore,
+        public productOption?: ProductOption,
+    ) {
+        this.productOptionDisplayOnly = false;
+    }
+}

@@ -25,7 +25,8 @@
             "lastModifiedBy": "Last Modified By",
             "lastModifiedDate": "Last Modified Date",
             "descriptions": "Descriptions",
-            "merchantStore": "Merchant Store"
+            "merchantStore": "Merchant Store",
+            "sortOrder": "Sort Order"
         }
     }
 }

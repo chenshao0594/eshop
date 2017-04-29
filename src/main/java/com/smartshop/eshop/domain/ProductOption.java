@@ -6,6 +6,7 @@ import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -50,7 +51,7 @@ public class ProductOption extends BusinessDomain<Long, ProductOption> implement
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<ProductOptionDescription> descriptions = new HashSet<>();
 
-	@OneToMany(mappedBy = "productOption")
+	@OneToMany(mappedBy = "productOption", fetch = FetchType.EAGER)
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<ProductOptionValue> productOptionValues = new HashSet<>();
 

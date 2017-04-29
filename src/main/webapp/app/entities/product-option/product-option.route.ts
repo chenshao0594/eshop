@@ -29,6 +29,15 @@ export class ProductOptionResolvePagingParams implements Resolve<any> {
 
 export const productOptionRoute: Routes = [
   {
+    path: 'product-option-new',
+    component: ProductOptionDialogComponent,
+    data: {
+        authorities: ['ROLE_USER'],
+        pageTitle: 'eshopApp.productOption.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
     path: 'product-option',
     component: ProductOptionComponent,
     resolve: {
@@ -42,15 +51,6 @@ export const productOptionRoute: Routes = [
   }, {
     path: 'product-option/:id',
     component: ProductOptionDetailComponent,
-    data: {
-        authorities: ['ROLE_USER'],
-        pageTitle: 'eshopApp.productOption.home.title'
-    },
-    canActivate: [UserRouteAccessService]
-  },
-  {
-    path: 'product-option-new',
-    component: ProductOptionDialogComponent,
     data: {
         authorities: ['ROLE_USER'],
         pageTitle: 'eshopApp.productOption.home.title'

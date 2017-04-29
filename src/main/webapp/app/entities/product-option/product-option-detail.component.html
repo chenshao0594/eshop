@@ -13,8 +13,6 @@
 			<fieldset>
 				<legend class="section">Info</legend>
 				<div class="row">
-					
-					
 					<label class="control-label col-2 text-right no-padding-right"> <span
 						jhiTranslate="eshopApp.productOption.code">Code</span>
 					</label>
@@ -61,7 +59,8 @@
 			<fieldset>
 				<legend class="section">
 					Option Values
-					<button type="button"  [routerLink]="['/', { outlets: { popup: ['product-option-value-new'] } }]" class="btn btn-primary btn-xs pull-right" style="height: 24px;">
+					<button type="button" (click)="createOptionValue(content)"
+						class="btn btn-primary btn-xs pull-right" style="height: 24px;">
 						<i class="fa fa-plus"></i> Add Option Values
 					</button>
 				</legend>
@@ -130,3 +129,31 @@
 		</div>
 	</section>
 </div>
+<ng-template #content let-c="close" let-d="dismiss">
+<div class="modal-dialog">
+		<div class="modal-header">
+			<button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+				<span aria-hidden="true">&times;</span>
+			</button>
+		</div>
+		<div class="modal-body">
+			<div class="row justify-content-center">
+				<div class="form-group col-5">
+					<label class="form-control-label" jhiTranslate="eshopApp.productOption.code"
+						for="field_code">Code</label> <input type="text" class="form-control"
+						name="productOptionValue.code" id="field_code" [(ngModel)]="productOptionValue.code" required />
+				</div>
+				<div class="form-group col-5">
+					<label class="form-control-label" jhiTranslate="eshopApp.productOption.sortOrder"
+						for="field_productOptionType">Product Option Type</label> <input type="text"
+						class="form-control" name="productOptionValue.productOptionValueSortOrder"
+						id="field_productOptionType" [(ngModel)]="productOptionValue.productOptionValueSortOrder" />
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+			<button type="button" class="btn btn-primary" (click)="saveOptionValue()">Save</button>
+		</div>
+</div>
+</ng-template>

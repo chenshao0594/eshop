@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http, Response, URLSearchParams, BaseRequestOptions } from '@angular/http';
 import { Observable } from 'rxjs/Rx';
 
-import { ProductOption } from './product-option.model';
+import { ProductOption, ProductOptionValue } from './product-option.model';
 import { DateUtils } from 'ng-jhipster';
 @Injectable()
 export class ProductOptionService {
@@ -55,6 +55,12 @@ export class ProductOptionService {
         ;
     }
 
+    createOptionValue(id:number, productOptionValue: ProductOptionValue): Observable<ProductOptionValue> {
+        const copy: ProductOptionValue = Object.assign({}, productOptionValue);
+        return this.http.post('api/product-options/'+id+'/product-option-values', copy).map((res: Response) => {
+            return res.json();
+        });
+    }
 
     private convertResponse(res: any): any {
         const jsonResponse = res.json();
