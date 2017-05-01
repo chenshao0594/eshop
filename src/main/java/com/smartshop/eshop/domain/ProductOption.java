@@ -17,6 +17,8 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 /**
@@ -52,10 +54,11 @@ public class ProductOption extends BusinessDomain<Long, ProductOption> implement
 	private Set<ProductOptionDescription> descriptions = new HashSet<>();
 
 	@OneToMany(mappedBy = "productOption", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	@Fetch(FetchMode.JOIN)
+	@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
 	private Set<ProductOptionValue> productOptionValues = new HashSet<>();
 
-	@ManyToOne
+	@ManyToOne()
 	private MerchantStore merchantStore;
 
 	@Override

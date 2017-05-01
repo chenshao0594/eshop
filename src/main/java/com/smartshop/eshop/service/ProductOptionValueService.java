@@ -1,6 +1,7 @@
 package com.smartshop.eshop.service;
 
-import java.util.List;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import com.smartshop.eshop.domain.ProductOption;
 import com.smartshop.eshop.domain.ProductOptionValue;
@@ -10,6 +11,6 @@ import com.smartshop.eshop.domain.ProductOptionValue;
  */
 public interface ProductOptionValueService extends AbstractDomainService<ProductOptionValue, Long> {
 
-	public List<ProductOptionValue> queryOptionValuesByOption(ProductOption productOption);
+	public Page<ProductOptionValue> queryOptionValuesByOption(ProductOption productOption, Pageable pageable);
 
 }

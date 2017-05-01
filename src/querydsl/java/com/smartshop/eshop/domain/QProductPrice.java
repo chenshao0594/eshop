@@ -26,7 +26,7 @@ public class QProductPrice extends EntityPathBase<ProductPrice> {
 
     public final BooleanPath defaultPrice = createBoolean("defaultPrice");
 
-    public final StringPath dEFAULTPRICECODE = createString("dEFAULTPRICECODE");
+    public final StringPath defaultPriceCode = createString("defaultPriceCode");
 
     public final SetPath<ProductPriceDescription, QProductPriceDescription> descriptions = this.<ProductPriceDescription, QProductPriceDescription>createSet("descriptions", ProductPriceDescription.class, QProductPriceDescription.class, PathInits.DIRECT2);
 

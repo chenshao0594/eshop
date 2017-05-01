@@ -27,6 +27,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codahale.metrics.annotation.Timed;
 import com.smartshop.eshop.domain.BusinessDomain;
+import com.smartshop.eshop.exception.BusinessException;
 import com.smartshop.eshop.service.AbstractDomainService;
 import com.smartshop.eshop.web.rest.util.HeaderUtil;
 import com.smartshop.eshop.web.rest.util.PaginationUtil;
@@ -46,16 +47,20 @@ public abstract class AbstractDomainController<E extends BusinessDomain, K exten
 
 	protected abstract String getEntityName();
 
-	protected void preCreate(E entity){};
-	protected E postCreate(E entity){
-		return entity;};
+	protected void preCreate(E entity) throws BusinessException {
+	};
+
+	protected E postCreate(E entity) {
+		return entity;
+	};
+
 	public AbstractDomainController(AbstractDomainService<E, K> service) {
 		this.service = service;
 	}
 
 	@Timed
 	@PostMapping()
-	public ResponseEntity<E> create(@Valid @RequestBody E entity) throws URISyntaxException {
+	public ResponseEntity<E> create(@Valid @RequestBody E entity) throws URISyntaxException, BusinessException {
 		log.debug("REST request to save entity : {}", entity);
 		if (entity.getId() != null) {
 			return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(getEntityName(), "idexists",
@@ -70,7 +75,7 @@ public abstract class AbstractDomainController<E extends BusinessDomain, K exten
 
 	@Timed
 	@PutMapping()
-	public ResponseEntity<E> updateEntity(@Valid @RequestBody E entity) throws URISyntaxException {
+	public ResponseEntity<E> updateEntity(@Valid @RequestBody E entity) throws URISyntaxException, BusinessException {
 		log.debug("REST request to update entity : {}", entity);
 		if (entity.getId() == null) {
 			return create(entity);

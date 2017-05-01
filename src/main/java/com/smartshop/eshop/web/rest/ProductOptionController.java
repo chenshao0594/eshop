@@ -9,6 +9,7 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -23,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.codahale.metrics.annotation.Timed;
 import com.smartshop.eshop.domain.ProductOption;
 import com.smartshop.eshop.domain.ProductOptionValue;
+import com.smartshop.eshop.exception.BusinessException;
 import com.smartshop.eshop.service.ProductOptionService;
 import com.smartshop.eshop.service.ProductOptionValueService;
 import com.smartshop.eshop.web.rest.util.HeaderUtil;
@@ -51,6 +53,14 @@ public class ProductOptionController extends AbstractDomainController<ProductOpt
 		this.productOptionService = productOptionService;
 	}
 
+	@Override
+	protected void preCreate(ProductOption option) throws BusinessException {
+		ProductOption productOption = this.productOptionService.getByCode(option.getMerchantStore(), option.getCode());
+		if (productOption != null) {
+			throw new BusinessException("code has been existed !!!");
+		}
+	};
+
 	@Timed
 	@PostMapping("/{id}/product-option-values")
 	public ResponseEntity<ProductOptionValue> createProductOptionValue(@PathVariable Long id,
@@ -77,9 +87,9 @@ public class ProductOptionController extends AbstractDomainController<ProductOpt
 			return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(getEntityName(), "null ", "null"))
 					.body(null);
 		}
-		List<ProductOptionValue> page = productOptionValueService.queryOptionValuesByOption(option);
-		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(null, "/api/" + getSectionKey());
-		return new ResponseEntity<>(page, headers, HttpStatus.OK);
+		Page<ProductOptionValue> page = productOptionValueService.queryOptionValuesByOption(option, pageable);
+		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/" + getSectionKey());
+		return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
 	}
 
 	@Override

@@ -56,7 +56,6 @@ public class ProductOptionValue extends BusinessDomain<Long, ProductOption> impl
 	@ManyToOne(fetch = FetchType.LAZY)
 	private MerchantStore merchantStore;
 
-	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
 	private ProductOption productOption;
 

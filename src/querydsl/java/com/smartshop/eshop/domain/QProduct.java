@@ -64,6 +64,8 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final NumberPath<java.math.BigDecimal> productLength = createNumber("productLength", java.math.BigDecimal.class);
 
+    public final SetPath<ProductOption, QProductOption> productOptions = this.<ProductOption, QProductOption>createSet("productOptions", ProductOption.class, QProductOption.class, PathInits.DIRECT2);
+
     public final NumberPath<Integer> productOrdered = createNumber("productOrdered", Integer.class);
 
     public final NumberPath<java.math.BigDecimal> productReviewAvg = createNumber("productReviewAvg", java.math.BigDecimal.class);
@@ -82,11 +84,15 @@ public class QProduct extends EntityPathBase<Product> {
 
     public final SetPath<ProductRelationship, QProductRelationship> relationships = this.<ProductRelationship, QProductRelationship>createSet("relationships", ProductRelationship.class, QProductRelationship.class, PathInits.DIRECT2);
 
+    public final NumberPath<java.math.BigDecimal> retailPrice = createNumber("retailPrice", java.math.BigDecimal.class);
+
     public final StringPath searchUrl = createString("searchUrl");
 
     public final StringPath sku = createString("sku");
 
     public final NumberPath<Integer> sortOrder = createNumber("sortOrder", Integer.class);
+
+    public final NumberPath<java.math.BigDecimal> standardPrice = createNumber("standardPrice", java.math.BigDecimal.class);
 
     public final QTaxClass taxClass;
 

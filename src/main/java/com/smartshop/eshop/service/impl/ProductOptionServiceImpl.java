@@ -1,3 +1,4 @@
+
 package com.smartshop.eshop.service.impl;
 
 import org.slf4j.Logger;
@@ -5,6 +6,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.smartshop.eshop.domain.MerchantStore;
 import com.smartshop.eshop.domain.ProductOption;
 import com.smartshop.eshop.repository.ProductOptionRepository;
 import com.smartshop.eshop.repository.search.ProductOptionSearchRepository;
@@ -27,6 +29,11 @@ public class ProductOptionServiceImpl extends AbstractDomainServiceImpl<ProductO
 		super(productOptionRepository, productOptionSearchRepository);
 		this.productOptionRepository = productOptionRepository;
 		this.productOptionSearchRepository = productOptionSearchRepository;
+	}
+
+	@Override
+	public ProductOption getByCode(MerchantStore store, String optionCode) {
+		return productOptionRepository.findByCode(store.getId(), optionCode);
 	}
 
 }
