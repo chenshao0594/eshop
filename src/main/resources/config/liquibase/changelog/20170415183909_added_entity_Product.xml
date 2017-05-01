@@ -109,6 +109,12 @@
             <column name="product_width" type="decimal(10,2)">
                 <constraints nullable="true" />
             </column>
+            <column name="standard_price" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+            <column name="retail_price" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
 
             <column name="pre_order" type="bit">
                 <constraints nullable="true" />
@@ -160,6 +166,14 @@
 				<constraints nullable="false" />
 			</column>
 			<column name="category_id" type="bigint">
+				<constraints nullable="false" />
+			</column>
+		</createTable>
+		<createTable tableName="product_option_xref">
+			<column name="product_id" type="bigint">
+				<constraints nullable="false" />
+			</column>
+			<column name="product_option_id" type="bigint">
 				<constraints nullable="false" />
 			</column>
 		</createTable>

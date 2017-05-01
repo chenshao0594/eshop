@@ -51,6 +51,7 @@ public class CacheConfiguration {
 			cm.createCache(com.smartshop.eshop.domain.Product.class.getName() + ".attributes", jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.Product.class.getName() + ".descriptions", jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.Product.class.getName() + ".relationships", jcacheConfiguration);
+			cm.createCache(com.smartshop.eshop.domain.Product.class.getName() + ".productOptions", jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.OrderProductDownload.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.ProductOptionValue.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.ProductOptionValue.class.getName() + ".descriptions",
@@ -174,7 +175,7 @@ public class CacheConfiguration {
 			cm.createCache(com.smartshop.eshop.domain.Template.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.EmailTemplate.class.getName(), jcacheConfiguration);
 			cm.createCache(com.smartshop.eshop.domain.EmailSetting.class.getName(), jcacheConfiguration);
-cm.createCache(com.smartshop.eshop.domain.Attachment.class.getName(), jcacheConfiguration);
+			cm.createCache(com.smartshop.eshop.domain.Attachment.class.getName(), jcacheConfiguration);
 			// jhipster-needle-ehcache-add-entry
 		};
 	}

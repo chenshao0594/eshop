@@ -16,6 +16,8 @@ import {
     ProductResolvePagingParams,
     ProductAttachmentComponent,
     ProductSkuComponent,
+    ProductOptionDialogPopupComponent,
+    ProductOptionDialogComponent,
     
 } from './';
 
@@ -38,6 +40,8 @@ const ENTITY_STATES = [
         ProductDeletePopupComponent,
         ProductAttachmentComponent,
         ProductSkuComponent,
+        ProductOptionDialogPopupComponent,
+        ProductOptionDialogComponent,
     ],
     entryComponents: [
         ProductComponent,
@@ -45,6 +49,7 @@ const ENTITY_STATES = [
         ProductPopupComponent,
         ProductDeleteDialogComponent,
         ProductDeletePopupComponent,
+        ProductOptionDialogComponent
     ],
     providers: [
         ProductService,

@@ -1,0 +1,40 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+	<div class="modal-header">
+		<h4 class="modal-title" jhiTranslate="entity.delete.title">Confirm delete operation</h4>
+		<button type="button" class="close" data-dismiss="modal" aria-hidden="true" (click)="clear()">&times;</button>
+	</div>
+	<div class="modal-body">
+		<jhi-alert-error></jhi-alert-error>
+		<table class="table table-striped">
+			<thead>
+				<tr>
+					<th>
+						<div class="checkbox">
+							<input id="checkbox1" type="checkbox" data-check-all> <label for="checkbox1"></label>
+						</div>
+					</th>
+					<th>Code</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let option of productOptions ;trackBy: trackId">
+					<td>
+						<div class="checkbox">
+							<input id="checkbox2" type="checkbox"  (change)="updateCheckedOptions(option.id)"> 
+							<label for="checkbox2"></label>
+						</div>
+					</td>
+					<td>{{option.code}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+			<span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+		</button>
+		<button type="submit" class="btn btn-primary">
+			<span class="fa fa-remove"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+		</button>
+	</div>
+</form>

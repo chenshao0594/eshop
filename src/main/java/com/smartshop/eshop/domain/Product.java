@@ -167,6 +167,17 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	})
 	private Set<Category> categories = new HashSet<Category>();
 
+	@Column(name = "standard_price", precision = 10, scale = 2)
+	private BigDecimal standardPrice;
+
+	@Column(name = "retail_price", precision = 10, scale = 2)
+	private BigDecimal retailPrice;
+
+	@ManyToMany(fetch = FetchType.EAGER)
+	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+	@JoinTable(name = "product_option_xref", joinColumns = @JoinColumn(name = "product_id", referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(name = "product_option_id", referencedColumnName = "ID"))
+	private Set<ProductOption> productOptions = new HashSet<>();
+
 	@Override
 	public Long getId() {
 		return id;
@@ -659,6 +670,44 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 			return this.getDescriptions().iterator().next();
 		}
 		return null;
+	}
+
+	public BigDecimal getStandardPrice() {
+		return standardPrice;
+	}
+
+	public void setStandardPrice(BigDecimal standardPrice) {
+		this.standardPrice = standardPrice;
+	}
+
+	public BigDecimal getRetailPrice() {
+		return retailPrice;
+	}
+
+	public void setRetailPrice(BigDecimal retailPrice) {
+		this.retailPrice = retailPrice;
+	}
+
+	public Boolean getAvailable() {
+		return available;
+	}
+
+	public Boolean getPreOrder() {
+		return preOrder;
+	}
+
+	public Set<ProductOption> getProductOptions() {
+		return productOptions;
+	}
+
+	public void setProductOptions(Set<ProductOption> productOptions) {
+		this.productOptions = productOptions;
+	}
+
+	public Product addProductOption(ProductOption productOption) {
+		this.productOptions.add(productOption);
+		return this;
+
 	}
 
 }

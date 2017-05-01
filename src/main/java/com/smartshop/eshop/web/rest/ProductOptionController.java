@@ -73,7 +73,10 @@ public class ProductOptionController extends AbstractDomainController<ProductOpt
 	public ResponseEntity<List<ProductOptionValue>> getAllProductOptionValues(@PathVariable Long id,
 			@ApiParam Pageable pageable) {
 		ProductOption option = this.productOptionService.findOne(id);
-
+		if (option == null) {
+			return ResponseEntity.badRequest().headers(HeaderUtil.createFailureAlert(getEntityName(), "null ", "null"))
+					.body(null);
+		}
 		List<ProductOptionValue> page = productOptionValueService.queryOptionValuesByOption(option);
 		HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(null, "/api/" + getSectionKey());
 		return new ResponseEntity<>(page, headers, HttpStatus.OK);

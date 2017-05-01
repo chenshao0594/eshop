@@ -2,119 +2,43 @@ import { Component, OnInit, OnDestroy, ViewEncapsulation } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Rx';
 import { Response } from '@angular/http';
-import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jhipster';
-
-import { Product } from './product.model';
+import { EventManager, AlertService, JhiLanguageService } from 'ng-jhipster';
 import { ProductService } from './product.service';
-import { AttachmentService } from '../attachment/attachment.service';
-import { Attachment } from '../attachment/attachment.model';
-
-const URL = '/api/attachments';
+import { ProductOption } from '../product-option/product-option.model';
 
 @Component( {
     templateUrl: './product-sku.component.html'
 } )
 export class ProductSkuComponent  implements OnInit {
-    product: Product;
-    boId: number;
-    attachment: Attachment;
-    attachments : Attachment[];
+    productId: number;
+    productOptions: ProductOption[];
     private subscription: any;
     private eventSubscriber: Subscription;
-    isSaving: boolean;
-
     constructor(
         private eventManager: EventManager,
         private jhiLanguageService: JhiLanguageService,
         private alertService: AlertService,
         private productService: ProductService,
-        private attachmentService: AttachmentService,
-        private dataUtils: DataUtils,
         private route: ActivatedRoute
     ) {
         this.jhiLanguageService.setLocations(['product']);
-        this.jhiLanguageService.setLocations(['attachment']);
-        this.isSaving = false;
-    
+        this.jhiLanguageService.setLocations(['productOption']);
     }
 
     ngOnInit() {
       
         this.subscription = this.route.params.subscribe((params) => {
-            this.boId=params['id'];
+            this.productId = params['id'];
             });
-        this.attachmentService.queryAttachmentsByBO('products',this.boId).subscribe(
-            (res: Response) => { this.attachments = res.json(); }, (res: Response) => this.onError(res.json()));
-    // this.registerChangeInProducts();
-    }
-    byteSize(field) {
-        return this.dataUtils.byteSize(field);
+        this.productService.queryOptions(this.productId).subscribe(
+                (res: Response) => { this.productOptions = res.json(); }, 
+                (res: Response) => this.onError(res.json()));
     }
 
-    openFile(contentType, field) {
-        return this.dataUtils.openFile(contentType, field);
-    }
-
-    setFileData(event, attachment, field, isImage) {
-        if (event.target.files && event.target.files[0]) {
-            const file = event.target.files[0];
-            attachment = new Attachment();
-            attachment['boName'] ='product';
-            attachment['boId'] = this.boId;
-            attachment['name'] = file.name;
-            attachment['size'] = file.size;
-            if (isImage && !/^image\//.test(file.type)) {
-                return;
-            }
-            this.dataUtils.toBase64(file, (base64Data) => {
-                attachment[field] = base64Data;
-                alert("work !!!");
-                attachment[`${field}ContentType`] = file.type;
-                this.upload(attachment);
-
-            });
-        }
-    }
-    upload(attachment: Attachment){
-         this.attachmentService.create(attachment)
-        .subscribe((res: Attachment) =>
-        this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-
-    }
-    clear() {
-        // this.activeModal.dismiss('cancel');
-    }
     back() {
         window.history.back();
     }
     
-    deleteAttachment(attachmentId: number) {
-        this.attachmentService.delete(attachmentId);
-        // this.activeModal.dismiss('cancel');
-    }
-
-    save() {
-        this.attachmentService.create(this.attachment)
-            .subscribe((res: Attachment) =>
-                this.onSaveSuccess(res), (res: Response) => this.onSaveError(res));
-    }
-
-    private onSaveSuccess(result: Attachment) {
-      //  this.eventManager.broadcast({ name: 'attachmentListModification', content: 'OK'});
-        this.attachments.concat(result);
-        this.isSaving = false;
-    }
-
-    private onSaveError(error) {
-        try {
-            error.json();
-        } catch (exception) {
-            error.message = error.text();
-        }
-        this.isSaving = false;
-        this.onError(error);
-    }
-
     private onError(error) {
         this.alertService.error(error.message, null, null);
     }

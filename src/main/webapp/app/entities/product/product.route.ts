@@ -10,6 +10,7 @@ import { ProductPopupComponent, ProductDialogComponent } from './product-dialog.
 import { ProductDeletePopupComponent } from './product-delete-dialog.component';
 import {ProductAttachmentComponent } from './product-attachment.component';
 import {ProductSkuComponent } from './product-sku.component';
+import {ProductOptionDialogPopupComponent} from './product-option.component';
 
 import { Principal } from '../../shared';
 
@@ -93,5 +94,14 @@ export const productPopupRoute: Routes = [
     },
     canActivate: [UserRouteAccessService],
     outlet: 'popup'
-  }
+  }, {
+      path: 'product/:id/skus/options',
+      component: ProductOptionDialogPopupComponent,
+      data: {
+          authorities: ['ROLE_USER'],
+          pageTitle: 'eshopApp.product.home.title'
+      },
+      canActivate: [UserRouteAccessService],
+      outlet: 'popup'
+    }
 ];

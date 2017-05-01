@@ -82,4 +82,15 @@ export class ProductService {
         }
         return options;
     }
+    
+    addOptionValue(productId:number ,optionIds:number[]): Observable<Response> {
+        return this.http.post('api/products/'+productId+'/productOptions', {'optionIds':optionIds})
+            .map((res: any) => this.convertResponse(res));
+    }
+    
+    queryOptions(productId:number): Observable<Response> {
+        return this.http.get('api/products/'+productId+'/productOptions')
+            .map((res: any) => this.convertResponse(res));
+    }
+
 }
