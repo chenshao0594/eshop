@@ -28,7 +28,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 @Table(name = "product_option")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @Document(indexName = "productoption")
-public class ProductOption extends BusinessDomain<Long, ProductOption> implements BusinessDomainInterface {
+public class ProductOption extends BusinessDomain<Long, ProductOption> {
 
 	private static final long serialVersionUID = 1L;
 
@@ -53,9 +53,9 @@ public class ProductOption extends BusinessDomain<Long, ProductOption> implement
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 	private Set<ProductOptionDescription> descriptions = new HashSet<>();
 
-	@OneToMany(mappedBy = "productOption", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@Fetch(FetchMode.JOIN)
+	@OneToMany(mappedBy = "productOption", cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@Cache(usage = CacheConcurrencyStrategy.READ_ONLY)
+	@Fetch(value = FetchMode.SELECT)
 	private Set<ProductOptionValue> productOptionValues = new HashSet<>();
 
 	@ManyToOne()

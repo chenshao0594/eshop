@@ -1,67 +1,67 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "products",
-            "otherEntityName": "product",
-            "otherEntityRelationshipName": "taxClass"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "taxRates",
-            "otherEntityName": "taxRate",
-            "otherEntityRelationshipName": "taxClass"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "merchantStore",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "title",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "code",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184113",
-    "entityTableName": "tax_class",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "products",
+			"otherEntityName": "product",
+			"otherEntityRelationshipName": "taxClass"
+		},
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "taxRates",
+			"otherEntityName": "taxRate",
+			"otherEntityRelationshipName": "taxClass"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "merchantStore",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "title",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "code",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184113",
+	"entityTableName": "tax_class",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

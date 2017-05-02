@@ -1,63 +1,63 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "order",
-            "otherEntityName": "salesOrder",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "details",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "transactionType",
-            "fieldType": "TransactionType",
-            "fieldValues": "INIT,AUTHORIZE,CAPTURE,AUTHORIZECAPTURE,REFUND"
-        },
-        {
-            "fieldName": "transactionDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "paymentType",
-            "fieldType": "PaymentType",
-            "fieldValues": "CREDITCARD,FREE,COD,MONEYORDER,PAYPAL,STRIPE,WEPAY"
-        },
-        {
-            "fieldName": "amount",
-            "fieldType": "BigDecimal"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184134",
-    "entityTableName": "transaction",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "order",
+			"otherEntityName": "salesOrder",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "details",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "transactionType",
+			"fieldType": "TransactionType",
+			"fieldValues": "INIT,AUTHORIZE,CAPTURE,AUTHORIZECAPTURE,REFUND"
+		},
+		{
+			"fieldName": "transactionDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "paymentType",
+			"fieldType": "PaymentType",
+			"fieldValues": "CREDITCARD,FREE,COD,MONEYORDER,PAYPAL,STRIPE,WEPAY"
+		},
+		{
+			"fieldName": "amount",
+			"fieldType": "BigDecimal"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184134",
+	"entityTableName": "transaction",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

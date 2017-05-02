@@ -1,44 +1,44 @@
 {
-    "fluentMethods": true,
-    "relationships": [],
-    "fields": [
-        {
-            "fieldName": "code",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "supported",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "name",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "currency",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184139",
-    "entityTableName": "currency",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [],
+	"fields": [
+		{
+			"fieldName": "code",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "supported",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "name",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "currency",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184139",
+	"entityTableName": "currency",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

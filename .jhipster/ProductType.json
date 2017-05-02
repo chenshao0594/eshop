@@ -1,46 +1,46 @@
 {
-    "fluentMethods": true,
-    "relationships": [],
-    "fields": [
-        {
-            "fieldName": "code",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "gENERALTYPE",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "allowAddToCart",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184117",
-    "entityTableName": "product_type",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [],
+	"fields": [
+		{
+			"fieldName": "code",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "gENERALTYPE",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "allowAddToCart",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184117",
+	"entityTableName": "product_type",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

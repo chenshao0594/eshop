@@ -1,85 +1,85 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "productOption",
-            "otherEntityName": "productOption",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "productOptionValue",
-            "otherEntityName": "productOptionValue",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "product",
-            "otherEntityName": "product",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "productAttributeWeight",
-            "fieldType": "BigDecimal"
-        },
-        {
-            "fieldName": "productAttributePrice",
-            "fieldType": "BigDecimal"
-        },
-        {
-            "fieldName": "attributeRequired",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "attributeDefault",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "attributeDisplayOnly",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "productOptionSortOrder",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "productAttributeIsFree",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "attributeDiscounted",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184211",
-    "entityTableName": "product_attribute",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "productOption",
+			"otherEntityName": "productOption",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "productOptionValue",
+			"otherEntityName": "productOptionValue",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "product",
+			"otherEntityName": "product",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "productAttributeWeight",
+			"fieldType": "BigDecimal"
+		},
+		{
+			"fieldName": "productAttributePrice",
+			"fieldType": "BigDecimal"
+		},
+		{
+			"fieldName": "attributeRequired",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "attributeDefault",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "attributeDisplayOnly",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "productOptionSortOrder",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "productAttributeIsFree",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "attributeDiscounted",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184211",
+	"entityTableName": "product_attribute",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

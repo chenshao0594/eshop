@@ -1,70 +1,70 @@
 {
-    "fluentMethods": true,
-    "relationships": [],
-    "fields": [
-        {
-            "fieldName": "host",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "port",
-            "fieldType": "Integer",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "smtpSecurity",
-            "fieldType": "SMTPSecurityEnum",
-            "fieldValues": "PLAIN,SSL,STARTTLS",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "fromAddress",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "userName",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "password",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170416113043",
-    "dto": "no",
-    "service": "serviceImpl",
-    "entityTableName": "email_setting",
-    "pagination": "no"
+	"fluentMethods": true,
+	"relationships": [],
+	"fields": [
+		{
+			"fieldName": "host",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "port",
+			"fieldType": "Integer",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "smtpSecurity",
+			"fieldType": "SMTPSecurityEnum",
+			"fieldValues": "PLAIN,SSL,STARTTLS",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "fromAddress",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "userName",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "password",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170416113043",
+	"dto": "no",
+	"service": "serviceImpl",
+	"entityTableName": "email_setting",
+	"pagination": "no"
 }

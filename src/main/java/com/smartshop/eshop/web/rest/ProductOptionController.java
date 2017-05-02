@@ -72,9 +72,10 @@ public class ProductOptionController extends AbstractDomainController<ProductOpt
 		}
 		ProductOption productOption = this.productOptionService.findOne(id);
 		entity.setProductOption(productOption);
-		ProductOptionValue result = this.productOptionValueService.save(entity);
+		productOption.getProductOptionValues().add(entity);
+		ProductOption result = this.productOptionService.save(productOption);
 		return ResponseEntity.created(new URI("/api/product-options/" + id + "/" + result.getId()))
-				.headers(HeaderUtil.createEntityCreationAlert(getEntityName(), result.getId().toString())).body(result);
+				.headers(HeaderUtil.createEntityCreationAlert(getEntityName(), result.getId().toString())).body(entity);
 
 	}
 

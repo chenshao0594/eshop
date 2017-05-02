@@ -1,59 +1,59 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "store",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "dateAdded",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "dateDeleted",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "downloadCount",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "fileId",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "accountedDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "filesize",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184200",
-    "entityTableName": "file_history",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "store",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "dateAdded",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "dateDeleted",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "downloadCount",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "fileId",
+			"fieldType": "Long"
+		},
+		{
+			"fieldName": "accountedDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "filesize",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184200",
+	"entityTableName": "file_history",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

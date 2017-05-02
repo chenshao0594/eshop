@@ -1,44 +1,44 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "descriptions",
-            "otherEntityName": "zoneDescription",
-            "otherEntityRelationshipName": "zone"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "country",
-            "otherEntityName": "country",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "code",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184210",
-    "dto": "no",
-    "service": "serviceImpl",
-    "entityTableName": "zone",
-    "pagination": "pagination"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "descriptions",
+			"otherEntityName": "zoneDescription",
+			"otherEntityRelationshipName": "zone"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "country",
+			"otherEntityName": "country",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "code",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184210",
+	"dto": "no",
+	"service": "serviceImpl",
+	"entityTableName": "zone",
+	"pagination": "pagination"
 }

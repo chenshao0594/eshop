@@ -1,55 +1,55 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "attributes",
-            "otherEntityName": "shoppingCartAttributeItem",
-            "otherEntityRelationshipName": "shoppingCartItem"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "shoppingCart",
-            "otherEntityName": "shoppingCart",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "productId",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "quantity",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184136",
-    "entityTableName": "shopping_cart_item",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "attributes",
+			"otherEntityName": "shoppingCartAttributeItem",
+			"otherEntityRelationshipName": "shoppingCartItem"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "shoppingCart",
+			"otherEntityName": "shoppingCart",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "productId",
+			"fieldType": "Long"
+		},
+		{
+			"fieldName": "quantity",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184136",
+	"entityTableName": "shopping_cart_item",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

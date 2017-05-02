@@ -1,55 +1,55 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "descriptions",
-            "otherEntityName": "countryDescription",
-            "otherEntityRelationshipName": "country"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "zones",
-            "otherEntityName": "zone",
-            "otherEntityRelationshipName": "country"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "geoZone",
-            "otherEntityName": "geoZone",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "isoCode",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "supported",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184206",
-    "entityTableName": "country",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "descriptions",
+			"otherEntityName": "countryDescription",
+			"otherEntityRelationshipName": "country"
+		},
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "zones",
+			"otherEntityName": "zone",
+			"otherEntityRelationshipName": "country"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "geoZone",
+			"otherEntityName": "geoZone",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "isoCode",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "supported",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184206",
+	"entityTableName": "country",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

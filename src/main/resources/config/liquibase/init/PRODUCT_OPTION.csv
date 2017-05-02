@@ -1,1 +1,3 @@
-PRODUCT_OPTION_ID;"PRODUCT_OPTION_CODE";PRODUCT_OPTION_SORT_ORD;"PRODUCT_OPTION_TYPE";PRODUCT_OPTION_READ;MERCHANT_ID
+ID;"CODE";product_option_sort_order;"PRODUCT_OPTION_TYPE";merchant_store_id;"created_by";"last_modified_by"
+1;"size";1;"text";1;"system";"system"
+2;"color";1;"text";1;"system";"system"

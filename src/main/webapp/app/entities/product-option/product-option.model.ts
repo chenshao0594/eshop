@@ -11,8 +11,9 @@ export class ProductOption {
         public createdDate?: any,
         public lastModifiedBy?: string,
         public lastModifiedDate?: any,
-        public descriptions?: ProductOptionDescription,
+        public descriptions?: ProductOptionDescription[],
         public merchantStore?: MerchantStore,
+        public productOptionValues?: ProductOptionValue[]
     ) {
         this.readOnly = true;
     }

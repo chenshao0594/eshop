@@ -1,64 +1,64 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "descriptions",
-            "otherEntityName": "customerOptionDescription",
-            "otherEntityRelationshipName": "customerOption"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "merchantStore",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "active",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "customerOptionType",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "code",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "publicOption",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "sortOrder",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184133",
-    "entityTableName": "customer_option",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "descriptions",
+			"otherEntityName": "customerOptionDescription",
+			"otherEntityRelationshipName": "customerOption"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "merchantStore",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "active",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "customerOptionType",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "code",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "publicOption",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "sortOrder",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184133",
+	"entityTableName": "customer_option",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

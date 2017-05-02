@@ -1,86 +1,86 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "language",
-            "otherEntityName": "language",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "product",
-            "otherEntityName": "product",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "metatagDescription",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "seUrl",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "metatagKeywords",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "productHighlight",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "title",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "metatagTitle",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "name",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "productExternalDl",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184112",
-    "entityTableName": "product_description",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "language",
+			"otherEntityName": "language",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "product",
+			"otherEntityName": "product",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "metatagDescription",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "seUrl",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "metatagKeywords",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "productHighlight",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "title",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "description",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "metatagTitle",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "name",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "productExternalDl",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184112",
+	"entityTableName": "product_description",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

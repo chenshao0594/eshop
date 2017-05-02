@@ -1,76 +1,76 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "language",
-            "otherEntityName": "language",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "category",
-            "otherEntityName": "category",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "categoryHighlight",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "title",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "metatagDescription",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "description",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "seUrl",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "metatagKeywords",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "name",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "metatagTitle",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184153",
-    "entityTableName": "category_description",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "language",
+			"otherEntityName": "language",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "category",
+			"otherEntityName": "category",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "categoryHighlight",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "title",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "metatagDescription",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "description",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "seUrl",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "metatagKeywords",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "name",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "metatagTitle",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184153",
+	"entityTableName": "category_description",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

@@ -1,48 +1,48 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "merchantStore",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "merchantConfigurationType",
-            "fieldType": "MerchantConfigurationType",
-            "fieldValues": "INTEGRATION,SHOP,CONFIG"
-        },
-        {
-            "fieldName": "key",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "value",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184146",
-    "entityTableName": "merchant_configuration",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "merchantStore",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "merchantConfigurationType",
+			"fieldType": "MerchantConfigurationType",
+			"fieldValues": "INTEGRATION,SHOP,CONFIG"
+		},
+		{
+			"fieldName": "key",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "value",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184146",
+	"entityTableName": "merchant_configuration",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

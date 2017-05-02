@@ -87,7 +87,7 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	private BigDecimal salePrice;
 
 	@Column(name = "retail_price", precision = 10, scale = 2)
-	private BigDecimal retail_price;
+	private BigDecimal retailPrice;
 
 	@Column(name = "product_review_avg", precision = 10, scale = 2)
 	private BigDecimal productReviewAvg;
@@ -157,7 +157,7 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.REFRESH })
 	private ProductType type;
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.REFRESH })
 	private MerchantStore merchantStore;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = { CascadeType.REFRESH })
@@ -175,9 +175,6 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 
 	@Column(name = "standard_price", precision = 10, scale = 2)
 	private BigDecimal standardPrice;
-
-	@Column(name = "retail_price", precision = 10, scale = 2)
-	private BigDecimal retailPrice;
 
 	@ManyToMany(fetch = FetchType.EAGER)
 	@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -686,14 +683,6 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 		this.standardPrice = standardPrice;
 	}
 
-	public BigDecimal getRetailPrice() {
-		return retailPrice;
-	}
-
-	public void setRetailPrice(BigDecimal retailPrice) {
-		this.retailPrice = retailPrice;
-	}
-
 	public Boolean getAvailable() {
 		return available;
 	}
@@ -713,7 +702,22 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	public Product addProductOption(ProductOption productOption) {
 		this.productOptions.add(productOption);
 		return this;
+	}
 
+	public BigDecimal getSalePrice() {
+		return salePrice;
+	}
+
+	public void setSalePrice(BigDecimal salePrice) {
+		this.salePrice = salePrice;
+	}
+
+	public BigDecimal getRetailPrice() {
+		return retailPrice;
+	}
+
+	public void setRetailPrice(BigDecimal retailPrice) {
+		this.retailPrice = retailPrice;
 	}
 
 }

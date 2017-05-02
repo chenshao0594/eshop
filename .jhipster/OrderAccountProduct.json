@@ -1,83 +1,83 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "orderProduct",
-            "otherEntityName": "orderProduct",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "orderAccount",
-            "otherEntityName": "orderAccount",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "orderAccountProductId",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "orderAccountProductLastTransactionStatus",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "orderAccountProductEndDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "orderAccountProductStartDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "orderAccountProductLastStatusDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "orderAccountProductStatus",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "orderAccountProductAccountedDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "orderAccountProductPaymentFrequencyType",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "orderAccountProductEot",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184121",
-    "entityTableName": "order_account_product",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "orderProduct",
+			"otherEntityName": "orderProduct",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "orderAccount",
+			"otherEntityName": "orderAccount",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "orderAccountProductId",
+			"fieldType": "Long"
+		},
+		{
+			"fieldName": "orderAccountProductLastTransactionStatus",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "orderAccountProductEndDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "orderAccountProductStartDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "orderAccountProductLastStatusDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "orderAccountProductStatus",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "orderAccountProductAccountedDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "orderAccountProductPaymentFrequencyType",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "orderAccountProductEot",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184121",
+	"entityTableName": "order_account_product",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

@@ -46,6 +46,7 @@ export class ProductOptionDetailComponent implements OnInit, OnDestroy {
     load(id) {
         this.productOptionService.find(id).subscribe((productOption) => {
             this.productOption = productOption;
+            this.productOptionValues = this.productOption.productOptionValues;
         });
     }
     loadOptionValues(optionId){

@@ -1,66 +1,66 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "descriptions",
-            "otherEntityName": "productOptionDescription",
-            "otherEntityRelationshipName": "productOption"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "merchantStore",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "readOnly",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "productOptionType",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "code",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "productOptionSortOrder",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184148",
-    "entityTableName": "product_option",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "descriptions",
+			"otherEntityName": "productOptionDescription",
+			"otherEntityRelationshipName": "productOption"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "merchantStore",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "readOnly",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "productOptionType",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "code",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "productOptionSortOrder",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184148",
+	"entityTableName": "product_option",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

@@ -1,59 +1,59 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "orderAccountProducts",
-            "otherEntityName": "orderAccountProduct",
-            "otherEntityRelationshipName": "orderAccount"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "order",
-            "otherEntityName": "salesOrder",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "orderAccountStartDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "orderAccountEndDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "orderAccountBillDay",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184144",
-    "entityTableName": "order_account",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "orderAccountProducts",
+			"otherEntityName": "orderAccountProduct",
+			"otherEntityRelationshipName": "orderAccount"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "order",
+			"otherEntityName": "salesOrder",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "orderAccountStartDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "orderAccountEndDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "orderAccountBillDay",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184144",
+	"entityTableName": "order_account",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

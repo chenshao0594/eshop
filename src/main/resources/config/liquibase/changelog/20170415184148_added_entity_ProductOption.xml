@@ -61,5 +61,11 @@
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
         
+         <loadData encoding="UTF-8"
+                  file="config/liquibase/init/product_option.csv"
+                  separator=";"
+                  tableName="product_option">
+        </loadData>
+        
     </changeSet>
 </databaseChangeLog>

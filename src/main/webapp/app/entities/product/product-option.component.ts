@@ -5,20 +5,13 @@ import { Response } from '@angular/http';
 import { NgbActiveModal, NgbModalRef, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Router } from '@angular/router';
 import { EventManager, AlertService, JhiLanguageService, DataUtils } from 'ng-jhipster';
-
 import { ProductService } from './product.service';
 import { ProductOptionService } from '../product-option/product-option.service';
 import { Product } from './product.model';
-
 import { ProductOption } from '../product-option/product-option.model';
 
-
-
-const URL = '/api/attachments';
-
 @Component( {
-    templateUrl: './product-options.component.html',
-    styleUrls: [ './fileupload.style.scss' ]
+    templateUrl: './product-options.component.html'
 } )
 export class ProductOptionDialogComponent  implements OnInit {
     product: Product;
@@ -45,17 +38,12 @@ export class ProductOptionDialogComponent  implements OnInit {
     }
 
     ngOnInit() {
+        
     }
-    loadOptions(productId){
-//        this.attachmentService.queryAttachmentsByBO('products',this.boId).subscribe(
-//                (res: Response) => { this.attachments = res.json(); }, 
-//                (res: Response) => this.onError(res.json()));
-    }
-    
-    registerChangeInProductAttachments() {
-        this.eventSubscriber = this.eventManager.subscribe('attachmentListModification', (response) => this.loadOptions(this.boId));
-    }
-
+   
+//    registerChangeInProductAttachments() {
+//        this.eventSubscriber = this.eventManager.subscribe('attachmentListModification', (response) => this.loadOptions(this.boId));
+//    }
 
     clear() {
         this.activeModal.dismiss('cancel');
@@ -78,6 +66,7 @@ export class ProductOptionDialogComponent  implements OnInit {
     }
     private onSaveSuccess(result: Product) {
         this.isSaving = false;
+        this.eventManager.broadcast({ name: 'optionListModification', content: 'OK'});
     }
 
     private onSaveError(error) {

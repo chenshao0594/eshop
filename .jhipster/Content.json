@@ -1,70 +1,70 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "descriptions",
-            "otherEntityName": "contentDescription",
-            "otherEntityRelationshipName": "content"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "merchantStore",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "sortOrder",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "productGroup",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "contentType",
-            "fieldType": "ContentType",
-            "fieldValues": "BOX,PAGE,SECTION"
-        },
-        {
-            "fieldName": "code",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "visible",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "contentPosition",
-            "fieldType": "ContentPosition",
-            "fieldValues": "LEFT,RIGHT"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184156",
-    "entityTableName": "content",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "descriptions",
+			"otherEntityName": "contentDescription",
+			"otherEntityRelationshipName": "content"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "merchantStore",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "sortOrder",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "productGroup",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "contentType",
+			"fieldType": "ContentType",
+			"fieldValues": "BOX,PAGE,SECTION"
+		},
+		{
+			"fieldName": "code",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "visible",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "contentPosition",
+			"fieldType": "ContentPosition",
+			"fieldValues": "LEFT,RIGHT"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184156",
+	"entityTableName": "content",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

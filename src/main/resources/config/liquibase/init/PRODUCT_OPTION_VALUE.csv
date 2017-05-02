@@ -1,1 +1,6 @@
-PRODUCT_OPTION_VALUE_ID;"PRODUCT_OPTION_VAL_CODE";PRODUCT_OPT_FOR_DISP;"PRODUCT_OPT_VAL_IMAGE";PRODUCT_OPT_VAL_SORT_ORD;MERCHANT_ID
+ID;"CODE";product_option_value_sort_order;merchant_store_id;product_option_id;created_by;last_modified_by
+1;"X";1;1;1;system;system
+2;"XL";1;1;1;system;system
+3;"XXL";1;1;1;system;system
+5;"red";1;1;2;system;system
+6;"blue";1;1;2;system;system

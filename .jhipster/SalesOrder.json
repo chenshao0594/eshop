@@ -1,137 +1,137 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "orderTotal",
-            "otherEntityName": "orderTotal",
-            "otherEntityRelationshipName": "order"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "orderHistory",
-            "otherEntityName": "orderStatusHistory",
-            "otherEntityRelationshipName": "order"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "orderProducts",
-            "otherEntityName": "orderProduct",
-            "otherEntityRelationshipName": "order"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "currency",
-            "otherEntityName": "currency",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "merchant",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "customerId",
-            "fieldType": "Long"
-        },
-        {
-            "fieldName": "confirmedAddress",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "orderDateFinished",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "total",
-            "fieldType": "BigDecimal"
-        },
-        {
-            "fieldName": "paymentModuleCode",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "paymentType",
-            "fieldType": "PaymentType",
-            "fieldValues": "CREDITCARD,FREE,COD,MONEYORDER,PAYPAL,STRIPE,WEPAY"
-        },
-        {
-            "fieldName": "locale",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "channel",
-            "fieldType": "OrderChannel",
-            "fieldValues": "ONLINE"
-        },
-        {
-            "fieldName": "customerEmailAddress",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "orderType",
-            "fieldType": "OrderType",
-            "fieldValues": "ORDER,BOOKING"
-        },
-        {
-            "fieldName": "status",
-            "fieldType": "OrderStatus",
-            "fieldValues": "ORDERED,PROCESSED,DELIVERED,REFUNDED,CANCELED"
-        },
-        {
-            "fieldName": "lastModified",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "currencyValue",
-            "fieldType": "BigDecimal"
-        },
-        {
-            "fieldName": "datePurchased",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "shippingModuleCode",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "ipAddress",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "customerAgreement",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184213",
-    "entityTableName": "sales_order",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "orderTotal",
+			"otherEntityName": "orderTotal",
+			"otherEntityRelationshipName": "order"
+		},
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "orderHistory",
+			"otherEntityName": "orderStatusHistory",
+			"otherEntityRelationshipName": "order"
+		},
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "orderProducts",
+			"otherEntityName": "orderProduct",
+			"otherEntityRelationshipName": "order"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "currency",
+			"otherEntityName": "currency",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "merchant",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "customerId",
+			"fieldType": "Long"
+		},
+		{
+			"fieldName": "confirmedAddress",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "orderDateFinished",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "total",
+			"fieldType": "BigDecimal"
+		},
+		{
+			"fieldName": "paymentModuleCode",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "paymentType",
+			"fieldType": "PaymentType",
+			"fieldValues": "CREDITCARD,FREE,COD,MONEYORDER,PAYPAL,STRIPE,WEPAY"
+		},
+		{
+			"fieldName": "locale",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "channel",
+			"fieldType": "OrderChannel",
+			"fieldValues": "ONLINE"
+		},
+		{
+			"fieldName": "customerEmailAddress",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "orderType",
+			"fieldType": "OrderType",
+			"fieldValues": "ORDER,BOOKING"
+		},
+		{
+			"fieldName": "status",
+			"fieldType": "OrderStatus",
+			"fieldValues": "ORDERED,PROCESSED,DELIVERED,REFUNDED,CANCELED"
+		},
+		{
+			"fieldName": "lastModified",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "currencyValue",
+			"fieldType": "BigDecimal"
+		},
+		{
+			"fieldName": "datePurchased",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "shippingModuleCode",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "ipAddress",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "customerAgreement",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184213",
+	"entityTableName": "sales_order",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

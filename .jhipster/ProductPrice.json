@@ -1,83 +1,83 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "descriptions",
-            "otherEntityName": "productPriceDescription",
-            "otherEntityRelationshipName": "productPrice"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "productAvailability",
-            "otherEntityName": "productAvailability",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "defaultPrice",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "defaultPriceCode",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "code",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "productPriceSpecialEndDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "productPriceAmount",
-            "fieldType": "BigDecimal"
-        },
-        {
-            "fieldName": "productPriceSpecialAmount",
-            "fieldType": "BigDecimal"
-        },
-        {
-            "fieldName": "productPriceType",
-            "fieldType": "ProductPriceType",
-            "fieldValues": "ONE_TIME,MONTHLY"
-        },
-        {
-            "fieldName": "productPriceSpecialStartDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184115",
-    "entityTableName": "product_price",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "descriptions",
+			"otherEntityName": "productPriceDescription",
+			"otherEntityRelationshipName": "productPrice"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "productAvailability",
+			"otherEntityName": "productAvailability",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "defaultPrice",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "defaultPriceCode",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "code",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "productPriceSpecialEndDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "productPriceAmount",
+			"fieldType": "BigDecimal"
+		},
+		{
+			"fieldName": "productPriceSpecialAmount",
+			"fieldType": "BigDecimal"
+		},
+		{
+			"fieldName": "productPriceType",
+			"fieldType": "ProductPriceType",
+			"fieldValues": "ONE_TIME,MONTHLY"
+		},
+		{
+			"fieldName": "productPriceSpecialStartDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184115",
+	"entityTableName": "product_price",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

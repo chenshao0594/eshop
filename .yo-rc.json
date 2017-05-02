@@ -1,68 +1,68 @@
 {
-  "generator-jhipster": {
-    "promptValues": {
-      "packageName": "com.smartshop.eshop",
-      "nativeLanguage": "en"
-    },
-    "jhipsterVersion": "4.3.0",
-    "baseName": "eshop",
-    "packageName": "com.smartshop.eshop",
-    "packageFolder": "com/smartshop/eshop",
-    "serverPort": "8080",
-    "authenticationType": "session",
-    "hibernateCache": "ehcache",
-    "clusteredHttpSession": false,
-    "websocket": "spring-websocket",
-    "databaseType": "sql",
-    "devDatabaseType": "h2Memory",
-    "prodDatabaseType": "mysql",
-    "searchEngine": "elasticsearch",
-    "messageBroker": false,
-    "serviceDiscoveryType": false,
-    "buildTool": "gradle",
-    "enableSocialSignIn": true,
-    "rememberMeKey": "cc93558ae69a0030bcdf69ccf03b3003ee4916eb",
-    "clientFramework": "angular2",
-    "useSass": true,
-    "clientPackageManager": "yarn",
-    "applicationType": "monolith",
-    "testFrameworks": [],
-    "jhiPrefix": "jhi",
-    "otherModules": [
-      {
-        "name": "generator-jhipster-docker",
-        "version": "2.2.0"
-      },
-      {
-        "name": "generator-jhipster-grpc",
-        "version": "0.7.0"
-      },
-      {
-        "name": "generator-jhipster-entity-audit-and-delete",
-        "version": "2.2.2"
-      },
-      {
-        "name": "generator-jhipster-elasticsearch-reindexer",
-        "version": "0.3.0"
-      },
-      {
-        "name": "generator-jhipster-spring-social-connectors",
-        "version": "0.0.1"
-      },
-      {
-        "name": "generator-jhipster-angular-ui",
-        "version": "0.0.2"
-      },
-      {
-        "name": "generator-jhipster-google-analytics",
-        "version": "0.0.1"
-      }
-    ],
-    "enableTranslation": true,
-    "nativeLanguage": "en",
-    "languages": [
-      "en",
-      "zh-cn"
-    ]
-  }
+	"generator-jhipster": {
+		"promptValues": {
+			"packageName": "com.smartshop.eshop",
+			"nativeLanguage": "en"
+		},
+		"jhipsterVersion": "4.3.0",
+		"baseName": "eshop",
+		"packageName": "com.smartshop.eshop",
+		"packageFolder": "com/smartshop/eshop",
+		"serverPort": "8080",
+		"authenticationType": "session",
+		"hibernateCache": "ehcache",
+		"clusteredHttpSession": false,
+		"websocket": "spring-websocket",
+		"databaseType": "sql",
+		"devDatabaseType": "h2Memory",
+		"prodDatabaseType": "mysql",
+		"searchEngine": "elasticsearch",
+		"messageBroker": false,
+		"serviceDiscoveryType": false,
+		"buildTool": "gradle",
+		"enableSocialSignIn": true,
+		"rememberMeKey": "cc93558ae69a0030bcdf69ccf03b3003ee4916eb",
+		"clientFramework": "angular2",
+		"useSass": true,
+		"clientPackageManager": "yarn",
+		"applicationType": "monolith",
+		"testFrameworks": [],
+		"jhiPrefix": "jhi",
+		"otherModules": [
+			{
+				"name": "generator-jhipster-docker",
+				"version": "2.2.0"
+			},
+			{
+				"name": "generator-jhipster-grpc",
+				"version": "0.7.0"
+			},
+			{
+				"name": "generator-jhipster-entity-audit-and-delete",
+				"version": "2.2.2"
+			},
+			{
+				"name": "generator-jhipster-elasticsearch-reindexer",
+				"version": "0.3.0"
+			},
+			{
+				"name": "generator-jhipster-spring-social-connectors",
+				"version": "0.0.1"
+			},
+			{
+				"name": "generator-jhipster-angular-ui",
+				"version": "0.0.2"
+			},
+			{
+				"name": "generator-jhipster-google-analytics",
+				"version": "0.0.1"
+			}
+		],
+		"enableTranslation": true,
+		"nativeLanguage": "en",
+		"languages": [
+			"en",
+			"zh-cn"
+		]
+	}
 }

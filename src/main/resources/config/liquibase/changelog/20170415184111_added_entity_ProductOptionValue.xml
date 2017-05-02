@@ -59,11 +59,16 @@
             </column>
 
             <column name="product_option_id" type="bigint">
-                <constraints nullable="true" />
+                <constraints nullable="false" />
             </column>
 
             <!-- jhipster-needle-liquibase-add-column - JHipster will add columns here, do not remove-->
         </createTable>
+         <loadData encoding="UTF-8"
+                  file="config/liquibase/init/product_option_value.csv"
+                  separator=";"
+                  tableName="product_option_value">
+        </loadData>
         
     </changeSet>
 </databaseChangeLog>

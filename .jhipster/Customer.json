@@ -1,85 +1,85 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "attributes",
-            "otherEntityName": "customerAttribute",
-            "otherEntityRelationshipName": "customer"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "reviews",
-            "otherEntityName": "productReview",
-            "otherEntityRelationshipName": "customer"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "merchantStore",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "defaultLanguage",
-            "otherEntityName": "language",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "dateOfBirth",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "gender",
-            "fieldType": "CustomerGender",
-            "fieldValues": "M,F"
-        },
-        {
-            "fieldName": "anonymous",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "company",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "nick",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "emailAddress",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "password",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184202",
-    "entityTableName": "customer",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "attributes",
+			"otherEntityName": "customerAttribute",
+			"otherEntityRelationshipName": "customer"
+		},
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "reviews",
+			"otherEntityName": "productReview",
+			"otherEntityRelationshipName": "customer"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "merchantStore",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "defaultLanguage",
+			"otherEntityName": "language",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "dateOfBirth",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "gender",
+			"fieldType": "CustomerGender",
+			"fieldValues": "M,F"
+		},
+		{
+			"fieldName": "anonymous",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "company",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "nick",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "emailAddress",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "password",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184202",
+	"entityTableName": "customer",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

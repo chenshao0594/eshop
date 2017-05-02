@@ -26,19 +26,27 @@ export class ProductSkuComponent  implements OnInit {
     }
 
     ngOnInit() {
-      
         this.subscription = this.route.params.subscribe((params) => {
             this.productId = params['id'];
+            this.loadOptions(this.productId);
             });
-        this.productService.queryOptions(this.productId).subscribe(
-                (res: Response) => { this.productOptions = res.json(); }, 
-                (res: Response) => this.onError(res.json()));
+        this.registerChangeInProductOptions();
     }
 
     back() {
         window.history.back();
     }
+    loadOptions(productId){
+        this.productService.queryOptions(this.productId).subscribe(
+                (res: Response) => { this.productOptions = res.json(); }, 
+                (res: Response) => this.onError(res.json()));
+        
+        
+    }
     
+    registerChangeInProductOptions() {
+      this.eventSubscriber = this.eventManager.subscribe('optionListModification', (response) => this.loadOptions(this.productId));
+  }
     private onError(error) {
         this.alertService.error(error.message, null, null);
     }

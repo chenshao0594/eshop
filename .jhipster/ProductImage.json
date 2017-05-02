@@ -1,74 +1,74 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "descriptions",
-            "otherEntityName": "productImageDescription",
-            "otherEntityRelationshipName": "productImage"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "product",
-            "otherEntityName": "product",
-            "otherEntityField": "id"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "productImage",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "productImageUrl",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "defaultImage",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "imageType",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "imageCrop",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "content",
-            "fieldType": "byte[]",
-            "fieldTypeBlobContent": "image",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184151",
-    "dto": "no",
-    "service": "serviceImpl",
-    "entityTableName": "product_image",
-    "pagination": "pagination"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "descriptions",
+			"otherEntityName": "productImageDescription",
+			"otherEntityRelationshipName": "productImage"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "product",
+			"otherEntityName": "product",
+			"otherEntityField": "id"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "productImage",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "productImageUrl",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "defaultImage",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "imageType",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "imageCrop",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "content",
+			"fieldType": "byte[]",
+			"fieldTypeBlobContent": "image",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184151",
+	"dto": "no",
+	"service": "serviceImpl",
+	"entityTableName": "product_image",
+	"pagination": "pagination"
 }

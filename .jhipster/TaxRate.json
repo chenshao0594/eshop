@@ -1,102 +1,102 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "descriptions",
-            "otherEntityName": "taxRateDescription",
-            "otherEntityRelationshipName": "taxRate"
-        },
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "taxRates",
-            "otherEntityName": "taxRate",
-            "otherEntityRelationshipName": "parent"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "country",
-            "otherEntityName": "country",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "parent",
-            "otherEntityName": "taxRate",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "taxClass",
-            "otherEntityName": "taxClass",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipType": "many-to-one",
-            "relationshipName": "merchantStore",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id"
-        },
-        {
-            "relationshipName": "zone",
-            "otherEntityName": "zone",
-            "relationshipType": "one-to-one",
-            "otherEntityField": "id",
-            "ownerSide": true,
-            "otherEntityRelationshipName": "zone"
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "piggyback",
-            "fieldType": "Boolean"
-        },
-        {
-            "fieldName": "stateProvince",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "taxPriority",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "code",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "taxRate",
-            "fieldType": "BigDecimal"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String",
-            "fieldValidateRules": [
-                "required"
-            ]
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184132",
-    "entityTableName": "tax_rate",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "descriptions",
+			"otherEntityName": "taxRateDescription",
+			"otherEntityRelationshipName": "taxRate"
+		},
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "taxRates",
+			"otherEntityName": "taxRate",
+			"otherEntityRelationshipName": "parent"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "country",
+			"otherEntityName": "country",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "parent",
+			"otherEntityName": "taxRate",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "taxClass",
+			"otherEntityName": "taxClass",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipType": "many-to-one",
+			"relationshipName": "merchantStore",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id"
+		},
+		{
+			"relationshipName": "zone",
+			"otherEntityName": "zone",
+			"relationshipType": "one-to-one",
+			"otherEntityField": "id",
+			"ownerSide": true,
+			"otherEntityRelationshipName": "zone"
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "piggyback",
+			"fieldType": "Boolean"
+		},
+		{
+			"fieldName": "stateProvince",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "taxPriority",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "code",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "taxRate",
+			"fieldType": "BigDecimal"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String",
+			"fieldValidateRules": [
+				"required"
+			]
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184132",
+	"entityTableName": "tax_rate",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }

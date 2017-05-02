@@ -32,7 +32,15 @@ apply plugin: 'propdeps'
 apply plugin: 'com.moowork.node'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: "com.ewerk.gradle.plugins.querydsl"
+apply plugin: 'eclipse'
 defaultTasks 'bootRun'
+
+
+eclipse {
+    classpath {
+       downloadSources=true
+    }
+}
 
 bootRepackage {
    mainClass = 'com.smartshop.eshop.EshopApp'

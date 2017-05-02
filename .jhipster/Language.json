@@ -1,51 +1,51 @@
 {
-    "fluentMethods": true,
-    "relationships": [
-        {
-            "relationshipType": "one-to-many",
-            "relationshipName": "storesDefaultLanguage",
-            "otherEntityName": "merchantStore",
-            "otherEntityRelationshipName": "defaultLanguage"
-        },
-        {
-            "relationshipType": "many-to-many",
-            "otherEntityRelationshipName": "languages",
-            "relationshipName": "stores",
-            "otherEntityName": "merchantStore",
-            "otherEntityField": "id",
-            "ownerSide": false
-        }
-    ],
-    "fields": [
-        {
-            "fieldName": "code",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "sortOrder",
-            "fieldType": "Integer"
-        },
-        {
-            "fieldName": "createdBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "createdDate",
-            "fieldType": "LocalDate"
-        },
-        {
-            "fieldName": "lastModifiedBy",
-            "fieldType": "String"
-        },
-        {
-            "fieldName": "lastModifiedDate",
-            "fieldType": "LocalDate"
-        }
-    ],
-    "changelogDate": "20170415184201",
-    "entityTableName": "language",
-    "dto": "no",
-    "pagination": "pagination",
-    "service": "serviceImpl",
-    "searchEngine": "elasticsearch"
+	"fluentMethods": true,
+	"relationships": [
+		{
+			"relationshipType": "one-to-many",
+			"relationshipName": "storesDefaultLanguage",
+			"otherEntityName": "merchantStore",
+			"otherEntityRelationshipName": "defaultLanguage"
+		},
+		{
+			"relationshipType": "many-to-many",
+			"otherEntityRelationshipName": "languages",
+			"relationshipName": "stores",
+			"otherEntityName": "merchantStore",
+			"otherEntityField": "id",
+			"ownerSide": false
+		}
+	],
+	"fields": [
+		{
+			"fieldName": "code",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "sortOrder",
+			"fieldType": "Integer"
+		},
+		{
+			"fieldName": "createdBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "createdDate",
+			"fieldType": "LocalDate"
+		},
+		{
+			"fieldName": "lastModifiedBy",
+			"fieldType": "String"
+		},
+		{
+			"fieldName": "lastModifiedDate",
+			"fieldType": "LocalDate"
+		}
+	],
+	"changelogDate": "20170415184201",
+	"entityTableName": "language",
+	"dto": "no",
+	"pagination": "pagination",
+	"service": "serviceImpl",
+	"searchEngine": "elasticsearch"
 }
