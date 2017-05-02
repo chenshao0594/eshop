@@ -83,6 +83,12 @@ public class Product extends BusinessDomain<Long, Product> implements Serializab
 	@Column(name = "product_ordered")
 	private Integer productOrdered;
 
+	@Column(name = "sale_price", precision = 10, scale = 2)
+	private BigDecimal salePrice;
+
+	@Column(name = "retail_price", precision = 10, scale = 2)
+	private BigDecimal retail_price;
+
 	@Column(name = "product_review_avg", precision = 10, scale = 2)
 	private BigDecimal productReviewAvg;
 

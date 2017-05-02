@@ -62,6 +62,8 @@
             "name": "Name",
             "productExternalDl": "External Dl",
             "categories": "Categories",
+            "salePrice": "Sale Price",
+            "retailPrice": " Retail Price",
             "createdBy": "Created By",
             "createdDate": "Created Date",
            	"lastModifiedBy" : "Last Modified By",

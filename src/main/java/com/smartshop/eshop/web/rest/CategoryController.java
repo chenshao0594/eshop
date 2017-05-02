@@ -26,16 +26,17 @@ public class CategoryController extends AbstractDomainController<Category, Long>
 		super(categoryService);
 		this.categoryService = categoryService;
 	}
+
 	@Override
-	protected Category postCreate(Category category){
-		if(category.getParent()==null){
+	protected Category postCreate(Category category) {
+		if (category.getParent() == null) {
 			return category;
 		}
 		if (category.getParent().getId() == -1) {// this is a root category
 			category.setParent(null);
 			category.setLineage("/");
 			category.setDepth(0);
-		}else{
+		} else {
 			Category parent = new Category();
 			parent.setId(category.getParent().getId());
 			parent.setMerchantStore(category.getMerchantStore());
@@ -45,11 +46,9 @@ public class CategoryController extends AbstractDomainController<Category, Long>
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 		}
 		categoryService.saveOrUpdate(category);
 		return category;
-
 	}
 
 	@Override

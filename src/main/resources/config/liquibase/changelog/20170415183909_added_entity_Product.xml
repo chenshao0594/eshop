@@ -65,6 +65,12 @@
             <column name="product_weight" type="decimal(10,2)">
                 <constraints nullable="true" />
             </column>
+             <column name="retail_price" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
+             <column name="sale_price" type="decimal(10,2)">
+                <constraints nullable="true" />
+            </column>
 
             <column name="product_shipeable" type="bit">
                 <constraints nullable="true" />

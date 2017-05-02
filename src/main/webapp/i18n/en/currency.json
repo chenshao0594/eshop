@@ -20,10 +20,10 @@
             "supported": "Supported",
             "name": "Name",
             "currency": "Currency",
-            "created_by": "Created By",
-            "created_date": "Created Date",
-            "last_modified_by": "Last Modified By",
-            "last_modified_date": "Last Modified Date"
+            "createdBy": "Created By",
+            "createdDate": "Created Date",
+            "lastModifiedBy": "Last Modified By",
+            "lastModifiedDate": "Last Modified Date"
         }
     }
 }

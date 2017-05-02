@@ -117,6 +117,14 @@
             "fieldType": "BigDecimal"
         },
         {
+            "fieldName": "salePrice",
+            "fieldType": "BigDecimal"
+        },
+        {
+            "fieldName": "retailPrice",
+            "fieldType": "BigDecimal"
+        },    
+        {
             "fieldName": "preOrder",
             "fieldType": "Boolean"
         },

@@ -98,7 +98,7 @@
 			"createdBy":"Creator",
 			"createdDate":"Create Date",
 			"lastModifiedBy": "Last Modified By",
-			"last_modified_date": "Last Modified Date"
+			"lastModifiedDate": "Last Modified Date"
 			},
 			"account": {
 				"main": "Account",
